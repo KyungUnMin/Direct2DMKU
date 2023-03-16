@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="02.GameEngineWindow">
+      <UniqueIdentifier>{6cebf79a-26d1-474d-bd14-a93ea70200dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources">
+      <UniqueIdentifier>{45c353df-ee87-43a1-86cd-419e9d431782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\01.Image">
+      <UniqueIdentifier>{d40f2f27-5174-46c7-a476-33c79a6ccb8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\02.Sound">
+      <UniqueIdentifier>{d6f4df3c-648f-410b-b0f5-5cc69d9457be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Input">
+      <UniqueIdentifier>{5dacbffc-c660-435e-8b5b-7dd46033fcd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty">
+      <UniqueIdentifier>{ec875395-df12-459d-b319-246d196c3e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\01.FMOD">
+      <UniqueIdentifier>{37c01377-98b2-404f-ba85-3cca0b22e444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\01.FMOD\01.Header">
+      <UniqueIdentifier>{429cc18e-59bf-4bd0-b275-10b62747e509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\01.FMOD\02.bin">
+      <UniqueIdentifier>{a29d7eb1-a869-4ab3-99f2-d2fa730177bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEngineWindow.cpp">
+      <Filter>02.GameEngineWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineImage.cpp">
+      <Filter>03.Resources\01.Image</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineInput.cpp">
+      <Filter>04.Input</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineSound.cpp">
+      <Filter>03.Resources\02.Sound</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEngineWindow.h">
+      <Filter>02.GameEngineWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineImage.h">
+      <Filter>03.Resources\01.Image</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineInput.h">
+      <Filter>04.Input</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineSound.h">
+      <Filter>03.Resources\02.Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod.hpp">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_codec.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_common.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_dsp.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_dsp_effects.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_errors.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\FMOD\inc\fmod.cs">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </None>
+    <None Include="ThirdParty\FMOD\inc\fmod_dsp.cs">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </None>
+    <None Include="ThirdParty\FMOD\inc\fmod_errors.cs">
+      <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\FMOD\lib\x64\fmod_vc.lib">
+      <Filter>01.ThirdParty\01.FMOD\02.bin</Filter>
+    </Library>
+    <Library Include="ThirdParty\FMOD\lib\x64\fmodL_vc.lib">
+      <Filter>01.ThirdParty\01.FMOD\02.bin</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ThirdParty\FMOD\lib\x64\fmod.dll">
+      <Filter>01.ThirdParty\01.FMOD\02.bin</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FMOD\lib\x64\fmodL.dll">
+      <Filter>01.ThirdParty\01.FMOD\02.bin</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+</Project>

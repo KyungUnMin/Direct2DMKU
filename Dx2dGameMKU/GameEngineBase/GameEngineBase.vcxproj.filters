@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GameEngineDebug.cpp">
+      <Filter>01.Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineString.cpp">
+      <Filter>03.String</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEnginePath.cpp">
+      <Filter>04.IO%28File%29\02.Path</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineDirectory.cpp">
+      <Filter>04.IO%28File%29\01.Directory</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTime.cpp">
+      <Filter>05.Time</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineFile.cpp">
+      <Filter>04.IO%28File%29\03.File</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineMath.cpp">
+      <Filter>02.Math\01.Math</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRandom.cpp">
+      <Filter>02.Math\02.Random</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineSerializer.cpp">
+      <Filter>04.IO%28File%29\04.Serializer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEngineDebug.h">
+      <Filter>01.Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineString.h">
+      <Filter>03.String</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEnginePath.h">
+      <Filter>04.IO%28File%29\02.Path</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineDirectory.h">
+      <Filter>04.IO%28File%29\01.Directory</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTime.h">
+      <Filter>05.Time</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineFile.h">
+      <Filter>04.IO%28File%29\03.File</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineMath.h">
+      <Filter>02.Math\01.Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRandom.h">
+      <Filter>02.Math\02.Random</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineSerializer.h">
+      <Filter>04.IO%28File%29\04.Serializer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="04.IO%28File%29">
+      <UniqueIdentifier>{a715cb06-4166-4f3d-abc9-0a5f0bc66287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Debug">
+      <UniqueIdentifier>{8a94678a-ab8d-4724-94ca-35d927b7586a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Math">
+      <UniqueIdentifier>{f0cfd3cb-14f5-4623-a7f9-06b999024afe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.String">
+      <UniqueIdentifier>{e61c9c42-2614-47bd-b558-3e4f1067732e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.IO%28File%29\01.Directory">
+      <UniqueIdentifier>{81bc9c79-0433-4076-97f9-995d71fbfd1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.IO%28File%29\02.Path">
+      <UniqueIdentifier>{16e71736-355e-460d-9791-262450148944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.IO%28File%29\03.File">
+      <UniqueIdentifier>{c17de335-2206-4ab4-a2dc-e2a344320444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Time">
+      <UniqueIdentifier>{746ba254-e048-45b9-928d-f0160f15bb34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Math\01.Math">
+      <UniqueIdentifier>{3bf237ac-c6c6-4a84-96e8-ab6097891521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Math\02.Random">
+      <UniqueIdentifier>{d3f039d4-7ab2-48e1-a5a8-35a69f810bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.IO%28File%29\04.Serializer">
+      <UniqueIdentifier>{37b89258-5c93-4187-b656-666673f26ed6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
