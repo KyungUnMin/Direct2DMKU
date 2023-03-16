@@ -19,7 +19,10 @@ public:
 		return Path.Path.string();
 	}
 
-	void Save(const GameEngineSerializer& _Data);
+	void SaveBin(const GameEngineSerializer& _Data);
+	void SaveText(const std::string_view& _View);
+
+	void LoadBin(GameEngineSerializer& _Data);
 
 protected:
 

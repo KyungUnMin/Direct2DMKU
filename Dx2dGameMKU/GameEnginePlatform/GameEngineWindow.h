@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <Windows.h>
+#include <functional>
 #include <GameEngineBase/GameEngineMath.h>
 
 class GameEngineImage;
@@ -43,7 +44,10 @@ public:
 	static void DoubleBufferClear();
 	static void DoubleBufferRender();
 
-	static int WindowLoop(void(*Start)(), void(*Loop)(), void(*End)());
+	static int WindowLoop(
+		std::function<void()> _Start,
+		std::function<void()> _Loop,
+		std::function<void()> _End);
 
 	static float4 GetMousePosition();
 

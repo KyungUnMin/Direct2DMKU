@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="GameEngineCore.h">
+      <Filter>01.EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineLevel.h">
+      <Filter>02.Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEngineCore.cpp">
+      <Filter>01.EngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineLevel.cpp">
+      <Filter>02.Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="01.EngineCore">
+      <UniqueIdentifier>{3ce4a1cd-7007-4299-b1a5-b38f8136314c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object">
+      <UniqueIdentifier>{07c355e8-202d-4e35-ad13-ed78bb0c87de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources">
+      <UniqueIdentifier>{f2602830-62e1-4454-b9b5-eb8aeeba002a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -134,14 +134,17 @@ void GameEngineWindow::DoubleBufferRender()
 
 //실제 게임이 동작하는 부분
 //콜백 방식을 이용해서 엔진과 컨텐츠 부분을 분리
-int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
+int GameEngineWindow::WindowLoop(
+    std::function<void()> _Start,
+    std::function<void()> _Loop,
+    std::function<void()> _End)
 {
     if (nullptr != _Start)
     {
         _Start();
     }
 
-    MSG msg;
+    MSG msg = {};
 
     while (IsWindowUpdate)
     {
