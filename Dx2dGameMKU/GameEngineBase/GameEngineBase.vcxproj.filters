@@ -13,9 +13,6 @@
     <ClCompile Include="GameEngineDirectory.cpp">
       <Filter>04.IO%28File%29\01.Directory</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineTime.cpp">
-      <Filter>05.Time</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineFile.cpp">
       <Filter>04.IO%28File%29\03.File</Filter>
     </ClCompile>
@@ -27,6 +24,12 @@
     </ClCompile>
     <ClCompile Include="GameEngineSerializer.cpp">
       <Filter>04.IO%28File%29\04.Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTime.cpp">
+      <Filter>05.Time\01.Time</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTimeEvent.cpp">
+      <Filter>05.Time\02.Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,9 +45,6 @@
     <ClInclude Include="GameEngineDirectory.h">
       <Filter>04.IO%28File%29\01.Directory</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineTime.h">
-      <Filter>05.Time</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineFile.h">
       <Filter>04.IO%28File%29\03.File</Filter>
     </ClInclude>
@@ -56,6 +56,12 @@
     </ClInclude>
     <ClInclude Include="GameEngineSerializer.h">
       <Filter>04.IO%28File%29\04.Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTime.h">
+      <Filter>05.Time\01.Time</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTimeEvent.h">
+      <Filter>05.Time\02.Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +97,12 @@
     </Filter>
     <Filter Include="04.IO%28File%29\04.Serializer">
       <UniqueIdentifier>{37b89258-5c93-4187-b656-666673f26ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Time\01.Time">
+      <UniqueIdentifier>{f1748c04-501c-47ab-a86c-1dd86960e271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Time\02.Event">
+      <UniqueIdentifier>{61d81069-6376-40fb-a54e-55f1bf3e192b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,8 +1,14 @@
 #include "GameEngineCore.h"
+#include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 
 std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::LevelMap;
+std::shared_ptr<GameEngineLevel> GameEngineCore::MainLevel = nullptr;
+std::shared_ptr<GameEngineLevel> GameEngineCore::NextLevel = nullptr;
+
 
 GameEngineCore::GameEngineCore()
 {
@@ -17,16 +23,48 @@ GameEngineCore::~GameEngineCore()
 
 
 
-void GameEngineCore::EngineStart()
+
+
+void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 {
+	if (nullptr == _ContentsStart)
+	{
+		MsgAssert("시작 컨텐츠가 존재하지 않습니다");
+	}
+
+	_ContentsStart();
 }
 
 void GameEngineCore::EngineUpdate()
 {
+	if (nullptr != NextLevel)
+	{
+		MainLevel = NextLevel;
+	}
+
+	if (nullptr == MainLevel)
+	{
+		MsgAssert("아무런 레벨도 동작하지 않고 있습니다");
+		return;
+	}
+
+	GameEngineSound::SoundUpdate();
+	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
+	GameEngineInput::Update(TimeDeltaTime);
+
+	//이벤트 시간 동작
+	MainLevel->TimeEvent.Update(TimeDeltaTime);
+
 }
 
-void GameEngineCore::EngineEnd()
+void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)
 {
+	if (nullptr == _ContentsEnd)
+	{
+		MsgAssert("끝 컨텐츠가 존재하지 않습니다");
+	}
+
+	_ContentsEnd();
 }
 
 
@@ -34,6 +72,8 @@ void GameEngineCore::EngineEnd()
 
 void GameEngineCore::Start(HINSTANCE _Instance, std::function<void()> _Start, std::function<void()> _End)
 {
+	GameEngineDebug::LeakCheck();
+
 	if (false == GameEngineInput::IsKey("EnterMouseLeft"))
 	{
 		GameEngineInput::CreateKey("EngineMouseLeft", VK_LBUTTON);
@@ -41,9 +81,26 @@ void GameEngineCore::Start(HINSTANCE _Instance, std::function<void()> _Start, st
 	}
 
 	GameEngineWindow::WindowCreate(_Instance, "MainWindow", { 1280, 720 }, { 0, 0 });
-	GameEngineWindow::WindowLoop(GameEngineCore::EngineStart, GameEngineCore::EngineUpdate, GameEngineCore::EngineEnd);
+	GameEngineWindow::WindowLoop(std::bind(GameEngineCore::EngineStart, _Start), GameEngineCore::EngineUpdate, std::bind(GameEngineCore::EngineEnd, _End));
+}
+
+
+
+
+void GameEngineCore::LevelInit(std::shared_ptr<GameEngineLevel> _Level)
+{
+	_Level->Loading();
 }
 
 void GameEngineCore::ChangeLevel(const std::string_view& _Name)
 {
+	std::string UpperName = GameEngineString::ToUpper(_Name);
+
+	if (LevelMap.end() == LevelMap.find(UpperName))
+	{
+		MsgAssert("존재하지 않는 레벨로 체인지 하려고 했습니다");
+		return;
+	}
+
+	NextLevel = LevelMap[UpperName];
 }
