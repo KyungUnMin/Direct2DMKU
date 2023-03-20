@@ -1,7 +1,13 @@
 #pragma once
 #include <GameEngineBase/GameEngineTimeEvent.h>
+#include "GameEngineObject.h"
 
-class GameEngineLevel
+/*
+GameEngineObject는 껏다켰다, 삭제, 자식 가지기의 기능인데
+왜 레벨이 오브젝트를 상속받을까?
+*/
+
+class GameEngineLevel : public GameEngineObject
 {
 	friend class GameEngineCore;
 

@@ -54,7 +54,7 @@ void GameEngineCore::EngineUpdate()
 
 	//이벤트 시간 동작
 	MainLevel->TimeEvent.Update(TimeDeltaTime);
-
+	//MainLevel->Update(TimeDeltaTime);
 }
 
 void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)

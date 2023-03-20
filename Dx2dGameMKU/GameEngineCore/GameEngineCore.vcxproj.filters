@@ -5,7 +5,10 @@
       <Filter>01.EngineCore</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineLevel.h">
-      <Filter>02.Object</Filter>
+      <Filter>02.Object\02.Level</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineObject.h">
+      <Filter>02.Object\01.Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -13,7 +16,10 @@
       <Filter>01.EngineCore</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineLevel.cpp">
-      <Filter>02.Object</Filter>
+      <Filter>02.Object\02.Level</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineObject.cpp">
+      <Filter>02.Object\01.Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +31,12 @@
     </Filter>
     <Filter Include="03.Resources">
       <UniqueIdentifier>{f2602830-62e1-4454-b9b5-eb8aeeba002a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\02.Level">
+      <UniqueIdentifier>{d895133b-560b-479c-a649-1b9bef606744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Base">
+      <UniqueIdentifier>{7452e2bd-ded0-4898-9dcf-b0567e41db8b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
