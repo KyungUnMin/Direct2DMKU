@@ -54,7 +54,8 @@ void GameEngineCore::EngineUpdate()
 
 	//이벤트 시간 동작
 	MainLevel->TimeEvent.Update(TimeDeltaTime);
-	//MainLevel->Update(TimeDeltaTime);
+	MainLevel->Update(TimeDeltaTime);
+	MainLevel->Render(TimeDeltaTime);
 }
 
 void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)
@@ -70,7 +71,7 @@ void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)
 
 
 
-void GameEngineCore::Start(HINSTANCE _Instance, std::function<void()> _Start, std::function<void()> _End)
+void GameEngineCore::Start(HINSTANCE _Instance, std::function<void()> _Start, std::function<void()> _End, float4 _Pos, float4 _Size)
 {
 	GameEngineDebug::LeakCheck();
 
@@ -80,7 +81,7 @@ void GameEngineCore::Start(HINSTANCE _Instance, std::function<void()> _Start, st
 		GameEngineInput::CreateKey("EngineMouseRight", VK_RBUTTON);
 	}
 
-	GameEngineWindow::WindowCreate(_Instance, "MainWindow", { 1280, 720 }, { 0, 0 });
+	GameEngineWindow::WindowCreate(_Instance, "MainWindow", _Size, _Pos);
 	GameEngineWindow::WindowLoop(std::bind(GameEngineCore::EngineStart, _Start), GameEngineCore::EngineUpdate, std::bind(GameEngineCore::EngineEnd, _End));
 }
 

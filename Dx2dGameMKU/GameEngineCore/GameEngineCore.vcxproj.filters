@@ -8,7 +8,19 @@
       <Filter>02.Object\02.Level</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineObject.h">
-      <Filter>02.Object\01.Base</Filter>
+      <Filter>02.Object\01.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineResource.h">
+      <Filter>03.Resources\01.Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineMesh.h">
+      <Filter>03.Resources\02.Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineActor.h">
+      <Filter>02.Object\03.Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineComponent.h">
+      <Filter>02.Object\04.Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -19,7 +31,19 @@
       <Filter>02.Object\02.Level</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineObject.cpp">
-      <Filter>02.Object\01.Base</Filter>
+      <Filter>02.Object\01.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineResource.cpp">
+      <Filter>03.Resources\01.Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineMesh.cpp">
+      <Filter>03.Resources\02.Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineActor.cpp">
+      <Filter>02.Object\03.Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineComponent.cpp">
+      <Filter>02.Object\04.Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -35,8 +59,20 @@
     <Filter Include="02.Object\02.Level">
       <UniqueIdentifier>{d895133b-560b-479c-a649-1b9bef606744}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\01.Base">
+    <Filter Include="03.Resources\01.Resource">
+      <UniqueIdentifier>{88426368-a9a8-4144-89ab-a4f8c9e6b3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\02.Mesh">
+      <UniqueIdentifier>{8dea3e14-a532-45e5-afc6-231f4aa51b8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Object">
       <UniqueIdentifier>{7452e2bd-ded0-4898-9dcf-b0567e41db8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\03.Actor">
+      <UniqueIdentifier>{eed5400d-f35c-4262-a078-06b9cb2cb6c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\04.Component">
+      <UniqueIdentifier>{c6dc69ed-3c1a-40c7-912f-2b08a6f06c39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

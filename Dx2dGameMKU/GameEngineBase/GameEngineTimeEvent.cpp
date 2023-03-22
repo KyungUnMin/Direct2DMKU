@@ -10,7 +10,7 @@ GameEngineTimeEvent::~GameEngineTimeEvent()
 
 }
 
-void GameEngineTimeEvent::AddEvent(float _Time, std::function<void(TimeEvent&, GameEngineTimeEvent*)> _Event, bool _Loop = false)
+void GameEngineTimeEvent::AddEvent(float _Time, std::function<void(TimeEvent&, GameEngineTimeEvent*)> _Event, bool _Loop)
 {
 	//기본생성자가 있을때
 	//내부적으로 만들고 되돌려준다

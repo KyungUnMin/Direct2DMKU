@@ -11,7 +11,9 @@ TestLevel::~TestLevel()
 
 }
 
+#include "TestActor.h"
+
 void TestLevel::Loading()
 {
-	TimeEvent.AddEvent(1.f, [] {MsgTextBox("이벤트 동작")}, true);
+	CreateActor<TestActor>();
 }
