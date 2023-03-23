@@ -18,31 +18,38 @@ void TestActor::Start()
 
 void TestActor::Update(float _DeltaTime)
 {
-	Radian += _DeltaTime * 360.f;
+	Radian += 100.f * _DeltaTime;
+
 }
 
 void TestActor::Render(float _DeltaTime)
 {
-	HDC hDC = GameEngineWindow::GetWindowBackBufferHdc();
+	HDC Hdc = GameEngineWindow::GetWindowBackBufferHdc();
 
-	const int VertexCnt = 4;
-	POINT Vetexs[VertexCnt];
-	std::vector<float4> Points(VertexCnt);
+	const size_t Cnt = 24;
 
-	Points[0] = { -0.5f, -0.5f, 0.5f };
-	Points[1] = { 0.5f, -0.5f,0.5f };
-	Points[2] = { 0.5f, 0.5f,0.5f };
-	Points[3] = { -0.5f, 0.5f,0.5f };
+	POINT Point[Cnt];
+	float4 Vertex[Cnt];
+	Vertex[0] = { -0.5f, -0.5f, -0.5f };
+	Vertex[1] = { 0.5f, -0.5f, -0.5f };
+	Vertex[2] = { 0.5f, 0.5f, -0.5f };
+	Vertex[3] = { -0.5f, 0.5f, -0.5f };
 
-	for (size_t i = 0; i < VertexCnt; ++i)
+	/*Vertex[0] = float4(Vertex[0]).RotationYDeg(90.f);*/
+	Vertex[1] = { 0.5f, -0.5f, -0.5f };
+	Vertex[2] = { 0.5f, 0.5f, -0.5f };
+	Vertex[3] = { -0.5f, 0.5f, -0.5f };
+
+	
+	
+	for (size_t i = 0; i < Cnt; ++i)
 	{
-		Points[i] *= 100.f;
-		//Points[i].RotationXDeg(Radian);
-		Points[i].RotationYDeg(Radian);
-		Points[i].RotationZDeg(Radian);
-		Points[i] += Offset;
-		Vetexs[i] = Points[i].ToWindowPOINT();
+		Vertex[i] *= 100.f;
+		Vertex[i].RotationZDeg(Radian);
+		Vertex[i] += Offset;
+
+		Point[i] = Vertex[i].ToWindowPOINT();
 	}
 
-	Polygon(hDC, Vetexs, VertexCnt);
+	Polygon(Hdc, Point, Cnt);
 }
