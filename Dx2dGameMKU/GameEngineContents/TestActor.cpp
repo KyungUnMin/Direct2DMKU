@@ -26,7 +26,7 @@ void TestActor::Render(float _DeltaTime)
 {
 	HDC Hdc = GameEngineWindow::GetWindowBackBufferHdc();
 
-	const size_t Cnt = 24;
+	const size_t Cnt = 4;
 
 	POINT Point[Cnt];
 	float4 Vertex[Cnt];
@@ -36,9 +36,9 @@ void TestActor::Render(float _DeltaTime)
 	Vertex[3] = { -0.5f, 0.5f, -0.5f };
 
 	/*Vertex[0] = float4(Vertex[0]).RotationYDeg(90.f);*/
-	Vertex[1] = { 0.5f, -0.5f, -0.5f };
+	/*Vertex[1] = { 0.5f, -0.5f, -0.5f };
 	Vertex[2] = { 0.5f, 0.5f, -0.5f };
-	Vertex[3] = { -0.5f, 0.5f, -0.5f };
+	Vertex[3] = { -0.5f, 0.5f, -0.5f };*/
 
 	
 	

@@ -12,6 +12,7 @@
     <ClCompile Include="TestLevel.cpp" />
     <ClCompile Include="TestActor.cpp" />
     <ClCompile Include="TestChild.cpp" />
+    <ClCompile Include="GitTestCheck.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -20,5 +21,6 @@
     <ClInclude Include="TestLevel.h" />
     <ClInclude Include="TestActor.h" />
     <ClInclude Include="TestChild.h" />
+    <ClInclude Include="GitTestCheck.h" />
   </ItemGroup>
 </Project>
