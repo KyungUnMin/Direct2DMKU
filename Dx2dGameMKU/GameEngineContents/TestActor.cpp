@@ -1,6 +1,8 @@
 #include "TestActor.h"
 #include <GameEngineBase/GameEngineMath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineCamera.h>
 
 TestActor::TestActor()
 {
@@ -18,7 +20,6 @@ void TestActor::Start()
 
 void TestActor::Update(float _DeltaTime)
 {
-	Radian += 100.f * _DeltaTime;
 
 }
 
@@ -31,50 +32,65 @@ void TestActor::Render(float _DeltaTime)
 	POINT Point[Cnt];
 	float4 Vertex[Cnt];
 
-	//萌賊
-	Vertex[0] = { -0.5f, -0.5f, 0.5f };
-	Vertex[1] = { 0.5f, -0.5f, 0.5f };
-	Vertex[2] = { 0.5f, 0.5f, 0.5f };
-	Vertex[3] = { -0.5f, 0.5f, 0.5f };
+	{
+		//萌賊
+		Vertex[0] = { -0.5f, -0.5f, 0.5f };
+		Vertex[1] = { 0.5f, -0.5f, 0.5f };
+		Vertex[2] = { 0.5f, 0.5f, 0.5f };
+		Vertex[3] = { -0.5f, 0.5f, 0.5f };
 
-	//謝難
-	Vertex[4] = Vertex[0].RotationYDegReturn(90.f);
-	Vertex[5] = Vertex[1].RotationYDegReturn(90.f);
-	Vertex[6] = Vertex[2].RotationYDegReturn(90.f);
-	Vertex[7] = Vertex[3].RotationYDegReturn(90.f);
+		//謝難
+		Vertex[4] = Vertex[0].RotationYDegReturn(90.f);
+		Vertex[5] = Vertex[1].RotationYDegReturn(90.f);
+		Vertex[6] = Vertex[2].RotationYDegReturn(90.f);
+		Vertex[7] = Vertex[3].RotationYDegReturn(90.f);
 
-	//辦難
-	Vertex[8] = Vertex[0].RotationYDegReturn(-90.f);
-	Vertex[9] = Vertex[1].RotationYDegReturn(-90.f);
-	Vertex[10] = Vertex[2].RotationYDegReturn(-90.f);
-	Vertex[11] = Vertex[3].RotationYDegReturn(-90.f);
+		//辦難
+		Vertex[8] = Vertex[0].RotationYDegReturn(-90.f);
+		Vertex[9] = Vertex[1].RotationYDegReturn(-90.f);
+		Vertex[10] = Vertex[2].RotationYDegReturn(-90.f);
+		Vertex[11] = Vertex[3].RotationYDegReturn(-90.f);
 
-	//擅難
-	Vertex[12] = Vertex[0].RotationXDegReturn(180.f);
-	Vertex[13] = Vertex[1].RotationXDegReturn(180.f);
-	Vertex[14] = Vertex[2].RotationXDegReturn(180.f);
-	Vertex[15] = Vertex[3].RotationXDegReturn(180.f);
+		//擅難
+		Vertex[12] = Vertex[0].RotationXDegReturn(180.f);
+		Vertex[13] = Vertex[1].RotationXDegReturn(180.f);
+		Vertex[14] = Vertex[2].RotationXDegReturn(180.f);
+		Vertex[15] = Vertex[3].RotationXDegReturn(180.f);
 
-	//嬴楚
-	Vertex[16] = Vertex[0].RotationXDegReturn(90.f);
-	Vertex[17] = Vertex[1].RotationXDegReturn(90.f);
-	Vertex[18] = Vertex[2].RotationXDegReturn(90.f);
-	Vertex[19] = Vertex[3].RotationXDegReturn(90.f);
+		//嬴楚
+		Vertex[16] = Vertex[0].RotationXDegReturn(90.f);
+		Vertex[17] = Vertex[1].RotationXDegReturn(90.f);
+		Vertex[18] = Vertex[2].RotationXDegReturn(90.f);
+		Vertex[19] = Vertex[3].RotationXDegReturn(90.f);
 
-	//嬪
-	Vertex[20] = Vertex[0].RotationXDegReturn(-90.f);
-	Vertex[21] = Vertex[1].RotationXDegReturn(-90.f);
-	Vertex[22] = Vertex[2].RotationXDegReturn(-90.f);
-	Vertex[23] = Vertex[3].RotationXDegReturn(-90.f);
+		//嬪
+		Vertex[20] = Vertex[0].RotationXDegReturn(-90.f);
+		Vertex[21] = Vertex[1].RotationXDegReturn(-90.f);
+		Vertex[22] = Vertex[2].RotationXDegReturn(-90.f);
+		Vertex[23] = Vertex[3].RotationXDegReturn(-90.f);
+	}
 
+	float4 Debug = GetTransform().GetLocalPosition();
+	float4 CamPos = GetLevel()->GetMainCamera()->GetTransform().GetLocalPosition();
+	GetTransform().SetLocalScale(float4{ 100.f, 100.f, 100.f });
+	GetTransform().AddLocalRotation(float4{ 360.f * _DeltaTime,  360.f * _DeltaTime , 360.f * _DeltaTime });
+	//GetTransform().SetLocalPosition(float4{ 100.f, 100.f });
+	// 
+	
+	const std::shared_ptr<GameEngineCamera>& MainCamera = GetLevel()->GetMainCamera();
+	float4x4 ViewMatrix = MainCamera->GetView();
+
+	float4x4 LocalMax = GetTransform().GetLocalWorldMatrix();
+	GetTransform().SetView(ViewMatrix);
+	float4x4 WorldMat = GetTransform().GetWorldMatrix();
+
+	//GetTransform().SetView(GetLevel()->GetMainCamera()->GetView());
 
 	for (size_t i = 0; i < Cnt; ++i)
 	{
-		Vertex[i] *= 100.f;
-		Vertex[i].RotationZDeg(Radian);
-		Vertex[i].RotationXDeg(Radian);
-		Vertex[i] += Offset;
-
+		float4x4 WorldMat = GetTransform().GetWorldMatrixRef();
+		Vertex[i] = Vertex[i] * GetTransform().GetWorldMatrixRef();
+		//Vertex[i] = Vertex[i] * GetTransform().GetLocalWorldMatrixRef();
 		Point[i] = Vertex[i].ToWindowPOINT();
 	}
 
@@ -89,7 +105,7 @@ void TestActor::Render(float _DeltaTime)
 		float4 Dir0 = V1 - V0;
 		float4 Dir1 = V2 - V1;
 
-		float4 Cross = float4::CrossReturn(Dir0, Dir1);
+		float4 Cross = float4::Cross3DReturn(Dir0, Dir1);
 		if (0.f < Cross.z)
 			continue;
 

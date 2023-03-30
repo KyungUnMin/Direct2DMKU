@@ -3,10 +3,12 @@
 #include <string_view>
 #include <memory>
 #include <GameEngineBase/GameEngineMath.h>
-
+#include "GameEngineTransform.h"
 
 class GameEngineObject
 {
+	friend class GameEngineLevel;
+
 public:
 	GameEngineObject();
 	virtual ~GameEngineObject() = 0;
@@ -56,10 +58,12 @@ public:
 		return Parent;
 	}
 
+	GameEngineTransform& GetTransform()
+	{
+		return Transform;
+	}
+
 protected:
-	virtual void Start(){}
-	virtual void Update(float _DeltaTime) {}
-	virtual void Render(float _DeltaTime){}
 
 
 private:
@@ -73,13 +77,7 @@ private:
 	std::list<std::shared_ptr<GameEngineObject>> Childs;
 
 	////////////////////////////////Transform
-public:
-	float4 GetPos()
-	{
-		return Pos;
-	}
-
 private:
-	float4 Pos;
+	GameEngineTransform Transform;
 };
 

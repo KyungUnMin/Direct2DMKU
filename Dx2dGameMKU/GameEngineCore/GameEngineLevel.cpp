@@ -1,9 +1,10 @@
 #include "GameEngineLevel.h"
 #include "GameEngineActor.h"
+#include "GameEngineCamera.h"
 
 GameEngineLevel::GameEngineLevel()
 {
-
+	MainCamera = CreateActor<GameEngineCamera>();
 }
 
 GameEngineLevel::~GameEngineLevel()
@@ -42,6 +43,7 @@ void GameEngineLevel::Render(float _DeltaTime)
 
 void GameEngineLevel::ActorInit(std::shared_ptr<GameEngineActor> _Actor, int _Order, GameEngineLevel* _Level)
 {
+	_Actor->Level = this;
 	_Actor->SetParent(_Level);
 	_Actor->SetOrder(_Order);
 	_Actor->Start();

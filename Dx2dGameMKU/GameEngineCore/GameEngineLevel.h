@@ -5,7 +5,7 @@
 #include "GameEngineObject.h"
 
 class GameEngineActor;
-
+class GameEngineCamera;
 class GameEngineLevel : public GameEngineObject
 {
 	friend class GameEngineCore;
@@ -47,12 +47,20 @@ public:
 		return std::dynamic_pointer_cast<ActorType>(NewActor);
 	}
 
+	std::shared_ptr<GameEngineCamera> GetMainCamera()
+	{
+		return MainCamera;
+	}
+
 protected:
 	virtual void Loading() = 0;
-	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override;
+	virtual void Update(float _DeltaTime);
+	virtual void Render(float _DeltaTime);
 
 private:
+	std::shared_ptr<GameEngineCamera> MainCamera;
+	std::shared_ptr<GameEngineCamera> UICamera;
+
 	std::map<int, std::list<std::shared_ptr<GameEngineActor>>> Actors;
 
 	void ActorInit(std::shared_ptr<GameEngineActor> _Actor, int _Order, GameEngineLevel* _Level);

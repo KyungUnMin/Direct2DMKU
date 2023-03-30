@@ -163,15 +163,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="GitTestCheck.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="TestActor.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="TestChild.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -185,15 +177,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="GitTestCheck.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="TestActor.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TestChild.cpp">
       <SubType>
       </SubType>
     </ClCompile>

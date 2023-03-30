@@ -18,7 +18,6 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	float4 Offset = float4{ 500.f, 200.f };
-	float Radian = 0.f;
+
 };
 
