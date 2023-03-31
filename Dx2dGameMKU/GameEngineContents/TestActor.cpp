@@ -73,7 +73,7 @@ void TestActor::Render(float _DeltaTime)
 	float4 Debug = GetTransform().GetLocalPosition();
 	float4 CamPos = GetLevel()->GetMainCamera()->GetTransform().GetLocalPosition();
 	GetTransform().SetLocalScale(float4{ 100.f, 100.f, 100.f });
-	GetTransform().AddLocalRotation(float4{ 360.f * _DeltaTime,  360.f * _DeltaTime , 360.f * _DeltaTime });
+	//GetTransform().AddLocalRotation(float4{ 360.f * _DeltaTime,  360.f * _DeltaTime , 360.f * _DeltaTime });
 	//GetTransform().SetLocalPosition(float4{ 100.f, 100.f });
 	// 
 	

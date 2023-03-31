@@ -581,6 +581,33 @@ public:
 		Arr2D[3][3] = 1.0f;
 	}
 
+
+	//원근 투영행렬 만들기(수직시야각, 화면 종횡비(가로/세로), 근평면, 원평면)
+	void PersperctiveFovLH(float _FovAngle, float _AspectRatio, float _NearZ = 0.1f, float _FarZ = 10000.f)
+	{
+		Identity();
+
+		//디그리 -> 라디안
+		float FOV = _FovAngle * GameEngineMath::DegToRad;
+
+		//Z축의 값을 남겨두기 위해 (2,3)의 값을 1로 둔다
+		// [0] [] [] []
+		// [] [0] [] []
+		// [] [] [0][1]
+		// [] [] [] [0]
+		Arr2D[2][3] = 1.f;
+		Arr2D[3][3] = 0.f;
+
+		//투상 행렬은 화면에 그릴 물체들을 가로 (-1.f ~ 1.f)로 모으고, 깊이 (0.f ~ 1.f)로 변환한다.
+		//
+		Arr2D[0][0] = 1 / tanf(FOV / 2.f) * _AspectRatio;
+		Arr2D[1][1] = 1 / tanf(FOV / 2.f);
+		Arr2D[2][2] = _FarZ / (_FarZ - _NearZ);
+		Arr2D[3][2] = -(_NearZ * _FarZ) / (_FarZ - _NearZ);
+	}
+
+
+
 	//뷰 행렬 만들기
 	void LookAtLH(const float4& _EyePos, const float4& _EyeDir, const float4& _EyeUp)
 	{
@@ -609,15 +636,35 @@ public:
 		아래와 같이 내적하여 위치값을 구한다.
 		*/
 
-		//이동 위치
+		//이동 위치(아래의 회전행렬의 전치를 적용시키기 위해 따로 빼둔다)
 		float D0Value = float4::DotProduct3D(Right, NegEyePos);			//x
 		float D1Value = float4::DotProduct3D(UpVector, NegEyePos);	//y
 		float D2Value = float4::DotProduct3D(EyeDir, NegEyePos);			//z
 
-		ArrVector[0] = { 1, 0, 0, 0 };
-		ArrVector[1] = { 0, 1, 0, 0 };
-		ArrVector[2] = { 0, 0, 1, 0 };
+		//카메라의 회전행렬
+		ArrVector[0] = Right;
+		ArrVector[1] = UpVector;
+		ArrVector[2] = EyeDir;
+
+		//회전행렬을 전치시키면 회전하기 전으로 돌릴수 있는
+		//회전행렬을 만들수 있다.
+		Transpose();
+
+		//회전과 이동 적용
 		ArrVector[3] = { D0Value, D1Value, D2Value, 0 };
+	}
+
+	void Transpose()
+	{
+		float4x4 This = *this;
+		Identity();
+		for (size_t y = 0; y < YCount; ++y)
+		{
+			for (size_t x = 0; x < XCount; ++x)
+			{
+				Arr2D[x][y] = This.Arr2D[y][x];
+			}
+		}
 	}
 
 
