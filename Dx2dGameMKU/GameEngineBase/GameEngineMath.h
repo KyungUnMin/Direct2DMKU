@@ -431,6 +431,14 @@ public:
 		return *this;
 	}
 
+	float4& operator /=(const float _Value)
+	{
+		x /= _Value;
+		y /= _Value;
+		z /= _Value;
+		return *this;
+	}
+
 
 	float4& operator *=(const float4& _Other)
 	{
@@ -600,12 +608,32 @@ public:
 
 		//투상 행렬은 화면에 그릴 물체들을 가로 (-1.f ~ 1.f)로 모으고, 깊이 (0.f ~ 1.f)로 변환한다.
 		//
-		Arr2D[0][0] = 1 / tanf(FOV / 2.f) * _AspectRatio;
+		Arr2D[0][0] = 1 / (tanf(FOV / 2.f) * _AspectRatio);
 		Arr2D[1][1] = 1 / tanf(FOV / 2.f);
 		Arr2D[2][2] = _FarZ / (_FarZ - _NearZ);
 		Arr2D[3][2] = -(_NearZ * _FarZ) / (_FarZ - _NearZ);
 	}
 
+
+	void ViewPort(float _Width, float _Height, float _Left, float _Right, float _ZMin = 0.f, float _ZMax = 1.f)
+	{
+		Identity();
+
+		//투영변환시 -1 ~ 1까지의 범위로 바뀌였기 때문에 해상도의 절반만큼 곱한다
+
+		//해상도만큼 늘리기, 윈도우좌표계를 반전시키기 위해 y쪽은 -값
+		Arr2D[0][0] = _Width * 0.5f;
+		Arr2D[1][1] = -_Height * 0.5f;
+		Arr2D[2][2] = (_ZMax == 0.f) ? 1.f : (_ZMin / _ZMax);
+
+		//윈도우 좌표계는 좌측 상단이 (0,0)이기 때문에
+		//(0,0)을 화면 정중앙으로 맞추기 위해 해상도 절반만큼 이동
+		//_Right와 _Left는 오프셋
+		Arr2D[3][0] = Arr2D[0][0] + _Left;
+		Arr2D[3][1] = (_Height * 0.5f) + _Right;
+		Arr2D[3][2] = (_ZMax == 0.0f) ? 0.0f : (_ZMin / _ZMax);
+		Arr2D[3][3] = 1.f;
+	}
 
 
 	//뷰 행렬 만들기
@@ -768,6 +796,12 @@ public:
 		}
 
 		return Return;
+	}
+
+	float4x4 operator*=(const float4x4& _Other)
+	{
+		*this = *this * _Other;
+		return *this;
 	}
 
 	float4x4()

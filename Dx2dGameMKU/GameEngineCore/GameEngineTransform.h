@@ -109,12 +109,26 @@ public:
 		return WorldMatrix;
 	}
 
-
-	//카메라의 뷰행렬을 받아 다른 Actor들이 이 뷰행렬에 영향을 받는다
-	inline const void SetView(const float4x4& _View)
+	//뷰행렬과 투영행렬을 전부 곱함
+	inline const void SetCameraMatrix(const float4x4& _View, const float4x4& _Projection)
 	{
+		//뷰행렬을 이용해 카메라의 행렬에 따라
+		// 모든 물체들을 이동 및 공전시키고
+		//투영 행렬을 이용해 3차원 물체를 2차원에 투영시킴
+		//이때 뷰포트 변환시 해상도 적용을 편하게 하기 위해
+		//-1 ~ 1사이 값으로 만드는 정규화 작업이 들어간다
+
 		View = _View;
-		WorldMatrix = WorldMatrix * View;
+		Projection = _Projection;
+		WorldMatrix = WorldMatrix * View * Projection;
+	}
+
+	//뷰포트 변환
+	inline const void SetViewPort(const float4x4& _ViewPort)
+	{
+		//화면 해상도를 적용시킴
+		ViewPort = _ViewPort;
+		WorldMatrix *= ViewPort;
 	}
 
 protected:
@@ -142,5 +156,11 @@ private:
 
 	//뷰행렬
 	float4x4 View;
+
+	//투영행렬
+	float4x4 Projection;
+
+	//뷰포트 행렬
+	float4x4 ViewPort;
 };
 

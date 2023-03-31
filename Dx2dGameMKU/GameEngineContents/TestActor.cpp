@@ -70,27 +70,29 @@ void TestActor::Render(float _DeltaTime)
 		Vertex[23] = Vertex[3].RotationXDegReturn(-90.f);
 	}
 
-	float4 Debug = GetTransform().GetLocalPosition();
-	float4 CamPos = GetLevel()->GetMainCamera()->GetTransform().GetLocalPosition();
+	
+	//크기
 	GetTransform().SetLocalScale(float4{ 100.f, 100.f, 100.f });
-	//GetTransform().AddLocalRotation(float4{ 360.f * _DeltaTime,  360.f * _DeltaTime , 360.f * _DeltaTime });
-	//GetTransform().SetLocalPosition(float4{ 100.f, 100.f });
-	// 
 	
 	const std::shared_ptr<GameEngineCamera>& MainCamera = GetLevel()->GetMainCamera();
 	float4x4 ViewMatrix = MainCamera->GetView();
+	float4x4 ProjectionMat = MainCamera->GetProjection();
 
-	float4x4 LocalMax = GetTransform().GetLocalWorldMatrix();
-	GetTransform().SetView(ViewMatrix);
-	float4x4 WorldMat = GetTransform().GetWorldMatrix();
-
-	//GetTransform().SetView(GetLevel()->GetMainCamera()->GetView());
+	//카메라 적용
+	GetTransform().SetCameraMatrix(ViewMatrix, ProjectionMat);
 
 	for (size_t i = 0; i < Cnt; ++i)
 	{
-		float4x4 WorldMat = GetTransform().GetWorldMatrixRef();
+		//월드매트릭스 적용
 		Vertex[i] = Vertex[i] * GetTransform().GetWorldMatrixRef();
-		//Vertex[i] = Vertex[i] * GetTransform().GetLocalWorldMatrixRef();
+
+		//투영
+		Vertex[i] /= Vertex[i].w;
+		Vertex[i].w = 1.0f;
+
+		//뷰포트 적용
+		Vertex[i] *= MainCamera->GetViewPort();
+
 		Point[i] = Vertex[i].ToWindowPOINT();
 	}
 
@@ -106,7 +108,7 @@ void TestActor::Render(float _DeltaTime)
 		float4 Dir1 = V2 - V1;
 
 		float4 Cross = float4::Cross3DReturn(Dir0, Dir1);
-		if (0.f < Cross.z)
+		if (0.f >= Cross.z)
 			continue;
 
 		Polygon(Hdc, &Point[Index], 4);

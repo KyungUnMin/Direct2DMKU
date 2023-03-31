@@ -104,12 +104,18 @@ void GameEngineCamera::Update(float _DeltaTime)
 
 	}
 
+	//현재 카메라의 각 축 계산
 	float4 EyeDir = GetTransform().GetLocalForwardVector();
 	float4 EyeUp = GetTransform().GetLocalUpVector();
 	float4 EyePos = GetTransform().GetLocalPosition();
 
+	//뷰행렬 만들기
 	View.LookAtLH(EyePos, EyeDir, EyeUp);
 
+	//투영행렬 만들기
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	Projection.PersperctiveFovLH(60.f, (ScreenSize.x / ScreenSize.y), Near, Far);
+
+	//뷰포트행렬 만들기
+	ViewPort.ViewPort(ScreenSize.x, ScreenSize.y, 0.f, 0.f);
 }
