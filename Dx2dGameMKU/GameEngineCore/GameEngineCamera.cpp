@@ -110,7 +110,7 @@ void GameEngineCamera::Update(float _DeltaTime)
 	float4 EyePos = GetTransform().GetLocalPosition();
 
 	//뷰행렬 만들기
-	View.LookAtLH(EyePos, EyeDir, EyeUp);
+	View.LookToLH(EyePos, EyeDir, EyeUp);
 
 	//투영행렬 만들기
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();

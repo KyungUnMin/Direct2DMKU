@@ -1,0 +1,9 @@
+Games: River City Girls
+       River City Girls 2
+Subject: Yakuza Male
+Copyright: WayForward, Arc System Works, Technos, Conatus Creative Inc.
+Sprite Ripper: Random Talking Bush
+Hosting Permissions: The Spriters Resource
+                     Sprite Database
+Notes: Animations with repeated frames are mentioned as such in their filenames.
+       Underscores imply separate frame numbers, whereas dashes signify frame ranges.
