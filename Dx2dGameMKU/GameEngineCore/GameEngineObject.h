@@ -48,16 +48,6 @@ public:
 		Name = _Name;
 	}
 
-	inline void SetParent(GameEngineObject* _Parent)
-	{
-		Parent = _Parent;
-	}
-
-	inline GameEngineObject* GetParent()
-	{
-		return Parent;
-	}
-
 	GameEngineTransform& GetTransform()
 	{
 		return Transform;
@@ -72,9 +62,6 @@ private:
 	bool IsDeath = false;
 	int Order = 0;
 
-	//순환참조를 사용하지 않기 위해 일반 포인터 이용
-	GameEngineObject* Parent = nullptr;
-	std::list<std::shared_ptr<GameEngineObject>> Childs;
 
 	////////////////////////////////Transform
 private:

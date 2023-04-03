@@ -1,8 +1,12 @@
 #pragma once
-#include "GameEngineObject.h"
+#include "GameEngineUpdateObject.h"
 
-class GameEngineComponent : public GameEngineObject
+class GameEngineActor;
+
+class GameEngineComponent : public GameEngineUpdateObject
 {
+	friend GameEngineActor;
+
 public:
 	GameEngineComponent();
 	~GameEngineComponent();
@@ -15,6 +19,8 @@ public:
 protected:
 
 private:
+	GameEngineActor* Actor = nullptr;
 
+	void SetActor(GameEngineActor* _Actor);
 };
 

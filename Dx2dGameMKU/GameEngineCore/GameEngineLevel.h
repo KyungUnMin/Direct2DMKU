@@ -2,11 +2,11 @@
 #include <map>
 #include <string_view>
 #include <GameEngineBase/GameEngineTimeEvent.h>
-#include "GameEngineObject.h"
+#include "GameEngineUpdateObject.h"
 
 class GameEngineActor;
 class GameEngineCamera;
-class GameEngineLevel : public GameEngineObject
+class GameEngineLevel : public GameEngineUpdateObject
 {
 	friend class GameEngineCore;
 
@@ -43,7 +43,7 @@ public:
 
 		//Order 및 Parent 설정
 		ActorInit(NewActor, _Order, this);
-		Actors[_Order].push_back(NewActor);
+		
 		return std::dynamic_pointer_cast<ActorType>(NewActor);
 	}
 
@@ -53,7 +53,7 @@ public:
 	}
 
 protected:
-	virtual void Loading() = 0;
+	virtual void Start() = 0;
 	virtual void Update(float _DeltaTime);
 	virtual void Render(float _DeltaTime);
 
@@ -63,6 +63,7 @@ private:
 
 	std::map<int, std::list<std::shared_ptr<GameEngineActor>>> Actors;
 
+	//생성한 엑터 초기화
 	void ActorInit(std::shared_ptr<GameEngineActor> _Actor, int _Order, GameEngineLevel* _Level);
 };
 

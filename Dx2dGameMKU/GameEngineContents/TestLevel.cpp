@@ -17,7 +17,7 @@ TestLevel::~TestLevel()
 
 #include "TestActor.h"
 
-void TestLevel::Loading()
+void TestLevel::Start()
 {
 	GetMainCamera()->GetTransform().SetLocalPosition(float4{ 0.f, 0.f, -100.f });
 

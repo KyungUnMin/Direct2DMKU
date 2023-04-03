@@ -9,3 +9,9 @@ GameEngineComponent::~GameEngineComponent()
 {
 
 }
+
+void GameEngineComponent::SetActor(GameEngineActor* _Actor)
+{
+	Actor = _Actor;
+
+}

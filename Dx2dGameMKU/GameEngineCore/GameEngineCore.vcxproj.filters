@@ -19,14 +19,23 @@
     <ClInclude Include="GameEngineActor.h">
       <Filter>02.Object\03.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineComponent.h">
-      <Filter>02.Object\04.Component</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineTransform.h">
       <Filter>02.Object</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineCamera.h">
       <Filter>02.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineUpdateObject.h">
+      <Filter>02.Object\01.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineComponent.h">
+      <Filter>02.Object\04.Component\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderer.h">
+      <Filter>02.Object\04.Component\02.Render</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineCollision.h">
+      <Filter>02.Object\04.Component\03.Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -48,14 +57,23 @@
     <ClCompile Include="GameEngineActor.cpp">
       <Filter>02.Object\03.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineComponent.cpp">
-      <Filter>02.Object\04.Component</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineTransform.cpp">
       <Filter>02.Object</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineCamera.cpp">
       <Filter>02.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineUpdateObject.cpp">
+      <Filter>02.Object\01.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineComponent.cpp">
+      <Filter>02.Object\04.Component\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderer.cpp">
+      <Filter>02.Object\04.Component\02.Render</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineCollision.cpp">
+      <Filter>02.Object\04.Component\03.Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +103,15 @@
     </Filter>
     <Filter Include="02.Object\01.Object">
       <UniqueIdentifier>{7452e2bd-ded0-4898-9dcf-b0567e41db8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\04.Component\01.Base">
+      <UniqueIdentifier>{9b33d59f-ef52-4ae3-80a7-f85959119119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\04.Component\02.Render">
+      <UniqueIdentifier>{36aaa353-5ca5-49eb-90c9-cafe52951fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\04.Component\03.Collision">
+      <UniqueIdentifier>{645d0d56-2182-4f76-9637-ffd747a7c42c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <memory>
 #include <GameEngineBase/GameEngineMath.h>
 
 class GameEngineTransform
@@ -13,18 +14,62 @@ public:
 	GameEngineTransform& operator=(const GameEngineTransform& _Other) = delete;
 	GameEngineTransform& operator=(const GameEngineTransform&& _Other) noexcept = delete;
 
+	//월드 스케일에 값을 직접 입력하고 로컬 스케일을 역행렬로 계산한다
+	void SetWorldScale(const float4& _Value)
+	{
+		WorldScale = _Value;
+
+		//내가 최상위 부모인 경우
+		if (nullptr == Parent)
+		{
+			LocalScale = WorldScale;
+
+			//로컬값이 변경되었으므로 재 계산
+			TransformUpdate();
+			CalChild();
+			return;
+		}
+
+		//월드스케일 * 부모의 역행렬
+		LocalScale = WorldScale * Parent->GetWorldMatrixRef().InverseReturn();
+	}
+
+	
+	void SetWorldRotation(const float4& _Value)
+	{
+		WorldRotation = _Value;
+
+		if (nullptr == Parent)
+		{
+			LocalRotation = WorldRotation;
+		}
+
+		TransformUpdate();
+	}
+
+	//월드 포지션에 값을 직접 입력하고 로컬 포지션을 역행렬로 계산한다
+	void SetWorldPosition(const float4& _Value)
+	{
+		WorldPosition = _Value;
+		TransformUpdate();
+	}
+
+
+	//로컬값을 변경할때마다 재 계산한다
 	void SetLocalScale(const float4& _Value)
 	{
 		LocalScale = _Value;
 		TransformUpdate();
 	}
 
+	//로컬값을 변경할때마다 재 계산한다
 	void SetLocalRotation(const float4& _Value)
 	{
 		LocalRotation = _Value;
 		TransformUpdate();
 	}
 
+	//로컬값을 변경할때마다 재 계산한다
 	void SetLocalPosition(const float4& _Value)
 	{
 		LocalPosition = _Value;
@@ -131,22 +176,31 @@ public:
 		WorldMatrix *= ViewPort;
 	}
 
+	void CalChild()
+	{
+
+	}
+
 protected:
 
 private:
 	void TransformUpdate();
 
-	GameEngineTransform* Parent = nullptr;
-	std::list<GameEngineTransform*> Child;
-
-	//스케일은 초기값이 1벡터이여야 함
+	//(부모에 종속적인)로컬좌표
 	float4 LocalScale = float4::One;
 	float4 LocalRotation = float4::Zero;
 	float4 LocalPosition = float4::Zero;
 
+	//월드좌표계
+	float4 WorldScale = float4::One;
+	float4 WorldRotation = float4::Zero;
+	float4 WorldPosition = float4::Zero;
+
+
 	float4x4 LocalScaleMatrix;
 	float4x4 LocalRotationMatrix;
 	float4x4 LocalPositionMatrix;
+
 
 	//로컬행렬(크자이)
 	float4x4 LocalWorldMatrix;
@@ -162,5 +216,10 @@ private:
 
 	//뷰포트 행렬
 	float4x4 ViewPort;
+
+
+	//부모 자식 관계
+	GameEngineTransform* Parent = nullptr;
+	std::list<GameEngineTransform*> Child;
 };
 

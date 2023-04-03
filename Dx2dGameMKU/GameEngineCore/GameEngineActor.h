@@ -1,7 +1,9 @@
 #pragma once
-#include "GameEngineObject.h"
+#include "GameEngineUpdateObject.h"
 
-class GameEngineActor : public GameEngineObject
+class GameEngineComponent;
+
+class GameEngineActor : public GameEngineUpdateObject
 {
 	friend class GameEngineLevel;
 
@@ -19,6 +21,15 @@ public:
 		return Level;
 	}
 
+	//컴포넌트 생성
+	template <typename ComponentType>
+	std::shared_ptr<ComponentType> CreateComponent()
+	{
+		std::shared_ptr<GameEngineComponent> NewComponent = std::make_shared<ComponentType>();
+		ComponentInit(NewComponent);
+		return std::dynamic_pointer_cast<ComponentType>(NewComponent);
+	}
+
 protected:
 	virtual void Start(){}
 	virtual void Update(float _DeltaTime){}
@@ -26,5 +37,10 @@ protected:
 
 private:
 	class GameEngineLevel* Level = nullptr;
+
+	std::list<std::shared_ptr<GameEngineComponent>> ComponentList;
+
+	//컴포넌트 초기화
+	void ComponentInit(std::shared_ptr<GameEngineComponent> _Component);
 };
 
