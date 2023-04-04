@@ -19,7 +19,7 @@ TestLevel::~TestLevel()
 
 void TestLevel::Start()
 {
-	GetMainCamera()->GetTransform().SetLocalPosition(float4{ 0.f, 0.f, -100.f });
+	GetMainCamera()->GetTransform()->SetLocalPosition(float4{ 0.f, 0.f, -1000.f });
 
 	CreateActor<TestActor>();
 

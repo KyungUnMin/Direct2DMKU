@@ -12,12 +12,17 @@ GameEngineTransform::~GameEngineTransform()
 }
 
 
+
 //실제 Transform을 변경하는 순간 행렬 계산이 된다
 //반대로 안 움직이면 계산 안된다
 void GameEngineTransform::TransformUpdate()
 {
 	LocalScaleMatrix.Scale(LocalScale);
-	LocalRotationMatrix.RotationDeg(LocalRotation);
+
+	LocalRotation.w = 0.f;
+
+	//LocalRotationMatrix.RotationDeg(LocalRotation);
+	LocalRotationMatrix.RotationDegToXYZ(LocalRotation);
 	LocalPositionMatrix.Pos(LocalPosition);
 
 	//크자이 순으로 로컬 행렬 계산
@@ -35,3 +40,14 @@ void GameEngineTransform::TransformUpdate()
 		WorldMatrix = LocalWorldMatrix * Parent->GetWorldMatrixRef();
 	}
 }
+
+
+void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
+{
+	//부모 설정
+	Parent = _Parent;
+
+	//부모의 자식리스트에 자기 자신을 등록
+	Parent->Child.push_back(this);
+}
+

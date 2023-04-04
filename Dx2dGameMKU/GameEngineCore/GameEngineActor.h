@@ -38,9 +38,15 @@ protected:
 private:
 	class GameEngineLevel* Level = nullptr;
 
-	std::list<std::shared_ptr<GameEngineComponent>> ComponentList;
+	std::list<std::shared_ptr<GameEngineComponent>> ComponentsList;
 
 	//컴포넌트 초기화
 	void ComponentInit(std::shared_ptr<GameEngineComponent> _Component);
+
+	//컴포넌트들의 Update들을 호출시켜줌, 이 함수는 Level에서 호출됨
+	void ComponentsUpdate(float _DeltaTime);
+
+	//컴포넌트들의 Render들을 호출시켜줌, 이 함수는 Level에서 호출됨
+	void ComponentsRender(float _DeltaTime);
 };
 

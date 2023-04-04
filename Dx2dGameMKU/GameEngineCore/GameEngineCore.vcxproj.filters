@@ -7,26 +7,11 @@
     <ClInclude Include="GameEngineLevel.h">
       <Filter>02.Object\02.Level</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineObject.h">
-      <Filter>02.Object\01.Object</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineResource.h">
       <Filter>03.Resources\01.Resource</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineMesh.h">
       <Filter>03.Resources\02.Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngineActor.h">
-      <Filter>02.Object\03.Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngineTransform.h">
-      <Filter>02.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngineCamera.h">
-      <Filter>02.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngineUpdateObject.h">
-      <Filter>02.Object\01.Object</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineComponent.h">
       <Filter>02.Object\04.Component\01.Base</Filter>
@@ -37,6 +22,24 @@
     <ClInclude Include="GameEngineCollision.h">
       <Filter>02.Object\04.Component\03.Collision</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineObjectBase.h">
+      <Filter>02.Object\01.Object\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineObject.h">
+      <Filter>02.Object\01.Object\02.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineUpdateObject.h">
+      <Filter>02.Object\01.Object\03.UpdateObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTransform.h">
+      <Filter>02.Object\05.Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineActor.h">
+      <Filter>02.Object\03.Actor\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineCamera.h">
+      <Filter>02.Object\03.Actor\02.Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -45,26 +48,11 @@
     <ClCompile Include="GameEngineLevel.cpp">
       <Filter>02.Object\02.Level</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineObject.cpp">
-      <Filter>02.Object\01.Object</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineResource.cpp">
       <Filter>03.Resources\01.Resource</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineMesh.cpp">
       <Filter>03.Resources\02.Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineActor.cpp">
-      <Filter>02.Object\03.Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineTransform.cpp">
-      <Filter>02.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineCamera.cpp">
-      <Filter>02.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineUpdateObject.cpp">
-      <Filter>02.Object\01.Object</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineComponent.cpp">
       <Filter>02.Object\04.Component\01.Base</Filter>
@@ -74,6 +62,24 @@
     </ClCompile>
     <ClCompile Include="GameEngineCollision.cpp">
       <Filter>02.Object\04.Component\03.Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineObjectBase.cpp">
+      <Filter>02.Object\01.Object\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineObject.cpp">
+      <Filter>02.Object\01.Object\02.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineUpdateObject.cpp">
+      <Filter>02.Object\01.Object\03.UpdateObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTransform.cpp">
+      <Filter>02.Object\05.Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineActor.cpp">
+      <Filter>02.Object\03.Actor\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineCamera.cpp">
+      <Filter>02.Object\03.Actor\02.Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +118,24 @@
     </Filter>
     <Filter Include="02.Object\04.Component\03.Collision">
       <UniqueIdentifier>{645d0d56-2182-4f76-9637-ffd747a7c42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Object\01.Base">
+      <UniqueIdentifier>{c2cefb2b-92b0-4db4-a1bf-b55063f26194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Object\02.Object">
+      <UniqueIdentifier>{63079b8a-fbe7-4bc5-aa12-fa856c3567ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Object\03.UpdateObject">
+      <UniqueIdentifier>{096ed6ad-5cda-44cf-937f-5e088862cdd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\05.Transform">
+      <UniqueIdentifier>{b0c66173-bfe2-45c2-9ac3-0a14df4477e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\03.Actor\01.Base">
+      <UniqueIdentifier>{199ca731-e4c3-4281-8307-ede180540a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\03.Actor\02.Camera">
+      <UniqueIdentifier>{d7bd17cb-2b33-470c-bcf5-38c98b3d1e51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

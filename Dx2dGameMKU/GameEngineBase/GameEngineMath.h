@@ -756,6 +756,21 @@ public:
 		Arr2D[3][2] = _Value.z;*/
 	}
 
+
+	void RotationDegToXYZ(const float4& _Deg)
+	{
+		float4 Rot = _Deg * GameEngineMath::DegToRad;
+
+		float4x4 RotX = DirectX::XMMatrixRotationX(Rot.x);
+		float4x4 RotY = DirectX::XMMatrixRotationY(Rot.y);
+		float4x4 RotZ = DirectX::XMMatrixRotationZ(Rot.z);
+
+		*this = RotX * RotY * RotZ;
+
+		//DirectMatrix = DirectX::XMMatrixRotationRollPitchYawFromVector(_Deg * GameEngineMath::DegToRad);
+	}
+
+
 	//회전 행렬 만들기
 	void RotationDeg(const float4& _Deg)
 	{

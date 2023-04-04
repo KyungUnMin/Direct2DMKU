@@ -13,6 +13,7 @@ public:
 	GameEngineRenderer& operator=(const GameEngineRenderer&& _Other) noexcept = delete;
 
 protected:
+	void Render(float _DeltaTime) override;
 
 private:
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "GameEngineUpdateObject.h"
+#include "GameEngineActor.h"
 
 class GameEngineActor;
 
@@ -15,6 +15,16 @@ public:
 	GameEngineComponent(GameEngineComponent&& _Other) noexcept = delete;
 	GameEngineComponent& operator=(const GameEngineComponent& _Other) = delete;
 	GameEngineComponent& operator=(const GameEngineComponent&& _Other) noexcept = delete;
+
+	inline GameEngineActor* GetActor() const 
+	{
+		return Actor;
+	}
+
+	inline GameEngineLevel* GetLevel() const
+	{
+		return Actor->GetLevel();
+	}
 
 protected:
 

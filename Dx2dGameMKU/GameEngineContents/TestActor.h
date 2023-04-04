@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineRenderer;
+
 class TestActor : public GameEngineActor
 {
 public:
@@ -18,6 +20,8 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-
+	std::shared_ptr<GameEngineRenderer> Render0 = nullptr;
+	std::shared_ptr<GameEngineRenderer> Render1 = nullptr;
+	std::shared_ptr<GameEngineRenderer> Render2 = nullptr;
 };
 
