@@ -63,6 +63,9 @@ public:
 protected:
 
 private:
+	static void CoreResourceInit();
+	static void CoreResourceEnd();
+
 	static void LevelInit(std::shared_ptr<GameEngineLevel> _Level);
 
 	static void EngineStart(std::function<void()> _ContentsStart);

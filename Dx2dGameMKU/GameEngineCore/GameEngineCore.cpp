@@ -27,6 +27,9 @@ GameEngineCore::~GameEngineCore()
 
 void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 {
+	//리소스 생성
+	CoreResourceInit();
+
 	if (nullptr == _ContentsStart)
 	{
 		MsgAssert("시작 컨텐츠가 존재하지 않습니다");
@@ -66,6 +69,9 @@ void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)
 	}
 
 	_ContentsEnd();
+
+	LevelMap.clear();
+	CoreResourceEnd();
 }
 
 

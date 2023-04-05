@@ -17,12 +17,18 @@ GameEngineTransform::~GameEngineTransform()
 //반대로 안 움직이면 계산 안된다
 void GameEngineTransform::TransformUpdate()
 {
+	//크기
 	LocalScaleMatrix.Scale(LocalScale);
 
+	//회전
 	LocalRotation.w = 0.f;
 
-	//LocalRotationMatrix.RotationDeg(LocalRotation);
-	LocalRotationMatrix.RotationDegToXYZ(LocalRotation);
+	//로컬 로테이션 -> 로컬쿼터니언
+	LocalQuaternion = LocalRotation.EulerDegToQuaternion();
+	//로컬 쿼터니언 -> 로테이션 로컬행렬
+	LocalRotationMatrix = LocalQuaternion.QuaternionToRotationMatrix();
+
+	//이동
 	LocalPositionMatrix.Pos(LocalPosition);
 
 	//크자이 순으로 로컬 행렬 계산

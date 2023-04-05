@@ -22,9 +22,6 @@
     <ClInclude Include="GameEngineCollision.h">
       <Filter>02.Object\04.Component\03.Collision</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineObjectBase.h">
-      <Filter>02.Object\01.Object\01.Base</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineObject.h">
       <Filter>02.Object\01.Object\02.Object</Filter>
     </ClInclude>
@@ -39,6 +36,15 @@
     </ClInclude>
     <ClInclude Include="GameEngineCamera.h">
       <Filter>02.Object\03.Actor\02.Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineObjectBase.h">
+      <Filter>02.Object\01.Object\01.Base\01.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineNameObject.h">
+      <Filter>02.Object\01.Object\01.Base\02.Name</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTexture.h">
+      <Filter>03.Resources\03.Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +69,6 @@
     <ClCompile Include="GameEngineCollision.cpp">
       <Filter>02.Object\04.Component\03.Collision</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineObjectBase.cpp">
-      <Filter>02.Object\01.Object\01.Base</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineObject.cpp">
       <Filter>02.Object\01.Object\02.Object</Filter>
     </ClCompile>
@@ -80,6 +83,18 @@
     </ClCompile>
     <ClCompile Include="GameEngineCamera.cpp">
       <Filter>02.Object\03.Actor\02.Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineObjectBase.cpp">
+      <Filter>02.Object\01.Object\01.Base\01.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineNameObject.cpp">
+      <Filter>02.Object\01.Object\01.Base\02.Name</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTexture.cpp">
+      <Filter>03.Resources\03.Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineCore_Resources.cpp">
+      <Filter>01.EngineCore</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +151,15 @@
     </Filter>
     <Filter Include="02.Object\03.Actor\02.Camera">
       <UniqueIdentifier>{d7bd17cb-2b33-470c-bcf5-38c98b3d1e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Object\01.Base\01.Object">
+      <UniqueIdentifier>{cf2da521-4772-4d14-82a9-73a4600cd9af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Object\01.Base\02.Name">
+      <UniqueIdentifier>{0c563579-5143-4f3b-a6d5-eb8b94880e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\03.Texture">
+      <UniqueIdentifier>{953199ab-e4d3-4e98-8bdd-a767c640a659}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

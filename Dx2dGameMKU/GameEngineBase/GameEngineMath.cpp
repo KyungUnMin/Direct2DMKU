@@ -46,6 +46,47 @@ void float4::RotationZRad(float _Rad)
 }
 
 
+//회전벡터를 쿼터니언으로 변환
+float4 float4::EulerDegToQuaternion()
+{
+	float4 Return = DirectVector;
+	Return *= GameEngineMath::DegToRad;
+	Return = DirectX::XMQuaternionRotationRollPitchYawFromVector(Return.DirectVector);
+	return Return;
+}
+
+
+//쿼터니언을 회전 행렬로 변환
+float4x4 float4::QuaternionToRotationMatrix()
+{
+	return DirectX::XMMatrixRotationQuaternion(DirectVector);
+}
+
+
+//쿼터니언을 회전벡터로 변환(Degree)
+float4 float4::QuaternionToEulerDeg()
+{
+	return QuaternionToEulerRad() * GameEngineMath::RadToDeg;
+}
+
+
+//쿼터니언을 회전벡터로 변환(Radian)
+float4 float4::QuaternionToEulerRad()
+{
+	//이건 어쩔수 없음, 이해하려고 하지 말자
+	float sqw = w * w;
+	float sqx = x * x;
+	float sqy = y * y;
+	float sqz = z * z;
+
+	float AngleX = asinf(2.0f * (w * x - y * z));
+	float AngleY = atan2f(2.0f * (x * z - w * y), (-sqx - sqy + sqz + sqw));
+	float AngleZ = atan2f(2.0f * (x * y - w * z), (-sqx + sqy - sqz + sqw));
+
+	return float4(AngleX, AngleY, AngleZ);
+}
+
+
 
 
 std::vector<unsigned int> GameEngineMath::GetDigits(int _Value)

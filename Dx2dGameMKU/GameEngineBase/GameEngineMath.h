@@ -157,6 +157,21 @@ public:
 	}
 
 
+	void RotationXRad(float _Rad);
+	void RotationYRad(float _Rad);
+	void RotationZRad(float _Rad);
+
+	//회전벡터를 쿼터니언으로 변환
+	float4 EulerDegToQuaternion();
+
+	//쿼터니언을 회전 행렬로 변환
+	class float4x4 QuaternionToRotationMatrix();
+
+	//쿼터니언을 회전벡터로 변환(Degree)
+	float4 QuaternionToEulerDeg();
+	//쿼터니언을 회전벡터로 변환(Radian)
+	float4 QuaternionToEulerRad();
+
 
 
 
@@ -297,9 +312,6 @@ public:
 		RotationZRad(_Deg * GameEngineMath::DegToRad);
 	}
 
-	void RotationXRad(float _Rad);
-	void RotationYRad(float _Rad);
-	void RotationZRad(float _Rad);
 
 
 
@@ -562,7 +574,7 @@ public:
 
 
 
-
+typedef float4 Quaternion;
 
 class float4x4
 {
@@ -655,6 +667,62 @@ public:
 		Arr2D[3][2] = (_ZMax == 0.0f) ? 0.0f : (_ZMin / _ZMax);
 		Arr2D[3][3] = 1.f;
 	}
+
+
+
+
+	//행렬에서 크자이를 추출, 대신 회전은 쿼터니언으로 나온다
+	void Decompose(float4 _Scale, float4& _RotQuaternion, float4& _Pos)
+	{
+		DirectX::XMMatrixDecompose(
+			&_Scale.DirectVector, 
+			&_RotQuaternion.DirectVector, 
+			&_Pos.DirectVector, 
+			DirectMatrix);
+	}
+
+	//행렬에서 회전벡터를 추출, 대신 쿼터니언으로 나옴
+	void DecomposeRotQuaternion(float4& _RotQuaternion)
+	{
+		float4 Temp0;
+		float4 Temp1;
+
+		DirectX::XMMatrixDecompose(
+			&Temp0.DirectVector, 
+			&_RotQuaternion.DirectVector, 
+			&Temp1.DirectVector, 
+			DirectMatrix);
+	}
+
+	//행렬에서 이동벡터 추출
+	void DecomposePos(float4& _Pos)
+	{
+		float4 Temp0;
+		float4 Temp1;
+
+		DirectX::XMMatrixDecompose(
+			&Temp0.DirectVector, 
+			&Temp1.DirectVector, 
+			&_Pos.DirectVector, 
+			DirectMatrix);
+	}
+
+	//행렬에서 크기벡터 추출
+	void DecomposeScale(float4& _Scale)
+	{
+		float4 Temp0;
+		float4 Temp1;
+
+		DirectX::XMMatrixDecompose(
+			&_Scale.DirectVector,
+			&Temp0.DirectVector,
+			&Temp1.DirectVector,
+			DirectMatrix);
+	}
+
+
+	
+
 
 
 	//뷰 행렬 만들기

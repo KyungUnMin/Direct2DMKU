@@ -1,8 +1,10 @@
 #pragma once
+#include <GameEngineBase/GameEngineMath.h>
 #include "GameEngineObjectBase.h"
 #include "GameEngineTransform.h"
+#include "GameEngineNameObject.h"
 
-class GameEngineObject : public GameEngineObjectBase
+class GameEngineObject : public GameEngineObjectBase, public GameEngineNameObject
 {
 	friend class GameEngineLevel;
 

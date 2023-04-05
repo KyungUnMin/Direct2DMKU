@@ -49,12 +49,11 @@ public:
 		}
 		else
 		{
-			float4 Rot = Parent->GetWorldRotation();
-
 			//회전만 봤을때
 			//내가 월드(0,0,0)회전이고
 			//부모가 월드(10, 0, 0)회전이면
 			//결과적으로 내 로컬회전은 (-10, 0, 0)이 된다
+			//근데 안된다, 일단은 나중에 생각하자
 			LocalRotation = WorldRotation - Parent->GetWorldRotation();
 		}
 
@@ -334,11 +333,13 @@ private:
 	//(부모에 종속적인)로컬좌표
 	float4 LocalScale = float4::One;
 	float4 LocalRotation = float4::Null;
+	Quaternion LocalQuaternion = DirectX::XMQuaternionIdentity();
 	float4 LocalPosition = float4::Zero;
 
 	//월드좌표계
 	float4 WorldScale = float4::One;
 	float4 WorldRotation = float4::Null;
+	Quaternion WorldQuaternion = DirectX::XMQuaternionIdentity();
 	float4 WorldPosition = float4::Zero;
 
 

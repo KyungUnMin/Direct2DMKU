@@ -39,11 +39,6 @@ public:
 		DeathValue = true;
 	}
 
-	void SetName(const std::string_view& _Name)
-	{
-		Name = _Name;
-	}
-
 	void DebugOn()
 	{
 		DebugValue = true;
@@ -57,7 +52,6 @@ public:
 protected:
 
 private:
-	std::string Name = "";
 	bool ActiveValue = true;
 	bool DeathValue = false;
 	bool DebugValue = false;
