@@ -4,6 +4,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineSound.h>
+#include "GameEngineDevice.h"
 
 std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::LevelMap;
 std::shared_ptr<GameEngineLevel> GameEngineCore::MainLevel = nullptr;
@@ -27,6 +28,9 @@ GameEngineCore::~GameEngineCore()
 
 void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 {
+	//디바이스 초기화
+	GameEngineDevice::Initialize();
+
 	//리소스 생성
 	CoreResourceInit();
 
@@ -72,6 +76,7 @@ void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)
 
 	LevelMap.clear();
 	CoreResourceEnd();
+	GameEngineDevice::Release();
 }
 
 
