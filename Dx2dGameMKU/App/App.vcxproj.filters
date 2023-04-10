@@ -2,5 +2,18 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PrecompileHeader.cpp">
+      <Filter>_Pch</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="_Pch">
+      <UniqueIdentifier>{00fcffbb-a969-4116-ba5f-56a53b6e5572}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PrecompileHeader.h">
+      <Filter>_Pch</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

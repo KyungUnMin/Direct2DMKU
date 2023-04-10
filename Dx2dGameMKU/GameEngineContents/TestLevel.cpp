@@ -1,3 +1,4 @@
+#include "PrecompileHeader.h"
 #include "TestLevel.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineDirectory.h>

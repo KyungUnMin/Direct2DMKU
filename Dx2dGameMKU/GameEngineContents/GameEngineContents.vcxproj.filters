@@ -4,6 +4,9 @@
     <Filter Include="01.Core">
       <UniqueIdentifier>{b5981435-e892-4f55-bbd3-beb1b63dc213}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_Pch">
+      <UniqueIdentifier>{c4f1183a-aa1a-4407-8fbd-caa41a75cf13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -11,6 +14,9 @@
     </ClCompile>
     <ClCompile Include="TestLevel.cpp" />
     <ClCompile Include="TestActor.cpp" />
+    <ClCompile Include="PrecompileHeader.cpp">
+      <Filter>_Pch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -18,5 +24,8 @@
     </ClInclude>
     <ClInclude Include="TestLevel.h" />
     <ClInclude Include="TestActor.h" />
+    <ClInclude Include="PrecompileHeader.h">
+      <Filter>_Pch</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

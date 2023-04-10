@@ -31,6 +31,9 @@
     <ClCompile Include="GameEngineTimeEvent.cpp">
       <Filter>05.Time\02.Event</Filter>
     </ClCompile>
+    <ClCompile Include="PrecompileHeader.cpp">
+      <Filter>_Pch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineDebug.h">
@@ -62,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="GameEngineTimeEvent.h">
       <Filter>05.Time\02.Event</Filter>
+    </ClInclude>
+    <ClInclude Include="PrecompileHeader.h">
+      <Filter>_Pch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +109,9 @@
     </Filter>
     <Filter Include="05.Time\02.Event">
       <UniqueIdentifier>{61d81069-6376-40fb-a54e-55f1bf3e192b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Pch">
+      <UniqueIdentifier>{a03286db-69bb-4cb4-81cb-e539db1c772d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

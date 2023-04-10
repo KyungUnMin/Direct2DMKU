@@ -1,3 +1,4 @@
+#include "PrecompileHeader.h"
 #include "GameEngineDevice.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineRenderTarget.h"
@@ -281,7 +282,7 @@ void GameEngineDevice::Release()
 {
 	BackBufferTarget = nullptr;
 
-	if (nullptr == SwapChain)
+	if (nullptr != SwapChain)
 	{
 		SwapChain->Release();
 		SwapChain = nullptr;

@@ -28,6 +28,9 @@
     <Filter Include="01.ThirdParty\01.FMOD\02.bin">
       <UniqueIdentifier>{a29d7eb1-a869-4ab3-99f2-d2fa730177bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_Pch">
+      <UniqueIdentifier>{c36447c2-968f-43ae-8d37-f23778f0532d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineWindow.cpp">
@@ -41,6 +44,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineSound.cpp">
       <Filter>03.Resources\02.Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="PrecompileHeader.cpp">
+      <Filter>_Pch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
       <Filter>01.ThirdParty\01.FMOD\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PrecompileHeader.h">
+      <Filter>_Pch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
