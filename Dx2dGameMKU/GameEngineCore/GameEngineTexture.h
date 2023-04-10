@@ -1,8 +1,11 @@
 #pragma once
 #include "GameEngineResource.h"
 
+//순수한 이미지 정보를 담는 리소스(API로 치면 HBITMAP)
 class GameEngineTexture : public GameEngineResource<GameEngineTexture>
 {
+	friend GameEngineDevice;
+
 public:
 	GameEngineTexture();
 	~GameEngineTexture() override;
@@ -18,13 +21,26 @@ public:
 	//(이름이 키값인 Map or List)
 	static void Create(const std::string_view& _Name, const std::string_view& _Path)
 	{
-		std::shared_ptr<GameEngineTexture> NewTex = GameEngineResource::Create(_Name);
-		//TODO
+		std::shared_ptr<GameEngineTexture> NewTexture = GameEngineResource::Create(_Name);
+	}
+
+	ID3D11RenderTargetView* GetRTV()
+	{
+		return RenderTarget;
 	}
 
 protected:
 
 private:
+	//HBITMAP
+	ID3D11Texture2D* Texture2D = nullptr;
 
+	//이 비트맵의 HDC
+	ID3D11RenderTargetView* RenderTarget = nullptr;
+
+	//GameEngineDevice에서 메인백버퍼 텍스처를 만들때 호출됨
+	void Create(ID3D11Texture2D* _Value);
+
+	void CreateRenderTargetView();
 };
 

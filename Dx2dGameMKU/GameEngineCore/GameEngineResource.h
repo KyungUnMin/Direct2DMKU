@@ -5,7 +5,7 @@
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineCore/GameEngineNameObject.h>
-
+#include "GameEngineDevice.h"
 
 //모든 리소스들의 부모가 된다
 //자식들에게 기능을 제공

@@ -7,6 +7,7 @@
 #include <GameEngineBase/GameEngineMath.h>
 #include "GameEngineMesh.h"
 #include "GameEngineTexture.h"
+#include "GameEngineRenderTarget.h"
 
 void GameEngineCore::CoreResourceInit()
 {
@@ -60,4 +61,5 @@ void GameEngineCore::CoreResourceEnd()
 {
 	GameEngineResource<GameEngineMesh>::ResourcesClear();
 	GameEngineResource<GameEngineTexture>::ResourcesClear();
+	GameEngineResource<GameEngineRenderTarget>::ResourcesClear();
 }

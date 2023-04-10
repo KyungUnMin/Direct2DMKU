@@ -49,6 +49,9 @@
     <ClInclude Include="GameEngineDevice.h">
       <Filter>04.Device</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineRenderTarget.h">
+      <Filter>03.Resources\04.RenderTarget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -101,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineDevice.cpp">
       <Filter>04.Device</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderTarget.cpp">
+      <Filter>03.Resources\04.RenderTarget</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +175,9 @@
     </Filter>
     <Filter Include="04.Device">
       <UniqueIdentifier>{8fa7d6a9-81fc-48c8-9dea-bea855ddbe51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\04.RenderTarget">
+      <UniqueIdentifier>{b425c986-50c1-4d9c-b43c-2e5e49848689}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
