@@ -8,7 +8,7 @@
       <Filter>02.Object\02.Level</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineResource.h">
-      <Filter>03.Resources\01.Resource</Filter>
+      <Filter>03.Resources\01.ResourceBase</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineMesh.h">
       <Filter>03.Resources\02.Mesh</Filter>
@@ -55,6 +55,15 @@
     <ClInclude Include="PrecompileHeader.h">
       <Filter>_Pch</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineDirectBuffer.h">
+      <Filter>03.Resources\05.Buffer\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineVertexBuffer.h">
+      <Filter>03.Resources\05.Buffer\02.VertexBuffer\01.Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineVertex.h">
+      <Filter>03.Resources\05.Buffer\02.VertexBuffer\02.Vertex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -64,7 +73,7 @@
       <Filter>02.Object\02.Level</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineResource.cpp">
-      <Filter>03.Resources\01.Resource</Filter>
+      <Filter>03.Resources\01.ResourceBase</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineMesh.cpp">
       <Filter>03.Resources\02.Mesh</Filter>
@@ -114,6 +123,15 @@
     <ClCompile Include="PrecompileHeader.cpp">
       <Filter>_Pch</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineDirectBuffer.cpp">
+      <Filter>03.Resources\05.Buffer\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineVertexBuffer.cpp">
+      <Filter>03.Resources\05.Buffer\02.VertexBuffer\01.Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineVertex.cpp">
+      <Filter>03.Resources\05.Buffer\02.VertexBuffer\02.Vertex</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01.EngineCore">
@@ -127,9 +145,6 @@
     </Filter>
     <Filter Include="02.Object\02.Level">
       <UniqueIdentifier>{d895133b-560b-479c-a649-1b9bef606744}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Resources\01.Resource">
-      <UniqueIdentifier>{88426368-a9a8-4144-89ab-a4f8c9e6b3f3}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Resources\02.Mesh">
       <UniqueIdentifier>{8dea3e14-a532-45e5-afc6-231f4aa51b8d}</UniqueIdentifier>
@@ -187,6 +202,24 @@
     </Filter>
     <Filter Include="_Pch">
       <UniqueIdentifier>{c64a6cce-ade0-4196-a895-c952dd22c296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.Buffer">
+      <UniqueIdentifier>{f8ec63c3-2dad-4ab1-9faf-1c565e5f0497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.Buffer\01.Base">
+      <UniqueIdentifier>{fd948f88-a2d3-4e29-99a6-90e357288d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.Buffer\02.VertexBuffer">
+      <UniqueIdentifier>{79c38f54-8bd5-48e5-a663-44e0ee4280f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.Buffer\02.VertexBuffer\01.Buffer">
+      <UniqueIdentifier>{0af50d0d-f597-4943-b8fa-3583b4704aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.Buffer\02.VertexBuffer\02.Vertex">
+      <UniqueIdentifier>{2391bb09-11ab-4232-bcd1-b3ac01ce7e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\01.ResourceBase">
+      <UniqueIdentifier>{88426368-a9a8-4144-89ab-a4f8c9e6b3f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -18,15 +18,15 @@ public:
 	//만들려는 리소스를
 	//static Resources 자료구조에 Mesh별로 저장하게 됨
 	//(이름이 키값인 Map or List)
-	static void Create(const std::string_view& _Name, const std::vector<float4>& _Vertexs)
-	{
-		std::shared_ptr<GameEngineMesh> NewMesh = GameEngineResource::Create(_Name);
-		//TODO
-	}
+	//static void Create(const std::string_view& _Name, const std::vector<float4>& _Vertexs)
+	//{
+	//	std::shared_ptr<GameEngineMesh> NewMesh = GameEngineResource::Create(_Name);
+	//	//TODO
+	//}
 
 protected:
 
 private:
-	std::vector<float4> Vertexs;
+	//std::vector<float4> Vertexs;
 };
 
