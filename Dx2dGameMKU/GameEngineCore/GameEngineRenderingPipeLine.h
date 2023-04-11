@@ -1,0 +1,80 @@
+#pragma once
+#include "GameEngineResource.h"
+
+class GameEngineRenderingPipeLine : public GameEngineResource<GameEngineRenderingPipeLine>
+{
+public:
+	GameEngineRenderingPipeLine();
+	~GameEngineRenderingPipeLine() override;
+
+	GameEngineRenderingPipeLine(const GameEngineRenderingPipeLine& _Other) = delete;
+	GameEngineRenderingPipeLine(GameEngineRenderingPipeLine&& _Other) noexcept = delete;
+	GameEngineRenderingPipeLine& operator=(const GameEngineRenderingPipeLine& _Other) = delete;
+	GameEngineRenderingPipeLine& operator=(const GameEngineRenderingPipeLine&& _Other) noexcept = delete;
+
+
+	//점에 대한 정보가 GPU에 입력된다
+	void InputAssembler1();
+
+	
+	//버텍스 쉐이더에서 행렬이 곱해진다
+	//이때 월드, 뷰, 프로젝션(투영행렬) 까지만 곱해지고,
+	//투영행렬의 w나누기는 하지 않음
+	//	w나누기는 레스터 라이저 단계에서 나눠진다
+	//
+	//이때 각 버텍스를 순회하는 쉐이더를 작성하게 되는데,
+	//외부 파일에 쉐이더 코드를 짜고 그 경로를 통해 로드한다
+	void VertexShader();
+
+	//인덱스 버퍼가 사용되고
+	//	버텍스의 순서가 결정된다
+	//	(점이 어떻게 그려질 지 정하는 단계)
+	//	우리는 점 4개를 이용해
+	//삼각형 두개로 사각형 만들것임
+	void InputAssembler2();
+
+
+	//거리에 따라 메쉬를 쪼갬
+	//근데 보통은 같은 Actor를
+	//	정점의 갯수가 다른 메쉬로 이용해서 표현함
+	//	이를 LOD라고 함(레벨 오브 디테일)
+	//void HullShader();
+	//void Tesselator();
+	
+	//(파티클을 만드는 단계)
+	//	도메인 : 점에 특정한 정보를 부여
+	//	지오메트리 : 없던 메쉬를 만듬
+	//void DomainShader();
+	//void GeometryShader();
+
+	//투영 행렬의 w로나누기(기존의 Z값) + 뷰포트 + 화면 컬링(화면에 나간 부분 자르기)
+	// +픽셀 던지기(벡터를 레스터화, 아마도 명칭이 래스터라이제이션이였던거 같음)
+	void Rasterizer();
+
+
+	//레스터라이저해서 나온 픽셀들을 순회해서 색상을 결정
+	//즉, 메쉬의 역할은 모니터에  색칠하고 싶은 범위를 지정하는 것이고
+	//픽셀쉐이더에서 그 물체의 색상을 결정함
+	//
+	//아마 이때도 쉐이더를 작성하지 않을까 예상됨
+	void PixelShader();
+
+	//어느 렌더타켓에서 만들어지는지 결정하는 단계
+	void OutputMerger();
+
+
+
+	//-------------REDERING---------
+
+
+
+	void SetVertexBuffer(const std::string_view& _Value);
+
+
+protected:
+
+private:
+	std::shared_ptr<class GameEngineVertexBuffer> VertexBuffer;
+
+};
+

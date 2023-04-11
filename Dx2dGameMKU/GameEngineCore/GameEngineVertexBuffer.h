@@ -43,11 +43,15 @@ public:
 		Res->Create(&_Vertexs[0], sizeof(VertexType), static_cast<UINT>(_Vertexs.size()));
 	}
 
+	//기록한 버퍼(ID3DBuffer)를 GPU에 넘긴다(렌더링 파이프라인_인풋어셈블러1 단계)
+	void Setting();
+
 protected:
 
 private:
 	void Create(const void* _Data, UINT _VertexSize, UINT _VertexCount);
 
+	UINT Offset = 0;
 	UINT VertexSize = 0;
 	UINT VertexCount= 0;
 };

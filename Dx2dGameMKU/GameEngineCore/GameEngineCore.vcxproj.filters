@@ -5,7 +5,7 @@
       <Filter>01.EngineCore</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineLevel.h">
-      <Filter>02.Object\02.Level</Filter>
+      <Filter>04.Object\02.Level</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineResource.h">
       <Filter>03.Resources\01.ResourceBase</Filter>
@@ -14,40 +14,40 @@
       <Filter>03.Resources\02.Mesh</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineComponent.h">
-      <Filter>02.Object\04.Component\01.Base</Filter>
+      <Filter>04.Object\04.Component\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineRenderer.h">
-      <Filter>02.Object\04.Component\02.Render</Filter>
+      <Filter>04.Object\04.Component\02.Render</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineCollision.h">
-      <Filter>02.Object\04.Component\03.Collision</Filter>
+      <Filter>04.Object\04.Component\03.Collision</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineObject.h">
-      <Filter>02.Object\01.Object\02.Object</Filter>
+      <Filter>04.Object\01.Object\02.Object</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineUpdateObject.h">
-      <Filter>02.Object\01.Object\03.UpdateObject</Filter>
+      <Filter>04.Object\01.Object\03.UpdateObject</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineTransform.h">
-      <Filter>02.Object\05.Transform</Filter>
+      <Filter>04.Object\05.Transform</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineActor.h">
-      <Filter>02.Object\03.Actor\01.Base</Filter>
+      <Filter>04.Object\03.Actor\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineCamera.h">
-      <Filter>02.Object\03.Actor\02.Camera</Filter>
+      <Filter>04.Object\03.Actor\02.Camera</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineObjectBase.h">
-      <Filter>02.Object\01.Object\01.Base\01.Object</Filter>
+      <Filter>04.Object\01.Object\01.Base\01.Object</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineNameObject.h">
-      <Filter>02.Object\01.Object\01.Base\02.Name</Filter>
+      <Filter>04.Object\01.Object\01.Base\02.Name</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineTexture.h">
       <Filter>03.Resources\03.Texture</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineDevice.h">
-      <Filter>04.Device</Filter>
+      <Filter>02.Device</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineRenderTarget.h">
       <Filter>03.Resources\04.RenderTarget</Filter>
@@ -64,13 +64,22 @@
     <ClInclude Include="GameEngineVertex.h">
       <Filter>03.Resources\05.Buffer\02.VertexBuffer\02.Vertex</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineRenderingPipeLine.h">
+      <Filter>03.Resources\06.RenderingPipeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineShader.h">
+      <Filter>03.Resources\07.Shader\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineVertexShader.h">
+      <Filter>03.Resources\07.Shader\02.VertexShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
       <Filter>01.EngineCore</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineLevel.cpp">
-      <Filter>02.Object\02.Level</Filter>
+      <Filter>04.Object\02.Level</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineResource.cpp">
       <Filter>03.Resources\01.ResourceBase</Filter>
@@ -79,34 +88,34 @@
       <Filter>03.Resources\02.Mesh</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineComponent.cpp">
-      <Filter>02.Object\04.Component\01.Base</Filter>
+      <Filter>04.Object\04.Component\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineRenderer.cpp">
-      <Filter>02.Object\04.Component\02.Render</Filter>
+      <Filter>04.Object\04.Component\02.Render</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineCollision.cpp">
-      <Filter>02.Object\04.Component\03.Collision</Filter>
+      <Filter>04.Object\04.Component\03.Collision</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineObject.cpp">
-      <Filter>02.Object\01.Object\02.Object</Filter>
+      <Filter>04.Object\01.Object\02.Object</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineUpdateObject.cpp">
-      <Filter>02.Object\01.Object\03.UpdateObject</Filter>
+      <Filter>04.Object\01.Object\03.UpdateObject</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineTransform.cpp">
-      <Filter>02.Object\05.Transform</Filter>
+      <Filter>04.Object\05.Transform</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineActor.cpp">
-      <Filter>02.Object\03.Actor\01.Base</Filter>
+      <Filter>04.Object\03.Actor\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineCamera.cpp">
-      <Filter>02.Object\03.Actor\02.Camera</Filter>
+      <Filter>04.Object\03.Actor\02.Camera</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineObjectBase.cpp">
-      <Filter>02.Object\01.Object\01.Base\01.Object</Filter>
+      <Filter>04.Object\01.Object\01.Base\01.Object</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineNameObject.cpp">
-      <Filter>02.Object\01.Object\01.Base\02.Name</Filter>
+      <Filter>04.Object\01.Object\01.Base\02.Name</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineTexture.cpp">
       <Filter>03.Resources\03.Texture</Filter>
@@ -115,7 +124,7 @@
       <Filter>01.EngineCore</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineDevice.cpp">
-      <Filter>04.Device</Filter>
+      <Filter>02.Device</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineRenderTarget.cpp">
       <Filter>03.Resources\04.RenderTarget</Filter>
@@ -132,76 +141,37 @@
     <ClCompile Include="GameEngineVertex.cpp">
       <Filter>03.Resources\05.Buffer\02.VertexBuffer\02.Vertex</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineRenderingPipeLine.cpp">
+      <Filter>03.Resources\06.RenderingPipeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineShader.cpp">
+      <Filter>03.Resources\07.Shader\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineVertexShader.cpp">
+      <Filter>03.Resources\07.Shader\02.VertexShader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01.EngineCore">
       <UniqueIdentifier>{3ce4a1cd-7007-4299-b1a5-b38f8136314c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object">
-      <UniqueIdentifier>{07c355e8-202d-4e35-ad13-ed78bb0c87de}</UniqueIdentifier>
+    <Filter Include="_Pch">
+      <UniqueIdentifier>{c64a6cce-ade0-4196-a895-c952dd22c296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Device">
+      <UniqueIdentifier>{8fa7d6a9-81fc-48c8-9dea-bea855ddbe51}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Resources">
       <UniqueIdentifier>{f2602830-62e1-4454-b9b5-eb8aeeba002a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\02.Level">
-      <UniqueIdentifier>{d895133b-560b-479c-a649-1b9bef606744}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Resources\02.Mesh">
       <UniqueIdentifier>{8dea3e14-a532-45e5-afc6-231f4aa51b8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\03.Actor">
-      <UniqueIdentifier>{eed5400d-f35c-4262-a078-06b9cb2cb6c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\04.Component">
-      <UniqueIdentifier>{c6dc69ed-3c1a-40c7-912f-2b08a6f06c39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\01.Object">
-      <UniqueIdentifier>{7452e2bd-ded0-4898-9dcf-b0567e41db8b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\04.Component\01.Base">
-      <UniqueIdentifier>{9b33d59f-ef52-4ae3-80a7-f85959119119}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\04.Component\02.Render">
-      <UniqueIdentifier>{36aaa353-5ca5-49eb-90c9-cafe52951fb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\04.Component\03.Collision">
-      <UniqueIdentifier>{645d0d56-2182-4f76-9637-ffd747a7c42c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\01.Object\01.Base">
-      <UniqueIdentifier>{c2cefb2b-92b0-4db4-a1bf-b55063f26194}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\01.Object\02.Object">
-      <UniqueIdentifier>{63079b8a-fbe7-4bc5-aa12-fa856c3567ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\01.Object\03.UpdateObject">
-      <UniqueIdentifier>{096ed6ad-5cda-44cf-937f-5e088862cdd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\05.Transform">
-      <UniqueIdentifier>{b0c66173-bfe2-45c2-9ac3-0a14df4477e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\03.Actor\01.Base">
-      <UniqueIdentifier>{199ca731-e4c3-4281-8307-ede180540a25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\03.Actor\02.Camera">
-      <UniqueIdentifier>{d7bd17cb-2b33-470c-bcf5-38c98b3d1e51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\01.Object\01.Base\01.Object">
-      <UniqueIdentifier>{cf2da521-4772-4d14-82a9-73a4600cd9af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\01.Object\01.Base\02.Name">
-      <UniqueIdentifier>{0c563579-5143-4f3b-a6d5-eb8b94880e81}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Resources\03.Texture">
       <UniqueIdentifier>{953199ab-e4d3-4e98-8bdd-a767c640a659}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04.Device">
-      <UniqueIdentifier>{8fa7d6a9-81fc-48c8-9dea-bea855ddbe51}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Resources\04.RenderTarget">
       <UniqueIdentifier>{b425c986-50c1-4d9c-b43c-2e5e49848689}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="_Pch">
-      <UniqueIdentifier>{c64a6cce-ade0-4196-a895-c952dd22c296}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Resources\05.Buffer">
       <UniqueIdentifier>{f8ec63c3-2dad-4ab1-9faf-1c565e5f0497}</UniqueIdentifier>
@@ -220,6 +190,66 @@
     </Filter>
     <Filter Include="03.Resources\01.ResourceBase">
       <UniqueIdentifier>{88426368-a9a8-4144-89ab-a4f8c9e6b3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object">
+      <UniqueIdentifier>{07c355e8-202d-4e35-ad13-ed78bb0c87de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\02.Level">
+      <UniqueIdentifier>{d895133b-560b-479c-a649-1b9bef606744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\03.Actor">
+      <UniqueIdentifier>{eed5400d-f35c-4262-a078-06b9cb2cb6c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\03.Actor\01.Base">
+      <UniqueIdentifier>{199ca731-e4c3-4281-8307-ede180540a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\03.Actor\02.Camera">
+      <UniqueIdentifier>{d7bd17cb-2b33-470c-bcf5-38c98b3d1e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\04.Component">
+      <UniqueIdentifier>{c6dc69ed-3c1a-40c7-912f-2b08a6f06c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\04.Component\01.Base">
+      <UniqueIdentifier>{9b33d59f-ef52-4ae3-80a7-f85959119119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\04.Component\02.Render">
+      <UniqueIdentifier>{36aaa353-5ca5-49eb-90c9-cafe52951fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\04.Component\03.Collision">
+      <UniqueIdentifier>{645d0d56-2182-4f76-9637-ffd747a7c42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\01.Object">
+      <UniqueIdentifier>{7452e2bd-ded0-4898-9dcf-b0567e41db8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\01.Object\01.Base">
+      <UniqueIdentifier>{c2cefb2b-92b0-4db4-a1bf-b55063f26194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\01.Object\01.Base\01.Object">
+      <UniqueIdentifier>{cf2da521-4772-4d14-82a9-73a4600cd9af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\01.Object\01.Base\02.Name">
+      <UniqueIdentifier>{0c563579-5143-4f3b-a6d5-eb8b94880e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\01.Object\02.Object">
+      <UniqueIdentifier>{63079b8a-fbe7-4bc5-aa12-fa856c3567ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\01.Object\03.UpdateObject">
+      <UniqueIdentifier>{096ed6ad-5cda-44cf-937f-5e088862cdd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Object\05.Transform">
+      <UniqueIdentifier>{b0c66173-bfe2-45c2-9ac3-0a14df4477e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\06.RenderingPipeLine">
+      <UniqueIdentifier>{958ff5e6-9974-4db2-8f8c-53f54b3d3db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\07.Shader">
+      <UniqueIdentifier>{ddb2caf1-8a99-483f-904a-65909d9e494e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\07.Shader\01.Base">
+      <UniqueIdentifier>{675edfa1-2abd-4329-bff4-24606b6da976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\07.Shader\02.VertexShader">
+      <UniqueIdentifier>{9290e820-cf98-428a-abb2-678c6abc0bc2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -39,6 +39,9 @@ public:
 	static const float4 Null;
 
 
+	static const float4 Red;
+
+
 
 	//각도를 넣으면 0도 부터 그 각도만큼 회전한 벡터가 나온다.
 	static float4 AngleToDirection2DToDeg(float _Deg)
@@ -811,6 +814,7 @@ public:
 		}
 	}
 
+	//행렬 전치시키기
 	void Transpose()
 	{
 		DirectMatrix = DirectX::XMMatrixTranspose(*this);
@@ -826,6 +830,7 @@ public:
 		}*/
 	}
 
+	//역행렬로 만들기
 	void Inverse()
 	{
 		DirectMatrix = DirectX::XMMatrixInverse(nullptr, *this);

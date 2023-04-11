@@ -11,6 +11,8 @@ GameEngineVertexBuffer::~GameEngineVertexBuffer()
 
 }
 
+
+
 void GameEngineVertexBuffer::Create(const void* _Data, UINT _VertexSize, UINT _VertexCount)
 {
 	/*
@@ -63,4 +65,25 @@ void GameEngineVertexBuffer::Create(const void* _Data, UINT _VertexSize, UINT _V
 	{
 		MsgAssert("버텍스 버퍼 생성에 실패했습니다.");
 	}
+}
+
+
+void GameEngineVertexBuffer::Setting()
+{
+	//(부모 protected의 멤버변수)
+	if (nullptr == Buffer)
+	{
+		MsgAssert("ID3DBuffer가 만들어지지 않은 버텍스 버퍼 입니다.");
+		return;
+	}
+
+	//GPU에 버텍스 버퍼 전송
+	GameEngineDevice::GetContext()->IASetVertexBuffers(
+		0,						//버텍스 버퍼를 여러개 세팅했을때, 몇번째 버퍼부터 시작할 지
+		1, 						//버텍스 버퍼를 몇개 세팅했는지(여러개도 가능)
+		&Buffer, 			//버텍스 버퍼 배열의 주소
+		&VertexSize,   //버텍스 1개의 크기
+		&Offset);			//몇번째 버텍스 부터 시작할 지
+
+	//사실 인자 크게 신경쓰지 않아도 된다
 }

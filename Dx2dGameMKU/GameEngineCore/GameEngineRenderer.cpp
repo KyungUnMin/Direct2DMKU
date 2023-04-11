@@ -16,8 +16,6 @@ GameEngineRenderer::~GameEngineRenderer()
 
 void GameEngineRenderer::Render(float _DeltaTime)
 {
-	HDC Hdc = GameEngineWindow::GetWindowBackBufferHdc();
-
 	const size_t Cnt = 24;
 
 	POINT Point[Cnt];
@@ -72,11 +70,16 @@ void GameEngineRenderer::Render(float _DeltaTime)
 	//카메라 적용
 	GetTransform()->SetCameraMatrix(ViewMatrix, ProjectionMat);
 
+	//버텍스 쉐이더
 	for (size_t i = 0; i < Cnt; ++i)
 	{
 		//월드매트릭스 적용
 		Vertex[i] = Vertex[i] * GetTransform()->GetWorldViewProjectionMatrixRef();
+	}
 
+	//레스터라이저
+	for (size_t i = 0; i < Cnt; ++i)
+	{
 		//투영
 		Vertex[i] /= Vertex[i].w;
 		Vertex[i].w = 1.0f;
@@ -86,6 +89,10 @@ void GameEngineRenderer::Render(float _DeltaTime)
 
 		Point[i] = Vertex[i].ToWindowPOINT();
 	}
+
+	//픽셀 쉐이더
+
+	HDC Hdc = GameEngineWindow::GetWindowBackBufferHdc();
 
 	for (size_t i = 0; i < 6; ++i)
 	{

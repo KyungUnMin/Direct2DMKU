@@ -12,27 +12,23 @@
 #include "GameEngineTexture.h"
 #include "GameEngineRenderTarget.h"
 #include "GameEngineVertexBuffer.h"
+#include "GameEngineRenderingPipeLine.h"
 
 void GameEngineCore::CoreResourceInit()
 {
 
-
+	//버텍스 버퍼
 	{
 		std::vector<GameEngineVertex> ArrVertex;
 		ArrVertex.resize(4);
 		// 앞면
-		ArrVertex[0] = { { -0.5f, -0.5f, 0.0f } };
-		ArrVertex[1] = { { 0.5f, -0.5f,0.0f } };
-		ArrVertex[2] = { { 0.5f, 0.5f,0.0f } };
-		ArrVertex[3] = { { -0.5f, 0.5f,0.0f } };
+		ArrVertex[0] = { { -0.5f, -0.5f, 0.0f }, float4::Red};
+		ArrVertex[1] = { { 0.5f, -0.5f,0.0f }, float4::Red };
+		ArrVertex[2] = { { 0.5f, 0.5f,0.0f }, float4::Red };
+		ArrVertex[3] = { { -0.5f, 0.5f,0.0f }, float4::Red };
 
 		GameEngineVertexBuffer::Create("Rect", ArrVertex);
 	}
-
-
-
-
-
 
 
 	
@@ -76,13 +72,20 @@ void GameEngineCore::CoreResourceInit()
 	}
 
 	
-	
+	//렌더링 파이프 라인
+	{
+		//랜더링 파이프라인은 자식에서 별도의 Create함수를 갖지 않는다
+		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("2DRect");
+		//위에서 만든 버텍스 버퍼 설정
+		Pipe->SetVertexBuffer("Rect");
+	}
 
 }
 
 
 void GameEngineCore::CoreResourceEnd()
 {
+	GameEngineResource<GameEngineRenderingPipeLine>::ResourcesClear();
 	GameEngineResource<GameEngineVertexBuffer>::ResourcesClear();
 	GameEngineResource<GameEngineMesh>::ResourcesClear();
 	GameEngineResource<GameEngineTexture>::ResourcesClear();

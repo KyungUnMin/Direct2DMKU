@@ -2,6 +2,7 @@
 #include "GameEngineActor.h"
 
 class GameEngineActor;
+class GameEngineLevel;
 
 class GameEngineComponent : public GameEngineUpdateObject
 {
