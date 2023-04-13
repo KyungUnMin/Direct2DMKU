@@ -5,6 +5,7 @@
     <ClCompile Include="PrecompileHeader.cpp">
       <Filter>_Pch</Filter>
     </ClCompile>
+    <ClCompile Include="DirectShow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_Pch">
@@ -15,5 +16,6 @@
     <ClInclude Include="PrecompileHeader.h">
       <Filter>_Pch</Filter>
     </ClInclude>
+    <ClInclude Include="DirectShow.h" />
   </ItemGroup>
 </Project>
