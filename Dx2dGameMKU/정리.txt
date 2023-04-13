@@ -2,6 +2,10 @@
 왜 GameEngineVertexBuffer::Create는 왜 템플릿인가?
 렌더러 크기
 
+//지금은 알 수 없지만 나중에 상수버퍼할 때 알 수 있다
+GameEngineVertexShader::ShaderLoad
+	Flag |= D3DCOMPILE_PACK_MATRIX_ROW_MAJOR;
+
 ---
 
 -----------

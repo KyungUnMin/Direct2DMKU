@@ -55,6 +55,8 @@ public:
 		return NamedResources[UpperName];
 	}
 
+	virtual void Setting(){}
+
 protected:
 	static std::shared_ptr<ResourceType> Create(const std::string_view& _Name)
 	{

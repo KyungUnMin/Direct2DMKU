@@ -12,25 +12,29 @@
 #include "GameEngineTexture.h"
 #include "GameEngineRenderTarget.h"
 #include "GameEngineVertexBuffer.h"
+#include "GameEngineIndexBuffer.h"
 #include "GameEngineRenderingPipeLine.h"
+
+#include "GameEngineVertexShader.h"
 
 void GameEngineCore::CoreResourceInit()
 {
 
-	//버텍스 버퍼
+	//버텍스 버퍼 & 인덱스 버퍼 만들기
 	{
 		std::vector<GameEngineVertex> ArrVertex;
 		ArrVertex.resize(4);
 		// 앞면
-		ArrVertex[0] = { { -0.5f, -0.5f, 0.0f }, float4::Red};
-		ArrVertex[1] = { { 0.5f, -0.5f,0.0f }, float4::Red };
-		ArrVertex[2] = { { 0.5f, 0.5f,0.0f }, float4::Red };
-		ArrVertex[3] = { { -0.5f, 0.5f,0.0f }, float4::Red };
+		ArrVertex[0] = { { -0.5f, 0.5f, 0.0f }, float4::Red };
+		ArrVertex[1] = { { 0.5f, 0.5f,0.0f }, float4::Red };
+		ArrVertex[2] = { { 0.5f, -0.5f,0.0f }, float4::Red };
+		ArrVertex[3] = { { -0.5f, -0.5f,0.0f }, float4::Red };
+
+		std::vector<UINT> ArrIndex = { 0, 1, 2, 0, 3, 2 };
 
 		GameEngineVertexBuffer::Create("Rect", ArrVertex);
+		GameEngineIndexBuffer::Create("Rect", ArrIndex);
 	}
-
-
 	
 	{
 
@@ -72,12 +76,31 @@ void GameEngineCore::CoreResourceInit()
 	}
 
 	
-	//렌더링 파이프 라인
+	//버텍스 쉐이더 컴파일
+	{
+		GameEngineDirectory NewDir;
+		NewDir.MoveParentToDirectory("EngineResource");
+		NewDir.Move("EngineResource");
+		NewDir.Move("Shader");
+
+		//해당 확장자를 가지고 있는 파일 가져오기
+		std::vector<GameEngineFile> Files = NewDir.GetAllFile({ ".hlsl",".fx" });
+		//일단 쉐이더 파일 하나만 컴파일하기
+		GameEngineVertexShader::Load(Files[0].GetFullPath(), "Texture_VS");
+	}
+
+
+
+
+	//렌더링 파이프 라인 만들고 세팅하기
 	{
 		//랜더링 파이프라인은 자식에서 별도의 Create함수를 갖지 않는다
-		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("2DRect");
-		//위에서 만든 버텍스 버퍼 설정
+		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("2DTexture");
+
+		//버텍스 버퍼 설정
 		Pipe->SetVertexBuffer("Rect");
+		Pipe->SetVertexShader("TextureShader.hlsl");
+		Pipe->SetIndexBuffer("Rect");
 	}
 
 }
@@ -86,7 +109,11 @@ void GameEngineCore::CoreResourceInit()
 void GameEngineCore::CoreResourceEnd()
 {
 	GameEngineResource<GameEngineRenderingPipeLine>::ResourcesClear();
+
 	GameEngineResource<GameEngineVertexBuffer>::ResourcesClear();
+	GameEngineResource<GameEngineVertexShader>::ResourcesClear();
+	GameEngineResource<GameEngineIndexBuffer>::ResourcesClear();
+
 	GameEngineResource<GameEngineMesh>::ResourcesClear();
 	GameEngineResource<GameEngineTexture>::ResourcesClear();
 	GameEngineResource<GameEngineRenderTarget>::ResourcesClear();

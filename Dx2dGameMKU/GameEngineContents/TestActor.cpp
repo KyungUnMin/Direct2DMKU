@@ -43,8 +43,11 @@ void TestActor::Start()
 
 
 	Render0 = CreateComponent<GameEngineRenderer>();
+	Render0->SetPipeLine("2DTexture");
 	Render1 = CreateComponent<GameEngineRenderer>();
+	Render1->SetPipeLine("2DTexture");
 	Render2 = CreateComponent<GameEngineRenderer>();
+	Render2->SetPipeLine("2DTexture");
 
 	Render0->GetTransform()->SetLocalPosition({ -200.0f, 0.0f, 0.0f });
 	Render2->GetTransform()->SetLocalPosition({ 200.0f, 0.0f, 0.0f });

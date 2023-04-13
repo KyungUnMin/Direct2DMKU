@@ -2,6 +2,7 @@
 #include "GameEngineDirectory.h"
 #include "GameEngineFile.h"
 #include "GameEngineDebug.h"
+#include "GameEngineString.h"
 
 GameEngineDirectory::GameEngineDirectory()
 {
@@ -59,21 +60,56 @@ bool GameEngineDirectory::MoveParent()
 
 
 //이 파일에 있는 경로들을 벡터에 담아 리턴
-std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(const std::string_view& _Ext)
+std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(std::vector<std::string_view>_Ext)
 {
+	//인자로 들어온 확장자들을 전부 대문자로 바꾸기
+	std::vector<std::string> UpperExts;
+	UpperExts.reserve(_Ext.size());
+	for (size_t i = 0; i < _Ext.size(); ++i)
+	{
+		std::string OtherUpperExt = GameEngineString::ToUpper(_Ext[i]);
+		UpperExts.push_back(OtherUpperExt);
+	}
+
 	//파일에 있는 경로를 순환할수 있는 반복자
 	std::filesystem::directory_iterator DirIter(Path.Path);
-
-	std::string Ext = _Ext.data();
 	std::vector<GameEngineFile> Files;
 
-	//순환
+	//파일에 있는 경로들을 순회
 	for (const std::filesystem::directory_entry& Entry : DirIter)
 	{
-		//존재하는 경로인지 확인
+		//해당 경로가 파일인지 디렉토리인지 확인(파일만 검출)
 		if (true == Entry.is_directory())
 			continue;
 
+		//파일의 전체 경로
+		std::string Path = Entry.path().string();
+
+		//파일의 확장자만 뽑아 대문자로 변환
+		std::string Ext = Entry.path().extension().string();
+		std::string UpperExt = GameEngineString::ToUpper(Ext);
+
+		bool Check = false;
+
+		//맨 위에서 인자로 받은 확장자들 벡터를 순회
+		for (size_t i = 0; i < UpperExts.size(); ++i)
+		{
+			//현재 순회중인 확장자
+			const std::string& ExtText = UpperExts[i];
+
+			//찾고자 하는 확장자가 파일 내에 있는 경우
+			if (ExtText == UpperExt)
+			{
+				Check = true;
+				break;
+			}
+		}
+
+		//현재 파일이 인자로 받은 확장자들에 해당 되지 않는 경우 다음 파일을 찾기
+		if (false == Check)
+			continue;
+
+		//해당 경로 저장
 		Files.push_back(GameEngineFile(Entry.path()));
 	}
 

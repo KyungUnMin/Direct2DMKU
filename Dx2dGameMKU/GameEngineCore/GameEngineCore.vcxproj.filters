@@ -56,22 +56,25 @@
       <Filter>_Pch</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineDirectBuffer.h">
-      <Filter>03.Resources\05.Buffer\01.Base</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineVertexBuffer.h">
-      <Filter>03.Resources\05.Buffer\02.VertexBuffer\01.Buffer</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer\01.Buffer</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineVertex.h">
-      <Filter>03.Resources\05.Buffer\02.VertexBuffer\02.Vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngineRenderingPipeLine.h">
-      <Filter>03.Resources\06.RenderingPipeLine</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer\02.Vertex</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineShader.h">
-      <Filter>03.Resources\07.Shader\01.Base</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\03.Shader\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineVertexShader.h">
-      <Filter>03.Resources\07.Shader\02.VertexShader</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\03.Shader\02.VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderingPipeLine.h">
+      <Filter>03.Resources\05.RenderingPipeLine\01.RPL</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineIndexBuffer.h">
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\03.IndexBuffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -133,22 +136,25 @@
       <Filter>_Pch</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineDirectBuffer.cpp">
-      <Filter>03.Resources\05.Buffer\01.Base</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineVertexBuffer.cpp">
-      <Filter>03.Resources\05.Buffer\02.VertexBuffer\01.Buffer</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer\01.Buffer</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineVertex.cpp">
-      <Filter>03.Resources\05.Buffer\02.VertexBuffer\02.Vertex</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineRenderingPipeLine.cpp">
-      <Filter>03.Resources\06.RenderingPipeLine</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer\02.Vertex</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineShader.cpp">
-      <Filter>03.Resources\07.Shader\01.Base</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\03.Shader\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineVertexShader.cpp">
-      <Filter>03.Resources\07.Shader\02.VertexShader</Filter>
+      <Filter>03.Resources\05.RenderingPipeLine\03.Shader\02.VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderingPipeLine.cpp">
+      <Filter>03.Resources\05.RenderingPipeLine\01.RPL</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineIndexBuffer.cpp">
+      <Filter>03.Resources\05.RenderingPipeLine\02.Buffer\03.IndexBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,21 +178,6 @@
     </Filter>
     <Filter Include="03.Resources\04.RenderTarget">
       <UniqueIdentifier>{b425c986-50c1-4d9c-b43c-2e5e49848689}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Resources\05.Buffer">
-      <UniqueIdentifier>{f8ec63c3-2dad-4ab1-9faf-1c565e5f0497}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Resources\05.Buffer\01.Base">
-      <UniqueIdentifier>{fd948f88-a2d3-4e29-99a6-90e357288d15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Resources\05.Buffer\02.VertexBuffer">
-      <UniqueIdentifier>{79c38f54-8bd5-48e5-a663-44e0ee4280f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Resources\05.Buffer\02.VertexBuffer\01.Buffer">
-      <UniqueIdentifier>{0af50d0d-f597-4943-b8fa-3583b4704aba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Resources\05.Buffer\02.VertexBuffer\02.Vertex">
-      <UniqueIdentifier>{2391bb09-11ab-4232-bcd1-b3ac01ce7e20}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Resources\01.ResourceBase">
       <UniqueIdentifier>{88426368-a9a8-4144-89ab-a4f8c9e6b3f3}</UniqueIdentifier>
@@ -239,17 +230,38 @@
     <Filter Include="04.Object\05.Transform">
       <UniqueIdentifier>{b0c66173-bfe2-45c2-9ac3-0a14df4477e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Resources\06.RenderingPipeLine">
+    <Filter Include="03.Resources\05.RenderingPipeLine">
       <UniqueIdentifier>{958ff5e6-9974-4db2-8f8c-53f54b3d3db6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Resources\07.Shader">
+    <Filter Include="03.Resources\05.RenderingPipeLine\01.RPL">
+      <UniqueIdentifier>{92ce678f-651f-48d5-a925-f3de81dd2a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\02.Buffer">
+      <UniqueIdentifier>{f8ec63c3-2dad-4ab1-9faf-1c565e5f0497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\02.Buffer\01.Base">
+      <UniqueIdentifier>{fd948f88-a2d3-4e29-99a6-90e357288d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer">
+      <UniqueIdentifier>{79c38f54-8bd5-48e5-a663-44e0ee4280f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer\01.Buffer">
+      <UniqueIdentifier>{0af50d0d-f597-4943-b8fa-3583b4704aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\02.Buffer\02.VertexBuffer\02.Vertex">
+      <UniqueIdentifier>{2391bb09-11ab-4232-bcd1-b3ac01ce7e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\03.Shader">
       <UniqueIdentifier>{ddb2caf1-8a99-483f-904a-65909d9e494e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Resources\07.Shader\01.Base">
+    <Filter Include="03.Resources\05.RenderingPipeLine\03.Shader\01.Base">
       <UniqueIdentifier>{675edfa1-2abd-4329-bff4-24606b6da976}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Resources\07.Shader\02.VertexShader">
+    <Filter Include="03.Resources\05.RenderingPipeLine\03.Shader\02.VertexShader">
       <UniqueIdentifier>{9290e820-cf98-428a-abb2-678c6abc0bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\02.Buffer\03.IndexBuffer">
+      <UniqueIdentifier>{c32cfe78-9383-41c6-98b1-071ce1aa6164}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
