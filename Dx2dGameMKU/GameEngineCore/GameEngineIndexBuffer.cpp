@@ -12,7 +12,7 @@ GameEngineIndexBuffer::~GameEngineIndexBuffer()
 }
 
 
-void GameEngineIndexBuffer::Create(const void* _Data, UINT _IndexSize, UINT _IndexCount)
+void GameEngineIndexBuffer::ResCreate(const void* _Data, UINT _IndexSize, UINT _IndexCount)
 {
 	IndexSize = _IndexSize;
 

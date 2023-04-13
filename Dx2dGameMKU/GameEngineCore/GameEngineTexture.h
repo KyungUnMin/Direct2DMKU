@@ -24,6 +24,12 @@ public:
 		std::shared_ptr<GameEngineTexture> NewTexture = GameEngineResource::Create(_Name);
 	}
 
+	static void Create(const std::string_view& _Name, ID3D11Texture2D* _Value)
+	{
+		std::shared_ptr<GameEngineTexture> NewTexture = GameEngineResource::Create(_Name);
+		NewTexture->ResCreate(_Value);
+	}
+
 	ID3D11RenderTargetView* GetRTV()
 	{
 		return RenderTarget;
@@ -39,7 +45,7 @@ private:
 	ID3D11RenderTargetView* RenderTarget = nullptr;
 
 	//GameEngineDevice에서 메인백버퍼 텍스처를 만들때 호출됨
-	void Create(ID3D11Texture2D* _Value);
+	void ResCreate(ID3D11Texture2D* _Value);
 
 	void CreateRenderTargetView();
 };

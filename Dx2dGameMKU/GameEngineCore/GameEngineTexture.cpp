@@ -21,7 +21,7 @@ GameEngineTexture::~GameEngineTexture()
 	}
 }
 
-void GameEngineTexture::Create(ID3D11Texture2D* _Value)
+void GameEngineTexture::ResCreate(ID3D11Texture2D* _Value)
 {
 	Texture2D = _Value;
 

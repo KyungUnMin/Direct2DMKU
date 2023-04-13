@@ -40,7 +40,7 @@ public:
 	static void Create(const std::string_view& _Name, const std::vector<VertexType>& _Vertexs)
 	{
 		std::shared_ptr<GameEngineVertexBuffer> Res = GameEngineResource::Create(_Name);
-		Res->Create(&_Vertexs[0], sizeof(VertexType), static_cast<UINT>(_Vertexs.size()));
+		Res->ResCreate(&_Vertexs[0], sizeof(VertexType), static_cast<UINT>(_Vertexs.size()));
 	}
 
 	//기록한 버퍼(ID3DBuffer)를 GPU에 넘긴다(렌더링 파이프라인_인풋어셈블러1 단계)
@@ -49,7 +49,7 @@ public:
 protected:
 
 private:
-	void Create(const void* _Data, UINT _VertexSize, UINT _VertexCount);
+	void ResCreate(const void* _Data, UINT _VertexSize, UINT _VertexCount);
 
 	UINT Offset = 0;
 	UINT VertexSize = 0;

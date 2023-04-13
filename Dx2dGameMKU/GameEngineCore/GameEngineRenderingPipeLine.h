@@ -15,15 +15,30 @@ public:
 	void SetVertexBuffer(const std::string_view& _Value);
 	void SetVertexShader(const std::string_view& _Value);
 	void SetIndexBuffer(const std::string_view& _Value);
+	void SetRasterizer(const std::string_view& _Value);
+	void SetPixelShader(const std::string_view& _Value);
+
+	inline void SetFILL_MODE(D3D11_FILL_MODE _Value)
+	{
+		FILL_MODE = _Value;
+	}
 
 	void Render();
 
 protected:
 
 private:
+	//래스터 라이저 단계에서 픽셀들을 어떻게 그릴지에 대한 값
+	D3D11_FILL_MODE FILL_MODE = D3D11_FILL_MODE::D3D11_FILL_SOLID;
+	//인풋 어셈블러2 단계에서 어떤 모양의 도형을 그릴 것인지에 대한 값
+	D3D11_PRIMITIVE_TOPOLOGY TOPOLOGY = D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
+	
 	std::shared_ptr<class GameEngineVertexBuffer> VertexBufferPtr;
 	std::shared_ptr<class GameEngineVertexShader> VertexShaderPtr;
 	std::shared_ptr<class GameEngineIndexBuffer> IndexBufferPtr;
+	std::shared_ptr<class GameEngineRasterizer> RasterizerPtr;
+	std::shared_ptr<class GameEnginePixelShader> PixelShaderPtr;
+
 
 
 	//-------------REDERING PIPELiNE---------

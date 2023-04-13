@@ -13,7 +13,7 @@ GameEngineVertexBuffer::~GameEngineVertexBuffer()
 
 
 
-void GameEngineVertexBuffer::Create(const void* _Data, UINT _VertexSize, UINT _VertexCount)
+void GameEngineVertexBuffer::ResCreate(const void* _Data, UINT _VertexSize, UINT _VertexCount)
 {
 	/*
 		GPU는 어떤 자료형을 수정하는지에 대해서는 관심없다.

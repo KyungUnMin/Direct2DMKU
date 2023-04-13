@@ -20,12 +20,15 @@ public:
 		std::shared_ptr<GameEngineRenderTarget> NewRenderTarget = GameEngineResource<GameEngineRenderTarget>::Create(_Name);
 
 		//인자 초기화
-		NewRenderTarget->Create(_Texture, _Color);
+		NewRenderTarget->ResCreate(_Texture, _Color);
 		return NewRenderTarget;
 	}
 
 	//렌더타겟이 가르키고 있는 이미지를 지운다
 	void Clear();
+
+	//랜파에서 아웃풋 머저를 위한 렌더타겟뷰를 세팅해주는 단계
+	void Setting() override;
 
 protected:
 
@@ -35,6 +38,6 @@ private:
 
 	//텍스처의 경우엔 포인터를 두개로 나눠서
 	//GameEngineTexture와 GameEngineRenderTarget이 각각 한개씩 나눠갖는다
-	void Create(std::shared_ptr<GameEngineTexture> _Texture, float4 _Color);
+	void ResCreate(std::shared_ptr<GameEngineTexture> _Texture, float4 _Color);
 };
 

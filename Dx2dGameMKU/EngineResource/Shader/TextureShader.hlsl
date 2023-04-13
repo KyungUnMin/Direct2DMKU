@@ -4,9 +4,9 @@
 //처리할 데이터의 시작위치와 한 버텍스의 크기, 버텍스의 갯수까지 밖에 모른다.
 //하지만 그 내부는 모르기 때문에 시맨틱 문법을 이용해 내부를 정의해주어야 한다
 
-struct MyInput
+struct Input
 {
-	float4 Pos : POSITION0;
+	float4 Pos : POSITION;
 	float4 Color : COLOR;
 };
 
@@ -19,21 +19,41 @@ struct MyInput
 //output의 SV_Position은
 //레스터라이저를 위한 포지션 정보다(w나누기를 하지 않은 값)
 //(그러니 필수)
-struct MyOutput
+struct Output
 {
 	//레스터라이제이션을 위해 w에 z값이 남겨진 위치값
 	float4 Pos : SV_Position;
 	float4 Color : COLOR;
 };
 
-MyOutput Texture_VS(MyInput _Value)
+Output Texture_VS(Input _Value)
 {
-	MyOutput OutputValue = (MyOutput)0;
+    Output OutputValue = (Output) 0;
 
 	//여기서 월드, 뷰, w 나누기 전 프로젝션을 곱하게 된다.
-	OutputValue.Pos = _Value.Pos; /* 월드 뷰 프로젝션 곱하기*/
-	OutputValue.Color = _Value.Color;
+    OutputValue.Pos = _Value.Pos; /* 월드 뷰 프로젝션 곱하기*/
+    OutputValue.Color = _Value.Color;
 
 
-	return OutputValue;
+    return OutputValue;
+}
+
+//------------------------------------픽셀 쉐이더---------------
+
+//픽셀 쉐이더가 끝나면 다음 단계는 아웃풋 머지다.
+//그래서 어떤 RTV에 그릴지에 대해 명시해주어야 한다
+struct OutColor
+{
+	//0번 도화지에 그려라
+    float4 Color : SV_Target0;
+};
+
+//픽셀 쉐이더는 버텍스 쉐이더에서 만든 결과물들이 래스터라이저 단계를 거쳐서
+//이 곳으로 들어온다, 때문에 들어올 때 인자가 버텍스 쉐이더의 나갈 때 인자가 된다
+
+OutColor Texture_PS(Output _Value)
+{
+    OutColor ReturnColor = (OutColor) 0;
+    ReturnColor.Color = _Value.Color;
+    return ReturnColor;
 }

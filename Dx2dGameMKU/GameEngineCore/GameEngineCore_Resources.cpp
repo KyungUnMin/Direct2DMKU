@@ -13,12 +13,18 @@
 #include "GameEngineRenderTarget.h"
 #include "GameEngineVertexBuffer.h"
 #include "GameEngineIndexBuffer.h"
-#include "GameEngineRenderingPipeLine.h"
+#include "GameEngineRasterizer.h"
+#include "GameEnginePixelShader.h"
 
+#include "GameEngineRenderingPipeLine.h"
 #include "GameEngineVertexShader.h"
 
 void GameEngineCore::CoreResourceInit()
 {
+	//쉐이더 파일의 시맨틱 문법을 위한 자료형 표현
+	GameEngineVertex::LayOut.AddInputLayOut("POSITION", DXGI_FORMAT_R32G32B32A32_FLOAT);
+	GameEngineVertex::LayOut.AddInputLayOut("COLOR", DXGI_FORMAT_R32G32B32A32_FLOAT);
+
 
 	//버텍스 버퍼 & 인덱스 버퍼 만들기
 	{
@@ -85,11 +91,23 @@ void GameEngineCore::CoreResourceInit()
 
 		//해당 확장자를 가지고 있는 파일 가져오기
 		std::vector<GameEngineFile> Files = NewDir.GetAllFile({ ".hlsl",".fx" });
+
 		//일단 쉐이더 파일 하나만 컴파일하기
 		GameEngineVertexShader::Load(Files[0].GetFullPath(), "Texture_VS");
+		GameEnginePixelShader::Load(Files[0].GetFullPath(), "Texture_PS");
 	}
 
 
+	//래스터라이저 만들기
+	{
+		D3D11_RASTERIZER_DESC Decs = {};
+
+		Decs.FillMode = D3D11_FILL_WIREFRAME;
+		Decs.CullMode = D3D11_CULL_BACK;
+		Decs.FrontCounterClockwise = TRUE;
+
+		std::shared_ptr<GameEngineRasterizer> Res = GameEngineRasterizer::Create("EngineBase", Decs);
+	}
 
 
 	//렌더링 파이프 라인 만들고 세팅하기
@@ -101,6 +119,8 @@ void GameEngineCore::CoreResourceInit()
 		Pipe->SetVertexBuffer("Rect");
 		Pipe->SetVertexShader("TextureShader.hlsl");
 		Pipe->SetIndexBuffer("Rect");
+		Pipe->SetRasterizer("EngineBase");
+		Pipe->SetPixelShader("TextureShader.hlsl");
 	}
 
 }
@@ -113,6 +133,8 @@ void GameEngineCore::CoreResourceEnd()
 	GameEngineResource<GameEngineVertexBuffer>::ResourcesClear();
 	GameEngineResource<GameEngineVertexShader>::ResourcesClear();
 	GameEngineResource<GameEngineIndexBuffer>::ResourcesClear();
+	GameEngineResource<GameEngineRasterizer>::ResourcesClear();
+	GameEngineResource<GameEnginePixelShader>::ResourcesClear();
 
 	GameEngineResource<GameEngineMesh>::ResourcesClear();
 	GameEngineResource<GameEngineTexture>::ResourcesClear();

@@ -179,7 +179,7 @@ void GameEngineDevice::CreateSwapChain()
 
 	//받아온 비트맵은 별도의 텍스처클래스에 저장하고
 	std::shared_ptr<GameEngineTexture> BackBufferTexture = std::make_shared<GameEngineTexture>();
-	BackBufferTexture->Create(SwapBackBufferTexture);
+	BackBufferTexture->ResCreate(SwapBackBufferTexture);
 
 	//그 비트맵을 수정할수 있는 권한인 렌더타겟(DC)을 만들어 그 비트맵을 관리하게 한다.
 	BackBufferTarget = GameEngineRenderTarget::Create("MainBackBufferTarget", BackBufferTexture, float4{ 0.f, 0.f, 1.f, 1.f });
@@ -187,7 +187,11 @@ void GameEngineDevice::CreateSwapChain()
 
 void GameEngineDevice::RenderStart()
 {
+	//렌더링을 하기 전에 이전 프레임 지우기
 	BackBufferTarget->Clear();
+
+	//랜파 단계중 아웃풋 머저를 위한 랜더타겟뷰 설정
+	BackBufferTarget->Setting();
 }
 
 void GameEngineDevice::RenderEnd() 

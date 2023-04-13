@@ -32,6 +32,9 @@ void GameEngineLevel::Update(float _DeltaTime)
 
 void GameEngineLevel::Render(float _DeltaTime)
 {
+	//랜파 래스터라이저 과정을 위해 GPU에 뷰 행렬 정보 등록
+	GetMainCamera()->Setting();
+
 	for (std::pair<int, std::list<std::shared_ptr<GameEngineActor>>> OrderGroup : Actors)
 	{
 		std::list<std::shared_ptr<GameEngineActor>>& ActorList = OrderGroup.second;

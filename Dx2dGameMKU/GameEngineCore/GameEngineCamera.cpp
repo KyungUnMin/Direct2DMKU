@@ -2,6 +2,7 @@
 #include "GameEngineCamera.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include "GameEngineDevice.h"
 
 GameEngineCamera::GameEngineCamera()
 {
@@ -12,6 +13,7 @@ GameEngineCamera::~GameEngineCamera()
 {
 
 }
+
 
 void GameEngineCamera::Start()
 {
@@ -34,6 +36,14 @@ void GameEngineCamera::Start()
 		GameEngineInput::CreateKey("SpeedBoost", VK_LSHIFT);
 		GameEngineInput::CreateKey("FreeCameraSwitch", 'P');
 	}
+
+	//레스터라이저를 위한 뷰포트행렬 정보 세팅
+	ViewPortData.TopLeftX = 0;
+	ViewPortData.TopLeftY = 0;
+	ViewPortData.Width = GameEngineWindow::GetScreenSize().x;
+	ViewPortData.Height= GameEngineWindow::GetScreenSize().y;
+	ViewPortData.MinDepth = 0.0f;
+	ViewPortData.MaxDepth = 1.0f;
 }
 
 void GameEngineCamera::Update(float _DeltaTime)
@@ -119,4 +129,11 @@ void GameEngineCamera::Update(float _DeltaTime)
 
 	//뷰포트행렬 만들기
 	ViewPort.ViewPort(ScreenSize.x, ScreenSize.y, 0.f, 0.f);
+}
+
+
+void GameEngineCamera::Setting()
+{
+	//여러개 세팅해줄 수 있지만 한개만 세팅
+	GameEngineDevice::GetContext()->RSSetViewports(1, &ViewPortData);
 }

@@ -29,7 +29,7 @@ public:
 		return Res;
 	}
 
-	//버텍스 쉐이더 동작
+	//버텍스 쉐이더 세팅
 	void Setting() override;
 
 protected:
