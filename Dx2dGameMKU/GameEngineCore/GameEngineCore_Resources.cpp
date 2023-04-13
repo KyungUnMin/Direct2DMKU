@@ -102,6 +102,27 @@ void GameEngineCore::CoreResourceInit()
 	{
 		D3D11_RASTERIZER_DESC Decs = {};
 
+		//D3D11_FILL_MODE
+			// 채우기 모드
+		//D3D11_CULL_MODE
+			// 그리는 면
+		//BOOL FrontCounterClockwise;
+			// 시계방향이 앞면인지 뒷면인지 결정
+		//INT DepthBias;
+			//픽셀에 추가된 깊이 값
+		//FLOAT DepthBiasClamp;
+			// 픽셀의 최대 깊이 편향
+		//FLOAT SlopeScaledDepthBias;
+			// 거리에 따라 클리핑(이 물체를 기준으로 far가 1.0이 아니라 0.5로 자를 수 있음)
+		//BOOL DepthClipEnable;
+			// 화면 밖으로 빠져나가는 물체는 자르기(그리지 않음)
+		//BOOL ScissorEnable;
+			// 특정 영역만 그리기(근데 픽셀 쉐이더에서도 충분히 가능)
+		//BOOL MultisampleEnable;
+			//일반 안티에일리어싱 활성화 여부
+		//BOOL AntialiasedLineEnable;
+			// 선 앤티앨리어싱을 활성화 여부
+
 		Decs.FillMode = D3D11_FILL_WIREFRAME;
 		Decs.CullMode = D3D11_CULL_BACK;
 		Decs.FrontCounterClockwise = TRUE;
