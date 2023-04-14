@@ -17,21 +17,10 @@ GameEngineVideo::~GameEngineVideo()
 void GameEngineVideo::VideoLoad(const std::string_view& _Path)
 {
 	HWND MainHwnd = GameEngineWindow::GetHWnd();
-	//UpdateWindow(MainHwnd);
-	
-
-	HRESULT Result;
-	/*Result = CoInitialize(nullptr);
-	if (S_OK != Result)
-	{
-		MsgAssert("Com 초기화에 실패했습니다");
-		return;
-	}*/
-
 
 	//(마지막 인자를 제외하고는 라이브러리에 있는 전역변수입니다)
 	//IID_IGraphBuilder 인터페이스를 생성하고 핸들러를 받아오는듯합니다. 
-	Result = CoCreateInstance(
+	HRESULT Result = CoCreateInstance(
 		CLSID_FilterGraph, 
 		nullptr, 
 		CLSCTX_INPROC_SERVER, 

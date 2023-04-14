@@ -85,6 +85,9 @@
     <ClInclude Include="GameEngineVideo.h">
       <Filter>03.Resources\06.Video</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineInputLayOut.h">
+      <Filter>03.Resources\05.RenderingPipeLine\06.InputLayOut</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -173,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineVideo.cpp">
       <Filter>03.Resources\06.Video</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineInputLayOut.cpp">
+      <Filter>03.Resources\05.RenderingPipeLine\06.InputLayOut</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +292,9 @@
     </Filter>
     <Filter Include="03.Resources\06.Video">
       <UniqueIdentifier>{276fb8c1-a37f-4273-8475-52006aaab79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\06.InputLayOut">
+      <UniqueIdentifier>{b7675b1a-46c7-40bc-8de3-dd0372280aa6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

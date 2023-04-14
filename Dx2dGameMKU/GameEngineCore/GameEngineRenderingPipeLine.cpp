@@ -5,11 +5,12 @@
 #include "GameEngineIndexBuffer.h"
 #include "GameEngineRasterizer.h"
 #include "GameEnginePixelShader.h"
+#include "GameEngineInputLayOut.h"
 
 
 GameEngineRenderingPipeLine::GameEngineRenderingPipeLine()
 {
-
+	InputLayOutPtr = std::make_shared<GameEngineInputLayOut>();
 }
 
 GameEngineRenderingPipeLine::~GameEngineRenderingPipeLine()
@@ -23,6 +24,14 @@ GameEngineRenderingPipeLine::~GameEngineRenderingPipeLine()
 
 void GameEngineRenderingPipeLine::InputAssembler1()
 {
+	if (nullptr == InputLayOutPtr)
+	{
+		MsgAssert("인풋 레이아웃이 존재하지 않아서 인풋어셈블러1 과정을 실행할 수 없습니다.");
+		return;
+	}
+
+	InputLayOutPtr->Setting();
+
 	if (nullptr == VertexBufferPtr)
 	{
 		MsgAssert("버텍스 버퍼가 존재하지 않아서 인풋어셈블러1 과정을 실행할 수 없습니다.");
@@ -79,6 +88,7 @@ void GameEngineRenderingPipeLine::Rasterizer()
 		return;
 	}
 
+	//레스터 라이저 단계에서는 색상 뿐만 아니라 위치도 선형보간 된다
 	RasterizerPtr->SetFILL_MODE(FILL_MODE);
 	RasterizerPtr->Setting();
 }
@@ -112,7 +122,18 @@ void GameEngineRenderingPipeLine::SetVertexBuffer(const std::string_view& _Value
 	{
 		MsgAssert("존재하지 않는 버텍스 버퍼를 사용하려고 했습니다");
 	}
+
+	//버텍스 버퍼와 버텍스 쉐이더가 모두 만들어 졌을때 인풋 레이아웃을 만든다
+	//(인풋 레이아웃은 버텍스 버퍼가 들고 있는 버텍스의 레이아웃 정보와 
+	// 쉐이더 파일의 바이너리 코드 정보를 필요로 하기 때문이다)
+	if (nullptr == VertexShaderPtr)
+		return;
+
+	//인풋 레이아웃 생성
+	InputLayOutPtr->ResCreate(VertexBufferPtr, VertexShaderPtr);
 }
+
+
 
 void GameEngineRenderingPipeLine::SetVertexShader(const std::string_view& _Value) 
 {
@@ -123,9 +144,18 @@ void GameEngineRenderingPipeLine::SetVertexShader(const std::string_view& _Value
 	{
 		MsgAssert("존재하지 않는 버텍스 쉐이더를 사용하려고 했습니다");
 	}
+
+	//버텍스 버퍼와 버텍스 쉐이더가 모두 만들어 졌을때 인풋 레이아웃을 만든다
+	//(인풋 레이아웃은 버텍스 버퍼가 들고 있는 버텍스의 레이아웃 정보와 
+	// 쉐이더 파일의 바이너리 코드 정보를 필요로 하기 때문이다)
+	if (nullptr == VertexBufferPtr)
+		return;
+
+	//인풋 레이아웃 생성
+	InputLayOutPtr->ResCreate(VertexBufferPtr, VertexShaderPtr);
 }
 
-void GameEngineRenderingPipeLine::SetIndexBuffer(const std::string_view& _Value) 
+void GameEngineRenderingPipeLine::SetIndexBuffer(const std::string_view& _Value)
 {
 	std::string UpperName = GameEngineString::ToUpper(_Value);
 	IndexBufferPtr = GameEngineIndexBuffer::Find(UpperName);
@@ -174,6 +204,8 @@ void GameEngineRenderingPipeLine::Render()
 	PixelShader();
 	OutputMerger();
 
+
 	//실질적으로 그리는 단계(그리는 방법이 여러가지지만 그 중 꼭 인덱스버퍼를 이용해서 그릴 것)
-	GameEngineDevice::GetContext()->DrawIndexed(IndexBufferPtr->GetIndexCount(), 0, 0);
+	UINT IndexCount = IndexBufferPtr->GetIndexCount();
+	GameEngineDevice::GetContext()->DrawIndexed(IndexCount, 0, 0);
 }

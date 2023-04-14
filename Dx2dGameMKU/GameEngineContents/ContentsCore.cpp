@@ -36,8 +36,8 @@ void ContentsCore::GameStart()
 	/*DS = std::make_shared<CDirectShow>(STREAM_TYPE_MOVIE);
 	DS->PlayClip(GameEngineWindow::GetHWnd(), const_cast<char*>(Path.c_str()));*/
 
-	Video = GameEngineVideo::Load(Path);
-	Video->Play();
+	/*Video = GameEngineVideo::Load(Path);
+	Video->Play();*/
 }
 
 void ContentsCore::GameEnd()

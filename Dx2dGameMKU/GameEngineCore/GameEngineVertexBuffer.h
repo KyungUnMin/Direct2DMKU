@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngineResource.h"
+#include "GameEngineVertex.h"
 #include "GameEngineDirectBuffer.h"
 
 /*
@@ -26,6 +27,8 @@
 
 class GameEngineVertexBuffer : public GameEngineResource<GameEngineVertexBuffer>, public GameEngineDirectBuffer
 {
+	friend class GameEngineInputLayOut;
+
 public:
 	GameEngineVertexBuffer();
 	~GameEngineVertexBuffer() override;
@@ -35,11 +38,15 @@ public:
 	GameEngineVertexBuffer& operator=(const GameEngineVertexBuffer& _Other) = delete;
 	GameEngineVertexBuffer& operator=(const GameEngineVertexBuffer&& _Other) noexcept = delete;
 
-	//왜 템플릿으로 했을까?, 나중에 GameEngineVertex말고도 다른것도 버텍스 버퍼로 쓰나?
 	template <typename VertexType>
 	static void Create(const std::string_view& _Name, const std::vector<VertexType>& _Vertexs)
 	{
 		std::shared_ptr<GameEngineVertexBuffer> Res = GameEngineResource::Create(_Name);
+		
+		//버텍스에 있는 버텍스 레이아웃 정보(버텍스 쉐이더에서 시맨틱 문법을 GPU가 이해하기 위한 정보)를 받아온다
+		//이것처럼 템플릿도 추상함수처럼 함수를 강제시킬수 있다.
+		//모든 버텍스들은 내부에 static으로 GameEngineInputLayOutInfo를 들고 있어야 한다
+		Res->LayOutInfo = &VertexType::LayOut;
 		Res->ResCreate(&_Vertexs[0], sizeof(VertexType), static_cast<UINT>(_Vertexs.size()));
 	}
 
@@ -49,6 +56,8 @@ public:
 protected:
 
 private:
+	GameEngineInputLayOutInfo* LayOutInfo = nullptr;
+
 	void ResCreate(const void* _Data, UINT _VertexSize, UINT _VertexCount);
 
 	UINT Offset = 0;
