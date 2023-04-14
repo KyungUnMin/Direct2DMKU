@@ -204,6 +204,7 @@ BOOL CDirectShow::PlayClip(HWND hWnd, char* szFile)
 	{
 		m_pVW->put_Owner( (OAHWND)m_hWnd );
 		m_pVW->put_WindowStyle( WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN );
+
 		InitVideoWindow( 1, 1 );
 		GetFrameStepInterface();
 	}
@@ -234,43 +235,6 @@ BOOL CDirectShow::PlayClip(HWND hWnd, char* szFile)
 	m_CPState = RUNNING;
 	
 	
-	/*
-    LONG lMode;
-    static HWND hDrain=0;
-	
-	// Read current state
-	m_pVW->get_FullScreenMode(&lMode);
-
-	if (lMode == OATRUE)
-	{
-		// Save current message drain
-		m_pVW->get_MessageDrain((OAHWND *) &hDrain);
-
-		// Set message drain to application main window
-		m_pVW->put_MessageDrain((OAHWND) m_hWnd);
-
-		// Switch to full-screen mode
-		lMode = OATRUE;
-		m_pVW->put_FullScreenMode(lMode);
-	}
-	else
-	{
-		// Switch back to windowed mode
-		lMode = OAFALSE;
-		m_pVW->put_FullScreenMode(lMode);
-
-		// Undo change of message drain
-		m_pVW->put_MessageDrain((OAHWND) hDrain);
-
-		// Reset video window
-		m_pVW->SetWindowForeground(-1);
-
-		// Reclaim keyboard focus for player application
-		UpdateWindow(m_hWnd);
-		SetForegroundWindow(m_hWnd);
-		SetFocus(m_hWnd);
-	}
-	*/
 	return TRUE;
 }
 

@@ -50,6 +50,7 @@ public:
 	void Initial(void);
 	void Release(void);
 	BOOL PlayClip(HWND hWnd, char* szFile);	/* open clip and play */
+
 	HRESULT InitVideoWindow(int nMultiplier, int nDivider);
 	BOOL GetFrameStepInterface(void);
 
@@ -64,11 +65,15 @@ public:
 
 public:
 	inline PLAYSTATE GetState(void) { return m_CPState; }	/* get state */
+
 	inline void SetState(PLAYSTATE CPState) { m_CPState = CPState; }	/* set state */
+
 	//HRESULT AddGraphToRot(IUnknown *pUnkGraph, DWORD *pdwRegister);	
 	HRESULT HandleGraphEvent(void);
 
 };
+
+
 void RemoveGraphFromRot(DWORD pdwRegister);
 HRESULT AddGraphToRot(IUnknown *pUnkGraph, DWORD *pdwRegister);	
 #endif

@@ -82,6 +82,9 @@
     <ClInclude Include="GameEngineRasterizer.h">
       <Filter>03.Resources\05.RenderingPipeLine\05.Rasterizer</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineVideo.h">
+      <Filter>03.Resources\06.Video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -167,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineRasterizer.cpp">
       <Filter>03.Resources\05.RenderingPipeLine\05.Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineVideo.cpp">
+      <Filter>03.Resources\06.Video</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +283,9 @@
     </Filter>
     <Filter Include="03.Resources\05.RenderingPipeLine\05.Rasterizer">
       <UniqueIdentifier>{56c93f69-ab89-4bc6-a7cb-c7d029145aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\06.Video">
+      <UniqueIdentifier>{276fb8c1-a37f-4273-8475-52006aaab79a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
