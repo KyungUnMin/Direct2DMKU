@@ -171,6 +171,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="DirectShow.h" />
     <ClInclude Include="PrecompileHeader.h">
       <SubType>
       </SubType>
@@ -189,6 +190,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="DirectShow.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">
       <SubType>
       </SubType>

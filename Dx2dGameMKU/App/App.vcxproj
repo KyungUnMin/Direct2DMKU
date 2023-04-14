@@ -171,7 +171,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DirectShow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">
       <SubType>
@@ -183,7 +182,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DirectShow.h" />
     <ClInclude Include="PrecompileHeader.h">
       <SubType>
       </SubType>

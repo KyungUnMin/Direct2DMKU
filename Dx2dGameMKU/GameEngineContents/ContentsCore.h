@@ -18,6 +18,6 @@ public:
 protected:
 
 private:
-
+	static std::shared_ptr<class CDirectShow> DS;
 };
 
