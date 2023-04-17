@@ -11,13 +11,15 @@
 #include "GameEngineMesh.h"
 #include "GameEngineTexture.h"
 #include "GameEngineRenderTarget.h"
+
 #include "GameEngineVertexBuffer.h"
 #include "GameEngineIndexBuffer.h"
 #include "GameEngineRasterizer.h"
-#include "GameEnginePixelShader.h"
+#include "GameEngineConstantBuffer.h"
 
 #include "GameEngineRenderingPipeLine.h"
 #include "GameEngineVertexShader.h"
+#include "GameEnginePixelShader.h"
 
 void GameEngineCore::CoreResourceInit()
 {
@@ -150,15 +152,16 @@ void GameEngineCore::CoreResourceInit()
 
 void GameEngineCore::CoreResourceEnd()
 {
-	GameEngineResource<GameEngineRenderingPipeLine>::ResourcesClear();
+	GameEngineRenderingPipeLine::ResourcesClear();
 
-	GameEngineResource<GameEngineVertexBuffer>::ResourcesClear();
-	GameEngineResource<GameEngineVertexShader>::ResourcesClear();
-	GameEngineResource<GameEngineIndexBuffer>::ResourcesClear();
-	GameEngineResource<GameEngineRasterizer>::ResourcesClear();
-	GameEngineResource<GameEnginePixelShader>::ResourcesClear();
+	GameEngineConstantBuffer::ResourcesClear();
+	GameEngineVertexBuffer::ResourcesClear();
+	GameEngineVertexShader::ResourcesClear();
+	GameEngineIndexBuffer::ResourcesClear();
+	GameEngineRasterizer::ResourcesClear();
+	GameEnginePixelShader::ResourcesClear();
 
-	GameEngineResource<GameEngineMesh>::ResourcesClear();
-	GameEngineResource<GameEngineTexture>::ResourcesClear();
-	GameEngineResource<GameEngineRenderTarget>::ResourcesClear();
+	GameEngineMesh::ResourcesClear();
+	GameEngineTexture::ResourcesClear();
+	GameEngineRenderTarget::ResourcesClear();
 }

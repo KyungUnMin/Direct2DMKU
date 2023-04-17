@@ -3,7 +3,7 @@
 
 GameEngineVertexShader::GameEngineVertexShader()
 {
-
+	Type = ShaderType::Vertex;
 }
 
 GameEngineVertexShader::~GameEngineVertexShader()
@@ -81,6 +81,10 @@ void GameEngineVertexShader::ShaderLoad(
 		MsgAssert("버텍스 쉐이더 핸들 생성에 실패했습니다");
 		return;
 	}
+
+	//쉐이더 컴파일이 끝났다면 리플렉션을 이용해 쉐이더를 조사해서
+	//필요한 리소스(상수버퍼, 텍스처 등등)들을 생성 또는 재활용한다
+	GameEngineShader::ShaderResCheck();
 }
 
 void GameEngineVertexShader::Setting()

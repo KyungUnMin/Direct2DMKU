@@ -5,16 +5,5 @@
 GameEngineVertexShader::ShaderLoad
 	Flag |= D3DCOMPILE_PACK_MATRIX_ROW_MAJOR;
 
----
-
------------
-
-	어떤 쉐이더에나 세팅할수 있는 값들이 존재한다
-		상수버퍼
-		텍스처
-		등등(나머지는 게임을 할 때 사용되진 않는다)
-
-	상수버퍼는 모든 쉐이더들이 공유한다
-		이 상수버퍼를 이용해서 월드 뷰 프로젝션 행렬을 곱하게 된다
 
 

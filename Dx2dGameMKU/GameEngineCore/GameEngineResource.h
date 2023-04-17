@@ -58,6 +58,13 @@ public:
 	virtual void Setting(){}
 
 protected:
+	static std::shared_ptr<ResourceType> CreateUnNamed()
+	{
+		std::shared_ptr<ResourceType> NewRes = std::make_shared<ResourceType>();
+		UnNamedRes.push_back(NewRes);
+		return NewRes;
+	}
+
 	static std::shared_ptr<ResourceType> Create(const std::string_view& _Name)
 	{
 		std::string UpperName = GameEngineString::ToUpper(_Name);
@@ -75,6 +82,11 @@ protected:
 		return NewRes;
 	}
 
+	static void ResourcesClear()
+	{
+		NamedResources.clear();
+		UnNamedRes.clear();
+	}
 
 private:
 	std::string Path;
@@ -82,12 +94,6 @@ private:
 
 	static std::map<std::string, std::shared_ptr<ResourceType>> NamedResources;
 	static std::list<std::shared_ptr<ResourceType>> UnNamedRes;
-
-	static void ResourcesClear()
-	{
-		NamedResources.clear();
-		UnNamedRes.clear();
-	}
 };
 
 

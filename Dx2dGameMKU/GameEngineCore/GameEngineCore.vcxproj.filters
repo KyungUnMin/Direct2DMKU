@@ -61,9 +61,6 @@
     <ClInclude Include="GameEngineVertex.h">
       <Filter>03.Resources\05.RenderingPipeLine\02.Vertex</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineShader.h">
-      <Filter>03.Resources\05.RenderingPipeLine\04.Shader\01.Base</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineVertexShader.h">
       <Filter>03.Resources\05.RenderingPipeLine\04.Shader\02.VertexShader</Filter>
     </ClInclude>
@@ -87,6 +84,18 @@
     </ClInclude>
     <ClInclude Include="GameEngineInputLayOut.h">
       <Filter>03.Resources\05.RenderingPipeLine\06.InputLayOut</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineEnum.h">
+      <Filter>01.EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineConstantBuffer.h">
+      <Filter>03.Resources\05.RenderingPipeLine\03.Buffer\04.ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineShader.h">
+      <Filter>03.Resources\05.RenderingPipeLine\04.Shader\01.Base\01.Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineShaderResHelper.h">
+      <Filter>03.Resources\05.RenderingPipeLine\04.Shader\01.Base\02.Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +162,6 @@
     <ClCompile Include="GameEngineVertex.cpp">
       <Filter>03.Resources\05.RenderingPipeLine\02.Vertex</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineShader.cpp">
-      <Filter>03.Resources\05.RenderingPipeLine\04.Shader\01.Base</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineVertexShader.cpp">
       <Filter>03.Resources\05.RenderingPipeLine\04.Shader\02.VertexShader</Filter>
     </ClCompile>
@@ -179,6 +185,15 @@
     </ClCompile>
     <ClCompile Include="GameEngineInputLayOut.cpp">
       <Filter>03.Resources\05.RenderingPipeLine\06.InputLayOut</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineConstantBuffer.cpp">
+      <Filter>03.Resources\05.RenderingPipeLine\03.Buffer\04.ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineShader.cpp">
+      <Filter>03.Resources\05.RenderingPipeLine\04.Shader\01.Base\01.Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineShaderResHelper.cpp">
+      <Filter>03.Resources\05.RenderingPipeLine\04.Shader\01.Base\02.Helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +310,15 @@
     </Filter>
     <Filter Include="03.Resources\05.RenderingPipeLine\06.InputLayOut">
       <UniqueIdentifier>{b7675b1a-46c7-40bc-8de3-dd0372280aa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\03.Buffer\04.ConstantBuffer">
+      <UniqueIdentifier>{65aa40b5-9fcc-4717-8a39-12ce17eae9fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\04.Shader\01.Base\01.Shader">
+      <UniqueIdentifier>{5e1f7ec3-167d-4d9e-972b-3d971dd20314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Resources\05.RenderingPipeLine\04.Shader\01.Base\02.Helper">
+      <UniqueIdentifier>{efe6f692-c887-44e3-bb19-e9759137e3b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
