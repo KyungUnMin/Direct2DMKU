@@ -83,6 +83,8 @@ void GameEnginePixelShader::ShaderLoad(
 		MsgAssert("버텍스 쉐이더 핸들 생성에 실패했습니다");
 		return;
 	}
+
+	GameEngineShader::ShaderResCheck();
 }
 
 

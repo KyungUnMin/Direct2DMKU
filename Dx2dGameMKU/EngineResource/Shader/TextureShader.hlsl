@@ -36,7 +36,9 @@ Output Texture_VS(Input _Value)
     Output OutputValue = (Output) 0;
 
 	//여기서 월드, 뷰, w 나누기 전 프로젝션을 곱하게 된다.
+    _Value.Pos.w = 1.0f;
     OutputValue.Pos = mul(_Value.Pos, Worldmatrix);
+    //OutputValue.Pos = _Value.Pos;
     OutputValue.Color = _Value.Color;
 
 
@@ -48,9 +50,16 @@ Output Texture_VS(Input _Value)
 //픽셀 쉐이더는 버텍스 쉐이더에서 만든 결과물들이 래스터라이저 단계를 거쳐서
 //이 곳으로 들어온다, 때문에 들어올 때 인자가 버텍스 쉐이더의 나갈 때 인자가 된다
 
+//픽셀 쉐이더에서 사용할 상수버퍼, 버텍스쉐이더와의 슬롯과 상관없다
+cbuffer OutPixelColor : register(b0)
+{
+    float4 OutColor;
+}
+
 //픽셀 쉐이더가 끝나면 다음 단계는 아웃풋 머지다.
 //그래서 어떤 RTV에 그릴지에 대해 명시해주어야 한다(0번 도화지에 그려라)
 float4 Texture_PS(Output _Value) : SV_Target0
 {
-    return float4(1.0f, 0.0f, 0.0f, 1.0f);
+    return OutColor;
 }
+

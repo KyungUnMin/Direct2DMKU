@@ -4,7 +4,7 @@
 
 GameEngineTransform::GameEngineTransform()
 {
-
+	TransformUpdate();
 }
 
 GameEngineTransform::~GameEngineTransform()
@@ -56,5 +56,7 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 
 	//부모의 자식리스트에 자기 자신을 등록
 	Parent->Child.push_back(this);
+
+	TransformUpdate();
 }
 

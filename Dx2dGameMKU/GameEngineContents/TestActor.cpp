@@ -44,13 +44,21 @@ void TestActor::Start()
 
 	Render0 = CreateComponent<GameEngineRenderer>();
 	Render0->SetPipeLine("2DTexture");
-	Render1 = CreateComponent<GameEngineRenderer>();
-	Render1->SetPipeLine("2DTexture");
-	Render2 = CreateComponent<GameEngineRenderer>();
-	Render2->SetPipeLine("2DTexture");
+	Render0->GetShaderResHelper().SetConstantBufferLink("OutPixelColor", TestColor);
+	
+	Render0->GetTransform()->SetLocalScale({ 100.f, 100.f, 100.f });
 
-	Render0->GetTransform()->SetLocalPosition({ -200.0f, 0.0f, 0.0f });
-	Render2->GetTransform()->SetLocalPosition({ 200.0f, 0.0f, 0.0f });
+	TestColor = { 0.f, 0.f, 0.f, 1.f };
+
+	//Render1 = CreateComponent<GameEngineRenderer>();
+	//Render1->SetPipeLine("2DTexture");
+	//Render2 = CreateComponent<GameEngineRenderer>();
+	//Render2->SetPipeLine("2DTexture");
+	//
+	//Render0->GetTransform()->SetLocalPosition({ -200.0f, 0.0f, 0.0f });
+	//Render2->GetTransform()->SetLocalPosition({ 200.0f, 0.0f, 0.0f });
+
+
 }
 
 void TestActor::Update(float _DeltaTime)
@@ -67,10 +75,12 @@ void TestActor::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsPress("PlayerMoveLeft"))
 	{
 		GetTransform()->AddLocalPosition(float4::Left * Speed * _DeltaTime);
+		TestColor.x += _DeltaTime;
 	}
 	if (true == GameEngineInput::IsPress("PlayerMoveRight"))
 	{
 		GetTransform()->AddLocalPosition(float4::Right * Speed * _DeltaTime);
+		TestColor.x -= _DeltaTime;
 	}
 	if (true == GameEngineInput::IsPress("PlayerMoveUp"))
 	{
@@ -83,7 +93,6 @@ void TestActor::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsPress("PlayerMoveForward"))
 	{
 		GetTransform()->AddLocalPosition(GetTransform()->GetLocalForwardVector() * Speed * _DeltaTime);
-		// GetTransform()->AddLocalPosition(float4::Forward * Speed * _DeltaTime);
 	}
 	if (true == GameEngineInput::IsPress("PlayerMoveBack"))
 	{
@@ -144,7 +153,7 @@ void TestActor::Update(float _DeltaTime)
 
 	// Render1->GetTransform()->SetWorldPosition({ 0.0f, 0.0f, 0.0f });
 
-	Render1->GetTransform()->SetWorldRotation({ 0.0f, 0.0f, 0.0f });
+	//Render1->GetTransform()->SetWorldRotation({ 0.0f, 0.0f, 0.0f });
 }
 
 void TestActor::Render(float _DeltaTime)

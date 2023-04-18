@@ -27,6 +27,11 @@ public:
 		return ResHelper;
 	}
 
+	inline ShaderType GetType() const
+	{
+		return Type;
+	}
+
 protected:
 	ShaderType Type = ShaderType::None;
 
@@ -43,7 +48,12 @@ protected:
 	void ShaderResCheck();
 
 private:
-	//상수버퍼나 텍스터들을 쉐이더파일에 전달하는 것을 도와주는 헬퍼클래스 
+	/*
+		GameEngineShader에서의 역할
+			쉐이더 파일이 어떤 리소스 종류(상수버퍼나 텍스처들)들을 사용하는지 기록
+		GameEngineRender에서의 역할
+			렌더링 파이프라인이 세팅될때 GameEngineShader들에 있는 정보를 Copy함
+	*/
 	GameEngineShaderResHelper ResHelper;
 };
 

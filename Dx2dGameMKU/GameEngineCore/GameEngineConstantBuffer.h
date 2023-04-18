@@ -12,6 +12,8 @@
 
 class GameEngineConstantBuffer : public GameEngineResource<GameEngineConstantBuffer>, public GameEngineDirectBuffer
 {
+	friend class GameEngineConstantBufferSetter;
+
 public:
 	GameEngineConstantBuffer();
 	~GameEngineConstantBuffer() override;
@@ -41,11 +43,15 @@ public:
 
 		//버퍼를 새로 만들고 초기 세팅해준다
 		std::shared_ptr<GameEngineConstantBuffer> Buffer = CreateUnNamed();
+		Buffer->SetName(UpperName);
 		ConstantBufferRes[_Byte][UpperName] = Buffer;
 		Buffer->ResCreate(_BufferDesc);
 
 		return Buffer;
 	}
+
+	//GPU에 세팅되어 동작중인 상수버퍼의 값을 CPU에서 변경하는 함수
+	void ChangeData(const void* _Data, UINT _Size);
 
 	//static 멤버변수의 map 정리
 	static void ResourcesClear();
@@ -57,5 +63,14 @@ protected:
 private:
 	//<상수 버퍼 크기, <이름, 포인터>>
 	static std::map<int, std::map<std::string, std::shared_ptr<GameEngineConstantBuffer>>> ConstantBufferRes;
+
+
+	//아래 두 함수는 파이프라인이 Render되기 직전에
+	//GameEngineResHelper, ConstantBufferSetter를 거쳐서 호출되게 된다
+	// 
+	//GPU에 버텍스 쉐이더용 상수버퍼 세팅
+	void VSSetting(UINT _Slot);
+	//GPU에 픽셀 쉐이더용 상수버퍼 세팅
+	void PSSetting(UINT _Slot);
 };
 

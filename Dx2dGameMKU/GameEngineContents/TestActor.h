@@ -23,5 +23,7 @@ private:
 	std::shared_ptr<GameEngineRenderer> Render0 = nullptr;
 	std::shared_ptr<GameEngineRenderer> Render1 = nullptr;
 	std::shared_ptr<GameEngineRenderer> Render2 = nullptr;
+
+	float4 TestColor = float4::Zero;
 };
 
