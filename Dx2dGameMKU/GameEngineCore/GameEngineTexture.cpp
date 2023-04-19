@@ -21,6 +21,8 @@ GameEngineTexture::~GameEngineTexture()
 	}
 }
 
+
+
 void GameEngineTexture::ResCreate(ID3D11Texture2D* _Value)
 {
 	Texture2D = _Value;
@@ -45,4 +47,9 @@ void GameEngineTexture::CreateRenderTargetView()
 		MsgAssert("렌더타겟 생성에 실패하였습니다");
 		return;
 	}
+}
+
+
+void GameEngineTexture::ResLoad(const std::string_view& _Path)
+{
 }

@@ -80,7 +80,20 @@ std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(std::vector<std::str
 	{
 		//해당 경로가 파일인지 디렉토리인지 확인(파일만 검출)
 		if (true == Entry.is_directory())
+		{
+			//디렉토리인 경우 하위 경로들을 모두 순회
+			GameEngineDirectory ChildDir(Entry.path());
+
+			//자식에서 찾은 파일을들 이 경로에 복붙
+			std::vector<GameEngineFile> ChildFiles = ChildDir.GetAllFile(_Ext);
+			for (size_t i = 0; i < ChildFiles.size(); i++)
+			{
+				Files.push_back(ChildFiles[i]);
+			}
+
+			//찾은 이후에는 상위폴더로 빠져나간다(이래서 무한루프X)
 			continue;
+		}
 
 		//파일의 전체 경로
 		std::string Path = Entry.path().string();
