@@ -6,7 +6,23 @@
 //GPU b0레지스터에 저장된 상수버퍼 (슬롯은 0~16까지)
 cbuffer TransformData : register(b0)
 {
-    float4x4 Worldmatrix;
+    float4 LocalScale;
+    float4 LocalRotation;
+    float4 LocalQuaternion;
+    float4 LocalPosition;
+    float4 WorldScale;
+    float4 WorldRotation;
+    float4 WorldQuaternion;
+    float4 WorldPosition;
+    float4x4 LocalScaleMatrix;
+    float4x4 LocalRotationMatrix;
+    float4x4 LocalPositionMatrix;
+    float4x4 LocalWorldMatrix;
+    float4x4 WorldMatrix;
+    float4x4 View;
+    float4x4 Projection;
+    float4x4 ViewPort;
+    float4x4 WorldViewProjectionMatrix;
 }
 
 struct Input
@@ -37,7 +53,7 @@ Output Texture_VS(Input _Value)
 
 	//여기서 월드, 뷰, w 나누기 전 프로젝션을 곱하게 된다.
     _Value.Pos.w = 1.0f;
-    OutputValue.Pos = mul(_Value.Pos, Worldmatrix);
+    OutputValue.Pos = mul(_Value.Pos, WorldViewProjectionMatrix);
     //OutputValue.Pos = _Value.Pos;
     OutputValue.Color = _Value.Color;
 

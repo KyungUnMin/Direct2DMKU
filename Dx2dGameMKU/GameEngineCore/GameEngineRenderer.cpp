@@ -76,8 +76,8 @@ void GameEngineRenderer::SetPipeLine(const std::string_view& _Name)
 	//트랜스폼 정보 자동으로 넣어주기(쉐이더 파일에 TransformData와 같은 상수버퍼가 있어야만 함)
 	if (true == ShaderResHelper.IsConstantBufferSetter("TransformData"))
 	{
-		const float4x4& World = GetTransform()->GetWorldViewProjectionMatrixRef();
-		ShaderResHelper.SetConstantBufferLink("TransformData", World);
+		const TransformData& Data= GetTransform()->GetTransDataRef();
+		ShaderResHelper.SetConstantBufferLink("TransformData", Data);
 	}
 	
 }

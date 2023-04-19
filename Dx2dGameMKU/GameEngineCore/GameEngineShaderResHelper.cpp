@@ -59,7 +59,7 @@ void GameEngineShaderResHelper::Setting()
 
 
 
-void GameEngineShaderResHelper::SetConstantBufferLink(const std::string_view& _Name, const void* _Data, size_t _Size)
+void GameEngineShaderResHelper::SetConstantBufferLink(const std::string_view& _Name, const void* _Data, UINT _Size)
 {
 	std::string UpperName = GameEngineString::ToUpper(_Name);
 	std::multimap<std::string, GameEngineConstantBufferSetter>::iterator FindIter = ConstantBuffer.find(UpperName);
@@ -77,6 +77,7 @@ void GameEngineShaderResHelper::SetConstantBufferLink(const std::string_view& _N
 	std::multimap<std::string, GameEngineConstantBufferSetter>::iterator NameEndIter = ConstantBuffer.upper_bound(UpperName);
 
 	//쉐이더 과정 중에서 해당 상수버퍼를 사용한 만큼 진행하게 될 것이다.
+	//(해당 상수버퍼를 사용한 모든 쉐이더들에 상수버퍼 값이 변경된다는 말)
 	for (; (NameStartIter != NameEndIter); ++NameStartIter)
 	{
 		GameEngineConstantBufferSetter& Setter = NameStartIter->second;

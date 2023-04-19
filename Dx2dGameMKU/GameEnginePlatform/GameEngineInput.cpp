@@ -2,9 +2,14 @@
 #include "GameEngineInput.h"
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineDebug.h>
+#include "GameEngineWindow.h"
 
 std::map<std::string, GameEngineInput::GameEngineKey> GameEngineInput::Keys;
 bool GameEngineInput::IsAnyKeyValue = false;
+
+float4 GameEngineInput::MousePos = float4::Zero;
+float4 GameEngineInput::PrevMousePos = float4::Zero;
+float4 GameEngineInput::MouseDirection = float4::Zero;
 
 void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
 {
@@ -158,6 +163,12 @@ GameEngineInput::~GameEngineInput()
 
 void GameEngineInput::Update(float _DeltaTime)
 {
+	//마우스 위치와 이동방향 구하기
+	MousePos = GameEngineWindow::GetMousePosition();
+	MouseDirection.w = 0.0f;
+	MouseDirection = (MousePos - PrevMousePos);
+	PrevMousePos = MousePos;
+
 	std::map<std::string, GameEngineKey>::iterator StartKeyIter = Keys.begin();
 	std::map<std::string, GameEngineKey>::iterator EndKeyIter = Keys.end();
 

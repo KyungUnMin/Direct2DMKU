@@ -28,7 +28,7 @@ class GameEngineConstantBufferSetter : public GameEngineShaderResources
 public:
 	std::shared_ptr<GameEngineConstantBuffer> Res;
 	const void* CPUData = nullptr;
-	size_t CPUDataSize = 0;
+	UINT CPUDataSize = 0;
 
 	//이 상수버퍼의 값을 재갱신하고 해당 상수버퍼가 쉐이더 파일 어떤 슬롯인지 설정한다
 	void Setting() override;
@@ -88,8 +88,8 @@ public:
 		SetConstantBufferLink(_Name, reinterpret_cast<const void*>(&_Data), sizeof(DataType));
 	}
 
-	//CPU의 값과 GPU의 상수버퍼 값을 연동시키는 함수
-	void SetConstantBufferLink(const std::string_view& _Name, const void* _Data, size_t _Size);
+	// CPU의 값과 GPU의 상수버퍼 값을 연동시키는 함수(아직 GPU의 상수버퍼 값이 변경된 것은 아님, 변경은 setting함수에서 일어남)
+	void SetConstantBufferLink(const std::string_view& _Name, const void* _Data, UINT _Size);
 
 
 	/*같은 랜파를 쓸 때 랜더러마다 다른 상수나 텍스처를 넣어주기 위함

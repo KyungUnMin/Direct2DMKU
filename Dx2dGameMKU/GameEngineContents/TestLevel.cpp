@@ -20,6 +20,7 @@ TestLevel::~TestLevel()
 
 void TestLevel::Start()
 {
+	GetMainCamera()->SetProjectionType(CameraType::Perspective);
 	GetMainCamera()->GetTransform()->SetLocalPosition(float4{ 0.f, 0.f, -1000.f });
 
 	CreateActor<TestActor>();

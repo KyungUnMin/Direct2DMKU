@@ -18,6 +18,14 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::Update(float _DeltaTime)
 {
+	//프리 카메라 모드일땐 카메라 제외하고 업데이트 실행X
+	if (true == MainCamera->IsFreeCamera())
+	{
+		MainCamera->Update(_DeltaTime);
+		return;
+	}
+
+
 	for (std::pair<int, std::list<std::shared_ptr<GameEngineActor>>> OrderGroup : Actors)
 	{
 		std::list<std::shared_ptr<GameEngineActor>>& ActorList = OrderGroup.second;

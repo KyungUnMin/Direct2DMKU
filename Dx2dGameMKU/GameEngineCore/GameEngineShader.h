@@ -1,5 +1,5 @@
 #pragma once
-#include "EngineEnum.h"
+#include "GameEngineEnum.h"
 #include "GameEngineShaderResHelper.h"
 
 class GameEngineShader

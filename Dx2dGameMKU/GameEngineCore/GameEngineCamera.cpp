@@ -21,20 +21,15 @@ void GameEngineCamera::Start()
 	{
 		GameEngineInput::CreateKey("CamMoveLeft", 'A');
 		GameEngineInput::CreateKey("CamMoveRight", 'D');
-		GameEngineInput::CreateKey("CamMoveUp", 'Q');
-		GameEngineInput::CreateKey("CamMoveDown", 'E');
-		GameEngineInput::CreateKey("CamMoveForward", 'W');
-		GameEngineInput::CreateKey("CamMoveBack", 'S');
+		GameEngineInput::CreateKey("CamMoveUp", 'W');
+		GameEngineInput::CreateKey("CamMoveDown", 'S');
+		GameEngineInput::CreateKey("CamMoveForward", 'E');
+		GameEngineInput::CreateKey("CamMoveBack", 'Q');
 
-		GameEngineInput::CreateKey("RotY+", 'L');
-		GameEngineInput::CreateKey("RotY-", 'J');
-		GameEngineInput::CreateKey("RotZ+", 'O');
-		GameEngineInput::CreateKey("RotZ-", 'U');
-		GameEngineInput::CreateKey("RotX+", 'I');
-		GameEngineInput::CreateKey("RotX-", 'K');
-
+		GameEngineInput::CreateKey("CamRot", VK_RBUTTON);
 		GameEngineInput::CreateKey("SpeedBoost", VK_LSHIFT);
 		GameEngineInput::CreateKey("FreeCameraSwitch", 'P');
+		GameEngineInput::CreateKey("ProjectionModeChange", 'O');
 	}
 
 	//레스터라이저를 위한 뷰포트행렬 정보 세팅
@@ -44,14 +39,46 @@ void GameEngineCamera::Start()
 	ViewPortData.Height= GameEngineWindow::GetScreenSize().y;
 	ViewPortData.MinDepth = 0.0f;
 	ViewPortData.MaxDepth = 1.0f;
+
+	Width = ViewPortData.Width;
+	Height = ViewPortData.Height;
 }
 
 void GameEngineCamera::Update(float _DeltaTime)
 {
+	if (true == GameEngineInput::IsDown("ProjectionModeChange"))
+	{
+		switch (ProjectionType)
+		{
+		case CameraType::None:
+			break;
+		case CameraType::Perspective:
+			ProjectionType = CameraType::Orthogonal;
+			break;
+		case CameraType::Orthogonal:
+			ProjectionType = CameraType::Perspective;
+			break;
+		default:
+			break;
+		}
+	}
+
+
 	if (true == GameEngineInput::IsDown("FreeCameraSwitch"))
 	{
 		FreeCamera = !FreeCamera;
+
+		if (true == FreeCamera)
+		{
+			OldData = GetTransform()->GetTransDataRef();
+		}
+		else
+		{
+			GetTransform()->SetTransformData(OldData);
+		}
 	}
+
+
 
 	if (true == FreeCamera)
 	{
@@ -60,57 +87,45 @@ void GameEngineCamera::Update(float _DeltaTime)
 
 		if (true == GameEngineInput::IsPress("SpeedBoost"))
 		{
-			Speed = 500.0f;
+			Speed = 1000.0f;
 		}
 
 		if (true == GameEngineInput::IsPress("CamMoveLeft"))
 		{
-			GetTransform()->AddLocalPosition(float4::Left * Speed * _DeltaTime);
+			GetTransform()->AddLocalPosition(GetTransform()->GetWorldLeftVector() * Speed * _DeltaTime);
 		}
 		if (true == GameEngineInput::IsPress("CamMoveRight"))
 		{
-			GetTransform()->AddLocalPosition(float4::Right * Speed * _DeltaTime);
+			GetTransform()->AddLocalPosition(GetTransform()->GetWorldRightVector() * Speed * _DeltaTime);
 		}
 		if (true == GameEngineInput::IsPress("CamMoveUp"))
 		{
-			GetTransform()->AddLocalPosition(float4::Up * Speed * _DeltaTime);
+			GetTransform()->AddLocalPosition(GetTransform()->GetWorldUpVector() * Speed * _DeltaTime);
 		}
 		if (true == GameEngineInput::IsPress("CamMoveDown"))
 		{
-			GetTransform()->AddLocalPosition(float4::Down * Speed * _DeltaTime);
+			GetTransform()->AddLocalPosition(GetTransform()->GetWorldDownVector() * Speed * _DeltaTime);
 		}
 		if (true == GameEngineInput::IsPress("CamMoveForward"))
 		{
-			GetTransform()->AddLocalPosition(float4::Forward * Speed * _DeltaTime);
+			GetTransform()->AddLocalPosition(GetTransform()->GetWorldForwardVector() * Speed * _DeltaTime);
 		}
 		if (true == GameEngineInput::IsPress("CamMoveBack"))
 		{
-			GetTransform()->AddLocalPosition(float4::Back * Speed * _DeltaTime);
+			GetTransform()->AddLocalPosition(GetTransform()->GetWorldBackVector() * Speed * _DeltaTime);
 		}
 
-		if (true == GameEngineInput::IsPress("RotY+"))
+		if (true == GameEngineInput::IsPress("CamRot"))
 		{
-			GetTransform()->AddLocalRotation({ 0.0f, RotSpeed * _DeltaTime, 0.0f });
-		}
-		if (true == GameEngineInput::IsPress("RotY-"))
-		{
-			GetTransform()->AddLocalRotation({ 0.0f, -RotSpeed * _DeltaTime, 0.0f });
-		}
-		if (true == GameEngineInput::IsPress("RotZ+"))
-		{
-			GetTransform()->AddLocalRotation({ 0.0f, 0.0f, RotSpeed * _DeltaTime });
-		}
-		if (true == GameEngineInput::IsPress("RotZ-"))
-		{
-			GetTransform()->AddLocalRotation({ 0.0f, 0.0f, -RotSpeed * _DeltaTime });
-		}
-		if (true == GameEngineInput::IsPress("RotX+"))
-		{
-			GetTransform()->AddLocalRotation({ RotSpeed * _DeltaTime, 0.0f, 0.0f });
-		}
-		if (true == GameEngineInput::IsPress("RotX-"))
-		{
-			GetTransform()->AddLocalRotation({ -RotSpeed * _DeltaTime, 0.0f, 0.0f });
+			float4 Dir = GameEngineInput::GetMouseDirectionNormal();
+
+			float4 RotMouseDir;
+			//마우스를 상하로 흔들면 x축을 중심으로 회전한다
+			RotMouseDir.x = Dir.y;
+			//마우스를 좌우로 흔들면 y축을 중심으로 회전한다
+			RotMouseDir.y = Dir.x;
+
+			GetTransform()->AddWorldRotation(RotMouseDir);
 		}
 
 	}
@@ -123,11 +138,27 @@ void GameEngineCamera::Update(float _DeltaTime)
 	//뷰행렬 만들기
 	View.LookToLH(EyePos, EyeDir, EyeUp);
 
+
 	//투영행렬 만들기
-	float4 ScreenSize = GameEngineWindow::GetScreenSize();
-	Projection.PersperctiveFovLH(60.f, (ScreenSize.x / ScreenSize.y), Near, Far);
+	switch (ProjectionType)
+	{
+	case CameraType::None:
+	{
+		MsgAssert("카메라 투영이 설정되지 않았습니다.");
+		break;
+	}
+	case CameraType::Perspective:
+	Projection.PersperctiveFovLH(FOV, (Width / Height), Near, Far);
+		break;
+	case CameraType::Orthogonal:
+		Projection.OrthographicLH(Width, Height, Near, Far);
+		break;
+	default:
+		break;
+	}
 
 	//뷰포트행렬 만들기
+	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	ViewPort.ViewPort(ScreenSize.x, ScreenSize.y, 0.f, 0.f);
 }
 
