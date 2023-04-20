@@ -56,8 +56,8 @@ void TestLevel::Start()
 	Dir.MoveParentToDirectory("ContentsResource");
 	Dir.Move("ContentsResource");
 	std::string Path = Dir.GetPlusFileName("Bossintros_Yamada.avi").GetPathToString();
-	Video = GameEngineVideo::Load(Path);
-	Video->Play();
+	/*Video = GameEngineVideo::Load(Path);
+	Video->Play();*/
 
 	GameEngineInput::CreateKey("VideoStop", VK_ESCAPE);
 }

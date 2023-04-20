@@ -172,10 +172,19 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="FSMBase.h" />
+    <ClInclude Include="KeyMgr.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PrecompileHeader.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="RCGEnums.h" />
     <ClInclude Include="RCGLevel_Intro.h">
       <SubType>
       </SubType>
@@ -232,6 +241,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FSMBase.cpp" />
+    <ClCompile Include="KeyMgr.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerStateBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PrecompileHeader.cpp">
       <SubType>
       </SubType>

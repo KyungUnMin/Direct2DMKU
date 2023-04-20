@@ -94,13 +94,25 @@
     <Filter Include="05.FSM\02.Player\01.FSM">
       <UniqueIdentifier>{00356c02-2b31-40fc-9e12-8621d2b5ba05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="05.FSM\02.Player\02.StateBase">
+      <UniqueIdentifier>{b9c2713a-1869-4832-b9bb-43edd558ef9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\01.Core">
+      <UniqueIdentifier>{b2bb795d-a520-4e94-bf73-c507b5bd9a2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\02.Define">
+      <UniqueIdentifier>{483b9223-d2aa-462b-a0ef-59cf7aa8a30c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager">
+      <UniqueIdentifier>{329c6059-1984-41ac-acc1-11501f58b64a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager\01.KeyMgr">
+      <UniqueIdentifier>{18732f7e-e4d6-455c-b9e3-636b2e7860fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
       <Filter>_Pch</Filter>
-    </ClCompile>
-    <ClCompile Include="RCG_GameCore.cpp">
-      <Filter>01.Core</Filter>
     </ClCompile>
     <ClCompile Include="TestActor.cpp">
       <Filter>99.Test</Filter>
@@ -144,13 +156,19 @@
     <ClCompile Include="PlayerFSM.cpp">
       <Filter>05.FSM\02.Player\01.FSM</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerStateBase.cpp">
+      <Filter>05.FSM\02.Player\02.StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="RCG_GameCore.cpp">
+      <Filter>01.Core\01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>01.Core\03.Manager\01.KeyMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
       <Filter>_Pch</Filter>
-    </ClInclude>
-    <ClInclude Include="RCG_GameCore.h">
-      <Filter>01.Core</Filter>
     </ClInclude>
     <ClInclude Include="TestActor.h">
       <Filter>99.Test</Filter>
@@ -193,6 +211,18 @@
     </ClInclude>
     <ClInclude Include="PlayerFSM.h">
       <Filter>05.FSM\02.Player\01.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateBase.h">
+      <Filter>05.FSM\02.Player\02.StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="RCG_GameCore.h">
+      <Filter>01.Core\01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="RCGEnums.h">
+      <Filter>01.Core\02.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>01.Core\03.Manager\01.KeyMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

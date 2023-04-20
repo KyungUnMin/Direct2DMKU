@@ -15,6 +15,8 @@ RCG_GameCore::~RCG_GameCore()
 
 void RCG_GameCore::GameStart()
 {
+
+
 	GameEngineCore::CreateLevel<RCGLevel_Intro>();
 
 	GameEngineCore::ChangeLevel("RCGLevel_Intro");
