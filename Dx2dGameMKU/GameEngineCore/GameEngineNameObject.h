@@ -23,6 +23,11 @@ public:
 		return Name.c_str();
 	}
 
+	inline std::string GetNameToString() const
+	{
+		return Name;
+	}
+
 protected:
 
 private:

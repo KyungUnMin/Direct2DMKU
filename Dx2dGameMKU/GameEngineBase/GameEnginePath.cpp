@@ -57,11 +57,19 @@ std::string GameEnginePath::GetFileName() const
 }
 
 
+//확장자 알려주기
+std::string GameEnginePath::GetExtension() const
+{
+	return Path.extension().string();
+}
+
+
 //멤버변수 Path를 string으로 변환하는 함수
-std::string GameEnginePath::GetPathToString() const
+std::string GameEnginePath::GetFullPath() const
 {
 	return Path.string();
 }
+
 
 
 //상위 경로로 이동
@@ -125,7 +133,7 @@ bool GameEnginePath::IsExists()
 bool GameEnginePath::IsExistsToPlusString(const std::string_view& _String)
 {
 	//(멤버변수 Path)현재 경로 + 인자로 받은 경로
-	std::string Str = GetPathToString() + _String.data();
+	std::string Str = GetFullPath() + _String.data();
 	return 0 == _access(Str.c_str(), 0);
 }
 

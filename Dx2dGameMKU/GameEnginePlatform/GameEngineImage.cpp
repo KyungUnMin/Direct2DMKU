@@ -93,7 +93,7 @@ bool GameEngineImage::ImageCreate(const float4& _Scale)
 //ImageLoad(const std::string_view& _Path)¸¦ ·¡ÇÎ
 bool GameEngineImage::ImageLoad(const GameEnginePath& _Path)
 {
-	return ImageLoad(_Path.GetPathToString().c_str());
+	return ImageLoad(_Path.GetFullPath().c_str());
 }
 
 

@@ -1,12 +1,10 @@
 
-//지금은 알 수 없지만 나중에 상수버퍼할 때 알 수 있다
-GameEngineVertexShader::ShaderLoad
-	Flag |= D3DCOMPILE_PACK_MATRIX_ROW_MAJOR;
+	
+	트랜스폼 이동 쿠드, 노말 다시 한번 확인해보자
 
-	------------------------------
 
-	DirextX Tex?
-		git
 
+
+	
 	
 

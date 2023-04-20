@@ -2,12 +2,12 @@
 #include "GameEngineResource.h"
 #include <GameEngineCore/ThirdParty/DirectXTex/inc/DirectXTex.h>
 
-#pragma comment(lib, "DirectXTex.lib")
 
 //순수한 이미지 정보를 담는 리소스(API로 치면 HBITMAP)
 class GameEngineTexture : public GameEngineResource<GameEngineTexture>
 {
 	friend GameEngineDevice;
+	friend class GameEngineTextureSetter;
 
 public:
 	GameEngineTexture();
@@ -50,7 +50,7 @@ public:
 
 	ID3D11RenderTargetView* GetRTV()
 	{
-		return RenderTarget;
+		return RTV;
 	}
 
 protected:
@@ -60,7 +60,15 @@ private:
 	ID3D11Texture2D* Texture2D = nullptr;
 
 	//이 비트맵의 HDC
-	ID3D11RenderTargetView* RenderTarget = nullptr;
+	ID3D11RenderTargetView* RTV = nullptr;
+
+	//Shader Resource View(이 텍스처를 사용할 수 있는 권한)
+	ID3D11ShaderResourceView* SRV = nullptr;
+
+	//텍스처의 정보를 담고 있는 구조체
+	DirectX::TexMetadata Data = {};
+	//이미지
+	DirectX::ScratchImage Image;
 
 
 	//텍스처를 로드하는 부분
@@ -71,5 +79,8 @@ private:
 	void ResCreate(ID3D11Texture2D* _Value);
 
 	void CreateRenderTargetView();
+
+	void VSSetting(UINT _Slot);
+	void PSSetting(UINT _Slot);
 };
 

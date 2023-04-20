@@ -21,7 +21,10 @@ public:
 	std::string GetFileName() const;
 
 	//멤버변수 Path를 string으로 변환하는 함수
-	std::string GetPathToString() const;
+	std::string GetFullPath() const;
+
+	//확장자 알려주기
+	std::string GetExtension() const;
 
 	//상위 경로로 이동
 	void MoveParent();

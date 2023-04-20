@@ -22,7 +22,7 @@ void GameEngineFile::SaveBin(const GameEngineSerializer& _Data)
 	FILE* FilePtr = nullptr;
 
 	//저장할 파일의 절대경로 string으로 받아오기
-	std::string PathString = Path.GetPathToString();
+	std::string PathString = Path.GetFullPath();
 	//바이트쓰기 모드로 파일 열기
 	std::string Text = "wb";
 
@@ -51,7 +51,7 @@ void GameEngineFile::SaveText(const std::string_view& _View)
 	FILE* FilePtr = nullptr;
 
 	//저장할 파일의 절대경로 string으로 받아오기
-	std::string PathString = Path.GetPathToString();
+	std::string PathString = Path.GetFullPath();
 	//텍스트쓰기 모드로 파일 열기
 	std::string Text = "wt";
 
@@ -80,7 +80,7 @@ void GameEngineFile::LoadBin(GameEngineSerializer& _Data)
 	FILE* FilePtr = nullptr;
 
 	//읽을 파일의 절대경로 string으로 받아오기
-	std::string PathString = Path.GetPathToString();
+	std::string PathString = Path.GetFullPath();
 	//바이트읽기 모드로 파일 열기
 	std::string Text = "rb";
 

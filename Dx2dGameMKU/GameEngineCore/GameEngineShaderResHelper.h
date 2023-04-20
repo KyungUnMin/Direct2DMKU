@@ -1,6 +1,7 @@
 #pragma once
 #include "GameEngineConstantBuffer.h"
 #include "GameEngineTexture.h"
+#include "GameEngineSampler.h"
 
 
 /*
@@ -40,11 +41,15 @@ class GameEngineTextureSetter : public GameEngineShaderResources
 public:
 	std::shared_ptr<GameEngineTexture> Res;
 
-
-	void Setting() override{}
+	void Setting() override;
 };
 
-
+class GameEngineSamplerSetter : public GameEngineShaderResources
+{
+public:
+	std::shared_ptr<GameEngineSampler> Res;
+	void Setting() override;
+};
 
 
 //-------------------------Helper-----------------------
@@ -58,13 +63,25 @@ private:
 	// 그에비해 쉐이더 파일에서는 버텍스쉐이더와 픽셀쉐이더의 Input 상수값이 겹칠수가 있다
 	//때문에 버텍스 쉐이더와 픽셀 쉐이더가 동일한 이름을 가진 경우를 고려해서
 	//멀티맵으로 만들었다
-	std::multimap<std::string, GameEngineConstantBufferSetter> ConstantBuffer;
+	std::multimap<std::string, GameEngineConstantBufferSetter> ConstantBufferSetters;
+	std::multimap<std::string, GameEngineTextureSetter> TextureSetters;
+	std::multimap<std::string, GameEngineSamplerSetter> SamplerSetters;
 
 public:
-	//자료구조에 저장
-	void CreateConstantBufferSetter(const GameEngineConstantBufferSetter& _Buffer)
+	//자료구조에 저장(쉐이더에서 리플렉션으로 파일 조사할때 호출됨)
+	void CreateTextureSetter(const GameEngineTextureSetter& _Setter)
 	{
-		ConstantBuffer.insert(std::make_pair(_Buffer.Name, _Buffer));
+		TextureSetters.insert(std::make_pair(_Setter.Name, _Setter));
+	}
+
+	void CreateSamplerSetter(const GameEngineSamplerSetter& _Setter)
+	{
+		SamplerSetters.insert(std::make_pair(_Setter.Name, _Setter));
+	}
+
+	void CreateConstantBufferSetter(const GameEngineConstantBufferSetter& _Setter)
+	{
+		ConstantBufferSetters.insert(std::make_pair(_Setter.Name, _Setter));
 	}
 
 
@@ -73,9 +90,9 @@ public:
 	bool IsConstantBufferSetter(const std::string_view& _Name)
 	{
 		std::string UpperName = GameEngineString::ToUpper(_Name);
-		std::multimap<std::string, GameEngineConstantBufferSetter>::iterator FindIter = ConstantBuffer.find(UpperName);
+		std::multimap<std::string, GameEngineConstantBufferSetter>::iterator FindIter = ConstantBufferSetters.find(UpperName);
 
-		if (ConstantBuffer.end() == FindIter)
+		if (ConstantBufferSetters.end() == FindIter)
 			return false;
 
 		return true;
@@ -98,6 +115,6 @@ public:
 	void Copy(const GameEngineShaderResHelper& _ResHelper);
 
 
-	//자신 안에 있는 상수버퍼세터들의 Setting함수들을 호출시켜준다
+	//자신 안에 있는 상수버퍼세터나 다른 리소스들의 Setting함수들을 호출시켜준다
 	void Setting();
 };

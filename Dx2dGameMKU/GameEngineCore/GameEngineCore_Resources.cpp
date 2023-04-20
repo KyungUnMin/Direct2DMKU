@@ -23,10 +23,45 @@
 
 void GameEngineCore::CoreResourceInit()
 {
+	//텍스처 로드
+	{
+		GameEngineDirectory NewDir;
+		NewDir.MoveParentToDirectory("EngineResources");
+		NewDir.Move("EngineResources");
+
+		std::vector<GameEngineFile> File = NewDir.GetAllFile({ ".Png", });
+
+		for (size_t i = 0; i < File.size(); ++i)
+		{
+			GameEngineTexture::Load(File[i].GetFullPath());
+		}
+
+	}
+
+
 	//쉐이더 파일의 시맨틱 문법을 위한 자료형 표현
 	GameEngineVertex::LayOut.AddInputLayOut("POSITION", DXGI_FORMAT_R32G32B32A32_FLOAT);
-	GameEngineVertex::LayOut.AddInputLayOut("COLOR", DXGI_FORMAT_R32G32B32A32_FLOAT);
+	GameEngineVertex::LayOut.AddInputLayOut("TEXCOORD", DXGI_FORMAT_R32G32B32A32_FLOAT);
 	//이때 쉐이더 파일에서 시맨틱 문법의 순서와 LayOut에 넣어주는 자료형 이름의 순서는 동일해야 한다
+
+
+	//구조상 샘플러는 쉐이더 로드하기 전에 만들어야 함(엔진에서 지원해주는 기본 샘플러)
+	{
+		D3D11_SAMPLER_DESC SamplerData = {};
+
+		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
+		SamplerData.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
+		SamplerData.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
+
+		// 텍스처가 멀리있을때 뭉갤꺼냐 -> 안뭉갠다.
+		SamplerData.MipLODBias = 0.0f;
+		SamplerData.MaxAnisotropy = 1;
+		SamplerData.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+		SamplerData.MinLOD = -FLT_MAX;
+		SamplerData.MaxLOD = FLT_MAX;
+
+		GameEngineSampler::Create("CLAMPSAMPLER", SamplerData);
+	}
 
 
 	//버텍스 버퍼 & 인덱스 버퍼 만들기
@@ -34,10 +69,10 @@ void GameEngineCore::CoreResourceInit()
 		std::vector<GameEngineVertex> ArrVertex;
 		ArrVertex.resize(4);
 		// 앞면
-		ArrVertex[0] = { { -0.5f, 0.5f, 0.0f }, float4::Red };
-		ArrVertex[1] = { { 0.5f, 0.5f, 0.0f }, float4::Green };
-		ArrVertex[2] = { { 0.5f, -0.5f, 0.0f }, float4::Black };
-		ArrVertex[3] = { { -0.5f, -0.5f, 0.0f }, float4::White };
+		ArrVertex[0] = { { -0.5f, 0.5f, 0.0f }, {0.0f, 0.0f} };
+		ArrVertex[1] = { { 0.5f, 0.5f, 0.0f }, {1.0f, 0.0f} };
+		ArrVertex[2] = { { 0.5f, -0.5f, 0.0f }, {1.0f, 1.0f} };
+		ArrVertex[3] = { { -0.5f, -0.5f, 0.0f }, {0.0f, 1.0f} };
 
 		std::vector<UINT> ArrIndex = { 0, 1, 2, 0, 2, 3 };
 
@@ -88,8 +123,8 @@ void GameEngineCore::CoreResourceInit()
 	//버텍스 쉐이더 컴파일
 	{
 		GameEngineDirectory NewDir;
-		NewDir.MoveParentToDirectory("EngineResource");
-		NewDir.Move("EngineResource");
+		NewDir.MoveParentToDirectory("EngineResources");
+		NewDir.Move("EngineResources");
 		NewDir.Move("Shader");
 
 		//해당 확장자를 가지고 있는 파일 가져오기

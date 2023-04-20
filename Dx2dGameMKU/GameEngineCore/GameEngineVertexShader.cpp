@@ -32,7 +32,13 @@ void GameEngineVertexShader::ShaderLoad(
 	Flag = D3D10_SHADER_DEBUG;
 #endif
 
-	//지금은 알 수 없지만 나중에 상수버퍼할 때 알 수 있다
+	/*
+		쉐이더 파일 기본적으로 왼쪽부터 세로로 들어간다
+		그래서 전치행렬 처럼 들어간다
+		(왼쪽부터 병렬처리 되서 그런가?)
+		
+		때문에 아래 옵션 꼭 넣어주어야 한다
+	*/
 	Flag |= D3DCOMPILE_PACK_MATRIX_ROW_MAJOR;
 
 
