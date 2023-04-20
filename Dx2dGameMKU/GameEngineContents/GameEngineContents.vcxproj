@@ -171,8 +171,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DirectShow.h" />
     <ClInclude Include="PrecompileHeader.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RCG_GameCore.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -190,7 +193,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="DirectShow.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">
       <SubType>
       </SubType>
@@ -198,6 +200,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RCG_GameCore.cpp">
+      <SubType>
+      </SubType>
     </ClCompile>
     <ClCompile Include="TestActor.cpp">
       <SubType>

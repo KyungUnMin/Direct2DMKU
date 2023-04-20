@@ -25,16 +25,29 @@ public:
 	static std::shared_ptr<GameEngineVideo> Load(const std::string_view& _Path, const std::string_view& _Name)
 	{
 		std::shared_ptr<GameEngineVideo> Res = GameEngineResource::Create(_Name);
-		Res->VideoLoad(_Path);
+		Res->ResLoad(_Path);
 		return Res;
 	}
 
 	void Play();
+	void Stop();
+	bool IsFinished();
+
 
 protected:
 
 
 private:
+	enum class VideoState
+	{
+		Init,
+		Running,
+		Stop,
+
+		UNKNOWN,
+	};
+
+	VideoState CurState = VideoState::UNKNOWN;
 
 	//이 인터페이스는 애플리케이션이 필터 그래프를 작성할 수 있도록 하는 메소드를 제공합니다(마소 공식 문서)
 	//Dx의 Factory와 비슷한 개념으로 보입니다.
@@ -64,7 +77,7 @@ private:
 	IVideoFrameStep* FrameStep = nullptr;
 
 	//동영상을 로드합니다
-	void VideoLoad(const std::string_view& _Path);
+	void ResLoad(const std::string_view& _Path);
 
 	void Release();
 };

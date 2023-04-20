@@ -18,7 +18,6 @@ public:
 protected:
 
 private:
-	static std::shared_ptr<class CDirectShow> DS;
-	static std::shared_ptr<class GameEngineVideo> Video;
+	
 };
 

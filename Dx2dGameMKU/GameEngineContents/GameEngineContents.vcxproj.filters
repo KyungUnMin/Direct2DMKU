@@ -17,7 +17,9 @@
     <ClCompile Include="PrecompileHeader.cpp">
       <Filter>_Pch</Filter>
     </ClCompile>
-    <ClCompile Include="DirectShow.cpp" />
+    <ClCompile Include="RCG_GameCore.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsCore.h">
@@ -28,6 +30,8 @@
     <ClInclude Include="PrecompileHeader.h">
       <Filter>_Pch</Filter>
     </ClInclude>
-    <ClInclude Include="DirectShow.h" />
+    <ClInclude Include="RCG_GameCore.h">
+      <Filter>01.Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

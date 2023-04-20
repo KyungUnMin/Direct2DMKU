@@ -3,9 +3,11 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEnginePlatform/GameEngineSound.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineResource.h>
 #include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineVideo.h>
 
 TestLevel::TestLevel()
 {
@@ -47,4 +49,33 @@ void TestLevel::Start()
 	//GameEngineDirectory Dir;
 	//Dir.MoveParentToDirectory("ContentsResources");
 	//Dir.Move("ContentsResources");
+
+
+
+	GameEngineDirectory Dir;
+	Dir.MoveParentToDirectory("ContentsResource");
+	Dir.Move("ContentsResource");
+	std::string Path = Dir.GetPlusFileName("Bossintros_Yamada.avi").GetPathToString();
+	Video = GameEngineVideo::Load(Path);
+	Video->Play();
+
+	GameEngineInput::CreateKey("VideoStop", VK_ESCAPE);
+}
+
+void TestLevel::Update(float _DeltaTime)
+{
+	if (nullptr == Video)
+		return;
+
+	if (true == Video->IsFinished())
+	{
+		Video->Stop();
+		Video = nullptr;
+	}
+
+	if (true == GameEngineInput::IsDown("VideoStop"))
+	{
+		Video->Stop();
+		Video = nullptr;
+	}
 }
