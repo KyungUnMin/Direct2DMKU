@@ -65,10 +65,10 @@ void GameEngineCore::EngineUpdate()
 	MainLevel->Update(TimeDeltaTime);
 
 	//렌더링을 시작하기 전에 이전 이미지들을 지운다
-	//GameEngineDevice::RenderStart();
-	//MainLevel->Render(TimeDeltaTime);
-	////더블버퍼링을 이용해서 렌더링을 처리한다
-	//GameEngineDevice::RenderEnd();
+	GameEngineDevice::RenderStart();
+	MainLevel->Render(TimeDeltaTime);
+	//더블버퍼링을 이용해서 렌더링을 처리한다
+	GameEngineDevice::RenderEnd();
 }
 
 void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)

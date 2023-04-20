@@ -12,6 +12,9 @@ public:
 	RCG_GameCore& operator=(const RCG_GameCore& _Other) = delete;
 	RCG_GameCore& operator=(const RCG_GameCore&& _Other) noexcept = delete;
 
+	static void GameStart();
+	static void GameEnd();
+
 protected:
 
 private:

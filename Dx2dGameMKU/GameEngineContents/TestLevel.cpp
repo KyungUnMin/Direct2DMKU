@@ -64,6 +64,10 @@ void TestLevel::Start()
 
 void TestLevel::Update(float _DeltaTime)
 {
+	GameEngineLevel::Update(_DeltaTime);
+	if (true == GetMainCamera()->IsFreeCamera())
+		return;
+	
 	if (nullptr == Video)
 		return;
 

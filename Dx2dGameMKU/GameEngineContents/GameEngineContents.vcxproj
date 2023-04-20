@@ -171,7 +171,40 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FSMBase.h" />
     <ClInclude Include="PrecompileHeader.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RCGLevel_Intro.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldActorBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldLevelBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldBoss_MisuzuLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Field_SchoolLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldPlayer.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -179,6 +212,11 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PlayerFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StateBase.h" />
     <ClInclude Include="TestActor.h">
       <SubType>
       </SubType>
@@ -193,6 +231,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FSMBase.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">
       <SubType>
       </SubType>
@@ -201,10 +240,47 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="RCGLevel_Intro.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldActorBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldLevelBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldBoss_MisuzuLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Field_SchoolLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldPlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="RCG_GameCore.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PlayerFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="StateBase.cpp" />
     <ClCompile Include="TestActor.cpp">
       <SubType>
       </SubType>

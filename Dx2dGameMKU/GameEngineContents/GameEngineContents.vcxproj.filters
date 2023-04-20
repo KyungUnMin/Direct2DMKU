@@ -7,31 +7,192 @@
     <Filter Include="_Pch">
       <UniqueIdentifier>{c4f1183a-aa1a-4407-8fbd-caa41a75cf13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Level">
+      <UniqueIdentifier>{6f74579d-18fb-4292-b1e2-1a3cdc8db269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Test">
+      <UniqueIdentifier>{27ed89a4-e824-48e3-84e2-88804f4e9f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\01.Cinematic">
+      <UniqueIdentifier>{d5629088-d655-4205-bd0f-d8569c16ca5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\01.Cinematic\01.Opening">
+      <UniqueIdentifier>{2d5106a9-e4d0-4ddc-8f5f-ce983726fb6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\01.Cinematic\02.Ending">
+      <UniqueIdentifier>{1f539a17-c952-4991-b5cf-0233ea7af1ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field">
+      <UniqueIdentifier>{4c12e173-ff01-454c-a008-435915bc5cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\03.Shop">
+      <UniqueIdentifier>{895b2567-74af-46d9-80da-176922153b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\03.Shop\01.Gym">
+      <UniqueIdentifier>{9040b2ae-22bb-48b3-9207-5335ab7b6dc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\03.Shop\02.Burger">
+      <UniqueIdentifier>{33f21ba6-2b3d-4b72-8e72-f46868f62be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\03.Shop\03.Store">
+      <UniqueIdentifier>{d8f213e8-97ee-446e-839b-a625effadafa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor">
+      <UniqueIdentifier>{aa569671-3c47-43ea-897a-7b9159ef1b89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\02.School">
+      <UniqueIdentifier>{3e8d08e2-1c7b-411f-b131-6e10a686dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\03.BossMisuzu">
+      <UniqueIdentifier>{7fda5a4c-2dd9-42de-be81-9829be8d1ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\04.CrossTown1">
+      <UniqueIdentifier>{ef3d52a3-cf50-42bf-97cf-21eb3c78417b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\05.CrossTown2">
+      <UniqueIdentifier>{f8d9643e-c72b-44f6-a581-3b5013fc512f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\06.CrossTown3">
+      <UniqueIdentifier>{aff7705e-f6da-424a-82a4-122afadd89ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\07.BossYamada">
+      <UniqueIdentifier>{8ac5f9fe-c152-46dc-bbd1-4b30bc498902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\08.Ocean">
+      <UniqueIdentifier>{824f777f-801b-4853-a116-4c876f085304}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\09.BossNoise">
+      <UniqueIdentifier>{58f2083b-0256-4110-bd02-ca31f3e209ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\02.Field\01.FieldBase">
+      <UniqueIdentifier>{296b1726-456e-4413-94df-688952ba2bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\01.UI">
+      <UniqueIdentifier>{217c596a-465e-496e-aa26-146074249a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\02.FieldActorBase">
+      <UniqueIdentifier>{7c5dd5d2-a154-486b-ac83-fa02ad6388cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldPlayer">
+      <UniqueIdentifier>{9bfba157-1d40-47f0-a66a-be65b68451e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM">
+      <UniqueIdentifier>{0ba3daf2-4131-4772-a06d-f1eeaec8e087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\01.Base">
+      <UniqueIdentifier>{434f063c-f3d1-4c63-871a-680033109664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\01.Base\01.FSMBase">
+      <UniqueIdentifier>{aafd344c-a59f-4a8d-80c2-2243b26b0e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\01.Base\02.StateBase">
+      <UniqueIdentifier>{54ceee0c-9c8a-4365-b4cb-53533d420043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\02.Player">
+      <UniqueIdentifier>{08e2c60e-9fcf-47e6-8263-22ad2e4cb5d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\02.Player\01.FSM">
+      <UniqueIdentifier>{00356c02-2b31-40fc-9e12-8621d2b5ba05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ContentsCore.cpp">
-      <Filter>01.Core</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp" />
-    <ClCompile Include="TestActor.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">
       <Filter>_Pch</Filter>
     </ClCompile>
     <ClCompile Include="RCG_GameCore.cpp">
       <Filter>01.Core</Filter>
     </ClCompile>
+    <ClCompile Include="TestActor.cpp">
+      <Filter>99.Test</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>99.Test</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsCore.cpp">
+      <Filter>99.Test</Filter>
+    </ClCompile>
+    <ClCompile Include="RCGLevel_Intro.cpp">
+      <Filter>99.Test</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <Filter>02.Level\01.Cinematic\01.Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="Field_SchoolLevel.cpp">
+      <Filter>02.Level\02.Field\02.School</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldBoss_MisuzuLevel.cpp">
+      <Filter>02.Level\02.Field\03.BossMisuzu</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldLevelBase.cpp">
+      <Filter>02.Level\02.Field\01.FieldBase</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldActorBase.cpp">
+      <Filter>03.Actor\02.FieldActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldPlayer.cpp">
+      <Filter>03.Actor\03.FieldPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMBase.cpp">
+      <Filter>05.FSM\01.Base\01.FSMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="StateBase.cpp">
+      <Filter>05.FSM\01.Base\02.StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFSM.cpp">
+      <Filter>05.FSM\02.Player\01.FSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ContentsCore.h">
-      <Filter>01.Core</Filter>
-    </ClInclude>
-    <ClInclude Include="TestLevel.h" />
-    <ClInclude Include="TestActor.h" />
     <ClInclude Include="PrecompileHeader.h">
       <Filter>_Pch</Filter>
     </ClInclude>
     <ClInclude Include="RCG_GameCore.h">
       <Filter>01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TestActor.h">
+      <Filter>99.Test</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <Filter>99.Test</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsCore.h">
+      <Filter>99.Test</Filter>
+    </ClInclude>
+    <ClInclude Include="RCGLevel_Intro.h">
+      <Filter>99.Test</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <Filter>02.Level\01.Cinematic\01.Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="Field_SchoolLevel.h">
+      <Filter>02.Level\02.Field\02.School</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldBoss_MisuzuLevel.h">
+      <Filter>02.Level\02.Field\03.BossMisuzu</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldLevelBase.h">
+      <Filter>02.Level\02.Field\01.FieldBase</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldActorBase.h">
+      <Filter>03.Actor\02.FieldActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldPlayer.h">
+      <Filter>03.Actor\03.FieldPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="FSMBase.h">
+      <Filter>05.FSM\01.Base\01.FSMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="StateBase.h">
+      <Filter>05.FSM\01.Base\02.StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFSM.h">
+      <Filter>05.FSM\02.Player\01.FSM</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
