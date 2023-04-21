@@ -41,6 +41,7 @@ public:
 	//그 때 시맨틱 문법(쉐이더 파일 Input구조체)과 순서는 달라도 이름은 똑같아야 한다, 가능하면 순서도 같게 하자
 	float4 POSITION;
 	float4 UV;
+	float4 NORMAL;
 
 	//TODO...
 };

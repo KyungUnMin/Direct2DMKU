@@ -77,20 +77,20 @@ Texture2D DiffuseTex : register(t0);
 
 //텍스처를 메쉬에 어떻게 매핑할까 라는 규칙을 샘플러라고 한다(색상 결정하는 공식, 옵션)
 //UVW 는 각각 XYZ를 의미한다
-SamplerState CLAMPSAMPLER : register(s0);
+SamplerState WRAPSAMPLER : register(s0);
 
 //픽셀 쉐이더가 끝나면 다음 단계는 아웃풋 머지다.
 //그래서 어떤 RTV에 그릴지에 대해 명시해주어야 한다(0번 도화지에 그려라)
 float4 Texture_PS(Output _Value) : SV_Target0
 {
     //샘플러 설정(0~1사이의 UV값)
-    float4 Color = DiffuseTex.Sample(CLAMPSAMPLER, _Value.UV.xy);
+    float4 Color = DiffuseTex.Sample(WRAPSAMPLER, _Value.UV.xy);
 
     //현재 픽셀을 출력하지 않는 함수
-     //if (0.5 < _Value.Color.x)
-    //{
-    //    clip(-1);
-    //}
+    if (Color.a == 0)
+    {
+        clip(-1);
+    }
     
     return Color;
 }

@@ -12,6 +12,12 @@ public:
 	GameEngineRenderingPipeLine& operator=(const GameEngineRenderingPipeLine& _Other) = delete;
 	GameEngineRenderingPipeLine& operator=(const GameEngineRenderingPipeLine&& _Other) noexcept = delete;
 
+	static std::shared_ptr<GameEngineRenderingPipeLine> Create(const std::string_view& _Name)
+	{
+		std::shared_ptr<class GameEngineRenderingPipeLine> NewRes = GameEngineResource<GameEngineRenderingPipeLine>::Create(_Name);
+		return NewRes;
+	}
+
 	inline  std::shared_ptr<class GameEngineVertexShader> GetVertexShader() const
 	{
 		return VertexShaderPtr;
@@ -33,6 +39,9 @@ public:
 		FILL_MODE = _Value;
 	}
 
+	//GPU에 랜더링 파이프 라인을 세팅하는 단계들
+	void RenderingPipeLineSetting();
+	//실질적으로 그리는 단계
 	void Render();
 
 

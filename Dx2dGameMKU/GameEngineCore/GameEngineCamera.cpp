@@ -21,10 +21,10 @@ void GameEngineCamera::Start()
 	{
 		GameEngineInput::CreateKey("CamMoveLeft", 'A');
 		GameEngineInput::CreateKey("CamMoveRight", 'D');
-		GameEngineInput::CreateKey("CamMoveUp", 'W');
-		GameEngineInput::CreateKey("CamMoveDown", 'S');
-		GameEngineInput::CreateKey("CamMoveForward", 'E');
-		GameEngineInput::CreateKey("CamMoveBack", 'Q');
+		GameEngineInput::CreateKey("CamMoveUp", 'E');
+		GameEngineInput::CreateKey("CamMoveDown", 'Q');
+		GameEngineInput::CreateKey("CamMoveForward", 'W');
+		GameEngineInput::CreateKey("CamMoveBack", 'S');
 
 		GameEngineInput::CreateKey("CamRot", VK_RBUTTON);
 		GameEngineInput::CreateKey("SpeedBoost", VK_LSHIFT);

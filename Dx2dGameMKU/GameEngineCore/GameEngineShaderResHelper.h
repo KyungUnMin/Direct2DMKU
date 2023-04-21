@@ -108,6 +108,8 @@ public:
 	// CPU의 값과 GPU의 상수버퍼 값을 연동시키는 함수(아직 GPU의 상수버퍼 값이 변경된 것은 아님, 변경은 setting함수에서 일어남)
 	void SetConstantBufferLink(const std::string_view& _Name, const void* _Data, UINT _Size);
 
+	//텍스처 세팅
+	void SetTexture(const std::string_view& _SettingName, const std::string_view& _ImageName);
 
 	/*같은 랜파를 쓸 때 랜더러마다 다른 상수나 텍스처를 넣어주기 위함
 		그래서 Copy를 통해 쉐이더 리소스 헬퍼에 있는 세터들을 복시 한다

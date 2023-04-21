@@ -46,9 +46,8 @@ void TestActor::Start()
 	Render0->SetPipeLine("2DTexture");
 	//Render0->GetShaderResHelper().SetConstantBufferLink("OutPixelColor", TestColor);
 	
-	Render0->GetTransform()->SetLocalScale({ 100.f, 100.f, 100.f });
-
-	TestColor = { 0.f, 0.f, 0.f, 1.f };
+	Render0->GetTransform()->SetLocalScale({ 100.f, 200.f, 100.f });
+	Render0->GetShaderResHelper().SetTexture("DiffuseTex", "RCG_Kyoko_battlestart0019_anio.png");
 
 	//Render1 = CreateComponent<GameEngineRenderer>();
 	//Render1->SetPipeLine("2DTexture");

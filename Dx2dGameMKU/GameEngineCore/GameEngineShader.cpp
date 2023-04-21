@@ -92,6 +92,12 @@ void GameEngineShader::ShaderResCheck()
 			//이후에 별도로 텍스처를 설정해주지 않으면 이 텍스처로 지정된다
 			std::shared_ptr<GameEngineTexture> Res = GameEngineTexture::Find("EngineBaseTex.png");
 
+			if (nullptr == Res)
+			{
+				MsgAssert("다음의 샘플러가 존재하지 않아서 쉐이더에 세팅해줄 수 가 없습니다 " + UpperName);
+				return;
+			}
+
 			GameEngineTextureSetter Setter;
 			Setter.ParentShader = this;
 			Setter.Name = UpperName;

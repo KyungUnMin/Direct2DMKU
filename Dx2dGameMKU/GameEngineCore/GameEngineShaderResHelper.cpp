@@ -189,3 +189,36 @@ void GameEngineShaderResHelper::SetConstantBufferLink(const std::string_view& _N
 
 }
 
+void GameEngineShaderResHelper::SetTexture(const std::string_view& _SettingName, const std::string_view& _ImageName)
+{
+	std::string UpperName = GameEngineString::ToUpper(_SettingName);
+	std::multimap<std::string, GameEngineTextureSetter>::iterator FindIter = TextureSetters.find(UpperName);
+
+	if (TextureSetters.end() == FindIter)
+	{
+		MsgAssert("쉐이더에서 이런 이름의 텍스처 세팅을 사용하지 않았습니다: " + UpperName);
+		return;
+	}
+
+	//찾은 값중 가장 앞쪽의 값
+	std::multimap<std::string, GameEngineTextureSetter>::iterator NameStartIter = TextureSetters.lower_bound(UpperName);
+
+	//찾은 값중 가장 뒤쪽의 값
+	std::multimap<std::string, GameEngineTextureSetter>::iterator NameEndIter = TextureSetters.upper_bound(UpperName);
+
+	std::shared_ptr<GameEngineTexture> FindTex = GameEngineTexture::Find(_ImageName);
+	if (nullptr == FindTex)
+	{
+		MsgAssert("이런 이름의 텍스처는 로드한 적이 없습니다: " + UpperName);
+		return;
+	}
+
+	//모두 변경
+	for (; (NameStartIter != NameEndIter); ++NameStartIter)
+	{
+		GameEngineTextureSetter& Setter = NameStartIter->second;
+		Setter.Res = FindTex;
+	}
+
+}
+

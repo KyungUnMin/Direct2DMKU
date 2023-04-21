@@ -54,8 +54,6 @@ void GameEngineRenderingPipeLine::VertexShader()
 
 void GameEngineRenderingPipeLine::InputAssembler2()
 {
-	GameEngineDevice::GetContext()->IASetPrimitiveTopology(TOPOLOGY);
-
 	if (nullptr == IndexBufferPtr)
 	{
 		MsgAssert("인덱스 버퍼가 존재하지 않아서 인풋어셈블러2 과정을 실행할 수 없습니다.");
@@ -63,6 +61,8 @@ void GameEngineRenderingPipeLine::InputAssembler2()
 	}
 
 	IndexBufferPtr->Setting();
+
+	GameEngineDevice::GetContext()->IASetPrimitiveTopology(TOPOLOGY);
 }
 
 
@@ -190,7 +190,7 @@ void GameEngineRenderingPipeLine::SetPixelShader(const std::string_view& _Value)
 
 
 
-void GameEngineRenderingPipeLine::Render()
+void GameEngineRenderingPipeLine::RenderingPipeLineSetting()
 {
 	//GPU에 랜더링 파이프 라인을 세팅하는 단계들
 	InputAssembler1();
@@ -203,8 +203,10 @@ void GameEngineRenderingPipeLine::Render()
 	Rasterizer();
 	PixelShader();
 	OutputMerger();
+}
 
-
+void GameEngineRenderingPipeLine::Render()
+{
 	//실질적으로 그리는 단계(그리는 방법이 여러가지지만 그 중 꼭 인덱스버퍼를 이용해서 그릴 것)
 	UINT IndexCount = IndexBufferPtr->GetIndexCount();
 	GameEngineDevice::GetContext()->DrawIndexed(IndexCount, 0, 0);

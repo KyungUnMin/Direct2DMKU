@@ -4,6 +4,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineSound.h>
 #include "GameEngineResource.h"
+#include "GameEngineShaderResHelper.h"
 
 #include "GameEngineVertex.h"
 
@@ -42,6 +43,7 @@ void GameEngineCore::CoreResourceInit()
 	//쉐이더 파일의 시맨틱 문법을 위한 자료형 표현
 	GameEngineVertex::LayOut.AddInputLayOut("POSITION", DXGI_FORMAT_R32G32B32A32_FLOAT);
 	GameEngineVertex::LayOut.AddInputLayOut("TEXCOORD", DXGI_FORMAT_R32G32B32A32_FLOAT);
+	GameEngineVertex::LayOut.AddInputLayOut("NORMAL", DXGI_FORMAT_R32G32B32A32_FLOAT);
 	//이때 쉐이더 파일에서 시맨틱 문법의 순서와 LayOut에 넣어주는 자료형 이름의 순서는 동일해야 한다
 
 
@@ -61,6 +63,23 @@ void GameEngineCore::CoreResourceInit()
 		SamplerData.MaxLOD = FLT_MAX;
 
 		GameEngineSampler::Create("CLAMPSAMPLER", SamplerData);
+	}
+
+	{
+		D3D11_SAMPLER_DESC SamplerData = {};
+
+		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+		SamplerData.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+		SamplerData.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+
+		// 텍스처가 멀리있을때 뭉갤꺼냐 -> 안뭉갠다.
+		SamplerData.MipLODBias = 0.0f;
+		SamplerData.MaxAnisotropy = 1;
+		SamplerData.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+		SamplerData.MinLOD = -FLT_MAX;
+		SamplerData.MaxLOD = FLT_MAX;
+
+		GameEngineSampler::Create("WRAPSAMPLER", SamplerData);
 	}
 
 
@@ -131,7 +150,7 @@ void GameEngineCore::CoreResourceInit()
 		std::vector<GameEngineFile> Files = NewDir.GetAllFile({ ".hlsl",".fx" });
 
 		//일단 쉐이더 파일 하나만 컴파일하기
-		GameEngineVertexShader::Load(Files[0].GetFullPath(), "Texture_VS");
+		std::shared_ptr<GameEngineVertexShader> VertexShader = GameEngineVertexShader::Load(Files[0].GetFullPath(), "Texture_VS");
 		GameEnginePixelShader::Load(Files[0].GetFullPath(), "Texture_PS");
 	}
 

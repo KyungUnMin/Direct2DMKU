@@ -36,6 +36,8 @@ void GameEngineRenderer::Render(float _DeltaTime)
 	//카메라 뷰행렬와 투영행렬 연산
 	GetTransform()->SetCameraMatrix(MainCamera->GetView(), MainCamera->GetProjection());
 
+	Pipe->RenderingPipeLineSetting();
+
 	//텍스처 세팅, 상수버퍼 세팅 등이 이루어진다.
 	ShaderResHelper.Setting();
 
