@@ -4,7 +4,7 @@
 #include "GameEngineConstantBuffer.h"
 
 
-
+//이 ResHelper(주로 렌더러에 있는 헬퍼)에 있는 세터들에 인자로 받은 ResHelper의 세터를 옮긴다
 void GameEngineShaderResHelper::Copy(const GameEngineShaderResHelper& _ResHelper)
 {
 	for (const std::pair<std::string, GameEngineConstantBufferSetter>& Setter : _ResHelper.ConstantBufferSetters)
