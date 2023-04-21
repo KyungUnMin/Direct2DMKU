@@ -33,6 +33,7 @@ protected:
 	virtual void Start(){}
 	virtual void EnterState() {}
 	virtual void Update(float _DeltaTime) {}
+	virtual void Render(float _DeltaTime) {}
 	virtual void ExitState() {}
 
 private:

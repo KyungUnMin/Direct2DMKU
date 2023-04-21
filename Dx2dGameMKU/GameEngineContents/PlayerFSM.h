@@ -11,8 +11,6 @@ enum class PlayerStateType
 	COUNT
 };
 
-class FieldPlayer;
-
 class PlayerFSM : public FSMBase
 {
 public:
@@ -24,18 +22,12 @@ public:
 	PlayerFSM& operator=(const PlayerFSM& _Other) = delete;
 	PlayerFSM& operator=(const PlayerFSM&& _Other) noexcept = delete;
 
-	void Init(FieldPlayer* _Player);
-
-	inline FieldPlayer* GetPlayer() const
-	{
-		return Player;
-	}
+	void Init();
 
 protected:
 
 
 private:
-	FieldPlayer* Player = nullptr;
 
 };
 

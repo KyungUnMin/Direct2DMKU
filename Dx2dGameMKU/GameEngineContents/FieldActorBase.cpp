@@ -10,3 +10,11 @@ FieldActorBase::~FieldActorBase()
 {
 
 }
+
+void FieldActorBase::Update(float _DeltaTime)
+{
+}
+
+void FieldActorBase::Render(float _DeltaTime)
+{
+}

@@ -46,6 +46,17 @@ void FSMBase::Update(float _DeltaTime)
 	AllState[CurIndex]->Update(_DeltaTime);
 }
 
+void FSMBase::Render(float _DeltaTime)
+{
+	if (AllState.size() <= CurIndex)
+	{
+		MsgAssert("현재 FSM의 상태를 설정해주지 않았습니다");
+		return;
+	}
+
+	AllState[CurIndex]->Render(_DeltaTime);
+}
+
 
 
 

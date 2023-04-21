@@ -1,9 +1,6 @@
 #pragma once
 #include "StateBase.h"
 
-class FieldPlayer;
-class PlayerFSM;
-class FieldLevelBase;
 enum class KeyNames;
 
 class PlayerStateBase : public StateBase
@@ -18,36 +15,15 @@ public:
 	PlayerStateBase& operator=(const PlayerStateBase&& _Other) noexcept = delete;
 
 protected:
-	void Start() override;
 
-	inline FieldPlayer* GetPlayerPtr() const
-	{
-		return PlayerPtr;
-	}
+	//아래 3개 빌드위한 임시
+	bool IsOnAir() { return false; }
 
-	inline FieldLevelBase* GetLevel() const
-	{
-		return Level;
-	}
+	void Update_Move(float _DeltaTime){}
 
-	bool IsOnAir();
-
-	void Update_Move(float _DeltaTime);
-
-
-	inline PlayerFSM* GetPlayerFsm() const
-	{
-		return FsmPtr;
-	}
-
-	bool Check_Idle();
-
+	bool Check_Idle() { return false; }
 
 private:
 	static const std::vector<KeyNames> IdleCheckKeys;
-
-	FieldPlayer* PlayerPtr = nullptr;
-	FieldLevelBase* Level = nullptr;
-	PlayerFSM* FsmPtr = nullptr;
 };
 

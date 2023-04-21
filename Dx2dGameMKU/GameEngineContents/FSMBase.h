@@ -33,6 +33,8 @@ public:
 
 	//현재 스테이트를 Update 돌려주기
 	void Update(float _DeltaTime);
+	//현재 스테이트를 Render 돌려주기
+	void Render(float _DeltaTime);
 
 protected:
 	//이 FSM이 가질 State들의 벡터 크기 설정

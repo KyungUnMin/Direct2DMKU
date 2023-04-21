@@ -109,6 +109,18 @@
     <Filter Include="01.Core\03.Manager\01.KeyMgr">
       <UniqueIdentifier>{18732f7e-e4d6-455c-b9e3-636b2e7860fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="05.FSM\02.Player\03.Idle">
+      <UniqueIdentifier>{aa624834-e693-4964-9aa8-ca8ed19d814b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\02.Player\04.Move">
+      <UniqueIdentifier>{c1aa9586-a8be-4031-a937-70535444f75c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\02.Player\05.Jump">
+      <UniqueIdentifier>{1ce6168e-8834-4ce2-864a-268dc3f983d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.FSM\02.Player\06.Fall">
+      <UniqueIdentifier>{b94727c1-8baa-423f-8c2b-4591580b4ee1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -164,6 +176,18 @@
     </ClCompile>
     <ClCompile Include="KeyMgr.cpp">
       <Filter>01.Core\03.Manager\01.KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_Jump.cpp">
+      <Filter>05.FSM\02.Player\05.Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_Fall.cpp">
+      <Filter>05.FSM\02.Player\06.Fall</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateIdle.cpp">
+      <Filter>05.FSM\02.Player\03.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateMove.cpp">
+      <Filter>05.FSM\02.Player\04.Move</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +247,18 @@
     </ClInclude>
     <ClInclude Include="KeyMgr.h">
       <Filter>01.Core\03.Manager\01.KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_Jump.h">
+      <Filter>05.FSM\02.Player\05.Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_Fall.h">
+      <Filter>05.FSM\02.Player\06.Fall</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateIdle.h">
+      <Filter>05.FSM\02.Player\03.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateMove.h">
+      <Filter>05.FSM\02.Player\04.Move</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

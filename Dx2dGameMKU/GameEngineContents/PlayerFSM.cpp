@@ -13,10 +13,9 @@ PlayerFSM::~PlayerFSM()
 
 
 
-void PlayerFSM::Init(FieldPlayer* _Player)
+void PlayerFSM::Init()
 {
-	Player = _Player;
-
 	FSMBase::ResizeStates(PlayerStateType::COUNT);
+
 
 }
