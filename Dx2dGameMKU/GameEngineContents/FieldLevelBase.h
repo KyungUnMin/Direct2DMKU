@@ -4,6 +4,11 @@
 class FieldLevelBase : public GameEngineLevel
 {
 public:
+	static FieldLevelBase* GetGPtr()
+	{
+		return GPtr;
+	}
+
 	FieldLevelBase();
 	virtual ~FieldLevelBase()  = 0;
 
@@ -14,8 +19,13 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) final;
+
+	void SettingBackImg(const std::string_view& _ResName, const float4& _MapScale);
 
 private:
+	static FieldLevelBase* GPtr;
 
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
 };
 

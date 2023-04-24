@@ -167,11 +167,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsCore.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="FSMBase.h" />
+    <ClInclude Include="HMD_UI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="KeyMgr.h">
       <SubType>
       </SubType>
@@ -213,10 +221,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="FieldBoss_MisuzuLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="FieldPlayer.h">
       <SubType>
       </SubType>
@@ -229,7 +233,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SchoolLevel.h">
+    <ClInclude Include="SchoolEntryLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -248,11 +252,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentsCore.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="FSMBase.cpp" />
+    <ClCompile Include="HMD_UI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="KeyMgr.cpp">
       <SubType>
       </SubType>
@@ -293,10 +305,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="FieldBoss_MisuzuLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="FieldPlayer.cpp">
       <SubType>
       </SubType>
@@ -313,7 +321,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SchoolLevel.cpp">
+    <ClCompile Include="SchoolEntryLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>

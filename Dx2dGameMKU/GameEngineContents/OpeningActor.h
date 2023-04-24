@@ -19,6 +19,16 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	static const std::string_view Back_ImgName;
+	static const std::string_view Frame_ImgName;
+	static const std::string_view Kyoko_ImgName;
+	static const std::string_view Misako_ImgName;
+	static const std::string_view TextRiver_ImgName;
+	static const std::string_view TextCity_ImgName;
+	static const std::string_view TextGirls_ImgName;
+	static const std::string_view TextFull_ImgName;
+
+
 	std::shared_ptr<GameEngineRenderer> Kyoko = nullptr;
 	std::shared_ptr<GameEngineRenderer> Misako = nullptr;
 

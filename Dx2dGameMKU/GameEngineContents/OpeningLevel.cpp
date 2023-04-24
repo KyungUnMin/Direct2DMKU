@@ -24,9 +24,8 @@ void OpeningLevel::Start()
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 
 	GameEngineDirectory Dir;
-	Dir.MoveParentToDirectory(RCGDefine::RootPath);
-	Dir.Move(RCGDefine::RootPath);
-	Dir.Move(RCGDefine::ImagePath);
+	RCGDefine::MoveContentPath(Dir, ResType::Image);
+	Dir.Move("Level");
 	Dir.Move("Opening");
 
 	std::vector<GameEngineFile> Images = Dir.GetAllFile({ ".png" });
@@ -35,5 +34,5 @@ void OpeningLevel::Start()
 		GameEngineTexture::Load(Path.GetFullPath());
 	}
 
-	CreateActor<OpeningActor>(static_cast<int>(Opening_UpdateOrder::BackGround));
+	CreateActor<OpeningActor>();
 }

@@ -7,6 +7,18 @@
 #include "RCGDefine.h"
 #include "KeyMgr.h"
 
+
+const std::string_view OpeningActor::Back_ImgName = "UI_FrontEnd_CharacterSelect_004-BG.png";
+const std::string_view OpeningActor::Frame_ImgName = "UI_FrontEnd_FileSelect_002-LETTERBOX.png";
+const std::string_view OpeningActor::Kyoko_ImgName = "fx_battle_portraits_kyoko.png";
+const std::string_view OpeningActor::Misako_ImgName = "fx_battle_portraits_misako.png";
+
+const std::string_view OpeningActor::TextRiver_ImgName = "fx_int_RIVER-01.png";
+const std::string_view OpeningActor::TextCity_ImgName = "fx_int_CITY-01.png";
+const std::string_view OpeningActor::TextGirls_ImgName = "fx_int_GIRLS-02.png";
+const std::string_view OpeningActor::TextFull_ImgName = "fx_int_FULL LOGO.png";
+
+
 OpeningActor::OpeningActor()
 {
 
@@ -31,8 +43,8 @@ std::shared_ptr<GameEngineRenderer> OpeningActor::CreateEngineTex(const std::str
 
 void OpeningActor::Start()
 {
-	std::shared_ptr<GameEngineRenderer> RendererPtr0 = CreateEngineTex("UI_FrontEnd_CharacterSelect_004-BG.png");
-	std::shared_ptr<GameEngineRenderer> RendererPtr1 = CreateEngineTex("UI_FrontEnd_FileSelect_002-LETTERBOX.png");
+	std::shared_ptr<GameEngineRenderer> RendererPtr0 = CreateEngineTex(Back_ImgName);
+	std::shared_ptr<GameEngineRenderer> RendererPtr1 = CreateEngineTex(Frame_ImgName);
 
 	//배경 렌더러 생성
 	ScreenSize = GameEngineWindow::GetScreenSize();
@@ -40,8 +52,8 @@ void OpeningActor::Start()
 	RendererPtr1->GetTransform()->SetLocalScale({ ScreenSize.x, ScreenSize.y});
 
 	//캐릭터 렌더러 생성
-	Kyoko = CreateEngineTex("fx_battle_portraits_kyoko.png");
-	Misako = CreateEngineTex("fx_battle_portraits_misako.png");
+	Kyoko = CreateEngineTex(Kyoko_ImgName);
+	Misako = CreateEngineTex(Misako_ImgName);
 
 	const float4 CharScale = float4{ 653.f, 983.f } *RCGDefine::ResolutionConvertor;
 	Kyoko->GetTransform()->SetLocalScale(CharScale);
@@ -54,10 +66,10 @@ void OpeningActor::Start()
 	MisakoEndPos = CharPivotPos + float4{ -CharOffsetX, -CharOffsetY };
 
 	//텍스트 렌더러 생성
-	Text_River = CreateEngineTex("fx_int_RIVER-01.png");
-	Text_City = CreateEngineTex("fx_int_CITY-01.png");
-	Text_Girls = CreateEngineTex("fx_int_GIRLS-02.png");
-	Text_Full = CreateEngineTex("fx_int_FULL LOGO.png");
+	Text_River = CreateEngineTex(TextRiver_ImgName);
+	Text_City = CreateEngineTex(TextCity_ImgName);
+	Text_Girls = CreateEngineTex(TextGirls_ImgName);
+	Text_Full = CreateEngineTex(TextFull_ImgName);
 	TextScale = float4{ 1024.f, 512.f } *RCGDefine::ResolutionConvertor;
 
 	//텍스트 렌더러 위치 조정

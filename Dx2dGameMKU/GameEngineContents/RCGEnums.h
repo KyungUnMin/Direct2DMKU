@@ -1,14 +1,9 @@
 #pragma once
 
-//-------------OPENING-----------------
 
-enum class Opening_UpdateOrder
+enum class Field_UpdateOrder
 {
 	BackGround,
 
 };
 
-
-
-
-//-------------OPENING-----------------
