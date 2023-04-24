@@ -67,15 +67,6 @@
     <Filter Include="02.Level\02.Field\01.FieldBase">
       <UniqueIdentifier>{296b1726-456e-4413-94df-688952ba2bc0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\01.UI">
-      <UniqueIdentifier>{217c596a-465e-496e-aa26-146074249a9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\02.FieldActorBase">
-      <UniqueIdentifier>{7c5dd5d2-a154-486b-ac83-fa02ad6388cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldPlayer">
-      <UniqueIdentifier>{9bfba157-1d40-47f0-a66a-be65b68451e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="05.FSM">
       <UniqueIdentifier>{0ba3daf2-4131-4772-a06d-f1eeaec8e087}</UniqueIdentifier>
     </Filter>
@@ -121,6 +112,24 @@
     <Filter Include="05.FSM\02.Player\06.Fall">
       <UniqueIdentifier>{b94727c1-8baa-423f-8c2b-4591580b4ee1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\01.UI">
+      <UniqueIdentifier>{217c596a-465e-496e-aa26-146074249a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\02.FieldActorBase">
+      <UniqueIdentifier>{7c5dd5d2-a154-486b-ac83-fa02ad6388cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldPlayer">
+      <UniqueIdentifier>{9bfba157-1d40-47f0-a66a-be65b68451e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.Particular">
+      <UniqueIdentifier>{7f89b64a-841d-4fad-99cc-3d0cea9ea0c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.Particular\01.Opening">
+      <UniqueIdentifier>{aa088fdc-c3c2-4eb5-981b-6fc39574bb3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\05.Common">
+      <UniqueIdentifier>{61e68042-8b69-48e1-a0cd-51e534545e6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -135,17 +144,11 @@
     <ClCompile Include="ContentsCore.cpp">
       <Filter>99.Test</Filter>
     </ClCompile>
-    <ClCompile Include="RCGLevel_Intro.cpp">
-      <Filter>99.Test</Filter>
-    </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
       <Filter>02.Level\01.Cinematic\01.Opening</Filter>
     </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
       <Filter>02.Level\01.Cinematic\02.Ending</Filter>
-    </ClCompile>
-    <ClCompile Include="Field_SchoolLevel.cpp">
-      <Filter>02.Level\02.Field\02.School</Filter>
     </ClCompile>
     <ClCompile Include="FieldBoss_MisuzuLevel.cpp">
       <Filter>02.Level\02.Field\03.BossMisuzu</Filter>
@@ -192,6 +195,15 @@
     <ClCompile Include="ShaderTestActor.cpp">
       <Filter>99.Test</Filter>
     </ClCompile>
+    <ClCompile Include="RCGDefine.cpp">
+      <Filter>01.Core\02.Define</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningActor.cpp">
+      <Filter>03.Actor\04.Particular\01.Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolLevel.cpp">
+      <Filter>02.Level\02.Field\02.School</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -206,17 +218,11 @@
     <ClInclude Include="ContentsCore.h">
       <Filter>99.Test</Filter>
     </ClInclude>
-    <ClInclude Include="RCGLevel_Intro.h">
-      <Filter>99.Test</Filter>
-    </ClInclude>
     <ClInclude Include="OpeningLevel.h">
       <Filter>02.Level\01.Cinematic\01.Opening</Filter>
     </ClInclude>
     <ClInclude Include="EndingLevel.h">
       <Filter>02.Level\01.Cinematic\02.Ending</Filter>
-    </ClInclude>
-    <ClInclude Include="Field_SchoolLevel.h">
-      <Filter>02.Level\02.Field\02.School</Filter>
     </ClInclude>
     <ClInclude Include="FieldBoss_MisuzuLevel.h">
       <Filter>02.Level\02.Field\03.BossMisuzu</Filter>
@@ -265,6 +271,15 @@
     </ClInclude>
     <ClInclude Include="ShaderTestActor.h">
       <Filter>99.Test</Filter>
+    </ClInclude>
+    <ClInclude Include="RCGDefine.h">
+      <Filter>01.Core\02.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningActor.h">
+      <Filter>03.Actor\04.Particular\01.Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolLevel.h">
+      <Filter>02.Level\02.Field\02.School</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

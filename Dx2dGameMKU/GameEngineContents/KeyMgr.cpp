@@ -3,6 +3,7 @@
 
 #include <GameEnginePlatform/GameEngineInput.h>
 
+//키를 추가할 때 항상 쉼표를 잘보자
 const std::vector<std::string_view> KeyMgr::IndexToString =
 {
 	"UpArrow",
@@ -11,6 +12,7 @@ const std::vector<std::string_view> KeyMgr::IndexToString =
 	"LeftArrow",
 	"Space",
 
+	"Esc",
 	"DebugF1",
 	"DebugF2",
 	"DebugF3",
@@ -18,8 +20,7 @@ const std::vector<std::string_view> KeyMgr::IndexToString =
 	"DebugF6",
 	"DebugF7",
 	"DebugF8",
-	"DebugF9",
-
+	"DebugF9"
 
 };
 
@@ -34,6 +35,7 @@ void KeyMgr::CreateKey()
 	KeyInfo[static_cast<size_t>(KeyNames::LeftArrow)] = VK_LEFT;
 	KeyInfo[static_cast<size_t>(KeyNames::Space)] = VK_SPACE;
 
+	KeyInfo[static_cast<size_t>(KeyNames::Esc)] = VK_ESCAPE;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF1)] = VK_F1;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF2)] = VK_F2;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF3)] = VK_F3;

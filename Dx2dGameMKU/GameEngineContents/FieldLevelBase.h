@@ -1,11 +1,11 @@
 #pragma once
+#include <GameEngineCore/GameEngineLevel.h>
 
-
-class FieldLevelBase
+class FieldLevelBase : public GameEngineLevel
 {
 public:
 	FieldLevelBase();
-	~FieldLevelBase();
+	virtual ~FieldLevelBase()  = 0;
 
 	FieldLevelBase(const FieldLevelBase& _Other) = delete;
 	FieldLevelBase(FieldLevelBase&& _Other) noexcept = delete;
@@ -13,6 +13,7 @@ public:
 	FieldLevelBase& operator=(const FieldLevelBase&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
 
 private:
 

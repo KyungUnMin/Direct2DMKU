@@ -10,3 +10,7 @@ FieldLevelBase::~FieldLevelBase()
 {
 
 }
+
+void FieldLevelBase::Start()
+{
+}

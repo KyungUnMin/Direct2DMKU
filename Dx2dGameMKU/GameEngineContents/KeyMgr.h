@@ -8,6 +8,7 @@ enum class KeyNames
 	LeftArrow,
 	Space,
 
+	Esc,
 	DebugF1,
 	DebugF2,
 	DebugF3,
