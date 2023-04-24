@@ -33,6 +33,7 @@ public:
 	void SetIndexBuffer(const std::string_view& _Value);
 	void SetRasterizer(const std::string_view& _Value);
 	void SetPixelShader(const std::string_view& _Value);
+	void SetBlend(const std::string_view& _Value);
 
 	inline void SetFILL_MODE(D3D11_FILL_MODE _Value)
 	{
@@ -60,6 +61,7 @@ private:
 	std::shared_ptr<class GameEngineIndexBuffer> IndexBufferPtr;
 	std::shared_ptr<class GameEngineRasterizer> RasterizerPtr;
 	std::shared_ptr<class GameEnginePixelShader> PixelShaderPtr;
+	std::shared_ptr<class GameEngineBlend> BlendPtr;
 
 
 

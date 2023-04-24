@@ -5,6 +5,7 @@
 #include "GameEngineIndexBuffer.h"
 #include "GameEngineRasterizer.h"
 #include "GameEnginePixelShader.h"
+#include "GameEngineBlend.h"
 #include "GameEngineInputLayOut.h"
 
 
@@ -106,6 +107,14 @@ void GameEngineRenderingPipeLine::PixelShader()
 
 void GameEngineRenderingPipeLine::OutputMerger()
 {
+	if (nullptr == BlendPtr)
+	{
+		MsgAssert("블랜드가 존재하지 않아 아웃풋 머저 과정을 완료할수가 없습니다.");
+		return;
+	}
+
+	BlendPtr->Setting();
+
 	//여기서 설정하지 않고 GameEngineDevice::RenderStart에서 백버퍼 렌더타겟을 이용해 설정
 }
 
@@ -185,6 +194,17 @@ void GameEngineRenderingPipeLine::SetPixelShader(const std::string_view& _Value)
 	if (nullptr == PixelShaderPtr)
 	{
 		MsgAssert("존재하지 않는 픽셀 쉐이더를 사용하려고 했습니다.");
+	}
+}
+
+void GameEngineRenderingPipeLine::SetBlend(const std::string_view& _Value)
+{
+	std::string UpperName = GameEngineString::ToUpper(_Value);
+	BlendPtr = GameEngineBlend::Find(UpperName);
+
+	if (nullptr == BlendPtr)
+	{
+		MsgAssert("존재하지 않는 블렌드를 사용하려고 했습니다.");
 	}
 }
 

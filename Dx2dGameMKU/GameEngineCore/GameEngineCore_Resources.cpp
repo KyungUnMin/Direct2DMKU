@@ -12,15 +12,17 @@
 #include "GameEngineMesh.h"
 #include "GameEngineTexture.h"
 #include "GameEngineRenderTarget.h"
+#include "GameEngineBlend.h"
 
 #include "GameEngineVertexBuffer.h"
 #include "GameEngineIndexBuffer.h"
-#include "GameEngineRasterizer.h"
-#include "GameEngineConstantBuffer.h"
-
-#include "GameEngineRenderingPipeLine.h"
 #include "GameEngineVertexShader.h"
+#include "GameEngineConstantBuffer.h"
+#include "GameEngineRasterizer.h"
 #include "GameEnginePixelShader.h"
+#include "GameEngineRenderingPipeLine.h"
+
+
 
 void GameEngineCore::CoreResourceInit()
 {
@@ -97,6 +99,34 @@ void GameEngineCore::CoreResourceInit()
 
 		GameEngineVertexBuffer::Create("Rect", ArrVertex);
 		GameEngineIndexBuffer::Create("Rect", ArrIndex);
+	}
+
+	//블렌드 만들기
+	{
+		D3D11_BLEND_DESC Desc = { 0, };
+
+		//자동으로 알파부분을 제거하는지(느려서 false)
+		Desc.AlphaToCoverageEnable = false;
+		//렌더타겟들 마다 여러개의 블렌더를 세팅하는지(false면 무조껀 0번 블렌더로)
+		Desc.IndependentBlendEnable = false;
+
+		Desc.RenderTarget[0].BlendEnable = true;
+		//모든색(RGBA) 블렌드 마스크 사용시 적용?
+		Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		//두 색을 혼합
+		Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+
+		//소스컬러 RGB값에 A을 곱한다
+		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		//목적지 컬러 RBG값에 (1 - A)를 곱한다
+		Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+
+		//???
+		Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_SRC_ALPHA;
+		Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_INV_SRC_ALPHA;
+
+		GameEngineBlend::Create("AlphaBlend", Desc);
 	}
 	
 	{
@@ -181,10 +211,10 @@ void GameEngineCore::CoreResourceInit()
 			// 선 앤티앨리어싱을 활성화 여부
 
 		Decs.FillMode = D3D11_FILL_WIREFRAME;
-		Decs.CullMode = D3D11_CULL_BACK;
+		Decs.CullMode = D3D11_CULL_NONE;
 		Decs.FrontCounterClockwise = FALSE;
 
-		std::shared_ptr<GameEngineRasterizer> Res = GameEngineRasterizer::Create("EngineBase", Decs);
+		std::shared_ptr<GameEngineRasterizer> Res = GameEngineRasterizer::Create("Engine2DBase", Decs);
 	}
 
 
@@ -197,8 +227,9 @@ void GameEngineCore::CoreResourceInit()
 		Pipe->SetVertexBuffer("Rect");
 		Pipe->SetVertexShader("TextureShader.hlsl");
 		Pipe->SetIndexBuffer("Rect");
-		Pipe->SetRasterizer("EngineBase");
+		Pipe->SetRasterizer("Engine2DBase");
 		Pipe->SetPixelShader("TextureShader.hlsl");
+		Pipe->SetBlend("AlphaBlend");
 	}
 
 }
@@ -218,4 +249,5 @@ void GameEngineCore::CoreResourceEnd()
 	GameEngineMesh::ResourcesClear();
 	GameEngineTexture::ResourcesClear();
 	GameEngineRenderTarget::ResourcesClear();
+	GameEngineBlend::ResourcesClear();
 }

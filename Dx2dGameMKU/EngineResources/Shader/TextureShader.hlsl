@@ -87,10 +87,10 @@ float4 Texture_PS(Output _Value) : SV_Target0
     float4 Color = DiffuseTex.Sample(WRAPSAMPLER, _Value.UV.xy);
 
     //현재 픽셀을 출력하지 않는 함수
-    if (Color.a == 0)
-    {
-        clip(-1);
-    }
+    //if (Color.a == 0)
+    //{
+    //    clip(-1);
+    //}
     
     return Color;
 }

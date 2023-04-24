@@ -419,6 +419,38 @@ public:
 		TransData = _Data;
 	}
 
+
+	//LocalScale의 X를 원점대칭이동(이미지 좌우 반전시 사용)
+	void SetLocalFlipScaleX()
+	{
+		TransData.LocalScale.x = -TransData.LocalScale.x;
+		SetLocalScale(TransData.LocalScale);
+	}
+
+	//LocalScale의 X를 항상 음수값으로(이미지 방향 설정시 사용)
+	void SetLocalNegativeScaleX()
+	{
+		if (0 < TransData.LocalScale.x)
+		{
+			SetLocalFlipScaleX();
+			return;
+		}
+
+		return;
+	}
+
+	//LocalScale의 X를 항상 양수값으로(이미지 방향 설정시 사용)
+	void SetLocalPositiveScaleX()
+	{
+		if (0 > TransData.LocalScale.x)
+		{
+			SetLocalFlipScaleX();
+			return;
+		}
+
+		return;
+	}
+
 protected:
 
 private:

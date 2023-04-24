@@ -23,7 +23,7 @@ void RCG_GameCore::GameStart()
 	GameEngineCore::CreateLevel<OpeningLevel>();
 	GameEngineCore::CreateLevel<SchoolEntryLevel>();
 
-	GameEngineCore::ChangeLevel("SchoolEntryLevel");
+	GameEngineCore::ChangeLevel("OpeningLevel");
 }
 
 void RCG_GameCore::GameEnd()
