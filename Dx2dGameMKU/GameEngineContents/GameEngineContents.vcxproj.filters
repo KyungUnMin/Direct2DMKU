@@ -189,6 +189,9 @@
     <ClCompile Include="PlayerStateMove.cpp">
       <Filter>05.FSM\02.Player\04.Move</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderTestActor.cpp">
+      <Filter>99.Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -259,6 +262,9 @@
     </ClInclude>
     <ClInclude Include="PlayerStateMove.h">
       <Filter>05.FSM\02.Player\04.Move</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderTestActor.h">
+      <Filter>99.Test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

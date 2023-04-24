@@ -20,6 +20,7 @@ TestLevel::~TestLevel()
 }
 
 #include "TestActor.h"
+#include "ShaderTestActor.h"
 
 void TestLevel::Start()
 {
@@ -27,6 +28,8 @@ void TestLevel::Start()
 		GameEngineDirectory NewDir;
 		NewDir.MoveParentToDirectory("ContentsResource");
 		NewDir.Move("ContentsResource");
+		NewDir.Move("Image");
+		NewDir.Move("RCG_BattleStart");
 
 		std::vector<GameEngineFile> File = NewDir.GetAllFile({ ".Png", });
 
@@ -44,7 +47,8 @@ void TestLevel::Start()
 	GetMainCamera()->SetProjectionType(CameraType::Perspective);
 	GetMainCamera()->GetTransform()->SetLocalPosition(float4{ 0.f, 0.f, -1000.f });
 
-	CreateActor<TestActor>();
+	//CreateActor<TestActor>();
+	CreateActor<ShaderTestActor>();
 
 	//GameEngineDirectory Dir;
 	//Dir.MoveParentToDirectory("ContentsResources");
