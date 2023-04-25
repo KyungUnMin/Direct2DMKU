@@ -109,6 +109,9 @@
     <ClInclude Include="GameEngineSpriteRenderer.h">
       <Filter>05.Object\04.Component\02.Render</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineDepthState.h">
+      <Filter>04.Resources\05.RenderingPipeLine\08.Depth</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -215,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineSpriteRenderer.cpp">
       <Filter>05.Object\04.Component\02.Render</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineDepthState.cpp">
+      <Filter>04.Resources\05.RenderingPipeLine\08.Depth</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +367,9 @@
     </Filter>
     <Filter Include="04.Resources\05.RenderingPipeLine\07.Blend">
       <UniqueIdentifier>{1deab863-751a-47b1-b348-46f3f25abed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Resources\05.RenderingPipeLine\08.Depth">
+      <UniqueIdentifier>{d5ecf2c1-4d19-4d02-839c-c7da36f15159}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

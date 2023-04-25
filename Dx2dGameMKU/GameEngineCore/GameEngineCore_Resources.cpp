@@ -13,6 +13,7 @@
 #include "GameEngineTexture.h"
 #include "GameEngineRenderTarget.h"
 #include "GameEngineBlend.h"
+#include "GameEngineDepthState.h"
 
 #include "GameEngineVertexBuffer.h"
 #include "GameEngineIndexBuffer.h"
@@ -133,6 +134,20 @@ void GameEngineCore::CoreResourceInit()
 		GameEngineBlend::Create("AlphaBlend", Desc);
 	}
 	
+
+	//±Ì¿Ã πˆ∆€
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0, };
+
+		Desc.DepthEnable = true;
+		Desc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS_EQUAL;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ALL;
+		Desc.StencilEnable = false;
+
+		GameEngineDepthState::Create("EngineDepth", Desc);
+	}
+
+
 	{
 
 		std::vector<float4> ArrVertex;
@@ -254,4 +269,5 @@ void GameEngineCore::CoreResourceEnd()
 	GameEngineTexture::ResourcesClear();
 	GameEngineRenderTarget::ResourcesClear();
 	GameEngineBlend::ResourcesClear();
+	GameEngineDepthState::ResourcesClear();
 }
