@@ -8,7 +8,6 @@
 
 RCG_GameCore::RCG_GameCore()
 {
-
 }
 
 RCG_GameCore::~RCG_GameCore()
@@ -18,12 +17,16 @@ RCG_GameCore::~RCG_GameCore()
 
 void RCG_GameCore::GameStart()
 {
+	bool* DEBUGLEAK = new bool;
+
+	ContentsResourceInit();
+
 	KeyMgr::CreateKey();
 
 	GameEngineCore::CreateLevel<OpeningLevel>();
 	GameEngineCore::CreateLevel<SchoolEntryLevel>();
 
-	GameEngineCore::ChangeLevel("OpeningLevel");
+	GameEngineCore::ChangeLevel("SchoolEntryLevel");
 }
 
 void RCG_GameCore::GameEnd()

@@ -4,9 +4,14 @@
 class FieldLevelBase : public GameEngineLevel
 {
 public:
-	static FieldLevelBase* GetGPtr()
+	static std::weak_ptr<FieldLevelBase> GetPtr()
 	{
-		return GPtr;
+		if (nullptr == GPtr)
+		{
+			return std::weak_ptr<FieldLevelBase>();
+		}
+
+		return GPtr->Shared_This_dynamic_pointer<FieldLevelBase>();
 	}
 
 	FieldLevelBase();
@@ -27,5 +32,6 @@ private:
 	static FieldLevelBase* GPtr;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	float4 MapScale = float4::Zero;
 };
 

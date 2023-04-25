@@ -260,6 +260,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ContentsCore_Resource.cpp" />
     <ClCompile Include="FSMBase.cpp" />
     <ClCompile Include="HMD_UI.cpp">
       <SubType>

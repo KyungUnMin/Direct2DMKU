@@ -210,6 +210,9 @@
     <ClCompile Include="HMD_UI.cpp">
       <Filter>03.Actor\01.Common\02.HMD</Filter>
     </ClCompile>
+    <ClCompile Include="ContentsCore_Resource.cpp">
+      <Filter>01.Core\01.Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">

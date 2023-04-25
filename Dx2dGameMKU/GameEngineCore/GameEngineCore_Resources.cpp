@@ -51,6 +51,7 @@ void GameEngineCore::CoreResourceInit()
 
 	//구조상 샘플러는 쉐이더 로드하기 전에 만들어야 함(엔진에서 지원해주는 기본 샘플러)
 	{
+		//클램프 샘플러
 		D3D11_SAMPLER_DESC SamplerData = {};
 
 		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
@@ -68,6 +69,7 @@ void GameEngineCore::CoreResourceInit()
 	}
 
 	{
+		//랩 샘플러
 		D3D11_SAMPLER_DESC SamplerData = {};
 
 		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
@@ -118,7 +120,7 @@ void GameEngineCore::CoreResourceInit()
 
 		//소스컬러 RGB값에 A을 곱한다
 		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		//목적지 컬러 RBG값에 (1 - A)를 곱한다
+		//목적지 컬러 RBG값에 (1 - A)를 곱한다, 아마 소스 컬러의 A인것 같다..
 		Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 
 		//???

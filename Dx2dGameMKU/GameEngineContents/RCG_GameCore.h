@@ -13,11 +13,14 @@ public:
 	RCG_GameCore& operator=(const RCG_GameCore&& _Other) noexcept = delete;
 
 	static void GameStart();
+	static void ContentsResourceInit();
 	static void GameEnd();
 
 protected:
 
 private:
-
+	static void CreateBlends();
+	static void LoadShaders();
+	static void CreateRenderingPipeLine();
 };
 

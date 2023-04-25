@@ -58,12 +58,14 @@ void OpeningActor::Start()
 	const float4 CharScale = float4{ 653.f, 983.f } *RCGDefine::ResolutionConvertor;
 	Kyoko->GetTransform()->SetLocalScale(CharScale);
 	Misako->GetTransform()->SetLocalScale(CharScale);
+	Misako->GetTransform()->SetLocalFlipScaleX();
 
-	const float4 CharPivotPos = float4{ ScreenSize.x * 0.25f, 0.f };
-	const float CharOffsetX = 100.f;
 	const float CharOffsetY = 50.f;
-	KyokoEndPos = CharPivotPos + float4{ CharOffsetX, -CharOffsetY };
-	MisakoEndPos = CharPivotPos + float4{ -CharOffsetX, -CharOffsetY };
+	const float4 CharPivotPos = float4::Down * CharOffsetY;
+	const float MisakoOffsetX = 100.f;
+	const float KyokoOffsetX = 400.f;
+	KyokoEndPos = CharPivotPos + (float4::Right * KyokoOffsetX);
+	MisakoEndPos = CharPivotPos + (float4::Right * MisakoOffsetX);
 
 	//텍스트 렌더러 생성
 	Text_River = CreateEngineTex(TextRiver_ImgName);

@@ -5,11 +5,17 @@
 class FieldPlayer : public FieldActorBase
 {
 public:
-	static FieldPlayer* GetPtr()
+	static std::weak_ptr<FieldPlayer> GetPtr()
 	{
-		return GPtr;
+		if (nullptr == GPtr)
+		{
+			return std::weak_ptr<FieldPlayer>();
+		}
+		
+		return GPtr->Shared_This_dynamic_pointer<FieldPlayer>();
 	}
-	
+
+
 	FieldPlayer();
 	~FieldPlayer() override;
 
