@@ -3,7 +3,7 @@
 class StateBase;
 class GameEngineActor;
 
-class FSMBase
+class FSMBase : public std::enable_shared_from_this<FSMBase>
 {
 public:
 	FSMBase();
@@ -13,6 +13,14 @@ public:
 	FSMBase(FSMBase&& _Other) noexcept = delete;
 	FSMBase& operator=(const FSMBase& _Other) = delete;
 	FSMBase& operator=(const FSMBase&& _Other) noexcept = delete;
+
+	////this포인터를 shared_ptr로 변환
+	//template <typename PtrType>
+	//std::shared_ptr<PtrType> Shared_This_dynamic_pointer()
+	//{
+	//	return std::dynamic_pointer_cast<PtrType>(std::enable_shared_from_this<FSMBase>::shared_from_this());
+	//}
+
 
 	//State교체
 	template <typename EnumType>
@@ -57,6 +65,7 @@ protected:
 		InitState(NewState, static_cast<size_t>(_Index));
 	}
 
+	virtual void Test(){}
 
 private:
 	std::vector<std::shared_ptr<StateBase>> AllState;

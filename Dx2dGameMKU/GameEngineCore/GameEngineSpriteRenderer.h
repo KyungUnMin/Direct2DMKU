@@ -12,11 +12,12 @@ public:
 	GameEngineSpriteRenderer& operator=(const GameEngineSpriteRenderer& _Other) = delete;
 	GameEngineSpriteRenderer& operator=(const GameEngineSpriteRenderer&& _Other) noexcept = delete;
 
-protected:
 	void SetTexture(const std::string_view& _Name);
 
 	void SetFlipX();
 	void SetFlipY();
+
+protected:
 
 private:
 	void Start() override;

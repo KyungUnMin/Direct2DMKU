@@ -24,6 +24,9 @@ void FieldLevelBase::Start()
 {
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 
+	//나중에 EnterLevel 생기면 거기서 생성 삭제 하자
+	CreateActor<FieldPlayer>();
+
 }
 
 void FieldLevelBase::Update(float _DeltaTime)
@@ -35,25 +38,16 @@ void FieldLevelBase::Update(float _DeltaTime)
 		GPtr = nullptr;
 		return;
 	}
-	
+
 	GPtr = this;
-
-	//카메라가 캐릭터를 따라 다니고 영역 밖으로 나가지 못한다.
-
-	/*std::weak_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
-	if (false == Player.expired())
-	{
-		std::shared_ptr<FieldPlayer> SPtr = Player.lock();
-		int a = 10;
-	}*/
-
+	CamCtrl.Update(_DeltaTime);
 }
 
 
 void FieldLevelBase::SettingBackImg(const std::string_view& _ResName,const float4& _MapScale)
 {
-	MapScale = _MapScale;
-
 	std::shared_ptr<BackGround> BGPtr = CreateActor<BackGround>(static_cast<int>(Field_UpdateOrder::BackGround));
 	BGPtr->SettingBackImg(_ResName, _MapScale);
+
+	CamCtrl.Init(GetMainCamera(), _MapScale);
 }

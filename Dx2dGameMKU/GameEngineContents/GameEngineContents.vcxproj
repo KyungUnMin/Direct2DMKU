@@ -175,6 +175,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FieldCamController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FSMBase.h" />
     <ClInclude Include="HMD_UI.h">
       <SubType>
@@ -192,8 +196,8 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayerStateIdle.h" />
-    <ClInclude Include="PlayerStateMove.h" />
+    <ClInclude Include="PlayerState_Idle.h" />
+    <ClInclude Include="PlayerState_Move.h" />
     <ClInclude Include="PlayerState_Fall.h" />
     <ClInclude Include="PlayerState_Jump.h" />
     <ClInclude Include="PrecompileHeader.h">
@@ -261,6 +265,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
+    <ClCompile Include="FieldCamController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FSMBase.cpp" />
     <ClCompile Include="HMD_UI.cpp">
       <SubType>
@@ -278,8 +286,8 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayerStateIdle.cpp" />
-    <ClCompile Include="PlayerStateMove.cpp" />
+    <ClCompile Include="PlayerState_Idle.cpp" />
+    <ClCompile Include="PlayerState_Move.cpp" />
     <ClCompile Include="PlayerState_Fall.cpp" />
     <ClCompile Include="PlayerState_Jump.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">

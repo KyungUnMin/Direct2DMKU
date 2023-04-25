@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include "FieldCamController.h"
 
 class FieldLevelBase : public GameEngineLevel
 {
@@ -22,16 +23,21 @@ public:
 	FieldLevelBase& operator=(const FieldLevelBase& _Other) = delete;
 	FieldLevelBase& operator=(const FieldLevelBase&& _Other) noexcept = delete;
 
+	FieldCamController& GetCameraController()
+	{
+		return CamCtrl;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) final;
-
+	
 	void SettingBackImg(const std::string_view& _ResName, const float4& _MapScale);
 
 private:
 	static FieldLevelBase* GPtr;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
-	float4 MapScale = float4::Zero;
+	FieldCamController CamCtrl;
 };
 

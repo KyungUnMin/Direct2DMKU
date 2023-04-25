@@ -19,8 +19,8 @@ public:
 protected:
 
 private:
-	static void CreateBlends();
 	static void LoadShaders();
+	static void CreateBlends();
 	static void CreateRenderingPipeLine();
 };
 

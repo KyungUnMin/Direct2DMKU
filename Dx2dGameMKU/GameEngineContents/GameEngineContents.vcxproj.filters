@@ -186,10 +186,10 @@
     <ClCompile Include="PlayerState_Fall.cpp">
       <Filter>04.FSM\02.Player\06.Fall</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStateIdle.cpp">
+    <ClCompile Include="PlayerState_Idle.cpp">
       <Filter>04.FSM\02.Player\03.Idle</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStateMove.cpp">
+    <ClCompile Include="PlayerState_Move.cpp">
       <Filter>04.FSM\02.Player\04.Move</Filter>
     </ClCompile>
     <ClCompile Include="ShaderTestActor.cpp">
@@ -212,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp">
       <Filter>01.Core\01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldCamController.cpp">
+      <Filter>02.Level\02.Field\01.FieldBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,10 +272,10 @@
     <ClInclude Include="PlayerState_Fall.h">
       <Filter>04.FSM\02.Player\06.Fall</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStateIdle.h">
+    <ClInclude Include="PlayerState_Idle.h">
       <Filter>04.FSM\02.Player\03.Idle</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStateMove.h">
+    <ClInclude Include="PlayerState_Move.h">
       <Filter>04.FSM\02.Player\04.Move</Filter>
     </ClInclude>
     <ClInclude Include="ShaderTestActor.h">
@@ -292,6 +295,9 @@
     </ClInclude>
     <ClInclude Include="HMD_UI.h">
       <Filter>03.Actor\01.Common\02.HMD</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldCamController.h">
+      <Filter>02.Level\02.Field\01.FieldBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

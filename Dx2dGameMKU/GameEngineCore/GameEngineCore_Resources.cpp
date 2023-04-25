@@ -128,6 +128,8 @@ void GameEngineCore::CoreResourceInit()
 		Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_SRC_ALPHA;
 		Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_INV_SRC_ALPHA;
 
+		//¾ËÆÄ = (SrcAlpha * SrcBlendAlpha) BlendOpAlpha (DestAlpha * DestBlendAlpha)
+
 		GameEngineBlend::Create("AlphaBlend", Desc);
 	}
 	
