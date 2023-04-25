@@ -58,7 +58,7 @@ void OpeningActor::Start()
 	const float4 CharScale = float4{ 653.f, 983.f } *RCGDefine::ResolutionConvertor;
 	Kyoko->GetTransform()->SetLocalScale(CharScale);
 	Misako->GetTransform()->SetLocalScale(CharScale);
-	Misako->GetTransform()->SetLocalFlipScaleX();
+	//Misako->GetTransform()->SetLocalFlipScaleX();
 
 	const float CharOffsetY = 50.f;
 	const float4 CharPivotPos = float4::Down * CharOffsetY;
