@@ -63,10 +63,12 @@ void GameEngineCore::EngineUpdate()
 	//이벤트 시간 동작
 	MainLevel->TimeEvent.Update(TimeDeltaTime);
 	MainLevel->Update(TimeDeltaTime);
+	MainLevel->ActorUpdate(TimeDeltaTime);
 
 	//렌더링을 시작하기 전에 이전 이미지들을 지운다
 	GameEngineDevice::RenderStart();
 	MainLevel->Render(TimeDeltaTime);
+	MainLevel->ActorRender(TimeDeltaTime);
 	//더블버퍼링을 이용해서 렌더링을 처리한다
 	GameEngineDevice::RenderEnd();
 }

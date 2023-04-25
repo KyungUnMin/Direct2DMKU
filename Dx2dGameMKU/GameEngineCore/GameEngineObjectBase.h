@@ -26,17 +26,27 @@ public:
 
 	inline void On()
 	{
-		ActiveValue = true;
+		UpdateValue = true;
 	}
 
 	inline void Off()
 	{
-		ActiveValue = false;
+		UpdateValue = false;
 	}
 
 	inline void Death()
 	{
 		DeathValue = true;
+	}
+
+	virtual inline bool IsDeath() const
+	{
+		return DeathValue;
+	}
+
+	virtual inline bool IsUpdate() const
+	{
+		return UpdateValue;
 	}
 
 	void DebugOn()
@@ -52,7 +62,7 @@ public:
 protected:
 
 private:
-	bool ActiveValue = true;
+	bool UpdateValue = true;
 	bool DeathValue = false;
 	bool DebugValue = false;
 	int Order = 0;
