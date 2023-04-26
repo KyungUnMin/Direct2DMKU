@@ -23,7 +23,10 @@ void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
 
-	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
+	/*RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr->SetName("PlayerRender");*/
+
+
 	Fsm.Init();
 }
 

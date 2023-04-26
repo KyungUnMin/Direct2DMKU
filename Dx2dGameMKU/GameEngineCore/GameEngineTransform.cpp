@@ -9,7 +9,6 @@ GameEngineTransform::GameEngineTransform()
 
 GameEngineTransform::~GameEngineTransform()
 {
-
 }
 
 
@@ -22,7 +21,7 @@ void GameEngineTransform::TransformUpdate()
 	TransData.ScaleMatrix.Scale(TransData.Scale);
 
 	//회전행렬 만들기
-	TransData.Rotation.w = 0.f;
+	TransData.Rotation.w = 0.0f;
 
 	//로테이션 -> 쿼터니언
 	TransData.Quaternion = TransData.Rotation.EulerDegToQuaternion();
@@ -36,6 +35,7 @@ void GameEngineTransform::TransformUpdate()
 	TransData.LocalWorldMatrix = TransData.ScaleMatrix * TransData.RotationMatrix * TransData.PositionMatrix;
 
 
+
 	//부모가 없는 경우
 	if (nullptr == Parent)
 	{
@@ -43,13 +43,12 @@ void GameEngineTransform::TransformUpdate()
 	}
 
 	//부모가 있는 경우
-	else
+	else 
 	{
 		//부모의 월드 행렬을 각각 크자이로 분해한다
 		float4x4 ParentWorldMatrix = Parent->GetWorldMatrixRef();
-		float4 PScale, PRotation, PPosition;
-		ParentWorldMatrix.Decompose(PScale, PRotation, PPosition);
-
+		float4 PScale, PRoatation, PPosition;
+		ParentWorldMatrix.Decompose(PScale, PRoatation, PPosition);
 
 		//근데 내가 월드 크기를 사용중이라면 부모의 크기는 무시
 		if (true == AbsoluteScale)
@@ -60,9 +59,9 @@ void GameEngineTransform::TransformUpdate()
 		//근데 내가 월드 회전를 사용중이라면 부모의 회전은 무시
 		if (true == AbsoluteRotation)
 		{
-			PRotation = float4::Zero;
+			PRoatation = float4::Zero;
 			//xyz 0의 쿼터니언 생성
-			PRotation.EulerDegToQuaternion();
+			PRoatation.EulerDegToQuaternion();
 		}
 
 		//근데 내가 월드 이동를 사용중이라면 부모의 이동은 무시
@@ -75,12 +74,14 @@ void GameEngineTransform::TransformUpdate()
 		//위에서 만든 값을 바탕으로 행렬 만들기
 		float4x4 MatScale, MatRot, MatPos;
 		MatScale.Scale(PScale);
-		MatRot = PRotation.QuaternionToRotationMatrix();
-		MatPos.Pos(PScale);
+		MatRot = PRoatation.QuaternionToRotationMatrix();
+		MatPos.Pos(PPosition);
+
 
 		//자신의 월드 행렬 = 자신의 로컬행렬에 부모의 월드 행렬 곱하기
 		TransData.WorldMatrix = TransData.LocalWorldMatrix * (MatScale * MatRot * MatPos);
 	}
+
 
 	//자신의 로컬 행렬에서 로컬 크자이 추출
 	TransData.LocalWorldMatrix.Decompose(TransData.LocalScale, TransData.LocalQuaternion, TransData.LocalPosition);
@@ -91,9 +92,6 @@ void GameEngineTransform::TransformUpdate()
 	TransData.WorldRotation = TransData.WorldQuaternion.QuaternionToEulerDeg();
 }
 
-
-
-
 void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 {
 	//부모 설정
@@ -102,8 +100,10 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 	//부모의 자식리스트에 자기 자신을 등록
 	Parent->Child.push_back(this);
 
-	TransformUpdate();
+	//TransformUpdate();
 }
+
+
 
 
 void GameEngineTransform::CalChild()
@@ -136,6 +136,7 @@ void GameEngineTransform::CalChild()
 }
 
 
+
 float4 GameEngineTransform::GetLocalPosition()
 {
 	return TransData.LocalPosition;
@@ -161,7 +162,7 @@ float4 GameEngineTransform::GetWorldScale()
 	return TransData.WorldScale;
 }
 
-float4 GameEngineTransform::GetWorldRotation() 
+float4 GameEngineTransform::GetWorldRotation()
 {
 	return TransData.WorldRotation;
 }

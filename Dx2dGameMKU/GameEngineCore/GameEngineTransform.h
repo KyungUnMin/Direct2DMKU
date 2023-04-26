@@ -4,9 +4,10 @@
 #include <GameEngineBase/GameEngineMath.h>
 #include "GameEngineObjectBase.h"
 
+
 struct TransformData
 {
-	//계산용
+	// 계산용
 	float4 Scale;
 	float4 Rotation;
 	float4 Quaternion;
@@ -68,7 +69,9 @@ public:
 	GameEngineTransform(const GameEngineTransform& _Other) = delete;
 	GameEngineTransform(GameEngineTransform&& _Other) noexcept = delete;
 	GameEngineTransform& operator=(const GameEngineTransform& _Other) = delete;
-	GameEngineTransform& operator=(const GameEngineTransform&& _Other) noexcept = delete;
+	GameEngineTransform& operator=(GameEngineTransform&& _Other) noexcept = delete;
+
+
 
 	void SetWorldScale(const float4& _Value)
 	{
@@ -81,7 +84,7 @@ public:
 		CalChild();
 	}
 
-	
+
 	void SetWorldRotation(const float4& _Value)
 	{
 		AbsoluteRotation = true;
@@ -209,6 +212,7 @@ public:
 	}
 
 
+	
 	//로컬 좌표계의 +Z 반환
 	float4 GetLocalForwardVector()
 	{
@@ -236,8 +240,7 @@ public:
 		return TransData.LocalWorldMatrix.ArrVector[0].NormalizeReturn();
 	}
 
-
-
+	
 
 	float4 GetLocalPosition();
 	float4 GetLocalScale();
@@ -245,7 +248,6 @@ public:
 	float4 GetWorldPosition();
 	float4 GetWorldScale();
 	float4 GetWorldRotation();
-
 
 
 
@@ -279,7 +281,6 @@ public:
 		return TransData.WorldViewProjectionMatrix;
 	}
 
-
 	//뷰행렬과 투영행렬을 전부 곱함
 	inline const void SetCameraMatrix(const float4x4& _View, const float4x4& _Projection)
 	{
@@ -299,11 +300,10 @@ public:
 	{
 		//화면 해상도를 적용시킴
 		TransData.ViewPort = _ViewPort;
-		TransData.WorldMatrix *= TransData.ViewPort;
+		TransData.WorldViewProjectionMatrix *= TransData.ViewPort;
 	}
 
 	void CalChild();
-	
 
 	void SetParent(GameEngineTransform* _Parent);
 
@@ -316,38 +316,6 @@ public:
 	{
 		TransData = _Data;
 	}
-
-
-	////LocalScale의 X를 원점대칭이동(이미지 좌우 반전시 사용)
-	//void SetLocalFlipScaleX()
-	//{
-	//	TransData.LocalScale.x = -TransData.LocalScale.x;
-	//	SetLocalScale(TransData.LocalScale);
-	//}
-
-	////LocalScale의 X를 항상 음수값으로(이미지 방향 설정시 사용)
-	//void SetLocalNegativeScaleX()
-	//{
-	//	if (0 < TransData.LocalScale.x)
-	//	{
-	//		SetLocalFlipScaleX();
-	//		return;
-	//	}
-
-	//	return;
-	//}
-
-	////LocalScale의 X를 항상 양수값으로(이미지 방향 설정시 사용)
-	//void SetLocalPositiveScaleX()
-	//{
-	//	if (0 > TransData.LocalScale.x)
-	//	{
-	//		SetLocalFlipScaleX();
-	//		return;
-	//	}
-
-	//	return;
-	//}
 
 protected:
 

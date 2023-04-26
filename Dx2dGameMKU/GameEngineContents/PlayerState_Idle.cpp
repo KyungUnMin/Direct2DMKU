@@ -61,12 +61,11 @@ void PlayerState_Idle::LoadAnimation()
 
 void PlayerState_Idle::CreateAnimation()
 {
-	//지금은 캐릭터 렌더러가 먼저 생성되고, 맵 렌더러가 나중에 생성되서
-	//캐릭터가 안보임
-	std::shared_ptr<GameEngineSpriteRenderer> PlayerSprite = FieldPlayer::GetPtr()->GetRenderer();
-	PlayerSprite->SetPipeLine(RCGDefine::EnginePipeName);
-	PlayerSprite->GetTransform()->SetLocalScale({ 100.f, 100.f });
-	PlayerSprite->SetTexture("RCG_Kyoko_idle0001_anio.png");
+	std::shared_ptr<GameEngineRenderer> Renderer = FieldPlayer::GetPtr()->CreateComponent<GameEngineRenderer>();
+	Renderer->SetPipeLine(RCGDefine::EnginePipeName);
+	Renderer->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "RCG_Kyoko_idle0001_anio.png");
+
+	Renderer->GetTransform()->SetLocalScale({ 100.f, 100.f, 100.f });
 }
 
 

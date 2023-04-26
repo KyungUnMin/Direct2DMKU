@@ -116,15 +116,15 @@ void GameEngineCore::CoreResourceInit()
 		Desc.RenderTarget[0].BlendEnable = true;
 		//모든색(RGBA) 블렌드 마스크 사용시 적용?
 		Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		//두 색을 혼합
-		Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
 
-		//소스컬러 RGB값에 A을 곱한다
+
+
+		//두 색을 혼합 (Op는 오퍼레이션을 의미)
+		Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
 		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		//목적지 컬러 RBG값에 (1 - A)를 곱한다, 아마 소스 컬러의 A인것 같다..
 		Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 
-		//???
+		//알파값을 혼합
 		Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
 		Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_SRC_ALPHA;
 		Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_INV_SRC_ALPHA;
@@ -144,7 +144,7 @@ void GameEngineCore::CoreResourceInit()
 		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ALL;
 		Desc.StencilEnable = false;
 
-		GameEngineDepthState::Create("EngineDepth", Desc);
+		//GameEngineDepthState::Create("EngineDepth", Desc);
 	}
 
 
