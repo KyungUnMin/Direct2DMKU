@@ -25,22 +25,22 @@ void OpeningLevel::Start()
 {
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 
-	{
-		GameEngineDirectory Dir;
-		RCGDefine::MoveContentPath(Dir, ResType::Video);
-		Dir.Move("Opening");
-		std::vector<GameEngineFile>Files = Dir.GetAllFile({ ".avi" });
+	//{
+	//	GameEngineDirectory Dir;
+	//	RCGDefine::MoveContentPath(Dir, ResType::Video);
+	//	Dir.Move("Opening");
+	//	std::vector<GameEngineFile>Files = Dir.GetAllFile({ ".avi" });
 
-		for (const GameEngineFile& File : Files)
-		{
-			GameEngineVideo::Load(File.GetFullPath());
-		}
+	//	for (const GameEngineFile& File : Files)
+	//	{
+	//		GameEngineVideo::Load(File.GetFullPath());
+	//	}
 
-		Video1 = GameEngineVideo::Find("ArcCI_Final_6sec_com_reg_TEST20.avi");
-		Video2 = GameEngineVideo::Find("WF_Logo_2016.avi");
+	//	Video1 = GameEngineVideo::Find("ArcCI_Final_6sec_com_reg_TEST20.avi");
+	//	Video2 = GameEngineVideo::Find("WF_Logo_2016.avi");
 
-		//Video1->Play();
-	}
+	//	//Video1->Play();
+	//}
 
 
 
@@ -61,16 +61,11 @@ void OpeningLevel::Start()
 	CreateActor<OpeningActor>();
 }
 
-#include "KeyMgr.h"
 
 void OpeningLevel::Update(float _DeltaTime)
 {
 	GameEngineLevel::Update(_DeltaTime);
 
-	if (true == KeyMgr::IsDown(KeyNames::Esc))
-	{
-		Video2->Play();
-	}
 
 	//GameEngineVideo::VideoState State = GameEngineVideo::GetCurState();
 	//if (nullptr != Video1 && GameEngineVideo::VideoState::UNKNOWN == State)

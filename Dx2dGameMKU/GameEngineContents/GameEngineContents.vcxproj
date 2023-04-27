@@ -175,6 +175,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FieldDoor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SimpleFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LevelMgr.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TownBossLevel.h">
       <SubType>
       </SubType>
@@ -289,6 +301,19 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
+    <ClCompile Include="FieldDoor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldDoor_Update.cpp" />
+    <ClCompile Include="SimpleFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LevelMgr.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TownBossLevel.cpp">
       <SubType>
       </SubType>

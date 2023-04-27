@@ -70,53 +70,14 @@
     <Filter Include="02.Level\02.Field\07.TownBoss">
       <UniqueIdentifier>{8ac5f9fe-c152-46dc-bbd1-4b30bc498902}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\01.Common">
-      <UniqueIdentifier>{217c596a-465e-496e-aa26-146074249a9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\01.Common\01.BackGround">
-      <UniqueIdentifier>{22d7f0a5-a5f5-4be5-994c-6a161eb1d3f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\02.OpeningActor">
       <UniqueIdentifier>{aa088fdc-c3c2-4eb5-981b-6fc39574bb3a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor">
-      <UniqueIdentifier>{6cbfcf5b-a11b-4570-962f-fdbe2b6f4a00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\01.FieldActorBase">
-      <UniqueIdentifier>{7c5dd5d2-a154-486b-ac83-fa02ad6388cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer">
-      <UniqueIdentifier>{9bfba157-1d40-47f0-a66a-be65b68451e4}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\04.UI">
       <UniqueIdentifier>{6ecfb5c7-2c36-46cb-a25d-2696bb8e47d8}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\04.UI\01.HUD">
       <UniqueIdentifier>{a6f4803e-fca4-4bd0-b781-3580f1c13609}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\01.Actor">
-      <UniqueIdentifier>{4b957c25-1ed2-42eb-ab53-1863c7f1929e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM">
-      <UniqueIdentifier>{08e2c60e-9fcf-47e6-8263-22ad2e4cb5d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\01.FSM">
-      <UniqueIdentifier>{00356c02-2b31-40fc-9e12-8621d2b5ba05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\02.StateBase">
-      <UniqueIdentifier>{b9c2713a-1869-4832-b9bb-43edd558ef9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\03.Idle">
-      <UniqueIdentifier>{aa624834-e693-4964-9aa8-ca8ed19d814b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\04.Move">
-      <UniqueIdentifier>{c1aa9586-a8be-4031-a937-70535444f75c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\05.Jump">
-      <UniqueIdentifier>{1ce6168e-8834-4ce2-864a-268dc3f983d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\06.Fall">
-      <UniqueIdentifier>{b94727c1-8baa-423f-8c2b-4591580b4ee1}</UniqueIdentifier>
     </Filter>
     <Filter Include="04.Component">
       <UniqueIdentifier>{0ba3daf2-4131-4772-a06d-f1eeaec8e087}</UniqueIdentifier>
@@ -142,6 +103,51 @@
     <Filter Include="01.Core\03.Manager/Controller\02.FieldCam">
       <UniqueIdentifier>{d6de4946-2c72-41f0-8a5d-1d5f80d03bb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\01.BackGround">
+      <UniqueIdentifier>{22d7f0a5-a5f5-4be5-994c-6a161eb1d3f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter">
+      <UniqueIdentifier>{6cbfcf5b-a11b-4570-962f-fdbe2b6f4a00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\01.FieldActorBase">
+      <UniqueIdentifier>{7c5dd5d2-a154-486b-ac83-fa02ad6388cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer">
+      <UniqueIdentifier>{9bfba157-1d40-47f0-a66a-be65b68451e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\01.Actor">
+      <UniqueIdentifier>{4b957c25-1ed2-42eb-ab53-1863c7f1929e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM">
+      <UniqueIdentifier>{08e2c60e-9fcf-47e6-8263-22ad2e4cb5d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\01.FSM">
+      <UniqueIdentifier>{00356c02-2b31-40fc-9e12-8621d2b5ba05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\02.StateBase">
+      <UniqueIdentifier>{b9c2713a-1869-4832-b9bb-43edd558ef9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Idle">
+      <UniqueIdentifier>{aa624834-e693-4964-9aa8-ca8ed19d814b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Move">
+      <UniqueIdentifier>{c1aa9586-a8be-4031-a937-70535444f75c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Jump">
+      <UniqueIdentifier>{1ce6168e-8834-4ce2-864a-268dc3f983d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\06.Fall">
+      <UniqueIdentifier>{b94727c1-8baa-423f-8c2b-4591580b4ee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\05.FieldDoor">
+      <UniqueIdentifier>{e599bc32-a0cb-4e00-ae0f-5bc480085d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\03.LevelMgr">
+      <UniqueIdentifier>{4e54979e-6a8a-4495-82bd-2d900bdf3109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Component\02.InstanceFSM">
+      <UniqueIdentifier>{d1dc5620-ac66-43dd-bd09-0b127665ba44}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -166,7 +172,7 @@
       <Filter>02.Level\02.Field\01.FieldBase</Filter>
     </ClCompile>
     <ClCompile Include="FieldActorBase.cpp">
-      <Filter>03.Actor\03.FieldActor\01.FieldActorBase</Filter>
+      <Filter>03.Actor\03.FieldCharacter\01.FieldActorBase</Filter>
     </ClCompile>
     <ClCompile Include="FSMBase.cpp">
       <Filter>04.Component\01.FSMBase\01.FSMBase</Filter>
@@ -175,10 +181,10 @@
       <Filter>04.Component\01.FSMBase\02.StateBase</Filter>
     </ClCompile>
     <ClCompile Include="PlayerFSM.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\01.FSM</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\01.FSM</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStateBase.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\02.StateBase</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\02.StateBase</Filter>
     </ClCompile>
     <ClCompile Include="RCG_GameCore.cpp">
       <Filter>01.Core\01.Core</Filter>
@@ -187,16 +193,16 @@
       <Filter>01.Core\03.Manager/Controller\01.KeyMgr</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Jump.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\05.Jump</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Jump</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Fall.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\06.Fall</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\06.Fall</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Idle.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\03.Idle</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Idle</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Move.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\04.Move</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Move</Filter>
     </ClCompile>
     <ClCompile Include="ShaderTestActor.cpp">
       <Filter>99.Test</Filter>
@@ -211,13 +217,13 @@
       <Filter>02.Level\02.Field\02.SchoolEntry</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
-      <Filter>03.Actor\01.Common\01.BackGround</Filter>
+      <Filter>03.Actor\01.BackGround</Filter>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp">
       <Filter>01.Core\01.Core</Filter>
     </ClCompile>
     <ClCompile Include="FieldPlayer.cpp">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\01.Actor</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="SchoolBossLevel.cpp">
       <Filter>02.Level\02.Field\03.SchoolBoss</Filter>
@@ -243,6 +249,18 @@
     <ClCompile Include="FieldCamController.cpp">
       <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
     </ClCompile>
+    <ClCompile Include="LevelMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\03.LevelMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleFSM.cpp">
+      <Filter>04.Component\02.InstanceFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldDoor.cpp">
+      <Filter>03.Actor\05.FieldDoor</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldDoor_Update.cpp">
+      <Filter>03.Actor\05.FieldDoor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -267,7 +285,7 @@
       <Filter>02.Level\02.Field\01.FieldBase</Filter>
     </ClInclude>
     <ClInclude Include="FieldActorBase.h">
-      <Filter>03.Actor\03.FieldActor\01.FieldActorBase</Filter>
+      <Filter>03.Actor\03.FieldCharacter\01.FieldActorBase</Filter>
     </ClInclude>
     <ClInclude Include="FSMBase.h">
       <Filter>04.Component\01.FSMBase\01.FSMBase</Filter>
@@ -276,10 +294,10 @@
       <Filter>04.Component\01.FSMBase\02.StateBase</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFSM.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\01.FSM</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\01.FSM</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStateBase.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\02.StateBase</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\02.StateBase</Filter>
     </ClInclude>
     <ClInclude Include="RCG_GameCore.h">
       <Filter>01.Core\01.Core</Filter>
@@ -291,16 +309,16 @@
       <Filter>01.Core\03.Manager/Controller\01.KeyMgr</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Jump.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\05.Jump</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Jump</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Fall.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\06.Fall</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\06.Fall</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Idle.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\03.Idle</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Idle</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Move.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\02.FSM\04.Move</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Move</Filter>
     </ClInclude>
     <ClInclude Include="ShaderTestActor.h">
       <Filter>99.Test</Filter>
@@ -315,10 +333,10 @@
       <Filter>02.Level\02.Field\02.SchoolEntry</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
-      <Filter>03.Actor\01.Common\01.BackGround</Filter>
+      <Filter>03.Actor\01.BackGround</Filter>
     </ClInclude>
     <ClInclude Include="FieldPlayer.h">
-      <Filter>03.Actor\03.FieldActor\02.FieldPlayer\01.Actor</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="SchoolBossLevel.h">
       <Filter>02.Level\02.Field\03.SchoolBoss</Filter>
@@ -343,6 +361,15 @@
     </ClInclude>
     <ClInclude Include="FieldCamController.h">
       <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelMgr.h">
+      <Filter>01.Core\03.Manager/Controller\03.LevelMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleFSM.h">
+      <Filter>04.Component\02.InstanceFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldDoor.h">
+      <Filter>03.Actor\05.FieldDoor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

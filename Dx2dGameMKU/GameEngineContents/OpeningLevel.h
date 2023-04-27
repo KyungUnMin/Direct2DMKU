@@ -20,8 +20,8 @@ protected:
 
 
 private:
-	std::shared_ptr<GameEngineVideo> Video1 = nullptr;
-	std::shared_ptr<GameEngineVideo> Video2 = nullptr;
+	/*std::shared_ptr<GameEngineVideo> Video1 = nullptr;
+	std::shared_ptr<GameEngineVideo> Video2 = nullptr;*/
 
 };
 

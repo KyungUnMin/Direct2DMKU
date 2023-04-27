@@ -36,7 +36,13 @@ public:
 
 	static std::string_view EnumToString(KeyNames _Name)
 	{
-		return IndexToString[static_cast<size_t>(_Name)];
+		size_t Index = static_cast<size_t>(_Name);
+		if (IndexToString.size() <= Index)
+		{
+			MsgAssert("해당 키에 대응하는 string을 만들어준 적이 없습니다");
+		}
+
+		return IndexToString[Index];
 	}
 
 	static bool IsPress(KeyNames _Name);

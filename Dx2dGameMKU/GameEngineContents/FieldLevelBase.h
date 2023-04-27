@@ -30,7 +30,7 @@ public:
 
 protected:
 	void Start() override;
-	void Update(float _DeltaTime) final;
+	void Update(float _DeltaTime) override;
 	
 	void SettingBackImg(const std::string_view& _ResName, const float4& _MapScale);
 
