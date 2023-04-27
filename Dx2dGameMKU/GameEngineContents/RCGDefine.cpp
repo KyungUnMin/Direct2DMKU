@@ -5,6 +5,7 @@ const std::string_view RCGDefine::EnginePipeName = "2DTexture";
 const std::string_view RCGDefine::EngineTexName = "DiffuseTex";
 
 const float RCGDefine::ResolutionConvertor = (1080.f / 1920.f);
+const float RCGDefine::ResourceScaleConvertor = 2.5f;
 
 void RCGDefine::MoveContentPath(GameEngineDirectory& _Dir, ResType _Type)
 {

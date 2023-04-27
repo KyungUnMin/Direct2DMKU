@@ -183,6 +183,8 @@ void GameEngineDevice::CreateSwapChain()
 
 	//그 비트맵을 수정할수 있는 권한인 렌더타겟(DC)을 만들어 그 비트맵을 관리하게 한다.
 	BackBufferTarget = GameEngineRenderTarget::Create("MainBackBufferTarget", BackBufferTexture, float4{ 0.f, 0.f, 1.f, 1.f });
+
+	BackBufferTarget->CreateDepthTexture();
 }
 
 void GameEngineDevice::RenderStart()

@@ -7,6 +7,7 @@ FieldPlayer* FieldPlayer::GPtr = nullptr;
 
 FieldPlayer::FieldPlayer()
 {
+	//Start부분을 위해 여기서도 설정
 	GPtr = this;
 }
 
@@ -23,8 +24,8 @@ void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
 
-	/*RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
-	RendererPtr->SetName("PlayerRender");*/
+	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr->SetName("PlayerRender");
 
 
 	Fsm.Init();

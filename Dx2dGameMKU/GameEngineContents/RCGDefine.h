@@ -20,6 +20,7 @@ public:
 	static const std::string_view EngineTexName;
 
 	static const float ResolutionConvertor;
+	static const float ResourceScaleConvertor;
 
 	static void MoveContentPath(GameEngineDirectory& _Dir, ResType _Type);
 

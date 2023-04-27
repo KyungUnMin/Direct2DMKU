@@ -175,16 +175,36 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TownBossLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CrossTownLevel1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CrossTownLevel2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CrossTownLevel3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldCamController.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="FSMBase.h" />
-    <ClInclude Include="HMD_UI.h">
+    <ClInclude Include="KeyMgr.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="KeyMgr.h">
+    <ClInclude Include="OceanBossLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OceanLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -237,6 +257,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SchoolBossLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SchoolEntryLevel.h">
       <SubType>
       </SubType>
@@ -265,16 +289,36 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
+    <ClCompile Include="TownBossLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CrossTownLevel1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CrossTownLevel2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CrossTownLevel3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldCamController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="FSMBase.cpp" />
-    <ClCompile Include="HMD_UI.cpp">
+    <ClCompile Include="KeyMgr.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="KeyMgr.cpp">
+    <ClCompile Include="OceanBossLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="OceanLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -327,6 +371,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PlayerFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBossLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>

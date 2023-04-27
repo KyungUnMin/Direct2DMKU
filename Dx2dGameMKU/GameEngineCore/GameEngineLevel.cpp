@@ -16,6 +16,22 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::ActorUpdate(float _DeltaTime)
 {
+	//프리 카메라 모드와 상관없이 모든 엑터들의 라이브타임은 흐른다
+	for (std::pair<int, std::list<std::shared_ptr<GameEngineActor>>> OrderGroup : Actors)
+	{
+		std::list<std::shared_ptr<GameEngineActor>>& ActorList = OrderGroup.second;
+
+		for (std::shared_ptr<GameEngineActor> Actor : ActorList)
+		{
+			if (false == Actor->IsUpdate())
+				continue;
+
+
+			Actor->AccLiveTime(_DeltaTime);
+		}
+	}
+
+
 	//프리 카메라 모드일땐 카메라 제외하고 업데이트 실행X
 	if (true == MainCamera->IsFreeCamera())
 	{
@@ -30,10 +46,15 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 
 		for (std::shared_ptr<GameEngineActor> Actor : ActorList)
 		{
+			//비활성화된 엑터들은 동작시키지 않음
+			if (false == Actor->IsUpdate())
+				continue;
+
 			Actor->Update(_DeltaTime);
 			Actor->ComponentsUpdate(_DeltaTime);
 		}
 	}
+
 }
 
 void GameEngineLevel::ActorRender(float _DeltaTime)
@@ -52,19 +73,6 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		}
 	}
 }
-
-
-
-void GameEngineLevel::Update(float _DeltaTime)
-{
-	
-}
-
-void GameEngineLevel::Render(float _DeltaTime)
-{
-	
-}
-
 
 
 //생성한 엑터 초기화

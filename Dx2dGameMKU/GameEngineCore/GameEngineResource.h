@@ -77,7 +77,7 @@ protected:
 
 		if (NamedResources.end() != NamedResources.find(UpperName))
 		{
-			MsgAssert("이미 존재하는 이름의 리소스를 또 만들력 했습니다");
+			MsgAssert("이미 존재하는 이름의 리소스를 또 만들려고 했습니다");
 			return nullptr;
 		}
 

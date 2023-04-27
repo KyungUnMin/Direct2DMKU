@@ -2,6 +2,8 @@
 #include "GameEngineVideo.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
 
+GameEngineVideo* GameEngineVideo::CurVideo = nullptr;
+
 GameEngineVideo::GameEngineVideo()
 {
 
@@ -97,10 +99,35 @@ void GameEngineVideo::ResLoad(const std::string_view& _Path)
 }
 
 
+GameEngineVideo::VideoState GameEngineVideo::GetCurState()
+{
+	if (nullptr == CurVideo)
+	{
+		return GameEngineVideo::VideoState::UNKNOWN;
+	}
+
+	if (true == CurVideo->IsFinished())
+	{
+		CurVideo->Stop();
+		CurVideo = nullptr;
+		return GameEngineVideo::VideoState::Stop;
+	}
+
+	return GameEngineVideo::VideoState::Running;
+}
+
+
 
 
 void GameEngineVideo::Play()
 {
+	if (nullptr != CurVideo)
+	{
+		return;
+	}
+
+	CurVideo = this;
+
 	if (VideoState::Stop == CurState)
 	{
 		MsgAssert("이미 종료된 비디오 클립입니다");
@@ -159,6 +186,8 @@ void GameEngineVideo::Stop()
 	//이 비디오 리소스는 다시 재생할 수 없습니다.
 	Release();
 }
+
+
 
 
 

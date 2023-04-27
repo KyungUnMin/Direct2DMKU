@@ -15,6 +15,12 @@ GameEngineTexture::GameEngineTexture()
 
 GameEngineTexture::~GameEngineTexture()
 {
+	if (nullptr != DSV)
+	{
+		DSV->Release();
+		DSV = nullptr;
+	}
+	
 	if (nullptr != SRV)
 	{
 		SRV->Release();
@@ -40,15 +46,19 @@ void GameEngineTexture::ResCreate(ID3D11Texture2D* _Value)
 {
 	Texture2D = _Value;
 
+	//만들어낸 메인화면 텍스처의 정보를 받아온다
+	Texture2D->GetDesc(&Desc);
+
 	//받은 텍스처를 바탕으로 렌더타겟을 생성
 	CreateRenderTargetView();
 }
+
 
 void GameEngineTexture::CreateRenderTargetView()
 {
 	if (nullptr == Texture2D)
 	{
-		MsgAssert("텍스처가 존재하지 않는 랜더타겟을 만들 수는 없습니다.");
+		MsgAssert("텍스처가 존재하지 않는 랜더타겟뷰를 만들 수는 없습니다.");
 		return;
 	}
 
@@ -57,10 +67,32 @@ void GameEngineTexture::CreateRenderTargetView()
 
 	if (S_OK != Result)
 	{
-		MsgAssert("렌더타겟 생성에 실패하였습니다");
+		MsgAssert("렌더타겟 뷰 생성에 실패하였습니다");
 		return;
 	}
 }
+
+
+
+void GameEngineTexture::CreateDepthStencilView()
+{
+	if (nullptr == Texture2D)
+	{
+		MsgAssert("텍스처가 존재하지 않는데 뎁스 스텐실 뷰를 만들수는 없습니다");
+		return;
+	}
+
+	HRESULT Result = GameEngineDevice::GetDevice()->CreateDepthStencilView(Texture2D, nullptr, &DSV);
+	if (S_OK != Result)
+	{
+		MsgAssert("뎁스 스텐실 뷰 생성에 실패했습니다");
+		return;
+	}
+}
+
+
+
+
 
 
 
@@ -102,7 +134,12 @@ void GameEngineTexture::ResLoad(const std::string_view& _Path)
 		MsgAssert("쉐이더 리소스 뷰 생성에 실패했습니다." + std::string(_Path.data()));
 	}
 
+
+	Desc.Width = static_cast<UINT>(Data.width);
+	Desc.Height= static_cast<UINT>(Data.height);
 }
+
+
 
 
 void GameEngineTexture::VSSetting(UINT _Slot)
@@ -113,4 +150,25 @@ void GameEngineTexture::VSSetting(UINT _Slot)
 void GameEngineTexture::PSSetting(UINT _Slot)
 {
 	GameEngineDevice::GetContext()->PSSetShaderResources(_Slot, 1, &SRV);
+}
+
+
+
+
+void GameEngineTexture::ResCreate(const D3D11_TEXTURE2D_DESC& _Value)
+{
+	Desc = _Value;
+
+	GameEngineDevice::GetDevice()->CreateTexture2D(&Desc, nullptr, &Texture2D);
+
+	//깊이 버퍼용으로 만든 텍스처였다면
+	if (D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL == Desc.BindFlags)
+	{
+		CreateDepthStencilView();
+	}
+
+	if (nullptr == Texture2D)
+	{
+		MsgAssert("텍스처 생성에 실패했습니다");
+	}
 }

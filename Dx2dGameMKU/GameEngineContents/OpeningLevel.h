@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+class GameEngineVideo;
+
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -14,10 +16,12 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 
 private:
-	
+	std::shared_ptr<GameEngineVideo> Video1 = nullptr;
+	std::shared_ptr<GameEngineVideo> Video2 = nullptr;
 
 };
 

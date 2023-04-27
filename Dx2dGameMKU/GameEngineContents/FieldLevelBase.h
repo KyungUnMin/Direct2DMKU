@@ -38,6 +38,9 @@ private:
 	static FieldLevelBase* GPtr;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	std::shared_ptr<class FieldPlayer> PlayerPtr = nullptr;
 	FieldCamController CamCtrl;
+
+	//GameEngineTransform PlayerDebugTransform;
 };
 

@@ -61,11 +61,10 @@ void PlayerState_Idle::LoadAnimation()
 
 void PlayerState_Idle::CreateAnimation()
 {
-	std::shared_ptr<GameEngineRenderer> Renderer = FieldPlayer::GetPtr()->CreateComponent<GameEngineRenderer>();
-	Renderer->SetPipeLine(RCGDefine::EnginePipeName);
-	Renderer->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "RCG_Kyoko_idle0001_anio.png");
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	Renderer->SetTexture("RCG_Kyoko_idle0001_anio.png");
 
-	Renderer->GetTransform()->SetLocalScale({ 100.f, 100.f, 100.f });
+	Renderer->GetTransform()->SetLocalScale(float4{ 37.f, 70.f, 1.f } *RCGDefine::ResourceScaleConvertor);
 }
 
 

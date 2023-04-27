@@ -24,17 +24,23 @@ public:
 		return NewRenderTarget;
 	}
 
-	//렌더타겟이 가르키고 있는 이미지를 지운다
+	//렌더타겟이 가르키고 있는 이미지를 지우고 깊이버퍼도 초기화한다
 	void Clear();
 
-	//랜파에서 아웃풋 머저를 위한 렌더타겟뷰를 세팅해주는 단계
+	//랜파에서 아웃풋 머저를 위한 렌더타겟뷰를 세팅해주는 단계(Core의 RenderStart에서 호출)
 	void Setting() override;
+
+	//사전에 만든 텍스처를 바탕으로 깊이버퍼텍스처 만들기, (아직까진) 디바이스에서만 호출됨
+	void CreateDepthTexture();
 
 protected:
 
 private:
 	float4 Color = float4{ 0.f, 0.f, 0.f, 0.f };
 	std::shared_ptr<GameEngineTexture> Texture = nullptr;
+
+	//깊이버퍼용 텍스처
+	std::shared_ptr<GameEngineTexture> DepthTexture;
 
 	//텍스처의 경우엔 포인터를 두개로 나눠서
 	//GameEngineTexture와 GameEngineRenderTarget이 각각 한개씩 나눠갖는다

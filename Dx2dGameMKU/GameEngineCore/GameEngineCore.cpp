@@ -6,6 +6,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineSound.h>
 #include "GameEngineDevice.h"
+#include "GameEngineVideo.h"
 
 std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::LevelMap;
 std::shared_ptr<GameEngineLevel> GameEngineCore::MainLevel = nullptr;
@@ -45,10 +46,26 @@ void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 
 void GameEngineCore::EngineUpdate()
 {
+	//레벨 전환시 기능
 	if (nullptr != NextLevel)
 	{
+		if (nullptr != MainLevel)
+		{
+			MainLevel->LevelChangeEnd();
+		}
+
 		MainLevel = NextLevel;
+
+		if (nullptr != MainLevel)
+		{
+			MainLevel->LevelChangeStart();
+		}
+
+		NextLevel = nullptr;
+		GameEngineTime::GlobalTime.Reset();
 	}
+
+
 
 	if (nullptr == MainLevel)
 	{
@@ -57,6 +74,15 @@ void GameEngineCore::EngineUpdate()
 	}
 
 	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
+
+
+	//TimeDeltaTime이 너무 커질때를 방지
+	if ((1 / 30.f) < TimeDeltaTime)
+	{
+		TimeDeltaTime = (1 / 30.f);
+	}
+
+
 	GameEngineInput::Update(TimeDeltaTime);
 	GameEngineSound::SoundUpdate();
 
@@ -65,12 +91,17 @@ void GameEngineCore::EngineUpdate()
 	MainLevel->Update(TimeDeltaTime);
 	MainLevel->ActorUpdate(TimeDeltaTime);
 
-	//렌더링을 시작하기 전에 이전 이미지들을 지운다
-	GameEngineDevice::RenderStart();
-	MainLevel->Render(TimeDeltaTime);
-	MainLevel->ActorRender(TimeDeltaTime);
-	//더블버퍼링을 이용해서 렌더링을 처리한다
-	GameEngineDevice::RenderEnd();
+
+	GameEngineVideo::VideoState State = GameEngineVideo::GetCurState();
+	if (State != GameEngineVideo::VideoState::Running)
+	{
+		//렌더링을 시작하기 전에 이전 이미지들을 지운다
+		GameEngineDevice::RenderStart();
+		MainLevel->Render(TimeDeltaTime);
+		MainLevel->ActorRender(TimeDeltaTime);
+		//더블버퍼링을 이용해서 렌더링을 처리한다
+		GameEngineDevice::RenderEnd();
+	}
 }
 
 void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)

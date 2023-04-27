@@ -7,6 +7,7 @@
 #include "GameEnginePixelShader.h"
 #include "GameEngineBlend.h"
 #include "GameEngineInputLayOut.h"
+#include "GameEngineDepthState.h"
 
 
 GameEngineRenderingPipeLine::GameEngineRenderingPipeLine()
@@ -107,15 +108,24 @@ void GameEngineRenderingPipeLine::PixelShader()
 
 void GameEngineRenderingPipeLine::OutputMerger()
 {
-	if (nullptr == BlendPtr)
+	if (nullptr == BlendStatePtr)
 	{
 		MsgAssert("블랜드가 존재하지 않아 아웃풋 머저 과정을 완료할수가 없습니다.");
 		return;
 	}
 
-	BlendPtr->Setting();
+	BlendStatePtr->Setting();
 
-	//여기서 설정하지 않고 GameEngineDevice::RenderStart에서 백버퍼 렌더타겟을 이용해 설정
+	if (nullptr == DepthStatePtr)
+	{
+		MsgAssert("뎁스 스텐실 스테이트가 존재하지 않아 아웃풋 머저 과정을 완료할수가 없습니다.");
+		return;
+	}
+
+	DepthStatePtr->Setting();
+
+	//GameEngineDevice::RenderStart에서 백버퍼 렌더타겟을 이용해 그려질 RTV 설정
+	//또한 뎁스 스텐실에 사용될 깊이버퍼 텍스처도 GameEngineDevice에 있는 RTV의 Setting 함수에서 설정된다
 }
 
 
@@ -197,14 +207,25 @@ void GameEngineRenderingPipeLine::SetPixelShader(const std::string_view& _Value)
 	}
 }
 
-void GameEngineRenderingPipeLine::SetBlend(const std::string_view& _Value)
+void GameEngineRenderingPipeLine::SetBlendState(const std::string_view& _Value)
 {
 	std::string UpperName = GameEngineString::ToUpper(_Value);
-	BlendPtr = GameEngineBlend::Find(UpperName);
+	BlendStatePtr = GameEngineBlend::Find(UpperName);
 
-	if (nullptr == BlendPtr)
+	if (nullptr == BlendStatePtr)
 	{
 		MsgAssert("존재하지 않는 블렌드를 사용하려고 했습니다.");
+	}
+}
+
+void GameEngineRenderingPipeLine::SetDepthState(const std::string_view& _Value)
+{
+	std::string UpperName = GameEngineString::ToUpper(_Value);
+	DepthStatePtr = GameEngineDepthState::Find(UpperName);
+
+	if (nullptr == DepthStatePtr)
+	{
+		MsgAssert("존재하지 않는 뎁스 스텐실을 사용하려고 했습니다.");
 	}
 }
 

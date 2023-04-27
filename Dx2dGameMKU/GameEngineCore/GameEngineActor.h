@@ -35,6 +35,8 @@ protected:
 	virtual void Update(float _DeltaTime){}
 	virtual void Render(float _DeltaTime){}
 
+	void AccLiveTime(float _LiveTime) override;
+
 private:
 	class GameEngineLevel* Level = nullptr;
 

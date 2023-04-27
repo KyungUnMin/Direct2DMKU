@@ -7,8 +7,8 @@
 #include "RCGEnums.h"
 #include "BackGround.h"
 
-const std::string_view SchoolEntryLevel::MapImgName = "01_Detention_BG.png";
-const float4 SchoolEntryLevel::MapScale = float4{ 672.f, 224.f } *3.f;
+const std::string_view SchoolEntryLevel::MapImgName = "SchoolEntryBG.png";
+const float4 SchoolEntryLevel::MapScale = float4{ 672.f, 224.f } *RCGDefine::ResourceScaleConvertor;
 
 SchoolEntryLevel::SchoolEntryLevel()
 {
@@ -33,7 +33,7 @@ void SchoolEntryLevel::LoadImgRes()
 	GameEngineDirectory Dir;
 	RCGDefine::MoveContentPath(Dir, ResType::Image);
 	Dir.Move("Level");
-	Dir.Move("School_Entry");
+	Dir.Move("SchoolEntry");
 	std::vector<GameEngineFile> Files = Dir.GetAllFile({ ".png" });
 	for (const GameEngineFile& File : Files)
 	{

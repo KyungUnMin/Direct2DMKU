@@ -53,9 +53,12 @@ public:
 	}
 
 protected:
+	virtual void LevelChangeStart(){}
+	virtual void LevelChangeEnd(){}
+	
 	virtual void Start() = 0;
-	virtual void Update(float _DeltaTime);
-	virtual void Render(float _DeltaTime);
+	virtual void Update(float _DeltaTime){}
+	virtual void Render(float _DeltaTime){}
 
 private:
 	std::shared_ptr<GameEngineCamera> MainCamera;

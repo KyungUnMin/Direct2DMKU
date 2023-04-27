@@ -12,6 +12,7 @@ GameEngineActor::~GameEngineActor()
 
 }
 
+
 void GameEngineActor::ComponentInit(std::shared_ptr<GameEngineComponent> _Component)
 {
 	_Component->Actor = this;
@@ -24,18 +25,44 @@ void GameEngineActor::ComponentInit(std::shared_ptr<GameEngineComponent> _Compon
 	ComponentsList.push_back(_Component);
 }
 
+
+
 void GameEngineActor::ComponentsUpdate(float _DeltaTime)
 {
 	for (std::shared_ptr<GameEngineComponent>& Component : ComponentsList)
 	{
+		//활성화된 컴포넌트들만 동작 시키기
+		if (false == Component->IsUpdate())
+			continue;
+
 		Component->Update(_DeltaTime);
 	}
 }
+
+
+
 
 void GameEngineActor::ComponentsRender(float _DeltaTime)
 {
 	for (std::shared_ptr<GameEngineComponent>& Component : ComponentsList)
 	{
+		//활성화된 컴포넌트들만 동작 시키기
+		if (false == Component->IsUpdate())
+			continue;
+
 		Component->Render(_DeltaTime);
+	}
+}
+
+
+void GameEngineActor::AccLiveTime(float _LiveTime)
+{
+	//자신의 라이브타임을 증가시키고
+	GameEngineUpdateObject::AccLiveTime(_LiveTime);
+
+	//컴포넌트들의 라이브타임을 증가시킨다
+	for (std::shared_ptr<class GameEngineComponent>& Component : ComponentsList)
+	{
+		Component->AccLiveTime(_LiveTime);
 	}
 }

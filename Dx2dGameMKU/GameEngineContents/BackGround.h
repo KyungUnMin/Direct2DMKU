@@ -12,9 +12,10 @@ public:
 	BackGround& operator=(const BackGround& _Other) = delete;
 	BackGround& operator=(const BackGround&& _Other) noexcept = delete;
 
-	void SettingBackImg(const std::string_view& _ResName, const float4& _Scale);
+	void AddBackImg(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset = float4::Zero);
 
 protected:
+	void Start() override;
 
 private:
 

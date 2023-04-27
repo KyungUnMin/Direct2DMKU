@@ -144,7 +144,7 @@ void GameEngineCore::CoreResourceInit()
 		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ALL;
 		Desc.StencilEnable = false;
 
-		//GameEngineDepthState::Create("EngineDepth", Desc);
+		GameEngineDepthState::Create("EngineDepth", Desc);
 	}
 
 
@@ -229,7 +229,7 @@ void GameEngineCore::CoreResourceInit()
 		//BOOL AntialiasedLineEnable;
 			// 선 앤티앨리어싱을 활성화 여부
 
-		Decs.FillMode = D3D11_FILL_WIREFRAME;
+		//Decs.FillMode = D3D11_FILL_WIREFRAME;
 		Decs.CullMode = D3D11_CULL_NONE;
 		Decs.FrontCounterClockwise = FALSE;
 
@@ -242,13 +242,13 @@ void GameEngineCore::CoreResourceInit()
 		//랜더링 파이프라인은 자식에서 별도의 Create함수를 갖지 않는다
 		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("2DTexture");
 
-		//버텍스 버퍼 설정
 		Pipe->SetVertexBuffer("Rect");
 		Pipe->SetVertexShader("TextureShader.hlsl");
 		Pipe->SetIndexBuffer("Rect");
 		Pipe->SetRasterizer("Engine2DBase");
 		Pipe->SetPixelShader("TextureShader.hlsl");
-		Pipe->SetBlend("AlphaBlend");
+		Pipe->SetBlendState("AlphaBlend");
+		Pipe->SetDepthState("EngineDepth");
 	}
 
 }
