@@ -10,8 +10,8 @@
 
 const std::string_view FieldDoor::LockDoorName = "LOCKED_DOOR.png";
 const std::string_view FieldDoor::UnlockDoorName = "UNLOCKED_DOOR.png";
-const float4 FieldDoor::LockDoorScale = float4{ 76.f, 113.f } /**RCGDefine::ResourceScaleConvertor*/;
-const float4 FieldDoor::UnlockDoorScale = float4{ 78.f, 114.f } /**RCGDefine::ResourceScaleConvertor*/;
+const float4 FieldDoor::LockDoorScale = float4{ 76.f, 113.f } * 0.7f;
+const float4 FieldDoor::UnlockDoorScale = float4{ 78.f, 114.f } *0.7f;
 
 FieldDoor::FieldDoor()
 {

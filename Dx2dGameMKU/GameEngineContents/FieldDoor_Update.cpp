@@ -110,7 +110,7 @@ void FieldDoor::Update_AlphaReady(float _DeltaTime)
 		return;
 	}
 
-	const float Duration = 1.5f;
+	const float Duration = 0.5f;
 	float LiveTime = AlphaFSM.GetStateLiveTime();
 	AlphaRatio.x = (LiveTime / Duration);
 }

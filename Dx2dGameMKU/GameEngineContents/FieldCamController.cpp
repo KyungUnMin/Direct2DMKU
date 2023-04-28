@@ -2,6 +2,7 @@
 #include "FieldCamController.h"
 
 #include <GameEngineBase/GameEngineRandom.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 
@@ -119,16 +120,61 @@ void FieldCamController::Update_Trace(float _DeltaTime)
 	//카메라가 캐릭터를 따라 다니고 영역 밖으로 나가지 못한다.
 	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
 	if (nullptr == PlayerPtr)
+	{
+		MsgAssert("카메라가 쫒아갈 플레이어가 존재하지 않습니다");
 		return;
+	}
 
 	float4 PlayerPos = PlayerPtr->GetTransform()->GetWorldPosition();
 	GameEngineTransform* CamTransform = Cam->GetTransform();
-	float4 CamPos = CamTransform->GetWorldPosition();
+	float4 CamPos = CamTransform->GetLocalPosition();
 
-	//일단 임시, Lerp가 아니라 가속도 방식으로도 사용 가능
+	/*float OriginCamZ = CamPos.z;
+	PlayerPos.z = 0.f;
+	CamPos.z = 0.f;
+
+	const float StopDistance = 10.f;
+	float4 Dir = (PlayerPos - CamPos);
+	if (Dir.Size() < StopDistance)
+		return;
+
+	Dir.Normalize();
+	const float MoveSpeed = 200.f;
+	float4 NextPos = CamPos + (Dir * MoveSpeed * _DeltaTime);
+
+	if (NextPos.x < -MapScale.hx() || MapScale.hx() < NextPos.x)
+		return;
+
+	if (NextPos.y < -MapScale.hy() || MapScale.hy() < NextPos.y)
+		return;
+
+	NextPos.z = OriginCamZ;
+	CamTransform->SetLocalPosition(NextPos);*/
+
 	float4 NextPos = float4::LerpClamp(CamPos, PlayerPos, _DeltaTime);
+	
+	float4 ScreenSize = GameEngineWindow::GetScreenSize();
+	if (
+		(NextPos.x - ScreenSize.hx()) < -MapScale.hx()
+		|| MapScale.hx() < (NextPos.x + ScreenSize.hx())
+		)
+	{
+		NextPos.x = CamPos.x;
+	}
+
+	if (
+		(NextPos.y - ScreenSize.hy()) < -MapScale.hy()
+		|| MapScale.hy() < (NextPos.y + ScreenSize.hy())
+		)
+	{
+		NextPos.y = CamPos.y;
+	}
+
 	NextPos.z = CamPos.z;
 	NextPos.w = 1.0f;
+
+	if (NextPos == CamPos)
+		return;
 
 	CamTransform->SetWorldPosition(NextPos);
 }
