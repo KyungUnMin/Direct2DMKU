@@ -25,6 +25,8 @@ void BackGround::AddBackImg(const std::string_view& _ResName, const float4& _Sca
 {
 	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	RendererPtr->SetTexture(_ResName);
+
+	
 	
 	//_Offset TODO
 

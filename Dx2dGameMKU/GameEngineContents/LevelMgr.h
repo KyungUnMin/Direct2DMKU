@@ -10,7 +10,11 @@ enum class LevelNames
 	CrossTownLevel3,
 	TownBossLevel,
 	OceanLevel,
-	OceanBossLevel
+	OceanBossLevel,
+
+	Shop_BurgerLevel,
+	Shop_StoreLevel,
+	Shop_GymLevel
 };
 
 class LevelMgr
@@ -40,6 +44,8 @@ protected:
 
 private:
 	static const std::vector<std::string_view> IndexToString;
+	static LevelNames NowLevel;
+
 
 	static void CreateLevel(LevelNames _StartLevel);
 

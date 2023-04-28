@@ -13,6 +13,10 @@
 #include "OceanLevel.h"
 #include "OceanBossLevel.h"
 
+#include "Shop_BurgerLevel.h"
+#include "Shop_StoreLevel.h"
+#include "Shop_GymLevel.h"
+
 
 const std::vector<std::string_view> LevelMgr::IndexToString =
 {
@@ -24,9 +28,14 @@ const std::vector<std::string_view> LevelMgr::IndexToString =
 	"CrossTownLevel3",
 	"TownBossLevel",
 	"OceanLevel",
-	"OceanBossLevel"
+	"OceanBossLevel",
+
+	"Shop_BurgerLevel",
+	"Shop_StoreLevel",
+	"Shop_GymLevel"
 };
 
+LevelNames LevelMgr::NowLevel = LevelNames::OpeningLevel;
 
 void LevelMgr::CreateLevel(LevelNames _StartLevel)
 {
@@ -40,11 +49,27 @@ void LevelMgr::CreateLevel(LevelNames _StartLevel)
 	GameEngineCore::CreateLevel<OceanLevel>();
 	GameEngineCore::CreateLevel<OceanBossLevel>();
 
-	GameEngineCore::ChangeLevel(EnumToString(_StartLevel));
+	GameEngineCore::CreateLevel<Shop_BurgerLevel>();
+	GameEngineCore::CreateLevel<Shop_StoreLevel>();
+	GameEngineCore::CreateLevel<Shop_GymLevel>();
+
+	ChangeLevel(_StartLevel);
 }
 
 void LevelMgr::ChangeLevel(LevelNames _Level)
 {
+	switch (_Level)
+	{
+	case LevelNames::Shop_BurgerLevel:
+	case LevelNames::Shop_StoreLevel:
+	case LevelNames::Shop_GymLevel:
+		ShopLevelBase::PrevLevel = NowLevel;
+		break;
+	default:
+		break;
+	}
+
+	NowLevel = _Level;
 	GameEngineCore::ChangeLevel(EnumToString(_Level));
 }
 

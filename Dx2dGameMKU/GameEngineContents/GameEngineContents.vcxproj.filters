@@ -28,9 +28,6 @@
     <Filter Include="02.Level\03.Shop">
       <UniqueIdentifier>{895b2567-74af-46d9-80da-176922153b3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Level\03.Shop\01.Gym">
-      <UniqueIdentifier>{9040b2ae-22bb-48b3-9207-5335ab7b6dc2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.Level\03.Shop\02.Burger">
       <UniqueIdentifier>{33f21ba6-2b3d-4b72-8e72-f46868f62be6}</UniqueIdentifier>
     </Filter>
@@ -148,6 +145,12 @@
     <Filter Include="04.Component\02.InstanceFSM">
       <UniqueIdentifier>{d1dc5620-ac66-43dd-bd09-0b127665ba44}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Level\03.Shop\01.Base">
+      <UniqueIdentifier>{9040b2ae-22bb-48b3-9207-5335ab7b6dc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Level\03.Shop\04.Gym">
+      <UniqueIdentifier>{3b94846a-3c88-4784-ac1a-4fe837bf8aa8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -261,6 +264,18 @@
     <ClCompile Include="FieldDoor_Update.cpp">
       <Filter>03.Actor\05.FieldDoor</Filter>
     </ClCompile>
+    <ClCompile Include="ShopLevelBase.cpp">
+      <Filter>02.Level\03.Shop\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_BurgerLevel.cpp">
+      <Filter>02.Level\03.Shop\02.Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_StoreLevel.cpp">
+      <Filter>02.Level\03.Shop\03.Store</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_GymLevel.cpp">
+      <Filter>02.Level\03.Shop\04.Gym</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -370,6 +385,18 @@
     </ClInclude>
     <ClInclude Include="FieldDoor.h">
       <Filter>03.Actor\05.FieldDoor</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopLevelBase.h">
+      <Filter>02.Level\03.Shop\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_BurgerLevel.h">
+      <Filter>02.Level\03.Shop\02.Burger</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_StoreLevel.h">
+      <Filter>02.Level\03.Shop\03.Store</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_GymLevel.h">
+      <Filter>02.Level\03.Shop\04.Gym</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

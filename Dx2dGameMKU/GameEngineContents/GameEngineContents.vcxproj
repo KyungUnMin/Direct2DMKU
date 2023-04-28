@@ -179,6 +179,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ShopLevelBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_BurgerLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_GymLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_StoreLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SimpleFSM.h">
       <SubType>
       </SubType>
@@ -306,6 +322,22 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FieldDoor_Update.cpp" />
+    <ClCompile Include="ShopLevelBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_BurgerLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_GymLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_StoreLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SimpleFSM.cpp">
       <SubType>
       </SubType>
