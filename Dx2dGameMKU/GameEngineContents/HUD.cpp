@@ -7,6 +7,8 @@
 #include "RCGDefine.h"
 #include "DataMgr.h"
 
+HUD::MpDatas HUD::MpData;
+
 HUD::HUD()
 {
 
@@ -24,7 +26,8 @@ void HUD::Start()
 
 	LoadImageRes();
 	CreateBackGround();
-	CreateHealth();
+	CreateHpBar();
+	CreateMpBar();
 }
 
 
@@ -52,7 +55,7 @@ void HUD::CreateBackGround()
 
 
 
-void HUD::CreateHealth()
+void HUD::CreateHpBar()
 {
 	const float4 Pivot = float4{-338.f, 322.f};
 	const float4 BlockSize = float4{ 26.f, 24.f };
@@ -71,15 +74,29 @@ void HUD::CreateHealth()
 	}
 }
 
-//#include "KeyMgr.h"
+void HUD::CreateMpBar()
+{
+	const float4 BarScale = float4{ 360.f, 18.f };
+	const float4 Offset = float4{ -168.f, 294.f };
+
+	std::shared_ptr<GameEngineRenderer> MpBar = CreateComponent<GameEngineSpriteRenderer>();
+	MpBar->SetPipeLine("MpBar");
+	MpBar->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "HUD_MpBar.png");
+	MpBar->GetShaderResHelper().SetConstantBufferLink("MpRatio", HUD::MpData);
+
+	GameEngineTransform* MpTrans = MpBar->GetTransform();
+	MpTrans->SetLocalScale(BarScale);
+	MpTrans->SetLocalPosition(Offset);
+}
 
 void HUD::Update(float _DeltaTime)
 {
-	/*if (true == KeyMgr::IsDown(KeyNames::DebugF2))
-	{
-		DataMgr::MinusPlayerHP(10);
-	}*/
+	Update_Hp();
+	Update_Mp(_DeltaTime);
+}
 
+void HUD::Update_Hp()
+{
 	int PlayerHP = DataMgr::GetPlayerHP();
 	size_t RemainHpBlock = static_cast<size_t>((PlayerHP + 3) / 4);
 
@@ -92,4 +109,26 @@ void HUD::Update(float _DeltaTime)
 	{
 		HealthBlocks[i]->Off();
 	}
+}
+
+
+//이거 맘에 안들면 속도에 따라 감속하는 방식으로 바꾸자
+void HUD::Update_Mp(float _DeltaTime)
+{
+	const float Duration = 0.25f;
+
+	int NowMp = DataMgr::GetPlayerMP();
+	if (NowMp != MpData.DestMp)
+	{
+		MpData.PrevMpRatio = MpData.NowMpRatio;
+		MpData.DestMpRatio = static_cast<float>(NowMp) / DataMgr::PlayerFullPoint;
+		MpData.DestMp = NowMp;
+		Timer = 0.f;
+	}
+
+	Timer += _DeltaTime;
+	float TimeRatio = (Timer / Duration);
+	TimeRatio = std::clamp(TimeRatio, 0.f, 1.f);
+
+	MpData.NowMpRatio = (MpData.PrevMpRatio * (1.f - TimeRatio)) + (MpData.DestMpRatio * TimeRatio);
 }

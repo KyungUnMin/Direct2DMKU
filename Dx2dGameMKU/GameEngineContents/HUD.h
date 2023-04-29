@@ -17,10 +17,26 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	struct MpDatas
+	{
+		float NowMpRatio = 0.f;
+		float PrevMpRatio = 0;
+		float DestMpRatio = 0;
+		int DestMp = 0;
+	};
+
+	static MpDatas MpData;
+
 	std::vector<std::shared_ptr<class GameEngineSpriteRenderer>> HealthBlocks;
+	float Timer = 0.f;
 
 	void LoadImageRes();
 	void CreateBackGround();
-	void CreateHealth();
+	void CreateHpBar();
+	void CreateMpBar();
+	
+
+	void Update_Hp();
+	void Update_Mp(float _DeltaTime);
 };
 

@@ -39,7 +39,7 @@ void RCG_GameCore::CreateRenderingPipeLine()
 	ClonePipeLineForShader("FieldDoor", "FieldDoor.hlsl");
 	ClonePipeLineForShader("DirectColor", "DirectColor.hlsl");
 	ClonePipeLineForShader("Tile", "Tile.hlsl");
-	//ClonePipeLineForShader("EnterEffect.hlsl");
+	ClonePipeLineForShader("MpBar", "MpBar.hlsl");
 }
 
 void RCG_GameCore::ClonePipeLineForShader(const std::string_view& _PipeName, const std::string_view& _ShaderName)
