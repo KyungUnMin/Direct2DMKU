@@ -160,6 +160,9 @@
     <Filter Include="03.Actor\04.UI\03.Fade">
       <UniqueIdentifier>{11c42abe-4ba6-4918-8583-aba74eaaa0c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\04.DataMgr">
+      <UniqueIdentifier>{da1b414e-844e-487d-b945-7aeb71bb2a39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -282,6 +285,12 @@
     <ClCompile Include="UIBase.cpp">
       <Filter>03.Actor\04.UI\01.UIBase</Filter>
     </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>03.Actor\04.UI\02.HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="DataMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\04.DataMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -400,6 +409,12 @@
     </ClInclude>
     <ClInclude Include="UIBase.h">
       <Filter>03.Actor\04.UI\01.UIBase</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>03.Actor\04.UI\02.HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="DataMgr.h">
+      <Filter>01.Core\03.Manager/Controller\04.DataMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -23,6 +23,7 @@ public:
 	static const float ResourceScaleConvertor;
 
 	static void MoveContentPath(GameEngineDirectory& _Dir, ResType _Type);
+	static void LoadContentPath(ResType _Type, const std::vector<std::string_view>& _Pathes);
 
 protected:
 

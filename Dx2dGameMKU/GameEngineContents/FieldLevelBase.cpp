@@ -7,6 +7,7 @@
 #include "BackGround.h"
 #include "FieldPlayer.h"
 #include "Fader.h"
+#include "HUD.h"
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
 
@@ -28,6 +29,7 @@ void FieldLevelBase::Start()
 
 	PlayerPtr = CreateActor<FieldPlayer>();
 	BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
+	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
 }
 
 

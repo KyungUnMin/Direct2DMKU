@@ -171,11 +171,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="DataMgr.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Fader.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="FieldDoor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -309,6 +317,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
+    <ClCompile Include="DataMgr.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Fader.cpp">
       <SubType>
       </SubType>
@@ -318,6 +330,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FieldDoor_Update.cpp" />
+    <ClCompile Include="HUD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ShaderTestActor.cpp">
       <SubType>
       </SubType>
