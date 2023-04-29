@@ -3,6 +3,14 @@
 #include "LevelMgr.h"
 #include "SimpleFSM.h"
 
+enum class DoorType
+{
+	Normal,
+	Gym,
+	Shop
+};
+
+
 class FieldDoor : public GameEngineActor
 {
 public:
@@ -14,31 +22,43 @@ public:
 	FieldDoor& operator=(const FieldDoor& _Other) = delete;
 	FieldDoor& operator=(const FieldDoor&& _Other) noexcept = delete;
 
+	void Init(DoorType _Type);
 	void Unlock(LevelNames _NextLevel);
 
 protected:
-	void Start() override;
 	void Update(float _DeltaTime) override;
 
 
 private:
 	static const std::string_view LockDoorName;
-	static const std::string_view UnlockDoorName;
 	static const float4 LockDoorScale;
+
+	static const std::string_view UnlockDoorName;
 	static const float4 UnlockDoorScale;
+
+	static const std::string_view ShopIconName;
+	static const float4 ShopIconScale;
+
+	static const std::string_view GymIconName;
+	static const float4 GymIconScale;
 
 	static LevelNames RegistNextLevel;
 
 	std::shared_ptr<class GameEngineRenderer> LockRender = nullptr;
 	std::shared_ptr<class GameEngineRenderer> UnlockRender = nullptr;
 
+	DoorType ImageType = DoorType::Normal;
 	bool DoorLockValue = true;
 	LevelNames NextLevel = LevelNames::OpeningLevel;
 	bool IsNearPlayer = false;
 	const float FadeTime = 0.5f;
 
 	void ImgResLoad();
-	void CreateDoorImg();
+	void CreateDoorImage(
+		const std::string_view& _ImageName, 
+		const float4& _Scale
+		,bool _IsLockImage);
+
 	void CheckNearPlayer();
 
 

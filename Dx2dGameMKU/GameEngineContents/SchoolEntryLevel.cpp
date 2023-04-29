@@ -8,8 +8,8 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
-const std::string_view SchoolEntryLevel::MapImgName = "SchoolEntryBG.png";
-const float4 SchoolEntryLevel::MapScale = float4{ 672.f, 224.f } *RCGDefine::ResourceScaleConvertor;
+
+const float4 SchoolEntryLevel::LevelAreaScale = float4{ 672.f, 224.f } *RCGDefine::ResourceScaleConvertor;
 
 SchoolEntryLevel::SchoolEntryLevel()
 {
@@ -27,10 +27,8 @@ void SchoolEntryLevel::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
-	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
-
-	CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor))->Unlock(LevelNames::SchoolBossLevel);
+	CreateBackGrounds();
+	CreateDoors();
 }
 
 
@@ -49,8 +47,18 @@ void SchoolEntryLevel::LoadImgRes()
 }
 
 
-void SchoolEntryLevel::Update(float _DeltaTime)
+void SchoolEntryLevel::CreateBackGrounds()
 {
-	FieldLevelBase::Update(_DeltaTime);
-
+	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData(100, 40));
+	FieldLevelBase::GetBG()->CreateBackImage("SchoolEntryBG.png", LevelAreaScale);
 }
+
+
+void SchoolEntryLevel::CreateDoors()
+{
+	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Shop);
+	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
+}
+
+

@@ -4,6 +4,8 @@
 class SchoolEntryLevel : public FieldLevelBase
 {
 public:
+	static const float4 LevelAreaScale;
+
 	SchoolEntryLevel();
 	~SchoolEntryLevel() override;
 
@@ -14,12 +16,10 @@ public:
 
 protected:
 	void Start() override;
-	void Update(float _DeltaTime) override;
 
 private:
-	static const std::string_view MapImgName;
-	static const float4 MapScale;
-
 	void LoadImgRes();
+	void CreateBackGrounds();
+	void CreateDoors();
 };
 

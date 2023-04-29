@@ -3,9 +3,11 @@
 
 #include <GameEngineCore/GameEngineRenderer.h>
 
+Fader* Fader::IsFading = nullptr;
+
 Fader::Fader()
 {
-	
+
 }
 
 Fader::~Fader()
@@ -17,7 +19,7 @@ void Fader::Start()
 {
 	UIBase::Start();
 
-	RenderPtr = CreateComponent<GameEngineRenderer>();
+    RenderPtr = CreateComponent<GameEngineRenderer>();
 	RenderPtr->SetPipeLine("DirectColor");
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("LinkColor", FadeColor);
 	RenderPtr->GetTransform()->SetWorldScale(GameEngineWindow::GetScreenSize());
@@ -26,6 +28,14 @@ void Fader::Start()
 void Fader::Update(float _DeltaTime)
 {
 	if (true == IsDeath())
+		return;
+
+	//다른곳에서 페이드가 진행중이라면 기다리기
+	if (nullptr == IsFading)
+	{
+		IsFading = this;
+	}
+	if (this != IsFading)
 		return;
 
 	float LiveTime = GetLiveTime();
@@ -50,5 +60,6 @@ void Fader::Update(float _DeltaTime)
 
 	//아직 Death 기능이 없어서 멤버변수로 렌더러를 들고 있음
 	RenderPtr->Off();
+	IsFading = nullptr;
 	Death();
 }

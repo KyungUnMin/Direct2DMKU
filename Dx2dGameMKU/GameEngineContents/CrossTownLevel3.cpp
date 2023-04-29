@@ -6,6 +6,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "BackGround.h"
+#include "FieldDoor.h"
 
 const std::string_view CrossTownLevel3::MapImgName = "CrossTown3BG.png";
 const float4 CrossTownLevel3::MapScale = float4{ 1676.f, 360.f} *RCGDefine::ResourceScaleConvertor;
@@ -27,6 +28,10 @@ void CrossTownLevel3::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+
+	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::TownBossLevel);
 }
 
 void CrossTownLevel3::LoadImgRes()

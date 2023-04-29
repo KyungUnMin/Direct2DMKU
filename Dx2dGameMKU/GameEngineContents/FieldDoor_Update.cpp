@@ -38,9 +38,28 @@ void FieldDoor::Update_ScaleWait(float _DeltaTime)
 void FieldDoor::Update_ScaleReady(float _DeltaTime)
 {
 	std::shared_ptr<class GameEngineRenderer> Render = DoorLockValue ? LockRender : UnlockRender;
+	if (nullptr == Render)
+	{
+		MsgAssert("현재 상태에 대한 문 이미지를 만들어주지 않았습니다");
+		return;
+	}
+
 	GameEngineTransform* RenderTransform = Render->GetTransform();
-	const float4& OriginScale = DoorLockValue ? LockDoorScale : UnlockDoorScale;
-	
+
+	float4 OriginScale = float4::Zero;
+	switch (ImageType)
+	{
+	case DoorType::Normal:
+		OriginScale = DoorLockValue ? LockDoorScale : UnlockDoorScale;
+		break;
+	case DoorType::Gym:
+		OriginScale = GymIconScale;
+		break;
+	case DoorType::Shop:
+		OriginScale = ShopIconScale;
+		break;
+	}
+
 	if (false == IsNearPlayer)
 	{
 		RenderTransform->SetLocalScale(OriginScale);

@@ -29,6 +29,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	static Fader* IsFading;
+
 	float4 FadeColor = float4::One;
 	bool IsFadeIn = false;
 	float Duration = 0.f;

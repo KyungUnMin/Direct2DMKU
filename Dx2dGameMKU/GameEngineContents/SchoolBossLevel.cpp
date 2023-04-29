@@ -6,6 +6,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "BackGround.h"
+#include "FieldDoor.h"
 
 const std::string_view SchoolBossLevel::MapImgName = "SchoolBossBG.png";
 const float4 SchoolBossLevel::MapScale = float4{ 923.f, 360.f } *RCGDefine::ResourceScaleConvertor;
@@ -27,6 +28,10 @@ void SchoolBossLevel::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+
+	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
 }
 
 void SchoolBossLevel::LoadImgRes()
