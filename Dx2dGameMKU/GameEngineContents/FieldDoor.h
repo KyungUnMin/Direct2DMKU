@@ -27,12 +27,15 @@ private:
 	static const float4 LockDoorScale;
 	static const float4 UnlockDoorScale;
 
+	static LevelNames RegistNextLevel;
+
 	std::shared_ptr<class GameEngineRenderer> LockRender = nullptr;
 	std::shared_ptr<class GameEngineRenderer> UnlockRender = nullptr;
 
 	bool DoorLockValue = true;
 	LevelNames NextLevel = LevelNames::OpeningLevel;
 	bool IsNearPlayer = false;
+	const float FadeTime = 0.5f;
 
 	void ImgResLoad();
 	void CreateDoorImg();

@@ -54,7 +54,7 @@ void ShopLevelBase::ImageResLoad()
 
 void ShopLevelBase::SettingBackImage(const std::string_view& _BackImageName)
 {
-	std::shared_ptr<BackGround> BGPtr = CreateActor<BackGround>(static_cast<int>(Field_UpdateOrder::BackGround));
+	std::shared_ptr<BackGround> BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	BGPtr->AddBackImg(_BackImageName, ScreenSize);
 }

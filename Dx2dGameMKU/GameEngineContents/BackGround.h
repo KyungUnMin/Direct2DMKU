@@ -16,8 +16,18 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
+	struct TileInfoData
+	{
+		const float4 Color = float4{0.f, 0.f, 0.f, 0.5f};
+		int XCount = 25;
+		int YCount = 10;
+		const float Thickness = 0.1f;
+	};
+	TileInfoData TileInfo;
 
+	std::shared_ptr <class GameEngineRenderer> TileRender;
 };
 

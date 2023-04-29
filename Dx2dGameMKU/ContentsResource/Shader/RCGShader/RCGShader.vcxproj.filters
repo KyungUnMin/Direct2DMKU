@@ -3,5 +3,15 @@
   <ItemGroup>
     <FxCompile Include="ContentsShaderTest.hlsl" />
     <FxCompile Include="FieldDoor.hlsl" />
+    <FxCompile Include="EnterEffect.hlsl">
+      <Filter>Test</Filter>
+    </FxCompile>
+    <FxCompile Include="DirectColor.hlsl" />
+    <FxCompile Include="Tile.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Test">
+      <UniqueIdentifier>{33b02bb9-84ff-4343-80fe-1e5913c34205}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

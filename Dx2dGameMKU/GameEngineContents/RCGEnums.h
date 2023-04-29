@@ -1,9 +1,12 @@
 #pragma once
 
 
-enum class Field_UpdateOrder
+enum class UpdateOrder
 {
+	Defalut = 0,
 	BackGround,
 	FieldDoor,
+
+	UI,
 };
 

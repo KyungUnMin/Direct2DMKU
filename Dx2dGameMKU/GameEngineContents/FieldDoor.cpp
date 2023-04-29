@@ -3,15 +3,18 @@
 
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGDefine.h"
 #include "FieldPlayer.h"
-
+#include "Fader.h"
 
 const std::string_view FieldDoor::LockDoorName = "LOCKED_DOOR.png";
 const std::string_view FieldDoor::UnlockDoorName = "UNLOCKED_DOOR.png";
 const float4 FieldDoor::LockDoorScale = float4{ 76.f, 113.f } * 0.7f;
 const float4 FieldDoor::UnlockDoorScale = float4{ 78.f, 114.f } *0.7f;
+
+LevelNames FieldDoor::RegistNextLevel = LevelNames::OpeningLevel;
 
 FieldDoor::FieldDoor()
 {
@@ -91,9 +94,15 @@ void FieldDoor::Update(float _DeltaTime)
 	if (AlphaRatio.x < 1.f)
 		return;
 
+	//Fader
+	FieldDoor::RegistNextLevel = NextLevel;
+	GetLevel()->CreateActor<Fader>()->Init(float4{ 0.f, 0.f, 0.f, 0.f }, FadeTime, []()
+	{
+		LevelMgr::ChangeLevel(FieldDoor::RegistNextLevel);
+	});
+
 	ScaleFSM.ChangeState(State::Wait);
 	AlphaFSM.ChangeState(State::Wait);
-	LevelMgr::ChangeLevel(NextLevel);
 }
 
 

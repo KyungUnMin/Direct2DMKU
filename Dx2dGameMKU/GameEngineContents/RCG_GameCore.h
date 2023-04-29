@@ -22,5 +22,7 @@ private:
 	static void LoadShaders();
 	static void CreateBlends();
 	static void CreateRenderingPipeLine();
+
+	static void ClonePipeLineForShader(const std::string_view& _PipeName, const std::string_view& _ShaderName);
 };
 

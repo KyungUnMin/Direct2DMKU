@@ -29,7 +29,7 @@ void SchoolEntryLevel::Start()
 	LoadImgRes();
 	FieldLevelBase::SettingBackImg(MapImgName, MapScale);
 
-	CreateActor<FieldDoor>(static_cast<int>(Field_UpdateOrder::FieldDoor))->Unlock(LevelNames::SchoolBossLevel);
+	CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor))->Unlock(LevelNames::SchoolBossLevel);
 }
 
 

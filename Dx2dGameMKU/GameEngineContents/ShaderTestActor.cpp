@@ -1,12 +1,8 @@
 #include "PrecompileHeader.h"
 #include "ShaderTestActor.h"
-#include <GameEngineCore/GameEngineRenderingPipeLine.h>
 
-#include <GameEngineBase/GameEngineDirectory.h>
-#include <GameEngineCore/GameEngineVertexShader.h>
-#include <GameEngineCore/GameEnginePixelShader.h>
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRenderer.h>
-
 
 ShaderTestActor::ShaderTestActor()
 {
@@ -20,35 +16,28 @@ ShaderTestActor::~ShaderTestActor()
 
 void ShaderTestActor::Start()
 {
-	GameEngineDirectory Dir;
-	Dir.MoveParentToDirectory("ContentsResource");
-	Dir.Move("ContentsResource");
-	Dir.Move("Shader");
-	Dir.Move("RCGShader");
+	const float OffsetRange = 100.f;
+
+	for (size_t i = 0; i < 10; ++i)
+	{
+		std::shared_ptr<GameEngineRenderer> RenedrPtr = CreateComponent<GameEngineRenderer>();
+		RenedrPtr->SetPipeLine("EnterEffect");
+		RenedrPtr->GetTransform()->SetLocalScale(float4::One * 100.f);
+		RenedrPtr->GetShaderResHelper().SetConstantBufferLink("SqaureInfo", ShaderInfo);
+
+		float4 Offset = float4::Zero;
+		Offset.x = GameEngineRandom::MainRandom.RandomFloat(-OffsetRange, OffsetRange);
+		Offset.y = GameEngineRandom::MainRandom.RandomFloat(-OffsetRange, OffsetRange);
+		RenedrPtr->GetTransform()->SetLocalPosition(Offset);
+	}
+
 	
-	GameEnginePath ShaderPath = Dir.GetPlusFileName("ContentsShaderTest.hlsl");
-	GameEngineVertexShader::Load(ShaderPath.GetFullPath(), "Texture_VS");
-	GameEnginePixelShader::Load(ShaderPath.GetFullPath(), "Texture_PS");
 
-	std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("MyTexture");
-	Pipe->SetVertexBuffer("Rect");
-	Pipe->SetVertexShader(ShaderPath.GetFileName());
-	Pipe->SetPixelShader(ShaderPath.GetFileName());
-	Pipe->SetIndexBuffer("Rect");
-	Pipe->SetRasterizer("EngineBase");
-
-
-	RenderPtr = CreateComponent<GameEngineRenderer>();
-	RenderPtr->SetPipeLine("MyTexture");
-	RenderPtr->GetShaderResHelper().SetConstantBufferLink("CTime", Timer);
-
-	RenderPtr->GetTransform()->SetLocalScale({ 100.f, 200.f, 100.f });
-	RenderPtr->GetShaderResHelper().SetTexture("DiffuseTex", "RCG_Kyoko_battlestart0026_anio.png");
-
-
+	GetTransform()->SetLocalPosition(float4::Down * 100.f);
 }
 
 void ShaderTestActor::Update(float _DeltaTime)
 {
-	Timer.x += _DeltaTime;
+
+	ShaderInfo.Timer += _DeltaTime;
 }

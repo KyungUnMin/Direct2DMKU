@@ -10,9 +10,6 @@
     <Filter Include="02.Level">
       <UniqueIdentifier>{6f74579d-18fb-4292-b1e2-1a3cdc8db269}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99.Test">
-      <UniqueIdentifier>{27ed89a4-e824-48e3-84e2-88804f4e9f1f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.Level\01.Cinematic">
       <UniqueIdentifier>{d5629088-d655-4205-bd0f-d8569c16ca5f}</UniqueIdentifier>
     </Filter>
@@ -72,9 +69,6 @@
     </Filter>
     <Filter Include="03.Actor\04.UI">
       <UniqueIdentifier>{6ecfb5c7-2c36-46cb-a25d-2696bb8e47d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\04.UI\01.HUD">
-      <UniqueIdentifier>{a6f4803e-fca4-4bd0-b781-3580f1c13609}</UniqueIdentifier>
     </Filter>
     <Filter Include="04.Component">
       <UniqueIdentifier>{0ba3daf2-4131-4772-a06d-f1eeaec8e087}</UniqueIdentifier>
@@ -151,19 +145,25 @@
     <Filter Include="02.Level\03.Shop\04.Gym">
       <UniqueIdentifier>{3b94846a-3c88-4784-ac1a-4fe837bf8aa8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99.Test">
+      <UniqueIdentifier>{7bb58e2c-6a2e-4383-99c7-c64700ab2299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Test\ShaderTestActor">
+      <UniqueIdentifier>{568818b9-8146-4456-a6b1-0e0cac546050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\01.UIBase">
+      <UniqueIdentifier>{f36f6b45-6202-4da3-b6ec-0a23c11a8d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\02.HUD">
+      <UniqueIdentifier>{a6f4803e-fca4-4bd0-b781-3580f1c13609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\03.Fade">
+      <UniqueIdentifier>{11c42abe-4ba6-4918-8583-aba74eaaa0c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
       <Filter>_Pch</Filter>
-    </ClCompile>
-    <ClCompile Include="TestActor.cpp">
-      <Filter>99.Test</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
-      <Filter>99.Test</Filter>
-    </ClCompile>
-    <ClCompile Include="ContentsCore.cpp">
-      <Filter>99.Test</Filter>
     </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
       <Filter>02.Level\01.Cinematic\01.Opening</Filter>
@@ -206,9 +206,6 @@
     </ClCompile>
     <ClCompile Include="PlayerState_Move.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Move</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderTestActor.cpp">
-      <Filter>99.Test</Filter>
     </ClCompile>
     <ClCompile Include="RCGDefine.cpp">
       <Filter>01.Core\02.Define</Filter>
@@ -276,19 +273,25 @@
     <ClCompile Include="Shop_GymLevel.cpp">
       <Filter>02.Level\03.Shop\04.Gym</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderTestActor.cpp">
+      <Filter>99.Test\ShaderTestActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Fader.cpp">
+      <Filter>03.Actor\04.UI\03.Fade</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBase.cpp">
+      <Filter>03.Actor\04.UI\01.UIBase</Filter>
+    </ClCompile>
+    <ClCompile Include="TileContainer.cpp">
+      <Filter>03.Actor\01.BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <Filter>03.Actor\01.BackGround</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
       <Filter>_Pch</Filter>
-    </ClInclude>
-    <ClInclude Include="TestActor.h">
-      <Filter>99.Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TestLevel.h">
-      <Filter>99.Test</Filter>
-    </ClInclude>
-    <ClInclude Include="ContentsCore.h">
-      <Filter>99.Test</Filter>
     </ClInclude>
     <ClInclude Include="OpeningLevel.h">
       <Filter>02.Level\01.Cinematic\01.Opening</Filter>
@@ -334,9 +337,6 @@
     </ClInclude>
     <ClInclude Include="PlayerState_Move.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Move</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderTestActor.h">
-      <Filter>99.Test</Filter>
     </ClInclude>
     <ClInclude Include="RCGDefine.h">
       <Filter>01.Core\02.Define</Filter>
@@ -397,6 +397,21 @@
     </ClInclude>
     <ClInclude Include="Shop_GymLevel.h">
       <Filter>02.Level\03.Shop\04.Gym</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderTestActor.h">
+      <Filter>99.Test\ShaderTestActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Fader.h">
+      <Filter>03.Actor\04.UI\03.Fade</Filter>
+    </ClInclude>
+    <ClInclude Include="UIBase.h">
+      <Filter>03.Actor\04.UI\01.UIBase</Filter>
+    </ClInclude>
+    <ClInclude Include="TileContainer.h">
+      <Filter>03.Actor\01.BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
+      <Filter>03.Actor\01.BackGround</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

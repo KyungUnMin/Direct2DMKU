@@ -17,7 +17,14 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	std::shared_ptr<class GameEngineRenderer> RenderPtr = nullptr;
-	float4 Timer = float4::Zero;
+	struct ShaderData
+	{
+		float RectWidth = 0.25f;
+		float RectHeight = 0.25f;
+		float Duration = 1.f;
+		float Timer = 0.f;
+	};
+
+	ShaderData ShaderInfo;
 };
 

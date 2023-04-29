@@ -36,12 +36,20 @@ void RCG_GameCore::CreateBlends()
 
 void RCG_GameCore::CreateRenderingPipeLine()
 {
-	std::shared_ptr<GameEngineRenderingPipeLine> FieldDoor = GameEngineRenderingPipeLine::Create("FieldDoor");
-	FieldDoor->SetVertexBuffer("Rect");
-	FieldDoor->SetVertexShader("FieldDoor.hlsl");
-	FieldDoor->SetIndexBuffer("Rect");
-	FieldDoor->SetRasterizer("Engine2DBase");
-	FieldDoor->SetPixelShader("FieldDoor.hlsl");
-	FieldDoor->SetBlendState("AlphaBlend");
-	FieldDoor->SetDepthState("EngineDepth");
+	ClonePipeLineForShader("FieldDoor", "FieldDoor.hlsl");
+	ClonePipeLineForShader("DirectColor", "DirectColor.hlsl");
+	ClonePipeLineForShader("Tile", "Tile.hlsl");
+	//ClonePipeLineForShader("EnterEffect.hlsl");
+}
+
+void RCG_GameCore::ClonePipeLineForShader(const std::string_view& _PipeName, const std::string_view& _ShaderName)
+{
+	std::shared_ptr<GameEngineRenderingPipeLine> PipeLine = GameEngineRenderingPipeLine::Create(_PipeName);
+	PipeLine->SetVertexBuffer("Rect");
+	PipeLine->SetVertexShader(_ShaderName);
+	PipeLine->SetIndexBuffer("Rect");
+	PipeLine->SetRasterizer("Engine2DBase");
+	PipeLine->SetPixelShader(_ShaderName);
+	PipeLine->SetBlendState("AlphaBlend");
+	PipeLine->SetDepthState("EngineDepth");
 }
