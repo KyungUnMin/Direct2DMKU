@@ -114,21 +114,6 @@ void FieldDoor::CreateDoorImage(
 		UnlockRender = RenderPtr;
 	}
 
-
-	/*LockRender = CreateComponent<GameEngineRenderer>();
-	LockRender->SetPipeLine("FieldDoor");
-	LockRender->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, LockDoorName);
-	LockRender->GetShaderResHelper().SetConstantBufferLink("AlphaRatio", AlphaRatio);
-	LockRender->GetTransform()->SetLocalScale(LockDoorScale);
-
-	UnlockRender = CreateComponent<GameEngineRenderer>();
-	UnlockRender->SetPipeLine("FieldDoor");
-	UnlockRender->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, UnlockDoorName);
-	UnlockRender->GetShaderResHelper().SetConstantBufferLink("AlphaRatio", AlphaRatio);
-	UnlockRender->GetTransform()->SetLocalScale(UnlockDoorScale);
-	UnlockRender->Off();
-	*/
-
 }
 
 

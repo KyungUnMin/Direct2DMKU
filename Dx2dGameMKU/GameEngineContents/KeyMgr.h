@@ -6,6 +6,10 @@ enum class KeyNames
 	DownArrow,
 	RightArrow,
 	LeftArrow,
+
+	Z,			//약공격
+	X,		   //강공격
+	C,		   //특수공격
 	Space,
 
 	Esc,

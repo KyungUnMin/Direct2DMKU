@@ -18,7 +18,7 @@ BackGround::~BackGround()
 
 void BackGround::Start()
 {
-	GetTransform()->SetLocalPosition(float4{ 0.f, 0.f, 500.f });
+	GetTransform()->SetLocalPosition(float4::Forward * 500.f);
 }
 
 

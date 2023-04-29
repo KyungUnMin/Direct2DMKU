@@ -10,6 +10,10 @@ const std::vector<std::string_view> KeyMgr::IndexToString =
 	"DownArrow",
 	"RightArrow",
 	"LeftArrow",
+
+	"Z",
+	"X",
+	"C",
 	"Space",
 
 	"Esc",
@@ -33,6 +37,11 @@ void KeyMgr::CreateKey()
 	KeyInfo[static_cast<size_t>(KeyNames::DownArrow)] = VK_DOWN;
 	KeyInfo[static_cast<size_t>(KeyNames::RightArrow)] = VK_RIGHT;
 	KeyInfo[static_cast<size_t>(KeyNames::LeftArrow)] = VK_LEFT;
+
+
+	KeyInfo[static_cast<size_t>(KeyNames::Z)] = 'Z';
+	KeyInfo[static_cast<size_t>(KeyNames::X)] = 'X';
+	KeyInfo[static_cast<size_t>(KeyNames::C)] = 'C';
 	KeyInfo[static_cast<size_t>(KeyNames::Space)] = VK_SPACE;
 
 	KeyInfo[static_cast<size_t>(KeyNames::Esc)] = VK_ESCAPE;

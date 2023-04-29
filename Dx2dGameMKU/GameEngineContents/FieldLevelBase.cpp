@@ -25,7 +25,7 @@ FieldLevelBase::~FieldLevelBase()
 void FieldLevelBase::Start()
 {
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
-	GetMainCamera()->GetTransform()->SetWorldPosition(float4::Back * 1000.f);
+	GetMainCamera()->GetTransform()->SetWorldPosition(float4::Back * 500.f);
 
 	PlayerPtr = CreateActor<FieldPlayer>();
 	BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));

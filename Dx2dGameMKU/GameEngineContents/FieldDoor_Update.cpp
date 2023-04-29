@@ -113,7 +113,7 @@ void FieldDoor::Update_AlphaWait(float _DeltaTime)
 	if (false == IsNearPlayer)
 		return;
 
-	if (false == KeyMgr::IsDown(KeyNames::Space))
+	if (false == KeyMgr::IsDown(KeyNames::Z))
 		return;
 
 	AlphaFSM.ChangeState(State::Ready);
@@ -122,7 +122,7 @@ void FieldDoor::Update_AlphaWait(float _DeltaTime)
 
 void FieldDoor::Update_AlphaReady(float _DeltaTime) 
 {
-	if (false == KeyMgr::IsPress(KeyNames::Space) || (false == IsNearPlayer))
+	if (false == KeyMgr::IsPress(KeyNames::Z) || (false == IsNearPlayer))
 	{
 		AlphaRatio.x = 0.f;
 		AlphaFSM.ChangeState(State::Wait);
