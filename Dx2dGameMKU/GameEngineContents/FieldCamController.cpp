@@ -64,7 +64,7 @@ void FieldCamController::Update(float _DeltaTime)
 {
 	if (nullptr == Cam)
 	{
-		MsgAssert("컨트롤 할 카메라가 존재하지 않습니다. 초기화를 해주어야 합니다");
+		MsgAssert("컨트롤 할 카메라가 존재하지 않습니다. 초기화를 해주어야 합니다\n(레벨의 영역을 설정해주지 않았습니다 : FieldLevelBase::InitLevelArea 호출 필요)");
 		return;
 	}
 

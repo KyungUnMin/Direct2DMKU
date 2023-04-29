@@ -25,7 +25,8 @@ void OceanLevel::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::SettingBackImg(MapImgName, MapScale);
+	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
+	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
 }
 
 void OceanLevel::LoadImgRes()

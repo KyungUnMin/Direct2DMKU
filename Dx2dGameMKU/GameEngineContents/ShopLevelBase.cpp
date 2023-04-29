@@ -10,6 +10,7 @@
 #include "KeyMgr.h"
 #include "BackGround.h"
 #include "LevelMgr.h"
+#include "Fader.h"
 
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
@@ -52,14 +53,17 @@ void ShopLevelBase::ImageResLoad()
 }
 
 
-void ShopLevelBase::SettingBackImage(const std::string_view& _BackImageName)
+void ShopLevelBase::CreateBackImage(const std::string_view& _BackImageName)
 {
 	std::shared_ptr<BackGround> BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
-	BGPtr->AddBackImg(_BackImageName, ScreenSize);
+	BGPtr->CreateBackImage(_BackImageName, ScreenSize);
 }
 
-
+void ShopLevelBase::LevelChangeStart()
+{
+	CreateActor<Fader>()->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
+}
 
 
 void ShopLevelBase::Update(float _DeltaTime)
@@ -71,6 +75,8 @@ void ShopLevelBase::Update(float _DeltaTime)
 
 	LevelMgr::ChangeLevel(PrevLevel);
 }
+
+
 
 
 

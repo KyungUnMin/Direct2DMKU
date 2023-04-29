@@ -19,8 +19,10 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void LevelChangeStart() override;
 
-	void SettingBackImage(const std::string_view& _BackImageName);
+	void CreateBackImage(const std::string_view& _BackImageName);
+
 
 private:
 	static LevelNames PrevLevel;

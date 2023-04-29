@@ -179,10 +179,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MapTile.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="ShaderTestActor.h">
       <SubType>
       </SubType>
@@ -208,10 +204,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="LevelMgr.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="TileContainer.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -326,10 +318,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FieldDoor_Update.cpp" />
-    <ClCompile Include="MapTile.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="ShaderTestActor.cpp">
       <SubType>
       </SubType>
@@ -355,10 +343,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="LevelMgr.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TileContainer.cpp">
       <SubType>
       </SubType>
     </ClCompile>

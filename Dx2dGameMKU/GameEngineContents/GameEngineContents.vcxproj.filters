@@ -282,12 +282,6 @@
     <ClCompile Include="UIBase.cpp">
       <Filter>03.Actor\04.UI\01.UIBase</Filter>
     </ClCompile>
-    <ClCompile Include="TileContainer.cpp">
-      <Filter>03.Actor\01.BackGround</Filter>
-    </ClCompile>
-    <ClCompile Include="MapTile.cpp">
-      <Filter>03.Actor\01.BackGround</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -406,12 +400,6 @@
     </ClInclude>
     <ClInclude Include="UIBase.h">
       <Filter>03.Actor\04.UI\01.UIBase</Filter>
-    </ClInclude>
-    <ClInclude Include="TileContainer.h">
-      <Filter>03.Actor\01.BackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="MapTile.h">
-      <Filter>03.Actor\01.BackGround</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

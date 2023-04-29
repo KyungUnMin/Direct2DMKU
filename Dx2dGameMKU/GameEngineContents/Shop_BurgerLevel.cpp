@@ -18,5 +18,5 @@ Shop_BurgerLevel::~Shop_BurgerLevel()
 void Shop_BurgerLevel::Start()
 {
 	ShopLevelBase::Start();
-	SettingBackImage("BurgerBG.png");
+	CreateBackImage("BurgerBG.png");
 }

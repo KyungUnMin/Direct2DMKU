@@ -14,5 +14,5 @@ Shop_GymLevel::~Shop_GymLevel()
 void Shop_GymLevel::Start()
 {
 	ShopLevelBase::Start();
-	SettingBackImage("GymBG.png");
+	CreateBackImage("GymBG.png");
 }

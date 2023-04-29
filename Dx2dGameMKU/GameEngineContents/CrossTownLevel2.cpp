@@ -25,7 +25,8 @@ void CrossTownLevel2::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::SettingBackImg(MapImgName, MapScale);
+	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
+	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
 }
 
 void CrossTownLevel2::LoadImgRes()

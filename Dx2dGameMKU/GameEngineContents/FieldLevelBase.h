@@ -34,7 +34,12 @@ protected:
 	
 	void LevelChangeStart() override;
 
-	void SettingBackImg(const std::string_view& _ResName, const float4& _MapScale);
+	void InitLevelArea(const float4& _Scale, const class TileInfoData& _TileData);
+
+	inline std::shared_ptr<class BackGround> GetBG() const
+	{
+		return BGPtr;
+	}
 
 private:
 	static FieldLevelBase* GPtr;

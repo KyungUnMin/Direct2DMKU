@@ -14,5 +14,5 @@ Shop_StoreLevel::~Shop_StoreLevel()
 void Shop_StoreLevel::Start()
 {
 	ShopLevelBase::Start();
-	SettingBackImage("StoreBG.png");
+	CreateBackImage("StoreBG.png");
 }

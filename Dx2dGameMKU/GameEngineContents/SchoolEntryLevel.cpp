@@ -27,7 +27,8 @@ void SchoolEntryLevel::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::SettingBackImg(MapImgName, MapScale);
+	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
+	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
 
 	CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor))->Unlock(LevelNames::SchoolBossLevel);
 }
