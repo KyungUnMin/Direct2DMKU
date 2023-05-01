@@ -17,14 +17,14 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	struct WaveData
+	struct GlichData
 	{
-		float4 Color = float4::Zero;
-		float Time = 0.0f;
-		float Duration = 0.5f;
+		float Timer = 0.f;
+		float Speed = 10.f;
+		float Count = 30.f;
+		float WaveDiff = 0.3f;
 	};
 
-	std::vector<std::pair<std::shared_ptr<class GameEngineRenderer>, WaveData>> Waves;
-	int OffIndex = -1;
+	GlichData Data;
 };
 

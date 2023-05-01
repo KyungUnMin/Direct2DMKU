@@ -17,69 +17,24 @@ ShaderTestActor::~ShaderTestActor()
 
 void ShaderTestActor::Start()
 {
-	const float4 WaveScale = float4{ 25.f, 150.f };
-	Waves.reserve(50);
-	for (size_t i = 0; i < Waves.capacity(); ++i)
-	{
-		std::pair<std::shared_ptr<GameEngineRenderer>, WaveData>& Pair = Waves.emplace_back();
-		Pair.first = CreateComponent<GameEngineRenderer>();
-		Pair.first->SetPipeLine("ColorWave");
-		Pair.first->GetTransform()->SetLocalScale(WaveScale);
-		Pair.first->GetShaderResHelper().SetConstantBufferLink("WaveData", Pair.second);
+	const float4 RenderScale = float4{ 550.f, 180.f, 1.f };
 
-		Pair.second.Color = float4
-		(
-			GameEngineRandom::MainRandom.RandomFloat(0.5f, 1.f),
-			GameEngineRandom::MainRandom.RandomFloat(0.5f, 1.f),
-			GameEngineRandom::MainRandom.RandomFloat(0.5f, 1.f)
-		);
+	std::shared_ptr<GameEngineRenderer> Render1 = CreateComponent<GameEngineRenderer>();
+	Render1->SetPipeLine("ShaderTest");
+	Render1->GetShaderResHelper().SetConstantBufferLink("GlichData", Data);
+	Render1->GetTransform()->SetLocalScale(RenderScale);
+	Render1->GetTransform()->AddLocalPosition(float4::Left * RenderScale.hx());
 
-		const float FloatIndex = static_cast<float>(i);
-		Pair.second.Duration += FloatIndex * 0.001f;
-
-		const float OffsetX = 10.f;
-		if (0 == (i % 2))
-		{
-			Pair.first->GetTransform()->SetLocalPosition(float4::Left * FloatIndex * OffsetX);
-		}
-		else
-		{
-			Pair.first->GetTransform()->SetLocalPosition(float4::Right * FloatIndex * OffsetX);
-		}
-	}
-
+	std::shared_ptr<GameEngineRenderer> Render2 = CreateComponent<GameEngineRenderer>();
+	Render2->SetPipeLine("ShaderTest");
+	Render2->GetShaderResHelper().SetConstantBufferLink("GlichData", Data);
+	Render2->GetTransform()->SetLocalScale(RenderScale * float4{ -1.f, 1.f, 1.f });
+	Render2->GetTransform()->AddLocalPosition(float4::Right * RenderScale.hx());
 }
 
-#include "KeyMgr.h"
 
 void ShaderTestActor::Update(float _DeltaTime)
 {
-	if (true == IsDeath())
-		return;
-
-	if (true == KeyMgr::IsDown(KeyNames::Space) && OffIndex < 0)
-	{
-		OffIndex = 0;
-	}
-
-
-	bool NowFrameOff = false;
-	for (size_t i = 0; i < Waves.size(); ++i)
-	{
-		std::pair<std::shared_ptr<GameEngineRenderer>, WaveData>& WavePair = Waves[i];
-		WavePair.second.Time += _DeltaTime;
-
-		if (OffIndex < 0 || Waves.size() <= OffIndex || true == NowFrameOff)
-			continue;
-
-		Waves[OffIndex++].first->Off();
-		NowFrameOff = true;
-	}
-
-	if (static_cast<int>(Waves.size()) == OffIndex)
-	{
-		Waves.clear();
-		Death();
-	}
+	Data.Timer += _DeltaTime;
 }
 

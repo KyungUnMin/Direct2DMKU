@@ -21,6 +21,8 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 }
 
+#include "ShaderTestActor.h"
+
 void SchoolEntryLevel::Start()
 {
 
@@ -29,6 +31,8 @@ void SchoolEntryLevel::Start()
 	LoadImgRes();
 	CreateBackGrounds();
 	CreateDoors();
+
+	CreateActor<ShaderTestActor>();
 }
 
 

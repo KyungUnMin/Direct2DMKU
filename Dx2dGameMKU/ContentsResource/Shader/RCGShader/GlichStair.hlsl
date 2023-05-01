@@ -55,10 +55,10 @@ Output Texture_VS(Input _Value)
 
 cbuffer GlichData : register(b1)
 {
-    float WaveHeight; //Speed * _DelatTime
+    float Timer;                //0.f += _DelatTime
+    float Speed;           //10.f (Speed)
     float Count;           //10.f
     float WaveDiff;     //0.5f
-    float GlichFrequence; //???
 }
 
 float Rand(float _f)
@@ -89,7 +89,7 @@ float3 CreateRect(float2 _Pos, float2 _Pivot, float2 _Size)
 
 float RandomSerie(float _X, float _Freq, float _T)
 {
-    return step(0.8f, Rand(floor(_X * _Freq) - floor(_T)));
+    return step(0.2f, Rand(floor(_X * _Freq) - floor(_T)));
 }
 
 
@@ -103,7 +103,7 @@ float4 Texture_PS(Output _Value) : SV_Target0
     float GridPosX = floor(Pos.x);
     Pos.x = frac(Pos.x);
     
-    
+    float WaveHeight = Timer * Speed;
     float Height = sin(WaveHeight + GridPosX * WaveDiff) * 0.5f + 0.5f;
     
     const float RectWidth = 0.9f;
@@ -111,13 +111,13 @@ float4 Texture_PS(Output _Value) : SV_Target0
     
     clip(Rect.xyz - 1);
     
-    if (abs(sin(WaveHeight * (GridPosX + 1.f))) < 0.5f)
+    if (abs(sin(WaveHeight * (GridPosX + 1.f))) < 0.3f)
     {
         float Freq = 0.5f;
         float t = 60. + WaveHeight * Freq * 30.;
         
         Freq += Rand(floor(Pos.y));
-        const float Offset = 0.3f;
+        const float Offset = 0.9f;
         
         Rect.x = RandomSerie(WaveHeight, Freq * 100.f, t + Offset);
         Rect.y = RandomSerie(WaveHeight, Freq * 100.f, t);
