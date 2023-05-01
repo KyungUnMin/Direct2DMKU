@@ -1,21 +1,21 @@
 #include "PrecompileHeader.h"
-#include "ShaderTestActor.h"
+#include "ColorWave.h"
 
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
 
-ShaderTestActor::ShaderTestActor()
+ColorWave::ColorWave()
 {
 
 }
 
-ShaderTestActor::~ShaderTestActor()
+ColorWave::~ColorWave()
 {
 
 }
 
-void ShaderTestActor::Start()
+void ColorWave::Start()
 {
 	const float4 WaveScale = float4{ 25.f, 150.f };
 	Waves.reserve(50);
@@ -52,7 +52,7 @@ void ShaderTestActor::Start()
 
 #include "KeyMgr.h"
 
-void ShaderTestActor::Update(float _DeltaTime)
+void ColorWave::Update(float _DeltaTime)
 {
 	if (true == IsDeath())
 		return;

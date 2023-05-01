@@ -20,6 +20,8 @@ OceanBossLevel::~OceanBossLevel()
 
 }
 
+#include "ColorWave.h"
+
 void OceanBossLevel::Start()
 {
 	FieldLevelBase::Start();
@@ -27,6 +29,8 @@ void OceanBossLevel::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+
+	CreateActor<ColorWave>();
 }
 
 void OceanBossLevel::LoadImgRes()

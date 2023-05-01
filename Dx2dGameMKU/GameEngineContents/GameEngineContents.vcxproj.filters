@@ -163,6 +163,9 @@
     <Filter Include="01.Core\03.Manager/Controller\04.DataMgr">
       <UniqueIdentifier>{da1b414e-844e-487d-b945-7aeb71bb2a39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99.Test\ColorWave">
+      <UniqueIdentifier>{2279013a-aae6-40b3-8d98-61371fdaac96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -291,6 +294,9 @@
     <ClCompile Include="DataMgr.cpp">
       <Filter>01.Core\03.Manager/Controller\04.DataMgr</Filter>
     </ClCompile>
+    <ClCompile Include="ColorWave.cpp">
+      <Filter>99.Test\ColorWave</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -415,6 +421,9 @@
     </ClInclude>
     <ClInclude Include="DataMgr.h">
       <Filter>01.Core\03.Manager/Controller\04.DataMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorWave.h">
+      <Filter>99.Test\ColorWave</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

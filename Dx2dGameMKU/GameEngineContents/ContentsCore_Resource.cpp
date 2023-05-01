@@ -40,6 +40,8 @@ void RCG_GameCore::CreateRenderingPipeLine()
 	ClonePipeLineForShader("DirectColor", "DirectColor.hlsl");
 	ClonePipeLineForShader("Tile", "Tile.hlsl");
 	ClonePipeLineForShader("MpBar", "MpBar.hlsl");
+
+	ClonePipeLineForShader("ColorWave", "ColorWave.hlsl");
 }
 
 void RCG_GameCore::ClonePipeLineForShader(const std::string_view& _PipeName, const std::string_view& _ShaderName)

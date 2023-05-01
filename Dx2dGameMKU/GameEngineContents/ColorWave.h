@@ -1,16 +1,16 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-class ShaderTestActor : public GameEngineActor
+class ColorWave : public GameEngineActor
 {
 public:
-	ShaderTestActor();
-	~ShaderTestActor() override;
+	ColorWave();
+	~ColorWave() override;
 
-	ShaderTestActor(const ShaderTestActor& _Other) = delete;
-	ShaderTestActor(ShaderTestActor&& _Other) noexcept = delete;
-	ShaderTestActor& operator=(const ShaderTestActor& _Other) = delete;
-	ShaderTestActor& operator=(const ShaderTestActor&& _Other) noexcept = delete;
+	ColorWave(const ColorWave& _Other) = delete;
+	ColorWave(ColorWave&& _Other) noexcept = delete;
+	ColorWave& operator=(const ColorWave& _Other) = delete;
+	ColorWave& operator=(const ColorWave&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

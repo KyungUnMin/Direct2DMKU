@@ -22,7 +22,7 @@ public:
 	FieldDoor& operator=(const FieldDoor& _Other) = delete;
 	FieldDoor& operator=(const FieldDoor&& _Other) noexcept = delete;
 
-	void Init(DoorType _Type);
+	void Init(DoorType _Type, const float4& _RenderOffset = float4::Zero);
 	void Unlock(LevelNames _NextLevel);
 
 protected:
@@ -57,7 +57,8 @@ private:
 	void CreateDoorImage(
 		const std::string_view& _ImageName, 
 		const float4& _Scale
-		,bool _IsLockImage);
+		,bool _IsLockImage
+		,const float4& _RenderOffset);
 
 	void CheckNearPlayer();
 

@@ -35,7 +35,7 @@ FieldDoor::~FieldDoor()
 }
 
 
-void FieldDoor::Init(DoorType _Type)
+void FieldDoor::Init(DoorType _Type, const float4& _RenderOffset  /*= float4::Zero*/)
 {
 	//리소스 로드
 	ImgResLoad();
@@ -45,8 +45,8 @@ void FieldDoor::Init(DoorType _Type)
 	{
 	case DoorType::Normal:
 	{
-		CreateDoorImage(LockDoorName, LockDoorScale, true);
-		CreateDoorImage(UnlockDoorName, UnlockDoorScale, false);
+		CreateDoorImage(LockDoorName, LockDoorScale, true, _RenderOffset);
+		CreateDoorImage(UnlockDoorName, UnlockDoorScale, false, _RenderOffset);
 
 		LockRender->On();
 		UnlockRender->Off();
@@ -54,12 +54,12 @@ void FieldDoor::Init(DoorType _Type)
 	}
 	case DoorType::Gym:
 	{
-		CreateDoorImage(GymIconName, GymIconScale, false);
+		CreateDoorImage(GymIconName, GymIconScale, false, _RenderOffset);
 		break;
 	}
 	case DoorType::Shop:
 	{
-		CreateDoorImage(ShopIconName, ShopIconScale, false);
+		CreateDoorImage(ShopIconName, ShopIconScale, false, _RenderOffset);
 		break;
 	}
 	default:
@@ -95,7 +95,8 @@ void FieldDoor::ImgResLoad()
 void FieldDoor::CreateDoorImage(
 	const std::string_view& _ImageName, 
 	const float4& _Scale, 
-	bool _IsLockImage)
+	bool _IsLockImage,
+	const float4& _RenderOffset)
 {
 	std::shared_ptr<GameEngineRenderer> RenderPtr = nullptr;
 
@@ -104,6 +105,7 @@ void FieldDoor::CreateDoorImage(
 	RenderPtr->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, _ImageName);
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("AlphaRatio", AlphaRatio);
 	RenderPtr->GetTransform()->SetLocalScale(_Scale);
+	RenderPtr->GetTransform()->SetLocalPosition(_RenderOffset);
 
 	if (true == _IsLockImage)
 	{
