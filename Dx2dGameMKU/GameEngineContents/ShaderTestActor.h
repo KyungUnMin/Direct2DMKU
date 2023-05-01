@@ -20,9 +20,7 @@ private:
 	struct GlichData
 	{
 		float Timer = 0.f;
-		float Speed = 10.f;
-		float Count = 30.f;
-		float WaveDiff = 0.3f;
+		
 	};
 
 	GlichData Data;

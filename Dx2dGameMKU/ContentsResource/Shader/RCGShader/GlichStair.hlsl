@@ -57,8 +57,11 @@ cbuffer GlichData : register(b1)
 {
     float Timer;                //0.f += _DelatTime
     float Speed;           //10.f (Speed)
-    float Count;           //10.f
-    float WaveDiff;     //0.5f
+    float Count;           //10.f (파도의 갯수)
+    float WaveDiff;     //0.3f(파도들간의 높이 차이)
+    
+    float MaxWaveHeight;    //1.f
+    float GlichRatio;           //0.3f;
 }
 
 float Rand(float _f)
@@ -98,20 +101,31 @@ float RandomSerie(float _X, float _Freq, float _T)
 float4 Texture_PS(Output _Value) : SV_Target0
 {
     float2 Pos = _Value.UV.xy;
+    
+    //가로 화면 Count 만큼 분할1
     Pos.x *= Count;
     
+    //그 그리드 상의 시작점 X
     float GridPosX = floor(Pos.x);
+    //가로 화면 Count 만큼 분할2
     Pos.x = frac(Pos.x);
     
+    
     float WaveHeight = Timer * Speed;
+    //해당 그리드 상에 대한 파도 높이 설정, sin뒤의 값들은 sin의 치역을 0~1로 바꾸기 위함
     float Height = sin(WaveHeight + GridPosX * WaveDiff) * 0.5f + 0.5f;
     
+    //사각형 만들기
     const float RectWidth = 0.9f;
-    float3 Rect = CreateRect(Pos, float2(0.5f, 1.f), float2(RectWidth, Height * 2.f));
+    //중심점이 y가 1이기 때문에 2배를 키웠고, 외부에서 TotalHeight를 통해 파도의 최대 높이를 조절할 수 있다.
+    const float RectHeight = (Height * 2.f * MaxWaveHeight);
+    float3 Rect = CreateRect(Pos, float2(0.5f, 1.f), float2(RectWidth, RectHeight));
     
+    //사각형이 아닌곳은 지우기
     clip(Rect.xyz - 1);
     
-    if (abs(sin(WaveHeight * (GridPosX + 1.f))) < 0.3f)
+    //일정 확률마다 글리치 효과
+    if (abs(sin(WaveHeight * (GridPosX + 1.f))) < GlichRatio)
     {
         float Freq = 0.5f;
         float t = 60. + WaveHeight * Freq * 30.;
@@ -119,6 +133,7 @@ float4 Texture_PS(Output _Value) : SV_Target0
         Freq += Rand(floor(Pos.y));
         const float Offset = 0.9f;
         
+        //색상 변경
         Rect.x = RandomSerie(WaveHeight, Freq * 100.f, t + Offset);
         Rect.y = RandomSerie(WaveHeight, Freq * 100.f, t);
         Rect.z = RandomSerie(WaveHeight, Freq * 100.f, t - Offset);

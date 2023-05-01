@@ -14,12 +14,10 @@
     <FxCompile Include="Glich.hlsl">
       <Filter>Test</Filter>
     </FxCompile>
-    <FxCompile Include="GlichStair.hlsl">
-      <Filter>Test</Filter>
-    </FxCompile>
     <FxCompile Include="ColorWave.hlsl">
       <Filter>Test</Filter>
     </FxCompile>
+    <FxCompile Include="GlichStair.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test">

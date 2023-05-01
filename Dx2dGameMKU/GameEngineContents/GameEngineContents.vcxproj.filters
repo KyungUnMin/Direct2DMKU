@@ -166,6 +166,9 @@
     <Filter Include="99.Test\ColorWave">
       <UniqueIdentifier>{2279013a-aae6-40b3-8d98-61371fdaac96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect">
+      <UniqueIdentifier>{b305fa0f-5051-4e8d-951d-444743921964}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -297,6 +300,9 @@
     <ClCompile Include="ColorWave.cpp">
       <Filter>99.Test\ColorWave</Filter>
     </ClCompile>
+    <ClCompile Include="GlichSideAttack.cpp">
+      <Filter>03.Actor\06.Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -424,6 +430,9 @@
     </ClInclude>
     <ClInclude Include="ColorWave.h">
       <Filter>99.Test\ColorWave</Filter>
+    </ClInclude>
+    <ClInclude Include="GlichSideAttack.h">
+      <Filter>03.Actor\06.Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

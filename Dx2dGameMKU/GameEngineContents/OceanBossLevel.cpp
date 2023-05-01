@@ -20,8 +20,6 @@ OceanBossLevel::~OceanBossLevel()
 
 }
 
-#include "ShaderTestActor.h"
-#include "ColorWave.h"
 
 void OceanBossLevel::Start()
 {
@@ -31,8 +29,6 @@ void OceanBossLevel::Start()
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
 
-	CreateActor<ColorWave>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
-	CreateActor<ShaderTestActor>()->GetTransform()->SetLocalPosition(float4::Down * 100.f);
 }
 
 void OceanBossLevel::LoadImgRes()
