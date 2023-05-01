@@ -21,7 +21,7 @@ void RCG_GameCore::GameStart()
 	ContentsResourceInit();
 
 	KeyMgr::CreateKey();
-	LevelMgr::CreateLevel(LevelNames::OceanBossLevel);
+	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
 }
 
 

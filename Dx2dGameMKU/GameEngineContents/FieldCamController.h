@@ -48,6 +48,7 @@ private:
 
 	//Trace
 	float4 MapScale = float4::Zero;
+	const float TraceYOffset = 80.f;
 
 	//MoveToFixed
 	float4 DestPos = float4::Zero;

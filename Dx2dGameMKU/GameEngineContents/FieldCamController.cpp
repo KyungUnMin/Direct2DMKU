@@ -163,8 +163,8 @@ void FieldCamController::Update_Trace(float _DeltaTime)
 	}
 
 	if (
-		(NextPos.y - ScreenSize.hy()) < -MapScale.hy()
-		|| MapScale.hy() < (NextPos.y + ScreenSize.hy())
+		(NextPos.y - ScreenSize.hy()) < -MapScale.hy() - TraceYOffset
+		|| MapScale.hy() + TraceYOffset < (NextPos.y + ScreenSize.hy())
 		)
 	{
 		NextPos.y = CamPos.y;

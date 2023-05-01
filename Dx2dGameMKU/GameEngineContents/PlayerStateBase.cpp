@@ -68,6 +68,7 @@ void PlayerStateBase::Update_Move(float _DeltaTime)
 	MoveDir.Normalize();
 	MoveDir.x *= HorizonSpeed;
 	MoveDir.y *= VerticalSpeed;
+	MoveDir.z = MoveDir.y;
 
 	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
 	if (nullptr == PlayerPtr)
