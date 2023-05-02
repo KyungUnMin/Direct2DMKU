@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGDefine.h"
+#include "RCGEnums.h"
 #include "FieldPlayer.h"
 #include "Fader.h"
 
@@ -145,7 +146,7 @@ void FieldDoor::Update(float _DeltaTime)
 
 	//Fader
 	FieldDoor::RegistNextLevel = NextLevel;
-	GetLevel()->CreateActor<Fader>()->Init(float4{ 0.f, 0.f, 0.f, 0.f }, FadeTime, []()
+	GetLevel()->CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{ 0.f, 0.f, 0.f, 0.f }, FadeTime, []()
 	{
 		LevelMgr::ChangeLevel(FieldDoor::RegistNextLevel);
 	});

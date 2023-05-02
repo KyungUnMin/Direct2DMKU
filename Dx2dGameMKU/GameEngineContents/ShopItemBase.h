@@ -1,5 +1,11 @@
 #pragma once
 
+/*
+	이럴꺼면 클래스로 감쌀 필요도 없지 않냐?
+	이 파일에다가 상속할 얘들 전부 적어놔
+*/
+
+
 struct ShopItemParameter
 {
 	std::string_view ItemName = "UNKNOWN";

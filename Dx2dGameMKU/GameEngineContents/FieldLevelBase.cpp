@@ -27,7 +27,7 @@ void FieldLevelBase::Start()
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 	GetMainCamera()->GetTransform()->SetWorldPosition(float4::Back * 500.f);
 
-	PlayerPtr = CreateActor<FieldPlayer>();
+	PlayerPtr = CreateActor<FieldPlayer>(static_cast<int>(UpdateOrder::Player));
 	BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
 	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
 
@@ -47,7 +47,7 @@ void FieldLevelBase::LevelChangeStart()
 	GPtr = this;
 	FieldPlayer::GPtr = PlayerPtr.get();
 
-	CreateActor<Fader>()->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
+	CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
 }
 
 

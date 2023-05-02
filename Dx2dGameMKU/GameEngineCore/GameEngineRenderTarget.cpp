@@ -69,6 +69,13 @@ void GameEngineRenderTarget::Setting()
 }
 
 
+void GameEngineRenderTarget::Reset()
+{
+	ID3D11RenderTargetView* RTV[8] = { nullptr };
+	GameEngineDevice::GetContext()->OMSetRenderTargets(8, RTV, nullptr);
+}
+
+
 void GameEngineRenderTarget::CreateDepthTexture()
 {
 	D3D11_TEXTURE2D_DESC Desc = { 0 };

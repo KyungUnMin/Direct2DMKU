@@ -28,6 +28,10 @@ public:
 	//더블버퍼링을 이용한 렌더링 처리
 	static void RenderEnd();
 
+	//비디오 전용 임시 렌더링 기능
+	static void VideoRenderStart();
+	static void VideoRenderEnd();
+
 	static ID3D11Device* GetDevice()
 	{
 		return Device;

@@ -214,7 +214,16 @@ void GameEngineDevice::RenderEnd()
 
 }
 
+void GameEngineDevice::VideoRenderStart()
+{
+	BackBufferTarget->Clear();
+	BackBufferTarget->Reset();
+}
 
+void GameEngineDevice::VideoRenderEnd()
+{
+	HRESULT Result = SwapChain->Present(0, 0);
+}
 
 void GameEngineDevice::Initialize()
 {

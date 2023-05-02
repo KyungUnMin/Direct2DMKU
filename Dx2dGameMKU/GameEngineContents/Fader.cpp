@@ -59,7 +59,7 @@ void Fader::Update(float _DeltaTime)
 	}
 
 	//아직 Death 기능이 없어서 멤버변수로 렌더러를 들고 있음
-	RenderPtr->Off();
+	//RenderPtr->Off();
 	IsFading = nullptr;
 	Death();
 }

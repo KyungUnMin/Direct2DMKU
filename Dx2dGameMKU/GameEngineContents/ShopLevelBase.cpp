@@ -73,7 +73,7 @@ void ShopLevelBase::LevelChangeStart()
 {
 	GameEngineLevel::LevelChangeStart();
 
-	CreateActor<Fader>()->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
+	CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{0.f, 0.f, 0.f, 1.0f});
 }
 
 

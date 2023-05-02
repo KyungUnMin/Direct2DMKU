@@ -112,6 +112,30 @@
     <ClInclude Include="GameEngineDepthState.h">
       <Filter>04.Resources\05.RenderingPipeLine\08.Depth</Filter>
     </ClInclude>
+    <ClInclude Include="imgui_impl_dx11.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_win32.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>_imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -221,6 +245,27 @@
     </ClCompile>
     <ClCompile Include="GameEngineDepthState.cpp">
       <Filter>04.Resources\05.RenderingPipeLine\08.Depth</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_win32.cpp">
+      <Filter>_imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_tables.cpp">
+      <Filter>_imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>_imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>_imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_demo.cpp">
+      <Filter>_imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>_imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_dx11.cpp">
+      <Filter>_imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +415,9 @@
     </Filter>
     <Filter Include="04.Resources\05.RenderingPipeLine\08.Depth">
       <UniqueIdentifier>{d5ecf2c1-4d19-4d02-839c-c7da36f15159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_imgui">
+      <UniqueIdentifier>{f2f64c67-3741-4178-8ec7-560993d10701}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

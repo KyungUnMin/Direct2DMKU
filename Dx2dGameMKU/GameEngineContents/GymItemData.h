@@ -17,9 +17,16 @@ public:
 	GymItemData& operator=(const GymItemData& _Other) = delete;
 	GymItemData& operator=(const GymItemData&& _Other) noexcept = delete;
 
+	inline void Init(GymItemParameter _Data)
+	{
+		ItemData = _Data;
+	}
+
+
+
 protected:
 
 private:
-
+	GymItemParameter ItemData;
 };
 

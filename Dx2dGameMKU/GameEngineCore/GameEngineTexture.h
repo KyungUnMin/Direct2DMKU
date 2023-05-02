@@ -3,6 +3,53 @@
 #include <GameEngineCore/ThirdParty/DirectXTex/inc/DirectXTex.h>
 
 
+class GameEnginePixelColor
+{
+public:
+	static GameEnginePixelColor Black;
+
+	union 
+	{
+		struct 
+		{
+			unsigned char r;
+			unsigned char g;
+			unsigned char b;
+			unsigned char a;
+		};
+
+		unsigned char ColorChar[4];
+		int Color;
+	};
+
+	bool operator ==(const GameEnginePixelColor& _Other)
+	{
+		return Color == _Other.Color;
+	}
+
+	bool operator !=(const GameEnginePixelColor& _Other)
+	{
+		return !(*this == _Other);
+	}
+
+	float4 Tofloat4()
+	{
+		//TODO
+	}
+
+	GameEnginePixelColor()
+	{
+
+	}
+
+	GameEnginePixelColor(char _r, char _g, char _b, char _a)
+		:r(_r), g(_g), b(_b), a(_a)
+	{
+
+	}
+};
+
+
 //순수한 이미지 정보를 담는 리소스(API로 치면 HBITMAP)
 class GameEngineTexture : public GameEngineResource<GameEngineTexture>
 {
@@ -69,15 +116,17 @@ public:
 	}
 
 
-	unsigned int GetWidth()
+	int GetWidth()
 	{
 		return Desc.Width;
 	}
 
-	unsigned int GetHeight()
+	int GetHeight()
 	{
 		return Desc.Height;
 	}
+
+	GameEnginePixelColor GetPixel(int _X, int _Y, const GameEnginePixelColor& _DefaultColor = GameEnginePixelColor::Black);
 
 protected:
 

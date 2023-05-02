@@ -30,6 +30,9 @@ public:
 	//랜파에서 아웃풋 머저를 위한 렌더타겟뷰를 세팅해주는 단계(Core의 RenderStart에서 호출)
 	void Setting() override;
 
+	//랜더링 파이프라인에 있는 렌더타겟들을 nullptr로 바꾸기(비디오때문에 만든 임시기능)
+	void Reset();
+
 	//사전에 만든 텍스처를 바탕으로 깊이버퍼텍스처 만들기, (아직까진) 디바이스에서만 호출됨
 	void CreateDepthTexture();
 
