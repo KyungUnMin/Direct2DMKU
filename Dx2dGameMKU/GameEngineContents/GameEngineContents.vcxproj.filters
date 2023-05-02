@@ -172,6 +172,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\07.Dash">
       <UniqueIdentifier>{e3f3d3a5-8aa9-43d9-841e-e56135eed7dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\01.GlichSideAttack">
+      <UniqueIdentifier>{45912f54-2552-404c-b03d-31c222888c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Test\BurnExample">
+      <UniqueIdentifier>{cf00cd0c-cd6b-4738-8822-acde791a45c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -303,11 +309,14 @@
     <ClCompile Include="ColorWave.cpp">
       <Filter>99.Test\ColorWave</Filter>
     </ClCompile>
-    <ClCompile Include="GlichSideAttack.cpp">
-      <Filter>03.Actor\06.Effect</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerState_Dash.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\07.Dash</Filter>
+    </ClCompile>
+    <ClCompile Include="GlichSideAttack.cpp">
+      <Filter>03.Actor\06.Effect\01.GlichSideAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="BurnExample.cpp">
+      <Filter>99.Test\BurnExample</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -437,11 +446,14 @@
     <ClInclude Include="ColorWave.h">
       <Filter>99.Test\ColorWave</Filter>
     </ClInclude>
-    <ClInclude Include="GlichSideAttack.h">
-      <Filter>03.Actor\06.Effect</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerState_Dash.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\07.Dash</Filter>
+    </ClInclude>
+    <ClInclude Include="GlichSideAttack.h">
+      <Filter>03.Actor\06.Effect\01.GlichSideAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="BurnExample.h">
+      <Filter>99.Test\BurnExample</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
