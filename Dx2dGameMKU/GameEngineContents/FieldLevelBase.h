@@ -1,15 +1,17 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 #include "FieldCamController.h"
+#include "FreeCamMoveController.h"
 
 class FieldLevelBase : public GameEngineLevel
 {
 public:
-	static std::weak_ptr<FieldLevelBase> GetPtr()
+	static std::shared_ptr<FieldLevelBase> GetPtr()
 	{
 		if (nullptr == GPtr)
 		{
-			return std::weak_ptr<FieldLevelBase>();
+			MsgAssert("필드 레벨이 존재하지 않습니다");
+			return nullptr;
 		}
 
 		return GPtr->Shared_This_dynamic_pointer<FieldLevelBase>();
@@ -47,6 +49,7 @@ private:
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<class FieldPlayer> PlayerPtr = nullptr;
 	FieldCamController CamCtrl;
+	FreeCamMoveController FreeCamDebugMoveCtrl;
 
 	//GameEngineTransform PlayerDebugTransform;
 };

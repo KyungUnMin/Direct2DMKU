@@ -191,7 +191,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="FreeCamPlayerMove.h">
+    <ClInclude Include="FreeCamMoveController.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -358,7 +358,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FieldDoor_Update.cpp" />
-    <ClCompile Include="FreeCamPlayerMove.cpp">
+    <ClCompile Include="FreeCamMoveController.cpp">
       <SubType>
       </SubType>
     </ClCompile>

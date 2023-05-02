@@ -30,6 +30,8 @@ void FieldLevelBase::Start()
 	PlayerPtr = CreateActor<FieldPlayer>();
 	BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
 	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
+
+	FreeCamDebugMoveCtrl.Init(GetMainCamera());
 }
 
 
@@ -53,9 +55,5 @@ void FieldLevelBase::LevelChangeStart()
 void FieldLevelBase::Update(float _DeltaTime)
 {
 	CamCtrl.Update(_DeltaTime);
+	FreeCamDebugMoveCtrl.Update(_DeltaTime);
 }
-
-
-
-
-

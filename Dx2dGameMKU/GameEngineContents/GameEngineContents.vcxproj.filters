@@ -178,7 +178,7 @@
     <Filter Include="99.Test\BurnExample">
       <UniqueIdentifier>{cf00cd0c-cd6b-4738-8822-acde791a45c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Core\03.Manager/Controller\05.FreeCamPlayerMove">
+    <Filter Include="01.Core\03.Manager/Controller\05.FreeCamMove">
       <UniqueIdentifier>{c51a78f7-4aaf-40d6-8db4-2f33e3cd87c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -321,8 +321,8 @@
     <ClCompile Include="BurnExample.cpp">
       <Filter>99.Test\BurnExample</Filter>
     </ClCompile>
-    <ClCompile Include="FreeCamPlayerMove.cpp">
-      <Filter>01.Core\03.Manager/Controller\05.FreeCamPlayerMove</Filter>
+    <ClCompile Include="FreeCamMoveController.cpp">
+      <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -461,8 +461,8 @@
     <ClInclude Include="BurnExample.h">
       <Filter>99.Test\BurnExample</Filter>
     </ClInclude>
-    <ClInclude Include="FreeCamPlayerMove.h">
-      <Filter>01.Core\03.Manager/Controller\05.FreeCamPlayerMove</Filter>
+    <ClInclude Include="FreeCamMoveController.h">
+      <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

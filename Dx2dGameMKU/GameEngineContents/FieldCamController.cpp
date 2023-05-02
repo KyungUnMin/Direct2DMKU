@@ -4,10 +4,8 @@
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineCamera.h>
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
 
 #include "FieldPlayer.h"
-#include "KeyMgr.h"
 
 FieldCamController::FieldCamController()
 {
@@ -24,15 +22,6 @@ void FieldCamController::Init(std::shared_ptr<GameEngineCamera> _Cam, const floa
 {
 	Cam = _Cam;
 	MapScale = _MapScale;
-
-	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
-	if (nullptr == PlayerPtr)
-	{
-		MsgAssert("플레이어가 아직 존재하지 않아 플레이어의 렌더러를 가져올 수 없습니다");
-		return;
-	}
-
-	PlayerRender = PlayerPtr->GetRenderer();
 }
 
 
@@ -68,50 +57,26 @@ void FieldCamController::Update(float _DeltaTime)
 		return;
 	}
 
-	IsFreeCamMode = Cam->IsFreeCamera();
+	if (true == Cam->IsFreeCamera())
+		return;
 
-	//프리카메라가 켜진 순간
-	if (false == PrevCamMode && true == IsFreeCamMode)
+	switch (CurState)
 	{
-		PlayerOriginOffset = PlayerRender->GetTransform()->GetLocalPosition();
-		PlayerGravity = 0.f;
+	case CameraCtrlState::PlayerTrace:
+		Update_Trace(_DeltaTime);
+		break;
+	case CameraCtrlState::MoveToFixed:
+		Update_MoveToFixed(_DeltaTime);
+		break;
+	case CameraCtrlState::Fixed:
+		//외부에서 State값을 바꿔줄때까지 가만히만 있는다
+		break;
+	case CameraCtrlState::Shake:
+		Update_Shake(_DeltaTime);
+		break;
+	default:
+		break;
 	}
-
-	//프리카메라가 꺼진 순간
-	else if (true == PrevCamMode && false == IsFreeCamMode)
-	{
-		PlayerRender->GetTransform()->SetLocalPosition(PlayerOriginOffset);
-	}
-
-	//프리카메라 모드일때
-	if (true == IsFreeCamMode)
-	{
-		Update_FreeCam(_DeltaTime);
-	}
-
-	//일반적인 카메라 모드 일때
-	else
-	{
-		switch (CurState)
-		{
-		case CameraCtrlState::PlayerTrace:
-			Update_Trace(_DeltaTime);
-			break;
-		case CameraCtrlState::MoveToFixed:
-			Update_MoveToFixed(_DeltaTime);
-			break;
-		case CameraCtrlState::Fixed:
-			//외부에서 State값을 바꿔줄때까지 가만히만 있는다
-			break;
-		case CameraCtrlState::Shake:
-			Update_Shake(_DeltaTime);
-			break;
-		default:
-			break;
-		}
-	}
-
-	PrevCamMode = IsFreeCamMode;
 }
 
 
@@ -128,29 +93,6 @@ void FieldCamController::Update_Trace(float _DeltaTime)
 	float4 PlayerPos = PlayerPtr->GetTransform()->GetWorldPosition();
 	GameEngineTransform* CamTransform = Cam->GetTransform();
 	float4 CamPos = CamTransform->GetLocalPosition();
-
-	/*float OriginCamZ = CamPos.z;
-	PlayerPos.z = 0.f;
-	CamPos.z = 0.f;
-
-	const float StopDistance = 10.f;
-	float4 Dir = (PlayerPos - CamPos);
-	if (Dir.Size() < StopDistance)
-		return;
-
-	Dir.Normalize();
-	const float MoveSpeed = 200.f;
-	float4 NextPos = CamPos + (Dir * MoveSpeed * _DeltaTime);
-
-	if (NextPos.x < -MapScale.hx() || MapScale.hx() < NextPos.x)
-		return;
-
-	if (NextPos.y < -MapScale.hy() || MapScale.hy() < NextPos.y)
-		return;
-
-	NextPos.z = OriginCamZ;
-	CamTransform->SetLocalPosition(NextPos);*/
-
 
 	float TraceRatio = 1.f;
 	if (true == PlayerPtr->IsDashing())
@@ -221,28 +163,6 @@ void FieldCamController::Update_Shake(float _DeltaTime)
 	ShakeOffset .y = GameEngineRandom::MainRandom.RandomFloat(-ShakeRange, ShakeRange);
 
 	CamTrans->SetLocalPosition(PrevPos + ShakeOffset);
-}
-
-
-
-
-void FieldCamController::Update_FreeCam(float _DeltaTime)
-{
-	const float PlayerJumpAcc = 500.f;
-	const float GravityAcc = 500.f;
-
-	if (true == KeyMgr::IsDown(KeyNames::Space))
-	{
-		PlayerGravity += PlayerJumpAcc;
-	}
-
-	PlayerGravity -= GravityAcc * _DeltaTime;
-	if (PlayerGravity < 0.f)
-	{
-		PlayerGravity = 0.f;
-	}
-
-	PlayerRender->GetTransform()->SetLocalPosition(PlayerOriginOffset + (float4::Up * PlayerGravity * _DeltaTime));
 }
 
 
