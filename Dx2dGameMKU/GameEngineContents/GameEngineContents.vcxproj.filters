@@ -181,6 +181,15 @@
     <Filter Include="01.Core\03.Manager/Controller\05.FreeCamMove">
       <UniqueIdentifier>{c51a78f7-4aaf-40d6-8db4-2f33e3cd87c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\04.ShopItem">
+      <UniqueIdentifier>{4614545b-9d82-4ef9-9626-03bcc99273f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\04.ShopItem\01.Data">
+      <UniqueIdentifier>{8c24b32d-8092-4959-970d-e0be71b3c08f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\04.ShopItem\02.CursorBar">
+      <UniqueIdentifier>{909ac4d2-6f73-4e97-815b-606fc91a0dc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -324,6 +333,12 @@
     <ClCompile Include="FreeCamMoveController.cpp">
       <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
     </ClCompile>
+    <ClCompile Include="ShopItemBase.cpp">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopItem_CursorBar.cpp">
+      <Filter>03.Actor\04.UI\04.ShopItem\02.CursorBar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -463,6 +478,12 @@
     </ClInclude>
     <ClInclude Include="FreeCamMoveController.h">
       <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopItemBase.h">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopItem_CursorBar.h">
+      <Filter>03.Actor\04.UI\04.ShopItem\02.CursorBar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

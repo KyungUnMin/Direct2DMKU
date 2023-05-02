@@ -11,6 +11,7 @@
 #include "BackGround.h"
 #include "LevelMgr.h"
 #include "Fader.h"
+#include "ShopItem_CursorBar.h"
 
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
@@ -30,6 +31,7 @@ void ShopLevelBase::Start()
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 
 	ImageResLoad();
+	CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
 }
 
 
@@ -53,6 +55,8 @@ void ShopLevelBase::ImageResLoad()
 }
 
 
+
+
 void ShopLevelBase::CreateBackImage(const std::string_view& _BackImageName)
 {
 	std::shared_ptr<BackGround> BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
@@ -60,8 +64,12 @@ void ShopLevelBase::CreateBackImage(const std::string_view& _BackImageName)
 	BGPtr->CreateBackImage(_BackImageName, ScreenSize);
 }
 
+
+
 void ShopLevelBase::LevelChangeStart()
 {
+	GameEngineLevel::LevelChangeStart();
+
 	CreateActor<Fader>()->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
 }
 

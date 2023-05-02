@@ -27,5 +27,7 @@ protected:
 private:
 	static LevelNames PrevLevel;
 
+	std::vector<std::shared_ptr<class ShopItemBase>> ItemDatas;
+
 	void ImageResLoad();
 };

@@ -211,6 +211,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ShopItemBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShopItem_CursorBar.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ShopLevelBase.h">
       <SubType>
       </SubType>
@@ -375,6 +383,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ShaderTestActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShopItemBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShopItem_CursorBar.cpp">
       <SubType>
       </SubType>
     </ClCompile>
