@@ -20,6 +20,7 @@ private:
 	static const float4 MapScale;
 
 	void LoadImgRes();
+	void CreateDoors();
 };
 
 

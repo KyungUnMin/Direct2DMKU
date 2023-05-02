@@ -21,8 +21,6 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 }
 
-#include "BurnExample.h"
-#include "GlichSideAttack.h"
 
 void SchoolEntryLevel::Start()
 {
@@ -32,9 +30,6 @@ void SchoolEntryLevel::Start()
 	LoadImgRes();
 	CreateBackGrounds();
 	CreateDoors();
-
-	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Down * 100.f);
-	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
 }
 
 

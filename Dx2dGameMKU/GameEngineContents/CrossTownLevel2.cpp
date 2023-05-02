@@ -29,9 +29,7 @@ void CrossTownLevel2::Start()
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
 
-	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Normal);
-	DoorPtr->Unlock(LevelNames::CrossTownLevel3);
+	CreateDoors();
 }
 
 void CrossTownLevel2::LoadImgRes()
@@ -45,4 +43,18 @@ void CrossTownLevel2::LoadImgRes()
 	{
 		GameEngineTexture::Load(File.GetFullPath());
 	}
+}
+
+void CrossTownLevel2::CreateDoors()
+{
+	std::shared_ptr<FieldDoor> DoorPtr = nullptr;
+
+	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::CrossTownLevel3);
+
+	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Shop);
+	DoorPtr->Unlock(LevelNames::Shop_StoreLevel);
+	DoorPtr->GetTransform()->SetLocalPosition(float4::Left * 1000.f);
 }
