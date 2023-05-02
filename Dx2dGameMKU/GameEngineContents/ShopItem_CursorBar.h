@@ -16,11 +16,23 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
+	inline void SetBarPos(const float4& _FirstPos, const float4& _LastPos)
+	{
+		BarFirstPos = _FirstPos;
+		BarLastPos = _LastPos;
+	}
+
 private:
 	static const float4 BarRenderScale;
 	static const std::string_view BarRenderName;
-	static const float4 BarFirstPos;
-	static const float4 BarLastPos;
+	static const float4 ShopBarFirstPos;
+	static const float4 ShopBarLastPos;
+	static const float4 GymBarFirstPos;
+	static const float4 GymBarLastPos;
+
+
+	float4 BarFirstPos = ShopBarFirstPos;
+	float4 BarLastPos = ShopBarLastPos;
 
 	size_t CurrentIndex = 0;
 };

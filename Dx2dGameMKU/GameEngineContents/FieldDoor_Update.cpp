@@ -124,12 +124,12 @@ void FieldDoor::Update_AlphaReady(float _DeltaTime)
 {
 	if (false == KeyMgr::IsPress(KeyNames::Z) || (false == IsNearPlayer))
 	{
-		AlphaRatio.x = 0.f;
+		AlphaRatio.Ratio = 0.f;
 		AlphaFSM.ChangeState(State::Wait);
 		return;
 	}
 
 	const float Duration = 0.5f;
 	float LiveTime = AlphaFSM.GetStateLiveTime();
-	AlphaRatio.x = (LiveTime / Duration);
+	AlphaRatio.Ratio = (LiveTime / Duration);
 }

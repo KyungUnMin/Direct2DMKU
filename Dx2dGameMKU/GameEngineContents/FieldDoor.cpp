@@ -140,7 +140,7 @@ void FieldDoor::Update(float _DeltaTime)
 
 	AlphaFSM.Update(_DeltaTime);
 
-	if (AlphaRatio.x < 1.f)
+	if (AlphaRatio.Ratio < 1.f)
 		return;
 
 	//Fader
@@ -150,7 +150,7 @@ void FieldDoor::Update(float _DeltaTime)
 		LevelMgr::ChangeLevel(FieldDoor::RegistNextLevel);
 	});
 
-	AlphaRatio.x = 0.f;
+	AlphaRatio.Ratio = 0.f;
 	ScaleFSM.ChangeState(State::Wait);
 	AlphaFSM.ChangeState(State::Wait);
 }

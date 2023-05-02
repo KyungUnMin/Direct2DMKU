@@ -12,7 +12,8 @@
 #include "LevelMgr.h"
 #include "Fader.h"
 #include "ShopItem_CursorBar.h"
-
+#include "HUD.h"
+#include "ShopInfo.h"
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
 
@@ -32,6 +33,8 @@ void ShopLevelBase::Start()
 
 	ImageResLoad();
 	CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
+	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
+	CreateActor<ShopInfo>(static_cast<int>(UpdateOrder::UI));
 }
 
 

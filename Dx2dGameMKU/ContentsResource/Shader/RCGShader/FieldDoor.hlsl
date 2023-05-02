@@ -55,7 +55,9 @@ Output Texture_VS(Input _Value)
 
 cbuffer AlphaRatio : register(b0)
 {
-    float4 Ratio;
+    float OriginAlpha;
+    float Ratio;
+    
 }
 
 
@@ -72,9 +74,9 @@ float4 Texture_PS(Output _Value) : SV_Target0
     }
     
     float NowPixelY = _Value.UV.y;
-    if (Ratio.x < (1.f - NowPixelY))
+    if (Ratio < (1.f - NowPixelY))
     {
-        Color.a = 0.2f;
+        Color.a = OriginAlpha;
     }
     else
     {

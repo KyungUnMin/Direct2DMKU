@@ -76,7 +76,16 @@ private:
 
 	SimpleFSM ScaleFSM;
 	SimpleFSM AlphaFSM;
-	float4 AlphaRatio = float4::Zero;
+
+	struct ShaderData
+	{
+		const float OriginAlpha = 0.5f;
+		float Ratio = 0.f;
+		float Garbage1 = 0.f;
+		float Garbage2 = 0.f;
+	};
+
+	ShaderData AlphaRatio;
 
 	void CreateScaleState();
 	void CreateAlphsState();

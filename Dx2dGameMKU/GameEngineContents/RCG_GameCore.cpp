@@ -21,7 +21,7 @@ void RCG_GameCore::GameStart()
 	ContentsResourceInit();
 
 	KeyMgr::CreateKey();
-	LevelMgr::CreateLevel(LevelNames::Shop_StoreLevel);
+	LevelMgr::CreateLevel(LevelNames::CrossTownLevel1);
 }
 
 

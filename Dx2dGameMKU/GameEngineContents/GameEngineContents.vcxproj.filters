@@ -190,6 +190,9 @@
     <Filter Include="03.Actor\04.UI\04.ShopItem\02.CursorBar">
       <UniqueIdentifier>{909ac4d2-6f73-4e97-815b-606fc91a0dc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\05.ShopInfo">
+      <UniqueIdentifier>{dbf309a7-a212-4168-96c9-cc64473af973}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -339,6 +342,9 @@
     <ClCompile Include="ShopItem_CursorBar.cpp">
       <Filter>03.Actor\04.UI\04.ShopItem\02.CursorBar</Filter>
     </ClCompile>
+    <ClCompile Include="ShopInfo.cpp">
+      <Filter>03.Actor\04.UI\05.ShopInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -484,6 +490,9 @@
     </ClInclude>
     <ClInclude Include="ShopItem_CursorBar.h">
       <Filter>03.Actor\04.UI\04.ShopItem\02.CursorBar</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopInfo.h">
+      <Filter>03.Actor\04.UI\05.ShopInfo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
