@@ -18,6 +18,7 @@
       <Filter>Test</Filter>
     </FxCompile>
     <FxCompile Include="GlichStair.hlsl" />
+    <FxCompile Include="Burn.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test">

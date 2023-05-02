@@ -33,7 +33,7 @@ public:
 
 	//현재 상태값을 enum으로 캐스팅해서 돌려주기
 	template <typename EnumType>
-	EnumType GetNowState()
+	inline EnumType GetNowState() const
 	{
 		return static_cast<EnumType>(CurIndex);
 	}
@@ -43,6 +43,11 @@ public:
 	void Update(float _DeltaTime);
 	//현재 스테이트를 Render 돌려주기
 	void Render(float _DeltaTime);
+
+	inline float GetFsmTime() const
+	{
+		return FsmTimer;
+	}
 
 protected:
 	//이 FSM이 가질 State들의 벡터 크기 설정
@@ -67,9 +72,12 @@ protected:
 
 	virtual void Test(){}
 
+
 private:
 	std::vector<std::shared_ptr<StateBase>> AllState;
 	size_t CurIndex = 999999;
+
+	float FsmTimer = 0.f;
 
 	//만들어진 State를 기본 초기화(안에서 AllState에 등록)
 	void InitState(std::shared_ptr<StateBase> _State, size_t _Index);

@@ -19,7 +19,7 @@ protected:
 	//아래 3개 빌드위한 임시
 	bool IsOnAir() { return false; }
 
-	void Update_Move(float _DeltaTime);
+	void Update_Move(float _DeltaTime, const float4& _Speed = float4{400.f, 200.f});
 
 	bool Check_Idle();
 

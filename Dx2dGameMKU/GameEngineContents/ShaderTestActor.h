@@ -17,12 +17,7 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	struct GlichData
-	{
-		float Timer = 0.f;
-		
-	};
-
-	GlichData Data;
+	float4 LinkData = float4::Zero;
+	float Timer = 0.f;
 };
 

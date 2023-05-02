@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayerStateBase.h"
+#include "KeyMgr.h"
 
 
 class PlayerState_Move : public PlayerStateBase
@@ -16,8 +17,17 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	
+	void EnterState() override;
+	void ExitState() override;
 
 private:
+	static std::vector<KeyNames>  CheckArrows;
 
+	KeyNames PressArrow = KeyNames::COUNT;
+	KeyNames LastArrow = KeyNames::COUNT;
+	float LastTime = 0.f;
+
+	void CheckPressArrow(KeyNames& _SettingEnum);
 };
 

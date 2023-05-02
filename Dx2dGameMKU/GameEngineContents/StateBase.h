@@ -31,10 +31,15 @@ protected:
 
 
 	virtual void Start(){}
-	virtual void EnterState() {}
-	virtual void Update(float _DeltaTime) {}
+	virtual void EnterState();
+	virtual void Update(float _DeltaTime);
 	virtual void Render(float _DeltaTime) {}
 	virtual void ExitState() {}
+
+	inline float GetLiveTime() const
+	{
+		return Timer;
+	}
 
 private:
 	/*
@@ -43,5 +48,7 @@ private:
 		일반 포인터들을 이용
 	*/
 	FSMBase* FsmPtr = nullptr;
+
+	float Timer = 0.f;
 };
 

@@ -23,6 +23,7 @@ PlayerState_Idle::~PlayerState_Idle()
 void PlayerState_Idle::Start()
 {
 	PlayerStateBase::Start();
+
 	SetArrowKey();
 	LoadAnimation();
 	CreateAnimation();

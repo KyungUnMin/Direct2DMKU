@@ -7,6 +7,7 @@ enum class PlayerStateType
 	Move,
 	Jump,
 	Fall,
+	Dash,
 
 	COUNT
 };

@@ -42,7 +42,8 @@ void FSMBase::Update(float _DeltaTime)
 		MsgAssert("현재 FSM의 상태를 설정해주지 않았습니다");
 		return;
 	}
-
+	
+	FsmTimer += _DeltaTime;
 	AllState[CurIndex]->Update(_DeltaTime);
 }
 

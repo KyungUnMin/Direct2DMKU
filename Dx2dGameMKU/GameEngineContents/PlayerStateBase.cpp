@@ -38,11 +38,8 @@ bool PlayerStateBase::Check_Idle()
 }
 
 
-void PlayerStateBase::Update_Move(float _DeltaTime)
+void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 {
-	static const float HorizonSpeed = 400.f;
-	static const float VerticalSpeed = 200.f;
-
 	float4 MoveDir = float4::Zero;
 	if (true == KeyMgr::IsPress(KeyNames::RightArrow))
 	{
@@ -66,8 +63,8 @@ void PlayerStateBase::Update_Move(float _DeltaTime)
 		return;
 
 	MoveDir.Normalize();
-	MoveDir.x *= HorizonSpeed;
-	MoveDir.y *= VerticalSpeed;
+	MoveDir.x *= _Speed.x;
+	MoveDir.y *= _Speed.y;
 	MoveDir.z = MoveDir.y;
 
 	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();

@@ -10,3 +10,13 @@ StateBase::~StateBase()
 {
 
 }
+
+void StateBase::EnterState()
+{
+	Timer = 0.f;
+}
+
+void StateBase::Update(float _DeltaTime)
+{
+	Timer += _DeltaTime;
+}

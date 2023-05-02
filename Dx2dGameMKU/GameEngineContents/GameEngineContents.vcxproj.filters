@@ -169,6 +169,9 @@
     <Filter Include="03.Actor\06.Effect">
       <UniqueIdentifier>{b305fa0f-5051-4e8d-951d-444743921964}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\07.Dash">
+      <UniqueIdentifier>{e3f3d3a5-8aa9-43d9-841e-e56135eed7dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -303,6 +306,9 @@
     <ClCompile Include="GlichSideAttack.cpp">
       <Filter>03.Actor\06.Effect</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_Dash.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\07.Dash</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -433,6 +439,9 @@
     </ClInclude>
     <ClInclude Include="GlichSideAttack.h">
       <Filter>03.Actor\06.Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_Dash.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\07.Dash</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

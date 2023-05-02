@@ -32,6 +32,11 @@ public:
 		return RendererPtr;
 	}
 
+	inline bool IsDashing() const
+	{
+		return (PlayerStateType::Dash == Fsm.GetNowState<PlayerStateType>());
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

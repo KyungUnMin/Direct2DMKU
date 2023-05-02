@@ -151,7 +151,13 @@ void FieldCamController::Update_Trace(float _DeltaTime)
 	NextPos.z = OriginCamZ;
 	CamTransform->SetLocalPosition(NextPos);*/
 
-	float4 NextPos = float4::LerpClamp(CamPos, PlayerPos, _DeltaTime);
+
+	float TraceRatio = 1.f;
+	if (true == PlayerPtr->IsDashing())
+	{
+		TraceRatio = 5.f;
+	}
+	float4 NextPos = float4::LerpClamp(CamPos, PlayerPos, TraceRatio * _DeltaTime);
 	
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	if (

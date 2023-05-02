@@ -5,6 +5,7 @@
 #include "PlayerState_Move.h"
 #include "PlayerState_Jump.h"
 #include "PlayerState_Fall.h"
+#include "PlayerState_Dash.h"
 
 PlayerFSM::PlayerFSM()
 {
@@ -26,6 +27,7 @@ void PlayerFSM::Init()
 	FSMBase::CreateState<PlayerState_Move>(PlayerStateType::Move);
 	FSMBase::CreateState<PlayerState_Jump>(PlayerStateType::Jump);
 	FSMBase::CreateState<PlayerState_Fall>(PlayerStateType::Fall);
+	FSMBase::CreateState<PlayerState_Dash>(PlayerStateType::Dash);
 
 	FSMBase::ChangeState(PlayerStateType::Idle);
 }

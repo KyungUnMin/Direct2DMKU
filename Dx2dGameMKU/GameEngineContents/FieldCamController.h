@@ -50,7 +50,7 @@ private:
 	float4 MapScale = float4::Zero;
 	const float TraceYOffset = 80.f;
 
-	//MoveToFixed
+	//MoveToFixedSDA
 	float4 DestPos = float4::Zero;
 
 	//Shake
