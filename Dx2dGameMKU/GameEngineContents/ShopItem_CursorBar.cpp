@@ -47,7 +47,6 @@ void ShopItem_CursorBar::Start()
 
 void ShopItem_CursorBar::Update(float _DeltaTime)
 {
-	const size_t MaxCursor = 3;
 	bool IsPosChanged = false;
 	if (true == KeyMgr::IsDown(KeyNames::DownArrow) && (CurrentIndex < MaxCursor))
 	{
@@ -62,9 +61,13 @@ void ShopItem_CursorBar::Update(float _DeltaTime)
 	}
 
 	if (false == IsPosChanged)
+	{
+		//효과음
 		return;
+	}
 
 	const float Ratio = static_cast<float>(CurrentIndex) / static_cast<float>(MaxCursor);
 	float4 NextPos = float4::LerpClamp(BarFirstPos, BarLastPos, Ratio);
 	GetTransform()->SetLocalPosition(NextPos);
+	//효과음
 }

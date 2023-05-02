@@ -19,6 +19,8 @@ public:
 	DataMgr& operator=(const DataMgr& _Other) = delete;
 	DataMgr& operator=(const DataMgr&& _Other) noexcept = delete;
 
+	//------------------HP---------------------------------
+
 	static inline int GetPlayerHP()
 	{
 		return PlayerHp;
@@ -47,6 +49,8 @@ public:
 		PlayerHp = _Value;
 		PlayerHp = std::clamp(PlayerHp, 0, 100);
 	}
+
+	//------------------MP---------------------------------
 
 	static inline int GetPlayerMP()
 	{
@@ -77,11 +81,49 @@ public:
 		PlayerMp = std::clamp(PlayerMp, 0, 100);
 	}
 
+	//------------------Money---------------------------------
+
+	static inline int GetPlayerMoney()
+	{
+		return PlayerMoney;
+	}
+
+	static inline void PlusPlayerMoney(int _Value)
+	{
+		PlayerMoney += _Value;
+		if (999999 < PlayerMoney)
+		{
+			PlayerMoney = 999999;
+		}
+	}
+
+	static inline bool MinusPlayerMoney(int _Value)
+	{
+		if ((PlayerMoney - _Value) < 0)
+			return false;
+
+		PlayerMoney -= _Value;
+		return true;
+	}
+
+	static inline void SetPlayerMoney(int _Value)
+	{
+		PlayerMoney = _Value;
+		PlayerMoney = std::clamp(PlayerMoney, 0, 999999);
+	}
+
+	//------------------???---------------------------------
+
 protected:
 
 private:
 	static int PlayerHp;
 	static int PlayerMp;
+
+	static float PlayerSpeedPer;
+	static int PlayerAtt;
+	static int PlayerMoney;
+
 
 	//static std::vector<ItemType> Inventory;
 

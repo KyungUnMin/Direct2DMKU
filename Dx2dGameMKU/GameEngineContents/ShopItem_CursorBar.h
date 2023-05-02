@@ -12,6 +12,11 @@ public:
 	ShopItem_CursorBar& operator=(const ShopItem_CursorBar& _Other) = delete;
 	ShopItem_CursorBar& operator=(const ShopItem_CursorBar&& _Other) noexcept = delete;
 
+	inline void SetMax(size_t _MaxCount)
+	{
+		MaxCursor = _MaxCount;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -35,5 +40,6 @@ private:
 	float4 BarLastPos = ShopBarLastPos;
 
 	size_t CurrentIndex = 0;
+	size_t MaxCursor = 3;
 };
 

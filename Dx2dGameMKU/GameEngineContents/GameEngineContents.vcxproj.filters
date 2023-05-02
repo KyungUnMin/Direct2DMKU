@@ -193,6 +193,15 @@
     <Filter Include="03.Actor\04.UI\05.ShopInfo">
       <UniqueIdentifier>{dbf309a7-a212-4168-96c9-cc64473af973}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\04.ShopItem\01.Data\01.Base">
+      <UniqueIdentifier>{a287ccce-6f96-4e08-930e-ae956290e4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\04.ShopItem\01.Data\02.Shop">
+      <UniqueIdentifier>{aa2f327a-8076-4ba2-a346-b0892b342193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\04.ShopItem\01.Data\03.Gym">
+      <UniqueIdentifier>{7f1c65ec-752d-4c71-863e-a1c6a37f9a81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -336,14 +345,20 @@
     <ClCompile Include="FreeCamMoveController.cpp">
       <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
     </ClCompile>
-    <ClCompile Include="ShopItemBase.cpp">
-      <Filter>03.Actor\04.UI\04.ShopItem\01.Data</Filter>
-    </ClCompile>
     <ClCompile Include="ShopItem_CursorBar.cpp">
       <Filter>03.Actor\04.UI\04.ShopItem\02.CursorBar</Filter>
     </ClCompile>
     <ClCompile Include="ShopInfo.cpp">
       <Filter>03.Actor\04.UI\05.ShopInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopItemBase.cpp">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopItemData.cpp">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data\02.Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="GymItemData.cpp">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data\03.Gym</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -485,14 +500,20 @@
     <ClInclude Include="FreeCamMoveController.h">
       <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
     </ClInclude>
-    <ClInclude Include="ShopItemBase.h">
-      <Filter>03.Actor\04.UI\04.ShopItem\01.Data</Filter>
-    </ClInclude>
     <ClInclude Include="ShopItem_CursorBar.h">
       <Filter>03.Actor\04.UI\04.ShopItem\02.CursorBar</Filter>
     </ClInclude>
     <ClInclude Include="ShopInfo.h">
       <Filter>03.Actor\04.UI\05.ShopInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopItemBase.h">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopItemData.h">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data\02.Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="GymItemData.h">
+      <Filter>03.Actor\04.UI\04.ShopItem\01.Data\03.Gym</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
