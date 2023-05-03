@@ -26,12 +26,13 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 void SchoolEntryLevel::Start()
 {
-
 	FieldLevelBase::Start();
 
 	LoadImgRes();
 	CreateBackGrounds();
 	CreateDoors();
+
+	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, 0.f , 0.f});
 
 	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
 	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);

@@ -20,6 +20,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void LevelChangeStart() override;
+	void LevelChangeEnd() override;
 
 	void CreateBackImage(const std::string_view& _BackImageName);
 
@@ -27,7 +28,7 @@ protected:
 private:
 	static LevelNames PrevLevel;
 
-	std::vector<std::shared_ptr<class ShopItemBase>> ItemDatas;
+	std::shared_ptr<class ShopItem_CursorBar> Cursor = nullptr;
 
 	void ImageResLoad();
 };

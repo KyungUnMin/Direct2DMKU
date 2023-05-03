@@ -199,10 +199,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="GymItemData.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="HUD.h">
       <SubType>
       </SubType>
@@ -215,19 +211,15 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ShopData.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="ShopInfo.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ShopItemBase.h">
+    <ClInclude Include="ShopItemBlock.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ShopItemData.h">
+    <ClInclude Include="ShopItemBlockBase.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -236,6 +228,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ShopLevelBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShopSkillBlock.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -390,10 +386,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="GymItemData.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="HUD.cpp">
       <SubType>
       </SubType>
@@ -406,19 +398,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ShopData.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="ShopInfo.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ShopItemBase.cpp">
+    <ClCompile Include="ShopItemBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ShopItemData.cpp">
+    <ClCompile Include="ShopItemBlockBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -427,6 +415,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ShopLevelBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShopSkillBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>

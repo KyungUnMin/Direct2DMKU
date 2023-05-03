@@ -42,6 +42,12 @@ void FieldLevelBase::InitLevelArea(const float4& _Scale, const TileInfoData& _Ti
 }
 
 
+void FieldLevelBase::SetPlayerStartPosition(const float4& _StartPos)
+{
+	PlayerPtr->GetTransform()->SetLocalPosition(_StartPos);
+}
+
+
 void FieldLevelBase::LevelChangeStart()
 {
 	GPtr = this;

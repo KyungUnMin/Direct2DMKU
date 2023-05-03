@@ -8,12 +8,14 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "KeyMgr.h"
-#include "BackGround.h"
 #include "LevelMgr.h"
+
 #include "Fader.h"
-#include "ShopItem_CursorBar.h"
+#include "BackGround.h"
+
 #include "HUD.h"
 #include "ShopInfo.h"
+#include "ShopItem_CursorBar.h"
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
 
@@ -32,7 +34,7 @@ void ShopLevelBase::Start()
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 
 	ImageResLoad();
-	CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
+	Cursor = CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
 	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
 	CreateActor<ShopInfo>(static_cast<int>(UpdateOrder::UI));
 }
@@ -74,6 +76,13 @@ void ShopLevelBase::LevelChangeStart()
 	GameEngineLevel::LevelChangeStart();
 
 	CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{0.f, 0.f, 0.f, 1.0f});
+}
+
+void ShopLevelBase::LevelChangeEnd()
+{
+	GameEngineLevel::LevelChangeEnd();
+
+	Cursor->Reset();
 }
 
 

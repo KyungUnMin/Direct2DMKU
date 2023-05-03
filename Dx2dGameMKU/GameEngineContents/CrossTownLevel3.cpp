@@ -30,6 +30,8 @@ void CrossTownLevel3::Start()
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
 
 	CreateDoors();
+
+	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
 }
 
 void CrossTownLevel3::LoadImgRes()

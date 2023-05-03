@@ -3,6 +3,8 @@
 #include "FieldCamController.h"
 #include "FreeCamMoveController.h"
 
+class FieldPlayer;
+
 class FieldLevelBase : public GameEngineLevel
 {
 public:
@@ -43,11 +45,13 @@ protected:
 		return BGPtr;
 	}
 
+	void SetPlayerStartPosition(const float4& _StartPos);
+
 private:
 	static FieldLevelBase* GPtr;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
-	std::shared_ptr<class FieldPlayer> PlayerPtr = nullptr;
+	std::shared_ptr<FieldPlayer> PlayerPtr = nullptr;
 	FieldCamController CamCtrl;
 	FreeCamMoveController FreeCamDebugMoveCtrl;
 
