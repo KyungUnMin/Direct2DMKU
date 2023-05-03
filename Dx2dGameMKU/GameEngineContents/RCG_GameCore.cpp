@@ -16,12 +16,14 @@ RCG_GameCore::~RCG_GameCore()
 
 void RCG_GameCore::GameStart()
 {
+#ifdef _DEBUG
 	bool* DEBUGLEAK = new bool;
+#endif
 
 	ContentsResourceInit();
 
 	KeyMgr::CreateKey();
-	LevelMgr::CreateLevel(LevelNames::CrossTownLevel1);
+	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
 }
 
 

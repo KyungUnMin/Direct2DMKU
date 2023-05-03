@@ -63,9 +63,9 @@ void SchoolEntryLevel::CreateBackGrounds()
 void SchoolEntryLevel::CreateDoors()
 {
 	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Init(DoorType::Normal, float4{0.f, 100.f, 100.f});
 	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
-	DoorPtr->GetTransform()->SetLocalPosition(float4{ 100.f, 100.f });
+	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
 }
 
 

@@ -52,9 +52,15 @@ void CrossTownLevel2::CreateDoors()
 	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal);
 	DoorPtr->Unlock(LevelNames::CrossTownLevel3);
+	DoorPtr->GetTransform()->SetLocalPosition(float4{2100.f, -350.f, -350.f});
 
 	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Shop);
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
+	DoorPtr->GetTransform()->SetLocalPosition(float4{ -2100.f, -350.f, -350.f });
+
+	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Shop, float4{ 0.f, 50.f, 50.f });
 	DoorPtr->Unlock(LevelNames::Shop_StoreLevel);
-	DoorPtr->GetTransform()->SetLocalPosition(float4::Left * 1000.f);
+	DoorPtr->GetTransform()->SetLocalPosition(float4{-1000.f, -50.f, -50.f});
 }

@@ -97,7 +97,7 @@ void FieldDoor::CreateDoorImage(
 	const std::string_view& _ImageName, 
 	const float4& _Scale, 
 	bool _IsLockImage,
-	const float4& _RenderOffset)
+	const float4&  _RenderOffset)
 {
 	std::shared_ptr<GameEngineRenderer> RenderPtr = nullptr;
 

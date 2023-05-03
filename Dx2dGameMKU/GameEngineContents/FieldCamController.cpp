@@ -102,6 +102,8 @@ void FieldCamController::Update_Trace(float _DeltaTime)
 	float4 NextPos = float4::LerpClamp(CamPos, PlayerPos, TraceRatio * _DeltaTime);
 	
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
+
+
 	if (
 		(NextPos.x - ScreenSize.hx()) < -MapScale.hx()
 		|| MapScale.hx() < (NextPos.x + ScreenSize.hx())
