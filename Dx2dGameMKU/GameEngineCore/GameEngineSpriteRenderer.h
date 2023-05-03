@@ -12,6 +12,8 @@ public:
 	GameEngineSpriteRenderer& operator=(const GameEngineSpriteRenderer& _Other) = delete;
 	GameEngineSpriteRenderer& operator=(const GameEngineSpriteRenderer&& _Other) noexcept = delete;
 
+	void SetScaleToTexture(const std::string_view& _Name);
+
 	void SetTexture(const std::string_view& _Name);
 
 	void SetFlipX();

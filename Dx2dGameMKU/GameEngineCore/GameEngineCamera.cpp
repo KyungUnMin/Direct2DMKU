@@ -130,6 +130,18 @@ void GameEngineCamera::Update(float _DeltaTime)
 
 	}
 
+	
+}
+
+
+void GameEngineCamera::Setting()
+{
+	//여러개 세팅해줄 수 있지만 한개만 세팅
+	GameEngineDevice::GetContext()->RSSetViewports(1, &ViewPortData);
+}
+
+void GameEngineCamera::Render(float _DeltaTime)
+{
 	//현재 카메라의 각 축 계산
 	float4 EyeDir = GetTransform()->GetLocalForwardVector();
 	float4 EyeUp = GetTransform()->GetLocalUpVector();
@@ -148,7 +160,7 @@ void GameEngineCamera::Update(float _DeltaTime)
 		break;
 	}
 	case CameraType::Perspective:
-	Projection.PersperctiveFovLH(FOV, (Width / Height), Near, Far);
+		Projection.PersperctiveFovLH(FOV, (Width / Height), Near, Far);
 		break;
 	case CameraType::Orthogonal:
 		Projection.OrthographicLH(Width, Height, Near, Far);
@@ -160,11 +172,4 @@ void GameEngineCamera::Update(float _DeltaTime)
 	//뷰포트행렬 만들기
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	ViewPort.ViewPort(ScreenSize.x, ScreenSize.y, 0.f, 0.f);
-}
-
-
-void GameEngineCamera::Setting()
-{
-	//여러개 세팅해줄 수 있지만 한개만 세팅
-	GameEngineDevice::GetContext()->RSSetViewports(1, &ViewPortData);
 }
