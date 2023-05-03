@@ -27,8 +27,11 @@ void ShopItemBlockBase::Init(
 
 	Texture = CreateComponent<GameEngineSpriteRenderer>();
 	Texture->SetTexture(_TextureName);
-	Texture->GetTransform()->SetLocalScale(float4::One * 100.f);
-	Texture->On();
+	Texture->GetTransform()->SetLocalScale(float4::One * 70.f);
+	Texture->Off();
+
+	Texture->GetTransform()->SetLocalPosition(float4::Left * 220.f);
+	GetTransform()->SetLocalRotation(float4::Forward * -10.f);
 
 	Cost = _Cost;
 	CallBack = _CallBack;

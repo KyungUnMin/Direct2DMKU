@@ -29,6 +29,7 @@ private:
 	static LevelNames PrevLevel;
 
 	std::shared_ptr<class ShopItem_CursorBar> Cursor = nullptr;
+	std::shared_ptr<class ShopSlotController> SlotCtrl = nullptr;
 
 	void ImageResLoad();
 };

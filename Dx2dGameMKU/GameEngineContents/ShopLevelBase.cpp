@@ -16,6 +16,7 @@
 #include "HUD.h"
 #include "ShopInfo.h"
 #include "ShopItem_CursorBar.h"
+#include "ShopSlotController.h"
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
 
@@ -35,6 +36,8 @@ void ShopLevelBase::Start()
 
 	ImageResLoad();
 	Cursor = CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
+	SlotCtrl = CreateActor<ShopSlotController>(static_cast<int>(UpdateOrder::UI));
+
 	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
 	CreateActor<ShopInfo>(static_cast<int>(UpdateOrder::UI));
 }
@@ -83,6 +86,7 @@ void ShopLevelBase::LevelChangeEnd()
 	GameEngineLevel::LevelChangeEnd();
 
 	Cursor->Reset();
+	SlotCtrl->Reset();
 }
 
 

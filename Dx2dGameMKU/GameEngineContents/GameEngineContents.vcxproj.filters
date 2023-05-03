@@ -205,6 +205,9 @@
     <Filter Include="03.Actor\04.UI\04.Shop\01.ShopItem\01.ItemBlock\03.Gym">
       <UniqueIdentifier>{d27eaeea-b080-42c0-af5b-cad29f15aab8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl">
+      <UniqueIdentifier>{dddbf7cf-e21c-4a65-a2f4-14cae7f2b19d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -363,6 +366,9 @@
     <ClCompile Include="ShopSkillBlock.cpp">
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\01.ItemBlock\03.Gym</Filter>
     </ClCompile>
+    <ClCompile Include="ShopSlotController.cpp">
+      <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -517,6 +523,9 @@
     </ClInclude>
     <ClInclude Include="ShopSkillBlock.h">
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\01.ItemBlock\03.Gym</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopSlotController.h">
+      <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

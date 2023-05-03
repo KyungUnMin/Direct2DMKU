@@ -6,6 +6,7 @@
 #include "RCGDefine.h"
 #include "KeyMgr.h"
 #include "Shop_GymLevel.h"
+#include "ShopSlotController.h"
 
 const std::string_view ShopItem_CursorBar::BarRenderName = "ShopUI_SelectionBar.png";
 const std::string_view ShopItem_CursorBar::ConfirmRenderName = "ShopUI_ConfirmBox.png";
@@ -21,6 +22,8 @@ const float4 ShopItem_CursorBar::GymBarLastPos = float4{ 300.f, -180.f };
 
 const float4 ShopItem_CursorBar::ConfirmInnerOffset = { -100.f, 25.f, 0.f };
 const float4 ShopItem_CursorBar::ConfirmOutOffset = { -280.f, 50.f, 0.f };
+
+size_t ShopItem_CursorBar::CurrentIndex = 0;
 
 
 ShopItem_CursorBar::ShopItem_CursorBar()
@@ -56,20 +59,25 @@ void ShopItem_CursorBar::Start()
 	std::shared_ptr<GameEngineSpriteRenderer> BarRender = CreateComponent<GameEngineSpriteRenderer>();
 	BarRender->SetTexture(BarRenderName);
 	BarRender->GetTransform()->SetLocalScale(BarRenderScale);
+
+	MaxCursor = ShopSlotController::MaxSlot;
 }
 
 
 
 void ShopItem_CursorBar::Update(float _DeltaTime)
 {
-	Update_Move();
-	Update_Comfirm(_DeltaTime);
+	Update_CursorMove();
+	Update_ComfirmMove(_DeltaTime);
 }
 
 
 
-void ShopItem_CursorBar::Update_Move()
+void ShopItem_CursorBar::Update_CursorMove()
 {
+	if (true == IsConfirmation)
+		return;
+
 	bool IsPosChanged = false;
 	if (true == KeyMgr::IsDown(KeyNames::DownArrow) && (CurrentIndex < MaxCursor))
 	{
@@ -95,9 +103,12 @@ void ShopItem_CursorBar::Update_Move()
 	//È¿°úÀ½
 }
 
-void ShopItem_CursorBar::Update_Comfirm(float _DeltaTime)
+void ShopItem_CursorBar::Update_ComfirmMove(float _DeltaTime)
 {
-	if (true == KeyMgr::IsDown(KeyNames::Z))
+	if (
+		true == KeyMgr::IsDown(KeyNames::Z) ||
+		true == KeyMgr::IsDown(KeyNames::X)
+		)
 	{
 		IsConfirmation = !IsConfirmation;
 		ConfirmTime = 0.f;
@@ -107,7 +118,7 @@ void ShopItem_CursorBar::Update_Comfirm(float _DeltaTime)
 	ConfirmTime += _DeltaTime;
 
 	float Ratio = (ConfirmTime / Duration);
-	if (1.f < Ratio)
+	if (1.1f < Ratio)
 		return;
 
 	float4 NextOffset = float4::Zero;

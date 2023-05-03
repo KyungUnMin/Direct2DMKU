@@ -13,7 +13,7 @@ public:
 	ShopSkillBlock& operator=(const ShopSkillBlock&& _Other) noexcept = delete;
 
 	void Init(const std::string_view& _Name, int _UnlockLevel,
-		const std::string_view& _TextureName, int _Cost, std::function<void()> _CallBack)
+		int _Cost, std::function<void()> _CallBack)
 	{
 		UnlockLevel = _UnlockLevel;
 

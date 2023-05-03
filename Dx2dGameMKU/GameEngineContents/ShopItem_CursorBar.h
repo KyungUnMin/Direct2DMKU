@@ -4,27 +4,6 @@
 class ShopItem_CursorBar : public GameEngineActor
 {
 public:
-	ShopItem_CursorBar();
-	~ShopItem_CursorBar() override;
-
-	ShopItem_CursorBar(const ShopItem_CursorBar& _Other) = delete;
-	ShopItem_CursorBar(ShopItem_CursorBar&& _Other) noexcept = delete;
-	ShopItem_CursorBar& operator=(const ShopItem_CursorBar& _Other) = delete;
-	ShopItem_CursorBar& operator=(const ShopItem_CursorBar&& _Other) noexcept = delete;
-
-	inline void SetMax(size_t _MaxCount)
-	{
-		MaxCursor = _MaxCount;
-	}
-
-	void Reset();
-
-protected:
-	void Start() override;
-	void Update(float _DeltaTime) override;
-
-
-private:
 	static const std::string_view BarRenderName;
 	static const std::string_view ConfirmRenderName;
 
@@ -39,13 +18,34 @@ private:
 	static const float4 ConfirmInnerOffset;
 	static const float4 ConfirmOutOffset;
 
+	ShopItem_CursorBar();
+	~ShopItem_CursorBar() override;
+
+	ShopItem_CursorBar(const ShopItem_CursorBar& _Other) = delete;
+	ShopItem_CursorBar(ShopItem_CursorBar&& _Other) noexcept = delete;
+	ShopItem_CursorBar& operator=(const ShopItem_CursorBar& _Other) = delete;
+	ShopItem_CursorBar& operator=(const ShopItem_CursorBar&& _Other) noexcept = delete;
+
+	static size_t GetCurrentIndex()
+	{
+		return CurrentIndex;
+	}
+	
+	void Reset();
+
+protected:
+	void Start() override;
+	void Update(float _DeltaTime) override;
+
+
+private:
+	static size_t CurrentIndex;
+	size_t MaxCursor = 39467;
+
 	GameEngineTransform* ConfirmBoxTrans = nullptr;
 
 	float4 BarFirstPos = ShopBarFirstPos;
 	float4 BarLastPos = ShopBarLastPos;
-
-	size_t CurrentIndex = 0;
-	size_t MaxCursor = 3;
 
 	bool IsConfirmation = false;
 	float ConfirmTime = FLT_MAX;
@@ -56,7 +56,7 @@ private:
 		BarLastPos = _LastPos;
 	}
 
-	void Update_Move();
-	void Update_Comfirm(float _DeltaTime);
+	void Update_CursorMove();
+	void Update_ComfirmMove(float _DeltaTime);
 };
 
