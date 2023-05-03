@@ -52,6 +52,11 @@ public:
 		return MainCamera;
 	}
 
+	std::shared_ptr<GameEngineLevel> GetSharedThis()
+	{
+		return Shared_This_dynamic_pointer<GameEngineLevel>();
+	}
+
 protected:
 	virtual void LevelChangeStart(){}
 	virtual void LevelChangeEnd(){}

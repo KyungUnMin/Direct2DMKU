@@ -10,7 +10,15 @@ class GameEngineWindow
 {
 	static LRESULT CALLBACK MessageFunction(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam);
 
+	//윈도우 메세지를 처리하기 전에 실행될 콜백
+	static std::function<LRESULT(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)> UserMessageFunction;
+
 public:
+	static void SetUserMessageFunction(std::function<LRESULT(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)> _UserMessageFunction)
+	{
+		UserMessageFunction = _UserMessageFunction;
+	}
+
 	static void WindowCreate(HINSTANCE _hInstance, const std::string_view& _TitleName, float4 _Size, float4 _Pos);
 
 	static void SettingWindowSize(float4 _Size);
@@ -51,6 +59,8 @@ public:
 
 	static float4 GetMousePosition();
 
+	static void Release();
+
 	GameEngineWindow();
 	~GameEngineWindow();
 
@@ -73,5 +83,6 @@ private:
 	static	GameEngineImage*		DoubleBufferImage;
 
 	static	bool								IsWindowUpdate;
+	static	WNDCLASSEX				wcex;
 };
 

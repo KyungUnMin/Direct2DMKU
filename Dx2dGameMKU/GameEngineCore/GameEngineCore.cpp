@@ -7,6 +7,7 @@
 #include <GameEnginePlatform/GameEngineSound.h>
 #include "GameEngineDevice.h"
 #include "GameEngineVideo.h"
+#include "GameEngineGUI.h"
 
 std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::LevelMap;
 std::shared_ptr<GameEngineLevel> GameEngineCore::MainLevel = nullptr;
@@ -35,6 +36,9 @@ void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 
 	//리소스 생성
 	CoreResourceInit();
+
+	//내부에서 디바이스와 컨텍스트를 쓰기때문에 디바이스 초기화보다 늦게 이루어져야 한다
+	GameEngineGUI::Initialize();
 
 	if (nullptr == _ContentsStart)
 	{
@@ -113,9 +117,12 @@ void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)
 
 	_ContentsEnd();
 
+	GameEngineGUI::Release();
+
 	LevelMap.clear();
 	CoreResourceEnd();
 	GameEngineDevice::Release();
+	GameEngineWindow::Release();
 }
 
 

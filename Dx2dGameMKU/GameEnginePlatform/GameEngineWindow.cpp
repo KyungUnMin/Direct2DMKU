@@ -16,10 +16,21 @@ GameEngineImage* GameEngineWindow::DoubleBufferImage = nullptr;
 
 bool                         GameEngineWindow::IsWindowUpdate = true;
 
+std::function<LRESULT(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)> GameEngineWindow::UserMessageFunction = nullptr;
+WNDCLASSEX	GameEngineWindow::wcex;
+
 
 //메세지에 따른 콜백 함수
 LRESULT CALLBACK GameEngineWindow::MessageFunction(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
 {
+    //하위 계층에서 등록한 콜백 실행
+    if (nullptr != UserMessageFunction)
+    {
+        if (0 != UserMessageFunction(_hWnd, _message, _wParam, _lParam))
+            return true;
+    }
+
+
     switch (_message)
     {
     case WM_KEYDOWN:
@@ -29,7 +40,7 @@ LRESULT CALLBACK GameEngineWindow::MessageFunction(HWND _hWnd, UINT _message, WP
     }
     case WM_DESTROY:
     {
-        PostQuitMessage(0);
+        //PostQuitMessage(0);
         IsWindowUpdate = false;
         break;
     }
@@ -56,8 +67,6 @@ GameEngineWindow::~GameEngineWindow()
 void GameEngineWindow::WindowCreate(HINSTANCE _hInstance, const std::string_view& _TitleName, float4 _Size, float4 _Pos)
 {
     //윈도우 클래스를 만들기 위한 정보 기입
-    WNDCLASSEX wcex;
-
     wcex.cbSize = sizeof(WNDCLASSEX);
 
     wcex.style = CS_HREDRAW | CS_VREDRAW;
@@ -152,13 +161,13 @@ int GameEngineWindow::WindowLoop(
         //메세지가 있다면 메세지 처리
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-
             if (nullptr != _Loop)
             {
                 _Loop();
             }
+
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
 
             GameEngineInput::IsAnyKeyOff();
             continue;
@@ -236,4 +245,9 @@ float4 GameEngineWindow::GetMousePosition()
 
     //float4로 변경해서 return
     return { static_cast<float>(MoniterPoint.x),static_cast<float>(MoniterPoint.y) };
+}
+
+void GameEngineWindow::Release()
+{
+    ::UnregisterClassA(wcex.lpszClassName, wcex.hInstance);
 }
