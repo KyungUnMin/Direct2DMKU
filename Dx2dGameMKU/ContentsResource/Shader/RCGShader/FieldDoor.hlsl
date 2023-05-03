@@ -70,7 +70,8 @@ float4 Texture_PS(Output _Value) : SV_Target0
 
     if (0.f == Color.a)
     {
-        return Color;
+        clip(-1);
+        //return Color;
     }
     
     float NowPixelY = _Value.UV.y;
