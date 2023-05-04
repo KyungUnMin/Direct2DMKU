@@ -4,8 +4,10 @@
 #include <GameEngineCore/GameEngineVertexShader.h>
 #include <GameEngineCore/GameEnginePixelShader.h>
 #include <GameEngineCore/GameEngineRenderingPipeLine.h>
+#include <GameEngineCore/GameEngineGUI.h>
 
 #include "RCGDefine.h"
+
 
 void RCG_GameCore::ContentsResourceInit()
 {

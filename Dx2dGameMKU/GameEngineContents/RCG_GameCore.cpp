@@ -4,6 +4,7 @@
 
 #include "KeyMgr.h"
 #include "LevelMgr.h"
+#include "GUIManager.h"
 
 RCG_GameCore::RCG_GameCore()
 {
@@ -21,6 +22,7 @@ void RCG_GameCore::GameStart()
 #endif
 
 	ContentsResourceInit();
+	GUIManager::Init();
 
 	KeyMgr::CreateKey();
 	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);

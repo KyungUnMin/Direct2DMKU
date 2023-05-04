@@ -195,7 +195,12 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineActorGUI.h" />
     <ClInclude Include="GlichSideAttack.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GUIManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -386,7 +391,12 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameEngineActorGUI.cpp" />
     <ClCompile Include="GlichSideAttack.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GUIManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

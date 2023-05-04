@@ -208,6 +208,15 @@
     <Filter Include="03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl">
       <UniqueIdentifier>{dddbf7cf-e21c-4a65-a2f4-14cae7f2b19d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\06.GUI">
+      <UniqueIdentifier>{d83ff6ca-e8c5-4f3f-9230-d1050e2e3f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\06.GUI\02.GUI">
+      <UniqueIdentifier>{2b591757-5736-4613-a991-bcbd27b2bb30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\06.GUI\01.GUIMgr">
+      <UniqueIdentifier>{e3df9c9e-0776-4174-9523-7fc5e7812f5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -369,6 +378,12 @@
     <ClCompile Include="ShopSlotController.cpp">
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineActorGUI.cpp">
+      <Filter>01.Core\03.Manager/Controller\06.GUI\02.GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIManager.cpp">
+      <Filter>01.Core\03.Manager/Controller\06.GUI\01.GUIMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -526,6 +541,12 @@
     </ClInclude>
     <ClInclude Include="ShopSlotController.h">
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineActorGUI.h">
+      <Filter>01.Core\03.Manager/Controller\06.GUI\02.GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIManager.h">
+      <Filter>01.Core\03.Manager/Controller\06.GUI\01.GUIMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

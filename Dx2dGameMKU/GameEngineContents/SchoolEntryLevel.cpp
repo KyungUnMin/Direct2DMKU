@@ -61,6 +61,8 @@ void SchoolEntryLevel::CreateBackGrounds()
 	FieldLevelBase::GetBG()->CreateCollisionImage("SchoolEntryColBG.png");
 }
 
+#include "GUIManager.h"
+#include "GameEngineActorGUI.h"
 
 void SchoolEntryLevel::CreateDoors()
 {
@@ -68,6 +70,8 @@ void SchoolEntryLevel::CreateDoors()
 	DoorPtr->Init(DoorType::Normal, float4{0.f, 100.f, 100.f});
 	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
+
+	GUIManager::Find<GameEngineActorGUI>()->SetTarget(DoorPtr->GetTransform());
 }
 
 
