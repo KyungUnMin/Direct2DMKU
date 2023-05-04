@@ -45,7 +45,9 @@ protected:
 
 	void SetPlayerStartPosition(const float4& _StartPos);
 
-	std::vector<GameEngineTransform*> CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes);
+
+	//첫번째 인자 : <텍스처 이름, 오프셋>, 두번째 인자 : GameEngineActorGUI가 컨트롤 할 배경의 인덱스
+	void CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes, size_t _GuiSelect = UINT64_MAX);
 
 	void CreateCollisionImage(const std::string_view& _ImageName);
 

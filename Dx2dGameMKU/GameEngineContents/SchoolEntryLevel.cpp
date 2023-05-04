@@ -11,7 +11,21 @@
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
 {
-	{"SchoolEntryBG.png", float4{ 0.f, 0.f }}
+	{"SchoolEntryBG.png", float4{ 0.f, 0.f }},
+
+	{"School_Desks.png", float4{ -598.f, -242.f}},
+	{"School_Desks.png", float4{ -387.f, -242.f}},
+	{"School_Desks.png", float4{ -170.f, -242.f}},
+	{"School_Desks.png", float4{ 45.f, -242.f}},
+
+	{"School_Desks.png", float4{ -470.f, -108.f}},
+	{"School_Desks.png", float4{ -258.f, -108.f}},
+	{"School_Desks.png", float4{ -37.f, -108.f}},
+	{"School_Desks.png", float4{ 177.f, -108.f}},
+
+	{"School_TeacherDesk.png", float4{ 550.f, -236.f}},
+	{"School_Chair1.png", float4{ 527.f, -130.f}},
+	{"School_Chair2.png", float4{ 667.f, -240.f}},
 };
 
 const std::string_view SchoolEntryLevel::CollisionImageName = "SchoolEntryColBG.png";
@@ -64,7 +78,7 @@ void SchoolEntryLevel::LoadImgRes()
 void SchoolEntryLevel::CreateBackGrounds()
 {
 	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData());
-	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	FieldLevelBase::CreateBackGrounds(BGInfoes, 9);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 

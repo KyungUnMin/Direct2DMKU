@@ -6,11 +6,15 @@
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 
 #include "RCGEnums.h"
+#include "RCGDefine.h"
+#include "GUIManager.h"
+#include "GameEngineActorGUI.h"
+
 #include "BackGround.h"
 #include "FieldPlayer.h"
 #include "Fader.h"
 #include "HUD.h"
-#include "RCGDefine.h"
+
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
 
@@ -47,22 +51,28 @@ void FieldLevelBase::InitLevelArea(const float4& _Scale, const TileInfoData& _Ti
 }
 
 
-std::vector<GameEngineTransform*> FieldLevelBase::CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes)
+void FieldLevelBase::CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes, const size_t _GuiSelect /*= UINT64_MAX*/)
 {
-	std::vector<GameEngineTransform*> ReturnTransforms;
-	ReturnTransforms.reserve(_BackGroundInfoes.size());
+	std::shared_ptr<GameEngineActorGUI> TransCtrlGUI = GUIManager::Find<GameEngineActorGUI>();
 
-	for (const std::pair<std::string_view, float4>& Pair : _BackGroundInfoes)
+	for (size_t i = 0; i < _BackGroundInfoes.size(); ++i)
 	{
+		const std::pair<std::string_view, float4>& Pair = _BackGroundInfoes[i];
+
 		const std::string_view& BGName = Pair.first;
 		float4 BGScale = ResourceHelper::GetTextureScale(BGName) * RCGDefine::ResourceScaleConvertor;
 		const float4& Offset = Pair.second;
 
-		GameEngineTransform* ReturnTrans = BGPtr->CreateBackImage(BGName, BGScale, Offset)->GetTransform();
-		ReturnTransforms.push_back(ReturnTrans);
-	}
+		std::shared_ptr<GameEngineSpriteRenderer> RenderPtr = BGPtr->CreateBackImage(BGName, BGScale, Offset);
 
-	return ReturnTransforms;
+		if (nullptr == TransCtrlGUI)
+			continue;
+
+		if (_GuiSelect != i)
+			continue;
+
+		TransCtrlGUI->SetTarget(RenderPtr->GetTransform());
+	}
 }
 
 void FieldLevelBase::CreateCollisionImage(const std::string_view& _ImageName)

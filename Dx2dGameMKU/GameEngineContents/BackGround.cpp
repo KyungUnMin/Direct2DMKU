@@ -43,12 +43,18 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 {
 	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	RendererPtr->SetTexture(_ResName);
+	GameEngineTransform* RenderTransform = RendererPtr->GetTransform();
 	if (false == _Offset.IsZero())
 	{
-		RendererPtr->GetTransform()->SetLocalPosition(_Offset);
+		float4 Offset = _Offset;
+		if (0.f == Offset.z)
+		{
+			Offset.z = Offset.y;
+		}
+		RenderTransform->SetWorldPosition(Offset);
 	}
 
-	RendererPtr->GetTransform()->SetLocalScale(_Scale);
+	RenderTransform->SetLocalScale(_Scale);
 	return RendererPtr;
 }
 

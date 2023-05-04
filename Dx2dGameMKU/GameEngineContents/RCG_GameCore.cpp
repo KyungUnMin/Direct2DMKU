@@ -25,7 +25,7 @@ void RCG_GameCore::GameStart()
 	GUIManager::Init();
 
 	KeyMgr::CreateKey();
-	LevelMgr::CreateLevel(LevelNames::OceanLevel);
+	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
 }
 
 
