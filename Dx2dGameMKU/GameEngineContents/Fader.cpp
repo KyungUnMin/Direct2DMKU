@@ -18,6 +18,7 @@ Fader::~Fader()
 void Fader::Start()
 {
 	UIBase::Start();
+	SetOffsetFromCam(float4::Zero);
 
     RenderPtr = CreateComponent<GameEngineRenderer>();
 	RenderPtr->SetPipeLine("DirectColor");
@@ -27,8 +28,12 @@ void Fader::Start()
 
 void Fader::Update(float _DeltaTime)
 {
+	UIBase::Update(_DeltaTime);
+
 	if (true == IsDeath())
 		return;
+
+
 
 	//다른곳에서 페이드가 진행중이라면 기다리기
 	if (nullptr == IsFading)
