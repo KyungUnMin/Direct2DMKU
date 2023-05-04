@@ -35,6 +35,7 @@ class BackGround : public GameEngineActor
 {
 public:
 	friend class FieldLevelBase;
+	friend class ShopLevelBase;
 
 	BackGround();
 	~BackGround() override;
@@ -43,9 +44,6 @@ public:
 	BackGround(BackGround&& _Other) noexcept = delete;
 	BackGround& operator=(const BackGround& _Other) = delete;
 	BackGround& operator=(const BackGround&& _Other) noexcept = delete;
-
-	void CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset = float4::Zero);
-	void CreateCollisionImage(const std::string_view& _ResName);
 
 	bool IsBlockPos(const float4& _Pos);
 
@@ -58,9 +56,10 @@ private:
 	float4 MapScale = float4::Zero;
 	std::shared_ptr <class GameEngineSpriteRenderer> ColRender = nullptr;
 	std::shared_ptr <class GameEngineTexture> ColTexture = nullptr;
-
+	std::shared_ptr <class GameEngineRenderer> TileRender;
 
 	void InitLevelArea(const float4& _Scale, const TileInfoData& _TileData);
-	std::shared_ptr <class GameEngineRenderer> TileRender;
+	std::shared_ptr<GameEngineSpriteRenderer> CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset = float4::Zero);
+	void CreateCollisionImage(const std::string_view& _ResName);
 };
 

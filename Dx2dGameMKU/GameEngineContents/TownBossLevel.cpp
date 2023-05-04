@@ -8,8 +8,12 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
-const std::string_view TownBossLevel::MapImgName = "TownBossBG.png";
-const float4 TownBossLevel::MapScale = float4{ 611.f, 419.f } *RCGDefine::ResourceScaleConvertor;
+const std::vector<std::pair<std::string_view, float4>> TownBossLevel::BGInfoes =
+{
+	{"TownBossBG.png", float4{0.f, 0.f}},
+};
+
+const std::string_view TownBossLevel::CollisionImageName = "???";
 
 TownBossLevel::TownBossLevel()
 {
@@ -26,12 +30,10 @@ void TownBossLevel::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
-	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+	CreateBackGrounds();
+	CreateDoors();
 
-	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Normal);
-	DoorPtr->Unlock(LevelNames::OceanLevel);
+	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
 }
 
 void TownBossLevel::LoadImgRes()
@@ -45,4 +47,19 @@ void TownBossLevel::LoadImgRes()
 	{
 		GameEngineTexture::Load(File.GetFullPath());
 	}
+}
+
+void TownBossLevel::CreateBackGrounds()
+{
+	const float4 LevelArea = ResourceHelper::GetTextureScale("TownBossBG.png") * RCGDefine::ResourceScaleConvertor;
+	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	//FieldLevelBase::CreateCollisionImage(CollisionImageName);
+}
+
+void TownBossLevel::CreateDoors()
+{
+	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::OceanLevel);
 }

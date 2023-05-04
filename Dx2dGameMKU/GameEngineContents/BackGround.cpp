@@ -39,7 +39,7 @@ void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileDa
 
 
 
-void BackGround::CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset /*= float4::Zero*/)
+std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset /*= float4::Zero*/)
 {
 	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	RendererPtr->SetTexture(_ResName);
@@ -49,6 +49,7 @@ void BackGround::CreateBackImage(const std::string_view& _ResName, const float4&
 	}
 
 	RendererPtr->GetTransform()->SetLocalScale(_Scale);
+	return RendererPtr;
 }
 
 void BackGround::CreateCollisionImage(const std::string_view& _ResName)

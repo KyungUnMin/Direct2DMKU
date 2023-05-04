@@ -8,6 +8,13 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
+//<텍스처 이름, 오프셋>
+const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
+{
+	{"SchoolEntryBG.png", float4{ 0.f, 0.f }}
+};
+
+const std::string_view SchoolEntryLevel::CollisionImageName = "SchoolEntryColBG.png";
 
 const float4 SchoolEntryLevel::LevelAreaScale = float4{ 672.f, 224.f } *RCGDefine::ResourceScaleConvertor;
 
@@ -56,13 +63,10 @@ void SchoolEntryLevel::LoadImgRes()
 
 void SchoolEntryLevel::CreateBackGrounds()
 {
-	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData(100, 40));
-	FieldLevelBase::GetBG()->CreateBackImage("SchoolEntryBG.png", LevelAreaScale);
-	FieldLevelBase::GetBG()->CreateCollisionImage("SchoolEntryColBG.png");
+	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData());
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
-
-#include "GUIManager.h"
-#include "GameEngineActorGUI.h"
 
 void SchoolEntryLevel::CreateDoors()
 {
@@ -70,8 +74,6 @@ void SchoolEntryLevel::CreateDoors()
 	DoorPtr->Init(DoorType::Normal, float4{0.f, 100.f, 100.f});
 	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
-
-	GUIManager::Find<GameEngineActorGUI>()->SetTarget(DoorPtr->GetTransform());
 }
 
 

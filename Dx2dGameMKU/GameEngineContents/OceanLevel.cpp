@@ -8,8 +8,14 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
-const std::string_view OceanLevel::MapImgName = "OceanBG.png";
-const float4 OceanLevel::MapScale = float4{ 672.f, 194.f } *RCGDefine::ResourceScaleConvertor;
+const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
+{
+	{"OceanBG.png", float4{0.f, 0.f}},
+};
+
+const std::string_view OceanLevel::CollisionImageName = "???";
+
+
 
 OceanLevel::OceanLevel()
 {
@@ -26,12 +32,10 @@ void OceanLevel::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
-	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+	CreateBackGrounds();
+	CreateDoors();
 
-	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Normal);
-	DoorPtr->Unlock(LevelNames::OceanBossLevel);
+	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
 }
 
 void OceanLevel::LoadImgRes()
@@ -45,4 +49,19 @@ void OceanLevel::LoadImgRes()
 	{
 		GameEngineTexture::Load(File.GetFullPath());
 	}
+}
+
+void OceanLevel::CreateBackGrounds()
+{
+	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBG.png") * RCGDefine::ResourceScaleConvertor;
+	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	//FieldLevelBase::CreateCollisionImage(CollisionImageName);
+}
+
+void OceanLevel::CreateDoors()
+{
+	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::OceanBossLevel);
 }

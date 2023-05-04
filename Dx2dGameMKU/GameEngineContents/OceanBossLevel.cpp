@@ -7,8 +7,13 @@
 #include "RCGEnums.h"
 #include "BackGround.h"
 
-const std::string_view OceanBossLevel::MapImgName = "OceanBossBG.png";
-const float4 OceanBossLevel::MapScale = float4{ 640.f, 360.f } *RCGDefine::ResourceScaleConvertor;
+const std::vector<std::pair<std::string_view, float4>> OceanBossLevel::BGInfoes =
+{
+	{"OceanBossBG.png", float4{0.f, 0.f}},
+};
+
+const std::string_view OceanBossLevel::CollisionImageName = "OceanBossColBG.png";
+
 
 OceanBossLevel::OceanBossLevel()
 {
@@ -27,15 +32,15 @@ void OceanBossLevel::Start()
 {
 	FieldLevelBase::Start();
 
+
 	LoadImgRes();
-	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
-	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
-	FieldLevelBase::GetBG()->CreateCollisionImage("OceanBossColBG.png");
+	CreateBackGrounds();
+
+
+	FieldLevelBase::SetPlayerStartPosition(float4{ 0.f, -200.f, -200.f });
 
 	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
 	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Down * 100.f);
-
-	FieldLevelBase::SetPlayerStartPosition(float4{ 0.f, -200.f, -200.f });
 }
 
 void OceanBossLevel::LoadImgRes()
@@ -49,4 +54,12 @@ void OceanBossLevel::LoadImgRes()
 	{
 		GameEngineTexture::Load(File.GetFullPath());
 	}
+}
+
+void OceanBossLevel::CreateBackGrounds()
+{
+	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBossBG.png") * RCGDefine::ResourceScaleConvertor;
+	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }

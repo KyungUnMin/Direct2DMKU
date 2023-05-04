@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "FieldCamController.h"
 #include "FreeCamMoveController.h"
+#include "ResourceHelper.h"
 
 class FieldPlayer;
 
@@ -32,10 +33,7 @@ public:
 		return CamCtrl;
 	}
 
-	inline std::shared_ptr<class BackGround> GetBG() const
-	{
-		return BGPtr;
-	}
+	bool IsBlockPos(const float4& _Pos);
 
 protected:
 	void Start() override;
@@ -46,6 +44,10 @@ protected:
 	void InitLevelArea(const float4& _Scale, const class TileInfoData& _TileData);
 
 	void SetPlayerStartPosition(const float4& _StartPos);
+
+	std::vector<GameEngineTransform*> CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes);
+
+	void CreateCollisionImage(const std::string_view& _ImageName);
 
 private:
 	static FieldLevelBase* GPtr;

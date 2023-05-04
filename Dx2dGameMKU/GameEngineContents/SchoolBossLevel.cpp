@@ -8,8 +8,13 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
-const std::string_view SchoolBossLevel::MapImgName = "SchoolBossBG.png";
-const float4 SchoolBossLevel::MapScale = float4{ 923.f, 360.f } *RCGDefine::ResourceScaleConvertor;
+//<텍스처 이름, 오프셋>
+const std::vector<std::pair<std::string_view, float4>> SchoolBossLevel::BGInfoes =
+{
+	{"SchoolBossBG.png", float4{ 0.f, 0.f }}
+};
+
+const std::string_view SchoolBossLevel::CollisionImageName = "SchoolBossColBG.png";
 
 SchoolBossLevel::SchoolBossLevel()
 {
@@ -26,13 +31,8 @@ void SchoolBossLevel::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
-	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
-	FieldLevelBase::GetBG()->CreateCollisionImage("SchoolBossColBG.png");
-
-	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Normal);
-	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
+	CreatBackGrounds();
+	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -700.f, 0.f , 0.f });
 }
@@ -48,4 +48,19 @@ void SchoolBossLevel::LoadImgRes()
 	{
 		GameEngineTexture::Load(File.GetFullPath());
 	}
+}
+
+void SchoolBossLevel::CreatBackGrounds()
+{
+	const float4 LevelArea = ResourceHelper::GetTextureScale("SchoolBossBG.png") * RCGDefine::ResourceScaleConvertor;
+	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	FieldLevelBase::CreateCollisionImage(CollisionImageName);
+}
+
+void SchoolBossLevel::CreateDoors()
+{
+	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Normal);
+	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
 }

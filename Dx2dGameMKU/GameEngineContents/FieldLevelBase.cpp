@@ -2,12 +2,15 @@
 #include "FieldLevelBase.h"
 
 #include <GameEngineCore/GameEngineCamera.h>
+#include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineSpriteRenderer.h>
 
 #include "RCGEnums.h"
 #include "BackGround.h"
 #include "FieldPlayer.h"
 #include "Fader.h"
 #include "HUD.h"
+#include "RCGDefine.h"
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
 
@@ -20,6 +23,8 @@ FieldLevelBase::~FieldLevelBase()
 {
 
 }
+
+
 
 
 void FieldLevelBase::Start()
@@ -42,10 +47,40 @@ void FieldLevelBase::InitLevelArea(const float4& _Scale, const TileInfoData& _Ti
 }
 
 
+std::vector<GameEngineTransform*> FieldLevelBase::CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes)
+{
+	std::vector<GameEngineTransform*> ReturnTransforms;
+	ReturnTransforms.reserve(_BackGroundInfoes.size());
+
+	for (const std::pair<std::string_view, float4>& Pair : _BackGroundInfoes)
+	{
+		const std::string_view& BGName = Pair.first;
+		float4 BGScale = ResourceHelper::GetTextureScale(BGName) * RCGDefine::ResourceScaleConvertor;
+		const float4& Offset = Pair.second;
+
+		GameEngineTransform* ReturnTrans = BGPtr->CreateBackImage(BGName, BGScale, Offset)->GetTransform();
+		ReturnTransforms.push_back(ReturnTrans);
+	}
+
+	return ReturnTransforms;
+}
+
+void FieldLevelBase::CreateCollisionImage(const std::string_view& _ImageName)
+{
+	BGPtr->CreateCollisionImage(_ImageName);
+}
+
+
+
 void FieldLevelBase::SetPlayerStartPosition(const float4& _StartPos)
 {
 	PlayerPtr->GetTransform()->SetLocalPosition({ _StartPos.x, _StartPos.y, _StartPos.y });
 }
+
+
+
+
+
 
 
 void FieldLevelBase::LevelChangeStart()
@@ -63,3 +98,11 @@ void FieldLevelBase::Update(float _DeltaTime)
 	CamCtrl.Update(_DeltaTime);
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
 }
+
+
+
+bool FieldLevelBase::IsBlockPos(const float4& _Pos)
+{
+	return BGPtr->IsBlockPos(_Pos);
+}
+

@@ -8,8 +8,14 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
-const std::string_view CrossTownLevel3::MapImgName = "CrossTown3BG.png";
-const float4 CrossTownLevel3::MapScale = float4{ 1676.f, 360.f} *RCGDefine::ResourceScaleConvertor;
+
+const std::vector<std::pair<std::string_view, float4>> CrossTownLevel3::BGInfoes =
+{
+	{"CrossTown3BG.png", float4{0.f, 0.f}},
+};
+
+const std::string_view CrossTownLevel3::CollisionImageName = "CrossTown3ColBG.png";
+
 
 CrossTownLevel3::CrossTownLevel3()
 {
@@ -26,10 +32,7 @@ void CrossTownLevel3::Start()
 	FieldLevelBase::Start();
 
 	LoadImgRes();
-	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
-	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
-	FieldLevelBase::GetBG()->CreateCollisionImage("CrossTown3ColBG.png");
-
+	CreateBackGrounds();
 	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
@@ -46,6 +49,14 @@ void CrossTownLevel3::LoadImgRes()
 	{
 		GameEngineTexture::Load(File.GetFullPath());
 	}
+}
+
+void CrossTownLevel3::CreateBackGrounds()
+{
+	const float4 LevelArea = ResourceHelper::GetTextureScale("CrossTown3BG.png") * RCGDefine::ResourceScaleConvertor;
+	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
+	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 
 void CrossTownLevel3::CreateDoors()

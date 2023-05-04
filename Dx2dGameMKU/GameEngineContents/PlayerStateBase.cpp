@@ -100,8 +100,7 @@ void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 	float4 NextPos = PlayerTrans->GetLocalPosition() + (MoveDir * _DeltaTime);
 
-	std::shared_ptr<BackGround> BackGround = FieldLevelBase::GetPtr()->GetBG();
-	if (true == BackGround->IsBlockPos(NextPos))
+	if (true == FieldLevelBase::GetPtr()->IsBlockPos(NextPos))
 		return;
 
 	PlayerTrans->SetLocalPosition(NextPos);

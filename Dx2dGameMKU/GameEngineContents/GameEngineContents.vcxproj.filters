@@ -217,6 +217,9 @@
     <Filter Include="01.Core\03.Manager/Controller\06.GUI\01.GUIMgr">
       <UniqueIdentifier>{e3df9c9e-0776-4174-9523-7fc5e7812f5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\07.ResourceHelper">
+      <UniqueIdentifier>{9ea38e86-f8b1-463d-86dd-21dc1551a980}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -384,6 +387,9 @@
     <ClCompile Include="GUIManager.cpp">
       <Filter>01.Core\03.Manager/Controller\06.GUI\01.GUIMgr</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceHelper.cpp">
+      <Filter>01.Core\03.Manager/Controller\07.ResourceHelper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -547,6 +553,9 @@
     </ClInclude>
     <ClInclude Include="GUIManager.h">
       <Filter>01.Core\03.Manager/Controller\06.GUI\01.GUIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceHelper.h">
+      <Filter>01.Core\03.Manager/Controller\07.ResourceHelper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
