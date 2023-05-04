@@ -42,6 +42,13 @@ void GameEngineGUI::Initialize()
     ImGui_ImplDX11_Init(GameEngineDevice::GetDevice(), GameEngineDevice::GetContext());
 
     GameEngineWindow::SetUserMessageFunction(ImGui_ImplWin32_WndProcHandler);
+
+    //한글 폰트 추가
+    GameEngineDirectory Dir;
+    Dir.MoveParentToDirectory("EngineResources");
+    Dir.Move("EngineResources");
+    Dir.Move("Font");
+    io.Fonts->AddFontFromFileTTF(Dir.GetPlusFileName("malgun.ttf").GetFullPath().c_str(), 18.f, nullptr, io.Fonts->GetGlyphRangesKorean());
 }
 
 
@@ -55,6 +62,10 @@ void GameEngineGUI::Render(std::shared_ptr<class GameEngineLevel> _Level, float 
     for (const std::pair<std::string, std::shared_ptr<GameEngineGUIWindow>>& WindowPair : AllWindow)
     {
         std::shared_ptr<GameEngineGUIWindow> WindowPtr = WindowPair.second;
+
+        //활성화 되어 있는 GUI만 실행
+        if (false == WindowPtr->IsUpdate())
+            continue;
 
         WindowPtr->Begin();
         WindowPtr->OnGUI(_Level, _DeltaTime);
