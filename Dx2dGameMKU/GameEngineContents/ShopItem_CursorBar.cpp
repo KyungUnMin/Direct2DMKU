@@ -39,15 +39,6 @@ ShopItem_CursorBar::~ShopItem_CursorBar()
 
 void ShopItem_CursorBar::Start()
 {
-	//현제 레벨이 체육관인 경우
-	if (nullptr != dynamic_cast<Shop_GymLevel*>(GetLevel()))
-	{
-		BarFirstPos = GymBarFirstPos;
-		BarLastPos = GymBarLastPos;
-	}
-
-	GetTransform()->SetLocalPosition(BarFirstPos);
-
 	//구매 확인 의사를 묻는 박스
 	std::shared_ptr<GameEngineSpriteRenderer> ConfirmBox = CreateComponent<GameEngineSpriteRenderer>();
 	ConfirmBox->SetTexture(ConfirmRenderName);
@@ -59,6 +50,15 @@ void ShopItem_CursorBar::Start()
 	std::shared_ptr<GameEngineSpriteRenderer> BarRender = CreateComponent<GameEngineSpriteRenderer>();
 	BarRender->SetTexture(BarRenderName);
 	BarRender->GetTransform()->SetLocalScale(BarRenderScale);
+
+	//현제 레벨이 체육관인 경우
+	if (nullptr != dynamic_cast<Shop_GymLevel*>(GetLevel()))
+	{
+		BarFirstPos = GymBarFirstPos;
+		BarLastPos = GymBarLastPos;
+	}
+
+	GetTransform()->SetLocalPosition(BarFirstPos);
 
 	MaxCursor = ShopSlotController::MaxSlot;
 }
