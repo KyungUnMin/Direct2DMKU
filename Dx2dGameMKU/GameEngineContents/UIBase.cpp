@@ -16,10 +16,22 @@ UIBase::~UIBase()
 
 void UIBase::Start()
 {
-	std::shared_ptr<GameEngineCamera> CamPtr = GetLevel()->GetMainCamera();
-	GetTransform()->SetParent(CamPtr->GetTransform());
-	GetTransform()->AddLocalPosition(float4::Forward * 10.f);
+	CamTrans = GetLevel()->GetMainCamera()->GetTransform();
+	/*GameEngineTransform* ThisTransform = GetTransform();
 
-	/*GetTransform()->SetWorldPosition(CamPtr->GetTransform()->GetWorldPosition());
-	GetTransform()->AddWorldPosition(float4::Forward * 10.f);*/
+	ThisTransform->SetWorldPosition(CamPtr->GetWorldPosition() + float4::Forward);
+	ThisTransform->SetParent(CamPtr);*/
+
+	//ThisTransform->SetWorldPosition(CamPtr->GetWorldPosition() + float4::Forward);
+}
+
+void UIBase::Update(float _DeltaTime)
+{
+	float4 CamPos = CamTrans->GetWorldPosition();
+	/*if ((PrevCamPos - CamPos).Size() < 1.f)
+		return;*/
+
+	GameEngineTransform* ThisTransform = GetTransform();
+	ThisTransform->SetWorldPosition(CamPos + float4::Forward);
+	PrevCamPos = CamPos;
 }

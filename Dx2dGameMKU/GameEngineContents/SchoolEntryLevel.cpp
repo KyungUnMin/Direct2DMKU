@@ -11,7 +11,7 @@
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
 {
-	{"SchoolEntryBG.png", float4{ 0.f, 0.f }},
+	{"SchoolEntryBG.png", float4{ 0.f, 0.f, 500.f }},
 
 	{"School_Desks.png", float4{ -598.f, -242.f}},
 	{"School_Desks.png", float4{ -387.f, -242.f}},

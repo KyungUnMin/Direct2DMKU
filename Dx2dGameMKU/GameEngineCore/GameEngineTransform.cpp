@@ -83,24 +83,52 @@ void GameEngineTransform::TransformUpdate()
 	}
 
 
+	//자신의 월드 행렬에서 월드 크자이 추출
+	WorldDecompose();
+	
 	//자신의 로컬 행렬에서 로컬 크자이 추출
+	LocalDecompose();
+}
+
+
+void GameEngineTransform::LocalDecompose()
+{
 	TransData.LocalWorldMatrix.Decompose(TransData.LocalScale, TransData.LocalQuaternion, TransData.LocalPosition);
 	TransData.LocalRotation = TransData.LocalQuaternion.QuaternionToEulerDeg();
+}
 
-	//자신의 월드 행렬에서 월드 크자이 추출
+
+void GameEngineTransform::WorldDecompose()
+{
 	TransData.WorldMatrix.Decompose(TransData.WorldScale, TransData.WorldQuaternion, TransData.WorldPosition);
 	TransData.WorldRotation = TransData.WorldQuaternion.QuaternionToEulerDeg();
 }
+
+
+
 
 void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 {
 	//부모 설정
 	Parent = _Parent;
 
+	//자식의 로컬 행렬에 부모의 월드 행렬의 역행렬을 곱한다
+	TransData.LocalWorldMatrix = TransData.WorldMatrix * Parent->TransData.LocalWorldMatrix.InverseReturn();
+	//로컬 행렬로부터 크자이 추출
+	LocalDecompose();
+
+	//TransformUpdate를 위해 값 대입
+	TransData.Position = TransData.LocalPosition;
+	TransData.Rotation = TransData.LocalRotation;
+	TransData.Scale = TransData.LocalScale;
+
+	//실제 위치 계산
+	TransformUpdate();
+
+	AbsoluteReset();
+
 	//부모의 자식리스트에 자기 자신을 등록
 	Parent->Child.push_back(this);
-
-	//TransformUpdate();
 }
 
 
@@ -165,4 +193,13 @@ float4 GameEngineTransform::GetWorldScale()
 float4 GameEngineTransform::GetWorldRotation()
 {
 	return TransData.WorldRotation;
+}
+
+
+
+void GameEngineTransform::AbsoluteReset()
+{
+	AbsoluteScale = false;
+	AbsoluteRotation = false;
+	AbsolutePosition = false;
 }

@@ -11,8 +11,8 @@
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::BGInfoes =
 {
-	{"CrossTown1LandScape.png", float4{ -323.f, 431.f }},
-	{"CrossTown1BG.png", float4{0.f, 0.f}},
+	{"CrossTown1LandScape.png", float4{ -323.f, 431.f , 500.f}},
+	{"CrossTown1BG.png", float4{0.f, 0.f, 500.f}},
 };
 
 const std::string_view CrossTownLevel1::CollisionImageName = "CrossTown1ColBG.png";

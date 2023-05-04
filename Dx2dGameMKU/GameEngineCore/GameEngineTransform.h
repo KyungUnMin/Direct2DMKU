@@ -320,8 +320,6 @@ public:
 protected:
 
 private:
-	void TransformUpdate();
-
 	TransformData TransData;
 
 	//월드 좌표계 스위치
@@ -332,5 +330,19 @@ private:
 	//부모 자식 관계
 	GameEngineTransform* Parent = nullptr;
 	std::list<GameEngineTransform*> Child;
+
+	
+	
+	//자신의 로컬 행렬에서 로컬 크자이 추출
+	void LocalDecompose();
+
+	//자신의 월드 행렬에서 월드 크자이 추출
+	void WorldDecompose();
+
+	//모든 Absolute bool값을 local로 변경
+	void AbsoluteReset();
+
+
+	void TransformUpdate();
 };
 

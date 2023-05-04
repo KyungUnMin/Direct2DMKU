@@ -77,6 +77,35 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 	GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
 }
 
+void GameEngineLevel::ActorRelease()
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineActor>>::iterator Start = ActorList.begin();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator End = ActorList.end();
+
+		for (; Start != End; )
+		{
+			std::shared_ptr<GameEngineActor> ReleaseActor = *Start;
+
+			if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
+			{
+				++Start;
+				continue;
+			}
+
+			ReleaseActor->Release();
+			Start = ActorList.erase(Start);
+		}
+	}
+
+}
+
 
 //생성한 엑터 초기화
 void GameEngineLevel::ActorInit(std::shared_ptr<GameEngineActor> _Actor, int _Order, GameEngineLevel* _Level)

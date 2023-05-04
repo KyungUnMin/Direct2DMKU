@@ -106,6 +106,8 @@ void GameEngineCore::EngineUpdate()
 		//더블버퍼링을 이용해서 렌더링을 처리한다
 		GameEngineDevice::RenderEnd();
 	}
+
+	MainLevel->ActorRelease();
 }
 
 void GameEngineCore::EngineEnd(std::function<void()> _ContentsEnd)

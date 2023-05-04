@@ -10,7 +10,7 @@
 
 const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 {
-	{"OceanBG.png", float4{0.f, 0.f}},
+	{"OceanBG.png", float4{0.f, 0.f, 500.f}},
 };
 
 const std::string_view OceanLevel::CollisionImageName = "???";

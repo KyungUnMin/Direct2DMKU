@@ -70,6 +70,7 @@ void HUD::CreateHpBar()
 		HealthBlocks[i]->GetTransform()->SetLocalScale(BlockSize);
 
 		float4 BlockOffset = float4::Right * (BlockSize.hx() + OffsetX) * static_cast<float>(i);
+		BlockOffset.z = -1.f;
 		HealthBlocks[i]->GetTransform()->SetLocalPosition(Pivot + BlockOffset);
 	}
 }
@@ -77,7 +78,7 @@ void HUD::CreateHpBar()
 void HUD::CreateMpBar()
 {
 	const float4 BarScale = float4{ 360.f, 18.f };
-	const float4 Offset = float4{ -168.f, 294.f };
+	const float4 Offset = float4{ -168.f, 294.f , -1.f};
 
 	std::shared_ptr<GameEngineRenderer> MpBar = CreateComponent<GameEngineSpriteRenderer>();
 	MpBar->SetPipeLine("MpBar");
@@ -91,6 +92,8 @@ void HUD::CreateMpBar()
 
 void HUD::Update(float _DeltaTime)
 {
+	UIBase::Update(_DeltaTime);
+
 	Update_Hp();
 	Update_Mp(_DeltaTime);
 }

@@ -472,3 +472,5 @@ GameEnginePixelColor GameEngineTexture::GetPixel(int _X, int _Y, const GameEngin
 
 	return _DefaultColor;
 }
+
+

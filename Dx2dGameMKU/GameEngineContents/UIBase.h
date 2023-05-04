@@ -14,8 +14,10 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
-
+	GameEngineTransform* CamTrans = nullptr;
+	float4 PrevCamPos = float4::Zero;
 };
 

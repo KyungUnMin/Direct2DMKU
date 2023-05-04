@@ -11,7 +11,7 @@
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolBossLevel::BGInfoes =
 {
-	{"SchoolBossBG.png", float4{ 0.f, 0.f }}
+	{"SchoolBossBG.png", float4{ 0.f, 0.f, 500.f }}
 };
 
 const std::string_view SchoolBossLevel::CollisionImageName = "SchoolBossColBG.png";
