@@ -48,5 +48,7 @@ private:
 
 	PlayerFSM Fsm;
 	std::shared_ptr<class GameEngineSpriteRenderer> RendererPtr = nullptr;
+
+	void CreateRender();
 };
 

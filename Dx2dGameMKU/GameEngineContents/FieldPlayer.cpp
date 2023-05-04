@@ -24,12 +24,20 @@ void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
 
-	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
-	RendererPtr->SetName("PlayerRender");
-
+	CreateRender();
 
 	Fsm.Init();
 }
+
+void FieldPlayer::CreateRender()
+{
+	/*std::shared_ptr<GameEngineSpriteRenderer> Shadow = CreateComponent<GameEngineSpriteRenderer>();
+	Shadow->SetScaleToTexture("player_shadow.png");*/
+
+	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr->SetName("PlayerRender");
+}
+
 
 void FieldPlayer::Update(float _DeltaTime) 
 {
@@ -44,3 +52,4 @@ void FieldPlayer::Render(float _DeltaTime)
 
 	Fsm.Render(_DeltaTime);
 }
+

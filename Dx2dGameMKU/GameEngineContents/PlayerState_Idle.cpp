@@ -63,8 +63,15 @@ void PlayerState_Idle::LoadAnimation()
 void PlayerState_Idle::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
-	Renderer->SetTexture("RCG_Kyoko_idle0001_anio.png");
-	Renderer->GetTransform()->SetLocalScale(float4{ 37.f, 70.f, 1.f } *RCGDefine::ResourceScaleConvertor);
+	//Renderer->SetTexture("RCG_Kyoko_idle0001_anio.png");
+
+	Renderer->SetScaleToTexture("RCG_Kyoko_idle0001_anio.png");
+	GameEngineTransform* RenderTrans = Renderer->GetTransform();
+	//RenderTrans->SetLocalScale(float4{ 37.f, 70.f, 1.f } *RCGDefine::ResourceScaleConvertor);
+
+	float4 TexSize = RenderTrans->GetLocalScale() * RCGDefine::ResourceScaleConvertor;
+	RenderTrans->SetLocalScale(TexSize);
+	RenderTrans->SetLocalPosition(float4::Up * TexSize.hy());
 }
 
 

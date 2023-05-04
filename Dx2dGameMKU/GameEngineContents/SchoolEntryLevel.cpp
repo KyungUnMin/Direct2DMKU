@@ -78,7 +78,7 @@ void SchoolEntryLevel::LoadImgRes()
 void SchoolEntryLevel::CreateBackGrounds()
 {
 	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData());
-	FieldLevelBase::CreateBackGrounds(BGInfoes, 9);
+	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 
