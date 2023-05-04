@@ -13,7 +13,7 @@ const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 	{"OceanBG.png", float4{0.f, 0.f, 500.f}},
 };
 
-const std::string_view OceanLevel::CollisionImageName = "???";
+const std::string_view OceanLevel::CollisionImageName = "OceanColBG.png";
 
 
 
@@ -56,7 +56,7 @@ void OceanLevel::CreateBackGrounds()
 	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBG.png") * RCGDefine::ResourceScaleConvertor;
 	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
-	//FieldLevelBase::CreateCollisionImage(CollisionImageName);
+	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 
 void OceanLevel::CreateDoors()

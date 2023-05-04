@@ -13,7 +13,7 @@ const std::vector<std::pair<std::string_view, float4>> TownBossLevel::BGInfoes =
 	{"TownBossBG.png", float4{0.f, 0.f, 500.f}},
 };
 
-const std::string_view TownBossLevel::CollisionImageName = "???";
+const std::string_view TownBossLevel::CollisionImageName = "TownBossColBG.png";
 
 TownBossLevel::TownBossLevel()
 {
@@ -54,7 +54,7 @@ void TownBossLevel::CreateBackGrounds()
 	const float4 LevelArea = ResourceHelper::GetTextureScale("TownBossBG.png") * RCGDefine::ResourceScaleConvertor;
 	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
-	//FieldLevelBase::CreateCollisionImage(CollisionImageName);
+	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 
 void TownBossLevel::CreateDoors()

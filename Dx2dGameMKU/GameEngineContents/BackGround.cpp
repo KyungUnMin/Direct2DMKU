@@ -44,6 +44,7 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	RendererPtr->SetTexture(_ResName);
 	GameEngineTransform* RenderTransform = RendererPtr->GetTransform();
+
 	if (false == _Offset.IsZero())
 	{
 		float4 Offset = _Offset;
@@ -52,6 +53,11 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 			Offset.z = Offset.y;
 		}
 		RenderTransform->SetWorldPosition(Offset);
+
+		if (DeepMostZ < Offset.z)
+		{
+			DeepMostZ = Offset.z;
+		}
 	}
 
 	RenderTransform->SetLocalScale(_Scale);
@@ -62,7 +68,7 @@ void BackGround::CreateCollisionImage(const std::string_view& _ResName)
 {
 	ColRender = CreateComponent<GameEngineSpriteRenderer>();
 	ColRender->SetScaleToTexture(_ResName);
-	ColRender->GetTransform()->AddLocalPosition(float4::Back);
+	ColRender->GetTransform()->AddLocalPosition(float4::Forward * DeepMostZ + float4::Back);
 	ColRender->Off();
 	
 	ColTexture = GameEngineTexture::Find(_ResName);
