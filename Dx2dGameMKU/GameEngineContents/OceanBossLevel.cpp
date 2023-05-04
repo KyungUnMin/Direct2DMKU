@@ -30,9 +30,12 @@ void OceanBossLevel::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+	FieldLevelBase::GetBG()->CreateCollisionImage("OceanBossColBG.png");
 
 	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
 	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Down * 100.f);
+
+	FieldLevelBase::SetPlayerStartPosition(float4{ 0.f, -200.f, -200.f });
 }
 
 void OceanBossLevel::LoadImgRes()

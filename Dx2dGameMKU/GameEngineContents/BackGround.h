@@ -45,6 +45,9 @@ public:
 	BackGround& operator=(const BackGround&& _Other) noexcept = delete;
 
 	void CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset = float4::Zero);
+	void CreateCollisionImage(const std::string_view& _ResName);
+
+	bool IsBlockPos(const float4& _Pos);
 
 protected:
 	void Start() override;
@@ -52,6 +55,10 @@ protected:
 
 private:
 	TileInfoData TileInfo;
+	float4 MapScale = float4::Zero;
+	std::shared_ptr <class GameEngineSpriteRenderer> ColRender = nullptr;
+	std::shared_ptr <class GameEngineTexture> ColTexture = nullptr;
+
 
 	void InitLevelArea(const float4& _Scale, const TileInfoData& _TileData);
 	std::shared_ptr <class GameEngineRenderer> TileRender;

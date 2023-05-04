@@ -378,17 +378,9 @@ GameEnginePixelColor GameEngineTexture::GetPixel(int _X, int _Y, const GameEngin
 		break;
 	case DXGI_FORMAT_B5G5R5A1_UNORM:
 		break;
-	case DXGI_FORMAT_B8G8R8A8_UNORM:
-		break;
-	case DXGI_FORMAT_B8G8R8X8_UNORM:
-		break;
-	case DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM:
-		break;
-	case DXGI_FORMAT_B8G8R8A8_TYPELESS:
-		break;
 
-	//RGBA가 8bit인 텍스처(근데 순서는 또 BGRA)
-	case DXGI_FORMAT_B8G8R8A8_UNORM_SRGB:
+		//RGBA가 8bit인 텍스처(근데 순서는 또 BGRA)
+	case DXGI_FORMAT_B8G8R8A8_UNORM:
 	{
 		//해당 위치의 인덱스 알아오기
 		int Index = _Y * static_cast<int>(GetWidth()) + _X;
@@ -406,6 +398,14 @@ GameEnginePixelColor GameEngineTexture::GetPixel(int _X, int _Y, const GameEngin
 
 		return ReturnValue;
 	}
+	case DXGI_FORMAT_B8G8R8X8_UNORM:
+		break;
+	case DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM:
+		break;
+	case DXGI_FORMAT_B8G8R8A8_TYPELESS:
+		break;
+	case DXGI_FORMAT_B8G8R8A8_UNORM_SRGB:
+		break;
 	case DXGI_FORMAT_B8G8R8X8_TYPELESS:
 		break;
 	case DXGI_FORMAT_B8G8R8X8_UNORM_SRGB:

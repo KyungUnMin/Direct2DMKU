@@ -32,7 +32,7 @@ void SchoolEntryLevel::Start()
 	CreateBackGrounds();
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, 0.f , 0.f});
+	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 
 	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
 	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
@@ -58,6 +58,7 @@ void SchoolEntryLevel::CreateBackGrounds()
 {
 	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData(100, 40));
 	FieldLevelBase::GetBG()->CreateBackImage("SchoolEntryBG.png", LevelAreaScale);
+	FieldLevelBase::GetBG()->CreateCollisionImage("SchoolEntryColBG.png");
 }
 
 

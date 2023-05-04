@@ -25,6 +25,7 @@ void BackGround::Start()
 void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileData)
 {
 	TileInfo = _TileData;
+	MapScale = _Scale;
 
 	TileRender = CreateComponent<GameEngineRenderer>();
 	TileRender->SetPipeLine("Tile");
@@ -50,18 +51,46 @@ void BackGround::CreateBackImage(const std::string_view& _ResName, const float4&
 	RendererPtr->GetTransform()->SetLocalScale(_Scale);
 }
 
+void BackGround::CreateCollisionImage(const std::string_view& _ResName)
+{
+	ColRender = CreateComponent<GameEngineSpriteRenderer>();
+	ColRender->SetScaleToTexture(_ResName);
+	ColRender->GetTransform()->AddLocalPosition(float4::Back);
+	ColRender->Off();
+	
+	ColTexture = GameEngineTexture::Find(_ResName);
+}
+
+
+bool BackGround::IsBlockPos(const float4& _Pos)
+{
+	if (nullptr == ColTexture)
+	{
+		MsgAssert("맵 픽셀 충돌할 텍스처를 설정해주지 않았습니다");
+		return true;
+	}
+
+	float4 CheckPos = float4{ _Pos.x, -_Pos.y };
+	CheckPos += MapScale.half();
+
+	GameEnginePixelColor Pixel = ColTexture->GetPixel(CheckPos.ix(), CheckPos.iy());
+	return (0 == Pixel.a);
+}
+
 
 
 
 void BackGround::Update(float _DeltaTime)
 {
-	if (nullptr == TileRender)
-		return;
+	if ((nullptr != TileRender) && (true == KeyMgr::IsDown(KeyNames::DebugF2)))
+	{
+		TileRender->IsUpdate() ? TileRender->Off() : TileRender->On();
+	}
 
-	if (false == KeyMgr::IsDown(KeyNames::DebugF1))
-		return;
-
-	TileRender->IsUpdate() ? TileRender->Off() : TileRender->On();
+	if ((nullptr != ColTexture) && (true == KeyMgr::IsDown(KeyNames::DebugF3)))
+	{
+		ColRender->IsUpdate() ? ColRender->Off() : ColRender->On();
+	}
 }
 
 

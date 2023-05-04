@@ -32,6 +32,11 @@ public:
 		return CamCtrl;
 	}
 
+	inline std::shared_ptr<class BackGround> GetBG() const
+	{
+		return BGPtr;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -39,11 +44,6 @@ protected:
 	void LevelChangeStart() override;
 
 	void InitLevelArea(const float4& _Scale, const class TileInfoData& _TileData);
-
-	inline std::shared_ptr<class BackGround> GetBG() const
-	{
-		return BGPtr;
-	}
 
 	void SetPlayerStartPosition(const float4& _StartPos);
 

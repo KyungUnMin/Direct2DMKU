@@ -28,12 +28,13 @@ void SchoolBossLevel::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+	FieldLevelBase::GetBG()->CreateCollisionImage("SchoolBossColBG.png");
 
 	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal);
 	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -800.f, 0.f , 0.f });
+	FieldLevelBase::SetPlayerStartPosition(float4{ -700.f, 0.f , 0.f });
 }
 
 void SchoolBossLevel::LoadImgRes()

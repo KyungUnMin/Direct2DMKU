@@ -28,10 +28,11 @@ void CrossTownLevel2::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+	FieldLevelBase::GetBG()->CreateCollisionImage("CrossTown2ColBG.png");
 
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
+	FieldLevelBase::SetPlayerStartPosition(float4{ -1300.f, -200.f , -200.f });
 }
 
 void CrossTownLevel2::LoadImgRes()

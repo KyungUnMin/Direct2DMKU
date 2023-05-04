@@ -25,6 +25,11 @@ public:
 
 	void Init();
 
+	inline void ChangeState(PlayerStateType _NextState)
+	{
+		FSMBase::ChangeState(static_cast<size_t>(_NextState));
+	}
+
 protected:
 
 

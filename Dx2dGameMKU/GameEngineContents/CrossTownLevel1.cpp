@@ -28,6 +28,7 @@ void CrossTownLevel1::Start()
 	LoadImgRes();
 	FieldLevelBase::InitLevelArea(MapScale, TileInfoData());
 	FieldLevelBase::GetBG()->CreateBackImage(MapImgName, MapScale);
+	FieldLevelBase::GetBG()->CreateCollisionImage("CrossTown1ColBG.png");
 
 	CreateDoors();
 
