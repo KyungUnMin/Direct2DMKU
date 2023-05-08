@@ -50,5 +50,8 @@ private:
 
 	//컴포넌트들의 Render들을 호출시켜줌, 이 함수는 Level에서 호출됨
 	void ComponentsRender(float _DeltaTime);
+
+	//컴포넌트들의 Release들을 호출시켜줌, 이 함수는 Level에서 호출됨
+	void ComponentRelease();
 };
 

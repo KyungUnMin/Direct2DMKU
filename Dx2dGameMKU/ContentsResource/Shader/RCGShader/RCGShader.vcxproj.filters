@@ -19,7 +19,6 @@
     </FxCompile>
     <FxCompile Include="GlichStair.hlsl" />
     <FxCompile Include="Burn.hlsl" />
-    <FxCompile Include="Bloom2D.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test">

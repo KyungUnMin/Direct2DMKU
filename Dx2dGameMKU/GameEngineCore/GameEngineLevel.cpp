@@ -17,20 +17,29 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::ActorUpdate(float _DeltaTime)
 {
-	//프리 카메라 모드와 상관없이 모든 엑터들의 라이브타임은 흐른다
-	for (std::pair<int, std::list<std::shared_ptr<GameEngineActor>>> OrderGroup : Actors)
+	//라이브 타임 계산(프리 카메라 모드와 상관없이 모든 엑터들의 라이브타임은 흐른다)
 	{
-		std::list<std::shared_ptr<GameEngineActor>>& ActorList = OrderGroup.second;
 
-		for (std::shared_ptr<GameEngineActor> Actor : ActorList)
+		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+
+		//오더 순회
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 		{
-			if (false == Actor->IsUpdate())
-				continue;
+			std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
 
-
-			Actor->AccLiveTime(_DeltaTime);
+			//엑터 순회
+			for (std::shared_ptr<GameEngineActor> Actor : ActorList)
+			{
+				if (true == Actor->IsUpdate())
+				{
+					Actor->AccLiveTime(_DeltaTime);
+				}
+			}
 		}
+
 	}
+
 
 
 	//프리 카메라 모드일땐 카메라 제외하고 업데이트 실행X
@@ -41,38 +50,67 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 	}
 
 
-	for (std::pair<int, std::list<std::shared_ptr<GameEngineActor>>> OrderGroup : Actors)
+	//모든 엑터들의 업데이트 함수가 호출되는 부분
 	{
-		std::list<std::shared_ptr<GameEngineActor>>& ActorList = OrderGroup.second;
+		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
 
-		for (std::shared_ptr<GameEngineActor> Actor : ActorList)
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 		{
-			//비활성화된 엑터들은 동작시키지 않음
-			if (false == Actor->IsUpdate())
-				continue;
+			std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
 
-			Actor->Update(_DeltaTime);
-			Actor->ComponentsUpdate(_DeltaTime);
+			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
+			for (; ActorStart != ActorEnd; ++ActorStart)
+			{
+				std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
+
+				if (false == Actor->IsUpdate())
+					continue;
+
+				Actor->Update(_DeltaTime);
+				Actor->ComponentsUpdate(_DeltaTime);
+			}
 		}
+
 	}
 
 }
+
+
 
 void GameEngineLevel::ActorRender(float _DeltaTime)
 {
 	//랜파 래스터라이저 과정을 위해 GPU에 뷰 행렬 정보 등록
 	GetMainCamera()->Setting();
 
-	for (std::pair<int, std::list<std::shared_ptr<GameEngineActor>>> OrderGroup : Actors)
-	{
-		std::list<std::shared_ptr<GameEngineActor>>& ActorList = OrderGroup.second;
 
-		for (std::shared_ptr<GameEngineActor> Actor : ActorList)
+	//모든 엑터들과 컴포넌트들의 렌더 호출
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+
+	//그룹순회
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
+		//엑터 순회
+		for (; ActorStart != ActorEnd; ++ActorStart)
 		{
+			std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
+
+			if (false == Actor->IsUpdate())
+				continue;
+
 			Actor->Render(_DeltaTime);
 			Actor->ComponentsRender(_DeltaTime);
 		}
 	}
+
 
 	GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
 }
@@ -86,21 +124,21 @@ void GameEngineLevel::ActorRelease()
 	{
 		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
 
-		std::list<std::shared_ptr<GameEngineActor>>::iterator Start = ActorList.begin();
-		std::list<std::shared_ptr<GameEngineActor>>::iterator End = ActorList.end();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
 
-		for (; Start != End; )
+		for (; ActorStart != ActorEnd; )
 		{
-			std::shared_ptr<GameEngineActor> ReleaseActor = *Start;
+			std::shared_ptr<GameEngineActor> ReleaseActor = *ActorStart;
 
 			if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
 			{
-				++Start;
+				++ActorStart;
 				continue;
 			}
 
 			ReleaseActor->Release();
-			Start = ActorList.erase(Start);
+			ActorStart = ActorList.erase(ActorStart);
 		}
 	}
 
