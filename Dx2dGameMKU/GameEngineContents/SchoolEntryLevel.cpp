@@ -55,8 +55,10 @@ void SchoolEntryLevel::Start()
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 
-	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
-	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
+
+	/*CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
+	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);*/
+	//CreateActor<ShaderTestActor>();
 }
 
 

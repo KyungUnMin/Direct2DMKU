@@ -44,7 +44,6 @@ void OpeningLevel::Start()
 	//비디오 로드 및 재생
 	RCGDefine::MoveContentPath(Dir, ResType::Video);
 	OpeningVideo = GameEngineVideo::Load(Dir.GetPlusFileName("Opening.avi").GetFullPath());
-	OpeningVideo->Play();
 }
 
 
@@ -61,6 +60,11 @@ void OpeningLevel::Update(float _DeltaTime)
 	//비디오가 끝났을때
 	OpeningCtrl->VideoOff();
 	OpeningVideo = nullptr;
+}
+
+void OpeningLevel::LevelChangeStart()
+{
+	OpeningVideo->Play();
 }
 
 

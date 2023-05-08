@@ -11,6 +11,7 @@
 #include "RCGEnums.h"
 
 #include "Fader.h"
+#include "OpeningDiaEffect.h"
 
 OpeningActor::OpeningActor()
 {
@@ -196,6 +197,16 @@ void OpeningActor::Update_Bright(float _DeltaTime)
 	Text_River->On();
 	Text_City->On();
 	Text_Girls->On();
+
+
+
+	float4 EffectPos = Text_Full->GetTransform()->GetWorldPosition();
+
+	std::shared_ptr<OpeningDiaEffect> TileEffect1 = GetLevel()->CreateActor<OpeningDiaEffect>();
+	TileEffect1->GetTransform()->SetLocalPosition(EffectPos);
+
+	std::shared_ptr<OpeningDiaEffect> TileEffect2 = GetLevel()->CreateActor<OpeningDiaEffect>();
+	TileEffect2->GetTransform()->SetLocalPosition(EffectPos);
 }
 
 

@@ -18,21 +18,22 @@ ShaderTestActor::~ShaderTestActor()
 
 void ShaderTestActor::Start()
 {
-	const float4 RenderScale = float4{ 200.f, 200.f, 1.f };
+	const float4 RenderScale = float4{ 600.f, 600.f, 1.f };
 
-	/*std::shared_ptr<GameEngineRenderer> Render1 = CreateComponent<GameEngineRenderer>();
-	Render1->SetPipeLine("Burn");
-	Render1->GetShaderResHelper().SetConstantBufferLink("NoiseFilter", LinkData);
-	Render1->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "RCG_Kyoko_idle0001_anio.png");
-	Render1->GetTransform()->SetLocalScale(RenderScale);*/
+	//std::shared_ptr<GameEngineRenderer> Render1 = CreateComponent<GameEngineRenderer>();
+	//Render1->SetPipeLine("Bloom2D");
+	//Render1->GetShaderResHelper().SetConstantBufferLink("BloomData", LinkData);
+	//Render1->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "fx_diamond01.png");
+	//Render1->GetTransform()->SetLocalScale(RenderScale);
 
-	LinkData.y = 5.f;
+
 }
 
 
 void ShaderTestActor::Update(float _DeltaTime)
 {
+	static float Timer = 0.f;
 	Timer += _DeltaTime;
-	LinkData.x = abs(sinf(Timer));
+	LinkData.LinkData2.x = abs(sinf(Timer)) * 2.f;
 }
 

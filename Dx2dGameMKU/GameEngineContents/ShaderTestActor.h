@@ -17,7 +17,12 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	float4 LinkData = float4::Zero;
-	float Timer = 0.f;
+	struct LinkDataStruct
+	{
+		float4 LinkData1 = float4{ 1.f, 0.f, 0.f, 1.f };
+		float4 LinkData2 = float4{1.f, 0.f, 0.f, 0.f};
+	};
+
+	LinkDataStruct LinkData;
 };
 

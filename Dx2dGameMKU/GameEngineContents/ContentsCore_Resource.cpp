@@ -44,7 +44,7 @@ void RCG_GameCore::CreateRenderingPipeLine()
 	ClonePipeLineForShader("MpBar", "MpBar.hlsl");
 
 	ClonePipeLineForShader("GlichStair", "GlichStair.hlsl");
-	ClonePipeLineForShader("ColorWave", "ColorWave.hlsl");
+	//ClonePipeLineForShader("ColorWave", "ColorWave.hlsl");
 
 	ClonePipeLineForShader("Burn", "Burn.hlsl");
 }
