@@ -131,7 +131,7 @@ void OpeningActor::Update(float _DeltaTime)
 	switch (CurState)
 	{
 	case OpeningActor::State::Video:
-		Update_Video(_DeltaTime);
+		//외부에서 상태를 변경해주기 전까지 아무것도 안 한다
 		break;
 	case OpeningActor::State::Bright:
 		Update_Bright(_DeltaTime);
@@ -154,24 +154,6 @@ void OpeningActor::Update(float _DeltaTime)
 
 
 
-void OpeningActor::Update_Video(float _DeltaTime)
-{
-	static float Timer = 0.f;
-	//static bool IsBgmOn = false;
-	const float BgmTime = 10.5f;
-	Timer += _DeltaTime;
-
-	//BGM 켜기(일단 임시)
-	//if (BgmTime < Timer && false == IsBgmOn)
-	//{
-	//	//BgmPlayer.Play();
-	//	IsBgmOn = true;
-	//}
-
-	
-}
-
-
 
 //State가 Video에서 Bright로 넘어가는 순간
 void OpeningActor::VideoOff()
@@ -185,7 +167,6 @@ void OpeningActor::VideoOff()
 	//만약 사운드가 재생중이지 않았다면 재생시키기
 	//TODO
 	CurState = State::Bright;
-	
 }
 
 

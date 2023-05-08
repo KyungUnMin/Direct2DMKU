@@ -57,7 +57,6 @@ private:
 	void CreateTitles();
 	void CraeteBrightImages();
 
-	void Update_Video(float _DeltaTime);
 	void Update_Bright(float _DeltaTime);
 	void Update_Char(float _DeltaTime);
 	void Update_Text(float _DeltaTime);

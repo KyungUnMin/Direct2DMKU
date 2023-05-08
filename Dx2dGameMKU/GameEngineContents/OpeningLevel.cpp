@@ -9,7 +9,6 @@
 
 #include "RCGEnums.h"
 #include "RCGDefine.h"
-#include "KeyMgr.h"
 
 #include "OpeningActor.h"
 
@@ -56,21 +55,12 @@ void OpeningLevel::Update(float _DeltaTime)
 	if (nullptr == OpeningVideo)
 		return;
 
-	//비디오를 끝냈을때
-	if (true == OpeningVideo->IsFinished())
-	{
-		OpeningCtrl->VideoOff();
-		OpeningVideo->Stop();
-		OpeningVideo = nullptr;
-	}
+	if (GameEngineVideo::VideoState::Running == GameEngineVideo::GetCurState())
+		return;
 
-	//비디오를 스킵했을때
-	if (true == KeyMgr::IsDown(KeyNames::Esc))
-	{
-		OpeningCtrl->VideoOff();
-		OpeningVideo->Stop();
-		OpeningVideo = nullptr;
-	}
+	//비디오가 끝났을때
+	OpeningCtrl->VideoOff();
+	OpeningVideo = nullptr;
 }
 
 
