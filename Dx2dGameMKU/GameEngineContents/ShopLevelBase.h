@@ -30,6 +30,7 @@ private:
 
 	std::shared_ptr<class ShopItem_CursorBar> Cursor = nullptr;
 	std::shared_ptr<class ShopSlotController> SlotCtrl = nullptr;
+	float LevelTimer = 0.f;
 
 	void ImageResLoad();
 };

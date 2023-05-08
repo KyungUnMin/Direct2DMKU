@@ -87,14 +87,16 @@ void ShopLevelBase::LevelChangeEnd()
 
 	Cursor->Reset();
 	SlotCtrl->Reset();
+	LevelTimer = 0.f;
 }
 
 
 void ShopLevelBase::Update(float _DeltaTime)
 {
 	GameEngineLevel::Update(_DeltaTime);
+	LevelTimer += _DeltaTime;
 
-	if (false == KeyMgr::IsDown(KeyNames::Esc))
+	if (false == KeyMgr::IsDown(KeyNames::Esc) || (LevelTimer < 1.f))
 		return;
 
 	LevelMgr::ChangeLevel(PrevLevel);
