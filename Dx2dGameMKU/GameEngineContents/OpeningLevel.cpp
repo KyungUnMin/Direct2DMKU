@@ -4,9 +4,13 @@
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineVideo.h>
+
 
 #include "RCGEnums.h"
 #include "RCGDefine.h"
+#include "KeyMgr.h"
+
 #include "OpeningActor.h"
 
 OpeningLevel::OpeningLevel()
@@ -19,34 +23,12 @@ OpeningLevel::~OpeningLevel()
 
 }
 
-#include <GameEngineCore/GameEngineVideo.h>
 
 void OpeningLevel::Start()
 {
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 
-	//{
-	//	GameEngineDirectory Dir;
-	//	RCGDefine::MoveContentPath(Dir, ResType::Video);
-	//	Dir.Move("Opening");
-	//	std::vector<GameEngineFile>Files = Dir.GetAllFile({ ".avi" });
-
-	//	for (const GameEngineFile& File : Files)
-	//	{
-	//		GameEngineVideo::Load(File.GetFullPath());
-	//	}
-
-	//	Video1 = GameEngineVideo::Find("ArcCI_Final_6sec_com_reg_TEST20.avi");
-	//	Video2 = GameEngineVideo::Find("WF_Logo_2016.avi");
-
-	//	//Video1->Play();
-	//}
-
-
-
-
-
-
+	//엑터들 리소스 로드
 	GameEngineDirectory Dir;
 	RCGDefine::MoveContentPath(Dir, ResType::Image);
 	Dir.Move("Level");
@@ -58,7 +40,12 @@ void OpeningLevel::Start()
 		GameEngineTexture::Load(Path.GetFullPath());
 	}
 
-	CreateActor<OpeningActor>();
+	OpeningCtrl = CreateActor<OpeningActor>();
+
+	//비디오 로드 및 재생
+	RCGDefine::MoveContentPath(Dir, ResType::Video);
+	OpeningVideo = GameEngineVideo::Load(Dir.GetPlusFileName("Opening.avi").GetFullPath());
+	OpeningVideo->Play();
 }
 
 
@@ -66,48 +53,30 @@ void OpeningLevel::Update(float _DeltaTime)
 {
 	GameEngineLevel::Update(_DeltaTime);
 
+	if (nullptr == OpeningVideo)
+		return;
 
-	//GameEngineVideo::VideoState State = GameEngineVideo::GetCurState();
-	//if (nullptr != Video1 && GameEngineVideo::VideoState::UNKNOWN == State)
-	//{
-	//	//Video1->Stop();
-	//	Video1 = nullptr;
-	//	Video2->Play();
-	//	return;
-	//}
+	//비디오를 끝냈을때
+	if (true == OpeningVideo->IsFinished())
+	{
+		OpeningCtrl->VideoOff();
+		OpeningVideo->Stop();
+		OpeningVideo = nullptr;
+	}
 
-	//if (nullptr != Video1)
-	//	return;
-
-	//if (nullptr != Video2 && GameEngineVideo::VideoState::UNKNOWN == State)
-	//{
-	//	//Video2->Stop();
-	//	Video2 = nullptr;
-	//}
-
-
-
+	//비디오를 스킵했을때
+	if (true == KeyMgr::IsDown(KeyNames::Esc))
+	{
+		OpeningCtrl->VideoOff();
+		OpeningVideo->Stop();
+		OpeningVideo = nullptr;
+	}
+}
 
 
-	//if (nullptr != Video1 && true == Video1->IsFinished())
-	//{
-	//	//Video1->Stop();
-	//	Video1 = nullptr;
-	//	Video2->Play();
-	//	return;
-	//}
 
-	//if (nullptr != Video1)
-	//	return;
+void OpeningLevel::LevelChangeEnd()
+{
+	OpeningCtrl->Death();
 
-	//if (nullptr != Video2 && true == Video2->IsFinished())
-	//{
-	//	Video2->Stop();
-	//	Video2 = nullptr;
-	//	return;
-	//}
-
-	//if(nullptr == Video1)
-
-	
 }

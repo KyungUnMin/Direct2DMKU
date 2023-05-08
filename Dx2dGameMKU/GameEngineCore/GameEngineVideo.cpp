@@ -20,9 +20,17 @@ void GameEngineVideo::ResLoad(const std::string_view& _Path)
 {
 	HWND MainHwnd = GameEngineWindow::GetHWnd();
 
+	HRESULT Result = CoInitialize(NULL);
+	if (FAILED(Result))
+	{
+		MsgAssert("Com초기화에 실패했습니다");
+		return;
+	}
+
+
 	//(마지막 인자를 제외하고는 라이브러리에 있는 전역변수입니다)
 	//IID_IGraphBuilder 인터페이스를 생성하고 핸들러를 받아오는듯합니다. 
-	HRESULT Result = CoCreateInstance(
+	Result = CoCreateInstance(
 		CLSID_FilterGraph, 
 		nullptr, 
 		CLSCTX_INPROC_SERVER, 
@@ -108,6 +116,7 @@ GameEngineVideo::VideoState GameEngineVideo::GetCurState()
 
 	if (true == CurVideo->IsFinished())
 	{
+		//차이점
 		CurVideo->Stop();
 		CurVideo = nullptr;
 		return GameEngineVideo::VideoState::Stop;
@@ -185,6 +194,9 @@ void GameEngineVideo::Stop()
 
 	//이 비디오 리소스는 다시 재생할 수 없습니다.
 	Release();
+
+	//차이점
+	CurVideo = nullptr;
 }
 
 
@@ -284,4 +296,5 @@ void GameEngineVideo::Release()
 		FrameStep = nullptr;
 	}
 
+	CoUninitialize();
 }

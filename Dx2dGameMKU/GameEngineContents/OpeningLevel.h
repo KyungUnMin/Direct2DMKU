@@ -17,11 +17,11 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
-
+	void LevelChangeEnd() override;
 
 private:
-	/*std::shared_ptr<GameEngineVideo> Video1 = nullptr;
-	std::shared_ptr<GameEngineVideo> Video2 = nullptr;*/
+	std::shared_ptr<class GameEngineVideo> OpeningVideo = nullptr;
+	std::shared_ptr<class OpeningActor> OpeningCtrl = nullptr;
 
 };
 

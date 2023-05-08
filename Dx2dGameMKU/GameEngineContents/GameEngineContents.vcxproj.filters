@@ -390,6 +390,9 @@
     <ClCompile Include="ResourceHelper.cpp">
       <Filter>01.Core\03.Manager/Controller\07.ResourceHelper</Filter>
     </ClCompile>
+    <ClCompile Include="OpeningDiaEffect.cpp">
+      <Filter>03.Actor\02.OpeningActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -556,6 +559,9 @@
     </ClInclude>
     <ClInclude Include="ResourceHelper.h">
       <Filter>01.Core\03.Manager/Controller\07.ResourceHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningDiaEffect.h">
+      <Filter>03.Actor\02.OpeningActor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

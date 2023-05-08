@@ -1,7 +1,9 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 
-class GameEngineRenderer;
+
+class GameEngineSpriteRenderer;
 
 class OpeningActor : public GameEngineActor
 {
@@ -14,32 +16,29 @@ public:
 	OpeningActor& operator=(const OpeningActor& _Other) = delete;
 	OpeningActor& operator=(const OpeningActor&& _Other) noexcept = delete;
 
+	//State가 Video에서 Bright로 넘어가는 순간
+	void VideoOff();
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void Release() override;
 
 private:
-	static const std::string_view Back_ImgName;
-	static const std::string_view Frame_ImgName;
-	static const std::string_view Kyoko_ImgName;
-	static const std::string_view Misako_ImgName;
-	static const std::string_view TextRiver_ImgName;
-	static const std::string_view TextCity_ImgName;
-	static const std::string_view TextGirls_ImgName;
-	static const std::string_view TextFull_ImgName;
-
-
-	std::shared_ptr<GameEngineRenderer> Kyoko = nullptr;
-	std::shared_ptr<GameEngineRenderer> Misako = nullptr;
-
-	std::shared_ptr<GameEngineRenderer> Text_River = nullptr;
-	std::shared_ptr<GameEngineRenderer> Text_City = nullptr;
-	std::shared_ptr<GameEngineRenderer> Text_Girls = nullptr;
-	std::shared_ptr<GameEngineRenderer> Text_Full = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Kyoko = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Misako = nullptr;
+							   
+	std::shared_ptr<GameEngineSpriteRenderer> Text_River = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Text_City = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Text_Girls = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Text_Full = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> BrightBack = nullptr;
+	//GameEngineSound BgmPlayer;
 
 	enum class State
 	{
 		Video,
+		Bright,
 		Text,
 		Char,
 		Ready
@@ -52,10 +51,16 @@ private:
 	float4 KyokoEndPos = float4::Zero;
 	float4 MisakoEndPos = float4::Zero;
 
-	void Update_Video();
+	void CreateBackImage();
+	void CreateCharecters();
+	void CreateFrame();
+	void CreateTitles();
+	void CraeteBrightImages();
+
+	void Update_Video(float _DeltaTime);
+	void Update_Bright(float _DeltaTime);
 	void Update_Char(float _DeltaTime);
 	void Update_Text(float _DeltaTime);
-
-	std::shared_ptr<GameEngineRenderer> CreateEngineTex(const std::string_view& _ResName);
+	void Update_Ready();
 };
 

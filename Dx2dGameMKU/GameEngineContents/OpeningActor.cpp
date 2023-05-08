@@ -2,22 +2,15 @@
 #include "OpeningActor.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGDefine.h"
 #include "KeyMgr.h"
+#include "LevelMgr.h"
+#include "RCGEnums.h"
 
-
-const std::string_view OpeningActor::Back_ImgName = "UI_FrontEnd_CharacterSelect_004-BG.png";
-const std::string_view OpeningActor::Frame_ImgName = "UI_FrontEnd_FileSelect_002-LETTERBOX.png";
-const std::string_view OpeningActor::Kyoko_ImgName = "fx_battle_portraits_kyoko.png";
-const std::string_view OpeningActor::Misako_ImgName = "fx_battle_portraits_misako.png";
-
-const std::string_view OpeningActor::TextRiver_ImgName = "fx_int_RIVER-01.png";
-const std::string_view OpeningActor::TextCity_ImgName = "fx_int_CITY-01.png";
-const std::string_view OpeningActor::TextGirls_ImgName = "fx_int_GIRLS-02.png";
-const std::string_view OpeningActor::TextFull_ImgName = "fx_int_FULL LOGO.png";
-
+#include "Fader.h"
 
 OpeningActor::OpeningActor()
 {
@@ -29,36 +22,45 @@ OpeningActor::~OpeningActor()
 
 }
 
-
-
-std::shared_ptr<GameEngineRenderer> OpeningActor::CreateEngineTex(const std::string_view& _ResName)
+void OpeningActor::Start()
 {
-	std::shared_ptr<GameEngineRenderer> RendererPtr = CreateComponent<GameEngineRenderer>();
-	RendererPtr->SetPipeLine(RCGDefine::EnginePipeName);
-	RendererPtr->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, _ResName);
+	//배경
+	CreateBackImage();
 
-	return RendererPtr;
+	//캐릭터 렌더러 생성
+	CreateCharecters();
+
+	//배경 테두리 프레임
+	CreateFrame();
+
+	//텍스트 렌더러 생성
+	CreateTitles();
+
+	//비디오가 끝나고 나오는 배경화면
+	CraeteBrightImages();
 }
 
 
-void OpeningActor::Start()
+void OpeningActor::CreateBackImage()
 {
-	std::shared_ptr<GameEngineRenderer> RendererPtr0 = CreateEngineTex(Back_ImgName);
-	std::shared_ptr<GameEngineRenderer> RendererPtr1 = CreateEngineTex(Frame_ImgName);
+	std::shared_ptr <GameEngineSpriteRenderer> RendererPtr0 = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr0->SetScaleToTexture("UI_FrontEnd_CharacterSelect_004-BG.png");
+}
 
-	//배경 렌더러 생성
-	ScreenSize = GameEngineWindow::GetScreenSize();
-	RendererPtr0->GetTransform()->SetLocalScale({ ScreenSize.x, ScreenSize.y});
-	RendererPtr1->GetTransform()->SetLocalScale({ ScreenSize.x, ScreenSize.y});
+void OpeningActor::CreateCharecters()
+{
+	const std::string_view Kyoko_ImgName = "fx_battle_portraits_kyoko.png";
+	const std::string_view Misako_ImgName = "fx_battle_portraits_misako.png";
 
-	//캐릭터 렌더러 생성
-	Kyoko = CreateEngineTex(Kyoko_ImgName);
-	Misako = CreateEngineTex(Misako_ImgName);
+	Kyoko = CreateComponent<GameEngineSpriteRenderer>();
+	Misako = CreateComponent<GameEngineSpriteRenderer>();
+	Kyoko->SetScaleToTexture(Kyoko_ImgName);
+	Misako->SetScaleToTexture(Misako_ImgName);
+	GameEngineTransform* MisakoTrans = Misako->GetTransform();
+	const float4 FlipScale = MisakoTrans->GetLocalScale() * float4 { -1.f, 1.f, 1.f };
+	MisakoTrans->SetLocalScale(FlipScale);
 
-	const float4 CharScale = float4{ 653.f, 983.f } *RCGDefine::ResolutionConvertor;
-	Kyoko->GetTransform()->SetLocalScale(CharScale);
-	Misako->GetTransform()->SetLocalScale({ -CharScale.x, CharScale.y });
-
+	//캐릭터 렌더러 이동에 관련된 설정
 	const float CharOffsetY = 50.f;
 	const float4 CharPivotPos = float4::Down * CharOffsetY;
 	const float MisakoOffsetX = 100.f;
@@ -66,21 +68,62 @@ void OpeningActor::Start()
 	KyokoEndPos = CharPivotPos + (float4::Right * KyokoOffsetX);
 	MisakoEndPos = CharPivotPos + (float4::Right * MisakoOffsetX);
 
-	//텍스트 렌더러 생성
-	Text_River = CreateEngineTex(TextRiver_ImgName);
-	Text_City = CreateEngineTex(TextCity_ImgName);
-	Text_Girls = CreateEngineTex(TextGirls_ImgName);
-	Text_Full = CreateEngineTex(TextFull_ImgName);
-	TextScale = float4{ 1024.f, 512.f } *RCGDefine::ResolutionConvertor;
+	ScreenSize = GameEngineWindow::GetScreenSize();
+	Kyoko->GetTransform()->SetLocalPosition(ScreenSize);
+	Misako->GetTransform()->SetLocalPosition(ScreenSize);
+
+	Kyoko->Off();
+	Misako->Off();
+}
+
+void OpeningActor::CreateFrame()
+{
+	std::shared_ptr <GameEngineSpriteRenderer> RendererPtr1 = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr1->SetScaleToTexture("UI_FrontEnd_FileSelect_002-LETTERBOX.png");
+}
+
+void OpeningActor::CreateTitles() 
+{
+	const std::string_view TextRiver_ImgName = "fx_int_RIVER-01.png";
+	const std::string_view TextCity_ImgName = "fx_int_CITY-01.png";
+	const std::string_view TextGirls_ImgName = "fx_int_GIRLS-02.png";
+	const std::string_view TextFull_ImgName = "fx_int_FULL LOGO.png";
+
+	Text_River = CreateComponent<GameEngineSpriteRenderer>();
+	Text_City = CreateComponent<GameEngineSpriteRenderer>();
+	Text_Girls = CreateComponent<GameEngineSpriteRenderer>();
+	Text_Full = CreateComponent<GameEngineSpriteRenderer>();
+
+	Text_River->SetScaleToTexture(TextRiver_ImgName);
+	Text_City->SetScaleToTexture(TextCity_ImgName);
+	Text_Girls->SetScaleToTexture(TextGirls_ImgName);
+	Text_Full->SetScaleToTexture(TextFull_ImgName);
+
 
 	//텍스트 렌더러 위치 조정
 	const float4 TextPivotPos = { -ScreenSize.x * 0.25f, ScreenSize.y * 0.25f };
 	const float TextOffset = 75.f;
 	Text_Full->GetTransform()->SetLocalPosition(TextPivotPos);
-	Text_River->GetTransform()->SetLocalPosition(TextPivotPos + float4{-TextOffset, TextOffset });
+	Text_River->GetTransform()->SetLocalPosition(TextPivotPos + float4{ -TextOffset, TextOffset });
 	Text_City->GetTransform()->SetLocalPosition(TextPivotPos + float4{ TextOffset, TextOffset });
 	Text_Girls->GetTransform()->SetLocalPosition(TextPivotPos + float4{ 0.f, -TextOffset });
+	TextScale = Text_Girls->GetTransform()->GetLocalScale();
+
+	Text_River->Off();
+	Text_City->Off();
+	Text_Girls->Off();
+	Text_Full->Off();
 }
+
+
+
+void OpeningActor::CraeteBrightImages()
+{
+	BrightBack = CreateComponent<GameEngineSpriteRenderer>();
+	BrightBack->SetScaleToTexture("UI_FrontEnd_CharacterSelect_003-HALFTONE.png");
+}
+
+
 
 
 void OpeningActor::Update(float _DeltaTime)
@@ -88,7 +131,10 @@ void OpeningActor::Update(float _DeltaTime)
 	switch (CurState)
 	{
 	case OpeningActor::State::Video:
-		Update_Video();
+		Update_Video(_DeltaTime);
+		break;
+	case OpeningActor::State::Bright:
+		Update_Bright(_DeltaTime);
 		break;
 	case OpeningActor::State::Text:
 		Update_Text(_DeltaTime);
@@ -97,7 +143,7 @@ void OpeningActor::Update(float _DeltaTime)
 		Update_Char(_DeltaTime);
 		break;
 	case OpeningActor::State::Ready:
-
+		Update_Ready();
 		break;
 	default:
 		break;
@@ -106,13 +152,73 @@ void OpeningActor::Update(float _DeltaTime)
 
 
 
-void OpeningActor::Update_Video()
+
+
+void OpeningActor::Update_Video(float _DeltaTime)
 {
-	if (false == KeyMgr::IsDown(KeyNames::Esc))
+	static float Timer = 0.f;
+	//static bool IsBgmOn = false;
+	const float BgmTime = 10.5f;
+	Timer += _DeltaTime;
+
+	//BGM 켜기(일단 임시)
+	//if (BgmTime < Timer && false == IsBgmOn)
+	//{
+	//	//BgmPlayer.Play();
+	//	IsBgmOn = true;
+	//}
+
+	
+}
+
+
+
+//State가 Video에서 Bright로 넘어가는 순간
+void OpeningActor::VideoOff()
+{
+	if (State::Video != CurState)
+	{
+		MsgAssert("오프닝을 실행하는 순서가 잘못되었습니다");
+		return;
+	}
+
+	//만약 사운드가 재생중이지 않았다면 재생시키기
+	//TODO
+	CurState = State::Bright;
+	
+}
+
+
+
+void OpeningActor::Update_Bright(float _DeltaTime)
+{
+	static float Timer = 0.f;
+	const float StartTime = 0.3f;
+	const float EndTime = 1.0f;
+
+	Timer += _DeltaTime;
+	if ((nullptr != BrightBack) && (StartTime < Timer))
+	{
+		BrightBack->Off();
+		BrightBack->Death();
+		BrightBack = nullptr;
+
+		std::shared_ptr<Fader> FadePtr = GetLevel()->CreateActor<Fader>(static_cast<int>(UpdateOrder::UI));
+		FadePtr->Init(float4{ 1.f,1.f, 1.f, 1.f }, EndTime - StartTime);
+	}
+
+
+	if (Timer < EndTime)
 		return;
 
 	CurState = State::Text;
+	Text_River->On();
+	Text_City->On();
+	Text_Girls->On();
 }
+
+
+
 
 
 void OpeningActor::Update_Text(float _DeltaTime)
@@ -131,12 +237,17 @@ void OpeningActor::Update_Text(float _DeltaTime)
 	if (Timer < Duration)
 		return;
 	
-	Text_River->GetTransform()->SetLocalScale(float4::Zero);
-	Text_City->GetTransform()->SetLocalScale(float4::Zero);
-	Text_Girls->GetTransform()->SetLocalScale(float4::Zero);
-	Text_Full->GetTransform()->SetLocalScale(TextScale);
+	Text_River->Off();
+	Text_City->Off();
+	Text_Girls->Off();
+	Text_Full->On();
+
+	Kyoko->On();
+	Misako->On();
+
 	CurState = OpeningActor::State::Char;
 }
+
 
 
 
@@ -159,4 +270,22 @@ void OpeningActor::Update_Char(float _DeltaTime)
 		return;
 
 	CurState = State::Ready;
+}
+
+
+
+void OpeningActor::Update_Ready()
+{
+	if (false == KeyMgr::IsDown(KeyNames::Esc))
+		return;
+
+	//Sound off, TODO
+
+	LevelMgr::ChangeLevel(LevelNames::SchoolEntryLevel);
+}
+
+
+void OpeningActor::Release()
+{
+	// TODO
 }

@@ -208,6 +208,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="OpeningDiaEffect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerState_Dash.h">
       <SubType>
       </SubType>
@@ -405,6 +409,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="HUD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="OpeningDiaEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>
