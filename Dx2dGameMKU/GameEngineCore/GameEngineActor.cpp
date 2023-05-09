@@ -21,17 +21,7 @@ void GameEngineActor::ComponentInit(std::shared_ptr<GameEngineComponent> _Compon
 	_Component->GetTransform()->SetParent(GetTransform());
 	_Component->Start();
 
-	//생성한 컴포넌트를 자신의 컴포넌트 리스트에 등록
-	ComponentsList.push_back(_Component);
+	//이 오브젝트의 자식으로 등록
+	PushChild(_Component);
 }
-
-
-
-void GameEngineActor::Release()
-{
-	GameEngineObject::Release();
-
-	//TODO
-}
-
 

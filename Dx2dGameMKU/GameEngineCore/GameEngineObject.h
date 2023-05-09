@@ -73,11 +73,19 @@ protected:
 	virtual void Render(float _DeltaTime) {}
 	virtual void Release();
 
+	//protected지만 함수로 사용하지 않기 바란다(GameEngineActor의 Component를 위한 것)
+	void PushChild(std::shared_ptr<GameEngineObject> _Child)
+	{
+		Childs.push_back(_Child);
+	}
+
 private:
 	float LiveTime = 0.0f;
 	GameEngineTransform Transform;
 
-	//컴포넌트 생성과 엑터 삭제시 ㅁㄴㅇㄹ륭ㄴㄹ
+	//컴포넌트 생성과 부모 설정시(레벨 리스트->부모의 리스트 이동시)
+	//Shared_ptr의 Ref카운트를 유지시키기 위해 Transform의 Child와는 
+	//별도로 갖는 Object값
 	std::list<std::shared_ptr<GameEngineObject>> Childs;
 };
 

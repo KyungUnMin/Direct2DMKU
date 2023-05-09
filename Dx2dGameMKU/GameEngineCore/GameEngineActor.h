@@ -34,12 +34,9 @@ protected:
 	virtual void Start(){}
 	virtual void Update(float _DeltaTime){}
 	virtual void Render(float _DeltaTime){}
-	void Release() override;
 
 private:
 	class GameEngineLevel* Level = nullptr;
-
-	std::list<std::shared_ptr<GameEngineComponent>> ComponentsList;
 
 	//컴포넌트 초기화
 	void ComponentInit(std::shared_ptr<GameEngineComponent> _Component);
