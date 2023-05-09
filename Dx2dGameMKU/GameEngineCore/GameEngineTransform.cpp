@@ -203,3 +203,95 @@ void GameEngineTransform::AbsoluteReset()
 	AbsoluteRotation = false;
 	AbsolutePosition = false;
 }
+
+
+void GameEngineTransform::AllAccTime(float _DeltaTime)
+{
+	if (nullptr == Master)
+		return;
+
+	if (false == Master->IsUpdate())
+		return;
+
+	Master->AccLiveTime(_DeltaTime);
+
+	for (GameEngineTransform* Trans : Child)
+	{
+		Trans->AllAccTime(_DeltaTime);
+	}
+}
+
+void GameEngineTransform::AllUpdate(float _DeltaTime)
+{
+	if (nullptr == Master)
+		return;
+
+	if (false == Master->IsUpdate())
+		return;
+
+	Master->Update(_DeltaTime);
+
+	for (GameEngineTransform* Trans : Child)
+	{
+		Trans->AllUpdate(_DeltaTime);
+	}
+}
+
+void GameEngineTransform::AllRender(float _DeltaTime)
+{
+	if (nullptr == Master)
+		return;
+
+	if (false == Master->IsUpdate())
+		return;
+
+	Master->Render(_DeltaTime);
+
+	for (GameEngineTransform* Trans : Child)
+	{
+		Trans->AllRender(_DeltaTime);
+	}
+}
+
+void GameEngineTransform::AllRelease()
+{
+	if (nullptr == Master)
+		return;
+
+	if (false == Master->IsUpdate())
+		return;
+
+	Master->Release();
+
+	for (GameEngineTransform* Trans : Child)
+	{
+		Trans->AllRelease();
+	}
+}
+
+void GameEngineTransform::ChildRelease() 
+{
+	std::list<GameEngineTransform*>::iterator ReleaseStartIter = Child.begin();
+	std::list<GameEngineTransform*>::iterator ReleaseEndIter = Child.end();
+
+	for (; ReleaseStartIter != ReleaseEndIter;)
+	{
+		GameEngineTransform* Trans = *ReleaseStartIter;
+
+		if (nullptr == Trans->Master)
+		{
+			MsgAssert("Transform의 Master가 존재하지 않을수 없습니다.");
+			return;
+		}
+
+		//자식들 중에서 삭제 예정인 오브젝트가 아니라면 continue
+		if (false == Trans->Master->IsDeath())
+		{
+			++ReleaseStartIter;
+			continue;
+		}
+
+		//자식들 중에서 삭제 예정인 오브젝트인 경우 리스트에서 제외
+		ReleaseStartIter = Child.erase(ReleaseStartIter);
+	}
+}

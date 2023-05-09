@@ -34,8 +34,7 @@ protected:
 	virtual void Start(){}
 	virtual void Update(float _DeltaTime){}
 	virtual void Render(float _DeltaTime){}
-
-	void AccLiveTime(float _LiveTime) override;
+	void Release() override;
 
 private:
 	class GameEngineLevel* Level = nullptr;
@@ -44,14 +43,5 @@ private:
 
 	//컴포넌트 초기화
 	void ComponentInit(std::shared_ptr<GameEngineComponent> _Component);
-
-	//컴포넌트들의 Update들을 호출시켜줌, 이 함수는 Level에서 호출됨
-	void ComponentsUpdate(float _DeltaTime);
-
-	//컴포넌트들의 Render들을 호출시켜줌, 이 함수는 Level에서 호출됨
-	void ComponentsRender(float _DeltaTime);
-
-	//컴포넌트들의 Release들을 호출시켜줌, 이 함수는 Level에서 호출됨
-	void ComponentRelease();
 };
 

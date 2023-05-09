@@ -276,8 +276,3 @@ void OpeningActor::Update_Ready()
 	LevelMgr::ChangeLevel(LevelNames::SchoolEntryLevel);
 }
 
-
-void OpeningActor::Release()
-{
-	// TODO
-}

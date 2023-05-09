@@ -20,6 +20,7 @@ class GameEngineObject :
 	public std::enable_shared_from_this<GameEngineObject>
 {
 	friend class GameEngineLevel;
+	friend class GameEngineTransform;
 
 public:
 	GameEngineObject();
@@ -48,11 +49,35 @@ public:
 		return std::dynamic_pointer_cast<PtrType>(std::enable_shared_from_this<GameEngineObject>::shared_from_this());
 	}
 
+
+	virtual void AccLiveTime(float _DeltaTime)
+	{
+		LiveTime += _DeltaTime;
+	}
+
+	void ResetLiveTime()
+	{
+		LiveTime = 0.f;
+	}
+
+	float GetLiveTime()
+	{
+		return LiveTime;
+	}
+
 protected:
+	virtual void Start() {}
+
+	//모두 Transform의 All~ 계열 함수에서 호출됨
+	virtual void Update(float _DeltaTime) {}
+	virtual void Render(float _DeltaTime) {}
+	virtual void Release();
 
 private:
-
-private:
+	float LiveTime = 0.0f;
 	GameEngineTransform Transform;
+
+	//컴포넌트 생성과 엑터 삭제시 ㅁㄴㅇㄹ륭ㄴㄹ
+	std::list<std::shared_ptr<GameEngineObject>> Childs;
 };
 

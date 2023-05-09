@@ -59,9 +59,12 @@ public:
 };
 
 
-
+class GameEngineObject;
 class GameEngineTransform : public GameEngineObjectBase
 {
+	friend class GameEngineObject;
+	friend class GameEngineLevel;
+
 public:
 	GameEngineTransform();
 	~GameEngineTransform() override;
@@ -307,6 +310,11 @@ public:
 
 	void SetParent(GameEngineTransform* _Parent);
 
+	inline GameEngineTransform* GetParent() const
+	{
+		return Parent;
+	}
+
 	const TransformData& GetTransDataRef()
 	{
 		return TransData;
@@ -344,5 +352,35 @@ private:
 
 
 	void TransformUpdate();
+
+
+	//계층구조
+private:
+	//자신과 자식의 Live타임을 재귀적으로 증가시킨다
+	void AllAccTime(float _DeltaTime);
+
+	//자신과 자식의 Update를 재귀적으로 호출한다
+	void AllUpdate(float _DeltaTime);
+
+	//자신과 자식의 Render를 재귀적으로 호출한다
+	void AllRender(float _DeltaTime);
+
+	//자신과 자식의 Release를 재귀적으로 호출한다
+	void AllRelease();
+
+	//자식들 중에서 Death처리된 오브젝트를 리스트에서 제외시킨다
+	void ChildRelease();
+
+	inline void SetMaster(GameEngineObject* _Master)
+	{
+		Master = _Master;
+	}
+
+	inline GameEngineObject* GetMaster() const
+	{
+		return Master;
+	}
+
+	GameEngineObject* Master = nullptr;
 };
 

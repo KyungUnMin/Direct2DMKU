@@ -17,30 +17,49 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::ActorUpdate(float _DeltaTime)
 {
-	//라이브 타임 계산(프리 카메라 모드와 상관없이 모든 엑터들의 라이브타임은 흐른다)
+	//부모가 있는 오브젝트라면 레벨의 List에서 제외시키고
+	//부모쪽을 통해 Update 및 Render 들의 함수를 호출받게끔 한다
 	{
 
 		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
 		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
 
 		//오더 순회
-		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+		for (; GroupStartIter != GroupEndIter;++GroupStartIter)
 		{
 			std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
 
+			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
 			//엑터 순회
-			for (std::shared_ptr<GameEngineActor> Actor : ActorList)
+			for (; ActorStart != ActorEnd; )
 			{
-				if (true == Actor->IsUpdate())
+				std::shared_ptr<GameEngineActor> CheckActor = (*ActorStart);
+				GameEngineTransform* ParentTransform = CheckActor->GetTransform()->Parent;
+
+				//부모가 있는 애들만 검출(부모가 있으면 리스트에서 제외)
+				if (nullptr != ParentTransform)
 				{
-					Actor->AccLiveTime(_DeltaTime);
+					GameEngineObject* Object = ParentTransform->GetMaster();
+
+					if (nullptr == Object)
+					{
+						MsgAssert("부모가 없는 트랜스폼을 Level에서 사용할수는 없습니다.");
+					}
+
+					// 레벨의 리스트가 이 오브젝트를 갖는것이 아니라
+					//부모가 이 오브젝트를 책임진다
+					Object->Childs.push_back(CheckActor);
+					ActorStart = ActorList.erase(ActorStart);
+					continue;
 				}
+
+				++ActorStart;
 			}
 		}
 
 	}
-
-
 
 	//프리 카메라 모드일땐 카메라 제외하고 업데이트 실행X
 	if (true == MainCamera->IsFreeCamera())
@@ -69,13 +88,13 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 				if (false == Actor->IsUpdate())
 					continue;
 
-				Actor->Update(_DeltaTime);
-				Actor->ComponentsUpdate(_DeltaTime);
+				GameEngineTransform* Transform = Actor->GetTransform();
+				Transform->AllAccTime(_DeltaTime);
+				Transform->AllUpdate(_DeltaTime);
 			}
 		}
 
 	}
-
 }
 
 
@@ -106,8 +125,8 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 			if (false == Actor->IsUpdate())
 				continue;
 
-			Actor->Render(_DeltaTime);
-			Actor->ComponentsRender(_DeltaTime);
+			GameEngineTransform* Transform = Actor->GetTransform();
+			Transform->AllRender(_DeltaTime);
 		}
 	}
 
@@ -131,12 +150,17 @@ void GameEngineLevel::ActorRelease()
 		{
 			std::shared_ptr<GameEngineActor> ReleaseActor = *ActorStart;
 
+			//제거되지 않는 엑터의 경우
 			if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
 			{
+				//자식들 Death가 예약되어 있는지 확인하고 다음으로 넘어감
+				GameEngineTransform* Transform = ReleaseActor->GetTransform();
+				Transform->AllRelease();
 				++ActorStart;
 				continue;
 			}
 
+			//자식들 Death가 예약되어 있는지 확인하고 그룹에서 제거
 			ReleaseActor->Release();
 			ActorStart = ActorList.erase(ActorStart);
 		}

@@ -3,10 +3,33 @@
 
 GameEngineObject::GameEngineObject()
 {
-
+	Transform.SetMaster(this);
 }
 
 GameEngineObject::~GameEngineObject()
 {
 
+}
+
+void GameEngineObject::Release()
+{
+	//자식들중에서 삭제예정인 오브젝트는 Transform::list에서 제외
+	Transform.ChildRelease();
+
+	//삭제 예정인 자식들을 Child 그룹에서 제외
+	std::list<std::shared_ptr<GameEngineObject>>::iterator ReleaseStartIter = Childs.begin();
+	std::list<std::shared_ptr<GameEngineObject>>::iterator ReleaseEndIter = Childs.end();
+
+	for (; ReleaseStartIter != ReleaseEndIter; )
+	{
+		std::shared_ptr<GameEngineObject>& Object = *ReleaseStartIter;
+
+		if (false == Object->IsDeath())
+		{
+			++ReleaseStartIter;
+			continue;
+		}
+
+		ReleaseStartIter = Childs.erase(ReleaseStartIter);
+	}
 }
