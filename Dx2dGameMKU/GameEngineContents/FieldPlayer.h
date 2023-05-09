@@ -58,6 +58,7 @@ private:
 
 	std::shared_ptr<GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
 
+	void CreateDebugGridPoint();
 	void CreateRender();
 	void Update_GridRender_Debug();
 };

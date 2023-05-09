@@ -31,13 +31,21 @@ void FieldPlayer::Start()
 	FieldActorBase::Start();
 
 	CreateRender();
-	Fsm.Init();
 
+	Fsm.Init();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+
+	CreateDebugGridPoint();
+}
+
+
+void FieldPlayer::CreateDebugGridPoint()
+{
 	GridPosRender_Debug = CreateComponent<GameEngineSpriteRenderer>();
 	GridPosRender_Debug->GetTransform()->SetWorldScale(BGPtr->GetGridScale());
 	GridPosRender_Debug->Off();
 }
+
 
 void FieldPlayer::CreateRender()
 {
