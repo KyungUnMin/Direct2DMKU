@@ -45,6 +45,11 @@ public:
 	//이 파일에 있는 경로들을 벡터에 담아 리턴(인자는 확장자들)
 	std::vector<GameEngineFile> GetAllFile(std::vector<std::string_view>_Ext);
 
+	inline const GameEnginePath& GetPath() const
+	{
+		return Path;
+	}
+
 protected:
 
 private:

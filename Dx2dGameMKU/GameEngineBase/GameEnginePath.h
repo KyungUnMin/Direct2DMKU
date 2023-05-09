@@ -40,6 +40,8 @@ public:
 
 	// bool MoveParentToChildPath(const std::string_view& _IOName );
 
+	bool IsDirectory() const;
+
 	//멤버변수 Path가 최상위 폴더인지 확인
 	bool IsRoot();
 

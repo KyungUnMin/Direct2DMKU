@@ -142,6 +142,7 @@
     <ClInclude Include="GameEngineCoreWindow.h">
       <Filter>06.GUI\02.SubWindow</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -279,6 +280,7 @@
     <ClCompile Include="GameEngineCoreWindow.cpp">
       <Filter>06.GUI\02.SubWindow</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineSprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_Pch">

@@ -121,11 +121,17 @@ bool GameEnginePath::IsRoot()
 }
 
 
+bool GameEnginePath::IsDirectory() const
+{
+	return std::filesystem::is_directory(Path);
+}
+
+
 //멤버변수 Path가 유효한 경로인지 확인
 bool GameEnginePath::IsExists()
 {
 	//현재 위치의 경로가 유효한가
-	return 0 == _access(Path.string().c_str(), 0);
+	return std::filesystem::exists(Path);
 }
 
 

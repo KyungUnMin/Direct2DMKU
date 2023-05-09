@@ -22,6 +22,14 @@ private:
 		float	PressTime	= 0.0f;
 		int		Key				= -1;
 
+		void Reset()
+		{
+			Down = false; 
+			Press = false;
+			Up = false;
+			Free = true;
+		}
+
 		bool KeyCheck()
 		{
 			return 0 != GetAsyncKeyState(Key);
@@ -79,10 +87,21 @@ private:
 	//맵 내부에서 값형으로 하는 이유 : 어차피 맵 안에서 동적할당함, delete는 맵에 맡기기 위해
 	static std::map<std::string, GameEngineKey> Keys;
 	static bool IsAnyKeyValue;
+	static bool IsFocus;
 
 	static float4 MousePos;
 	static float4 PrevMousePos;
 	static float4 MouseDirection;
+
+	static void IsFocusOn()
+	{
+		IsFocus = true;
+	}
+
+	static void IsFocusOff()
+	{
+		IsFocus = false;
+	}
 
 	static void IsAnyKeyOn()
 	{
