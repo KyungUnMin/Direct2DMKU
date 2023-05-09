@@ -119,10 +119,10 @@ const std::pair<int, int> BackGround::GetGridFromPos(const float4& _Pos) const
 	WinPos += MapScale.half();
 
 	std::pair<int, int> ReturnValue;
-	/*ReturnValue.first = WinPos.ix() / TileInfo.XCount;
-	ReturnValue.second= WinPos.iy() / TileInfo.YCount;*/
-	ReturnValue.first = WinPos.ix() / GridScale.ix();
-	ReturnValue.second = WinPos.iy() / GridScale.iy();
+
+	ReturnValue.first = static_cast<int>(WinPos.x / GridScale.x);
+	ReturnValue.second = static_cast<int>(WinPos.y / GridScale.y);
+
 	return ReturnValue;
 }
 

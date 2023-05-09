@@ -56,8 +56,9 @@ private:
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::pair<int, int> GridPos = { 0, 0 };
 
-	std::shared_ptr<GameEngineSpriteRenderer> TestTilePtr = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
 
 	void CreateRender();
+	void Update_GridRender_Debug();
 };
 

@@ -102,8 +102,6 @@ void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 	//		return;
 	//}
 
-	//PlayerPtr->SetMove(MoveDir * _DeltaTime);
-
 	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 	float4 NextPos = PlayerTrans->GetLocalPosition() + (MoveDir * _DeltaTime);
 

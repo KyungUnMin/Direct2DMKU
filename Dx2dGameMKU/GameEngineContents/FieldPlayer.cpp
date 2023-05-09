@@ -3,6 +3,8 @@
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 
+#include "KeyMgr.h"
+
 #include "FieldLevelBase.h"
 #include "BackGround.h"
 
@@ -31,12 +33,10 @@ void FieldPlayer::Start()
 	CreateRender();
 	Fsm.Init();
 
-	TestTilePtr = CreateComponent<GameEngineSpriteRenderer>();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
-
-	{
-		TestTilePtr->GetTransform()->SetWorldScale(BGPtr->GetGridScale()/* * 10.f*/);
-	}
+	GridPosRender_Debug = CreateComponent<GameEngineSpriteRenderer>();
+	GridPosRender_Debug->GetTransform()->SetWorldScale(BGPtr->GetGridScale());
+	GridPosRender_Debug->Off();
 }
 
 void FieldPlayer::CreateRender()
@@ -49,6 +49,7 @@ void FieldPlayer::CreateRender()
 }
 
 
+
 void FieldPlayer::Update(float _DeltaTime) 
 {
 	FieldActorBase::Update(_DeltaTime);
@@ -56,12 +57,31 @@ void FieldPlayer::Update(float _DeltaTime)
 	Fsm.Update(_DeltaTime);
 
 	GridPos = BGPtr->GetGridFromPos(GetTransform()->GetWorldPosition());
-
-	{
-		float4 FieldPos = BGPtr->GetPosFromGrid(GridPos.first, GridPos.second);
-		TestTilePtr->GetTransform()->SetWorldPosition(FieldPos);
-	}
+	Update_GridRender_Debug();
 }
+
+void FieldPlayer::Update_GridRender_Debug()
+{
+	if (true == KeyMgr::IsDown(KeyNames::DebugF2))
+	{
+		if (true == GridPosRender_Debug->IsUpdate())
+		{
+			GridPosRender_Debug->Off();
+		}
+		else
+		{
+			GridPosRender_Debug->On();
+		}
+	}
+
+	if (false == GridPosRender_Debug->IsUpdate())
+		return;
+
+	float4 FieldPos = BGPtr->GetPosFromGrid(GridPos.first, GridPos.second);
+	GridPosRender_Debug->GetTransform()->SetWorldPosition(FieldPos + float4::Back * 500.f);
+}
+
+
 
 void FieldPlayer::Render(float _DeltaTime)
 {
@@ -69,3 +89,4 @@ void FieldPlayer::Render(float _DeltaTime)
 
 	Fsm.Render(_DeltaTime);
 }
+
