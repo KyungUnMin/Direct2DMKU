@@ -183,11 +183,31 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EnemyFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EnemyStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EnemyState_Idle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Fader.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="FieldDoor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldEnemyBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_SchoolBoy.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -386,6 +406,18 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EnemyFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EnemyStateBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EnemyState_Idle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Fader.cpp">
       <SubType>
       </SubType>
@@ -395,6 +427,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FieldDoor_Update.cpp" />
+    <ClCompile Include="FieldEnemyBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FreeCamMoveController.cpp">
       <SubType>
       </SubType>

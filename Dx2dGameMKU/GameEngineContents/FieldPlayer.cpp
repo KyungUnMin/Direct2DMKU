@@ -39,12 +39,6 @@ void FieldPlayer::Start()
 }
 
 
-void FieldPlayer::CreateDebugGridPoint()
-{
-	GridPosRender_Debug = CreateComponent<GameEngineSpriteRenderer>();
-	GridPosRender_Debug->GetTransform()->SetWorldScale(BGPtr->GetGridScale());
-	GridPosRender_Debug->Off();
-}
 
 
 void FieldPlayer::CreateRender()
@@ -54,6 +48,13 @@ void FieldPlayer::CreateRender()
 
 	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	RendererPtr->SetName("PlayerRender");
+}
+
+void FieldPlayer::CreateDebugGridPoint()
+{
+	GridPosRender_Debug = CreateComponent<GameEngineSpriteRenderer>();
+	GridPosRender_Debug->GetTransform()->SetWorldScale(BGPtr->GetGridScale());
+	GridPosRender_Debug->Off();
 }
 
 

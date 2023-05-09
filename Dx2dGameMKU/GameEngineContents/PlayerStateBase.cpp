@@ -28,6 +28,7 @@ PlayerStateBase::~PlayerStateBase()
 
 void PlayerStateBase::Start()
 {
+	StateBase::Start();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 }
 

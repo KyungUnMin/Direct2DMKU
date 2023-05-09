@@ -229,6 +229,30 @@
     <Filter Include="05.Tool\01.GUI\02.GUI\01.TransformViewer">
       <UniqueIdentifier>{83d24f76-66fd-4465-a415-6126305fe06d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy">
+      <UniqueIdentifier>{7686a75f-7817-4b3f-90f3-c41533a2d924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM">
+      <UniqueIdentifier>{38547e1c-759b-468b-abd6-94e39e21b094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\01.FSMBase">
+      <UniqueIdentifier>{5bcdb083-19db-48ff-a8fb-fcf876657116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\02.StateBase">
+      <UniqueIdentifier>{e12669d1-3562-4b5a-9185-491532737ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\03.Idle">
+      <UniqueIdentifier>{f714e609-a4c3-4e3e-b29e-c51b9ea878da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor">
+      <UniqueIdentifier>{a4456d1c-1d22-4f4f-8ca9-1a512355a7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\01.Base">
+      <UniqueIdentifier>{6cd19dff-d72f-4b63-abaf-080ac33482fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy">
+      <UniqueIdentifier>{c071f68e-a67f-4a70-8f10-78020005e2d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -402,6 +426,21 @@
     <ClCompile Include="GameEngineActorGUI.cpp">
       <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClCompile>
+    <ClCompile Include="FieldEnemyBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyStateBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\02.StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\03.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFSM.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\01.FSMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -571,6 +610,21 @@
     </ClInclude>
     <ClInclude Include="GameEngineActorGUI.h">
       <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemyBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyStateBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\02.StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\03.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFSM.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\01.FSMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_SchoolBoy.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
