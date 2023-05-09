@@ -3,6 +3,10 @@
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 
+#include "FieldLevelBase.h"
+#include "BackGround.h"
+
+
 FieldPlayer* FieldPlayer::GPtr = nullptr;
 
 FieldPlayer::FieldPlayer()
@@ -25,8 +29,14 @@ void FieldPlayer::Start()
 	FieldActorBase::Start();
 
 	CreateRender();
-
 	Fsm.Init();
+
+	TestTilePtr = CreateComponent<GameEngineSpriteRenderer>();
+	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+
+	{
+		TestTilePtr->GetTransform()->SetWorldScale(BGPtr->GetGridScale()/* * 10.f*/);
+	}
 }
 
 void FieldPlayer::CreateRender()
@@ -44,6 +54,13 @@ void FieldPlayer::Update(float _DeltaTime)
 	FieldActorBase::Update(_DeltaTime);
 
 	Fsm.Update(_DeltaTime);
+
+	GridPos = BGPtr->GetGridFromPos(GetTransform()->GetWorldPosition());
+
+	{
+		float4 FieldPos = BGPtr->GetPosFromGrid(GridPos.first, GridPos.second);
+		TestTilePtr->GetTransform()->SetWorldPosition(FieldPos);
+	}
 }
 
 void FieldPlayer::Render(float _DeltaTime)
@@ -52,4 +69,3 @@ void FieldPlayer::Render(float _DeltaTime)
 
 	Fsm.Render(_DeltaTime);
 }
-

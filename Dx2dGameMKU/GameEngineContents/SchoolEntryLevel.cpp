@@ -48,8 +48,8 @@ SchoolEntryLevel::~SchoolEntryLevel()
 void SchoolEntryLevel::Start()
 {
 	FieldLevelBase::Start();
-
 	LoadImgRes();
+
 	CreateBackGrounds();
 	CreateDoors();
 
@@ -79,7 +79,7 @@ void SchoolEntryLevel::LoadImgRes()
 
 void SchoolEntryLevel::CreateBackGrounds()
 {
-	FieldLevelBase::InitLevelArea(LevelAreaScale, TileInfoData());
+	FieldLevelBase::Init(LevelAreaScale, TileInfoData(100, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }

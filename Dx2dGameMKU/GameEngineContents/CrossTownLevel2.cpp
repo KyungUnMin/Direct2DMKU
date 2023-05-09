@@ -30,8 +30,8 @@ CrossTownLevel2::~CrossTownLevel2()
 void CrossTownLevel2::Start()
 {
 	FieldLevelBase::Start();
-
 	LoadImgRes();
+
 	CreateBackGrounds();
 	CreateDoors();
 
@@ -54,7 +54,7 @@ void CrossTownLevel2::LoadImgRes()
 void CrossTownLevel2::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("CrossTown2BG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData());
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }

@@ -26,6 +26,11 @@ PlayerStateBase::~PlayerStateBase()
 
 }
 
+void PlayerStateBase::Start()
+{
+	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+}
+
 
 
 bool PlayerStateBase::Check_Idle()
@@ -38,6 +43,8 @@ bool PlayerStateBase::Check_Idle()
 
 	return true;
 }
+
+
 
 
 void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
@@ -100,7 +107,7 @@ void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 	float4 NextPos = PlayerTrans->GetLocalPosition() + (MoveDir * _DeltaTime);
 
-	if (true == FieldLevelBase::GetPtr()->IsBlockPos(NextPos))
+	if (true == BGPtr->IsBlockPos(NextPos))
 		return;
 
 	PlayerTrans->SetLocalPosition(NextPos);

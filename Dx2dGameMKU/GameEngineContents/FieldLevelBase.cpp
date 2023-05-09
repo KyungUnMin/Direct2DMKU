@@ -33,21 +33,24 @@ FieldLevelBase::~FieldLevelBase()
 
 void FieldLevelBase::Start()
 {
+	//다른 클래스가 Start시점에서 FieldPlayer::GPtr 를 통해 레벨에 접근할 때를 위함
+	GPtr = this;
+
 	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
 	GetMainCamera()->GetTransform()->SetWorldPosition(float4::Back * 500.f);
-
-	PlayerPtr = CreateActor<FieldPlayer>(static_cast<int>(UpdateOrder::Player));
-	BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
-	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
-
-	FreeCamDebugMoveCtrl.Init(GetMainCamera());
 }
 
 
-void FieldLevelBase::InitLevelArea(const float4& _Scale, const TileInfoData& _TileData)
+void FieldLevelBase::Init(const float4& _Scale, const TileInfoData& _TileData)
 {
+	//BG먼저 생성 후에 플레이어가 생성되어야 함
+	BGPtr = CreateActor<BackGround>(static_cast<int>(UpdateOrder::BackGround));
 	BGPtr->InitLevelArea(_Scale, _TileData);
 	CamCtrl.Init(GetMainCamera(), _Scale);
+
+	PlayerPtr = CreateActor<FieldPlayer>(static_cast<int>(UpdateOrder::Player));
+	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
+	FreeCamDebugMoveCtrl.Init(GetMainCamera());
 }
 
 
@@ -110,9 +113,9 @@ void FieldLevelBase::Update(float _DeltaTime)
 }
 
 
-
-bool FieldLevelBase::IsBlockPos(const float4& _Pos)
-{
-	return BGPtr->IsBlockPos(_Pos);
-}
-
+//
+//bool FieldLevelBase::IsBlockPos(const float4& _Pos)
+//{
+//	return BGPtr->IsBlockPos(_Pos);
+//}
+//

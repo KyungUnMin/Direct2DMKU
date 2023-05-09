@@ -37,6 +37,11 @@ public:
 		return (PlayerStateType::Dash == Fsm.GetNowState<PlayerStateType>());
 	}
 
+	inline const std::pair<int, int>& GetGridPos() const
+	{
+		return GridPos;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -48,6 +53,10 @@ private:
 
 	PlayerFSM Fsm;
 	std::shared_ptr<class GameEngineSpriteRenderer> RendererPtr = nullptr;
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	std::pair<int, int> GridPos = { 0, 0 };
+
+	std::shared_ptr<GameEngineSpriteRenderer> TestTilePtr = nullptr;
 
 	void CreateRender();
 };

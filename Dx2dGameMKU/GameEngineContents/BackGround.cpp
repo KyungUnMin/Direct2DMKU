@@ -24,8 +24,15 @@ void BackGround::Start()
 
 void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileData)
 {
+	if ((0 == _TileData.XCount) || (0 == _TileData.YCount))
+	{
+		MsgAssert("그리드의 가로 및 세로의 갯수가 0일수는 없습니다");
+		return;
+	}
+	
 	TileInfo = _TileData;
 	MapScale = _Scale;
+	GridScale = float4{ MapScale.x / static_cast<float>(TileInfo.XCount), MapScale.y / static_cast<float>(TileInfo.YCount) };
 
 	TileRender = CreateComponent<GameEngineRenderer>();
 	TileRender->SetPipeLine("Tile");
@@ -75,7 +82,7 @@ void BackGround::CreateCollisionImage(const std::string_view& _ResName)
 }
 
 
-bool BackGround::IsBlockPos(const float4& _Pos)
+bool BackGround::IsBlockPos(const float4& _Pos) const
 {
 	if (nullptr == ColTexture)
 	{
@@ -88,6 +95,35 @@ bool BackGround::IsBlockPos(const float4& _Pos)
 
 	GameEnginePixelColor Pixel = ColTexture->GetPixel(CheckPos.ix(), CheckPos.iy());
 	return (0 == Pixel.a);
+}
+
+
+const float4& BackGround::GetPosFromGrid(int _X, int _Y) const
+{
+	static float4 WinPos = float4::Zero;
+	WinPos.x = GridScale.x * static_cast<float>(_X);
+	WinPos.y = GridScale.y * static_cast<float>(_Y);
+	WinPos += GridScale.half();
+
+	static float4 FieldPos = float4::Zero;
+	FieldPos = WinPos - MapScale.half();
+	FieldPos.y *= -1.f;
+	return FieldPos;
+}
+
+
+
+const std::pair<int, int> BackGround::GetGridFromPos(const float4& _Pos) const
+{
+	float4 WinPos = float4{ _Pos.x, -_Pos.y };
+	WinPos += MapScale.half();
+
+	std::pair<int, int> ReturnValue;
+	/*ReturnValue.first = WinPos.ix() / TileInfo.XCount;
+	ReturnValue.second= WinPos.iy() / TileInfo.YCount;*/
+	ReturnValue.first = WinPos.ix() / GridScale.ix();
+	ReturnValue.second = WinPos.iy() / GridScale.iy();
+	return ReturnValue;
 }
 
 

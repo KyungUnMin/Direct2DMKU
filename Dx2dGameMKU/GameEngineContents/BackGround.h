@@ -3,6 +3,8 @@
 
 class TileInfoData
 {
+	friend class BackGround;
+
 public:
 	TileInfoData()
 	{
@@ -25,11 +27,13 @@ public:
 	}
 
 private:
-	const float4 Color = float4{ 0.f, 0.f, 0.f, 0.5f };
+	const float4 Color = float4{ 0.f, 0.f, 0.f, 1.f };
 	int XCount = 25;
 	int YCount = 10;
 	float Thickness = 0.1f;
 };
+
+
 
 class BackGround : public GameEngineActor
 {
@@ -45,7 +49,26 @@ public:
 	BackGround& operator=(const BackGround& _Other) = delete;
 	BackGround& operator=(const BackGround&& _Other) noexcept = delete;
 
-	bool IsBlockPos(const float4& _Pos);
+	//해당 위치가 픽셀충돌로 막힌 곳인지 확인
+	bool IsBlockPos(const float4& _Pos) const;
+
+	//그리드좌표에 따른 필드위치값 반환(그리드 좌표 -> 필드좌표)
+	const float4& GetPosFromGrid(int _X, int _Y) const;
+
+	//필드 좌표에 따른 그리드 좌표값 반환(필드좌표 -> 그리드 좌표)
+	const std::pair<int, int> GetGridFromPos(const float4& _Pos) const;
+
+
+	//해당 그리드 좌표가 막힌 곳인지 확인
+	inline bool IsBlockGrid(int _X, int _Y) const
+	{
+		return IsBlockPos(GetPosFromGrid(_X, _Y));
+	}
+
+	inline const float4& GetGridScale() const
+	{
+		return GridScale;
+	}
 
 protected:
 	void Start() override;
@@ -54,6 +77,8 @@ protected:
 private:
 	TileInfoData TileInfo;
 	float4 MapScale = float4::Zero;
+	float4 GridScale = float4::Zero;
+
 	float DeepMostZ = 0.f;
 	std::shared_ptr <class GameEngineSpriteRenderer> ColRender = nullptr;
 	std::shared_ptr <class GameEngineTexture> ColTexture = nullptr;

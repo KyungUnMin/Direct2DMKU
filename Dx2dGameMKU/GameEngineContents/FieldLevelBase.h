@@ -5,6 +5,7 @@
 #include "ResourceHelper.h"
 
 class FieldPlayer;
+class BackGround;
 
 class FieldLevelBase : public GameEngineLevel
 {
@@ -33,7 +34,12 @@ public:
 		return CamCtrl;
 	}
 
-	bool IsBlockPos(const float4& _Pos);
+	//bool IsBlockPos(const float4& _Pos);
+	inline std::shared_ptr<BackGround> GetBackGround() const
+	{
+		return BGPtr;
+	}
+	
 
 protected:
 	void Start() override;
@@ -41,7 +47,7 @@ protected:
 	
 	void LevelChangeStart() override;
 
-	void InitLevelArea(const float4& _Scale, const class TileInfoData& _TileData);
+	void Init(const float4& _Scale, const class TileInfoData& _TileData);
 
 	void SetPlayerStartPosition(const float4& _StartPos);
 
@@ -54,7 +60,7 @@ protected:
 private:
 	static FieldLevelBase* GPtr;
 
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	std::shared_ptr<BackGround> BGPtr = nullptr;
 	std::shared_ptr<FieldPlayer> PlayerPtr = nullptr;
 	FieldCamController CamCtrl;
 	FreeCamMoveController FreeCamDebugMoveCtrl;

@@ -208,17 +208,26 @@
     <Filter Include="03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl">
       <UniqueIdentifier>{dddbf7cf-e21c-4a65-a2f4-14cae7f2b19d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Core\03.Manager/Controller\06.GUI">
+    <Filter Include="05.Tool">
+      <UniqueIdentifier>{34339328-f996-45ac-8111-c8a2d98e9550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\06.ResourceHelper">
+      <UniqueIdentifier>{9ea38e86-f8b1-463d-86dd-21dc1551a980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Tool\01.GUI">
       <UniqueIdentifier>{d83ff6ca-e8c5-4f3f-9230-d1050e2e3f4b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Core\03.Manager/Controller\06.GUI\02.GUI">
+    <Filter Include="05.Tool\01.GUI\02.GUI">
       <UniqueIdentifier>{2b591757-5736-4613-a991-bcbd27b2bb30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Core\03.Manager/Controller\06.GUI\01.GUIMgr">
+    <Filter Include="05.Tool\01.GUI\01.GUIMgr">
       <UniqueIdentifier>{e3df9c9e-0776-4174-9523-7fc5e7812f5b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Core\03.Manager/Controller\07.ResourceHelper">
-      <UniqueIdentifier>{9ea38e86-f8b1-463d-86dd-21dc1551a980}</UniqueIdentifier>
+    <Filter Include="05.Tool\02.Actor">
+      <UniqueIdentifier>{3d6e9ea1-6044-4ce0-8145-6187552425b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Tool\01.GUI\02.GUI\01.TransformViewer">
+      <UniqueIdentifier>{83d24f76-66fd-4465-a415-6126305fe06d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -381,17 +390,17 @@
     <ClCompile Include="ShopSlotController.cpp">
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineActorGUI.cpp">
-      <Filter>01.Core\03.Manager/Controller\06.GUI\02.GUI</Filter>
-    </ClCompile>
     <ClCompile Include="GUIManager.cpp">
-      <Filter>01.Core\03.Manager/Controller\06.GUI\01.GUIMgr</Filter>
+      <Filter>05.Tool\01.GUI\01.GUIMgr</Filter>
     </ClCompile>
     <ClCompile Include="ResourceHelper.cpp">
-      <Filter>01.Core\03.Manager/Controller\07.ResourceHelper</Filter>
+      <Filter>01.Core\03.Manager/Controller\06.ResourceHelper</Filter>
     </ClCompile>
     <ClCompile Include="OpeningDiaEffect.cpp">
       <Filter>03.Actor\02.OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineActorGUI.cpp">
+      <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -551,17 +560,17 @@
     <ClInclude Include="ShopSlotController.h">
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineActorGUI.h">
-      <Filter>01.Core\03.Manager/Controller\06.GUI\02.GUI</Filter>
-    </ClInclude>
     <ClInclude Include="GUIManager.h">
-      <Filter>01.Core\03.Manager/Controller\06.GUI\01.GUIMgr</Filter>
+      <Filter>05.Tool\01.GUI\01.GUIMgr</Filter>
     </ClInclude>
     <ClInclude Include="ResourceHelper.h">
-      <Filter>01.Core\03.Manager/Controller\07.ResourceHelper</Filter>
+      <Filter>01.Core\03.Manager/Controller\06.ResourceHelper</Filter>
     </ClInclude>
     <ClInclude Include="OpeningDiaEffect.h">
       <Filter>03.Actor\02.OpeningActor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineActorGUI.h">
+      <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

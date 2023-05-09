@@ -31,9 +31,9 @@ OceanBossLevel::~OceanBossLevel()
 void OceanBossLevel::Start()
 {
 	FieldLevelBase::Start();
-
-
 	LoadImgRes();
+
+
 	CreateBackGrounds();
 
 
@@ -59,7 +59,7 @@ void OceanBossLevel::LoadImgRes()
 void OceanBossLevel::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBossBG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::InitLevelArea(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData());
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
