@@ -124,8 +124,12 @@ void EnemyState_Walk::FindPath()
 	std::map<std::pair<int, int>, std::pair<int, int>>::iterator FindIter = MovePath.find(DestPos);
 	if (MovePath.end() == FindIter)
 	{
-		//std::string Name = EnemyPtr->GetNameToString();
-		MsgAssert("Enemy가 플레이어에게 이동할 수 없는 위치에 있습니다 : ");
+		std::string StartFieldPosStr = EnemyPtr->GetTransform()->GetWorldPosition().ToString();
+		std::string StartGridPosStr = "(" + std::to_string(StartPos.first) + ", " + std::to_string(StartPos.second) + ")";
+		std::string SendText = "Enemy가 플레이어에게 이동할 수 없는 위치에 있습니다\n";
+		SendText += "적의 시작위치 : " + StartFieldPosStr + "\n";
+		SendText += "적의 시작 그리드 위치 : " + StartGridPosStr;
+		MsgAssert(SendText);
 		return;
 	}
 

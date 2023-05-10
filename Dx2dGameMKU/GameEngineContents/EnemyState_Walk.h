@@ -30,6 +30,7 @@ private:
 	float4 DestPos = float4::Zero;
 	float4 StartPos = float4::Zero;
 	float Timer = 0.f;
+	const float MoveDuration = 0.1f;
 
 	void FindPath();
 	bool SetDest();

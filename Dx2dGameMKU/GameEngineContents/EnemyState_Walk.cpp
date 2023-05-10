@@ -60,17 +60,16 @@ void EnemyState_Walk::Update(float _DeltaTime)
 	if (nullptr != EnemyStateBase::CheckCallback && true == EnemyStateBase::CheckCallback())
 		return;
 
-	const float Duration = 0.5f;
 	Timer += _DeltaTime;
 
-	float Ratio = (Timer / Duration);
+	float Ratio = (Timer / MoveDuration);
 	float4 NextPos = float4::LerpClamp(StartPos, DestPos, Ratio);
 	EnemyPtr->GetTransform()->SetWorldPosition(NextPos);
 
 	if (Ratio < 1.f)
 		return;
 
-	Timer -= Duration;
+	Timer -= MoveDuration;
 	if (true == SetDest())
 		return;
 
