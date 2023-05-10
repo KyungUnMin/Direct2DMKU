@@ -2,7 +2,7 @@
 #include "PlayerState_Idle.h"
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
-#include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineSprite.h>
 
 #include "KeyMgr.h"
 #include "RCGDefine.h"
@@ -51,27 +51,38 @@ void PlayerState_Idle::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Movement");
-	Dir.Move("Idle");
-	std::vector<GameEngineFile> Images = Dir.GetAllFile({ ".png" });
+	GameEngineSprite::LoadFolder(Dir.GetPlusFileName("PlayerIdle").GetFullPath());
+
+
+
+	/*std::vector<GameEngineFile> Images = Dir.GetAllFile({ ".png" });
 
 	for (const GameEngineFile& Image : Images)
 	{
 		GameEngineTexture::Load(Image.GetFullPath());
-	}
+	}*/
+
+
 }
 
 void PlayerState_Idle::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
-	//Renderer->SetTexture("RCG_Kyoko_idle0001_anio.png");
+	////Renderer->SetTexture("RCG_Kyoko_idle0001_anio.png");
 
-	Renderer->SetScaleToTexture("RCG_Kyoko_idle0001_anio.png");
-	GameEngineTransform* RenderTrans = Renderer->GetTransform();
-	//RenderTrans->SetLocalScale(float4{ 37.f, 70.f, 1.f } *RCGDefine::ResourceScaleConvertor);
+	//Renderer->SetScaleToTexture("RCG_Kyoko_idle0001_anio.png");
+	//GameEngineTransform* RenderTrans = Renderer->GetTransform();
+	////RenderTrans->SetLocalScale(float4{ 37.f, 70.f, 1.f } *RCGDefine::ResourceScaleConvertor);
 
-	float4 TexSize = RenderTrans->GetLocalScale() * RCGDefine::ResourceScaleConvertor;
-	RenderTrans->SetLocalScale(TexSize);
-	RenderTrans->SetLocalPosition(float4::Up * TexSize.hy());
+	//float4 TexSize = RenderTrans->GetLocalScale() * RCGDefine::ResourceScaleConvertor;
+	//RenderTrans->SetLocalScale(TexSize);
+	//RenderTrans->SetLocalPosition(float4::Up * TexSize.hy());
+
+	const float4 RenderScale = float4{ 37.f, 70.f, 1.f } *RCGDefine::ResourceScaleConvertor;
+	Renderer->CreateAnimation("Idle", "PlayerIdle", 0.08f);
+	Renderer->GetTransform()->SetLocalScale(RenderScale);
+	Renderer->ChangeAnimation("Idle");
+	Renderer->GetTransform()->SetLocalPosition(float4::Up * RenderScale.hy());
 }
 
 
