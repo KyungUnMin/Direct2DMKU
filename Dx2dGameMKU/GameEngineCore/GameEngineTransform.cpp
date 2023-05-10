@@ -115,6 +115,12 @@ void GameEngineTransform::WorldDecompose()
 
 void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 {
+	if (nullptr != Parent)
+	{
+		//TODO
+	}
+
+
 	//부모 설정
 	Parent = _Parent;
 
