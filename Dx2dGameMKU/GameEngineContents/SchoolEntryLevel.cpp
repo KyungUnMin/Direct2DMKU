@@ -43,6 +43,7 @@ SchoolEntryLevel::~SchoolEntryLevel()
 }
 
 #include "FieldEnemy_SchoolBoy.h"
+#include "BossIntroMovie.h"
 
 void SchoolEntryLevel::Start()
 {
@@ -56,7 +57,10 @@ void SchoolEntryLevel::Start()
 
 	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
 		->GetTransform()->SetWorldPosition(float4{ -200.f, -200.f , 0.f });
+
+	CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
 }
+
 
 
 
@@ -88,5 +92,4 @@ void SchoolEntryLevel::CreateDoors()
 	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
 }
-
 

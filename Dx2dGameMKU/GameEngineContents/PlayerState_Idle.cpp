@@ -85,7 +85,10 @@ void PlayerState_Idle::CreateAnimation()
 	Renderer->GetTransform()->SetLocalPosition(float4::Up * RenderScale.hy());
 }
 
-
+/*
+	나중에 Update에서 텍스처 hy크기만큼
+	오프셋 적용하는 부분을 추가하자
+*/
 
 
 void PlayerState_Idle::Update(float _DeltaTime)
