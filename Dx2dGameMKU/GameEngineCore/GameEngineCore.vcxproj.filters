@@ -16,9 +16,6 @@
     <ClInclude Include="GameEngineComponent.h">
       <Filter>05.Object\04.Component\01.Base</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineRenderer.h">
-      <Filter>05.Object\04.Component\02.Render</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineCollision.h">
       <Filter>05.Object\04.Component\03.Collision</Filter>
     </ClInclude>
@@ -106,9 +103,6 @@
     <ClInclude Include="GameEngineBlend.h">
       <Filter>04.Resources\05.RenderingPipeLine\07.Blend</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineSpriteRenderer.h">
-      <Filter>05.Object\04.Component\02.Render</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineDepthState.h">
       <Filter>04.Resources\05.RenderingPipeLine\08.Depth</Filter>
     </ClInclude>
@@ -142,7 +136,15 @@
     <ClInclude Include="GameEngineCoreWindow.h">
       <Filter>06.GUI\02.SubWindow</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineSprite.h" />
+    <ClInclude Include="GameEngineRenderer.h">
+      <Filter>05.Object\04.Component\02.Render\01.Render</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineSpriteRenderer.h">
+      <Filter>05.Object\04.Component\02.Render\02.SpriteRender</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineSprite.h">
+      <Filter>04.Resources\07.Sprite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -159,9 +161,6 @@
     </ClCompile>
     <ClCompile Include="GameEngineComponent.cpp">
       <Filter>05.Object\04.Component\01.Base</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineRenderer.cpp">
-      <Filter>05.Object\04.Component\02.Render</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineCollision.cpp">
       <Filter>05.Object\04.Component\03.Collision</Filter>
@@ -247,9 +246,6 @@
     <ClCompile Include="GameEngineBlend.cpp">
       <Filter>04.Resources\05.RenderingPipeLine\07.Blend</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineSpriteRenderer.cpp">
-      <Filter>05.Object\04.Component\02.Render</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineDepthState.cpp">
       <Filter>04.Resources\05.RenderingPipeLine\08.Depth</Filter>
     </ClCompile>
@@ -280,7 +276,15 @@
     <ClCompile Include="GameEngineCoreWindow.cpp">
       <Filter>06.GUI\02.SubWindow</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineSprite.cpp" />
+    <ClCompile Include="GameEngineRenderer.cpp">
+      <Filter>05.Object\04.Component\02.Render\01.Render</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineSpriteRenderer.cpp">
+      <Filter>05.Object\04.Component\02.Render\02.SpriteRender</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineSprite.cpp">
+      <Filter>04.Resources\07.Sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_Pch">
@@ -441,6 +445,15 @@
     </Filter>
     <Filter Include="06.GUI\02.SubWindow">
       <UniqueIdentifier>{0e7f1878-afb4-45e4-9a27-90652f1c2a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Object\04.Component\02.Render\01.Render">
+      <UniqueIdentifier>{a48a8d4d-744a-4c1f-965c-2b667327f7b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Object\04.Component\02.Render\02.SpriteRender">
+      <UniqueIdentifier>{5e714c3d-136e-46d2-a56c-a2f9d89c863f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Resources\07.Sprite">
+      <UniqueIdentifier>{2c8c60e8-164f-4cf1-8cce-aac50f314640}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

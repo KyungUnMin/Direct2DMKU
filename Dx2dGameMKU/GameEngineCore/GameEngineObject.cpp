@@ -16,7 +16,7 @@ void GameEngineObject::Release()
 	//자식들중에서 삭제예정인 오브젝트는 Transform::list에서 제외
 	Transform.ChildRelease();
 
-	//삭제 예정인 자식들을 Child 그룹에서 제외
+	//삭제 예정인 자식들을 Object의 Childs 에서도 제외
 	std::list<std::shared_ptr<GameEngineObject>>::iterator ReleaseStartIter = Childs.begin();
 	std::list<std::shared_ptr<GameEngineObject>>::iterator ReleaseEndIter = Childs.end();
 

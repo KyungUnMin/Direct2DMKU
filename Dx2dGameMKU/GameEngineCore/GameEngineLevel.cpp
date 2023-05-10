@@ -50,7 +50,10 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 
 					// 레벨의 리스트가 이 오브젝트를 갖는것이 아니라
 					//부모가 이 오브젝트를 책임진다
+					//(자식으로 들어갈 Object의 Shared_ptr ref를 유지시키기 위해
+					//Transform의 Child 뿐만 아니라 Object의 Childs에도 자식으로 보관한다)
 					Object->Childs.push_back(CheckActor);
+					//그룹에서 제거
 					ActorStart = ActorList.erase(ActorStart);
 					continue;
 				}
@@ -162,6 +165,10 @@ void GameEngineLevel::ActorRelease()
 
 			//자식들 Death가 예약되어 있는지 확인하고 그룹에서 제거
 			ReleaseActor->Release();
+			//(자식들의 경우엔 부모가 소멸하면서 Child list가 사라지고
+			//RefCount가 감소하면서 자연적으로 사라진다)
+			//(하지만 다른 shared_ptr이기 때문에 다른 객체가 shared_ptr로 가르키고 있었다면
+			//메모리는 소멸하지 않는 점을 주의하자)
 			ActorStart = ActorList.erase(ActorStart);
 		}
 	}
