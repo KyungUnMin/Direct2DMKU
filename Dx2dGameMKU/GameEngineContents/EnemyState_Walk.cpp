@@ -1,6 +1,9 @@
 #include "PrecompileHeader.h"
 #include "EnemyState_Walk.h"
 
+#include "EnemyFSM.h"
+#include "FieldEnemyBase.h"
+
 EnemyState_Walk::EnemyState_Walk()
 {
 
@@ -16,7 +19,8 @@ void EnemyState_Walk::EnterState()
 {
 	EnemyStateBase::EnterState();
 
-
+	FsmPtr = GetConvertFSM<EnemyFSM>();
+	EnemyPtr = FsmPtr->GetEnemy();
 }
 
 void EnemyState_Walk::Update(float _DeltaTime) 
@@ -26,5 +30,5 @@ void EnemyState_Walk::Update(float _DeltaTime)
 	if (nullptr != EnemyStateBase::CheckCallback && true == EnemyStateBase::CheckCallback())
 		return;
 
-	int a = 0;
+	EnemyPtr->GetTransform()->AddLocalPosition(float4::Right * _DeltaTime * 10.f);
 }

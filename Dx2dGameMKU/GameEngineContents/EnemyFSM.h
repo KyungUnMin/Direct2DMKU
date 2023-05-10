@@ -79,6 +79,11 @@ public:
 		FSMBase::ChangeState(static_cast<size_t>(_NextState));
 	}
 
+	inline FieldEnemyBase* GetEnemy() const
+	{
+		return Enemy;
+	}
+
 protected:
 
 

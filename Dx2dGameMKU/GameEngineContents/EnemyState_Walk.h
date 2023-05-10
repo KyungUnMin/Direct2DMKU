@@ -1,6 +1,9 @@
 #pragma once
 #include "EnemyStateBase.h"
 
+class EnemyFSM;
+class FieldEnemyBase;
+
 class EnemyState_Walk : public EnemyStateBase
 {
 public:
@@ -17,6 +20,7 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-
+	EnemyFSM* FsmPtr = nullptr;
+	FieldEnemyBase* EnemyPtr = nullptr;
 };
 
