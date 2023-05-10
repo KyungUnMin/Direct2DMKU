@@ -256,6 +256,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk">
       <UniqueIdentifier>{a569f2b5-de88-414a-84fd-f3dab81ea3dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\05.BossIntroMovie">
+      <UniqueIdentifier>{6977291e-c251-4ada-a4dd-54765f0a7d0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -453,6 +456,9 @@
     <ClCompile Include="EnemyState_Walk_AStar.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
     </ClCompile>
+    <ClCompile Include="BossIntroMovie.cpp">
+      <Filter>03.Actor\04.UI\05.BossIntroMovie</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -640,6 +646,9 @@
     </ClInclude>
     <ClInclude Include="EnemyState_Walk.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="BossIntroMovie.h">
+      <Filter>03.Actor\04.UI\05.BossIntroMovie</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
