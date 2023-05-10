@@ -88,12 +88,15 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 			{
 				std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
 
-				if (false == Actor->IsUpdate())
+				Actor->AllAccTime(_DeltaTime);
+				Actor->AllUpdate(_DeltaTime);
+
+				/*if (false == Actor->IsUpdate())
 					continue;
 
 				GameEngineTransform* Transform = Actor->GetTransform();
 				Transform->AllAccTime(_DeltaTime);
-				Transform->AllUpdate(_DeltaTime);
+				Transform->AllUpdate(_DeltaTime);*/
 			}
 		}
 
@@ -125,11 +128,13 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		{
 			std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
 
-			if (false == Actor->IsUpdate())
+			Actor->AllRender(_DeltaTime);
+
+			/*if (false == Actor->IsUpdate())
 				continue;
 
 			GameEngineTransform* Transform = Actor->GetTransform();
-			Transform->AllRender(_DeltaTime);
+			Transform->AllRender(_DeltaTime);*/
 		}
 	}
 
@@ -156,9 +161,11 @@ void GameEngineLevel::ActorRelease()
 			//제거되지 않는 엑터의 경우
 			if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
 			{
+				ReleaseActor->AllRelease();
+
 				//자식들 Death가 예약되어 있는지 확인하고 다음으로 넘어감
-				GameEngineTransform* Transform = ReleaseActor->GetTransform();
-				Transform->AllRelease();
+				/*GameEngineTransform* Transform = ReleaseActor->GetTransform();
+				Transform->AllRelease();*/
 				++ActorStart;
 				continue;
 			}

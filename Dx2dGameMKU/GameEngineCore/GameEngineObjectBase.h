@@ -54,6 +54,11 @@ public:
 		DebugValue = true;
 	}
 
+	void DebugOff()
+	{
+		DebugValue = false;
+	}
+
 	bool IsDebug()
 	{
 		return DebugValue;

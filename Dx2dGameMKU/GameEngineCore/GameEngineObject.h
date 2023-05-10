@@ -71,6 +71,8 @@ protected:
 	//모두 Transform의 All~ 계열 함수에서 호출됨
 	virtual void Update(float _DeltaTime) {}
 	virtual void Render(float _DeltaTime) {}
+
+	//자식들중에서 삭제예정인 오브젝트는 Transform::list와 Object의 List에서 제거
 	virtual void Release();
 
 	//protected지만 함수로 사용하지 않기 바란다(GameEngineActor의 Component를 위한 것)
@@ -87,5 +89,17 @@ private:
 	//Shared_ptr의 Ref카운트를 유지시키기 위해 Transform의 Child와는 
 	//별도로 갖는 Object값
 	std::list<std::shared_ptr<GameEngineObject>> Childs;
+
+	//자신과 자식들의 LiveTime을 증가
+	void AllAccTime(float _DeltaTime);
+
+	//자신과 자식들의 Update를 호출시킨다
+	void AllUpdate(float _DeltaTime);
+
+	//자신과 자식들의  Render를 호출시킨다
+	void AllRender(float _DeltaTime);
+
+	//
+	void AllRelease();
 };
 

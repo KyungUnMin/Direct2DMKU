@@ -357,6 +357,9 @@ private:
 	//자신의 월드 행렬에서 월드 크자이 추출
 	void WorldDecompose();
 
+	//부모가 있는 경우 부모의 월드 행렬을 바탕으로 자신의 월드 행렬을 계산한다
+	void WorldCalculation();
+
 	//모든 Absolute bool값을 local로 변경
 	void AbsoluteReset();
 

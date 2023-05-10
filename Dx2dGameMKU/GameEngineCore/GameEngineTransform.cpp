@@ -45,41 +45,7 @@ void GameEngineTransform::TransformUpdate()
 	//부모가 있는 경우
 	else 
 	{
-		//부모의 월드 행렬을 각각 크자이로 분해한다
-		float4x4 ParentWorldMatrix = Parent->GetWorldMatrixRef();
-		float4 PScale, PRoatation, PPosition;
-		ParentWorldMatrix.Decompose(PScale, PRoatation, PPosition);
-
-		//근데 내가 월드 크기를 사용중이라면 부모의 크기는 무시
-		if (true == AbsoluteScale)
-		{
-			PScale = float4::One;
-		}
-
-		//근데 내가 월드 회전를 사용중이라면 부모의 회전은 무시
-		if (true == AbsoluteRotation)
-		{
-			PRoatation = float4::Zero;
-			//xyz 0의 쿼터니언 생성
-			PRoatation.EulerDegToQuaternion();
-		}
-
-		//근데 내가 월드 이동를 사용중이라면 부모의 이동은 무시
-		if (true == AbsolutePosition)
-		{
-			PPosition = float4::Zero;
-		}
-
-
-		//위에서 만든 값을 바탕으로 행렬 만들기
-		float4x4 MatScale, MatRot, MatPos;
-		MatScale.Scale(PScale);
-		MatRot = PRoatation.QuaternionToRotationMatrix();
-		MatPos.Pos(PPosition);
-
-
-		//자신의 월드 행렬 = 자신의 로컬행렬에 부모의 월드 행렬 곱하기
-		TransData.WorldMatrix = TransData.LocalWorldMatrix * (MatScale * MatRot * MatPos);
+		WorldCalculation();
 	}
 
 
@@ -88,6 +54,46 @@ void GameEngineTransform::TransformUpdate()
 	
 	//자신의 로컬 행렬에서 로컬 크자이 추출
 	LocalDecompose();
+}
+
+
+void GameEngineTransform::WorldCalculation()
+{
+	//부모의 월드 행렬을 각각 크자이로 분해한다
+	float4x4 ParentWorldMatrix = Parent->GetWorldMatrixRef();
+	float4 PScale, PRoatation, PPosition;
+	ParentWorldMatrix.Decompose(PScale, PRoatation, PPosition);
+
+	//근데 내가 월드 크기를 사용중이라면 부모의 크기는 무시
+	if (true == AbsoluteScale)
+	{
+		PScale = float4::One;
+	}
+
+	//근데 내가 월드 회전를 사용중이라면 부모의 회전은 무시
+	if (true == AbsoluteRotation)
+	{
+		PRoatation = float4::Zero;
+		//xyz 0의 쿼터니언 생성
+		PRoatation.EulerDegToQuaternion();
+	}
+
+	//근데 내가 월드 이동를 사용중이라면 부모의 이동은 무시
+	if (true == AbsolutePosition)
+	{
+		PPosition = float4::Zero;
+	}
+
+
+	//위에서 만든 값을 바탕으로 행렬 만들기
+	float4x4 MatScale, MatRot, MatPos;
+	MatScale.Scale(PScale);
+	MatRot = PRoatation.QuaternionToRotationMatrix();
+	MatPos.Pos(PPosition);
+
+
+	//자신의 월드 행렬 = 자신의 로컬행렬에 부모의 월드 행렬 곱하기
+	TransData.WorldMatrix = TransData.LocalWorldMatrix * (MatScale * MatRot * MatPos);
 }
 
 
@@ -139,26 +145,30 @@ void GameEngineTransform::CalChild()
 	//자식들 순회
 	for (GameEngineTransform* ChildTrans : Child)
 	{
-		//자식의 크기가 나에게 종속적이라면
-		if (false == ChildTrans->AbsoluteScale)
-		{
-			//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
-			ChildTrans->SetLocalScale(ChildTrans->GetLocalScale());
-		}
+		////자식의 크기가 나에게 종속적이라면
+		//if (false == ChildTrans->AbsoluteScale)
+		//{
+		//	//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
+		//	ChildTrans->SetLocalScale(ChildTrans->GetLocalScale());
+		//}
+		////자식의 회전이 나에게 종속적이라면
+		//if (false == ChildTrans->AbsoluteRotation)
+		//{
+		//	//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
+		//	ChildTrans->SetLocalRotation(ChildTrans->GetLocalRotation());
+		//}
+		////자식의 위치가 나에게 종속적이라면
+		//if (false == ChildTrans->AbsolutePosition)
+		//{
+		//	//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
+		//	ChildTrans->SetLocalPosition(ChildTrans->GetLocalPosition());
+		//}
 
-		//자식의 회전이 나에게 종속적이라면
-		if (false == ChildTrans->AbsoluteRotation)
-		{
-			//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
-			ChildTrans->SetLocalRotation(ChildTrans->GetLocalRotation());
-		}
 
-		//자식의 위치가 나에게 종속적이라면
-		if (false == ChildTrans->AbsolutePosition)
-		{
-			//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
-			ChildTrans->SetLocalPosition(ChildTrans->GetLocalPosition());
-		}
+		//내 행렬을 바탕으로 자식들의 월드 행렬을 계산한다
+		ChildTrans->WorldCalculation();
+		//재귀
+		ChildTrans->CalChild();
 	}
 
 }
