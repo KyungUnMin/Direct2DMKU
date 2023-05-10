@@ -253,6 +253,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy">
       <UniqueIdentifier>{c071f68e-a67f-4a70-8f10-78020005e2d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk">
+      <UniqueIdentifier>{a569f2b5-de88-414a-84fd-f3dab81ea3dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -441,6 +444,12 @@
     <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_SchoolBoy_FsmState.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -625,6 +634,9 @@
     </ClInclude>
     <ClInclude Include="FieldEnemy_SchoolBoy.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

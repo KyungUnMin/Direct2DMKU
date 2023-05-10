@@ -7,6 +7,7 @@ enum class UpdateOrder
 	BackGround,
 	FieldDoor,
 	Player,
+	Enemy,
 
 	UI,
 };

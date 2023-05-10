@@ -42,8 +42,7 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 }
 
-#include "GlichSideAttack.h"
-#include "BurnExample.h"
+#include "FieldEnemy_SchoolBoy.h"
 
 void SchoolEntryLevel::Start()
 {
@@ -55,10 +54,7 @@ void SchoolEntryLevel::Start()
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 
-
-	/*CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
-	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);*/
-	//CreateActor<ShaderTestActor>();
+	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
 }
 
 

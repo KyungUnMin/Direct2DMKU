@@ -1,6 +1,12 @@
 #pragma once
 #include "FieldEnemyBase.h"
 
+/*
+	Enemy는 플레이어와는 다르게
+	Actor에서 애니메이션을 만들자
+	그리고 FSM에서는 애니메이션 교체만
+*/
+
 class FieldEnemy_SchoolBoy : public FieldEnemyBase
 {
 public:
@@ -14,14 +20,18 @@ public:
 
 protected:
 	void Start() override;
-	void Update(float _DelatTime) override;
 
 private:
 
+	void LoadImages();
+	void CreateAnimations();
+
+
+
+	//------------------FSM----------
+
+	void CreateFsmStates();
+
+	bool IdleCallBack();
 };
 
-/*
-	Enemy는 플레이어와는 다르게
-	Actor에서 애니메이션을 만들자
-	그리고 FSM에서는 애니메이션 교체만
-*/

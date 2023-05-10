@@ -64,10 +64,11 @@ protected:
 
 	//자식에서 가질 State를 만들어주기
 	template <typename StateType, typename EnumType>
-	void CreateState(EnumType _Index)
+	std::shared_ptr<StateBase> CreateState(EnumType _Index)
 	{
 		std::shared_ptr<StateBase> NewState = std::make_shared<StateType>();
 		InitState(NewState, static_cast<size_t>(_Index));
+		return NewState;
 	}
 
 	virtual void Test(){}

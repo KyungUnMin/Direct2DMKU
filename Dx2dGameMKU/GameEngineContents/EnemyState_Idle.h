@@ -13,6 +13,7 @@ public:
 	EnemyState_Idle& operator=(const EnemyState_Idle&& _Other) noexcept = delete;
 
 protected:
+	void Update(float _DeltaTime) override;
 
 private:
 
