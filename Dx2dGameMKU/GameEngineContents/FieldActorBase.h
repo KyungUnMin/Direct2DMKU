@@ -41,13 +41,28 @@ public:
 		return (0.f == Height);
 	}
 
+	inline const std::pair<int, int>& GetGridPos() const
+	{
+		return GridPos;
+	}
 
 protected:
+	void Start() override;
 	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override;
+
+	inline std::shared_ptr<class BackGround> GetBackGround() const
+	{
+		return BGPtr;
+	}
 
 private:
 	float Height = 0.f;
 
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
+	std::pair<int, int> GridPos = { 0, 0 };
+
+	void CreateDebugGridPoint();
+	void Update_GridDebug();
 };
 
