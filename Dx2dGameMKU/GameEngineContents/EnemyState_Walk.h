@@ -16,11 +16,22 @@ public:
 	EnemyState_Walk& operator=(const EnemyState_Walk&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
 
 private:
 	EnemyFSM* FsmPtr = nullptr;
 	FieldEnemyBase* EnemyPtr = nullptr;
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	std::pair<int, int> GridMapScale;
+
+	std::vector<std::pair<int, int>> PathStack;
+	float4 DestPos = float4::Zero;
+	float4 StartPos = float4::Zero;
+	float Timer = 0.f;
+
+	void FindPath();
+	bool SetDest();
 };
 

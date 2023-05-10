@@ -450,6 +450,9 @@
     <ClCompile Include="FieldEnemy_SchoolBoy_FsmState.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyState_Walk_AStar.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">

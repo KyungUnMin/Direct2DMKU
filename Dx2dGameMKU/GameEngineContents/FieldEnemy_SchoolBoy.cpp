@@ -49,7 +49,9 @@ void FieldEnemy_SchoolBoy::CreateAnimations()
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	Render->SetScaleToTexture("RCG_School_Boy_Idle_01_anio.png");
 	GameEngineTransform* RenderTrans = Render->GetTransform();
+
 	RenderTrans->SetLocalScale(RenderTrans->GetLocalScale() * RCGDefine::ResourceScaleConvertor);
+	RenderTrans->AddLocalPosition(float4::Up * RenderTrans->GetLocalScale().hy());
 }
 
 

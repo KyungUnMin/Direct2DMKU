@@ -54,7 +54,8 @@ void SchoolEntryLevel::Start()
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 
-	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
+	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
+		->GetTransform()->SetWorldPosition(float4{ -200.f, -200.f , 0.f });
 }
 
 

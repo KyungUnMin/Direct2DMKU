@@ -422,6 +422,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EnemyState_Walk_AStar.cpp" />
     <ClCompile Include="EnemyState_Walk.cpp">
       <SubType>
       </SubType>

@@ -70,6 +70,11 @@ public:
 		return GridScale;
 	}
 
+	inline std::pair<int, int> GetGridMapScale() const
+	{
+		return std::make_pair(TileInfo.XCount, TileInfo.YCount);
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
