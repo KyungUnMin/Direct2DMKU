@@ -94,6 +94,7 @@ bool BackGround::IsBlockPos(const float4& _Pos) const
 	CheckPos += MapScale.half();
 
 	GameEnginePixelColor Pixel = ColTexture->GetPixel(CheckPos.ix(), CheckPos.iy());
+
 	return (0 == Pixel.a);
 }
 

@@ -109,5 +109,10 @@ void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 	if (true == BGPtr->IsBlockPos(NextPos))
 		return;
 
+	//Enemy들의 길찾기때문에 그리드 기반으로도 이동 위치 막는다
+	std::pair<int, int> GridPos = BGPtr->GetGridFromPos(NextPos);
+	if (true == BGPtr->IsBlockGrid(GridPos.first, GridPos.second))
+		return;
+
 	PlayerTrans->SetLocalPosition(NextPos);
 }

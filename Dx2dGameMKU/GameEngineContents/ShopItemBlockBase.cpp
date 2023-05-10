@@ -26,8 +26,9 @@ void ShopItemBlockBase::Init(
 	Description = _Description;
 
 	Texture = CreateComponent<GameEngineSpriteRenderer>();
-	Texture->SetTexture(_TextureName);
-	Texture->GetTransform()->SetLocalScale(float4::One * 70.f);
+	/*Texture->SetTexture(_TextureName);
+	Texture->GetTransform()->SetLocalScale(float4::One * 70.f);*/
+	Texture->SetScaleToTexture(_TextureName);
 	Texture->Off();
 
 	Texture->GetTransform()->SetLocalPosition(float4::Left * 220.f);
