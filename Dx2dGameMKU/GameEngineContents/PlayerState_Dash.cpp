@@ -3,7 +3,6 @@
 
 #include "KeyMgr.h"
 #include "PlayerFSM.h"
-#include "FieldPlayer.h"
 
 const std::string_view PlayerState_Dash::AniName = "Dash";
 const std::string_view PlayerState_Dash::AniFolderName = "PlayerRun";
@@ -46,7 +45,7 @@ void PlayerState_Dash::CreateAnimation()
 {
 	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation(AniName, AniFolderName, AniInterTime);
 }
 
@@ -55,7 +54,7 @@ void PlayerState_Dash::EnterState()
 {
 	PlayerStateBase::EnterState();
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	Renderer->ChangeAnimation(AniName);
 }
 

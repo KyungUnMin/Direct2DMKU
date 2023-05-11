@@ -27,11 +27,7 @@ public:
 	FieldPlayer& operator=(const FieldPlayer& _Other) = delete;
 	FieldPlayer& operator=(const FieldPlayer&& _Other) noexcept = delete;
 
-	inline std::shared_ptr<class GameEngineSpriteRenderer> GetRenderer() const
-	{
-		return RendererPtr;
-	}
-
+	
 	inline bool IsDashing() const
 	{
 		return (PlayerStateType::Dash == Fsm.GetNowState<PlayerStateType>());
@@ -48,8 +44,6 @@ private:
 	static FieldPlayer* GPtr;
 
 	PlayerFSM Fsm;
-	std::shared_ptr<class GameEngineSpriteRenderer> RendererPtr = nullptr;
 
-	void CreateRender();
 };
 

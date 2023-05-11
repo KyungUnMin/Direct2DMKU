@@ -7,6 +7,7 @@
 #include "RCGDefine.h"
 
 enum class KeyNames;
+class GameEngineSpriteRenderer;
 
 class PlayerStateBase : public StateBase
 {
@@ -40,13 +41,23 @@ protected:
 		AniScale = _Scale;
 	}
 
+	inline std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
+	{
+		return Renderer;
+	}
+
 private:
 	static const std::vector<KeyNames> IdleCheckKeys;
 
 	size_t PrevAniFrame = -1;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 	float4 AniScale = float4::Zero;
 
+	//true일때 오른쪽, false면 왼쪽
+	bool RenderDir = true;
+
 	void SettingRenderTransForAni();
+	void SettingRenderDir();
 };
 

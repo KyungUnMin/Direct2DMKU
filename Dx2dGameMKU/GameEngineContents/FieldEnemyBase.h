@@ -15,11 +15,6 @@ public:
 	FieldEnemyBase& operator=(const FieldEnemyBase& _Other) = delete;
 	FieldEnemyBase& operator=(const FieldEnemyBase&& _Other) noexcept = delete;
 
-	inline std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
-	{
-		return RendererPtr;
-	}
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) final;
@@ -37,8 +32,6 @@ protected:
 	}
 
 private:
-	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = nullptr;
-
 	EnemyFSM Fsm;
 };
 

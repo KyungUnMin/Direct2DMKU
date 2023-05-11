@@ -46,6 +46,11 @@ public:
 		return GridPos;
 	}
 
+	inline std::shared_ptr<class GameEngineSpriteRenderer> GetRenderer() const
+	{
+		return RendererPtr;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -61,6 +66,8 @@ private:
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
 	std::pair<int, int> GridPos = { 0, 0 };
+
+	std::shared_ptr<class GameEngineSpriteRenderer> RendererPtr = nullptr;
 
 	void CreateDebugGridPoint();
 	void Update_GridDebug();

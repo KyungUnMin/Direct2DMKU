@@ -3,7 +3,6 @@
 
 #include "KeyMgr.h"
 #include "PlayerFSM.h"
-#include "FieldPlayer.h"
 
 const std::string_view PlayerState_Idle::AniName = "Idle";
 const std::string_view PlayerState_Idle::AniFolderName = "PlayerIdle";
@@ -63,7 +62,7 @@ void PlayerState_Idle::CreateAnimation()
 {
 	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation(AniName, AniFolderName, AniInterTime);
 }
 
@@ -72,7 +71,7 @@ void PlayerState_Idle::EnterState()
 {
 	PlayerStateBase::EnterState();
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	Renderer->ChangeAnimation(AniName);
 }
 

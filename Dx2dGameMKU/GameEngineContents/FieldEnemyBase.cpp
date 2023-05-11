@@ -20,7 +20,6 @@ void FieldEnemyBase::Start()
 	FieldActorBase::Start();
 
 	Fsm.Init(this);
-	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	//RendererPtr->GetTransform()->SetLocalScale()
 }
 

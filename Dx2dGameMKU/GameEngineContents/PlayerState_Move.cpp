@@ -2,7 +2,6 @@
 #include "PlayerState_Move.h"
 
 #include "PlayerFSM.h"
-#include "FieldPlayer.h"
 
 const std::string_view PlayerState_Move::AniName = "Walk";
 const std::string_view PlayerState_Move::AniFolderName = "PlayerWalk";
@@ -54,7 +53,7 @@ void PlayerState_Move::CreateAnimation()
 {
 	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation(AniName, AniFolderName, AniInterTime);
 }
 
@@ -64,7 +63,7 @@ void PlayerState_Move::EnterState()
 	PlayerStateBase::EnterState();
 
 	CheckPressArrow(PressArrow);
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	Renderer->ChangeAnimation(AniName);
 }
 

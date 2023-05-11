@@ -25,17 +25,18 @@ PlayerStateBase::PlayerStateBase()
 
 PlayerStateBase::~PlayerStateBase()
 {
-	//어차피 플레이어는 게임이 끝날때 모두 동시에 죽을 것 같다
-	if (nullptr != SpritePtr)
-	{
-		SpritePtr = nullptr;
-	}
+	////어차피 플레이어는 게임이 끝날때 모두 동시에 죽을 것 같다
+	//if (nullptr != SpritePtr)
+	//{
+	//	SpritePtr = nullptr;
+	//}
 }
 
 void PlayerStateBase::Start()
 {
 	StateBase::Start();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+	Renderer = FieldPlayer::GetPtr()->GetRenderer();
 }
 
 
@@ -57,6 +58,7 @@ void PlayerStateBase::Update(float _DeltaTime)
 	StateBase::Update(_DeltaTime);
 
 	SettingRenderTransForAni();
+	SettingRenderDir();
 }
 
 
@@ -68,8 +70,6 @@ void PlayerStateBase::SettingRenderTransForAni()
 		MsgAssert("자식쪽에서 애니메이션을 만들고 해당 정보를 부모에게 넘겨주지 않았습니다");
 		return;
 	}
-
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
 
 	//자식에서 직접 애니메이션 크기를 지정해 준 경우
 	if (false == AniScale.IsZero() && 
@@ -91,6 +91,35 @@ void PlayerStateBase::SettingRenderTransForAni()
 	Renderer->GetTransform()->SetLocalPosition(float4::Up * TextureSize.hy());
 
 	PrevAniFrame = NowAniFrame;
+}
+
+void PlayerStateBase::SettingRenderDir()
+{
+	//이번 프레임의 플레이어 방향, true일때 오른쪽, false면 왼쪽
+	bool NowDir = RenderDir;
+
+	if (true == KeyMgr::IsPress(KeyNames::RightArrow))
+	{
+		NowDir = true;
+	}
+	else if (true == KeyMgr::IsPress(KeyNames::LeftArrow))
+	{
+		NowDir = false;
+	}
+
+
+	//오른쪽을 바라봐야 하는 경우
+	if (true == NowDir)
+	{
+		Renderer->GetTransform()->SetLocalPositiveScaleX();
+	}
+	//왼쪽을 바라봐야 하는 경우
+	else
+	{
+		Renderer->GetTransform()->SetLocalNegativeScaleX();
+	}
+
+	RenderDir = NowDir;
 }
 
 

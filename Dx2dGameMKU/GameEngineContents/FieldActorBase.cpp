@@ -18,10 +18,12 @@ FieldActorBase::~FieldActorBase()
 
 }
 
+
 void FieldActorBase::Start()
 {
 	GameEngineActor::Start();
 
+	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 	CreateDebugGridPoint();
 }
@@ -44,6 +46,9 @@ void FieldActorBase::Update(float _DeltaTime)
 	Update_GridDebug();
 }
 
+
+
+
 void FieldActorBase::Update_GridDebug()
 {
 	if (true == KeyMgr::IsDown(KeyNames::DebugF2))
@@ -64,4 +69,7 @@ void FieldActorBase::Update_GridDebug()
 	float4 FieldPos = BGPtr->GetPosFromGrid(GridPos.first, GridPos.second);
 	GridPosRender_Debug->GetTransform()->SetWorldPosition(FieldPos + float4::Back * 500.f);
 }
+
+
+
 
