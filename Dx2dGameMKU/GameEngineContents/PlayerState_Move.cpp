@@ -63,8 +63,7 @@ void PlayerState_Move::EnterState()
 	PlayerStateBase::EnterState();
 
 	CheckPressArrow(PressArrow);
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	Renderer->ChangeAnimation(AniName);
+	GetRenderer()->ChangeAnimation(AniName);
 }
 
 

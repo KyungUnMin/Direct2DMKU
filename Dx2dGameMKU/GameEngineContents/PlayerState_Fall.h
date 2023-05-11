@@ -13,13 +13,21 @@ public:
 	PlayerState_Fall& operator=(const PlayerState_Fall&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
 	void Update(float _DeltaTime) override;
+	void EnterState() override;
 	void ExitState() override;
 
 private:
-	const float StartGravity = 300.f;
-	const float GravityAcc = 500.f;
-	float NowGravity = 100.f;
+	static const std::string_view AniName;
+	static const std::string_view AniFolderName;
+	static const float AniInterTime;
 
+	const float StartGravity = 30.f;
+	const float GravityAcc = 50.f;
+	float NowGravity = 10.f;
+
+	void LoadAnimation();
+	void CreateAnimation();
 };
 

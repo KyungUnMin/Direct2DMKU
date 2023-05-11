@@ -58,6 +58,7 @@ private:
 	bool RenderDir = true;
 
 	void SettingRenderTransForAni();
+	void SettingRenderHeight();
 	void SettingRenderDir();
 };
 
