@@ -15,11 +15,16 @@ public:
 	PlayerState_Idle& operator=(const PlayerState_Idle&& _Other) noexcept = delete;
 
 protected:
-	//Start에서 애니메이션 준비하자
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void EnterState() override;
 
 private:
+	static const std::string_view AniName;
+	static const std::string_view AniFolderName;
+	static const float AniInterTime;
+	
+
 	std::vector<KeyNames> ArrowKeyNames;
 
 	void SetArrowKey();

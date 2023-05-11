@@ -4,6 +4,10 @@
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
 
+const std::string_view PlayerState_Move::AniName = "Walk";
+const std::string_view PlayerState_Move::AniFolderName = "PlayerWalk";
+const float PlayerState_Move::AniInterTime = 0.08f;
+
 std::vector<KeyNames>  PlayerState_Move::CheckArrows =
 {
 	KeyNames::RightArrow,
@@ -26,13 +30,42 @@ void PlayerState_Move::Start()
 {
 	PlayerStateBase::Start();
 
+	LoadAnimation();
+	CreateAnimation();
 }
+
+
+void PlayerState_Move::LoadAnimation()
+{
+	static bool IsLoad = false;
+	if (true == IsLoad)
+		return;
+
+	IsLoad = true;
+	GameEngineDirectory Dir;
+	RCGDefine::MoveContentPath(Dir, ResType::Image);
+	Dir.Move("Character");
+	Dir.Move("Player");
+	Dir.Move("Movement");
+	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+}
+
+void PlayerState_Move::CreateAnimation() 
+{
+	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
+
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation(AniName, AniFolderName, AniInterTime);
+}
+
 
 void PlayerState_Move::EnterState()
 {
 	PlayerStateBase::EnterState();
 
 	CheckPressArrow(PressArrow);
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	Renderer->ChangeAnimation(AniName);
 }
 
 

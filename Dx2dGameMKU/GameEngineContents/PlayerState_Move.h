@@ -22,11 +22,17 @@ protected:
 	void ExitState() override;
 
 private:
+	static const std::string_view AniName;
+	static const std::string_view AniFolderName;
+	static const float AniInterTime;
 	static std::vector<KeyNames>  CheckArrows;
 
 	KeyNames PressArrow = KeyNames::COUNT;
 	KeyNames LastArrow = KeyNames::COUNT;
 	float LastTime = 0.f;
+
+	void LoadAnimation();
+	void CreateAnimation();
 
 	void CheckPressArrow(KeyNames& _SettingEnum);
 };

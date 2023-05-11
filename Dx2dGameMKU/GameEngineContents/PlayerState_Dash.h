@@ -15,8 +15,16 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void EnterState() override;
 
 private:
+	static const std::string_view AniName;
+	static const std::string_view AniFolderName;
+	static const float AniInterTime;
+
 	const float4 DashSpeed = float4{ 800.f, 400.f };
+
+	void LoadAnimation();
+	void CreateAnimation();
 };
 
