@@ -259,6 +259,9 @@
     <Filter Include="03.Actor\04.UI\05.BossIntroMovie">
       <UniqueIdentifier>{6977291e-c251-4ada-a4dd-54765f0a7d0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99.Test\Level">
+      <UniqueIdentifier>{46afd51f-c2a5-45f3-8791-f4ddf366503d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -459,6 +462,9 @@
     <ClCompile Include="BossIntroMovie.cpp">
       <Filter>03.Actor\04.UI\05.BossIntroMovie</Filter>
     </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>99.Test\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -649,6 +655,9 @@
     </ClInclude>
     <ClInclude Include="BossIntroMovie.h">
       <Filter>03.Actor\04.UI\05.BossIntroMovie</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <Filter>99.Test\Level</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

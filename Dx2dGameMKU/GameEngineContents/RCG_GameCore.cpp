@@ -6,6 +6,8 @@
 #include "LevelMgr.h"
 #include "GUIManager.h"
 
+#include "TestLevel.h"
+
 RCG_GameCore::RCG_GameCore()
 {
 }
@@ -25,6 +27,10 @@ void RCG_GameCore::GameStart()
 	GUIManager::Init();
 
 	KeyMgr::CreateKey();
+
+	/*GameEngineCore::CreateLevel<TestLevel>();
+	GameEngineCore::ChangeLevel("TestLevel");*/
+
 	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
 }
 
