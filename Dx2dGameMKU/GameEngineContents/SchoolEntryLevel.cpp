@@ -55,9 +55,9 @@ void SchoolEntryLevel::Start()
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 
-	/*CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
-		->GetTransform()->SetWorldPosition(float4{ -200.f, -200.f , 0.f });
 	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
+		->GetTransform()->SetWorldPosition(float4{ -200.f, -200.f , 0.f });
+	/*CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
 		->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , 0.f });
 	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
 		->GetTransform()->SetWorldPosition(float4{ 0.f, -200.f , 0.f });
@@ -67,7 +67,7 @@ void SchoolEntryLevel::Start()
 		->GetTransform()->SetWorldPosition(float4{ 200.f, -200.f , 0.f });*/
 
 
-	CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::Ocean);
+	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::Ocean);
 }
 
 

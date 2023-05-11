@@ -35,6 +35,7 @@ void EnemyState_Walk::FindPath()
 	static std::map<std::pair<int, int>, std::pair<int, int>> MovePath;
 	MovePath.clear();
 
+
 	//방문 여부
 	static std::set<std::pair<int, int>> IsVisted;
 	IsVisted.clear();
@@ -64,6 +65,9 @@ void EnemyState_Walk::FindPath()
 		if (IsVisted.end() != IsVisted.find(Now.Pos))
 			continue;
 
+		//해당 위치 방문
+		IsVisted.insert(Now.Pos);
+
 		//목적지 도착
 		if (DestPos == Now.Pos)
 			break;
@@ -90,6 +94,7 @@ void EnemyState_Walk::FindPath()
 			std::pair<int, int> NextPos = std::pair<int, int>(NextX, NextY);
 			if (IsVisted.end() != IsVisted.find(NextPos))
 				continue;
+
 
 			//이동하는 데 필요한 비용
 			int NextCost = Now.Cost + NeedCost[i];
@@ -118,8 +123,13 @@ void EnemyState_Walk::FindPath()
 		}
 	}
 
+
 	PathStack.clear();
-	PathStack.reserve(MovePath.size());
+	if (PathStack.capacity() < IsVisted.size())
+	{
+		PathStack.reserve(IsVisted.size());
+	}
+	
 
 	std::map<std::pair<int, int>, std::pair<int, int>>::iterator FindIter = MovePath.find(DestPos);
 	if (MovePath.end() == FindIter)
