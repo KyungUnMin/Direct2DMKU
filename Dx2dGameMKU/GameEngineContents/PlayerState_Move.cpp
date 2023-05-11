@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_Move.h"
 
+#include "FieldPlayer.h"
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_Move::AniName = "Walk";

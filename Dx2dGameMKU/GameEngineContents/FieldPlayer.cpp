@@ -22,6 +22,7 @@ FieldPlayer::~FieldPlayer()
 }
 
 
+
 void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
@@ -47,5 +48,3 @@ void FieldPlayer::Render(float _DeltaTime)
 
 	Fsm.Render(_DeltaTime);
 }
-
-

@@ -16,16 +16,14 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
-	void ExitState() override;
 
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFolderName;
 	static const float AniInterTime;
 
-	const float StartGravity = 30.f;
-	const float GravityAcc = 50.f;
-	float NowGravity = 10.f;
+	const float Duration = 0.2f;
+	float EnterHeight = 0.f;
 
 	void LoadAnimation();
 	void CreateAnimation();

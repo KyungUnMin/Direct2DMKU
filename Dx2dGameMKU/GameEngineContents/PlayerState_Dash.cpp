@@ -3,10 +3,12 @@
 
 #include "KeyMgr.h"
 #include "PlayerFSM.h"
+#include "FieldPlayer.h"
 
+const float4 PlayerState_Dash::DashSpeed = float4{ 800.f, 400.f };
 const std::string_view PlayerState_Dash::AniName = "Dash";
 const std::string_view PlayerState_Dash::AniFolderName = "PlayerRun";
-const float PlayerState_Dash::AniInterTime = 0.05f;
+const float PlayerState_Dash::AniInterTime = 0.04f;
 
 PlayerState_Dash::PlayerState_Dash()
 {
@@ -56,6 +58,7 @@ void PlayerState_Dash::EnterState()
 
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
 	Renderer->ChangeAnimation(AniName);
+
 }
 
 

@@ -50,7 +50,6 @@ void PlayerStateBase::EnterState()
 		return;
 	}
 
-	PrevAniFrame = -1;
 }
 
 void PlayerStateBase::Update(float _DeltaTime)
@@ -58,7 +57,6 @@ void PlayerStateBase::Update(float _DeltaTime)
 	StateBase::Update(_DeltaTime);
 
 	SettingRenderTransForAni();
-	SettingRenderHeight();
 	SettingRenderDir();
 }
 
@@ -72,40 +70,20 @@ void PlayerStateBase::SettingRenderTransForAni()
 		return;
 	}
 
-	//자식에서 직접 애니메이션 크기를 지정해 준 경우
-	if (false == AniScale.IsZero() && 
-		AniScale != Renderer->GetTransform()->GetLocalScale())
-	{
-		Renderer->GetTransform()->SetLocalScale(AniScale);
-		Renderer->GetTransform()->SetLocalPosition(float4::Up * AniScale.hy());
-		return;
-	}
 
+	//현재 애니메이션의 텍스처 크기를 가져옴
 	size_t NowAniFrame = AniInfoPtr->CurFrame;
-	if (NowAniFrame == PrevAniFrame)
-		return;
-
-	//해당 애니메이션 텍스처 크기만큼 렌더러 크기 변경, 렌더러 오프셋 조정
 	const SpriteInfo& AniInfo = SpritePtr->GetSpriteInfo(NowAniFrame);
 	const float4 TextureSize = float4{ static_cast<float>(AniInfo.Texture->GetWidth()), static_cast<float>(AniInfo.Texture->GetHeight()) } *RCGDefine::ResourceScaleConvertor;
 
+
+	//해당 애니메이션 텍스처 크기만큼 렌더러 크기 변경
+	float Height = FieldPlayer::GetPtr()->GetHeight();
 	GameEngineTransform* RenderTrans = Renderer->GetTransform();
 	RenderTrans->SetLocalScale(TextureSize);
-	RenderTrans->SetLocalPosition(float4::Up * TextureSize.hy());
 
-	PrevAniFrame = NowAniFrame;
-}
-
-
-void PlayerStateBase::SettingRenderHeight()
-{
-	float Height = FieldPlayer::GetPtr()->GetHeight();
-
-	GameEngineTransform* RenderTrans = Renderer->GetTransform();
-	float4 RenderOffset = RenderTrans->GetLocalPosition();
-	RenderOffset += float4::Up * Height;
-
-	RenderTrans->SetLocalPosition(RenderOffset);
+	//플레이어의 높이 + 텍스처 절반 높이만큼 오프셋
+	RenderTrans->SetLocalPosition(float4::Up * (TextureSize.hy() + Height));
 }
 
 

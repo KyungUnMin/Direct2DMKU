@@ -30,6 +30,7 @@ public:
 	
 	inline bool IsDashing() const
 	{
+		//카메라에서 사용중
 		return (PlayerStateType::Dash == Fsm.GetNowState<PlayerStateType>());
 	}
 

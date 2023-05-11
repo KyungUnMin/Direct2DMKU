@@ -5,6 +5,8 @@
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
+#include "PlayerState_Dash.h"
+
 
 const std::string_view PlayerState_Jump::AniName = "Jump";
 const std::string_view PlayerState_Jump::AniFolderName = "PlayerJump";
@@ -69,28 +71,18 @@ void PlayerState_Jump::Update(float _DeltaTime)
 {
 	PlayerStateBase::Update(_DeltaTime);
 
-	GetLiveTIme();
+	float Ratio = (GetLiveTime() / Duration);
+	float NowHeight = MaxHeight * Ratio;
+	FieldPlayer::GetPtr()->SetHeight(NowHeight);
 
-	LiveTime += _DeltaTime;
-	float Ratio = (LiveTime / Duration);
-
-	//float NowJumpScale = JumpScale * (1.f - Ratio);
-	float NowJumpScale = JumpScale * Ratio;
-	FieldPlayer::GetPtr()->SetHeight(NowJumpScale);
-	//FieldPlayer::GetPtr()->AddHeight(NowJumpScale * _DeltaTime);
-
-	if (Duration < LiveTime)
+	if (1.f < Ratio)
 	{
 		GetFSM()->ChangeState(PlayerStateType::Fall);
 		return;
 	}
 
+
+
 	Update_Move(_DeltaTime);
 }
 
-
-void PlayerState_Jump::ExitState()
-{
-	PlayerStateBase::ExitState();
-	LiveTime = 0.f;
-}

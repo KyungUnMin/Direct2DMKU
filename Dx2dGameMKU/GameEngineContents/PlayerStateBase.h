@@ -35,12 +35,6 @@ protected:
 
 	bool Check_Idle();
 
-	//애니메이션의 크기를 직접 지정
-	inline void SetAniScale(const float4& _Scale)
-	{
-		AniScale = _Scale;
-	}
-
 	inline std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
 	{
 		return Renderer;
@@ -49,16 +43,13 @@ protected:
 private:
 	static const std::vector<KeyNames> IdleCheckKeys;
 
-	size_t PrevAniFrame = -1;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
-	float4 AniScale = float4::Zero;
 
 	//true일때 오른쪽, false면 왼쪽
 	bool RenderDir = true;
 
 	void SettingRenderTransForAni();
-	void SettingRenderHeight();
 	void SettingRenderDir();
 };
 
