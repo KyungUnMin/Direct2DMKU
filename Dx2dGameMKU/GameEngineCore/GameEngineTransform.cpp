@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "GameEngineTransform.h"
 #include "GameEngineObject.h"
+#include "GameEngineActor.h"
+#include "GameEngineLevel.h"
 
 GameEngineTransform::GameEngineTransform()
 {
@@ -115,32 +117,93 @@ void GameEngineTransform::WorldDecompose()
 
 void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 {
+	//만약 자식을 분리시킬때 분리시키는 대상이 Component인지 검사
+	if ((nullptr == Parent) && (nullptr == Master))
+	{
+		if (nullptr == dynamic_cast<GameEngineActor*>(Master))
+		{
+			MsgAssert("액터만이 루트 리스트에 추가될수 있습니다.");
+			return;
+		}
+	}
+
+
+	//이 객체가 이미 최상위 부모인데 최상위 부모로 옮기려는 행동
+	if (nullptr == Parent && nullptr == _Parent)
+		return;
+
+
+	//기존에 부모를 가지고 있었다면
 	if (nullptr != Parent)
 	{
-		//TODO
+		//부모의 Transform 자식 그룹에서 자기자신을 제거
+		Parent->Child.remove(this);
+		
+		//부모의 Object
+		GameEngineObject* ParentMaster = Parent->Master;
+		if (nullptr == ParentMaster)
+		{
+			MsgAssert("존재할수 없는 상황입니다 Master가 nullptr입니다");
+			return;
+		}
+
+		//부모의 Object 자식 그룹에서 자신의 Object을 제거할 때
+		//RefCount가 0이 되서 소멸될 수가 있다, 때문에 여기서 받아놓고 RefCount를 유지시킨다
+		std::shared_ptr<GameEngineObject> MasterPtr = Master->shared_from_this();
+
+		ParentMaster->Childs.remove(MasterPtr);
+		Parent = nullptr;
+
+		//기존에 있었던 레벨로 돌아간다
+		GameEngineLevel* Level = Master->GetLevel();
+		Level->Actors[MasterPtr->GetOrder()].push_back(std::dynamic_pointer_cast<GameEngineActor>(MasterPtr));
 	}
 
 
 	//부모 설정
 	Parent = _Parent;
 
-	//자식의 로컬 행렬에 부모의 월드 행렬의 역행렬을 곱한다
-	TransData.LocalWorldMatrix = TransData.WorldMatrix * Parent->TransData.LocalWorldMatrix.InverseReturn();
-	//로컬 행렬로부터 크자이 추출
-	LocalDecompose();
 
-	//TransformUpdate를 위해 값 대입
-	TransData.Position = TransData.LocalPosition;
-	TransData.Rotation = TransData.LocalRotation;
-	TransData.Scale = TransData.LocalScale;
+	//부모가 생겼거나 바뀌였다면
+	if (nullptr != Parent)
+	{
 
-	//실제 위치 계산
-	TransformUpdate();
+		//자식의 로컬 행렬에 부모의 월드 행렬의 역행렬을 곱한다
+		TransData.LocalWorldMatrix = TransData.WorldMatrix * Parent->TransData.LocalWorldMatrix.InverseReturn();
+		//로컬 행렬로부터 크자이 추출
+		LocalDecompose();
 
-	AbsoluteReset();
+		//TransformUpdate를 위해 값 대입
+		TransData.Position = TransData.LocalPosition;
+		TransData.Rotation = TransData.LocalRotation;
+		TransData.Scale = TransData.LocalScale;
 
-	//부모의 자식리스트에 자기 자신을 등록
-	Parent->Child.push_back(this);
+		//실제 위치 계산
+		TransformUpdate();
+
+		AbsoluteReset();
+
+		//부모의 자식리스트에 자기 자신을 등록
+		Parent->Child.push_back(this);
+	}
+
+
+	//부모가 사라졌다면
+	else
+	{
+		//자신의 월드행렬를 바탕으로 크자이 값들 추출
+		WorldDecompose();
+
+		//TransformUpdate를 위해 값 대입
+		TransData.Position = TransData.WorldPosition;
+		TransData.Rotation = TransData.WorldRotation;
+		TransData.Scale = TransData.WorldScale;
+
+		//값 재계산
+		TransformUpdate();
+		AbsoluteReset();
+	}
+	
 }
 
 
@@ -173,6 +236,8 @@ void GameEngineTransform::CalChild()
 
 		//내 행렬을 바탕으로 자식들의 월드 행렬을 계산한다
 		ChildTrans->WorldCalculation();
+		//월드 크자이 추출
+		ChildTrans->WorldDecompose();
 		//재귀
 		ChildTrans->CalChild();
 	}

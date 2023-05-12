@@ -16,10 +16,7 @@ public:
 	GameEngineActor& operator=(const GameEngineActor& _Other) = delete;
 	GameEngineActor& operator=(const GameEngineActor&& _Other) noexcept = delete;
 
-	inline class GameEngineLevel* GetLevel()
-	{
-		return Level;
-	}
+	
 
 	//컴포넌트 생성
 	template <typename ComponentType>
@@ -36,8 +33,6 @@ protected:
 	virtual void Render(float _DeltaTime){}
 
 private:
-	class GameEngineLevel* Level = nullptr;
-
 	//컴포넌트 초기화
 	void ComponentInit(std::shared_ptr<GameEngineComponent> _Component);
 };

@@ -22,10 +22,6 @@ public:
 		return Actor;
 	}
 
-	inline GameEngineLevel* GetLevel() const
-	{
-		return Actor->GetLevel();
-	}
 
 protected:
 

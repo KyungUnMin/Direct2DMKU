@@ -17,6 +17,7 @@ void GameEngineActor::ComponentInit(std::shared_ptr<GameEngineComponent> _Compon
 {
 	_Component->Actor = this;
 
+	_Component->Level = GetLevel();
 	//컴포넌트 생성시 Transform의 부모 관계 기강 다짐
 	_Component->GetTransform()->SetParent(GetTransform());
 	_Component->Start();

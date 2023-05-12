@@ -19,6 +19,8 @@ class GameEngineObject :
 	public GameEngineNameObject,
 	public std::enable_shared_from_this<GameEngineObject>
 {
+	friend class GameEngineComponent;
+	friend class GameEngineActor;
 	friend class GameEngineLevel;
 	friend class GameEngineTransform;
 
@@ -60,9 +62,14 @@ public:
 		LiveTime = 0.f;
 	}
 
-	float GetLiveTime()
+	float GetLiveTime() const
 	{
 		return LiveTime;
+	}
+
+	inline class GameEngineLevel* GetLevel() const
+	{
+		return Level;
 	}
 
 protected:
@@ -84,6 +91,7 @@ protected:
 private:
 	float LiveTime = 0.0f;
 	GameEngineTransform Transform;
+	class GameEngineLevel* Level = nullptr;
 
 	//컴포넌트 생성과 부모 설정시(레벨 리스트->부모의 리스트 이동시)
 	//Shared_ptr의 Ref카운트를 유지시키기 위해 Transform의 Child와는 
