@@ -17,52 +17,45 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::ActorUpdate(float _DeltaTime)
 {
-	//부모가 있는 오브젝트라면 레벨의 List에서 제외시키고
-	//부모쪽을 통해 Update 및 Render 들의 함수를 호출받게끔 한다
-	{
+	////부모가 있는 오브젝트라면 레벨의 List에서 제외시키고
+	////부모쪽을 통해 Update 및 Render 들의 함수를 호출받게끔 한다
+	//{
+	//	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+	//	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+	//	//오더 순회
+	//	for (; GroupStartIter != GroupEndIter;++GroupStartIter)
+	//	{
+	//		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+	//		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+	//		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+	//		//엑터 순회
+	//		for (; ActorStart != ActorEnd; )
+	//		{
+	//			std::shared_ptr<GameEngineActor> CheckActor = (*ActorStart);
+	//			GameEngineTransform* ParentTransform = CheckActor->GetTransform()->Parent;
+	//			//부모가 있는 애들만 검출(부모가 있으면 리스트에서 제외)
+	//			if (nullptr != ParentTransform)
+	//			{
+	//				GameEngineObject* Object = ParentTransform->GetMaster();
+	//				if (nullptr == Object)
+	//				{
+	//					MsgAssert("부모가 없는 트랜스폼을 Level에서 사용할수는 없습니다.");
+	//				}
+	//				// 레벨의 리스트가 이 오브젝트를 갖는것이 아니라
+	//				//부모가 이 오브젝트를 책임진다
+	//				//(자식으로 들어갈 Object의 Shared_ptr ref를 유지시키기 위해
+	//				//Transform의 Child 뿐만 아니라 Object의 Childs에도 자식으로 보관한다)
+	//				Object->Childs.push_back(CheckActor);
+	//				//그룹에서 제거
+	//				ActorStart = ActorList.erase(ActorStart);
+	//				continue;
+	//			}
+	//			++ActorStart;
+	//		}
+	//	}
+	//}
 
-		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
-		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
 
-		//오더 순회
-		for (; GroupStartIter != GroupEndIter;++GroupStartIter)
-		{
-			std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
-
-			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
-			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
-
-			//엑터 순회
-			for (; ActorStart != ActorEnd; )
-			{
-				std::shared_ptr<GameEngineActor> CheckActor = (*ActorStart);
-				GameEngineTransform* ParentTransform = CheckActor->GetTransform()->Parent;
-
-				//부모가 있는 애들만 검출(부모가 있으면 리스트에서 제외)
-				if (nullptr != ParentTransform)
-				{
-					GameEngineObject* Object = ParentTransform->GetMaster();
-
-					if (nullptr == Object)
-					{
-						MsgAssert("부모가 없는 트랜스폼을 Level에서 사용할수는 없습니다.");
-					}
-
-					// 레벨의 리스트가 이 오브젝트를 갖는것이 아니라
-					//부모가 이 오브젝트를 책임진다
-					//(자식으로 들어갈 Object의 Shared_ptr ref를 유지시키기 위해
-					//Transform의 Child 뿐만 아니라 Object의 Childs에도 자식으로 보관한다)
-					Object->Childs.push_back(CheckActor);
-					//그룹에서 제거
-					ActorStart = ActorList.erase(ActorStart);
-					continue;
-				}
-
-				++ActorStart;
-			}
-		}
-
-	}
 
 	//프리 카메라 모드일땐 카메라 제외하고 업데이트 실행X
 	if (true == MainCamera->IsFreeCamera())

@@ -23,6 +23,6 @@ void GameEngineActor::ComponentInit(std::shared_ptr<GameEngineComponent> _Compon
 	_Component->Start();
 
 	//이 오브젝트의 자식으로 등록
-	PushChild(_Component);
+	//PushChild(_Component)
 }
 

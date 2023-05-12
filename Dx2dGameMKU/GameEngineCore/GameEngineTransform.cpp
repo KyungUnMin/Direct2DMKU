@@ -153,10 +153,6 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 
 		ParentMaster->Childs.remove(MasterPtr);
 		Parent = nullptr;
-
-		//기존에 있었던 레벨로 돌아간다
-		GameEngineLevel* Level = Master->GetLevel();
-		Level->Actors[MasterPtr->GetOrder()].push_back(std::dynamic_pointer_cast<GameEngineActor>(MasterPtr));
 	}
 
 
@@ -183,8 +179,11 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 
 		AbsoluteReset();
 
-		//부모의 자식리스트에 자기 자신을 등록
+		//부모의 Transform 자식리스트에 자기 자신을 등록
 		Parent->Child.push_back(this);
+
+		//부모의 Object 자식리스트에 자기 자신을 등록
+		Parent->Master->Childs.push_back(Master->shared_from_this());
 	}
 
 
@@ -202,6 +201,20 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 		//값 재계산
 		TransformUpdate();
 		AbsoluteReset();
+
+		//기존에 있었던 레벨로 돌아간다
+		GameEngineLevel* Level = Master->GetLevel();
+		std::shared_ptr<GameEngineObject> MasterPtr = Master->shared_from_this();
+
+		//이 객체가 엑터인 경우에만
+		if (nullptr != dynamic_cast<GameEngineActor*>(Master))
+		{
+			Level->Actors[MasterPtr->GetOrder()].push_back(std::dynamic_pointer_cast<GameEngineActor>(MasterPtr));
+		}
+		else
+		{
+			MsgAssert("액터만이 레벨의 루트 오브젝트로 지정될 수 있습니다.");
+		}
 	}
 	
 }

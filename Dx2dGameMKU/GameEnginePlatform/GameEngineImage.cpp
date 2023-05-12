@@ -238,7 +238,7 @@ void GameEngineImage::PlgCopy(
 {
 	POINT ArrRotPoint[3];
 
-	CollisionData Data = { float4::Zero, _CopySize };
+	CollisionDataAPI Data = { float4::Zero, _CopySize };
 	float4 LeftTop = Data.LeftTop();
 	float4 RightTop = Data.RightTop();
 	float4 LeftBot = Data.LeftBot();
