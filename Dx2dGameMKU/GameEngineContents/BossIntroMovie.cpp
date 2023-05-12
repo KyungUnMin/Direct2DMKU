@@ -55,7 +55,13 @@ void BossIntroMovie::Init(MovieType _MovieType)
 	const std::string_view& MovieName = MovieNames[static_cast<size_t>(_MovieType)];
 	
 	std::shared_ptr<GameEngineSpriteRenderer> Sprite = CreateComponent<GameEngineSpriteRenderer>();
-	AniCtrl =  Sprite->CreateAnimation("Movie", MovieName, 0.1f, -1, -1, false);
+	AniCtrl = Sprite->CreateAnimation
+	({
+		.AnimationName = "Movie",
+		.SpriteName = MovieName,
+		.Loop = false
+	});
+
 	Sprite->ChangeAnimation("Movie");
 
 	const float4& ScreenSize = GameEngineWindow::GetScreenSize();

@@ -19,12 +19,19 @@ public:
 	GameEngineSprite& operator=(const GameEngineSprite& _Other) = delete;
 	GameEngineSprite& operator=(const GameEngineSprite&& _Other) noexcept = delete;
 
-	//리소스 로드 및 애니메이션으로 만들기(폴더)
+	//리소스 로드 및 애니메이션으로 만들기(폴더), 파일명으로 리소스 생성
 	static std::shared_ptr<GameEngineSprite> LoadFolder(const std::string_view& _Path)
 	{
 		GameEnginePath NewPath = std::string(_Path);
+		return LoadFolder(NewPath.GetFileName(), _Path);
+	}
 
-		std::shared_ptr<GameEngineSprite> NewTexture = GameEngineResource::Create(NewPath.GetFileName());
+	//리소스 로드 및 애니메이션으로 만들기(폴더)
+	static std::shared_ptr<GameEngineSprite> LoadFolder(const std::string_view& _SpriteName, const std::string_view& _Path)
+	{
+		GameEnginePath NewPath = std::string(_Path);
+
+		std::shared_ptr<GameEngineSprite> NewTexture = GameEngineResource::Create(_SpriteName);
 		NewTexture->ResLoadFolder(_Path);
 		return NewTexture;
 	}

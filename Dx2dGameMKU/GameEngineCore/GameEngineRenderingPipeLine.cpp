@@ -225,7 +225,7 @@ void GameEngineRenderingPipeLine::SetDepthState(const std::string_view& _Value)
 
 	if (nullptr == DepthStatePtr)
 	{
-		MsgAssert("존재하지 않는 뎁스 스텐실을 사용하려고 했습니다.");
+		MsgAssert("존재하지 않는 깊이 버퍼 스테이트를 사용하려고 했습니다.");
 	}
 }
 

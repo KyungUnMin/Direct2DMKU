@@ -53,7 +53,13 @@ void PlayerState_Jump::CreateAnimation()
 	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
 
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation(AniName, AniFolderName, AniInterTime, -1, -1, false);
+	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation
+	({
+		.AnimationName = AniName,
+		.SpriteName = AniFolderName,
+		.FrameInter = AniInterTime,
+		.Loop = false
+	});
 }
 
 

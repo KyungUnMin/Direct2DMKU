@@ -67,7 +67,7 @@ void SchoolEntryLevel::Start()
 		->GetTransform()->SetWorldPosition(float4{ 200.f, -200.f , 0.f });*/
 
 
-	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::Ocean);
+	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
 }
 
 

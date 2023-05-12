@@ -131,6 +131,12 @@ public:
 		return Desc.Height;
 	}
 
+	float4 GetScale()
+	{
+		return float4(static_cast<float>(Desc.Width), static_cast<float>(Desc.Height));
+	}
+
+
 	GameEnginePixelColor GetPixel(int _X, int _Y, const GameEnginePixelColor& _DefaultColor = GameEnginePixelColor::Black);
 
 protected:

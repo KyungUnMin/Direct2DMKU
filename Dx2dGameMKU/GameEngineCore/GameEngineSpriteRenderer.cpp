@@ -6,10 +6,10 @@
 //-----------------AnimationInfo-----------------
 
 
-std::shared_ptr<GameEngineTexture> AnimationInfo::CurFrameTexture()
+const SpriteInfo& AnimationInfo::CurSpriteInfo()
 {
 	const SpriteInfo& Info = Sprite->GetSpriteInfo(CurFrame);
-	return Info.Texture;
+	return Info;
 }
 
 
@@ -22,7 +22,7 @@ bool AnimationInfo::IsEnd()
 void AnimationInfo::Reset()
 {
 	CurFrame = StartFrame;
-	CurTime = 0.0f;
+	CurTime = Inter;
 	IsEndValue = false;
 }
 
@@ -38,7 +38,7 @@ void AnimationInfo::Update(float _DeltaTime)
 		//다음 프레임으로 전환
 		++CurFrame;
 		CurTime += Inter;
-
+		
 		//방금전이 마지막 프레임이였다면
 		if (EndFrame < CurFrame)
 		{
@@ -61,6 +61,8 @@ void AnimationInfo::Update(float _DeltaTime)
 }
 
 
+
+
 //-----------------GameEngineSpriteRenderer-----------------
 
 
@@ -79,6 +81,13 @@ void GameEngineSpriteRenderer::Start()
 {
 	GameEngineRenderer::Start();
 	SetPipeLine("2DTexture");
+
+	AtlasData.x = 0.0f;
+	AtlasData.y = 0.0f;
+	AtlasData.z = 1.0f;
+	AtlasData.w = 1.0f;
+
+	GetShaderResHelper().SetConstantBufferLink("AtlasData", AtlasData);
 }
 
 
@@ -130,40 +139,36 @@ std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::FindAnimation(const std
 	return FindIter->second;
 }
 
-std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::CreateAnimation(
-	const std::string_view& _Name, 
-	const std::string_view& _SpriteName, 
-	float _FrameInter, 
-	int _Start, int _End, bool _Loop)
+std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::CreateAnimation(const AnimationParameter& _Paramter)
 {
-	if (nullptr != FindAnimation(_Name))
+	if (nullptr != FindAnimation(_Paramter.AnimationName))
 	{
-		MsgAssert("이미 존재하는 이름의 애니메이션을 또 만들려고 했습니다." + std::string(_Name));
+		MsgAssert("이미 존재하는 이름의 애니메이션을 또 만들려고 했습니다." + std::string(_Paramter.AnimationName));
 		return nullptr;
 	}
 
-	std::shared_ptr<GameEngineSprite> Sprite = GameEngineSprite::Find(_SpriteName);
+	std::shared_ptr<GameEngineSprite> Sprite = GameEngineSprite::Find(_Paramter.SpriteName);
 	if (nullptr == Sprite)
 	{
-		MsgAssert("존재하지 않는 스프라이트로 애니메이션을 만들려고 했습니다." + std::string(_Name));
+		MsgAssert("존재하지 않는 스프라이트로 애니메이션을 만들려고 했습니다." + std::string(_Paramter.AnimationName));
 		return nullptr;
 	}
 
 
 	//애니메이션 생성 및 자료구조에 저장
 	std::shared_ptr<AnimationInfo> NewAnimation = std::make_shared<AnimationInfo>();
-	Animations[_Name.data()] = NewAnimation;
+	Animations[_Paramter.AnimationName.data()] = NewAnimation;
 
 	//디폴트 인자인 경우엔 폴더의 0번 스프라이트 부터 시작
-	if (-1 != _Start)
+	if (-1 != _Paramter.Start)
 	{
-		if (_Start < 0)
+		if (_Paramter.Start < 0)
 		{
-			MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Name));
+			MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Paramter.AnimationName));
 			return nullptr;
 		}
 
-		NewAnimation->StartFrame = _Start;
+		NewAnimation->StartFrame = _Paramter.Start;
 	}
 	//애니메이션 시작 위치를 직접 지정한 경우
 	else
@@ -173,15 +178,15 @@ std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::CreateAnimation(
 
 
 	//디폴트 인자인 경우엔 폴더의 마지막 스프라이트까지 애니메이션 재생
-	if (-1 != _End)
+	if (-1 != _Paramter.End)
 	{
-		if (_End >= Sprite->GetSpriteCount())
+		if (_Paramter.End >= Sprite->GetSpriteCount())
 		{
-			MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Name));
+			MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Paramter.AnimationName));
 			return nullptr;
 		}
 
-		NewAnimation->EndFrame = _End;
+		NewAnimation->EndFrame = _Paramter.End;
 	}
 	//애니메이션 마지막 위치를 직접 지정한 경우
 	else
@@ -192,15 +197,27 @@ std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::CreateAnimation(
 
 	NewAnimation->Sprite = Sprite;
 	NewAnimation->Parent = this;
-	NewAnimation->Loop = _Loop;
-	NewAnimation->Inter = _FrameInter;
+	NewAnimation->Loop = _Paramter.Loop;
+	NewAnimation->Inter = _Paramter.FrameInter;
+	NewAnimation->ScaleToImage = _Paramter.ScaleToImage;
+
 	return NewAnimation;
 }
+
+
 
 void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, size_t _Frame, bool _Force)
 {
 	//이미 재생중인 애니메이션이면서, 처음부터 재생이 아닌 경우엔 return
 	std::shared_ptr<AnimationInfo> Find = FindAnimation(_Name);
+
+	if (nullptr == Find)
+	{
+		MsgAssert("이러한 이름의 애니메이션은 존재하지 않습니다" + std::string(_Name));
+		return;
+	}
+
+
 	if (CurAnimation == Find && false == _Force)
 		return;
 
@@ -224,7 +241,25 @@ void GameEngineSpriteRenderer::Render(float _DeltaTime)
 	if (nullptr != CurAnimation)
 	{
 		CurAnimation->Update(_DeltaTime);
-		GetShaderResHelper().SetTexture("DiffuseTex", CurAnimation->CurFrameTexture());
+		const SpriteInfo& Info = CurAnimation->CurSpriteInfo();
+
+		GetShaderResHelper().SetTexture("DiffuseTex", Info.Texture);
+		AtlasData = Info.CutData;
+
+
+		//애니메이션마다 크기를 설정해준 경우
+		if (true == CurAnimation->ScaleToImage)
+		{
+			std::shared_ptr<GameEngineTexture> Texture = Info.Texture;
+			float4 Scale = Texture->GetScale();
+
+			Scale.x *= Info.CutData.SizeX;
+			Scale.y *= Info.CutData.SizeY;
+
+			Scale *= ScaleRatio;
+
+			GetTransform()->SetLocalScale(Scale);
+		}
 	}
 
 	//일반 이미지 Sprite인 경우

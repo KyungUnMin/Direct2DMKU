@@ -48,7 +48,12 @@ void PlayerState_Dash::CreateAnimation()
 	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
 
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation(AniName, AniFolderName, AniInterTime);
+	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation
+	({
+		.AnimationName = AniName,
+		.SpriteName = AniFolderName,
+		.FrameInter = AniInterTime
+	});
 }
 
 

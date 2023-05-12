@@ -54,6 +54,14 @@ struct Output
     float4 UV : TEXCOORD;
 };
 
+cbuffer AtlasData : register(b1)
+{
+    //이미지를 그릴 UV시작값 ex)0.0, 0.0
+    float2 FramePos;
+    //이미지의 UV 크기 ex)0.5, 0.5
+    float2 FrameScale;
+}
+
 Output Texture_VS(Input _Value)
 {
     Output OutputValue = (Output) 0;
@@ -61,9 +69,11 @@ Output Texture_VS(Input _Value)
 	//여기서 월드, 뷰, w 나누기 전 프로젝션을 곱하게 된다.
     _Value.Pos.w = 1.0f;
     OutputValue.Pos = mul(_Value.Pos, WorldViewProjectionMatrix);
-    //OutputValue.Pos = _Value.Pos;
-    OutputValue.UV = _Value.UV;
-
+    
+    
+    //아틀라스 이미지인 경우 AtlasData상수버퍼를 통해 쪼개져서 그려진다
+    OutputValue.UV.x = (_Value.UV.x * FrameScale.x) + FramePos.x;
+    OutputValue.UV.y = (_Value.UV.y * FrameScale.y) + FramePos.y;
 
     return OutputValue;
 }
