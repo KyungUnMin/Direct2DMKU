@@ -271,6 +271,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged">
       <UniqueIdentifier>{63c701d5-b462-43cc-bb15-45ffbccba3c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack">
+      <UniqueIdentifier>{fb3c02f3-ba3d-419e-95c8-ce00fee52967}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">

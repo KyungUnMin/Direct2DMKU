@@ -74,7 +74,7 @@ void PlayerStateBase::SettingRenderTransForAni()
 	//현재 애니메이션의 텍스처 크기를 가져옴
 	size_t NowAniFrame = AniInfoPtr->CurFrame;
 	const SpriteInfo& AniInfo = SpritePtr->GetSpriteInfo(NowAniFrame);
-	const float4 TextureSize = float4{ static_cast<float>(AniInfo.Texture->GetWidth()), static_cast<float>(AniInfo.Texture->GetHeight()) } *RCGDefine::ResourceScaleConvertor;
+	const float4 TextureSize = AniInfo.Texture->GetScale() * RCGDefine::ResourceScaleConvertor;
 
 
 	//해당 애니메이션 텍스처 크기만큼 렌더러 크기 변경
