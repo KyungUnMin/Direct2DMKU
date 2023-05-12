@@ -1,7 +1,9 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_Fall.h"
+
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
+#include "PlayerState_Dash.h"
 
 const std::string_view PlayerState_Fall::AniName = "Fall";
 const std::string_view PlayerState_Fall::AniFolderName = "PlayerFall";
@@ -21,6 +23,7 @@ void PlayerState_Fall::Start()
 {
 	PlayerStateBase::Start();
 
+	FsmPtr = GetConvertFSM<PlayerFSM>();
 	LoadAnimation();
 	CreateAnimation();
 }
@@ -80,6 +83,13 @@ void PlayerState_Fall::Update(float _DeltaTime)
 		return;
 	}
 
-	Update_Move(_DeltaTime);
+	if (PlayerStateType::Dash == FsmPtr->GetLastMovement())
+	{
+		Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
+	}
+	else
+	{
+		Update_Move(_DeltaTime);
+	}
 }
 

@@ -25,15 +25,18 @@ public:
 
 	void Init();
 
-	inline void ChangeState(PlayerStateType _NextState)
+	void ChangeState(size_t _NextIndex) override;
+	
+	inline PlayerStateType GetLastMovement() const
 	{
-		FSMBase::ChangeState(static_cast<size_t>(_NextState));
+		return LastMoveState;
 	}
 
 protected:
 
 
 private:
-
+	//Move와 Dash중 어떤게 마지막으로 실행되었는지
+	PlayerStateType LastMoveState = PlayerStateType::Idle;
 };
 

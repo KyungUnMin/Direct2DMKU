@@ -10,7 +10,7 @@
 
 const std::string_view PlayerState_Jump::AniName = "Jump";
 const std::string_view PlayerState_Jump::AniFolderName = "PlayerJump";
-const float PlayerState_Jump::AniInterTime = FLT_MAX;
+const float PlayerState_Jump::AniInterTime = 0.08f;
 
 PlayerState_Jump::PlayerState_Jump()
 {
@@ -27,6 +27,7 @@ void PlayerState_Jump::Start()
 {
 	PlayerStateBase::Start();
 
+	FsmPtr = GetConvertFSM<PlayerFSM>();
 	LoadAnimation();
 	CreateAnimation();
 }
@@ -88,7 +89,13 @@ void PlayerState_Jump::Update(float _DeltaTime)
 	}
 
 
-
-	Update_Move(_DeltaTime);
+	if (PlayerStateType::Dash == FsmPtr->GetLastMovement())
+	{
+		Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
+	}
+	else
+	{
+		Update_Move(_DeltaTime);
+	}
 }
 

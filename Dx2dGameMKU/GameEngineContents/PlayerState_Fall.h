@@ -22,7 +22,8 @@ private:
 	static const std::string_view AniFolderName;
 	static const float AniInterTime;
 
-	const float Duration = 0.2f;
+	class PlayerFSM* FsmPtr = nullptr;
+	const float Duration = 0.25f;
 	float EnterHeight = 0.f;
 
 	void LoadAnimation();

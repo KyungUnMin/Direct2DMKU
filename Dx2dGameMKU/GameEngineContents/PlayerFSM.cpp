@@ -32,3 +32,14 @@ void PlayerFSM::Init()
 	FSMBase::ChangeState(PlayerStateType::Idle);
 }
 
+void PlayerFSM::ChangeState(size_t _NextIndex)
+{
+	FSMBase::ChangeState(_NextIndex);
+
+	PlayerStateType NextState = static_cast<PlayerStateType>(_NextIndex);
+	if ((PlayerStateType::Move != NextState) && (PlayerStateType::Dash != NextState))
+		return;
+
+	LastMoveState = NextState;
+}
+

@@ -85,8 +85,12 @@ public:
 	void ChangeAnimation(const std::string_view& _Name, size_t _Frame = -1, bool _Force = true);
 
 
-	//
-	void AllAnimation();
+	//void AllAnimation();
+
+	inline bool IsAnimationEnd() const
+	{
+		return CurAnimation->IsEnd();
+	}
 
 protected:
 

@@ -28,7 +28,7 @@ public:
 	{
 		ChangeState(static_cast<size_t>(_Type));
 	}
-	void ChangeState(size_t _NextIndex);
+	virtual void ChangeState(size_t _NextIndex);
 
 
 	//현재 상태값을 enum으로 캐스팅해서 돌려주기
@@ -70,8 +70,6 @@ protected:
 		InitState(NewState, static_cast<size_t>(_Index));
 		return NewState;
 	}
-
-	virtual void Test(){}
 
 
 private:

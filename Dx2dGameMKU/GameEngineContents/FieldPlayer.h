@@ -27,12 +27,10 @@ public:
 	FieldPlayer& operator=(const FieldPlayer& _Other) = delete;
 	FieldPlayer& operator=(const FieldPlayer&& _Other) noexcept = delete;
 
+
+	//카메라에서 사용중
+	bool IsDashing() const;
 	
-	inline bool IsDashing() const
-	{
-		//카메라에서 사용중
-		return (PlayerStateType::Dash == Fsm.GetNowState<PlayerStateType>());
-	}
 
 
 protected:

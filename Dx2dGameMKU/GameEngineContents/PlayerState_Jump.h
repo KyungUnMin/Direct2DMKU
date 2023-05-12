@@ -22,6 +22,7 @@ private:
 	static const std::string_view AniFolderName;
 	static const float AniInterTime;
 
+	class PlayerFSM* FsmPtr = nullptr;
 	const float Duration = 0.3f;
 	const float MaxHeight = 300.f;
 	
