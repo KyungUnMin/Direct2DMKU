@@ -47,16 +47,17 @@ void PlayerState_Fall::LoadAnimation()
 
 void PlayerState_Fall::CreateAnimation()
 {
-	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
-
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation
+	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFolderName,
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
+	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
@@ -79,11 +80,11 @@ void PlayerState_Fall::Update(float _DeltaTime)
 	FieldPlayer::GetPtr()->SetHeight(NowHeight);
 	if (1.f < Ratio)
 	{
-		GetFSM()->ChangeState(PlayerStateType::Idle);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
 	}
 
-	if (PlayerStateType::Dash == FsmPtr->GetLastMovement())
+	if (PlayerStateType::Movement_Dash == FsmPtr->GetLastMovement())
 	{
 		Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
 	}

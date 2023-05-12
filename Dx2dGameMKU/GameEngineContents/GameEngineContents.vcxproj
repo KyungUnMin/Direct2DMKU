@@ -244,6 +244,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PlayerState_QickAttack_Chop.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_BackKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_HookKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_SnapKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ResourceHelper.h">
       <SubType>
       </SubType>
@@ -297,6 +313,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="LevelMgr.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillMgr.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -482,6 +502,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PlayerState_QickAttack_Chop.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_BackKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_HookKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_SnapKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ResourceHelper.cpp">
       <SubType>
       </SubType>
@@ -535,6 +571,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="LevelMgr.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillMgr.cpp">
       <SubType>
       </SubType>
     </ClCompile>

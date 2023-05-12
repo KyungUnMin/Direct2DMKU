@@ -32,12 +32,35 @@ PlayerStateBase::~PlayerStateBase()
 	//}
 }
 
+
+
+
 void PlayerStateBase::Start()
 {
 	StateBase::Start();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 	Renderer = FieldPlayer::GetPtr()->GetRenderer();
 }
+
+void PlayerStateBase::SetAnimationInfo(std::shared_ptr<GameEngineSprite> _SpritePtr, std::shared_ptr<AnimationInfo> _AniInfoPtr)
+{
+	SpritePtr = _SpritePtr;
+	AniInfoPtr = _AniInfoPtr;
+	
+	AniFrameOffset.resize(SpritePtr->GetSpriteCount(), float4::Zero);
+}
+
+void PlayerStateBase::SetAniFrameOffset(size_t _Index, const float4& _Offset)
+{
+	if (SpritePtr->GetSpriteCount() <= _Index)
+	{
+		MsgAssert("애니메이션 인덱스 배열을 넘겼습니다");
+		return;
+	}
+
+	AniFrameOffset[_Index] = _Offset;
+}
+
 
 
 void PlayerStateBase::EnterState()
@@ -52,12 +75,17 @@ void PlayerStateBase::EnterState()
 
 }
 
+
+
+
+
 void PlayerStateBase::Update(float _DeltaTime)
 {
 	StateBase::Update(_DeltaTime);
 
+	//UPDATE_DEBUG_ANI_OFFSET();
+
 	SettingRenderTransForAni();
-	SettingRenderDir();
 }
 
 
@@ -77,33 +105,30 @@ void PlayerStateBase::SettingRenderTransForAni()
 	const float4 TextureSize = AniInfo.Texture->GetScale() * RCGDefine::ResourceScaleConvertor;
 
 
+	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
+
 	//해당 애니메이션 텍스처 크기만큼 렌더러 크기 변경
-	float Height = FieldPlayer::GetPtr()->GetHeight();
+	float Height = PlayerPtr->GetHeight();
 	GameEngineTransform* RenderTrans = Renderer->GetTransform();
 	RenderTrans->SetLocalScale(TextureSize);
 
 	//플레이어의 높이 + 텍스처 절반 높이만큼 오프셋
-	RenderTrans->SetLocalPosition(float4::Up * (TextureSize.hy() + Height));
-}
+	float4 FinalOffest = float4::Up * (TextureSize.hy() + Height);
+	
+	//자식쪽에서 설정해준 별개의 오프셋
+	float4 Offset = AniFrameOffset[NowAniFrame];
 
-
-void PlayerStateBase::SettingRenderDir()
-{
-	//이번 프레임의 플레이어 방향, true일때 오른쪽, false면 왼쪽
-	bool NowDir = RenderDir;
-
-	if (true == KeyMgr::IsPress(KeyNames::RightArrow))
+	//플레이어가 왼쪽을 보고 있다면 오프셋을 반전
+	bool IsPlayerDirectionRight = PlayerPtr->IsRightDir();
+	if (false == IsPlayerDirectionRight)
 	{
-		NowDir = true;
-	}
-	else if (true == KeyMgr::IsPress(KeyNames::LeftArrow))
-	{
-		NowDir = false;
+		Offset.x = -Offset.x;
 	}
 
+	RenderTrans->SetLocalPosition(FinalOffest + Offset);
 
 	//오른쪽을 바라봐야 하는 경우
-	if (true == NowDir)
+	if (true == IsPlayerDirectionRight)
 	{
 		Renderer->GetTransform()->SetLocalPositiveScaleX();
 	}
@@ -112,9 +137,9 @@ void PlayerStateBase::SettingRenderDir()
 	{
 		Renderer->GetTransform()->SetLocalNegativeScaleX();
 	}
-
-	RenderDir = NowDir;
 }
+
+
 
 
 
@@ -170,25 +195,6 @@ void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 		return;
 	}
 
-	//float4 CheckPos = PlayerPtr->GetPivot() + (MoveDir * _DeltaTime);
-	//const std::vector<TestDesk*>& Desks = GetPlayerFsm()->GetDesks();
-
-	//for (TestDesk* Desk : Desks)
-	//{
-	//	//책상 위치보다 플레이어가 더 화면 아래쪽에 있는 경우
-	//	if (Desk->GetPos().y < PlayerPtr->GetPos().y)
-	//		continue;
-
-	//	GameEngineCollision* DeskCol = Desk->GetCurHeightCollision();
-	//	bool Result = GameEngineCollision::CollisionRectToPoint
-	//	(
-	//		{ DeskCol->GetActorPlusPos(), DeskCol->GetScale() }, { CheckPos }
-	//	);
-
-	//	if (true == Result)
-	//		return;
-	//}
-
 	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 	float4 NextPos = PlayerTrans->GetLocalPosition() + (MoveDir * _DeltaTime);
 
@@ -201,4 +207,32 @@ void PlayerStateBase::Update_Move(float _DeltaTime, const float4& _Speed)
 		return;
 
 	PlayerTrans->SetLocalPosition(NextPos);
+}
+
+
+
+#include "GUIManager.h"
+#include "GameEngineActorGUI.h"
+
+
+void PlayerStateBase::UPDATE_DEBUG_ANI_OFFSET()
+{
+
+	size_t FrameIndex = AniInfoPtr->CurFrame;
+
+	if (nullptr == TransformViewer)
+	{
+		TransformViewer = GUIManager::Find<GameEngineActorGUI>();
+		TransformViewer->SetTarget(&DEBUG_ANI_OFFSET);
+
+		static bool DebugOn = false;
+		if (false == DebugOn)
+		{
+			MsgTextBox("PlayerStateBase.cpp에서 GameEngineActorGUI가 활성화 되었습니다");
+			DebugOn = true;
+		}
+	}
+
+
+	AniFrameOffset[FrameIndex] = DEBUG_ANI_OFFSET.GetLocalPosition();
 }

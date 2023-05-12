@@ -8,6 +8,8 @@
 
 enum class KeyNames;
 class GameEngineSpriteRenderer;
+class GameEngineSprite;
+class AnimationInfo;
 
 class PlayerStateBase : public StateBase
 {
@@ -21,9 +23,6 @@ public:
 	PlayerStateBase& operator=(const PlayerStateBase&& _Other) noexcept = delete;
 
 protected:
-	std::shared_ptr<class GameEngineSprite> SpritePtr;
-	std::shared_ptr<class AnimationInfo> AniInfoPtr = nullptr;
-
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
@@ -40,16 +39,30 @@ protected:
 		return Renderer;
 	}
 
+	void SetAnimationInfo(std::shared_ptr<GameEngineSprite> _SpritePtr, std::shared_ptr<AnimationInfo> _AniInfoPtr);
+
+	void SetAniFrameOffset(size_t _Index, const float4& _Offset);
+
 private:
 	static const std::vector<KeyNames> IdleCheckKeys;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 
-	//true일때 오른쪽, false면 왼쪽
-	bool RenderDir = true;
+	//현재프레임의 텍스처 정보를 얻기 위해
+	std::shared_ptr<GameEngineSprite> SpritePtr = nullptr;
+	//애니메이션이 어디 프레임에 위치해있는지 알기 위해
+	std::shared_ptr<AnimationInfo> AniInfoPtr = nullptr;
+	//애니메이션 프레임 별 오프셋
+	std::vector<float4> AniFrameOffset;
+
 
 	void SettingRenderTransForAni();
-	void SettingRenderDir();
+
+private:
+	GameEngineTransform DEBUG_ANI_OFFSET;
+	std::shared_ptr<class GameEngineActorGUI> TransformViewer = nullptr;
+
+	void UPDATE_DEBUG_ANI_OFFSET();
 };
 

@@ -51,16 +51,17 @@ void PlayerState_Jump::LoadAnimation()
 
 void PlayerState_Jump::CreateAnimation()
 {
-	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
-
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation
+	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFolderName,
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
+	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
@@ -84,12 +85,12 @@ void PlayerState_Jump::Update(float _DeltaTime)
 
 	if (1.f < Ratio)
 	{
-		GetFSM()->ChangeState(PlayerStateType::Fall);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Fall);
 		return;
 	}
 
 
-	if (PlayerStateType::Dash == FsmPtr->GetLastMovement())
+	if (PlayerStateType::Movement_Dash == FsmPtr->GetLastMovement())
 	{
 		Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
 	}

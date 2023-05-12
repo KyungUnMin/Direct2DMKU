@@ -8,6 +8,8 @@
 
 #include "TestLevel.h"
 
+GameState RCG_GameCore::CurState = GameState::OnField;
+
 RCG_GameCore::RCG_GameCore()
 {
 }

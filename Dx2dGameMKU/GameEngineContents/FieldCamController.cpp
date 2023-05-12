@@ -5,6 +5,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+#include "RCG_GameCore.h"
 #include "FieldPlayer.h"
 
 FieldCamController::FieldCamController()
@@ -58,6 +59,9 @@ void FieldCamController::Update(float _DeltaTime)
 	}
 
 	if (true == Cam->IsFreeCamera())
+		return;
+
+	if (GameState::OnField != RCG_GameCore::GetCurGameState())
 		return;
 
 	switch (CurState)

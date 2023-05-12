@@ -1,9 +1,10 @@
 #include "PrecompileHeader.h"
 #include "FieldEnemyBase.h"
 
-#include <queue>
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
+
+#include "RCG_GameCore.h"
 
 FieldEnemyBase::FieldEnemyBase()
 {
@@ -25,6 +26,9 @@ void FieldEnemyBase::Start()
 
 void FieldEnemyBase::Update(float _DeltaTime)
 {
+	if (GameState::OnField != RCG_GameCore::GetCurGameState())
+		return;
+	
 	FieldActorBase::Update(_DeltaTime);
 	Fsm.Update(_DeltaTime);
 }

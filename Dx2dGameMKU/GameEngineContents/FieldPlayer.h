@@ -31,7 +31,10 @@ public:
 	//카메라에서 사용중
 	bool IsDashing() const;
 	
-
+	inline bool IsRightDir() const
+	{
+		return RenderDir;
+	}
 
 protected:
 	void Start() override;
@@ -44,5 +47,9 @@ private:
 
 	PlayerFSM Fsm;
 
+	//true일때 오른쪽, false면 왼쪽
+	bool RenderDir = true;
+
+	void CheckDirection();
 };
 

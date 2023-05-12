@@ -60,15 +60,16 @@ void PlayerState_Idle::LoadAnimation()
 
 void PlayerState_Idle::CreateAnimation()
 {
-	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
-
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation
+	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFolderName,
 		.FrameInter = AniInterTime
 	});
+
+	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
+	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
@@ -87,18 +88,27 @@ void PlayerState_Idle::Update(float _DeltaTime)
 {
 	PlayerStateBase::Update(_DeltaTime);
 	
+	//이동
 	for (KeyNames Arrow : ArrowKeyNames)
 	{
 		if (false == KeyMgr::IsPress(Arrow))
 			continue;
 
-		GetFSM()->ChangeState(PlayerStateType::Move);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Move);
 		return;
 	}
 
+	//일반 기본 공격
+	if (true == KeyMgr::IsPress(KeyNames::Z))
+	{
+		GetFSM()->ChangeState(PlayerStateType::QuickAttack_Chop);
+		return;
+	}
+
+	//점프
 	if (true == KeyMgr::IsPress(KeyNames::Space))
 	{
-		GetFSM()->ChangeState(PlayerStateType::Jump);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Jump);
 		return;
 	}
 

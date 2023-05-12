@@ -208,9 +208,6 @@
     <Filter Include="05.Tool\01.GUI\01.GUIMgr">
       <UniqueIdentifier>{e3df9c9e-0776-4174-9523-7fc5e7812f5b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05.Tool\02.Actor">
-      <UniqueIdentifier>{3d6e9ea1-6044-4ce0-8145-6187552425b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="05.Tool\01.GUI\02.GUI\01.TransformViewer">
       <UniqueIdentifier>{83d24f76-66fd-4465-a415-6126305fe06d}</UniqueIdentifier>
     </Filter>
@@ -273,6 +270,21 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack">
       <UniqueIdentifier>{fb3c02f3-ba3d-419e-95c8-ce00fee52967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\01.Chop">
+      <UniqueIdentifier>{63b3c17c-5d39-4c80-b729-8352875ad98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\03.HookKick">
+      <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\02.SnapKick">
+      <UniqueIdentifier>{667e4a66-81f3-4dd3-86c0-c2caa8f3f6d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.BackKick">
+      <UniqueIdentifier>{26145561-3735-4f3e-aeb4-27e50d6159e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\07.SkillMgr">
+      <UniqueIdentifier>{ead731b4-4de0-412f-a2cc-a48e967cdfa7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -477,6 +489,21 @@
     <ClCompile Include="TestLevel.cpp">
       <Filter>99.Test\Level</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_QickAttack_Chop.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\01.Chop</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_SnapKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\02.SnapKick</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_HookKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\03.HookKick</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_BackKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.BackKick</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\07.SkillMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -670,6 +697,21 @@
     </ClInclude>
     <ClInclude Include="TestLevel.h">
       <Filter>99.Test\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QickAttack_Chop.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\01.Chop</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_SnapKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\02.SnapKick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_HookKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\03.HookKick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_BackKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.BackKick</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMgr.h">
+      <Filter>01.Core\03.Manager/Controller\07.SkillMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

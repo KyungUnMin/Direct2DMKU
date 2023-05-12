@@ -52,15 +52,16 @@ void PlayerState_Move::LoadAnimation()
 
 void PlayerState_Move::CreateAnimation() 
 {
-	PlayerStateBase::SpritePtr = GameEngineSprite::Find(AniFolderName);
-
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	PlayerStateBase::AniInfoPtr = Renderer->CreateAnimation
+	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFolderName,
 		.FrameInter = AniInterTime
 	});
+
+	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
+	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
@@ -92,20 +93,20 @@ void PlayerState_Move::Update(float _DeltaTime)
 
 	if (true == Check_Idle())
 	{
-		GetFSM()->ChangeState(PlayerStateType::Idle);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
 	}
 
 	if (true == KeyMgr::IsPress(KeyNames::Space))
 	{
-		GetFSM()->ChangeState(PlayerStateType::Jump);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Jump);
 		return;
 	}
 	
 	float NowTime = GetFSM()->GetFsmTime();
 	if (NowTime < (LastTime + 0.1f) && (PressArrow == LastArrow))
 	{
-		GetFSM()->ChangeState(PlayerStateType::Dash);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
 		return;
 	}
 
