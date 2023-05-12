@@ -361,6 +361,17 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 
 		AbsoluteReset();
 
+
+		//기존의 레벨 그룹에서 자기자신을 제거
+		GameEngineLevel* Level = Master->GetLevel();
+		//Ref 유지하기 위해 여기서 받아놓는다
+		std::shared_ptr<GameEngineObject> MasterPtr = Master->shared_from_this();
+		//엑터인 경우에만 레벨 리스트에서 제거
+		if (nullptr != dynamic_cast<GameEngineActor*>(Master))
+		{
+			Level->Actors[MasterPtr->GetOrder()].remove(std::dynamic_pointer_cast<GameEngineActor>(MasterPtr));
+		}
+
 		//부모의 Transform 자식리스트에 자기 자신을 등록
 		Parent->Child.push_back(this);
 
