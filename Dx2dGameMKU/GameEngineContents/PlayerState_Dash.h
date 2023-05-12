@@ -21,7 +21,8 @@ protected:
 
 private:
 	static const std::string_view AniName;
-	static const std::string_view AniFolderName;
+	static const std::string_view AniFileName;
+	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 
 

@@ -5,7 +5,8 @@
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_Move::AniName = "Walk";
-const std::string_view PlayerState_Move::AniFolderName = "PlayerWalk";
+const std::string_view PlayerState_Move::AniFileName = "Player_Walk.png";
+const std::pair<int, int> PlayerState_Move::AniCutFrame = std::pair<int, int>(4, 3);
 const float PlayerState_Move::AniInterTime = 0.08f;
 
 std::vector<KeyNames>  PlayerState_Move::CheckArrows =
@@ -47,21 +48,17 @@ void PlayerState_Move::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Movement");
-	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
 void PlayerState_Move::CreateAnimation() 
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
-		.SpriteName = AniFolderName,
+		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime
 	});
-
-	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
-	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 

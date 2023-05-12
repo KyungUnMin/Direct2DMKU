@@ -6,8 +6,10 @@
 #include "FieldPlayer.h"
 
 const float4 PlayerState_Dash::DashSpeed = float4{ 800.f, 400.f };
+
 const std::string_view PlayerState_Dash::AniName = "Dash";
-const std::string_view PlayerState_Dash::AniFolderName = "PlayerRun";
+const std::string_view PlayerState_Dash::AniFileName = "Player_Dash.png";
+const std::pair<int, int> PlayerState_Dash::AniCutFrame = std::pair<int, int>(4, 4);
 const float PlayerState_Dash::AniInterTime = 0.04f;
 
 PlayerState_Dash::PlayerState_Dash()
@@ -40,21 +42,17 @@ void PlayerState_Dash::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Movement");
-	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
 void PlayerState_Dash::CreateAnimation() 
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
-		.SpriteName = AniFolderName,
+		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime
 	});
-
-	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
-	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
@@ -62,9 +60,7 @@ void PlayerState_Dash::EnterState()
 {
 	PlayerStateBase::EnterState();
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	Renderer->ChangeAnimation(AniName);
-
+	GetRenderer()->ChangeAnimation(AniName);
 }
 
 

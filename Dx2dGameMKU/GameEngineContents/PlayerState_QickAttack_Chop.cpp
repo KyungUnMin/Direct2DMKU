@@ -6,7 +6,8 @@
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_QickAttack_Chop::AniName = "QuickAttack_Chop";
-const std::string_view PlayerState_QickAttack_Chop::AniFolderName = "PQA_Chop_01";
+const std::string_view PlayerState_QickAttack_Chop::AniFileName = "Player_QuickAttack_Chop.png";
+const std::pair<int, int> PlayerState_QickAttack_Chop::AniCutFrame = std::pair<int, int>(3, 2);
 const float PlayerState_QickAttack_Chop::AniInterTime = 0.08f;
 
 PlayerState_QickAttack_Chop::PlayerState_QickAttack_Chop()
@@ -39,35 +40,25 @@ void PlayerState_QickAttack_Chop::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Attack");
-	Dir.Move("RCG_QuickAttack");
-	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+	Dir.Move("QuickAttack");
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
 void PlayerState_QickAttack_Chop::CreateAnimation() 
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	AniInfoPtr = Renderer->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
-		.SpriteName = AniFolderName,
-		.FrameInter = AniInterTime,
-		.Loop = false
+		.SpriteName = AniFileName,
+		.FrameInter = AniInterTime
 	});
-
-	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
-	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
-
-	PlayerStateBase::SetAniFrameOffset(2, float4::Right * 29.f);
-	PlayerStateBase::SetAniFrameOffset(3, float4::Right * 29.f);
-	PlayerStateBase::SetAniFrameOffset(4, float4::Right * 28.f);
 }
 
 void PlayerState_QickAttack_Chop::EnterState()
 {
 	PlayerStateBase::EnterState();
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	Renderer->ChangeAnimation(AniName);
+	GetRenderer()->ChangeAnimation(AniName);
 }
 
 
@@ -82,7 +73,7 @@ void PlayerState_QickAttack_Chop::Update(float _DeltaTime)
 		IsReserveChainAttack = true;
 	}
 
-	if (false == AniInfoPtr->IsEnd())
+	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
 	/*if (false == IsReserveChainAttack)

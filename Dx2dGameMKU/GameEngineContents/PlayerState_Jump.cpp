@@ -9,7 +9,8 @@
 
 
 const std::string_view PlayerState_Jump::AniName = "Jump";
-const std::string_view PlayerState_Jump::AniFolderName = "PlayerJump";
+const std::string_view PlayerState_Jump::AniFileName = "Player_Jump.png";
+const std::pair<int, int> PlayerState_Jump::AniCutFrame = std::pair<int, int>(3, 1);
 const float PlayerState_Jump::AniInterTime = 0.08f;
 
 PlayerState_Jump::PlayerState_Jump()
@@ -45,23 +46,19 @@ void PlayerState_Jump::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Movement");
-	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 } 
 
 
 void PlayerState_Jump::CreateAnimation()
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
-		.SpriteName = AniFolderName,
+		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
-
-	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
-	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 

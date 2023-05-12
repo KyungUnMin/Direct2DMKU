@@ -5,7 +5,8 @@
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_Idle::AniName = "Idle";
-const std::string_view PlayerState_Idle::AniFolderName = "PlayerIdle";
+const std::string_view PlayerState_Idle::AniFileName = "Player_Idle.png";
+const std::pair<int, int> PlayerState_Idle::AniCutFrame = std::pair<int, int>(4, 3);
 const float PlayerState_Idle::AniInterTime = 0.08f;
 
 PlayerState_Idle::PlayerState_Idle()
@@ -53,23 +54,19 @@ void PlayerState_Idle::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Movement");
-	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
 
 
 void PlayerState_Idle::CreateAnimation()
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
-		.SpriteName = AniFolderName,
+		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime
 	});
-
-	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
-	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
@@ -77,8 +74,7 @@ void PlayerState_Idle::EnterState()
 {
 	PlayerStateBase::EnterState();
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	Renderer->ChangeAnimation(AniName);
+	GetRenderer()->ChangeAnimation(AniName);
 }
 
 

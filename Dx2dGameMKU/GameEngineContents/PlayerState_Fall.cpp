@@ -6,7 +6,8 @@
 #include "PlayerState_Dash.h"
 
 const std::string_view PlayerState_Fall::AniName = "Fall";
-const std::string_view PlayerState_Fall::AniFolderName = "PlayerFall";
+const std::string_view PlayerState_Fall::AniFileName = "Player_Fall.png";
+const std::pair<int, int> PlayerState_Fall::AniCutFrame = std::pair<int, int>(2, 1);
 const float PlayerState_Fall::AniInterTime = 0.08f;
 
 PlayerState_Fall::PlayerState_Fall()
@@ -41,23 +42,19 @@ void PlayerState_Fall::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Player");
 	Dir.Move("Movement");
-	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(AniFolderName).GetFullPath());
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
 
 void PlayerState_Fall::CreateAnimation()
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = GetRenderer();
-	std::shared_ptr<AnimationInfo> AniInfoPtr = Renderer->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
-		.SpriteName = AniFolderName,
+		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
-
-	std::shared_ptr<GameEngineSprite> SpritePtr = GameEngineSprite::Find(AniFolderName);
-	PlayerStateBase::SetAnimationInfo(SpritePtr, AniInfoPtr);
 }
 
 
