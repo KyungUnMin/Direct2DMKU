@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineSpriteRenderer;
 
 class FieldActorBase : public GameEngineActor
 {
@@ -60,15 +61,20 @@ protected:
 		return BGPtr;
 	}
 
+
+
 private:
 	float Height = 0.f;
 
+
+	
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
-	std::shared_ptr<class GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
 	std::pair<int, int> GridPos = { 0, 0 };
 
-	std::shared_ptr<class GameEngineSpriteRenderer> RendererPtr = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = nullptr;
 
+	void CreateShadow();
 	void CreateDebugGridPoint();
 	void Update_GridDebug();
 };

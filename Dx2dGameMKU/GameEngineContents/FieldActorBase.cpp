@@ -3,6 +3,7 @@
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 
+#include "RCGDefine.h"
 #include "KeyMgr.h"
 
 #include "FieldLevelBase.h"
@@ -23,9 +24,32 @@ void FieldActorBase::Start()
 {
 	GameEngineActor::Start();
 
+	CreateShadow();
 	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 	CreateDebugGridPoint();
+}
+
+void FieldActorBase::CreateShadow()
+{
+	static bool IsLoad = false;
+	const std::string_view ShadowImageName = "FieldCharShadow.png";
+	if (false == IsLoad)
+	{
+
+		GameEngineDirectory Dir;
+		RCGDefine::MoveContentPath(Dir, ResType::Image);
+		Dir.Move("Character");
+		GameEngineTexture::Load(Dir.GetPlusFileName(ShadowImageName).GetFullPath());
+		IsLoad = true;
+	}
+
+	std::shared_ptr<GameEngineSpriteRenderer> ShadowRender = CreateComponent<GameEngineSpriteRenderer>();
+	ShadowRender->SetScaleToTexture(ShadowImageName);
+
+	GameEngineTransform* ShadowTrans = ShadowRender->GetTransform();
+	ShadowTrans->SetLocalScale(ShadowTrans->GetLocalScale() * 1.5f);
+	ShadowTrans->AddLocalPosition(float4::Up * 10.f);
 }
 
 void FieldActorBase::CreateDebugGridPoint()
