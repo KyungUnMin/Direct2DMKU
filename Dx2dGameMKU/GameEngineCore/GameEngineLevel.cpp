@@ -17,8 +17,8 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::ActorUpdate(float _DeltaTime)
 {
-	////부모가 있는 오브젝트라면 레벨의 List에서 제외시키고
-	////부모쪽을 통해 Update 및 Render 들의 함수를 호출받게끔 한다
+	//부모가 있는 오브젝트라면 레벨의 List에서 제외시키고
+	//부모쪽을 통해 Update 및 Render 들의 함수를 호출받게끔 한다
 	//{
 	//	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
 	//	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();

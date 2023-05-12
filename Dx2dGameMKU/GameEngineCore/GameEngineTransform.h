@@ -5,6 +5,54 @@
 #include "GameEngineObjectBase.h"
 
 
+//-----------------Collision--------------
+
+enum class ColType
+{
+	POINT2D, 
+	SPHERE2D,
+	AABBBOX2D,
+	OBBBOX2D,
+
+	POINT3D,
+	SPHERE3D,
+	AABBBOX3D,
+	OBBBOX3D,
+
+	MAX,
+};
+
+
+class CollisionData
+{
+public:
+	union
+	{
+		DirectX::BoundingSphere SPHERE;
+		DirectX::BoundingBox AABB;
+		DirectX::BoundingOrientedBox OBB;
+	};
+
+	CollisionData()
+	{
+
+	}
+};
+
+
+class CollisionParameter
+{
+public:
+	class GameEngineTransform* _OtherTrans = nullptr;
+	ColType ThisType = ColType::SPHERE3D;
+	ColType OtherType = ColType::SPHERE3D;
+};
+
+
+
+
+//-----------------Transform--------------
+
 struct TransformData
 {
 	// °è»ê¿ë
@@ -258,10 +306,11 @@ public:
 	float4 GetLocalPosition();
 	float4 GetLocalScale();
 	float4 GetLocalRotation();
+	float4 GetLocalQuaternion();
 	float4 GetWorldPosition();
 	float4 GetWorldScale();
 	float4 GetWorldRotation();
-
+	float4 GetWorldQuaternion();
 
 
 	float4x4 GetLocalWorldMatrix()
@@ -395,5 +444,46 @@ private:
 	}
 
 	GameEngineObject* Master = nullptr;
+
+
+
+
+	//---------------Collision-----------
+
+
+
+public:
+	bool Collision(const CollisionParameter& Data);
+
+private:
+	friend class InitColFunction;
+
+	CollisionData ColData;
+
+	static std::function<bool(GameEngineTransform*, GameEngineTransform*)> ArrColFunction[static_cast<int>(ColType::MAX)][static_cast<int>(ColType::MAX)];
+
+	static bool SphereToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool SphereToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool SphereToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+
+	static bool AABBToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool AABBToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool AABBToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+
+	static bool OBBToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool OBBToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool OBBToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+
+	static bool Sphere2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool Sphere2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool Sphere2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+
+	static bool AABB2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool AABB2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool AABB2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+
+	static bool OBB2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool OBB2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool OBB2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
 };
 

@@ -24,6 +24,8 @@ void FieldEnemyBase::Start()
 	//RendererPtr->GetTransform()->SetLocalScale()
 }
 
+#include "FieldPlayer.h"
+
 void FieldEnemyBase::Update(float _DeltaTime)
 {
 	if (GameState::OnField != RCG_GameCore::GetCurGameState())
