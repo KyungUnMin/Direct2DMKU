@@ -6,9 +6,9 @@
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_QickAttack_Chop::AniName = "QuickAttack_Chop";
-const std::string_view PlayerState_QickAttack_Chop::AniFileName = "Player_QuickAttack_Chop.png";
+const std::string_view PlayerState_QickAttack_Chop::AniFileName = "Player_QuickAttack_Chop_01.png";
 const std::pair<int, int> PlayerState_QickAttack_Chop::AniCutFrame = std::pair<int, int>(3, 2);
-const float PlayerState_QickAttack_Chop::AniInterTime = 0.08f;
+const float PlayerState_QickAttack_Chop::AniInterTime = 0.06f;
 
 PlayerState_QickAttack_Chop::PlayerState_QickAttack_Chop()
 {
@@ -50,7 +50,8 @@ void PlayerState_QickAttack_Chop::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false
 	});
 }
 
@@ -76,12 +77,13 @@ void PlayerState_QickAttack_Chop::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	/*if (false == IsReserveChainAttack)
+	if (false == IsReserveChainAttack)
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
-	}*/
-	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
+	}
+
+	GetFSM()->ChangeState(PlayerStateType::QuickAttack_SnapKick);
 	return;
 
 	//TODO
