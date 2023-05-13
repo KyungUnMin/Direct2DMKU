@@ -272,11 +272,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayerState_SpecialAttack_DragonFeet.h">
+    <ClInclude Include="PlayerState_UniqueAttack_DragonFeet.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayerState_SpecialAttack_HyrricaneKick.h">
+    <ClInclude Include="PlayerState_UniqueAttack_HyrricaneKick.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -550,11 +550,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayerState_SpecialAttack_DragonFeet.cpp">
+    <ClCompile Include="PlayerState_UniqueAttack_DragonFeet.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayerState_SpecialAttack_HyrricaneKick.cpp">
+    <ClCompile Include="PlayerState_UniqueAttack_HyrricaneKick.cpp">
       <SubType>
       </SubType>
     </ClCompile>
