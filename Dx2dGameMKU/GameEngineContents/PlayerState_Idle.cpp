@@ -70,6 +70,8 @@ void PlayerState_Idle::CreateAnimation()
 }
 
 
+
+
 void PlayerState_Idle::EnterState()
 {
 	PlayerStateBase::EnterState();
@@ -84,6 +86,7 @@ void PlayerState_Idle::Update(float _DeltaTime)
 {
 	PlayerStateBase::Update(_DeltaTime);
 	
+
 	//이동
 	for (KeyNames Arrow : ArrowKeyNames)
 	{
@@ -94,12 +97,32 @@ void PlayerState_Idle::Update(float _DeltaTime)
 		return;
 	}
 
+
 	//일반 기본 공격
 	if (true == KeyMgr::IsPress(KeyNames::Z))
 	{
 		GetFSM()->ChangeState(PlayerStateType::QuickAttack_Chop);
 		return;
 	}
+
+	//특수 공격
+	if (true == KeyMgr::IsPress(KeyNames::X))
+	{
+		GetFSM()->ChangeState(PlayerStateType::SpecialAttack_AxeKick);
+		return;
+	}
+
+
+	//특수 스킬
+	if (true == KeyMgr::IsPress(KeyNames::C))
+	{
+		GetFSM()->ChangeState(PlayerStateType::UniqueAttack_DragonFeet);
+		return;
+	}
+
+
+	
+
 
 	//점프
 	if (true == KeyMgr::IsPress(KeyNames::Space))
@@ -109,4 +132,6 @@ void PlayerState_Idle::Update(float _DeltaTime)
 	}
 
 }
+
+
 

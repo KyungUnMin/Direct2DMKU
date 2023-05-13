@@ -543,6 +543,9 @@
     <ClCompile Include="PlayerState_UniqueAttack_HyrricaneKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\02.HyrricaneKick</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_Stomp.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -766,6 +769,9 @@
     </ClInclude>
     <ClInclude Include="PlayerState_UniqueAttack_HyrricaneKick.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\02.HyrricaneKick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_Stomp.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

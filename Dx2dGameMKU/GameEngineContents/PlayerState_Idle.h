@@ -31,5 +31,6 @@ private:
 	void SetArrowKey();
 	void LoadAnimation();
 	void CreateAnimation();
+
 };
 

@@ -16,7 +16,6 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
-	void ExitState() override;
 
 private:
 	static const std::string_view AniName;

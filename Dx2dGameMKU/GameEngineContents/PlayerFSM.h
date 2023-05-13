@@ -18,9 +18,22 @@ enum class PlayerStateType
 	QuickAttack_CrescentKick,
 
 	//Special Attack
+	SpecialAttack_AxeKick,
+	SpecialAttack_Stomp,
+	SpecialAttack_DAP,
+
+	//Unique Attack
+	UniqueAttack_DragonFeet,
+	UniqueAttack_HyrricaneKick,
+
+
+	//Dash Attack
 	
 
+
 	//Damaged
+
+
 
 	COUNT
 };

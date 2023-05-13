@@ -1,25 +1,25 @@
 #include "PrecompileHeader.h"
-#include "PlayerState_SpecialAttack_AxeKick.h"
+#include "PlayerState_SpecialAttack_Stomp.h"
 
 
 #include "PlayerFSM.h"
 
-const std::string_view PlayerState_SpecialAttack_AxeKick::AniName = "SpecialAttack_AxeKick";
-const std::string_view PlayerState_SpecialAttack_AxeKick::AniFileName = "Player_SpecialAttack_AxeKick.png";
-const std::pair<int, int> PlayerState_SpecialAttack_AxeKick::AniCutFrame = std::pair<int, int>(4, 5);
-const float PlayerState_SpecialAttack_AxeKick::AniInterTime = 0.05f;
+const std::string_view PlayerState_SpecialAttack_Stomp::AniName = "SpecialAttack_Stomp";
+const std::string_view PlayerState_SpecialAttack_Stomp::AniFileName = "Player_SpecialAttack_Stomp.png";
+const std::pair<int, int> PlayerState_SpecialAttack_Stomp::AniCutFrame = std::pair<int, int>(5, 2);
+const float PlayerState_SpecialAttack_Stomp::AniInterTime = 0.05f;
 
-PlayerState_SpecialAttack_AxeKick::PlayerState_SpecialAttack_AxeKick()
+PlayerState_SpecialAttack_Stomp::PlayerState_SpecialAttack_Stomp()
 {
 
 }
 
-PlayerState_SpecialAttack_AxeKick::~PlayerState_SpecialAttack_AxeKick()
+PlayerState_SpecialAttack_Stomp::~PlayerState_SpecialAttack_Stomp()
 {
 
 }
 
-void PlayerState_SpecialAttack_AxeKick::Start()
+void PlayerState_SpecialAttack_Stomp::Start()
 {
 	PlayerStateBase::Start();
 
@@ -27,7 +27,7 @@ void PlayerState_SpecialAttack_AxeKick::Start()
 	CreateAnimation();
 }
 
-void PlayerState_SpecialAttack_AxeKick::LoadAnimation()
+void PlayerState_SpecialAttack_Stomp::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -43,20 +43,18 @@ void PlayerState_SpecialAttack_AxeKick::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void PlayerState_SpecialAttack_AxeKick::CreateAnimation()
+void PlayerState_SpecialAttack_Stomp::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = 0,
-		.End = 16,
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
 }
 
-void PlayerState_SpecialAttack_AxeKick::EnterState()
+void PlayerState_SpecialAttack_Stomp::EnterState()
 {
 	PlayerStateBase::EnterState();
 
@@ -66,7 +64,7 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 
 
 
-void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
+void PlayerState_SpecialAttack_Stomp::Update(float _DeltaTime)
 {
 	PlayerStateBase::Update(_DeltaTime);
 

@@ -88,18 +88,45 @@ void PlayerState_Move::Update(float _DeltaTime)
 {
 	PlayerStateBase::Update(_DeltaTime);
 
+	//아이들 처리
 	if (true == Check_Idle())
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
 	}
 
+
+	//일반 기본 공격
+	if (true == KeyMgr::IsPress(KeyNames::Z))
+	{
+		GetFSM()->ChangeState(PlayerStateType::QuickAttack_Chop);
+		return;
+	}
+
+	//특수 공격
+	if (true == KeyMgr::IsPress(KeyNames::X))
+	{
+		GetFSM()->ChangeState(PlayerStateType::SpecialAttack_DAP);
+		return;
+	}
+
+
+	//특수 스킬
+	if (true == KeyMgr::IsPress(KeyNames::C) && true == KeyMgr::IsPress(KeyNames::DownArrow))
+	{
+		GetFSM()->ChangeState(PlayerStateType::UniqueAttack_HyrricaneKick);
+		return;
+	}
+
+
+	//점프 처리
 	if (true == KeyMgr::IsPress(KeyNames::Space))
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Jump);
 		return;
 	}
 	
+	//대시처리
 	float NowTime = GetFSM()->GetFsmTime();
 	if (NowTime < (LastTime + 0.1f) && (PressArrow == LastArrow))
 	{
@@ -108,12 +135,9 @@ void PlayerState_Move::Update(float _DeltaTime)
 	}
 
 
-	/*if (false == FieldPlayer::GPtr->IsGround() && true == IsOnAir())
-	{
-		GetFSM()->ChangeState(PlayerStateType::Fall);
-		return;
-	}*/
+	
 
+	//실제 이동
 	PlayerStateBase::Update_Move(_DeltaTime);
 }
 
