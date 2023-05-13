@@ -289,6 +289,24 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick">
       <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack">
+      <UniqueIdentifier>{69f61c3e-7fa4-4f87-b4fd-315bf66ceebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.Stomp">
+      <UniqueIdentifier>{6e0d59db-9d23-48bf-9e8b-e7355141567f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\04.HyrricaneKick">
+      <UniqueIdentifier>{c910c060-c5a0-4795-9dab-f7bedab9e246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\03.DragonFeet">
+      <UniqueIdentifier>{6761f90f-4bf8-4ca1-9f7a-05866efb3588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.DAP">
+      <UniqueIdentifier>{16a05d2a-643c-4691-8379-26a9f7b7439a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\01.AxeKick">
+      <UniqueIdentifier>{3f13f720-526a-4ba3-b24f-d498fc2e23eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -510,6 +528,18 @@
     <ClCompile Include="PlayerState_QuickAttack_CrescentKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_AxeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\01.AxeKick</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_DAP.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.DAP</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_DragonFeet.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\03.DragonFeet</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_HyrricaneKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\04.HyrricaneKick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -721,6 +751,18 @@
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_CrescentKick.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_AxeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\01.AxeKick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_DAP.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.DAP</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_DragonFeet.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\03.DragonFeet</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_HyrricaneKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\04.HyrricaneKick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

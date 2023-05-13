@@ -264,6 +264,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_AxeKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_DAP.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_DragonFeet.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_HyrricaneKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ResourceHelper.h">
       <SubType>
       </SubType>
@@ -523,6 +539,22 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_SnapKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_AxeKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_DAP.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_DragonFeet.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_HyrricaneKick.cpp">
       <SubType>
       </SubType>
     </ClCompile>
