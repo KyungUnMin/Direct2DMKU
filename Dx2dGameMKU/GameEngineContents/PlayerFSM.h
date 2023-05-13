@@ -13,8 +13,9 @@ enum class PlayerStateType
 	//Quick Attack
 	QuickAttack_Chop,
 	QuickAttack_SnapKick,
-	QuickAttack_HookKick,
 	QuickAttack_BackKick,
+	QuickAttack_HookKick,
+	QuickAttack_CrescentKick,
 
 	//Special Attack
 	

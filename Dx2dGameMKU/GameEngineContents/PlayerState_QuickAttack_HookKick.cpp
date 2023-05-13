@@ -9,7 +9,7 @@
 const std::string_view PlayerState_QuickAttack_HookKick::AniName = "QuickAttack_HookKick";
 const std::string_view PlayerState_QuickAttack_HookKick::AniFileName = "Player_QuickAttack_HookKick_04.png";
 const std::pair<int, int> PlayerState_QuickAttack_HookKick::AniCutFrame = std::pair<int, int>(5, 2);
-const float PlayerState_QuickAttack_HookKick::AniInterTime = 0.06f;
+const float PlayerState_QuickAttack_HookKick::AniInterTime = 0.05f;
 
 PlayerState_QuickAttack_HookKick::PlayerState_QuickAttack_HookKick()
 {
@@ -80,16 +80,14 @@ void PlayerState_QuickAttack_HookKick::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	/*if (false == IsReserveChainAttack)
+	if (false == IsReserveChainAttack)
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
-	}*/
+	}
 
-	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
-
-	/*GetFSM()->ChangeState(PlayerStateType::QuickAttack_BackKick);
-	return;*/
+	GetFSM()->ChangeState(PlayerStateType::QuickAttack_CrescentKick);
+	return;
 
 	//TODO
 }

@@ -1,26 +1,27 @@
 #include "PrecompileHeader.h"
-#include "PlayerState_QuickAttack_BackKick.h"
+#include "PlayerState_QuickAttack_CrescentKick.h"
 
 #include "KeyMgr.h"
 
 #include "PlayerFSM.h"
 
-const std::string_view PlayerState_QuickAttack_BackKick::AniName = "QuickAttack_BackKick";
-const std::string_view PlayerState_QuickAttack_BackKick::AniFileName = "Player_QuickAttack_BackKick_03.png";
-const std::pair<int, int> PlayerState_QuickAttack_BackKick::AniCutFrame = std::pair<int, int>(4, 3);
-const float PlayerState_QuickAttack_BackKick::AniInterTime = 0.05f;
+const std::string_view PlayerState_QuickAttack_CrescentKick::AniName = "QuickAttack_CrescentKick";
+const std::string_view PlayerState_QuickAttack_CrescentKick::AniFileName = "Player_QuickAttack_CrescentKick_Plus.png";
+const std::pair<int, int> PlayerState_QuickAttack_CrescentKick::AniCutFrame = std::pair<int, int>(5, 2);
+const float PlayerState_QuickAttack_CrescentKick::AniInterTime = 0.06f;
 
-PlayerState_QuickAttack_BackKick::PlayerState_QuickAttack_BackKick()
+
+PlayerState_QuickAttack_CrescentKick::PlayerState_QuickAttack_CrescentKick()
 {
 
 }
 
-PlayerState_QuickAttack_BackKick::~PlayerState_QuickAttack_BackKick()
+PlayerState_QuickAttack_CrescentKick::~PlayerState_QuickAttack_CrescentKick()
 {
 
 }
 
-void PlayerState_QuickAttack_BackKick::Start()
+void PlayerState_QuickAttack_CrescentKick::Start()
 {
 	PlayerStateBase::Start();
 
@@ -28,7 +29,7 @@ void PlayerState_QuickAttack_BackKick::Start()
 	CreateAnimation();
 }
 
-void PlayerState_QuickAttack_BackKick::LoadAnimation()
+void PlayerState_QuickAttack_CrescentKick::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -44,18 +45,20 @@ void PlayerState_QuickAttack_BackKick::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void PlayerState_QuickAttack_BackKick::CreateAnimation()
+void PlayerState_QuickAttack_CrescentKick::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
+		.Start = 0,
+		.End = 8,
 		.FrameInter = AniInterTime,
 		.Loop = false
-		});
+	});
 }
 
-void PlayerState_QuickAttack_BackKick::EnterState()
+void PlayerState_QuickAttack_CrescentKick::EnterState()
 {
 	PlayerStateBase::EnterState();
 
@@ -65,7 +68,7 @@ void PlayerState_QuickAttack_BackKick::EnterState()
 
 
 
-void PlayerState_QuickAttack_BackKick::Update(float _DeltaTime)
+void PlayerState_QuickAttack_CrescentKick::Update(float _DeltaTime)
 {
 	PlayerStateBase::Update(_DeltaTime);
 
@@ -77,20 +80,20 @@ void PlayerState_QuickAttack_BackKick::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	if (false == IsReserveChainAttack)
+	/*if (false == IsReserveChainAttack)
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
-	}
+	}*/
 
-	GetFSM()->ChangeState(PlayerStateType::QuickAttack_HookKick);
+	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 	return;
 
 	//TODO
 }
 
 
-void PlayerState_QuickAttack_BackKick::ExitState()
+void PlayerState_QuickAttack_CrescentKick::ExitState()
 {
 	PlayerStateBase::ExitState();
 

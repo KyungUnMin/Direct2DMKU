@@ -9,8 +9,9 @@
 
 #include "PlayerState_QickAttack_Chop.h"
 #include "PlayerState_QuickAttack_SnapKick.h"
-#include "PlayerState_QuickAttack_HookKick.h"
 #include "PlayerState_QuickAttack_BackKick.h"
+#include "PlayerState_QuickAttack_HookKick.h"
+#include "PlayerState_QuickAttack_CrescentKick.h"
 
 PlayerFSM::PlayerFSM()
 {
@@ -38,8 +39,10 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	//Quick Attack
 	FSMBase::CreateState<PlayerState_QickAttack_Chop>(PlayerStateType::QuickAttack_Chop);
 	FSMBase::CreateState<PlayerState_QuickAttack_SnapKick>(PlayerStateType::QuickAttack_SnapKick);
-	FSMBase::CreateState<PlayerState_QuickAttack_HookKick>(PlayerStateType::QuickAttack_HookKick);
 	FSMBase::CreateState<PlayerState_QuickAttack_BackKick>(PlayerStateType::QuickAttack_BackKick);
+	FSMBase::CreateState<PlayerState_QuickAttack_HookKick>(PlayerStateType::QuickAttack_HookKick);
+	FSMBase::CreateState<PlayerState_QuickAttack_CrescentKick>(PlayerStateType::QuickAttack_CrescentKick);
+
 
 	
 	//Special Attack

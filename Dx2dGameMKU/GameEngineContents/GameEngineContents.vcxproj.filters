@@ -286,6 +286,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.HookKick">
       <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick">
+      <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -504,6 +507,9 @@
     <ClCompile Include="SkillMgr.cpp">
       <Filter>01.Core\03.Manager/Controller\07.SkillMgr</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_QuickAttack_CrescentKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -712,6 +718,9 @@
     </ClInclude>
     <ClInclude Include="SkillMgr.h">
       <Filter>01.Core\03.Manager/Controller\07.SkillMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_QuickAttack_CrescentKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
