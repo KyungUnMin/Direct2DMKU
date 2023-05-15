@@ -6,8 +6,6 @@
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 
-const std::string_view BossVursus::PortraitCBufferName = "NoiseFilter";
-
 const std::string_view BossVursus::SchoolName_FileName			= "MISUZU_NAME.png";
 const std::string_view BossVursus::SchoolPortrait_FileName		= "MisuzuPortrait.png";
 const std::string_view BossVursus::OcenePortrait_FileName		= "NoisePortrait.png";
@@ -23,6 +21,8 @@ const std::string_view BossVursus::TownName_FileName			= "YAMADA_NAME.png";
 const std::string_view BossVursus::TownPortrait_FileName		= "YamadaPortrait.png";
 
 const std::string_view BossVursus::PortraitPipeName = "Burn";
+const std::string_view BossVursus::PortraitCBufferName = "NoiseFilter";
+
 
 BossVursus::BossVursus()
 {
@@ -42,8 +42,6 @@ void BossVursus::Start()
 
 	LoadImages();
 	CreateRenderers();
-
-	//FSM에서 상수버퍼 넣어줘야 함
 }
 
 
@@ -77,12 +75,18 @@ void BossVursus::CreateRenderers()
 	for (size_t i = 0; i < SpriteRenders.size(); ++i)
 	{
 		SpriteRenders[i] = CreateComponent<GameEngineSpriteRenderer>();
+		//SpriteRenders[i]->Off();
 	}
 
 	PlayerPortrait = CreateComponent<GameEngineRenderer>();
 	PlayerPortrait->SetPipeLine(PortraitPipeName);
+	PlayerPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
+	//PlayerPortrait->Off();
+
 	BossPortrait = CreateComponent<GameEngineRenderer>();
 	BossPortrait->SetPipeLine(PortraitPipeName);
+	BossPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
+	//BossPortrait->Off();
 }
 
 
@@ -152,6 +156,26 @@ void BossVursus::Init(BossType _Boss)
 	BossPortrait->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, BossPortName);
 	const float4& BossPortScale = GameEngineTexture::Find(BossPortName)->GetScale();
 	PlayerPortrait->GetTransform()->SetLocalScale(BossPortScale);
+
+	
+	//테스트 코드 : 나중에 리소스에서 직접 스케일을 줄이자
+	{
+		for (size_t i = 0; i < SpriteRenders.size(); ++i)
+		{
+			GameEngineTransform* RenderTrans = SpriteRenders[i]->GetTransform();
+			float4 RenderScale = RenderTrans->GetLocalScale();
+			RenderTrans->SetLocalScale(RenderScale * 0.2f);
+		}
+
+		GameEngineTransform* PlayerRenderTrans = PlayerPortrait->GetTransform();
+		GameEngineTransform* BossRenderTrans = BossPortrait->GetTransform();
+
+		float4 PlayerRenderScale = PlayerRenderTrans->GetLocalScale();
+		float4 BossRenderScale = BossRenderTrans->GetLocalScale();
+
+		PlayerRenderTrans->SetLocalScale(PlayerRenderScale * 0.65f);
+		BossRenderTrans->SetLocalScale(BossRenderScale * 0.65f);
+	}
 }
 
 
@@ -161,6 +185,7 @@ void BossVursus::Update(float _DeltaTime)
 {
 	UIBase::Update(_DeltaTime);
 
-
+	Timer += _DeltaTime;
+	Update_FSM(_DeltaTime);
 }
 

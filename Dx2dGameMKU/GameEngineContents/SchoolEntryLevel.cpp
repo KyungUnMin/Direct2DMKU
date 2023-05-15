@@ -47,6 +47,7 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 #include "BossIntroMovie.h"
 #include "BurnExample.h"
+#include "BossVursus.h"
 
 
 void SchoolEntryLevel::Start()
@@ -75,7 +76,7 @@ void SchoolEntryLevel::Start()
 	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
 
 
-	CreateActor<BurnExample>(static_cast<int>(UpdateOrder::Defalut));
+	CreateActor<BossVursus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
 }
 
 

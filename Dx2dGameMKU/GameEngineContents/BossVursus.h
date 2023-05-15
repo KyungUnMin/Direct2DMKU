@@ -16,8 +16,6 @@ class GameEngineSpriteRenderer;
 class BossVursus : public UIBase
 {
 public:
-	static const std::string_view PortraitCBufferName;
-
 	enum class RenderType
 	{
 		LeftCornerBlack,
@@ -42,34 +40,6 @@ public:
 
 	void Init(BossType _Boss);
 
-	inline std::shared_ptr<GameEngineRenderer> GetRender(RenderType _Type) const
-	{
-		if (RenderType::COUNT == _Type)
-		{
-			MsgAssert("유효하지 않은 접근입니다");
-			return nullptr;
-		}
-
-		size_t Index = static_cast<size_t>(_Type);
-		if (nullptr == SpriteRenders[Index])
-		{
-			MsgAssert("해당 렌더러를 만들어 준 적이 없습니다");
-			return nullptr;
-		}
-
-	
-	}
-
-	inline std::shared_ptr<GameEngineRenderer> GetPlayerPortrait() const
-	{
-		return PlayerPortrait;
-	}
-
-	inline std::shared_ptr<GameEngineRenderer> GetBossPortrait() const
-	{
-		return BossPortrait;
-	}
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -90,14 +60,41 @@ private:
 	static const std::string_view TownPortrait_FileName;
 
 	static const std::string_view PortraitPipeName;
+	static const std::string_view PortraitCBufferName;
 
 	std::vector<std::shared_ptr<GameEngineSpriteRenderer>> SpriteRenders;
 	std::shared_ptr<GameEngineRenderer> PlayerPortrait = nullptr;
 	std::shared_ptr<GameEngineRenderer> BossPortrait = nullptr;
 
 
-
 	void LoadImages();
 	void CreateRenderers();
+
+	//-----------------------------------FSM-------------------------
+
+private:
+	enum class State
+	{
+		Match,
+		CallName,
+		Fire,
+		Ready
+	};
+
+	struct ShaderData
+	{
+		float NoiseFilterValue = 1.0f;
+		const float NoiseImageScale = 5.f;
+		const float Garbage1 = 0.f;
+		const float Garbage2 = 0.f;
+	};
+
+	State CurState = State::Match;
+	float Timer = 0.f;
+	ShaderData CBufferData;
+
+
+	void Update_FSM(float _DeltaTime);
+	void Update_Match();
 };
 

@@ -179,14 +179,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BossVursusState_Approach.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BossVursusUIFSM.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="BurnExample.h">
       <SubType>
       </SubType>
@@ -490,14 +482,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BossVursusState_Approach.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BossVursusUIFSM.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="BossVursusFSM.cpp" />
     <ClCompile Include="BurnExample.cpp">
       <SubType>
       </SubType>
