@@ -29,6 +29,8 @@ public:
 	float Inter = 0.1f;
 	bool Loop = true;
 	bool ScaleToImage = false;
+	std::vector<size_t> FrameIndex = std::vector<size_t>();
+	std::vector<float >FrameTime = std::vector<float>();
 
 	bool IsEnd();
 };
@@ -45,6 +47,9 @@ public:
 	float FrameInter = 0.1f;
 	bool Loop = true;
 	bool ScaleToImage = false;
+
+	std::vector<size_t> FrameIndex = std::vector<size_t>();
+	std::vector<float >FrameTime = std::vector<float>();
 };
 
 class GameEngineSpriteRenderer : public GameEngineRenderer
@@ -85,8 +90,6 @@ public:
 	void ChangeAnimation(const std::string_view& _Name, size_t _Frame = -1, bool _Force = true);
 
 
-	//void AllAnimation();
-
 	inline bool IsAnimationEnd() const
 	{
 		return CurAnimation->IsEnd();
@@ -97,6 +100,12 @@ public:
 		return CurAnimation->CurFrame;
 	}
 
+	//애니메이션이 아닌 스프라이트로 잘린 이미지를 렌더할 때 사용(이름으로 찾기)
+	void SetSprite(const std::string_view& _SpriteName, size_t _Frame = 0);
+
+	//애니메이션이 아닌 스프라이트로 잘린 이미지를 렌더할 때 사용(현재 Sprite의 Frame으로 찾기)
+	void SetFrame(size_t _Frame);
+
 protected:
 
 private:
@@ -106,6 +115,9 @@ private:
 	//애니메이션을 그릴 UV 정보
 	float4 AtlasData = {0.f, 0.f, 1.f, 1.f};
 	float ScaleRatio = 1.0f;
+
+	std::shared_ptr<GameEngineSprite> Sprite = nullptr;
+	size_t Frame = -1;
 
 	void Start() override;
 	void Render(float _DeltaTime) override;

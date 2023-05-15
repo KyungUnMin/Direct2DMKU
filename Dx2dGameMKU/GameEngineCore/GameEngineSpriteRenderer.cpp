@@ -8,7 +8,7 @@
 
 const SpriteInfo& AnimationInfo::CurSpriteInfo()
 {
-	const SpriteInfo& Info = Sprite->GetSpriteInfo(CurFrame);
+	const SpriteInfo& Info = Sprite->GetSpriteInfo(FrameIndex[CurFrame]);
 	return Info;
 }
 
@@ -21,8 +21,8 @@ bool AnimationInfo::IsEnd()
 
 void AnimationInfo::Reset()
 {
-	CurFrame = StartFrame;
-	CurTime = Inter;
+	CurFrame = 0;
+	CurTime = FrameTime[0];
 	IsEndValue = false;
 }
 
@@ -37,17 +37,16 @@ void AnimationInfo::Update(float _DeltaTime)
 	{
 		//다음 프레임으로 전환
 		++CurFrame;
-		CurTime += Inter;
 		
 		//방금전이 마지막 프레임이였다면
-		if (EndFrame < CurFrame)
+		if (FrameIndex.size() <= CurFrame)
 		{
 			IsEndValue = true;
 
 			//반복재생인 경우
 			if (true == Loop)
 			{
-				CurFrame = StartFrame;
+				CurFrame = 0;
 			}
 			//반복재생이 아닌 경우
 			else
@@ -56,6 +55,8 @@ void AnimationInfo::Update(float _DeltaTime)
 				--CurFrame;
 			}
 		}
+
+		CurTime += FrameTime[CurFrame];
 	}
 
 }
@@ -128,6 +129,25 @@ void GameEngineSpriteRenderer::SetScaleToTexture(const std::string_view& _Name)
 	GetTransform()->SetLocalScale(Scale);
 }
 
+void GameEngineSpriteRenderer::SetSprite(const std::string_view& _SpriteName, size_t _Frame/* = 0*/)
+{
+	Sprite = GameEngineSprite::Find(_SpriteName);
+	Frame = _Frame;
+
+	const SpriteInfo& Info = Sprite->GetSpriteInfo(Frame);
+	GetShaderResHelper().SetTexture("DiffuseTex", Info.Texture);
+	AtlasData = Info.CutData;
+}
+
+void GameEngineSpriteRenderer::SetFrame(size_t _Frame)
+{
+	Frame = _Frame;
+
+	const SpriteInfo& Info = Sprite->GetSpriteInfo(Frame);
+	GetShaderResHelper().SetTexture("DiffuseTex", Info.Texture);
+	AtlasData = Info.CutData;
+}
+
 
 std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::FindAnimation(const std::string_view& _Name)
 {
@@ -159,46 +179,91 @@ std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::CreateAnimation(const A
 	std::shared_ptr<AnimationInfo> NewAnimation = std::make_shared<AnimationInfo>();
 	Animations[_Paramter.AnimationName.data()] = NewAnimation;
 
-	//디폴트 인자인 경우엔 폴더의 0번 스프라이트 부터 시작
-	if (-1 != _Paramter.Start)
+
+	// 프레임 인덱스 입력시
+	if (0 != _Paramter.FrameIndex.size())
 	{
-		if (_Paramter.Start < 0)
+		NewAnimation->FrameIndex = _Paramter.FrameIndex;
+	}
+
+	// 프레임 인덱스 미 입력시
+	else
+	{
+		//디폴트 인자인 경우엔 폴더의 0번 스프라이트 부터 시작
+		if (-1 != _Paramter.Start)
 		{
-			MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Paramter.AnimationName));
+			if (_Paramter.Start < 0)
+			{
+				MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Paramter.AnimationName));
+				return nullptr;
+			}
+
+			NewAnimation->StartFrame = _Paramter.Start;
+		}
+		//애니메이션 시작 위치를 직접 지정한 경우
+		else
+		{
+			NewAnimation->StartFrame = 0;
+		}
+
+
+		//디폴트 인자인 경우엔 폴더의 마지막 스프라이트까지 애니메이션 재생
+		if (-1 != _Paramter.End)
+		{
+			if (_Paramter.End >= Sprite->GetSpriteCount())
+			{
+				MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Paramter.AnimationName));
+				return nullptr;
+			}
+
+			NewAnimation->EndFrame = _Paramter.End;
+		}
+		//애니메이션 마지막 위치를 직접 지정한 경우
+		else
+		{
+			NewAnimation->EndFrame = Sprite->GetSpriteCount() - 1;
+		}
+
+		//예외처리
+		if (NewAnimation->EndFrame < NewAnimation->StartFrame)
+		{
+			MsgAssert("애니메이션을 생성할때 End가 Start보다 클 수 없습니다");
 			return nullptr;
 		}
 
-		NewAnimation->StartFrame = _Paramter.Start;
-	}
-	//애니메이션 시작 위치를 직접 지정한 경우
-	else
-	{
-		NewAnimation->StartFrame = 0;
-	}
 
+		NewAnimation->FrameIndex.reserve(NewAnimation->EndFrame - NewAnimation->StartFrame + 1);
 
-	//디폴트 인자인 경우엔 폴더의 마지막 스프라이트까지 애니메이션 재생
-	if (-1 != _Paramter.End)
-	{
-		if (_Paramter.End >= Sprite->GetSpriteCount())
+		// StartFrame 부터 EndFrame까지 순서대로 FrameIndex에 푸시
+		for (size_t i = NewAnimation->StartFrame; i <= NewAnimation->EndFrame; ++i)
 		{
-			MsgAssert("스프라이트 범위를 초과하는 인덱스로 애니메이션을 마들려고 했습니다." + std::string(_Paramter.AnimationName));
-			return nullptr;
+			NewAnimation->FrameIndex.push_back(i);
 		}
 
-		NewAnimation->EndFrame = _Paramter.End;
+
+		// 타임 데이터가 있다면
+		if (0 != _Paramter.FrameTime.size())
+		{
+			NewAnimation->FrameTime = _Paramter.FrameTime;
+		}
+
+		// 타임 데이터가 없다면
+		else
+		{
+			for (size_t i = 0; i < NewAnimation->FrameIndex.size(); ++i)
+			{
+				NewAnimation->FrameTime.push_back(_Paramter.FrameInter);
+			}
+		}
 	}
-	//애니메이션 마지막 위치를 직접 지정한 경우
-	else
-	{
-		NewAnimation->EndFrame = Sprite->GetSpriteCount() - 1;
-	}
+
+	
+
 
 
 	NewAnimation->Sprite = Sprite;
 	NewAnimation->Parent = this;
 	NewAnimation->Loop = _Paramter.Loop;
-	NewAnimation->Inter = _Paramter.FrameInter;
 	NewAnimation->ScaleToImage = _Paramter.ScaleToImage;
 
 	return NewAnimation;
