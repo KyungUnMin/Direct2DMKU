@@ -19,7 +19,7 @@ public:
 		return Order;
 	}
 
-	inline void SetOrder(int _Order)
+	virtual void SetOrder(int _Order)
 	{
 		Order = _Order;
 	}

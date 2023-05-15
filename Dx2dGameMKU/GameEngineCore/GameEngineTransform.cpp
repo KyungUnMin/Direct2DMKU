@@ -297,7 +297,7 @@ void GameEngineTransform::WorldDecompose()
 
 
 
-void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
+void GameEngineTransform::SetParent(GameEngineTransform* _Parent, bool _IsParentWorld /*= true*/)
 {
 	//만약 자식을 분리시킬때 분리시키는 대상이 Component인지 검사
 	if ((nullptr == Parent) && (nullptr == Master))
@@ -345,9 +345,13 @@ void GameEngineTransform::SetParent(GameEngineTransform* _Parent)
 	//부모가 생겼거나 바뀌였다면
 	if (nullptr != Parent)
 	{
-
-		//자식의 로컬 행렬에 부모의 월드 행렬의 역행렬을 곱한다
-		TransData.LocalWorldMatrix = TransData.WorldMatrix * Parent->TransData.LocalWorldMatrix.InverseReturn();
+		//부모의 월드좌표를 따를 때만
+		if (true == _IsParentWorld)
+		{
+			//자식의 로컬 행렬에 부모의 월드 행렬의 역행렬을 곱한다
+			TransData.LocalWorldMatrix = TransData.WorldMatrix * Parent->TransData.LocalWorldMatrix.InverseReturn();
+		}
+		
 		//로컬 행렬로부터 크자이 추출
 		LocalDecompose();
 

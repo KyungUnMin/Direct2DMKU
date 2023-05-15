@@ -92,6 +92,7 @@ void GameEngineCore::EngineUpdate()
 
 	//이벤트 시간 동작
 	MainLevel->TimeEvent.Update(TimeDeltaTime);
+	MainLevel->AccLiveTime(TimeDeltaTime);
 	MainLevel->Update(TimeDeltaTime);
 	MainLevel->ActorUpdate(TimeDeltaTime);
 

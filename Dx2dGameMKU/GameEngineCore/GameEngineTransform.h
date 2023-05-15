@@ -367,7 +367,7 @@ public:
 
 	void CalChild();
 
-	void SetParent(GameEngineTransform* _Parent);
+	void SetParent(GameEngineTransform* _Parent, bool _IsParentWorld = true);
 
 	inline GameEngineTransform* GetParent() const
 	{

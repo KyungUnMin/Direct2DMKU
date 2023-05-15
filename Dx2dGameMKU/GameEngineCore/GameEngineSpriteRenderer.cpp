@@ -24,6 +24,7 @@ void AnimationInfo::Reset()
 	CurFrame = 0;
 	CurTime = FrameTime[0];
 	IsEndValue = false;
+	IsPauseValue = false;
 }
 
 
@@ -32,12 +33,34 @@ void AnimationInfo::Update(float _DeltaTime)
 	IsEndValue = false;
 	CurTime -= _DeltaTime;
 
+	//정지중이면 return
+	if (true == IsPauseValue)
+	{
+		return;
+	}
+
+	//스프라이트 상의 현재 프레임
+	size_t CurFrameIndex = FrameIndex[CurFrame];
+
+	//Update콜백이 있으면 호출
+	if (UpdateEventFunction.end() != UpdateEventFunction.find(CurFrameIndex))
+	{
+		UpdateEventFunction[CurFrameIndex]();
+	}
+
 
 	if (CurTime < 0.0f)
 	{
 		//다음 프레임으로 전환
 		++CurFrame;
 		
+		//Start콜백이 있으면 호출
+		if (StartEventFunction.end() != StartEventFunction.find(CurFrameIndex))
+		{
+			StartEventFunction[CurFrameIndex]();
+		}
+
+
 		//방금전이 마지막 프레임이였다면
 		if (FrameIndex.size() <= CurFrame)
 		{
@@ -299,13 +322,20 @@ void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, si
 }
 
 
+void GameEngineSpriteRenderer::Update(float _Delta)
+{
+	if (nullptr != CurAnimation)
+	{
+		CurAnimation->Update(_Delta);
+	}
+}
+
 
 void GameEngineSpriteRenderer::Render(float _DeltaTime)
 {
 	//애니메이션 용 Sprite인 경우
 	if (nullptr != CurAnimation)
 	{
-		CurAnimation->Update(_DeltaTime);
 		const SpriteInfo& Info = CurAnimation->CurSpriteInfo();
 
 		GetShaderResHelper().SetTexture("DiffuseTex", Info.Texture);
@@ -320,6 +350,7 @@ void GameEngineSpriteRenderer::Render(float _DeltaTime)
 
 			Scale.x *= Info.CutData.SizeX;
 			Scale.y *= Info.CutData.SizeY;
+			Scale.z = 1.0f;
 
 			Scale *= ScaleRatio;
 
@@ -329,4 +360,33 @@ void GameEngineSpriteRenderer::Render(float _DeltaTime)
 
 	//일반 이미지 Sprite인 경우
 	GameEngineRenderer::Render(_DeltaTime);
+}
+
+
+
+
+void GameEngineSpriteRenderer::SetAnimationUpdateEvent(const std::string_view& _AnimationName, size_t _Frame, std::function<void()> _Event)
+{
+	std::shared_ptr<AnimationInfo>  Info = FindAnimation(_AnimationName);
+
+	if (nullptr == Info)
+	{
+		MsgAssert("존재하지 않는 애니메이션에 이벤트 세팅을 하려고 했습니다.");
+	}
+
+	Info->UpdateEventFunction[_Frame] = _Event;
+}
+
+
+
+void GameEngineSpriteRenderer::SetAnimationStartEvent(const std::string_view& _AnimationName, size_t _Frame, std::function<void()> _Event)
+{
+	std::shared_ptr<AnimationInfo>  Info = FindAnimation(_AnimationName);
+
+	if (nullptr == Info)
+	{
+		MsgAssert("존재하지 않는 애니메이션에 이벤트 세팅을 하려고 했습니다.");
+	}
+
+	Info->StartEventFunction[_Frame] = _Event;
 }

@@ -21,6 +21,17 @@ private:
 	//현재 프레임의 정보를 반환한다
 	const SpriteInfo& CurSpriteInfo();
 
+
+	inline void PauseOn()
+	{
+		IsPauseValue = true;
+	}
+
+	inline void PauseOff()
+	{
+		IsPauseValue = false;
+	}
+
 public:
 	size_t CurFrame = 0;
 	size_t StartFrame = -1;
@@ -29,8 +40,14 @@ public:
 	float Inter = 0.1f;
 	bool Loop = true;
 	bool ScaleToImage = false;
+	bool IsPauseValue = false;
 	std::vector<size_t> FrameIndex = std::vector<size_t>();
 	std::vector<float >FrameTime = std::vector<float>();
+
+	//해당 프레임일때 처리할 콜백이벤트
+	std::map<size_t, std::function<void()>> UpdateEventFunction;
+	//해당 프레임에 진입할 때 처리할 콜백이벤트
+	std::map<size_t, std::function<void()>> StartEventFunction;
 
 	bool IsEnd();
 };
@@ -100,11 +117,31 @@ public:
 		return CurAnimation->CurFrame;
 	}
 
+	float4 GetAtlasData()
+	{
+		return AtlasData;
+	}
+
 	//애니메이션이 아닌 스프라이트로 잘린 이미지를 렌더할 때 사용(이름으로 찾기)
 	void SetSprite(const std::string_view& _SpriteName, size_t _Frame = 0);
 
 	//애니메이션이 아닌 스프라이트로 잘린 이미지를 렌더할 때 사용(현재 Sprite의 Frame으로 찾기)
 	void SetFrame(size_t _Frame);
+
+
+	void SetAnimPauseOn()
+	{
+		CurAnimation->PauseOn();
+	}
+
+	void SetAnimPauseOff()
+	{
+		CurAnimation->PauseOff();
+	}
+
+	void SetAnimationUpdateEvent(const std::string_view& _AnimationName, size_t _Frame, std::function<void()> _Event);
+
+	void SetAnimationStartEvent(const std::string_view& _AnimationName, size_t _Frame, std::function<void()> _Event);
 
 protected:
 
@@ -120,6 +157,7 @@ private:
 	size_t Frame = -1;
 
 	void Start() override;
+	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 };
 

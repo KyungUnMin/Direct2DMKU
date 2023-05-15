@@ -18,7 +18,7 @@ public:
 			return nullptr;
 		}
 
-		return GPtr->Shared_This_dynamic_pointer<FieldLevelBase>();
+		return GPtr->DynamicThis<FieldLevelBase>();
 	}
 
 	FieldLevelBase();

@@ -15,7 +15,7 @@ public:
 			return nullptr;
 		}
 		
-		return GPtr->Shared_This_dynamic_pointer<FieldPlayer>();
+		return GPtr->DynamicThis<FieldPlayer>();
 	}
 
 

@@ -3,6 +3,7 @@
 #include "GameEngineActor.h"
 #include "GameEngineCamera.h"
 #include "GameEngineGUI.h"
+#include "GameEngineCollision.h"
 
 GameEngineLevel::GameEngineLevel()
 {
@@ -137,43 +138,80 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 
 void GameEngineLevel::ActorRelease()
 {
-	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
-	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
 
-	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	//콜리전 Release
 	{
-		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+		std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupStartIter = Collisions.begin();
+		std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupEndIter = Collisions.end();
 
-		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
-		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
-
-		for (; ActorStart != ActorEnd; )
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 		{
-			std::shared_ptr<GameEngineActor> ReleaseActor = *ActorStart;
+			std::list<std::shared_ptr<GameEngineCollision>>& ObjectList = GroupStartIter->second;
 
-			//제거되지 않는 엑터의 경우
-			if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
+			std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectStart = ObjectList.begin();
+			std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectEnd = ObjectList.end();
+
+			for (; ObjectStart != ObjectEnd; )
 			{
-				ReleaseActor->AllRelease();
+				std::shared_ptr<GameEngineCollision> RelaseObject = (*ObjectStart);
 
-				//자식들 Death가 예약되어 있는지 확인하고 다음으로 넘어감
-				/*GameEngineTransform* Transform = ReleaseActor->GetTransform();
-				Transform->AllRelease();*/
-				++ActorStart;
-				continue;
+				if (nullptr != RelaseObject && false == RelaseObject->IsDeath())
+				{
+					RelaseObject->AllRelease();
+					++ObjectStart;
+					continue;
+				}
+
+				RelaseObject->Release();
+				ObjectStart = ObjectList.erase(ObjectStart);
 			}
-
-			//자식들 Death가 예약되어 있는지 확인하고 그룹에서 제거
-			ReleaseActor->Release();
-			//(자식들의 경우엔 부모가 소멸하면서 Child list가 사라지고
-			//RefCount가 감소하면서 자연적으로 사라진다)
-			//(하지만 다른 shared_ptr이기 때문에 다른 객체가 shared_ptr로 가르키고 있었다면
-			//메모리는 소멸하지 않는 점을 주의하자)
-			ActorStart = ActorList.erase(ActorStart);
 		}
 	}
 
+
+	//엑터 Release
+	{
+		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+		std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+		{
+			std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+
+			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+			std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
+			for (; ActorStart != ActorEnd; )
+			{
+				std::shared_ptr<GameEngineActor> ReleaseActor = *ActorStart;
+
+				//제거되지 않는 엑터의 경우
+				if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
+				{
+					ReleaseActor->AllRelease();
+
+					//자식들 Death가 예약되어 있는지 확인하고 다음으로 넘어감
+					/*GameEngineTransform* Transform = ReleaseActor->GetTransform();
+					Transform->AllRelease();*/
+					++ActorStart;
+					continue;
+				}
+
+				//자식들 Death가 예약되어 있는지 확인하고 그룹에서 제거
+				ReleaseActor->Release();
+				//(자식들의 경우엔 부모가 소멸하면서 Child list가 사라지고
+				//RefCount가 감소하면서 자연적으로 사라진다)
+				//(하지만 다른 shared_ptr이기 때문에 다른 객체가 shared_ptr로 가르키고 있었다면
+				//메모리는 소멸하지 않는 점을 주의하자)
+				ActorStart = ActorList.erase(ActorStart);
+			}
+		}
+	}
+
+	
+
 }
+
 
 
 //생성한 엑터 초기화
@@ -181,9 +219,13 @@ void GameEngineLevel::ActorInit(std::shared_ptr<GameEngineActor> _Actor, int _Or
 {
 	_Actor->Level = this;
 	
+	//SetOrder 내부에서 레벨의 Actors에 들어간다
 	_Actor->SetOrder(_Order);
 	_Actor->Start();
-
-	Actors[_Order].push_back(_Actor);
 }
 
+
+void GameEngineLevel::PushCollision(std::shared_ptr<GameEngineCollision> _Collision)
+{
+	Collisions[_Collision->GetOrder()].push_back(_Collision);
+}

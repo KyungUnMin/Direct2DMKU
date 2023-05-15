@@ -45,7 +45,7 @@ public:
 	*/
 	//일반적인 포인터를 캐스팅된 Shared_ptr로 변환시키는 것
 	template <typename PtrType>
-	std::shared_ptr<PtrType> Shared_This_dynamic_pointer()
+	std::shared_ptr<PtrType> DynamicThis()
 	{
 		//std::dynamic_pointer_cast<T>를 사용할때 꼭 가상함수 테이블을 만들어야 한다
 		return std::dynamic_pointer_cast<PtrType>(std::enable_shared_from_this<GameEngineObject>::shared_from_this());
