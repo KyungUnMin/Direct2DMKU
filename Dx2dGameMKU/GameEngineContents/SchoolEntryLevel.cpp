@@ -44,8 +44,10 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
+
 #include "BossIntroMovie.h"
 #include "BurnExample.h"
+
 
 void SchoolEntryLevel::Start()
 {
@@ -61,6 +63,7 @@ void SchoolEntryLevel::Start()
 		->GetTransform()->SetWorldPosition(float4{ -200.f, -200.f , 0.f });
 	CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy))
 		->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , 0.f });
+
 	/*CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
 		->GetTransform()->SetWorldPosition(float4{ 0.f, -200.f , 0.f });
 	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))

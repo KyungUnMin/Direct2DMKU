@@ -331,6 +331,18 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\03.WalkBase">
       <UniqueIdentifier>{a569f2b5-de88-414a-84fd-f3dab81ea3dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus">
+      <UniqueIdentifier>{bdb468e2-4eaa-4353-89cc-ebf7efd3435b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\01.Actor">
+      <UniqueIdentifier>{82dbd5a3-70e9-4fa9-bfdd-043ed9e04aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\02.FSM">
+      <UniqueIdentifier>{8006f907-407c-42aa-b034-e1a77e26cd83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\03.ApproachState">
+      <UniqueIdentifier>{3aa8339b-60d0-408d-bfa2-758a39e2814e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -582,6 +594,15 @@
     <ClCompile Include="SchoolGirlState_Walk.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Walk</Filter>
     </ClCompile>
+    <ClCompile Include="BossVursus.cpp">
+      <Filter>03.Actor\04.UI\06.BossVersus\01.Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVursusUIFSM.cpp">
+      <Filter>03.Actor\04.UI\06.BossVersus\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVursusState_Approach.cpp">
+      <Filter>03.Actor\04.UI\06.BossVersus\03.ApproachState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -826,6 +847,15 @@
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Walk.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVursus.h">
+      <Filter>03.Actor\04.UI\06.BossVersus\01.Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVursusUIFSM.h">
+      <Filter>03.Actor\04.UI\06.BossVersus\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVursusState_Approach.h">
+      <Filter>03.Actor\04.UI\06.BossVersus\03.ApproachState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
