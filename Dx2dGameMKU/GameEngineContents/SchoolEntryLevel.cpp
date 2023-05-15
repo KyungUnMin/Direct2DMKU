@@ -44,6 +44,7 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "BossIntroMovie.h"
+#include "BurnExample.h"
 
 void SchoolEntryLevel::Start()
 {
@@ -68,6 +69,9 @@ void SchoolEntryLevel::Start()
 
 
 	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
+
+
+	CreateActor<BurnExample>(static_cast<int>(UpdateOrder::Defalut));
 }
 
 
