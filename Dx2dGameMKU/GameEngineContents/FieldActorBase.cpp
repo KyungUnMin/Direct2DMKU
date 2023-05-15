@@ -9,6 +9,8 @@
 #include "FieldLevelBase.h"
 #include "BackGround.h"
 
+const float4 FieldActorBase::RenderScale = float4{ 200.f, 200.f } *2.5f;
+
 FieldActorBase::FieldActorBase()
 {
 
@@ -26,6 +28,8 @@ void FieldActorBase::Start()
 
 	CreateShadow();
 	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr->GetTransform()->SetLocalScale(RenderScale);
+
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 	CreateDebugGridPoint();
 }

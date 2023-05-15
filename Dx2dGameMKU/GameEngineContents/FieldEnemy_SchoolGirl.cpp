@@ -1,33 +1,28 @@
 #include "PrecompileHeader.h"
-#include "FieldEnemy_SchoolBoy.h"
-
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
-#include <GameEngineCore/GameEngineTexture.h>
+#include "FieldEnemy_SchoolGirl.h"
 
 #include "RCG_GameCore.h"
 #include "RCGDefine.h"
 
 
-
-FieldEnemy_SchoolBoy::FieldEnemy_SchoolBoy()
+FieldEnemy_SchoolGirl::FieldEnemy_SchoolGirl()
 {
 
 }
 
-FieldEnemy_SchoolBoy::~FieldEnemy_SchoolBoy()
+FieldEnemy_SchoolGirl::~FieldEnemy_SchoolGirl()
 {
 
 }
 
-
-void FieldEnemy_SchoolBoy::Start()
+void FieldEnemy_SchoolGirl::Start()
 {
 	FieldEnemyBase::Start();
 
 	Fsm.Init(this);
 }
 
-void FieldEnemy_SchoolBoy::Update(float _DeltaTime)
+void FieldEnemy_SchoolGirl::Update(float _DeltaTime)
 {
 	if (GameState::OnField != RCG_GameCore::GetCurGameState())
 		return;
@@ -37,14 +32,11 @@ void FieldEnemy_SchoolBoy::Update(float _DeltaTime)
 	Fsm.Update(_DeltaTime);
 }
 
-void FieldEnemy_SchoolBoy::Render(float _DeltaTime)
+void FieldEnemy_SchoolGirl::Render(float _DeltaTime)
 {
 	if (GameState::OnField != RCG_GameCore::GetCurGameState())
 		return;
 
 	FieldEnemyBase::Render(_DeltaTime);
-
 	Fsm.Render(_DeltaTime);
 }
-
-

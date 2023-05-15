@@ -1,5 +1,5 @@
 #include "PrecompileHeader.h"
-#include "EnemyState_Walk.h"
+#include "EnemyState_WalkBase.h"
 
 #include <queue>
 
@@ -20,7 +20,7 @@ struct BestRouth
 	}
 };
 
-void EnemyState_Walk::FindPath()
+void EnemyState_WalkBase::FindPath()
 {
 	// 점수 매기기
 		// F = G + H
@@ -28,6 +28,7 @@ void EnemyState_Walk::FindPath()
 		// G = 시작점에서 해당 좌표까지 이동하는데 드는 비용 (작을 수록 좋음, 경로에 따라 달라짐)
 		// H = 목적지에서 얼마나 가까운지, 벽을 생각하지 않은 직선거리(작을 수록 좋음, 고정)
 
+	FieldEnemyBase* EnemyPtr = GetEnemy();
 	const std::pair<int, int> StartPos = EnemyPtr->GetGridPos();
 	const std::pair<int, int>& DestPos = FieldPlayer::GetPtr()->GetGridPos();
 

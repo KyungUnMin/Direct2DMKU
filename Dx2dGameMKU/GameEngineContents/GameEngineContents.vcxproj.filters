@@ -214,30 +214,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy">
       <UniqueIdentifier>{7686a75f-7817-4b3f-90f3-c41533a2d924}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM">
-      <UniqueIdentifier>{38547e1c-759b-468b-abd6-94e39e21b094}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\01.FSMBase">
-      <UniqueIdentifier>{5bcdb083-19db-48ff-a8fb-fcf876657116}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\02.StateBase">
-      <UniqueIdentifier>{e12669d1-3562-4b5a-9185-491532737ea0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\03.Idle">
-      <UniqueIdentifier>{f714e609-a4c3-4e3e-b29e-c51b9ea878da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor">
-      <UniqueIdentifier>{a4456d1c-1d22-4f4f-8ca9-1a512355a7c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\01.Base">
-      <UniqueIdentifier>{6cd19dff-d72f-4b63-abaf-080ac33482fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy">
-      <UniqueIdentifier>{c071f68e-a67f-4a70-8f10-78020005e2d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk">
-      <UniqueIdentifier>{a569f2b5-de88-414a-84fd-f3dab81ea3dc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\04.UI\05.BossIntroMovie">
       <UniqueIdentifier>{6977291e-c251-4ada-a4dd-54765f0a7d0e}</UniqueIdentifier>
     </Filter>
@@ -309,6 +285,51 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\02.HyrricaneKick">
       <UniqueIdentifier>{c910c060-c5a0-4795-9dab-f7bedab9e246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy">
+      <UniqueIdentifier>{c071f68e-a67f-4a70-8f10-78020005e2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\01.Actor">
+      <UniqueIdentifier>{7ad4ab4f-3601-4135-9c20-8acb60f714fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\02.FSM">
+      <UniqueIdentifier>{d65ff418-2b63-4951-9bf7-2e10851e1fdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\01.ActorBase">
+      <UniqueIdentifier>{9b3fa81d-613c-47cf-addd-6a50de7848a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase">
+      <UniqueIdentifier>{d73c1754-55d0-4a69-90f0-5871ce2c9a53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\02.StateBase">
+      <UniqueIdentifier>{e12669d1-3562-4b5a-9185-491532737ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\01.FSMBase">
+      <UniqueIdentifier>{fb89dc41-3409-4715-852e-c3c5e4885dca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Idle">
+      <UniqueIdentifier>{50d78131-60da-4d54-a0c8-98ddd6fea8e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Walk">
+      <UniqueIdentifier>{50bb0460-9726-46a8-8067-a3c052134827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl">
+      <UniqueIdentifier>{9636b9c5-863c-4b9f-bdd9-6bbee5891ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor">
+      <UniqueIdentifier>{83054447-df43-4dfa-99bb-75686ee9dbe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM">
+      <UniqueIdentifier>{3cf47571-d398-4844-9c32-442a5451bc48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Idle">
+      <UniqueIdentifier>{6a0c8164-2715-4ba7-be11-af682dd7709a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Walk">
+      <UniqueIdentifier>{c33306a0-616c-41a8-991b-19c7c29357fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\03.WalkBase">
+      <UniqueIdentifier>{a569f2b5-de88-414a-84fd-f3dab81ea3dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -483,29 +504,14 @@
     <ClCompile Include="GameEngineActorGUI.cpp">
       <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClCompile>
-    <ClCompile Include="FieldEnemyBase.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\01.Base</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyStateBase.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\02.StateBase</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\02.StateBase</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\03.Idle</Filter>
+    <ClCompile Include="EnemyState_WalkBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\03.WalkBase</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\01.FSMBase</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldEnemy_SchoolBoy_FsmState.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyState_Walk_AStar.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
+    <ClCompile Include="EnemyState_WalkBase_AStar.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\03.WalkBase</Filter>
     </ClCompile>
     <ClCompile Include="BossIntroMovie.cpp">
       <Filter>03.Actor\04.UI\05.BossIntroMovie</Filter>
@@ -545,6 +551,36 @@
     </ClCompile>
     <ClCompile Include="PlayerState_SpecialAttack_Stomp.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemyBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.ActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\01.Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyFSM.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFSMBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\01.FSMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_SchoolGirl.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlFSM.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Walk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -716,23 +752,11 @@
     <ClInclude Include="GameEngineActorGUI.h">
       <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClInclude>
-    <ClInclude Include="FieldEnemyBase.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\01.Base</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyStateBase.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\02.StateBase</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\02.StateBase</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\03.Idle</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\01.FSMBase</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldEnemy_SchoolBoy.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.Actor\02.SchoolBoy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSM\04.Walk</Filter>
+    <ClInclude Include="EnemyState_WalkBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\03.WalkBase</Filter>
     </ClInclude>
     <ClInclude Include="BossIntroMovie.h">
       <Filter>03.Actor\04.UI\05.BossIntroMovie</Filter>
@@ -772,6 +796,36 @@
     </ClInclude>
     <ClInclude Include="PlayerState_SpecialAttack_Stomp.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemyBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.ActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_SchoolBoy.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\01.Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyFSM.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFSMBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\01.FSMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_SchoolGirl.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlFSM.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Walk</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

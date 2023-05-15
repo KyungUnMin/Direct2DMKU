@@ -29,7 +29,7 @@ void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
 
-	GetRenderer()->GetTransform()->SetLocalScale(float4{ 200.f, 200.f } * 2.5f);
+	//GetRenderer()->GetTransform()->SetLocalScale(float4{ 200.f, 200.f } * 2.5f);
 	Fsm.Init();
 }
 

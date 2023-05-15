@@ -64,6 +64,8 @@ protected:
 
 
 private:
+	static const float4 RenderScale;
+
 	float Height = 0.f;
 
 

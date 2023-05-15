@@ -187,19 +187,12 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="EnemyFSM.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="EnemyFSMBase.h" />
     <ClInclude Include="EnemyStateBase.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="EnemyState_Idle.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="EnemyState_Walk.h">
+    <ClInclude Include="EnemyState_WalkBase.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -216,6 +209,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="FieldEnemy_SchoolBoy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_SchoolGirl.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -285,6 +282,30 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ResourceHelper.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Idle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Walk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Idle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Walk.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -466,20 +487,13 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="EnemyFSM.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="EnemyFSMBase.cpp" />
     <ClCompile Include="EnemyStateBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="EnemyState_Idle.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="EnemyState_Walk_AStar.cpp" />
-    <ClCompile Include="EnemyState_Walk.cpp">
+    <ClCompile Include="EnemyState_WalkBase_AStar.cpp" />
+    <ClCompile Include="EnemyState_WalkBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -500,7 +514,10 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="FieldEnemy_SchoolBoy_FsmState.cpp" />
+    <ClCompile Include="FieldEnemy_SchoolGirl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FreeCamMoveController.cpp">
       <SubType>
       </SubType>
@@ -567,6 +584,30 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ResourceHelper.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Idle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Walk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Idle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Walk.cpp">
       <SubType>
       </SubType>
     </ClCompile>
