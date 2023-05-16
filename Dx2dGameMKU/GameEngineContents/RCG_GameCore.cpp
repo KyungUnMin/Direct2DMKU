@@ -33,7 +33,7 @@ void RCG_GameCore::GameStart()
 	/*GameEngineCore::CreateLevel<TestLevel>();
 	GameEngineCore::ChangeLevel("TestLevel");*/
 
-	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
+	LevelMgr::CreateLevel(LevelNames::SchoolBossLevel);
 }
 
 

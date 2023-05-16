@@ -41,6 +41,11 @@ protected:
 		return Timer;
 	}
 
+	inline void ResetLiveTime()
+	{
+		Timer = 0.f;
+	}
+
 private:
 	/*
 		FSM들은 내부에서 값 형으로 들고 있을 예정이기 때문에

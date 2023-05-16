@@ -175,7 +175,27 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BossVursus.h">
+    <ClInclude Include="BossVersus.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossVersusState_CallName.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossVersusState_Corner.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossVersusState_PortraitMatch.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossVersusState_Versus.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossVersusUIFSM.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -478,11 +498,31 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BossVursus.cpp">
+    <ClCompile Include="BossVersus.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BossVursusFSM.cpp" />
+    <ClCompile Include="BossVersusFSMInstance.cpp" />
+    <ClCompile Include="BossVersusState_CallName.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossVersusState_Corner.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossVersusState_PortraitMatch.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossVersusState_Versus.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossVersusUIFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BurnExample.cpp">
       <SubType>
       </SubType>

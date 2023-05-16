@@ -5,8 +5,11 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+
 #include "BackGround.h"
 #include "FieldDoor.h"
+
+
 
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolBossLevel::BGInfoes =
@@ -35,7 +38,10 @@ void SchoolBossLevel::Start()
 	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -700.f, 0.f , 0.f });
+
 }
+
+
 
 void SchoolBossLevel::LoadImgRes()
 {
@@ -63,4 +69,18 @@ void SchoolBossLevel::CreateDoors()
 	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal);
 	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
+}
+
+
+#include "BossVersus.h"
+#include "KeyMgr.h"
+
+void SchoolBossLevel::Update(float _DeltaTime)
+{
+	FieldLevelBase::Update(_DeltaTime);
+
+	if (true == KeyMgr::IsDown(KeyNames::DebugF7))
+	{
+		CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
+	}
 }

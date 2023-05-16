@@ -12,3 +12,9 @@ enum class UpdateOrder
 	UI,
 };
 
+enum class BossType
+{
+	Misuzu,
+	Yamada,
+	Noise
+};
