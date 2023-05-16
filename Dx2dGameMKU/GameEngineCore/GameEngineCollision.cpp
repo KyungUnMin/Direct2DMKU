@@ -58,6 +58,11 @@ bool GameEngineCollision::CollisionAll(int _TargetGroup, ColType _ThisColType, C
 
 	std::list<std::shared_ptr<GameEngineCollision>>& Group = GetLevel()->Collisions[_TargetGroup];
 
+	//해당 그룹이 비어있는 경우
+	if (true == Group.empty())
+		return false;
+
+
 	for (std::shared_ptr<GameEngineCollision>& _OtherCol : Group)
 	{
 		//활성화 되어있는 충돌체만

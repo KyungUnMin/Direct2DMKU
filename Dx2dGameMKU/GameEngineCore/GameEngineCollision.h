@@ -5,7 +5,7 @@ class GameEngineCollision : public GameEngineComponent
 {
 public:
 	GameEngineCollision();
-	~GameEngineCollision() override;
+	~GameEngineCollision();
 
 	GameEngineCollision(const GameEngineCollision& _Other) = delete;
 	GameEngineCollision(GameEngineCollision&& _Other) noexcept = delete;

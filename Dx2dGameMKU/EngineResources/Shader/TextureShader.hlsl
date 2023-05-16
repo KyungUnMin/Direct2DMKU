@@ -84,9 +84,10 @@ Output Texture_VS(Input _Value)
 //이 곳으로 들어온다, 때문에 들어올 때 인자가 버텍스 쉐이더의 나갈 때 인자가 된다
 
 //픽셀 쉐이더에서 사용할 상수버퍼, 버텍스쉐이더와의 슬롯과 상관없다
-cbuffer OutPixelColor : register(b0)
+cbuffer ColorOption : register(b0)
 {
-    float4 OutColor;
+    float4 MulColor;
+    float4 PlusColor;
 }
 
 
@@ -103,6 +104,10 @@ float4 Texture_PS(Output _Value) : SV_Target0
     //샘플러 설정(0~1사이의 UV값)
     float4 Color = DiffuseTex.Sample(WRAPSAMPLER, _Value.UV.xy);
 
+    Color *= MulColor;
+    Color += PlusColor;
+    
+    
     //현재 픽셀을 출력하지 않는 함수
     //if (Color.a == 0)
     //{

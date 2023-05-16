@@ -4,7 +4,7 @@
 class GameEngineActor;
 class GameEngineLevel;
 
-class GameEngineComponent : public GameEngineUpdateObject
+class GameEngineComponent : public GameEngineObject
 {
 	friend GameEngineActor;
 

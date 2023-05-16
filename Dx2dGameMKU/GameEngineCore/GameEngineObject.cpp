@@ -95,3 +95,39 @@ void GameEngineObject::AllRelease()
 		Object->AllRelease();
 	}
 }
+
+
+
+bool GameEngineObject::IsDeath()
+{
+	GameEngineTransform* Trans = Transform.GetParent();
+
+	//부모가 있는 경우
+	if (nullptr != Trans)
+	{
+		GameEngineObject* Master = Trans->GetMaster();
+
+		//부모가 죽었거나 내가 죽었으면 IsDeath는 true
+		return GameEngineObjectBase::IsDeath() || Master->IsDeath();
+	}
+
+	//부모가 없는 경우
+	return GameEngineObjectBase::IsDeath();
+}
+
+bool GameEngineObject::IsUpdate()
+{
+	GameEngineTransform* Trans = Transform.GetParent();
+
+	//부모가 있는 경우
+	if (nullptr != Trans)
+	{
+		GameEngineObject* Master = Trans->GetMaster();
+
+		//부모가 활성화되어 있고 나도 활성화되어있으면 IsUpdate는 true
+		return GameEngineObjectBase::IsUpdate() && Master->IsUpdate();
+	}
+
+	//부모가 없는 경우
+	return GameEngineObjectBase::IsUpdate();
+}

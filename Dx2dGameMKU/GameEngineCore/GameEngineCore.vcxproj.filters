@@ -22,9 +22,6 @@
     <ClInclude Include="GameEngineObject.h">
       <Filter>05.Object\01.Object\02.Object</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineUpdateObject.h">
-      <Filter>05.Object\01.Object\03.UpdateObject</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineTransform.h">
       <Filter>05.Object\05.Transform</Filter>
     </ClInclude>
@@ -167,9 +164,6 @@
     </ClCompile>
     <ClCompile Include="GameEngineObject.cpp">
       <Filter>05.Object\01.Object\02.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngineUpdateObject.cpp">
-      <Filter>05.Object\01.Object\03.UpdateObject</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineTransform.cpp">
       <Filter>05.Object\05.Transform</Filter>
@@ -406,9 +400,6 @@
     </Filter>
     <Filter Include="05.Object\01.Object\02.Object">
       <UniqueIdentifier>{63079b8a-fbe7-4bc5-aa12-fa856c3567ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05.Object\01.Object\03.UpdateObject">
-      <UniqueIdentifier>{096ed6ad-5cda-44cf-937f-5e088862cdd8}</UniqueIdentifier>
     </Filter>
     <Filter Include="05.Object\05.Transform">
       <UniqueIdentifier>{b0c66173-bfe2-45c2-9ac3-0a14df4477e4}</UniqueIdentifier>

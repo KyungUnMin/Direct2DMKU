@@ -69,6 +69,13 @@ public:
 	std::vector<float >FrameTime = std::vector<float>();
 };
 
+
+struct ColorOption
+{
+	float4 MulColor;
+	float4 PlusColor;
+};
+
 class GameEngineSpriteRenderer : public GameEngineRenderer
 {
 public:
@@ -139,9 +146,14 @@ public:
 		CurAnimation->PauseOff();
 	}
 
+	//쉐이더에서 텍스처의 색상을 더하는 상수버퍼와 연결된 값
+	ColorOption ColorOptionValue;
+
 	void SetAnimationUpdateEvent(const std::string_view& _AnimationName, size_t _Frame, std::function<void()> _Event);
 
 	void SetAnimationStartEvent(const std::string_view& _AnimationName, size_t _Frame, std::function<void()> _Event);
+
+	std::string GetTexName();
 
 protected:
 

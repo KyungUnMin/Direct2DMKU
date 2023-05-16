@@ -68,6 +68,12 @@ private:
 	std::multimap<std::string, GameEngineSamplerSetter> SamplerSetters;
 
 public:
+	//현재 세팅된 텍스처의 가장 먼저 발견된 텍스처를 받아오기
+	GameEngineTextureSetter* GetTextureSetter(const std::string_view& _View);
+
+	//현재 세팅된 텍스처들을 받아오기
+	std::vector<GameEngineTextureSetter*> GetTextureSetters(const std::string_view& _View);
+
 	//자료구조에 저장(쉐이더에서 리플렉션으로 파일 조사할때 호출됨)
 	void CreateTextureSetter(const GameEngineTextureSetter& _Setter)
 	{

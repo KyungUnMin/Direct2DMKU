@@ -2,13 +2,13 @@
 #include <map>
 #include <string_view>
 #include <GameEngineBase/GameEngineTimeEvent.h>
-#include "GameEngineUpdateObject.h"
+#include "GameEngineObject.h"
 
 class GameEngineActor;
 class GameEngineCamera;
 class GameEngineCollision;
 
-class GameEngineLevel : public GameEngineUpdateObject
+class GameEngineLevel : public GameEngineObject
 {
 	friend class GameEngineTransform;
 	friend class GameEngineCore;

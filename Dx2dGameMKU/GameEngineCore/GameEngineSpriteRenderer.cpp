@@ -111,7 +111,11 @@ void GameEngineSpriteRenderer::Start()
 	AtlasData.z = 1.0f;
 	AtlasData.w = 1.0f;
 
+	ColorOptionValue.MulColor = float4::One;
+	ColorOptionValue.PlusColor = float4::Null;
+
 	GetShaderResHelper().SetConstantBufferLink("AtlasData", AtlasData);
+	GetShaderResHelper().SetConstantBufferLink("ColorOption", ColorOptionValue);
 }
 
 
@@ -389,4 +393,11 @@ void GameEngineSpriteRenderer::SetAnimationStartEvent(const std::string_view& _A
 	}
 
 	Info->StartEventFunction[_Frame] = _Event;
+}
+
+std::string GameEngineSpriteRenderer::GetTexName()
+{
+	GameEngineTextureSetter* Tex = GetShaderResHelper().GetTextureSetter("DiffuseTex");
+	std::string Name = Tex->Res->GetNameToString();
+	return Name;
 }

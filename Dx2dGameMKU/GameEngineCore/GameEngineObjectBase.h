@@ -39,12 +39,12 @@ public:
 		DeathValue = true;
 	}
 
-	virtual inline bool IsDeath() const
+	virtual bool IsDeath()
 	{
 		return DeathValue;
 	}
 
-	virtual inline bool IsUpdate() const
+	virtual bool IsUpdate()
 	{
 		return UpdateValue;
 	}
