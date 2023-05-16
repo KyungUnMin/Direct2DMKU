@@ -160,9 +160,6 @@
     <Filter Include="03.Actor\06.Effect\01.GlichSideAttack">
       <UniqueIdentifier>{45912f54-2552-404c-b03d-31c222888c46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99.Test\BurnExample">
-      <UniqueIdentifier>{cf00cd0c-cd6b-4738-8822-acde791a45c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Core\03.Manager/Controller\05.FreeCamMove">
       <UniqueIdentifier>{c51a78f7-4aaf-40d6-8db4-2f33e3cd87c8}</UniqueIdentifier>
     </Filter>
@@ -492,9 +489,6 @@
     <ClCompile Include="GlichSideAttack.cpp">
       <Filter>03.Actor\06.Effect\01.GlichSideAttack</Filter>
     </ClCompile>
-    <ClCompile Include="BurnExample.cpp">
-      <Filter>99.Test\BurnExample</Filter>
-    </ClCompile>
     <ClCompile Include="FreeCamMoveController.cpp">
       <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>
     </ClCompile>
@@ -763,9 +757,6 @@
     </ClInclude>
     <ClInclude Include="GlichSideAttack.h">
       <Filter>03.Actor\06.Effect\01.GlichSideAttack</Filter>
-    </ClInclude>
-    <ClInclude Include="BurnExample.h">
-      <Filter>99.Test\BurnExample</Filter>
     </ClInclude>
     <ClInclude Include="FreeCamMoveController.h">
       <Filter>01.Core\03.Manager/Controller\05.FreeCamMove</Filter>

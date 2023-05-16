@@ -203,10 +203,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BurnExample.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="ColorWave.h">
       <SubType>
       </SubType>
@@ -528,10 +524,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BossVersusUIFSM.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BurnExample.cpp">
       <SubType>
       </SubType>
     </ClCompile>

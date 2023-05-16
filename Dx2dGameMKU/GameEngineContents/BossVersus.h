@@ -7,24 +7,15 @@ class GameEngineRenderer;
 class GameEngineSpriteRenderer;
 
 
+/*
+	UI 구조 바뀐다고 하니
+	UI기능이 업데이트되면 그때 나머지 만들자
+*/
+
 class BossVersus : public UIBase
 {
 public:
 	static BossVersus* GetPtr();
-
-	enum class RenderType
-	{
-		LeftCornerBlack,
-		LeftCornerPink,
-		RightCornerBlack,
-		RightCornerPink,
-		PlayerNameTag,
-		BossNameTag,
-		PlayerName,
-		BossName,
-		VersusLogo,
-		COUNT
-	};
 
 	BossVersus();
 	~BossVersus() override;
@@ -50,13 +41,7 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-
-
-
-
-
 	static BossVersus* GPtr;
-
 
 	static const std::string_view PlayerPortrait_FileName;
 	static const std::string_view SchoolPortrait_FileName;
@@ -74,12 +59,13 @@ private:
 	//static const std::string_view NameTag_FileName;
 	//static const std::string_view VersusLogo_FileName;
 	
-	
 	struct ShaderData
 	{
+		const float4 FireColor = float4{ 0.f, 0.f, 1.f, 1.f };
+
 		float NoiseFilterValue = 0.0f;
-		const float NoiseImageScale = 10.f; /*기존값 5.0f*/
-		const float Garbage1 = 0.f;
+		const float NoiseImageScale = 15.f; /*기존값 5.0f*/
+		const float OffsetRatio = 0.01f;
 		const float Garbage2 = 0.f;
 	};
 

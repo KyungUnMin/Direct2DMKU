@@ -55,8 +55,10 @@ Output Texture_VS(Input _Value)
 
 cbuffer NoiseFilter : register(b0)
 {
+    float4 FireColor;
     float Ratio;            //0~1
     float NoiseSize;    //5.f
+    float OffsetRatio;
 }
 
 
@@ -126,6 +128,10 @@ float4 Texture_PS(Output _Value) : SV_Target0
     if (Ratio < NoiseValue)
     {
         clip(-1);
+    }
+    else if (Ratio < (NoiseValue + OffsetRatio))
+    {
+        return FireColor;
     }
     
     //불꽃이 일렁이는 느낌은 나중에 책 보고 다시 해보자

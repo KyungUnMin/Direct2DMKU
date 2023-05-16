@@ -19,10 +19,6 @@ BossVersus* BossVersus::GetPtr()
 	return GPtr;
 }
 
-
-
-
-
 const std::string_view BossVersus::PlayerPortrait_FileName		= "PlayerPortrait.png";
 const std::string_view BossVersus::SchoolPortrait_FileName		= "MisuzuPortrait.png";
 const std::string_view BossVersus::TownPortrait_FileName		= "YamadaPortrait.png";
@@ -177,8 +173,6 @@ void BossVersus::CreateNameRenders(BossType _Boss)
 
 	//TODO 자식으로 넣기
 }
-
-
 
 
 

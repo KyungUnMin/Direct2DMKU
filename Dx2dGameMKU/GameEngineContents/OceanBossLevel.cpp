@@ -26,7 +26,6 @@ OceanBossLevel::~OceanBossLevel()
 }
 
 #include "GlichSideAttack.h"
-#include "BurnExample.h"
 
 void OceanBossLevel::Start()
 {
@@ -40,7 +39,6 @@ void OceanBossLevel::Start()
 	FieldLevelBase::SetPlayerStartPosition(float4{ 0.f, -200.f, -200.f });
 
 	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
-	CreateActor<BurnExample>()->GetTransform()->SetLocalPosition(float4::Down * 100.f);
 }
 
 void OceanBossLevel::LoadImgRes()
