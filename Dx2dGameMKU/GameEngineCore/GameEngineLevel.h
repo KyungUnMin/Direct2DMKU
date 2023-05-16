@@ -32,6 +32,12 @@ public:
 		return CreateActor<ActorType>(0, _Name);
 	}
 
+	template<typename ActorType, typename EnumType >
+	std::shared_ptr<ActorType> CreateActor(EnumType  _Order, const std::string_view& _Name = "")
+	{
+		return CreateActor(static_cast<int>(_Order), _Name);
+	}
+
 	template<typename ActorType>
 	std::shared_ptr<ActorType> CreateActor(int _Order = 0, const std::string_view& _Name = "")
 	{

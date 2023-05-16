@@ -129,6 +129,11 @@ public:
 		return AtlasData;
 	}
 
+	inline float GetScaleRatio() const
+	{
+		return ScaleRatio;
+	}
+
 	//애니메이션이 아닌 스프라이트로 잘린 이미지를 렌더할 때 사용(이름으로 찾기)
 	void SetSprite(const std::string_view& _SpriteName, size_t _Frame = 0);
 

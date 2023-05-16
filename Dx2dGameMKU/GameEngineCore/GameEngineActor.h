@@ -17,6 +17,12 @@ public:
 	GameEngineActor& operator=(const GameEngineActor&& _Other) noexcept = delete;
 
 	
+	template<typename ActorType, typename EnumType>
+	std::shared_ptr<ActorType> CreateComponent(EnumType _Order)
+	{
+		return CreateComponent<ActorType>(static_cast<int>(_Order));
+	}
+
 
 	//컴포넌트 생성
 	template <typename ComponentType>
