@@ -72,7 +72,7 @@ void BossVersus::Init(BossType _Boss)
 
 	Fsm.Init(this);
 
-	CreateNameRenders(_Boss);
+	//CreateNameRenders(_Boss);
 }
 
 
@@ -169,8 +169,13 @@ void BossVersus::CreateNameRenders(BossType _Boss)
 		break;
 	}
 
+	std::shared_ptr<GameEngineSpriteRenderer> PlayerNameRender = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineSpriteRenderer> BossNameRender = CreateComponent<GameEngineSpriteRenderer>();
 
+	PlayerNameRender->SetScaleToTexture(PlayerName_FileName);
+	BossNameRender->SetScaleToTexture(BossName);
 
+	//TODO 자식으로 넣기
 }
 
 
