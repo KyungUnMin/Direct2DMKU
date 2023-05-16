@@ -110,7 +110,7 @@ void BossVersusState_Corner::Update_CornerScale()
 	float LiveTime = GetLiveTime();
 	if (ScaleDuration < LiveTime)
 	{
-		GetFSM()->ChangeState(BossVersusStateType::CallName);
+		GetFSM()->ChangeState(BossVersusStateType::Fire);
 		return;
 	}
 

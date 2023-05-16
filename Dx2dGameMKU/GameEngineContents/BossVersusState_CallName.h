@@ -13,6 +13,8 @@ public:
 	BossVersusState_CallName& operator=(const BossVersusState_CallName&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
+	void Update(float _DelatTime) override;
 
 private:
 

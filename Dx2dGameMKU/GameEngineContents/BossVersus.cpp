@@ -28,10 +28,10 @@ const std::string_view BossVersus::SchoolPortrait_FileName		= "MisuzuPortrait.pn
 const std::string_view BossVersus::TownPortrait_FileName		= "YamadaPortrait.png";
 const std::string_view BossVersus::OcenePortrait_FileName		= "NoisePortrait.png";
 
-//const std::string_view BossVersus::PlayerName_FileName			= "Player_Name.png";
-//const std::string_view BossVersus::SchoolName_FileName			= "MISUZU_NAME.png";
-//const std::string_view BossVersus::TownName_FileName			= "YAMADA_NAME.png";
-//const std::string_view BossVersus::OceneName_FileName			= "NOIZE_NAME.png";
+const std::string_view BossVersus::PlayerName_FileName			= "Player_Name.png";
+const std::string_view BossVersus::SchoolName_FileName			= "MISUZU_NAME.png";
+const std::string_view BossVersus::TownName_FileName			= "YAMADA_NAME.png";
+const std::string_view BossVersus::OceneName_FileName			= "NOIZE_NAME.png";
 
 const std::string_view BossVersus::PortraitPipeName = "Burn";
 const std::string_view BossVersus::PortraitCBufferName = "NoiseFilter";
@@ -71,6 +71,8 @@ void BossVersus::Init(BossType _Boss)
 	CreatePortraits(_Boss);
 
 	Fsm.Init(this);
+
+	CreateNameRenders(_Boss);
 }
 
 
@@ -110,21 +112,17 @@ void BossVersus::CreatePortraits(BossType _Boss)
 
 
 
-	std::string_view BossName = "";
 	std::string_view BossPortName = "";
 
 	switch (_Boss)
 	{
 	case BossType::Misuzu:
-		//BossName = SchoolName_FileName;
 		BossPortName = SchoolPortrait_FileName;
 		break;
 	case BossType::Yamada:
-		//BossName = TownName_FileName;
 		BossPortName = TownPortrait_FileName;
 		break;
 	case BossType::Noise:
-		//BossName = OceneName_FileName;
 		BossPortName = OcenePortrait_FileName;
 		break;
 	}
@@ -152,6 +150,27 @@ void BossVersus::CreatePortraits(BossType _Boss)
 		PlayerRenderTrans->SetLocalScale(PlayerRenderScale * 0.65f);
 		BossRenderTrans->SetLocalScale(BossRenderScale * 0.65f);
 	}
+}
+
+void BossVersus::CreateNameRenders(BossType _Boss)
+{
+	std::string_view BossName = "";
+
+	switch (_Boss)
+	{
+	case BossType::Misuzu:
+		BossName = SchoolName_FileName;
+		break;
+	case BossType::Yamada:
+		BossName = TownName_FileName;
+		break;
+	case BossType::Noise:
+		BossName = OceneName_FileName;
+		break;
+	}
+
+
+
 }
 
 

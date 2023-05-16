@@ -63,10 +63,10 @@ private:
 	static const std::string_view TownPortrait_FileName;
 	static const std::string_view OcenePortrait_FileName;
 
-	/*static const std::string_view SchoolName_FileName;
+	static const std::string_view SchoolName_FileName;
 	static const std::string_view OceneName_FileName;
 	static const std::string_view PlayerName_FileName;
-	static const std::string_view TownName_FileName;*/
+	static const std::string_view TownName_FileName;
 
 	static const std::string_view PortraitPipeName;
 	static const std::string_view PortraitCBufferName;
@@ -91,6 +91,7 @@ private:
 
 	void LoadImages();
 	void CreatePortraits(BossType _Boss);
+	void CreateNames(BossType _Boss);
 
 	void Update_PortShader(float _DeltaTime);
 };

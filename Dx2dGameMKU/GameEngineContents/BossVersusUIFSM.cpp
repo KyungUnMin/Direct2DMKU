@@ -3,6 +3,7 @@
 
 #include "BossVersusState_PortraitMatch.h"
 #include "BossVersusState_Corner.h"
+#include "BossVersusState_Fire.h"
 #include "BossVersusState_CallName.h"
 #include "BossVersusState_Versus.h"
 
@@ -25,6 +26,7 @@ void BossVersusUIFSM::Init(BossVersus* _UI)
 
 	FSMBase::CreateState<BossVersusState_PortraitMatch>(BossVersusStateType::PortraitMatch);
 	FSMBase::CreateState<BossVersusState_Corner>(BossVersusStateType::Corner);
+	FSMBase::CreateState<BossVersusState_Fire>(BossVersusStateType::Fire);
 	FSMBase::CreateState<BossVersusState_CallName>(BossVersusStateType::CallName);
 	FSMBase::CreateState<BossVersusState_Versus>(BossVersusStateType::Versus);
 

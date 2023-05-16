@@ -346,11 +346,14 @@
     <Filter Include="03.Actor\04.UI\06.BossVersus\04.Corner">
       <UniqueIdentifier>{17cb0953-9a99-41ed-9cbc-51140825b329}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\05.CallName">
+    <Filter Include="03.Actor\04.UI\06.BossVersus\06.CallName">
       <UniqueIdentifier>{b49051e7-b37c-495d-8509-95f018ab06bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\06.Versus">
+    <Filter Include="03.Actor\04.UI\06.BossVersus\07.Versus">
       <UniqueIdentifier>{14fb1d14-120f-4944-ade0-dc4e3253f688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\05.Fire">
+      <UniqueIdentifier>{37e6f998-6b54-43c7-ae35-041c775f0cc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -616,13 +619,16 @@
       <Filter>03.Actor\04.UI\06.BossVersus\03.PortraitMatch</Filter>
     </ClCompile>
     <ClCompile Include="BossVersusState_CallName.cpp">
-      <Filter>03.Actor\04.UI\06.BossVersus\05.CallName</Filter>
+      <Filter>03.Actor\04.UI\06.BossVersus\06.CallName</Filter>
     </ClCompile>
     <ClCompile Include="BossVersusState_Versus.cpp">
-      <Filter>03.Actor\04.UI\06.BossVersus\06.Versus</Filter>
+      <Filter>03.Actor\04.UI\06.BossVersus\07.Versus</Filter>
     </ClCompile>
     <ClCompile Include="BossVersusState_Corner.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\04.Corner</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVersusState_Fire.cpp">
+      <Filter>03.Actor\04.UI\06.BossVersus\05.Fire</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -879,13 +885,16 @@
       <Filter>03.Actor\04.UI\06.BossVersus\03.PortraitMatch</Filter>
     </ClInclude>
     <ClInclude Include="BossVersusState_CallName.h">
-      <Filter>03.Actor\04.UI\06.BossVersus\05.CallName</Filter>
+      <Filter>03.Actor\04.UI\06.BossVersus\06.CallName</Filter>
     </ClInclude>
     <ClInclude Include="BossVersusState_Versus.h">
-      <Filter>03.Actor\04.UI\06.BossVersus\06.Versus</Filter>
+      <Filter>03.Actor\04.UI\06.BossVersus\07.Versus</Filter>
     </ClInclude>
     <ClInclude Include="BossVersusState_Corner.h">
       <Filter>03.Actor\04.UI\06.BossVersus\04.Corner</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVersusState_Fire.h">
+      <Filter>03.Actor\04.UI\06.BossVersus\05.Fire</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
