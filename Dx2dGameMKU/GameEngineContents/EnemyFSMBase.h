@@ -16,12 +16,13 @@ public:
 
 	FieldEnemyBase* GetEnemy() const;
 
-	virtual void Init(FieldEnemyBase* _Enemy)
+	virtual inline void Init(FieldEnemyBase* _Enemy)
 	{
 		Enemy = _Enemy;
 	}
 
 protected:
+
 	
 
 

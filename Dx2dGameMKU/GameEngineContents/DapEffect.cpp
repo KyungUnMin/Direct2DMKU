@@ -74,7 +74,7 @@ void DapEffect::CreateRender()
 	ShaderLinkColor.a = 1.f;
 }
 
-float DapEffect::GetStepRand(float _StepValue /*= 0.2f*/)
+float DapEffect::GetStepRand(float _StepValue /*= 0.3f*/)
 {
 	float RandValue = GameEngineRandom::MainRandom.RandomFloat(0.f, 1.f);
 	
@@ -105,6 +105,7 @@ void DapEffect::Update(float _DeltaTime)
 
 	float4 NowOffset = float4::LerpClamp(StartOffset, DestOffset, Ratio);
 	RenderPtr->GetTransform()->SetLocalPosition(NowOffset);
-	ShaderLinkColor.a = (1.f - Ratio);
+	//ShaderLinkColor.a = (1.f - Ratio);
+	ShaderLinkColor.a = (1.f - Ratio) * 0.8f;
 }
 

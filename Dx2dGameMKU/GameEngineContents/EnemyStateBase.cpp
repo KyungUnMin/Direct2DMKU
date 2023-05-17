@@ -26,6 +26,15 @@ void EnemyStateBase::Start()
 }
 
 
+
+void EnemyStateBase::EnterState()
+{
+	StateBase::EnterState();
+
+	ChangeRenderDirection();
+}
+
+
 void EnemyStateBase::ChangeRenderDirection()
 {
 	GameEngineTransform* EnemyTransform = EnemyPtr->GetTransform();
@@ -43,5 +52,24 @@ void EnemyStateBase::ChangeRenderDirection()
 	{
 		EnemyTransform->SetLocalNegativeScaleX();
 	}
+}
+
+
+
+float4 EnemyStateBase::GetVecToPlayer(bool Is2D /*= false*/)
+{
+	GameEngineTransform* ThisTrans = EnemyPtr->GetTransform();
+	GameEngineTransform* PlayerTrans = FieldPlayer::GetPtr()->GetTransform();
+
+	float4 ThisWorldPosition = ThisTrans->GetWorldPosition();
+	float4 PlayerWorldPosition = PlayerTrans->GetWorldPosition();
+
+	if (true == Is2D)
+	{
+		ThisWorldPosition.z = 0.f;
+		PlayerWorldPosition.z = 0.f;
+	}
+
+	return (PlayerWorldPosition - ThisWorldPosition);
 }
 

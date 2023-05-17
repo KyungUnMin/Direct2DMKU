@@ -5,6 +5,7 @@ enum class SchoolBoyStateType
 {
 	Idle,
 	Walk,
+	Ready,
 
 	COUNT
 };

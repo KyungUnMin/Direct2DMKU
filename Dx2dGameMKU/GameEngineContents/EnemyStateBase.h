@@ -21,7 +21,7 @@ public:
 
 protected:
 	void Start() override;
-
+	void EnterState() override;
 
 
 	inline EnemyFSMBase* GetEnemyFsm() const
@@ -44,7 +44,8 @@ protected:
 
 	void ChangeRenderDirection();
 
-	
+	float4 GetVecToPlayer(bool Is2D = false);
+
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 	EnemyFSMBase* FsmPtr = nullptr;
@@ -57,5 +58,6 @@ private:
 
 		MsgAssert("EnemyState 자식쪽에서 EnemyStateBase::Start를 호출시켜주어야 합니다");
 	}
+
 };
 

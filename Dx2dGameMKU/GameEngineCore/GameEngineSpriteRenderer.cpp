@@ -266,25 +266,24 @@ std::shared_ptr<AnimationInfo> GameEngineSpriteRenderer::CreateAnimation(const A
 		{
 			NewAnimation->FrameIndex.push_back(i);
 		}
-
-
-		// 타임 데이터가 있다면
-		if (0 != _Paramter.FrameTime.size())
-		{
-			NewAnimation->FrameTime = _Paramter.FrameTime;
-		}
-
-		// 타임 데이터가 없다면
-		else
-		{
-			for (size_t i = 0; i < NewAnimation->FrameIndex.size(); ++i)
-			{
-				NewAnimation->FrameTime.push_back(_Paramter.FrameInter);
-			}
-		}
 	}
 
-	
+
+
+	// 타임 데이터가 있다면
+	if (0 != _Paramter.FrameTime.size())
+	{
+		NewAnimation->FrameTime = _Paramter.FrameTime;
+	}
+
+	// 타임 데이터가 없다면
+	else
+	{
+		for (size_t i = 0; i < NewAnimation->FrameIndex.size(); ++i)
+		{
+			NewAnimation->FrameTime.push_back(_Paramter.FrameInter);
+		}
+	}
 
 
 

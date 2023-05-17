@@ -34,7 +34,6 @@ void EnemyState_WalkBase::EnterState()
 
 	FindPath();
 	SetDest();
-	EnemyStateBase::ChangeRenderDirection();
 
 	if (-1 == NextState)
 	{
@@ -52,6 +51,7 @@ bool EnemyState_WalkBase::SetDest()
 	PathStack.pop_back();
 
 	DestPos = BGPtr->GetPosFromGrid(DestGridPos.first, DestGridPos.second);
+	DestPos.z = DestPos.y;
 	StartPos = GetEnemy()->GetTransform()->GetWorldPosition();
 	return true;
 }

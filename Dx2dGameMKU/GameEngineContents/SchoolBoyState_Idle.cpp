@@ -61,7 +61,6 @@ void SchoolBoyState_Idle::EnterState()
 	EnemyStateBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyStateBase::ChangeRenderDirection();
 }
 
 

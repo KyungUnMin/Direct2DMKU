@@ -37,7 +37,7 @@ private:
 
 	void LoadEffectImage();
 	void CreateRender();
-	float GetStepRand(float _StepValue = 0.2f);
+	float GetStepRand(float _StepValue = 0.3f);
 };
 
 //이 엑터를 생성하는 엑터에 자식으로 들어간다?

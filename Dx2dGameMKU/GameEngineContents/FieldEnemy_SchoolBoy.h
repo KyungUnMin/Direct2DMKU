@@ -14,6 +14,8 @@ public:
 	FieldEnemy_SchoolBoy& operator=(const FieldEnemy_SchoolBoy& _Other) = delete;
 	FieldEnemy_SchoolBoy& operator=(const FieldEnemy_SchoolBoy&& _Other) noexcept = delete;
 
+	void SitDown();
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

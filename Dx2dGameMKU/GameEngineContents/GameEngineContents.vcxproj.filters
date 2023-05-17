@@ -265,12 +265,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\01.FSMBase">
       <UniqueIdentifier>{fb89dc41-3409-4715-852e-c3c5e4885dca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Idle">
-      <UniqueIdentifier>{50d78131-60da-4d54-a0c8-98ddd6fea8e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Walk">
-      <UniqueIdentifier>{50bb0460-9726-46a8-8067-a3c052134827}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl">
       <UniqueIdentifier>{9636b9c5-863c-4b9f-bdd9-6bbee5891ce5}</UniqueIdentifier>
     </Filter>
@@ -357,6 +351,24 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.AttackBase">
       <UniqueIdentifier>{8ae271f7-e37b-409c-897d-fb04b63a7b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement">
+      <UniqueIdentifier>{23207484-cbff-40cc-866c-5019b3506272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\01.Idle">
+      <UniqueIdentifier>{50d78131-60da-4d54-a0c8-98ddd6fea8e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\02.Walk">
+      <UniqueIdentifier>{50bb0460-9726-46a8-8067-a3c052134827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack">
+      <UniqueIdentifier>{c03f5ed6-fa95-49a5-a01e-a41361a1c8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged">
+      <UniqueIdentifier>{8049ed37-bc50-4aad-8ce8-28bbdd56cd85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\03.Ready">
+      <UniqueIdentifier>{686f0395-b0b4-4f63-bd09-e3417889a680}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -589,10 +601,10 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\01.FSMBase</Filter>
     </ClCompile>
     <ClCompile Include="SchoolBoyState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Idle</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\01.Idle</Filter>
     </ClCompile>
     <ClCompile Include="SchoolBoyState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Walk</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\02.Walk</Filter>
     </ClCompile>
     <ClCompile Include="FieldEnemy_SchoolGirl.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
@@ -635,6 +647,9 @@
     </ClCompile>
     <ClCompile Include="PlayerState_AttackBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.AttackBase</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\03.Ready</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -861,10 +876,10 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\01.FSMBase</Filter>
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Idle</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\01.Idle</Filter>
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Walk</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\02.Walk</Filter>
     </ClInclude>
     <ClInclude Include="FieldEnemy_SchoolGirl.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
@@ -904,6 +919,9 @@
     </ClInclude>
     <ClInclude Include="PlayerState_AttackBase.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.AttackBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\03.Ready</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

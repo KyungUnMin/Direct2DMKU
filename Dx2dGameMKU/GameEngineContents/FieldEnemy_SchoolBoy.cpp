@@ -23,8 +23,12 @@ FieldEnemy_SchoolBoy::~FieldEnemy_SchoolBoy()
 void FieldEnemy_SchoolBoy::Start()
 {
 	FieldEnemyBase::Start();
-
 	Fsm.Init(this);
+}
+
+void FieldEnemy_SchoolBoy::SitDown()
+{
+	Fsm.ChangeState(SchoolBoyStateType::Ready);
 }
 
 void FieldEnemy_SchoolBoy::Update(float _DeltaTime)

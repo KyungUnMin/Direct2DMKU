@@ -32,6 +32,20 @@ const std::string_view SchoolEntryLevel::CollisionImageName = "SchoolEntryColBG.
 
 const float4 SchoolEntryLevel::LevelAreaScale = float4{ 672.f, 224.f } *RCGDefine::ResourceScaleConvertor;
 
+//좌측 상단부터
+const std::vector<float4> SchoolEntryLevel::DestSitPos =
+{
+	{-502.f, -156.f, -156.f},
+	{-290.f, -156.f, -156.f},
+	{-70.f, -156.f, -156.f},
+	{-147.f, -156.f, -156.f},
+
+	{-632.f, -291.f, -291.f},
+	{-420.f, -291.f, -291.f},
+	{-205.f, -291.f, -291.f},
+	{-13.f, -291.f, -291.f}
+};
+
 SchoolEntryLevel::SchoolEntryLevel()
 {
 
@@ -46,7 +60,6 @@ SchoolEntryLevel::~SchoolEntryLevel()
 #include "FieldEnemy_SchoolGirl.h"
 
 #include "BossIntroMovie.h"
-#include "BurnExample.h"
 
 
 void SchoolEntryLevel::Start()
@@ -58,23 +71,9 @@ void SchoolEntryLevel::Start()
 	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
-
-	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
-		->GetTransform()->SetWorldPosition(float4{ -200.f, -200.f , 0.f });
-	CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy))
-		->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , 0.f });
-
-	/*CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
-		->GetTransform()->SetWorldPosition(float4{ 0.f, -200.f , 0.f });
-	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
-		->GetTransform()->SetWorldPosition(float4{ 100.f, -200.f , 0.f });
-	CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy))
-		->GetTransform()->SetWorldPosition(float4{ 200.f, -200.f , 0.f });*/
-
+	CreateEnemies();
 
 	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
-
-
 }
 
 
@@ -109,3 +108,26 @@ void SchoolEntryLevel::CreateDoors()
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
 }
 
+void SchoolEntryLevel::CreateEnemies()
+{
+	std::shared_ptr<FieldEnemy_SchoolBoy> SchoolBoyPtr = nullptr;
+	std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
+
+	const size_t BoySitPosArr[4] = {0, 2, 5, 6};
+	for (size_t i = 0; i < 4; ++i)
+	{
+		SchoolBoyPtr = CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
+		size_t SitIndex = BoySitPosArr[i];
+		SchoolBoyPtr->GetTransform()->SetWorldPosition(DestSitPos[SitIndex]);
+		SchoolBoyPtr->SitDown();
+	}
+	
+
+	
+	
+	SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
+	SchoolGirlPtr->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , 0.f });
+
+
+
+}
