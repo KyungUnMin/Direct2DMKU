@@ -352,6 +352,9 @@
     <Filter Include="03.Actor\04.UI\06.BossVersus\05.Fire">
       <UniqueIdentifier>{37e6f998-6b54-43c7-ae35-041c775f0cc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\02.DapEffect">
+      <UniqueIdentifier>{77514335-a823-4ce3-a6c4-b3a0f6c7e094}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -624,6 +627,9 @@
     <ClCompile Include="BossVersusState_Fire.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\05.Fire</Filter>
     </ClCompile>
+    <ClCompile Include="DapEffect.cpp">
+      <Filter>03.Actor\06.Effect\02.DapEffect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -886,6 +892,9 @@
     </ClInclude>
     <ClInclude Include="BossVersusState_Fire.h">
       <Filter>03.Actor\04.UI\06.BossVersus\05.Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="DapEffect.h">
+      <Filter>03.Actor\06.Effect\02.DapEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

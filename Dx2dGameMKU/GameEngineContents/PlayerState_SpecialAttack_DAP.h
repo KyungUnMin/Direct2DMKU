@@ -16,14 +16,22 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	static const size_t EffectCount;
+
+	std::vector<std::shared_ptr<class DapEffect>> Effects;
+	const float EffectTime = 0.05f;
+	size_t Cursor = 0;
+
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void CreateEffect();
 };
 

@@ -53,6 +53,8 @@ Output Texture_VS(Input _Value)
 
 //------------------------------------«»ºø Ω¶¿Ã¥ı---------------
 
+Texture2D DiffuseTex : register(t0);
+SamplerState CLAMPSAMPLER : register(s0);
 
 
 cbuffer LinkColor : register(b1)
@@ -62,6 +64,13 @@ cbuffer LinkColor : register(b1)
 
 float4 Texture_PS(Output _Value) : SV_Target0
 {
+    float4 Color = DiffuseTex.Sample(CLAMPSAMPLER, _Value.UV.xy);
+    
+    if (0.f == Color.a)
+    {
+        clip(-1);
+    }
+    
     return ColorValue;
 }
 
