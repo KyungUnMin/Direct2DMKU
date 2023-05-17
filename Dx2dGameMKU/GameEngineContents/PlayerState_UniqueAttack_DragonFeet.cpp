@@ -21,7 +21,7 @@ PlayerState_UniqueAttack_DragonFeet::~PlayerState_UniqueAttack_DragonFeet()
 
 void PlayerState_UniqueAttack_DragonFeet::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -58,7 +58,7 @@ void PlayerState_UniqueAttack_DragonFeet::CreateAnimation()
 
 void PlayerState_UniqueAttack_DragonFeet::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -68,7 +68,7 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 
 void PlayerState_UniqueAttack_DragonFeet::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

@@ -13,7 +13,7 @@ const std::string_view DapEffect::RenderPipeName = "DirectColor";
 const std::string_view DapEffect::EffectImgName = "Player_DapEffect.png";
 float4 DapEffect::EffectScale = float4::Zero;
 
-const float DapEffect::MoveOffset = 75.f;
+const float DapEffect::MoveOffset = 100.f;
 float4 DapEffect::StartOffset = float4::Zero;
 float4 DapEffect::DestOffset = float4::Zero;
 
@@ -53,7 +53,7 @@ void DapEffect::LoadEffectImage()
 	Dir.Move("SpecialAttack");
 	EffectScale = GameEngineTexture::Load(Dir.GetPlusFileName(EffectImgName).GetFullPath())->GetScale();
 
-	EffectScale *= RCGDefine::ResourceScaleConvertor;
+	EffectScale *= 2.7f;//RCGDefine::ResourceScaleConvertor;
 	StartOffset = float4::Up * EffectScale.hy();
 	DestOffset = StartOffset + (float4::Left * MoveOffset);
 }

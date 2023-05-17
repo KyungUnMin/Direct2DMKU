@@ -21,7 +21,7 @@ PlayerState_SpecialAttack_Stomp::~PlayerState_SpecialAttack_Stomp()
 
 void PlayerState_SpecialAttack_Stomp::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -56,7 +56,7 @@ void PlayerState_SpecialAttack_Stomp::CreateAnimation()
 
 void PlayerState_SpecialAttack_Stomp::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -66,7 +66,7 @@ void PlayerState_SpecialAttack_Stomp::EnterState()
 
 void PlayerState_SpecialAttack_Stomp::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

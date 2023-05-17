@@ -22,7 +22,7 @@ PlayerState_QickAttack_Chop::~PlayerState_QickAttack_Chop()
 
 void PlayerState_QickAttack_Chop::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -57,7 +57,7 @@ void PlayerState_QickAttack_Chop::CreateAnimation()
 
 void PlayerState_QickAttack_Chop::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -67,7 +67,7 @@ void PlayerState_QickAttack_Chop::EnterState()
 
 void PlayerState_QickAttack_Chop::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update(_DeltaTime);
 
 	if (true == KeyMgr::IsDown(KeyNames::Z))
 	{
@@ -92,7 +92,7 @@ void PlayerState_QickAttack_Chop::Update(float _DeltaTime)
 
 void PlayerState_QickAttack_Chop::ExitState()
 {
-	PlayerStateBase::ExitState();
+	PlayerState_AttackBase::ExitState();
 
 	IsReserveChainAttack = false;
 }

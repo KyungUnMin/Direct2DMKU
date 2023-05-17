@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_AttackBase.h"
 
-class PlayerState_UniqueAttack_HyrricaneKick : public PlayerStateBase
+class PlayerState_UniqueAttack_HyrricaneKick : public PlayerState_AttackBase
 {
 public:
 	PlayerState_UniqueAttack_HyrricaneKick();

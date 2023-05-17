@@ -36,6 +36,16 @@ public:
 		return RenderDir;
 	}
 
+	inline void DirCheckOn()
+	{
+		DirCheckSwitch = true;
+	}
+
+	inline void DirCheckOff()
+	{
+		DirCheckSwitch = false;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -49,6 +59,9 @@ private:
 
 	//true일때 오른쪽, false면 왼쪽
 	bool RenderDir = true;
+
+	//플레이어의 방향 검사 유무
+	bool DirCheckSwitch = true;
 
 	void CheckDirection();
 };

@@ -22,7 +22,7 @@ PlayerState_QuickAttack_BackKick::~PlayerState_QuickAttack_BackKick()
 
 void PlayerState_QuickAttack_BackKick::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -57,7 +57,7 @@ void PlayerState_QuickAttack_BackKick::CreateAnimation()
 
 void PlayerState_QuickAttack_BackKick::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -67,7 +67,7 @@ void PlayerState_QuickAttack_BackKick::EnterState()
 
 void PlayerState_QuickAttack_BackKick::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update(_DeltaTime);
 
 	if (true == KeyMgr::IsDown(KeyNames::Z))
 	{
@@ -92,7 +92,7 @@ void PlayerState_QuickAttack_BackKick::Update(float _DeltaTime)
 
 void PlayerState_QuickAttack_BackKick::ExitState()
 {
-	PlayerStateBase::ExitState();
+	PlayerState_AttackBase::ExitState();
 
 	IsReserveChainAttack = false;
 }

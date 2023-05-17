@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_AttackBase.h"
 
-class PlayerState_SpecialAttack_DAP : public PlayerStateBase
+class PlayerState_SpecialAttack_DAP : public PlayerState_AttackBase
 {
 public:
 	PlayerState_SpecialAttack_DAP();

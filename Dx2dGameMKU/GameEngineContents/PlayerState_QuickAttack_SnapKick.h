@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_AttackBase.h"
 
-class PlayerState_QuickAttack_SnapKick : public PlayerStateBase
+class PlayerState_QuickAttack_SnapKick : public PlayerState_AttackBase
 {
 public:
 	PlayerState_QuickAttack_SnapKick();

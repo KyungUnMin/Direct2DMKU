@@ -241,47 +241,8 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged">
       <UniqueIdentifier>{63c701d5-b462-43cc-bb15-45ffbccba3c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack">
-      <UniqueIdentifier>{fb3c02f3-ba3d-419e-95c8-ce00fee52967}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\01.Chop">
-      <UniqueIdentifier>{63b3c17c-5d39-4c80-b729-8352875ad98d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\02.SnapKick">
-      <UniqueIdentifier>{667e4a66-81f3-4dd3-86c0-c2caa8f3f6d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Core\03.Manager/Controller\07.SkillMgr">
       <UniqueIdentifier>{ead731b4-4de0-412f-a2cc-a48e967cdfa7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\03.BackKick">
-      <UniqueIdentifier>{26145561-3735-4f3e-aeb4-27e50d6159e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.HookKick">
-      <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick">
-      <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack">
-      <UniqueIdentifier>{69f61c3e-7fa4-4f87-b4fd-315bf66ceebd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\01.AxeKick">
-      <UniqueIdentifier>{3f13f720-526a-4ba3-b24f-d498fc2e23eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack">
-      <UniqueIdentifier>{0a93fe5d-2624-4ae7-8fd8-7f2a62252029}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp">
-      <UniqueIdentifier>{6e0d59db-9d23-48bf-9e8b-e7355141567f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\03.DAP">
-      <UniqueIdentifier>{16a05d2a-643c-4691-8379-26a9f7b7439a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\01.DragonFeet">
-      <UniqueIdentifier>{6761f90f-4bf8-4ca1-9f7a-05866efb3588}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\02.HyrricaneKick">
-      <UniqueIdentifier>{c910c060-c5a0-4795-9dab-f7bedab9e246}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy">
       <UniqueIdentifier>{c071f68e-a67f-4a70-8f10-78020005e2d8}</UniqueIdentifier>
@@ -354,6 +315,48 @@
     </Filter>
     <Filter Include="03.Actor\06.Effect\02.DapEffect">
       <UniqueIdentifier>{77514335-a823-4ce3-a6c4-b3a0f6c7e094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack">
+      <UniqueIdentifier>{fb3c02f3-ba3d-419e-95c8-ce00fee52967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\01.Chop">
+      <UniqueIdentifier>{63b3c17c-5d39-4c80-b729-8352875ad98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\02.SnapKick">
+      <UniqueIdentifier>{667e4a66-81f3-4dd3-86c0-c2caa8f3f6d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\03.BackKick">
+      <UniqueIdentifier>{26145561-3735-4f3e-aeb4-27e50d6159e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.HookKick">
+      <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.CrescentKick">
+      <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack">
+      <UniqueIdentifier>{69f61c3e-7fa4-4f87-b4fd-315bf66ceebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\01.AxeKick">
+      <UniqueIdentifier>{3f13f720-526a-4ba3-b24f-d498fc2e23eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\02.Stomp">
+      <UniqueIdentifier>{6e0d59db-9d23-48bf-9e8b-e7355141567f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DAP">
+      <UniqueIdentifier>{16a05d2a-643c-4691-8379-26a9f7b7439a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack">
+      <UniqueIdentifier>{0a93fe5d-2624-4ae7-8fd8-7f2a62252029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack\01.DragonFeet">
+      <UniqueIdentifier>{6761f90f-4bf8-4ca1-9f7a-05866efb3588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack\02.HyrricaneKick">
+      <UniqueIdentifier>{c910c060-c5a0-4795-9dab-f7bedab9e246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.AttackBase">
+      <UniqueIdentifier>{8ae271f7-e37b-409c-897d-fb04b63a7b43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -541,37 +544,37 @@
       <Filter>99.Test\Level</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QickAttack_Chop.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\01.Chop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\01.Chop</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_SnapKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\02.SnapKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\02.SnapKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_HookKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.HookKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.HookKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_BackKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\03.BackKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\03.BackKick</Filter>
     </ClCompile>
     <ClCompile Include="SkillMgr.cpp">
       <Filter>01.Core\03.Manager/Controller\07.SkillMgr</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_CrescentKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.CrescentKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_SpecialAttack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\01.AxeKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\01.AxeKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_SpecialAttack_DAP.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\03.DAP</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DAP</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_UniqueAttack_DragonFeet.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\01.DragonFeet</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack\01.DragonFeet</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_UniqueAttack_HyrricaneKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\02.HyrricaneKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack\02.HyrricaneKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_SpecialAttack_Stomp.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\02.Stomp</Filter>
     </ClCompile>
     <ClCompile Include="FieldEnemyBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.ActorBase</Filter>
@@ -629,6 +632,9 @@
     </ClCompile>
     <ClCompile Include="DapEffect.cpp">
       <Filter>03.Actor\06.Effect\02.DapEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_AttackBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.AttackBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -810,37 +816,37 @@
       <Filter>99.Test\Level</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QickAttack_Chop.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\01.Chop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\01.Chop</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_SnapKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\02.SnapKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\02.SnapKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_HookKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\04.HookKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.HookKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_BackKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\03.BackKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\03.BackKick</Filter>
     </ClInclude>
     <ClInclude Include="SkillMgr.h">
       <Filter>01.Core\03.Manager/Controller\07.SkillMgr</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_CrescentKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.QuickAttack\05.CrescentKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.CrescentKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_SpecialAttack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\01.AxeKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\01.AxeKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_SpecialAttack_DAP.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\03.DAP</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DAP</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_UniqueAttack_DragonFeet.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\01.DragonFeet</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack\01.DragonFeet</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_UniqueAttack_HyrricaneKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.UniqueAttack\02.HyrricaneKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\04.UniqueAttack\02.HyrricaneKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_SpecialAttack_Stomp.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.SpecialAttack\02.Stomp</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\02.Stomp</Filter>
     </ClInclude>
     <ClInclude Include="FieldEnemyBase.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\01.ActorBase</Filter>
@@ -895,6 +901,9 @@
     </ClInclude>
     <ClInclude Include="DapEffect.h">
       <Filter>03.Actor\06.Effect\02.DapEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_AttackBase.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\01.AttackBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

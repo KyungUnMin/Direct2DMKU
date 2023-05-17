@@ -26,7 +26,7 @@ PlayerState_SpecialAttack_DAP::~PlayerState_SpecialAttack_DAP()
 
 void PlayerState_SpecialAttack_DAP::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -76,7 +76,7 @@ void PlayerState_SpecialAttack_DAP::CreateEffect()
 
 void PlayerState_SpecialAttack_DAP::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -87,7 +87,7 @@ void PlayerState_SpecialAttack_DAP::EnterState()
 
 void PlayerState_SpecialAttack_DAP::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update(_DeltaTime);
 
 	//5번 프레임 이상일때부터
 	size_t NowFrame = GetRenderer()->GetCurrentFrame();
@@ -112,7 +112,7 @@ void PlayerState_SpecialAttack_DAP::Update(float _DeltaTime)
 
 void PlayerState_SpecialAttack_DAP::ExitState()
 {
-	PlayerStateBase::ExitState();
+	PlayerState_AttackBase::ExitState();
 
 	Cursor = 0;
 }

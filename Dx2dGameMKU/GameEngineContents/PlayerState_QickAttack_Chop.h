@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_AttackBase.h"
 
-class PlayerState_QickAttack_Chop : public PlayerStateBase
+class PlayerState_QickAttack_Chop : public PlayerState_AttackBase
 {
 public:
 	PlayerState_QickAttack_Chop();

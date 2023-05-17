@@ -21,7 +21,7 @@ PlayerState_SpecialAttack_AxeKick::~PlayerState_SpecialAttack_AxeKick()
 
 void PlayerState_SpecialAttack_AxeKick::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -58,7 +58,7 @@ void PlayerState_SpecialAttack_AxeKick::CreateAnimation()
 
 void PlayerState_SpecialAttack_AxeKick::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -68,7 +68,7 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 
 void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
