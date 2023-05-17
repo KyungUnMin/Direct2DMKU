@@ -321,6 +321,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_AxeKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_Elbow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_Punch.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_SideKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SchoolBoyState_Idle.h">
       <SubType>
       </SubType>
@@ -657,6 +673,22 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SchoolBoyFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_AxeKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_Elbow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_Punch.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_SideKick.cpp">
       <SubType>
       </SubType>
     </ClCompile>

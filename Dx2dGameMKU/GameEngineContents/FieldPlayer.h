@@ -63,6 +63,9 @@ private:
 	//플레이어의 방향 검사 유무
 	bool DirCheckSwitch = true;
 
+
+	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
+
 	void CheckDirection();
 };
 

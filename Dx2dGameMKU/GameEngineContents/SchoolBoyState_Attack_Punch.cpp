@@ -1,25 +1,25 @@
 #include "PrecompileHeader.h"
-#include "SchoolBoyState_Idle.h"
+#include "SchoolBoyState_Attack_Punch.h"
 
 
 #include "SchoolBoyFSM.h"
 
-const std::string_view SchoolBoyState_Idle::AniName = "Idle";
-const std::string_view SchoolBoyState_Idle::AniFileName = "SchoolBoy_Idle.png";
-const std::pair<int, int> SchoolBoyState_Idle::AniCutFrame = std::pair<int, int>(5, 2);
-const float SchoolBoyState_Idle::AniInterTime = 0.08f;
+const std::string_view SchoolBoyState_Attack_Punch::AniName = "Attack_Punch";
+const std::string_view SchoolBoyState_Attack_Punch::AniFileName = "SchoolBoy_Punch.png";
+const std::pair<int, int> SchoolBoyState_Attack_Punch::AniCutFrame = std::pair<int, int>(5, 2);
+const float SchoolBoyState_Attack_Punch::AniInterTime = 0.08f;
 
-SchoolBoyState_Idle::SchoolBoyState_Idle()
+SchoolBoyState_Attack_Punch::SchoolBoyState_Attack_Punch()
 {
 
 }
 
-SchoolBoyState_Idle::~SchoolBoyState_Idle()
+SchoolBoyState_Attack_Punch::~SchoolBoyState_Attack_Punch()
 {
 
 }
 
-void SchoolBoyState_Idle::Start() 
+void SchoolBoyState_Attack_Punch::Start()
 {
 	EnemyStateBase::Start();
 
@@ -27,7 +27,7 @@ void SchoolBoyState_Idle::Start()
 	CreateAnimation();
 }
 
-void SchoolBoyState_Idle::LoadAnimation()
+void SchoolBoyState_Attack_Punch::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -39,24 +39,24 @@ void SchoolBoyState_Idle::LoadAnimation()
 	Dir.Move("Character");
 	Dir.Move("Enemy");
 	Dir.Move("SchoolBoy");
-	Dir.Move("Movement");
+	Dir.Move("Attack");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void SchoolBoyState_Idle::CreateAnimation() 
+void SchoolBoyState_Attack_Punch::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 7,
+		.End = 6,
 		.FrameInter = AniInterTime
 	});
 }
 
 
-void SchoolBoyState_Idle::EnterState()
+void SchoolBoyState_Attack_Punch::EnterState()
 {
 	EnemyStateBase::EnterState();
 
@@ -64,19 +64,15 @@ void SchoolBoyState_Idle::EnterState()
 }
 
 
-void SchoolBoyState_Idle::Update(float _DeltaTime) 
+void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 {
 	EnemyStateBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	//GetFSM()->ChangeState(SchoolBoyStateType::Walk);
-	GetFSM()->ChangeState(SchoolBoyStateType::AxeKick);
+	GetFSM()->ChangeState(SchoolBoyStateType::SideKick);
 
 	//TODO
 	//GetRenderer()
 }
-
-
-

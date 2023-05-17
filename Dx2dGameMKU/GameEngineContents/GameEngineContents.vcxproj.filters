@@ -370,6 +370,18 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\03.Ready">
       <UniqueIdentifier>{686f0395-b0b4-4f63-bd09-e3417889a680}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\01.AxeKick">
+      <UniqueIdentifier>{d7b0cfdb-d83b-4723-9f6e-5db5c329ef01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\03.Punch">
+      <UniqueIdentifier>{a46129a6-f571-477c-9b24-e5c62e37bca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\02.Elbow">
+      <UniqueIdentifier>{36fcbb76-b941-4fb3-b2bf-9a7c1ca60e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\04.SideKick">
+      <UniqueIdentifier>{ac77df2b-461b-40a4-8c4c-57b09dee934b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -651,6 +663,18 @@
     <ClCompile Include="SchoolBoyState_Ready.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\03.Ready</Filter>
     </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_AxeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\01.AxeKick</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\02.Elbow</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_Punch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\03.Punch</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Attack_SideKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\04.SideKick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -922,6 +946,18 @@
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Ready.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\03.Movement\03.Ready</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_AxeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\01.AxeKick</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_Elbow.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\02.Elbow</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_Punch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\03.Punch</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Attack_SideKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\04.SideKick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

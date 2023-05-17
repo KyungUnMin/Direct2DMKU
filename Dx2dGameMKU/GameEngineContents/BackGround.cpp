@@ -137,7 +137,7 @@ void BackGround::Update(float _DeltaTime)
 		TileRender->IsUpdate() ? TileRender->Off() : TileRender->On();
 	}
 
-	if ((nullptr != ColTexture) && (true == KeyMgr::IsDown(KeyNames::DebugF3)))
+	if ((nullptr != ColTexture) && (true == KeyMgr::IsDown(KeyNames::DebugF2)))
 	{
 		ColRender->IsUpdate() ? ColRender->Off() : ColRender->On();
 	}

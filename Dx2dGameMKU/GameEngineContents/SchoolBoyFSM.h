@@ -3,9 +3,16 @@
 
 enum class SchoolBoyStateType
 {
+	//Movement
 	Idle,
 	Walk,
 	Ready,
+
+	//Attack
+	AxeKick,
+	Elbow,
+	Punch,
+	SideKick,
 
 	COUNT
 };

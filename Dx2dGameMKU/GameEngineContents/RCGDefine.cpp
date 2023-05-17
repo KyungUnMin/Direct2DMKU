@@ -13,6 +13,17 @@ const std::string_view RCGDefine::EngineTexName = "DiffuseTex";
 const float RCGDefine::ResolutionConvertor = (1080.f / 1920.f);
 const float RCGDefine::ResourceScaleConvertor = 2.5f;
 
+const std::vector<std::string_view> RCGDefine::PipeEnumToString =
+{
+	"DirectColor",
+	"Burn",
+	"FieldDoor",
+	"GlichStair",
+	"MpBar",
+	"Tile",
+};
+
+
 void RCGDefine::MoveContentPath(GameEngineDirectory& _Dir, ResType _Type)
 {
 	_Dir.MoveParentToDirectory("ContentsResource");

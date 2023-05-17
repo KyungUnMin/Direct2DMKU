@@ -8,6 +8,16 @@ enum class ResType
 	Video
 };
 
+enum class PipeType
+{
+	DirectColor,
+	Burn,
+	FieldDoor,
+	GlichStair,
+	MpBar,
+	Tile,
+};
+
 class RCGDefine
 {
 public:
@@ -25,9 +35,16 @@ public:
 	static void MoveContentPath(GameEngineDirectory& _Dir, ResType _Type);
 	static void LoadContentPath(ResType _Type, const std::vector<std::string_view>& _Pathes);
 
+	static std::string_view GetPipeName(PipeType _Type)
+	{
+		return PipeEnumToString[static_cast<size_t>(_Type)];
+	}
+
 protected:
 
 private:
+	static const std::vector<std::string_view> PipeEnumToString;
+
 	RCGDefine();
 	virtual ~RCGDefine() = 0;
 };

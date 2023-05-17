@@ -14,8 +14,8 @@ public:
 	FieldEnemyBase& operator=(const FieldEnemyBase& _Other) = delete;
 	FieldEnemyBase& operator=(const FieldEnemyBase&& _Other) noexcept = delete;
 
-
 protected:
+	void Start() override;
 
 private:
 

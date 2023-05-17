@@ -113,8 +113,9 @@ void SchoolEntryLevel::CreateEnemies()
 	std::shared_ptr<FieldEnemy_SchoolBoy> SchoolBoyPtr = nullptr;
 	std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
 
-	const size_t BoySitPosArr[4] = {0, 2, 5, 6};
-	for (size_t i = 0; i < 4; ++i)
+	//5번은 Enemy가 아닌 일반 애니메이션으로 할 계획
+	const size_t BoySitPosArr[3] = {0, 2, 6};
+	for (size_t i = 0; i < 3; ++i)
 	{
 		SchoolBoyPtr = CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
 		size_t SitIndex = BoySitPosArr[i];
@@ -125,8 +126,8 @@ void SchoolEntryLevel::CreateEnemies()
 
 	
 	
-	SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
-	SchoolGirlPtr->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , 0.f });
+	/*SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
+	SchoolGirlPtr->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , 0.f });*/
 
 
 

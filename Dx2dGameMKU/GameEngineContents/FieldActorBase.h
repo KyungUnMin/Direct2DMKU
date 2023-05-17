@@ -2,6 +2,9 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineSpriteRenderer;
+class GameEngineRenderer;
+class GameEngineCollision;
+enum class CollisionOrder;
 
 class FieldActorBase : public GameEngineActor
 {
@@ -52,6 +55,26 @@ public:
 		return RendererPtr;
 	}
 
+	inline std::shared_ptr<GameEngineCollision> GetMainCollider() const
+	{
+		if (nullptr == MainCollider.ParentCollision)
+		{
+			MsgAssert("MainCollider를 만들어 준 적이 없습니다.\n FieldActorBase::CreateColliders를 호출하세요");
+		}
+
+		return MainCollider.ParentCollision;
+	}
+
+	inline std::shared_ptr<GameEngineCollision> GetAttackCollider() const
+	{
+		if (nullptr == MainCollider.ParentCollision)
+		{
+			MsgAssert("AttackCollider를 만들어 준 적이 없습니다.\n FieldActorBase::CreateColliders를 호출하세요");
+		}
+
+		return AttackCollider.ParentCollision;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -61,23 +84,41 @@ protected:
 		return BGPtr;
 	}
 
+	void CreateColliders(CollisionOrder _Order);
+	
+
 
 
 private:
 	static const float4 RenderScale;
+	static const float4 CollisionColor;
 
 	float Height = 0.f;
 
-
-	
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> GridPosRender_Debug = nullptr;
 	std::pair<int, int> GridPos = { 0, 0 };
 
 	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = nullptr;
 
+
+
+	struct VisualCollider
+	{
+		std::shared_ptr<GameEngineCollision> ParentCollision = nullptr;
+		std::shared_ptr<GameEngineRenderer> ChildRender = nullptr;
+	};
+
+	VisualCollider MainCollider;
+	VisualCollider AttackCollider;
+
+
+
 	void CreateShadow();
 	void CreateDebugGridPoint();
+	VisualCollider CreateVisuableCollision(CollisionOrder _Order);
+	
 	void Update_GridDebug();
+	void Update_ColliderView();
 };
 

@@ -2,8 +2,10 @@
 #include "FieldPlayer.h"
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCG_GameCore.h"
+#include "RCGEnums.h"
 #include "KeyMgr.h"
 
 FieldPlayer* FieldPlayer::GPtr = nullptr;
@@ -29,10 +31,9 @@ void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
 
-	//GetRenderer()->GetTransform()->SetLocalScale(float4{ 200.f, 200.f } * 2.5f);
+	FieldActorBase::CreateColliders(CollisionOrder::PlayerMain);
 	Fsm.Init();
 }
-
 
 
 
