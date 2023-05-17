@@ -21,7 +21,7 @@ SchoolBoyState_Attack_Punch::~SchoolBoyState_Attack_Punch()
 
 void SchoolBoyState_Attack_Punch::Start()
 {
-	EnemyStateBase::Start();
+	EnemyState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -53,20 +53,24 @@ void SchoolBoyState_Attack_Punch::CreateAnimation()
 		.End = 6,
 		.FrameInter = AniInterTime
 	});
+
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
 }
 
 
 void SchoolBoyState_Attack_Punch::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	EnemyState_AttackBase::SetAttackColValue(float4::Right * 50.f);
 }
+
 
 
 void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -75,4 +79,11 @@ void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 
 	//TODO
 	//GetRenderer()
+}
+
+
+
+void SchoolBoyState_Attack_Punch::Attack()
+{
+	int a = 0;
 }

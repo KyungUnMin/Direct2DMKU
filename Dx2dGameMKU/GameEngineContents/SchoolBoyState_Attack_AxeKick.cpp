@@ -1,10 +1,6 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_Attack_AxeKick.h"
 
-#include <GameEngineCore/GameEngineCollision.h>
-
-#include "RCGEnums.h"
-
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
 
@@ -25,7 +21,7 @@ SchoolBoyState_Attack_AxeKick::~SchoolBoyState_Attack_AxeKick()
 
 void SchoolBoyState_Attack_AxeKick::Start()
 {
-	EnemyStateBase::Start();
+	EnemyState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -60,9 +56,7 @@ void SchoolBoyState_Attack_AxeKick::CreateAnimation()
 		.FrameInter = AniInterTime
 	});
 
-	//3번째 프레임에 처리할 콜백 등록
-	EnemyRender->SetAnimationStartEvent(AniName, 3, 
-		std::bind(&SchoolBoyState_Attack_AxeKick::PlayerAttack, this));
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
 }
 
 
@@ -70,39 +64,26 @@ void SchoolBoyState_Attack_AxeKick::CreateAnimation()
 
 void SchoolBoyState_Attack_AxeKick::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	EnemyState_AttackBase::SetAttackColValue(float4::Right * 50.f);
 }
+
 
 
 void SchoolBoyState_Attack_AxeKick::Update(float _DeltaTime)
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
 	GetFSM()->ChangeState(SchoolBoyStateType::Elbow);
-
-	//TODO
-	//GetRenderer()
 }
 
 
-void SchoolBoyState_Attack_AxeKick::PlayerAttack()
+void SchoolBoyState_Attack_AxeKick::Attack()
 {
-	static const float4 AttackOffset = float4{ 50.f, 50.f, 0.f };
-	
-	std::shared_ptr<GameEngineCollision> AttackCollider = GetEnemy()->GetAttackCollider();
-	GameEngineTransform* ColTrans = AttackCollider->GetTransform();
-	ColTrans->SetLocalPosition(AttackOffset);
-
-	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
-	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
-
-	if (nullptr == PlayerCol)
-		return;
-
 	int a = 0;
 }

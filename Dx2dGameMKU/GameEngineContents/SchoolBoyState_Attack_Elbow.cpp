@@ -21,7 +21,7 @@ SchoolBoyState_Attack_Elbow::~SchoolBoyState_Attack_Elbow()
 
 void SchoolBoyState_Attack_Elbow::Start()
 {
-	EnemyStateBase::Start();
+	EnemyState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -53,20 +53,25 @@ void SchoolBoyState_Attack_Elbow::CreateAnimation()
 		.End = 6,
 		.FrameInter = AniInterTime
 	});
+
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
 }
 
 
 void SchoolBoyState_Attack_Elbow::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
+	EnemyState_AttackBase::SetAttackColValue(float4::Right * 50.f);
 }
+
 
 
 void SchoolBoyState_Attack_Elbow::Update(float _DeltaTime)
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -79,3 +84,7 @@ void SchoolBoyState_Attack_Elbow::Update(float _DeltaTime)
 
 
 
+void SchoolBoyState_Attack_Elbow::Attack()
+{
+	int a = 0;
+}

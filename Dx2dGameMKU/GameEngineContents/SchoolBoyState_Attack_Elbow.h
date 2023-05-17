@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemyStateBase.h"
+#include "EnemyState_AttackBase.h"
 
-class SchoolBoyState_Attack_Elbow : public EnemyStateBase
+class SchoolBoyState_Attack_Elbow : public EnemyState_AttackBase
 {
 public:
 	SchoolBoyState_Attack_Elbow();
@@ -17,6 +17,8 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+
+	void Attack() override;
 
 private:
 	static const std::string_view AniName;

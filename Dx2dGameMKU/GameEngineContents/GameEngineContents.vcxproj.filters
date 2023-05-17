@@ -382,6 +382,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\04.SideKick">
       <UniqueIdentifier>{ac77df2b-461b-40a4-8c4c-57b09dee934b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\04.AttackBase">
+      <UniqueIdentifier>{bec639ae-838b-4a7c-bfe0-c91abedcb539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -675,6 +678,9 @@
     <ClCompile Include="SchoolBoyState_Attack_SideKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\04.SideKick</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyState_AttackBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\04.AttackBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -958,6 +964,9 @@
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Attack_SideKick.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\04.Attack\04.SideKick</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState_AttackBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\04.AttackBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

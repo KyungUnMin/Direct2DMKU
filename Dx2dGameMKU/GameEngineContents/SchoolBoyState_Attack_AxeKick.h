@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemyStateBase.h"
+#include "EnemyState_AttackBase.h"
 
-class SchoolBoyState_Attack_AxeKick : public EnemyStateBase
+class SchoolBoyState_Attack_AxeKick : public EnemyState_AttackBase
 {
 public:
 	SchoolBoyState_Attack_AxeKick();
@@ -17,6 +17,8 @@ protected:
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
 
+	void Attack() override;
+
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;
@@ -25,6 +27,5 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
-	void PlayerAttack();
 };
 
