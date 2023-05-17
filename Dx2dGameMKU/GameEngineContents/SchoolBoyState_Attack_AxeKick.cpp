@@ -3,6 +3,8 @@
 
 #include <GameEngineCore/GameEngineCollision.h>
 
+#include "RCGEnums.h"
+
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
 
@@ -47,7 +49,9 @@ void SchoolBoyState_Attack_AxeKick::LoadAnimation()
 
 void SchoolBoyState_Attack_AxeKick::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
+
+	EnemyRender->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -55,7 +59,12 @@ void SchoolBoyState_Attack_AxeKick::CreateAnimation()
 		.End = 8,
 		.FrameInter = AniInterTime
 	});
+
+	//3번째 프레임에 처리할 콜백 등록
+	EnemyRender->SetAnimationStartEvent(AniName, 3, 
+		std::bind(&SchoolBoyState_Attack_AxeKick::PlayerAttack, this));
 }
+
 
 
 
@@ -81,4 +90,19 @@ void SchoolBoyState_Attack_AxeKick::Update(float _DeltaTime)
 }
 
 
+void SchoolBoyState_Attack_AxeKick::PlayerAttack()
+{
+	static const float4 AttackOffset = float4{ 50.f, 50.f, 0.f };
+	
+	std::shared_ptr<GameEngineCollision> AttackCollider = GetEnemy()->GetAttackCollider();
+	GameEngineTransform* ColTrans = AttackCollider->GetTransform();
+	ColTrans->SetLocalPosition(AttackOffset);
 
+	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
+	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
+
+	if (nullptr == PlayerCol)
+		return;
+
+	int a = 0;
+}

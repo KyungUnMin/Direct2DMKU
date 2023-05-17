@@ -142,6 +142,15 @@
     <ClInclude Include="GameEngineSprite.h">
       <Filter>04.Resources\07.Sprite</Filter>
     </ClInclude>
+    <ClInclude Include="EngineContentRenderingStruct.h">
+      <Filter>05.Object\04.Component\02.Render</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTileMapRenderer.h">
+      <Filter>05.Object\04.Component\02.Render\03.TileMapRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineFSM.h">
+      <Filter>07.EngineContents\01.FSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -278,6 +287,12 @@
     </ClCompile>
     <ClCompile Include="GameEngineSprite.cpp">
       <Filter>04.Resources\07.Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTileMapRenderer.cpp">
+      <Filter>05.Object\04.Component\02.Render\03.TileMapRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineFSM.cpp">
+      <Filter>07.EngineContents\01.FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +460,15 @@
     </Filter>
     <Filter Include="04.Resources\07.Sprite">
       <UniqueIdentifier>{2c8c60e8-164f-4cf1-8cce-aac50f314640}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Object\04.Component\02.Render\03.TileMapRenderer">
+      <UniqueIdentifier>{16cfe52a-77a4-4a05-ad44-63bdc0e290e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.EngineContents">
+      <UniqueIdentifier>{7078206d-22a6-4c94-8e4c-18a595967a76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.EngineContents\01.FSM">
+      <UniqueIdentifier>{f03a8538-1259-4294-becf-9a5c516390c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EngineContentRenderingStruct.h" />
     <ClInclude Include="GameEngineBlend.h">
       <SubType>
       </SubType>
@@ -212,6 +213,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineFSM.h" />
     <ClInclude Include="GameEngineGUI.h">
       <SubType>
       </SubType>
@@ -292,6 +294,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineTileMapRenderer.h" />
     <ClInclude Include="GameEngineTransform.h">
       <SubType>
       </SubType>
@@ -372,6 +375,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameEngineFSM.cpp" />
     <ClCompile Include="GameEngineGUI.cpp">
       <SubType>
       </SubType>
@@ -452,6 +456,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameEngineTileMapRenderer.cpp" />
     <ClCompile Include="GameEngineTransform.cpp">
       <SubType>
       </SubType>

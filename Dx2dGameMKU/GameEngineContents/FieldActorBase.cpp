@@ -105,7 +105,7 @@ FieldActorBase::VisualCollider FieldActorBase::CreateVisuableCollision(Collision
 
 
 	static bool IsLoad = false;
-	static const std::string_view RenderImageName = "CircleSolid01.png";
+	static const std::string_view RenderImageName = "CollisionArea.png";
 	if (false == IsLoad)
 	{
 		GameEngineDirectory Dir;

@@ -25,5 +25,6 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void PlayerAttack();
 };
 

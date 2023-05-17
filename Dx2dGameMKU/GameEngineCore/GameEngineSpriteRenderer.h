@@ -1,6 +1,7 @@
 #pragma once
 #include "GameEngineRenderer.h"
 #include "GameEngineSprite.h"
+#include "EngineContentRenderingStruct.h"
 
 
 /*
@@ -70,11 +71,6 @@ public:
 };
 
 
-struct ColorOption
-{
-	float4 MulColor;
-	float4 PlusColor;
-};
 
 class GameEngineSpriteRenderer : public GameEngineRenderer
 {

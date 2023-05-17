@@ -71,8 +71,8 @@ void SchoolBoyState_Idle::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	//GetFSM()->ChangeState(SchoolBoyStateType::Walk);
-	GetFSM()->ChangeState(SchoolBoyStateType::AxeKick);
+	GetFSM()->ChangeState(SchoolBoyStateType::Walk);
+	//GetFSM()->ChangeState(SchoolBoyStateType::AxeKick);
 
 	//TODO
 	//GetRenderer()
