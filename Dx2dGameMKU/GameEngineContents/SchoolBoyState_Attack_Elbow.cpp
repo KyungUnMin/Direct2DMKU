@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_Attack_Elbow.h"
 
+#include "DataMgr.h"
 
 #include "SchoolBoyFSM.h"
 #include "FieldPlayer.h"
@@ -88,4 +89,8 @@ void SchoolBoyState_Attack_Elbow::Update(float _DeltaTime)
 void SchoolBoyState_Attack_Elbow::Attack()
 {
 	bool Result = FieldPlayer::GetPtr()->OnDamage(PlayerStateType::NormalDamaged_Jaw);
+	if (false == Result)
+		return;
+
+	DataMgr::MinusPlayerHP(-5);
 }

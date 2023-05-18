@@ -28,6 +28,7 @@ public:
 
 	static inline void PlusPlayerHP(int _Value)
 	{
+		_Value = abs(_Value);
 		PlayerHp += _Value;
 		if (100 < PlayerHp)
 		{
@@ -37,6 +38,7 @@ public:
 
 	static inline void MinusPlayerHP(int _Value)
 	{
+		_Value = abs(_Value);
 		PlayerHp -= _Value;
 		if (PlayerHp < 0)
 		{
@@ -46,6 +48,7 @@ public:
 
 	static inline void SetPlayerHP(int _Value)
 	{
+		_Value = abs(_Value);
 		PlayerHp = _Value;
 		PlayerHp = std::clamp(PlayerHp, 0, 100);
 	}
@@ -68,6 +71,7 @@ public:
 
 	static inline void MinusPlayerMP(int _Value)
 	{
+		_Value = abs(_Value);
 		PlayerMp -= _Value;
 		if (PlayerMp < 0)
 		{
@@ -90,6 +94,7 @@ public:
 
 	static inline void PlusPlayerMoney(int _Value)
 	{
+		_Value = abs(_Value);
 		PlayerMoney += _Value;
 		if (999999 < PlayerMoney)
 		{
@@ -99,6 +104,7 @@ public:
 
 	static inline bool MinusPlayerMoney(int _Value)
 	{
+		_Value = abs(_Value);
 		if ((PlayerMoney - _Value) < 0)
 			return false;
 
@@ -108,6 +114,7 @@ public:
 
 	static inline void SetPlayerMoney(int _Value)
 	{
+		_Value = abs(_Value);
 		PlayerMoney = _Value;
 		PlayerMoney = std::clamp(PlayerMoney, 0, 999999);
 	}

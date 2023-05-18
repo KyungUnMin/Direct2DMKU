@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_Attack_SideKick.h"
 
+#include "DataMgr.h"
+
 #include "SchoolBoyFSM.h"
 #include "FieldPlayer.h"
 
@@ -86,4 +88,8 @@ void SchoolBoyState_Attack_SideKick::Update(float _DeltaTime)
 void SchoolBoyState_Attack_SideKick::Attack()
 {
 	bool Result = FieldPlayer::GetPtr()->OnDamage(PlayerStateType::NormalDamaged_Stomach);
+	if (false == Result)
+		return;
+
+	DataMgr::MinusPlayerHP(-5);
 }

@@ -2,6 +2,8 @@
 #include "PlayerState_UniqueAttack_HyrricaneKick.h"
 
 
+#include "DataMgr.h"
+
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniName = "UniqueAttack_HyrricaneKick";
@@ -61,6 +63,7 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	DataMgr::MinusPlayerMP(30);
 }
 
 
