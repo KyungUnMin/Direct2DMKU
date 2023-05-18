@@ -47,7 +47,7 @@ void EnemyState_AttackBase::AttackCheck()
 {
 	std::shared_ptr<GameEngineCollision> AttackCollider = GetEnemy()->GetAttackCollider();
 	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
-	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE2D, ColType::SPHERE2D);
+	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
 
 	//µð¹ö±ë¿ë
 	const TransformData& EnemyColData = AttackCollider->GetTransform()->GetTransDataRef();

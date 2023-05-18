@@ -51,12 +51,16 @@ void PlayerState_SpecialAttack_DAP::LoadAnimation()
 
 void PlayerState_SpecialAttack_DAP::CreateAnimation()
 {
+	int FrameCnt = AniCutFrame.first * AniCutFrame.second;
+	std::vector<float> FrameTime(static_cast<size_t>(FrameCnt), AniInterTime);
+	FrameTime[3] = AniInterTime * 2.5f;
+
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameInter = AniInterTime,
-		.Loop = false
+		.Loop = false,
+		.FrameTime = FrameTime,
 	});
 }
 

@@ -19,6 +19,11 @@ protected:
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
 
+	void Attack(class FieldEnemyBase* _Enemy) override
+	{
+		int a = 0;
+	}
+
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;

@@ -40,3 +40,18 @@ void FieldEnemy_SchoolGirl::Render(float _DeltaTime)
 	FieldEnemyBase::Render(_DeltaTime);
 	Fsm.Render(_DeltaTime);
 }
+
+void FieldEnemy_SchoolGirl::OnDamage_Face() 
+{
+
+}
+
+void FieldEnemy_SchoolGirl::OnDamage_Stomach() 
+{
+
+}
+
+void FieldEnemy_SchoolGirl::OnDamage_Jaw() 
+{
+
+}

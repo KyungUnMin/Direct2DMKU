@@ -14,6 +14,10 @@ public:
 	FieldEnemy_SchoolGirl& operator=(const FieldEnemy_SchoolGirl& _Other) = delete;
 	FieldEnemy_SchoolGirl& operator=(const FieldEnemy_SchoolGirl&& _Other) noexcept = delete;
 
+	void OnDamage_Face() override;
+	void OnDamage_Stomach() override;
+	void OnDamage_Jaw() override;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

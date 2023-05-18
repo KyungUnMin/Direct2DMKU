@@ -14,12 +14,18 @@ enum class SchoolBoyStateType
 	Punch,
 	SideKick,
 
+	//NormalDamaged
+	NormalDamaged_Face,
+	NormalDamaged_Stomach,
+	NormalDamaged_Jaw,
+
 	COUNT
 };
 
 class SchoolBoyFSM : public EnemyFSMBase
 {
 public:
+	static const std::string_view NormalDamaged_FileName;
 
 	SchoolBoyFSM();
 	~SchoolBoyFSM() override;

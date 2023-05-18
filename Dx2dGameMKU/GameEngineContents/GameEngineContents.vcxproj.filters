@@ -403,6 +403,21 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\02.Stomach">
       <UniqueIdentifier>{d003bcf8-6238-405c-81cb-54a9e0981457}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{5cef6e6f-63fb-4c00-90d9-670910aeac8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{8fd97da0-495a-41b9-a5e3-ae513598a53f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{3749369e-9489-4d11-8000-07058356e8e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{4d5acfcf-b328-49a3-a5f6-b9d2f19e7402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\05.DamagedBase">
+      <UniqueIdentifier>{f7702164-1716-4876-a170-fdc48a858973}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -714,6 +729,18 @@
     <ClCompile Include="PlayerState_NormalDamaged_Jaw.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\03.Jaw</Filter>
     </ClCompile>
+    <ClCompile Include="SchoolBoyState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyState_DamagedBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\05.DamagedBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1015,6 +1042,18 @@
     </ClInclude>
     <ClInclude Include="PlayerState_NormalDamaged_Jaw.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState_DamagedBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\05.DamagedBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

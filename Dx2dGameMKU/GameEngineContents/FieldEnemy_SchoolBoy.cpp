@@ -54,3 +54,17 @@ void FieldEnemy_SchoolBoy::Render(float _DeltaTime)
 }
 
 
+void FieldEnemy_SchoolBoy::OnDamage_Face() 
+{
+	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Face);
+}
+
+void FieldEnemy_SchoolBoy::OnDamage_Stomach() 
+{
+	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Stomach);
+}
+
+void FieldEnemy_SchoolBoy::OnDamage_Jaw() 
+{
+	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Jaw);
+}

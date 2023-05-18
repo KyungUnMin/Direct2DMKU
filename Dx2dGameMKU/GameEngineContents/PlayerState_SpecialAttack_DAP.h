@@ -18,6 +18,11 @@ protected:
 	void EnterState() override;
 	void ExitState() override;
 
+	void Attack(class FieldEnemyBase* _Enemy) override
+	{
+		int a = 0;
+	}
+
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;

@@ -14,6 +14,10 @@ public:
 	FieldEnemyBase& operator=(const FieldEnemyBase& _Other) = delete;
 	FieldEnemyBase& operator=(const FieldEnemyBase&& _Other) noexcept = delete;
 
+	virtual void OnDamage_Face() = 0;
+	virtual void OnDamage_Stomach() = 0;
+	virtual void OnDamage_Jaw() = 0;
+
 protected:
 	void Start() override;
 

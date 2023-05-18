@@ -16,6 +16,10 @@ public:
 
 	void SitDown();
 
+	void OnDamage_Face() override;
+	void OnDamage_Stomach() override;
+	void OnDamage_Jaw() override;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
