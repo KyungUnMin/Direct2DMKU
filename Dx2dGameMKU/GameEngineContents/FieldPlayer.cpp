@@ -50,9 +50,6 @@ void FieldPlayer::Update(float _DeltaTime)
 
 void FieldPlayer::CheckDirection()
 {
-	if (false == DirCheckSwitch)
-		return;
-
 	//이번 프레임의 플레이어 방향, true일때 오른쪽, false면 왼쪽
 	bool NowDir = RenderDir;
 

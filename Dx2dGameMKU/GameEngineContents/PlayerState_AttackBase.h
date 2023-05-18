@@ -13,8 +13,7 @@ public:
 	PlayerState_AttackBase& operator=(const PlayerState_AttackBase&& _Other) noexcept = delete;
 
 protected:
-	void EnterState() override;
-	void ExitState() override;
+	void Start() override;
 
 private:
 

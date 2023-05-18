@@ -83,11 +83,11 @@ void PlayerState_Fall::Update(float _DeltaTime)
 
 	if (PlayerStateType::Movement_Dash == FsmPtr->GetLastMovement())
 	{
-		Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
+		PlayerState_MovementBase::Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
 	}
 	else
 	{
-		Update_Move(_DeltaTime);
+		PlayerState_MovementBase::Update_Move(_DeltaTime);
 	}
 }
 

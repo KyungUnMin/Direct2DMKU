@@ -48,6 +48,9 @@ void PlayerStateBase::SettingHeightRender()
 
 void PlayerStateBase::SettingDirectionRender()
 {
+	if (false == DirChangeSwitch)
+		return;
+
 	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
 	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 

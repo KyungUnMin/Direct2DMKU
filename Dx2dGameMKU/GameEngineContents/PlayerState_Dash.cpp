@@ -84,6 +84,6 @@ void PlayerState_Dash::Update(float _DeltaTime)
 
 
 
-	Update_Move(_DeltaTime, DashSpeed);
+	PlayerState_MovementBase::Update_Move(_DeltaTime, DashSpeed);
 }
 

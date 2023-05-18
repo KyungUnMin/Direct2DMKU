@@ -31,8 +31,20 @@ protected:
 		return Renderer;
 	}
 
+	/*inline void DirChangeOn()
+	{
+		DirChangeSwitch = true;
+	}*/
+
+	inline void DirChangeOff()
+	{
+		DirChangeSwitch = false;
+	}
 
 private:
+	//플레이어의 방향 검사 유무
+	bool DirChangeSwitch = true;
+
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 
 	void SettingHeightRender();
