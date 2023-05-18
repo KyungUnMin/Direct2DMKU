@@ -22,8 +22,11 @@ protected:
 	//플레이어와 충돌했을때 처리해야 하는 상황
 	virtual void Attack() = 0;
 
-private:
-	void AttackCheck();
 
+private:
+
+
+
+	void AttackCheck();
 };
 

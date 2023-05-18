@@ -46,10 +46,22 @@ protected:
 
 	float4 GetVecToPlayer(bool Is2D = false);
 
+	inline void SetSight(float _Radius)
+	{
+		SightRadius = _Radius;
+	}
+
+	inline float GetSightRadius() const
+	{
+		return SightRadius;
+	}
+
+
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 	EnemyFSMBase* FsmPtr = nullptr;
 	FieldEnemyBase* EnemyPtr = nullptr;
+	float SightRadius = 100.f;
 
 	inline void ValidCheck(void* _Ptr) const
 	{

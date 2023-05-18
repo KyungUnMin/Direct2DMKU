@@ -1,8 +1,10 @@
 #include "PrecompileHeader.h"
 #include "PlayerStateBase.h"
 
-#include "FieldPlayer.h"
+#include <GameEngineCore/GameEngineCollision.h>
 
+
+#include "FieldPlayer.h"
 
 
 PlayerStateBase::PlayerStateBase()
@@ -22,7 +24,9 @@ void PlayerStateBase::Start()
 {
 	StateBase::Start();
 
-	Renderer = FieldPlayer::GetPtr()->GetRenderer();
+	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
+	Renderer = PlayerPtr->GetRenderer();
+	Collider = PlayerPtr->GetMainCollider();
 }
 
 
@@ -42,6 +46,7 @@ void PlayerStateBase::SettingHeightRender()
 {
 	float NowHeight = FieldPlayer::GetPtr()->GetHeight();
 	Renderer->GetTransform()->SetLocalPosition(float4::Up * NowHeight);
+	Collider->GetTransform()->SetLocalPosition(float4::Up * NowHeight);
 }
 
 

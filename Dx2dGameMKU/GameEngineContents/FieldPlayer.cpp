@@ -142,6 +142,13 @@ bool FieldPlayer::OnDamage(PlayerStateType _State)
 
 	//디버그용 뭐시기 등등
 
+	//공중에 떠 있을때는 멀리 나가는 Damaged
+	if (0.f < GetHeight())
+	{
+		//TODO
+		int a = 0;
+	}
+
 
 	Fsm.ChangeState(SelectedDamageState);
 	return true;

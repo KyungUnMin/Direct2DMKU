@@ -29,6 +29,7 @@ void FSMBase::InitState(std::shared_ptr<StateBase> _State, size_t _Index)
 	}
 
 	_State->FsmPtr = this;
+	_State->Index = _Index;
 	_State->Start();
 	AllState[_Index] = _State;
 }

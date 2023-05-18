@@ -78,10 +78,23 @@ void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(SchoolBoyStateType::SideKick);
+	//일정 범위 밖에 있다면 idle
+	if (GetSightRadius() < GetVecToPlayer().Size())
+	{
+		GetFSM()->ChangeState(SchoolBoyStateType::Idle);
+		return;
+	}
 
-	//TODO
-	//GetRenderer()
+	//1/n로 Idle, 나머지는 현재와 다른 공격
+	SchoolBoyStateType RandomAttack = SchoolBoyFSM::GetRandomAttack();
+	if (GetStateEnum<SchoolBoyStateType>() == RandomAttack)
+	{
+		GetFSM()->ChangeState(SchoolBoyStateType::Idle);
+	}
+	else
+	{
+		GetFSM()->ChangeState(RandomAttack);
+	}
 }
 
 

@@ -8,6 +8,7 @@
 
 enum class KeyNames;
 class GameEngineSpriteRenderer;
+class GameEngineCollision;
 class GameEngineSprite;
 class AnimationInfo;
 
@@ -46,6 +47,7 @@ private:
 	bool DirChangeSwitch = true;
 
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
+	std::shared_ptr<GameEngineCollision> Collider = nullptr;
 
 	void SettingHeightRender();
 	void SettingDirectionRender();

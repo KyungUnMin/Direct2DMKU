@@ -20,6 +20,7 @@ enum class SchoolBoyStateType
 class SchoolBoyFSM : public EnemyFSMBase
 {
 public:
+
 	SchoolBoyFSM();
 	~SchoolBoyFSM() override;
 
@@ -28,6 +29,8 @@ public:
 	SchoolBoyFSM& operator=(const SchoolBoyFSM& _Other) = delete;
 	SchoolBoyFSM& operator=(const SchoolBoyFSM&& _Other) noexcept = delete;
 
+	static SchoolBoyStateType GetRandomAttack();
+	
 	void Init(class FieldEnemyBase* _Enemy) override;
 
 	
@@ -36,6 +39,9 @@ public:
 protected:
 
 private:
+	static const std::vector<SchoolBoyStateType> AttackGroup;
+
+
 
 };
 

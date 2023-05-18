@@ -46,6 +46,19 @@ protected:
 		Timer = 0.f;
 	}
 
+
+	
+	inline size_t GetFsmIndex() const
+	{
+		return Index;
+	}
+
+	template <typename EnumType>
+	inline EnumType GetStateEnum()
+	{
+		return static_cast<EnumType>(GetFsmIndex());
+	}
+
 private:
 	/*
 		FSM들은 내부에서 값 형으로 들고 있을 예정이기 때문에
@@ -53,6 +66,8 @@ private:
 		일반 포인터들을 이용
 	*/
 	FSMBase* FsmPtr = nullptr;
+
+	size_t Index = -1;
 
 	float Timer = 0.f;
 };

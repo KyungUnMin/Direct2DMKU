@@ -31,7 +31,6 @@ private:
 	};
 
 	State CurState = State::Wait;
-	const float SightLength = 50.f;
 
 	void LoadAnimation();
 	void CreateAnimation();

@@ -26,6 +26,8 @@ void SchoolBoyState_Ready::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+
+	EnemyStateBase::SetSight(50.f);
 }
 
 void SchoolBoyState_Ready::LoadAnimation()
@@ -99,7 +101,7 @@ void SchoolBoyState_Ready::Update_Wait()
 	float4 DirToPlayer = EnemyStateBase::GetVecToPlayer();
 	float Distance = DirToPlayer.Size();
 
-	if (SightLength < Distance)
+	if (GetSightRadius() < Distance)
 		return;
 
 	GetRenderer()->ChangeAnimation(GetUpAniName);

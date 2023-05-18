@@ -26,11 +26,6 @@ protected:
 		NextState = static_cast<size_t>(_NextState);
 	}
 
-	inline void SetSightLength(float _SightRadius)
-	{
-		SightRadius = _SightRadius;
-	}
-
 private:
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::pair<int, int> GridMapScale;
@@ -38,7 +33,6 @@ private:
 	std::vector<std::pair<int, int>> PathStack;
 	float4 DestPos = float4::Zero;
 	float4 StartPos = float4::Zero;
-	float SightRadius = 100.f;
 
 	float Timer = 0.f;
 	const float MoveDuration = 0.1f;
