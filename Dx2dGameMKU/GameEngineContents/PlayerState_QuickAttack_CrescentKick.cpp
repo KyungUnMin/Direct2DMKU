@@ -4,12 +4,13 @@
 #include "KeyMgr.h"
 
 #include "PlayerFSM.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view PlayerState_QuickAttack_CrescentKick::AniName = "QuickAttack_CrescentKick";
 const std::string_view PlayerState_QuickAttack_CrescentKick::AniFileName = "Player_QuickAttack_CrescentKick_Plus.png";
 const std::pair<int, int> PlayerState_QuickAttack_CrescentKick::AniCutFrame = std::pair<int, int>(5, 2);
 const float PlayerState_QuickAttack_CrescentKick::AniInterTime = 0.06f;
-
+const int PlayerState_QuickAttack_CrescentKick::Damage = 5;
 
 PlayerState_QuickAttack_CrescentKick::PlayerState_QuickAttack_CrescentKick()
 {
@@ -100,4 +101,9 @@ void PlayerState_QuickAttack_CrescentKick::ExitState()
 	PlayerState_AttackBase::ExitState();
 
 	IsReserveChainAttack = false;
+}
+
+void PlayerState_QuickAttack_CrescentKick::Attack(FieldEnemyBase* _Enemy)
+{
+	_Enemy->OnDamage_Stomach(Damage);
 }

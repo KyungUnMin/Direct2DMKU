@@ -4,11 +4,13 @@
 #include "KeyMgr.h"
 
 #include "PlayerFSM.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view PlayerState_QickAttack_Chop::AniName = "QuickAttack_Chop";
 const std::string_view PlayerState_QickAttack_Chop::AniFileName = "Player_QuickAttack_Chop_01.png";
 const std::pair<int, int> PlayerState_QickAttack_Chop::AniCutFrame = std::pair<int, int>(3, 2);
 const float PlayerState_QickAttack_Chop::AniInterTime = 0.06f;
+const int PlayerState_QickAttack_Chop::Damage = 5;
 
 PlayerState_QickAttack_Chop::PlayerState_QickAttack_Chop()
 {
@@ -97,4 +99,12 @@ void PlayerState_QickAttack_Chop::ExitState()
 	PlayerState_AttackBase::ExitState();
 
 	IsReserveChainAttack = false;
+}
+
+
+
+
+void PlayerState_QickAttack_Chop::Attack(FieldEnemyBase* _Enemy)
+{
+	_Enemy->OnDamage_Face(Damage);
 }

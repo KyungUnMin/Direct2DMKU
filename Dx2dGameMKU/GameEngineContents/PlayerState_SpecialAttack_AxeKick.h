@@ -17,16 +17,14 @@ protected:
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
 
-	void Attack(class FieldEnemyBase* _Enemy) override
-	{
-		int a = 0;
-	}
+	void Attack(class FieldEnemyBase* _Enemy) override;
 
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	static const float Damage;
 
 	void LoadAnimation();
 	void CreateAnimation();

@@ -16,9 +16,9 @@ public:
 
 	void SitDown();
 
-	void OnDamage_Face() override;
-	void OnDamage_Stomach() override;
-	void OnDamage_Jaw() override;
+	void OnDamage_Face(int _Damage) override;
+	void OnDamage_Stomach(int _Damage) override;
+	void OnDamage_Jaw(int _Damage) override;
 
 protected:
 	void Start() override;

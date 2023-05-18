@@ -26,7 +26,7 @@ void RCG_GameCore::GameStart()
 #endif
 
 	ContentsResourceInit();
-	GUIManager::Init();
+	//GUIManager::Init();
 
 	KeyMgr::CreateKey();
 

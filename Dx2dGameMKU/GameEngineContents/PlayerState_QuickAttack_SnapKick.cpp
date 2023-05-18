@@ -4,11 +4,13 @@
 #include "KeyMgr.h"
 
 #include "PlayerFSM.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view PlayerState_QuickAttack_SnapKick::AniName = "QuickAttack_SnapKick";
 const std::string_view PlayerState_QuickAttack_SnapKick::AniFileName = "Player_QuickAttack_SnapKick_02.png";
 const std::pair<int, int> PlayerState_QuickAttack_SnapKick::AniCutFrame = std::pair<int, int>(4, 2);
 const float PlayerState_QuickAttack_SnapKick::AniInterTime = 0.06f;
+const int PlayerState_QuickAttack_SnapKick::Damage = 5;
 
 PlayerState_QuickAttack_SnapKick::PlayerState_QuickAttack_SnapKick()
 {
@@ -100,4 +102,9 @@ void PlayerState_QuickAttack_SnapKick::ExitState()
 	PlayerState_AttackBase::ExitState();
 
 	IsReserveChainAttack = false;
+}
+
+void PlayerState_QuickAttack_SnapKick::Attack(FieldEnemyBase* _Enemy)
+{
+	_Enemy->OnDamage_Stomach(Damage);
 }

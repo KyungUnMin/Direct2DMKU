@@ -5,11 +5,13 @@
 #include "KeyMgr.h"
 
 #include "PlayerFSM.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view PlayerState_QuickAttack_HookKick::AniName = "QuickAttack_HookKick";
 const std::string_view PlayerState_QuickAttack_HookKick::AniFileName = "Player_QuickAttack_HookKick_04.png";
 const std::pair<int, int> PlayerState_QuickAttack_HookKick::AniCutFrame = std::pair<int, int>(5, 2);
 const float PlayerState_QuickAttack_HookKick::AniInterTime = 0.05f;
+const int PlayerState_QuickAttack_HookKick::Damage = 5;
 
 PlayerState_QuickAttack_HookKick::PlayerState_QuickAttack_HookKick()
 {
@@ -100,4 +102,9 @@ void PlayerState_QuickAttack_HookKick::ExitState()
 	PlayerState_AttackBase::ExitState();
 
 	IsReserveChainAttack = false;
+}
+
+void PlayerState_QuickAttack_HookKick::Attack(FieldEnemyBase* _Enemy)
+{
+	_Enemy->OnDamage_Jaw(Damage);
 }

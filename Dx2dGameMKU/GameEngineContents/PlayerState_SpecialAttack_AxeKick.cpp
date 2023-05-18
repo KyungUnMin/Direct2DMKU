@@ -3,11 +3,13 @@
 
 
 #include "PlayerFSM.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view PlayerState_SpecialAttack_AxeKick::AniName = "SpecialAttack_AxeKick";
 const std::string_view PlayerState_SpecialAttack_AxeKick::AniFileName = "Player_SpecialAttack_AxeKick.png";
 const std::pair<int, int> PlayerState_SpecialAttack_AxeKick::AniCutFrame = std::pair<int, int>(4, 5);
 const float PlayerState_SpecialAttack_AxeKick::AniInterTime = 0.05f;
+const float PlayerState_SpecialAttack_AxeKick::Damage = 10;
 
 PlayerState_SpecialAttack_AxeKick::PlayerState_SpecialAttack_AxeKick()
 {
@@ -68,6 +70,7 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 
 
 
+
 void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 {
 	PlayerState_AttackBase::Update(_DeltaTime);
@@ -80,4 +83,10 @@ void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 	return;
 
+}
+
+
+void PlayerState_SpecialAttack_AxeKick::Attack(FieldEnemyBase* _Enemy)
+{
+	_Enemy->OnDamage_Stomach(Damage);
 }
