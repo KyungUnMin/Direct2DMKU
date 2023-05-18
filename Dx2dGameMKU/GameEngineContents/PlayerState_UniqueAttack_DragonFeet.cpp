@@ -3,8 +3,10 @@
 
 
 #include "DataMgr.h"
+#include "FieldCamController.h"
 
 #include "PlayerFSM.h"
+#include "FieldLevelBase.h"
 
 const int PlayerState_UniqueAttack_DragonFeet::NeedMp = 20;
 
@@ -29,6 +31,7 @@ void PlayerState_UniqueAttack_DragonFeet::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	CamCtrl = &(FieldLevelBase::GetPtr()->GetCameraController());
 }
 
 void PlayerState_UniqueAttack_DragonFeet::LoadAnimation()
@@ -66,6 +69,8 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
+
+	CamCtrl->SetShakeState(0.5f);
 }
 
 

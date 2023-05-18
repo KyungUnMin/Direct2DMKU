@@ -3,8 +3,10 @@
 
 
 #include "DataMgr.h"
+#include "FieldCamController.h"
 
 #include "PlayerFSM.h"
+#include "FieldLevelBase.h"
 
 const int PlayerState_UniqueAttack_HyrricaneKick::NeedMp = 30;
 
@@ -29,6 +31,7 @@ void PlayerState_UniqueAttack_HyrricaneKick::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	CamCtrl = &(FieldLevelBase::GetPtr()->GetCameraController());
 }
 
 void PlayerState_UniqueAttack_HyrricaneKick::LoadAnimation()
@@ -66,6 +69,8 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
+
+	CamCtrl->SetShakeState(0.5f);
 }
 
 

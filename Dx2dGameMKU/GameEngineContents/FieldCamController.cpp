@@ -36,10 +36,11 @@ void FieldCamController::SetFixedState(const float4& _DestPos)
 	CurState = CameraCtrlState::MoveToFixed;
 }
 
-void FieldCamController::SetShakeState(float _ShakeDuration)
+void FieldCamController::SetShakeState(float _ShakeDuration, float _ShakeRange /*= 5.f*/)
 {
 	PrevPos = Cam->GetTransform()->GetLocalPosition();
 	ShakeDuration = _ShakeDuration;
+	ShakeRange = _ShakeRange;
 	Timer = 0.f;
 	PrevState = CurState;
 
@@ -162,7 +163,6 @@ void FieldCamController::Update_Shake(float _DeltaTime)
 		return;
 	}
 
-	const float ShakeRange = 5.f;
 
 	float4 ShakeOffset = float4::Zero;
 	ShakeOffset .x = GameEngineRandom::MainRandom.RandomFloat(-ShakeRange, ShakeRange);

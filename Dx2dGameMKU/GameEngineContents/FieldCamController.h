@@ -30,7 +30,7 @@ public:
 
 	void SetFixedState(const float4& _DestPos);
 	
-	void SetShakeState(float _ShakeDuration);
+	void SetShakeState(float _ShakeDuration, float _ShakeRange = 5.f);
 
 protected:
 
@@ -51,6 +51,7 @@ private:
 	float4 DestPos = float4::Zero;
 
 	//Shake
+	float ShakeRange = 5.f;
 	float ShakeDuration = 0.0f;
 	CameraCtrlState PrevState = CameraCtrlState::Shake;
 

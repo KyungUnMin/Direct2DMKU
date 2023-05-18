@@ -25,6 +25,8 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 
+	class FieldCamController* CamCtrl = nullptr;
+
 	void LoadAnimation();
 	void CreateAnimation();
 };
