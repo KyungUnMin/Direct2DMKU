@@ -3,6 +3,7 @@
 
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldPlayer.h"
 
 const std::string_view SchoolBoyState_Attack_AxeKick::AniName = "Attack_AxeKick";
 const std::string_view SchoolBoyState_Attack_AxeKick::AniFileName = "SchoolBoy_Axe_Kick.png";
@@ -85,5 +86,5 @@ void SchoolBoyState_Attack_AxeKick::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_AxeKick::Attack()
 {
-	int a = 0;
+	bool Result = FieldPlayer::GetPtr()->OnDamage(PlayerStateType::NormalDamaged_Stomach);
 }

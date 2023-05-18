@@ -285,6 +285,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PlayerState_NormalDamaged_Face.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_NormalDamaged_Jaw.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_NormalDamaged_Stomach.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerState_QickAttack_Chop.h">
       <SubType>
       </SubType>
@@ -649,6 +661,18 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PlayerState_MovementBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_NormalDamaged_Face.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_NormalDamaged_Jaw.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_NormalDamaged_Stomach.cpp">
       <SubType>
       </SubType>
     </ClCompile>

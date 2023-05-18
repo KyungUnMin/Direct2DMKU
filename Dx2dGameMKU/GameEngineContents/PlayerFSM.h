@@ -31,8 +31,10 @@ enum class PlayerStateType
 	
 
 
-	//Damaged
-
+	//NormalDamaged
+	NormalDamaged_Face,
+	NormalDamaged_Stomach,
+	NormalDamaged_Jaw,
 
 
 	COUNT

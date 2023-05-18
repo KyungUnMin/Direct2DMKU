@@ -4,6 +4,8 @@
 class PlayerState_DamagedBase : public PlayerStateBase
 {
 public:
+	static const std::string_view NormalDamage_FileName;
+
 	PlayerState_DamagedBase();
 	~PlayerState_DamagedBase() override;
 
@@ -13,8 +15,9 @@ public:
 	PlayerState_DamagedBase& operator=(const PlayerState_DamagedBase&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
 
 private:
-
+	void LoadNormalDamagedImage();
 };
 

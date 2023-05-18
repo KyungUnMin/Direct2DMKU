@@ -3,6 +3,7 @@
 
 
 #include "SchoolBoyFSM.h"
+#include "FieldPlayer.h"
 
 const std::string_view SchoolBoyState_Attack_Elbow::AniName = "Attack_Elbow";
 const std::string_view SchoolBoyState_Attack_Elbow::AniFileName = "SchoolBoy_Elbow_Uppercut.png";
@@ -86,5 +87,5 @@ void SchoolBoyState_Attack_Elbow::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_Elbow::Attack()
 {
-	int a = 0;
+	bool Result = FieldPlayer::GetPtr()->OnDamage(PlayerStateType::NormalDamaged_Jaw);
 }

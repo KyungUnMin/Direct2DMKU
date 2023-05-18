@@ -36,7 +36,10 @@ public:
 		return RenderDir;
 	}
 
-	
+	bool OnDamage(PlayerStateType _State);
+
+	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
+	void SetDirection(bool IsRight);
 
 protected:
 	void Start() override;
@@ -52,6 +55,8 @@ private:
 	//true일때 오른쪽, false면 왼쪽
 	bool RenderDir = true;
 
+	//이번 프레임동안에, 외부에서 방향을 강제로 설정됐는지 유무
+	bool IsFixedDirection = false;
 	
 
 

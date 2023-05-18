@@ -391,6 +391,18 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Walk">
       <UniqueIdentifier>{c1aa9586-a8be-4031-a937-70535444f75c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged">
+      <UniqueIdentifier>{6b901f76-9316-43aa-a542-ef6587ff857a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\01.Face">
+      <UniqueIdentifier>{6c330108-4c56-4a2f-a7b5-32c3d2172cec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{f21ec0c9-71fa-4aa0-85b2-1a1a4fe06cb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{d003bcf8-6238-405c-81cb-54a9e0981457}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -693,6 +705,15 @@
     <ClCompile Include="PlayerState_MovementBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.MoveBase</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -985,6 +1006,15 @@
     </ClInclude>
     <ClInclude Include="PlayerState_MovementBase.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.MoveBase</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\02.NormalDamaged\03.Jaw</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

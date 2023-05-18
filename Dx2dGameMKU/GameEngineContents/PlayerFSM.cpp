@@ -24,9 +24,15 @@
 #include "PlayerState_UniqueAttack_DragonFeet.h"
 #include "PlayerState_UniqueAttack_HyrricaneKick.h"
 
+
 //Dash Attack
 
-//Damaged
+
+
+//NormalDamaged
+#include "PlayerState_NormalDamaged_Face.h"
+#include "PlayerState_NormalDamaged_Stomach.h"
+#include "PlayerState_NormalDamaged_Jaw.h"
 
 
 PlayerFSM::PlayerFSM()
@@ -73,7 +79,11 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	
 
 
-	//Damaged
+	//NormalDamaged
+	FSMBase::CreateState<PlayerState_NormalDamaged_Face>(PlayerStateType::NormalDamaged_Face);
+	FSMBase::CreateState<PlayerState_NormalDamaged_Stomach>(PlayerStateType::NormalDamaged_Stomach);
+	FSMBase::CreateState<PlayerState_NormalDamaged_Jaw>(PlayerStateType::NormalDamaged_Jaw);
+
 
 
 

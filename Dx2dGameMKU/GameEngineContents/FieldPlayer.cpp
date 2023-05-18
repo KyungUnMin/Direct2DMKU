@@ -27,6 +27,7 @@ FieldPlayer::~FieldPlayer()
 
 
 
+
 void FieldPlayer::Start()
 {
 	FieldActorBase::Start();
@@ -50,6 +51,12 @@ void FieldPlayer::Update(float _DeltaTime)
 
 void FieldPlayer::CheckDirection()
 {
+	if (true == IsFixedDirection)
+	{
+		IsFixedDirection = false;
+		return;
+	}
+
 	//이번 프레임의 플레이어 방향, true일때 오른쪽, false면 왼쪽
 	bool NowDir = RenderDir;
 
@@ -63,6 +70,23 @@ void FieldPlayer::CheckDirection()
 	}
 
 	RenderDir = NowDir;
+}
+
+
+void FieldPlayer::SetDirection(bool IsRight)
+{
+	RenderDir = IsRight;
+	IsFixedDirection = true;
+
+	GameEngineTransform* TransPtr = GetTransform();
+	if (true == RenderDir)
+	{
+		TransPtr->SetLocalPositiveScaleX();
+	}
+	else
+	{
+		TransPtr->SetLocalNegativeScaleX();
+	}
 }
 
 
@@ -92,4 +116,33 @@ bool FieldPlayer::IsDashing() const
 		return true;
 
 	return false;
+}
+
+
+
+bool FieldPlayer::OnDamage(PlayerStateType _State)
+{
+	size_t SelectedDamageState = static_cast<size_t>(_State);
+	size_t DamageStartIndex = static_cast<size_t>(PlayerStateType::NormalDamaged_Face);
+	size_t DamageEndIndex = static_cast<size_t>(PlayerStateType::NormalDamaged_Jaw);
+
+	if ((SelectedDamageState < DamageStartIndex) || (DamageEndIndex < SelectedDamageState))
+	{
+		MsgAssert("플레이어의 FSM을 공격받는 상태가 아닌 다른 상태로 바꾸려고 했습니다");
+		return false;
+	}
+
+	//TODO List
+
+	//방어하고 있는 상태일때,
+
+	//이미 공격받고 있는 상태일때,
+
+	//패링중일때
+
+	//디버그용 뭐시기 등등
+
+
+	Fsm.ChangeState(SelectedDamageState);
+	return true;
 }
