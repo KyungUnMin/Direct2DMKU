@@ -26,13 +26,6 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
-	//빌드위한 임시
-	bool IsOnAir() { return false; }
-
-	void Update_Move(float _DeltaTime, const float4& _Speed = float4{400.f, 200.f});
-
-	bool Check_Idle();
-
 	inline std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
 	{
 		return Renderer;
@@ -40,9 +33,6 @@ protected:
 
 
 private:
-	static const std::vector<KeyNames> IdleCheckKeys;
-
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 
 	void SettingHeightRender();

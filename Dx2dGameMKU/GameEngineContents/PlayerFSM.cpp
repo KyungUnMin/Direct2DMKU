@@ -3,7 +3,7 @@
 
 //Movement
 #include "PlayerState_Idle.h"
-#include "PlayerState_Move.h"
+#include "PlayerState_Walk.h"
 #include "PlayerState_Jump.h"
 #include "PlayerState_Fall.h"
 #include "PlayerState_Dash.h"
@@ -47,7 +47,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	
 	//Movement
 	FSMBase::CreateState<PlayerState_Idle>(PlayerStateType::Movement_Idle);
-	FSMBase::CreateState<PlayerState_Move>(PlayerStateType::Movement_Move);
+	FSMBase::CreateState<PlayerState_Walk>(PlayerStateType::Movement_Walk);
 	FSMBase::CreateState<PlayerState_Jump>(PlayerStateType::Movement_Jump);
 	FSMBase::CreateState<PlayerState_Fall>(PlayerStateType::Movement_Fall);
 	FSMBase::CreateState<PlayerState_Dash>(PlayerStateType::Movement_Dash);
@@ -86,7 +86,7 @@ void PlayerFSM::ChangeState(size_t _NextIndex)
 	FSMBase::ChangeState(_NextIndex);
 
 	PlayerStateType NextState = static_cast<PlayerStateType>(_NextIndex);
-	if ((PlayerStateType::Movement_Move != NextState) && (PlayerStateType::Movement_Dash != NextState))
+	if ((PlayerStateType::Movement_Walk != NextState) && (PlayerStateType::Movement_Dash != NextState))
 		return;
 
 	LastMoveState = NextState;

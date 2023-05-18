@@ -273,7 +273,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PlayerState_DamagedBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerState_Dash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_MovementBase.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -467,7 +475,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PlayerState_Idle.h" />
-    <ClInclude Include="PlayerState_Move.h" />
+    <ClInclude Include="PlayerState_Walk.h" />
     <ClInclude Include="PlayerState_Fall.h" />
     <ClInclude Include="PlayerState_Jump.h" />
     <ClInclude Include="PrecompileHeader.h">
@@ -632,7 +640,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PlayerState_DamagedBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerState_Dash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_MovementBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -826,7 +842,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PlayerState_Idle.cpp" />
-    <ClCompile Include="PlayerState_Move.cpp" />
+    <ClCompile Include="PlayerState_Walk.cpp" />
     <ClCompile Include="PlayerState_Fall.cpp" />
     <ClCompile Include="PlayerState_Jump.cpp" />
     <ClCompile Include="PrecompileHeader.cpp">

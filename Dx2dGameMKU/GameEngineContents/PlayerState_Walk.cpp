@@ -1,15 +1,15 @@
 #include "PrecompileHeader.h"
-#include "PlayerState_Move.h"
+#include "PlayerState_Walk.h"
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 
-const std::string_view PlayerState_Move::AniName = "Walk";
-const std::string_view PlayerState_Move::AniFileName = "Player_Walk.png";
-const std::pair<int, int> PlayerState_Move::AniCutFrame = std::pair<int, int>(4, 3);
-const float PlayerState_Move::AniInterTime = 0.08f;
+const std::string_view PlayerState_Walk::AniName = "Walk";
+const std::string_view PlayerState_Walk::AniFileName = "Player_Walk.png";
+const std::pair<int, int> PlayerState_Walk::AniCutFrame = std::pair<int, int>(4, 3);
+const float PlayerState_Walk::AniInterTime = 0.08f;
 
-std::vector<KeyNames>  PlayerState_Move::CheckArrows =
+std::vector<KeyNames>  PlayerState_Walk::CheckArrows =
 {
 	KeyNames::RightArrow,
 	KeyNames::LeftArrow,
@@ -17,26 +17,26 @@ std::vector<KeyNames>  PlayerState_Move::CheckArrows =
 	KeyNames::DownArrow,
 };
 
-PlayerState_Move::PlayerState_Move()
+PlayerState_Walk::PlayerState_Walk()
 {
 
 }
 
-PlayerState_Move::~PlayerState_Move()
+PlayerState_Walk::~PlayerState_Walk()
 {
 
 }
 
-void PlayerState_Move::Start()
+void PlayerState_Walk::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_MovementBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
 }
 
 
-void PlayerState_Move::LoadAnimation()
+void PlayerState_Walk::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -51,7 +51,7 @@ void PlayerState_Move::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void PlayerState_Move::CreateAnimation() 
+void PlayerState_Walk::CreateAnimation() 
 {
 	GetRenderer()->CreateAnimation
 	({
@@ -62,9 +62,9 @@ void PlayerState_Move::CreateAnimation()
 }
 
 
-void PlayerState_Move::EnterState()
+void PlayerState_Walk::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_MovementBase::EnterState();
 
 	CheckPressArrow(PressArrow);
 	GetRenderer()->ChangeAnimation(AniName);
@@ -72,7 +72,7 @@ void PlayerState_Move::EnterState()
 
 
 
-void PlayerState_Move::CheckPressArrow(KeyNames& _SettingEnum)
+void PlayerState_Walk::CheckPressArrow(KeyNames& _SettingEnum)
 {
 	for (const KeyNames Arrow : CheckArrows)
 	{
@@ -84,9 +84,9 @@ void PlayerState_Move::CheckPressArrow(KeyNames& _SettingEnum)
 }
 
 
-void PlayerState_Move::Update(float _DeltaTime)
+void PlayerState_Walk::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_MovementBase::Update(_DeltaTime);
 
 	//아이들 처리
 	if (true == Check_Idle())
@@ -138,13 +138,13 @@ void PlayerState_Move::Update(float _DeltaTime)
 	
 
 	//실제 이동
-	PlayerStateBase::Update_Move(_DeltaTime);
+	PlayerState_MovementBase::Update_Move(_DeltaTime);
 }
 
 
-void PlayerState_Move::ExitState()
+void PlayerState_Walk::ExitState()
 {
-	PlayerStateBase::ExitState();
+	PlayerState_MovementBase::ExitState();
 
 	LastArrow = PressArrow;
 	LastTime = GetFSM()->GetFsmTime();

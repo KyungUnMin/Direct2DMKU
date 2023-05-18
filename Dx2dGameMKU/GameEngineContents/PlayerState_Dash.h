@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_MovementBase.h"
 
-class PlayerState_Dash : public PlayerStateBase
+class PlayerState_Dash : public PlayerState_MovementBase
 {
 public:
 	static const float4 DashSpeed;

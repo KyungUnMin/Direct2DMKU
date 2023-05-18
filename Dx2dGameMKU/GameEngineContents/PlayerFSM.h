@@ -5,7 +5,7 @@ enum class PlayerStateType
 {
 	//Movement
 	Movement_Idle,
-	Movement_Move,
+	Movement_Walk,
 	Movement_Jump,
 	Movement_Fall,
 	Movement_Dash,

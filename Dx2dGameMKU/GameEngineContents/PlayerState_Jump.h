@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_MovementBase.h"
 
-class PlayerState_Jump : public PlayerStateBase
+class PlayerState_Jump : public PlayerState_MovementBase
 {
 public:
 	PlayerState_Jump();

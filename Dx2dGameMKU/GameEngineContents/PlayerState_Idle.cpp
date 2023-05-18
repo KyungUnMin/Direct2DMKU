@@ -23,7 +23,7 @@ PlayerState_Idle::~PlayerState_Idle()
 
 void PlayerState_Idle::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_MovementBase::Start();
 
 	SetArrowKey();
 	LoadAnimation();
@@ -74,7 +74,7 @@ void PlayerState_Idle::CreateAnimation()
 
 void PlayerState_Idle::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -84,7 +84,7 @@ void PlayerState_Idle::EnterState()
 
 void PlayerState_Idle::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_MovementBase::Update(_DeltaTime);
 	
 
 	//ÀÌµ¿
@@ -93,7 +93,7 @@ void PlayerState_Idle::Update(float _DeltaTime)
 		if (false == KeyMgr::IsPress(Arrow))
 			continue;
 
-		GetFSM()->ChangeState(PlayerStateType::Movement_Move);
+		GetFSM()->ChangeState(PlayerStateType::Movement_Walk);
 		return;
 	}
 

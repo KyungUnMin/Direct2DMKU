@@ -1,9 +1,9 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_MovementBase.h"
 
 enum class KeyNames;
 
-class PlayerState_Idle : public PlayerStateBase
+class PlayerState_Idle : public PlayerState_MovementBase
 {
 public:
 	PlayerState_Idle();

@@ -22,7 +22,7 @@ PlayerState_Fall::~PlayerState_Fall()
 
 void PlayerState_Fall::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_MovementBase::Start();
 
 	FsmPtr = GetConvertFSM<PlayerFSM>();
 	LoadAnimation();
@@ -61,7 +61,7 @@ void PlayerState_Fall::CreateAnimation()
 
 void PlayerState_Fall::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnterHeight = FieldPlayer::GetPtr()->GetHeight();
@@ -70,7 +70,7 @@ void PlayerState_Fall::EnterState()
 
 void PlayerState_Fall::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_MovementBase::Update(_DeltaTime);
 
 	float Ratio = (GetLiveTime() / Duration);
 	float NowHeight = EnterHeight * (1.f - Ratio);

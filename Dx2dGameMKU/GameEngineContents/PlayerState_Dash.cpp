@@ -24,7 +24,7 @@ PlayerState_Dash::~PlayerState_Dash()
 
 void PlayerState_Dash::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_MovementBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -58,7 +58,7 @@ void PlayerState_Dash::CreateAnimation()
 
 void PlayerState_Dash::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -67,7 +67,7 @@ void PlayerState_Dash::EnterState()
 
 void PlayerState_Dash::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_MovementBase::Update(_DeltaTime);
 
 	if (true == Check_Idle())
 	{

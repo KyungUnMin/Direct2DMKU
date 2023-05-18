@@ -1,18 +1,18 @@
 #pragma once
-#include "PlayerStateBase.h"
+#include "PlayerState_MovementBase.h"
 #include "KeyMgr.h"
 
 
-class PlayerState_Move : public PlayerStateBase
+class PlayerState_Walk : public PlayerState_MovementBase
 {
 public:
-	PlayerState_Move();
-	~PlayerState_Move() override;
+	PlayerState_Walk();
+	~PlayerState_Walk() override;
 
-	PlayerState_Move(const PlayerState_Move& _Other) = delete;
-	PlayerState_Move(PlayerState_Move&& _Other) noexcept = delete;
-	PlayerState_Move& operator=(const PlayerState_Move& _Other) = delete;
-	PlayerState_Move& operator=(const PlayerState_Move&& _Other) noexcept = delete;
+	PlayerState_Walk(const PlayerState_Walk& _Other) = delete;
+	PlayerState_Walk(PlayerState_Walk&& _Other) noexcept = delete;
+	PlayerState_Walk& operator=(const PlayerState_Walk& _Other) = delete;
+	PlayerState_Walk& operator=(const PlayerState_Walk&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

@@ -220,21 +220,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement">
       <UniqueIdentifier>{a7f626ce-ee5c-46a3-8af8-35c7f4c060a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.Idle">
-      <UniqueIdentifier>{aa624834-e693-4964-9aa8-ca8ed19d814b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\02.Move">
-      <UniqueIdentifier>{c1aa9586-a8be-4031-a937-70535444f75c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Jump">
-      <UniqueIdentifier>{1ce6168e-8834-4ce2-864a-268dc3f983d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\04.Fall">
-      <UniqueIdentifier>{b94727c1-8baa-423f-8c2b-4591580b4ee1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\05.Dash">
-      <UniqueIdentifier>{e3f3d3a5-8aa9-43d9-841e-e56135eed7dd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack">
       <UniqueIdentifier>{341251c1-21b4-4980-981c-2dd60c8d5aa0}</UniqueIdentifier>
     </Filter>
@@ -385,6 +370,27 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\04.AttackBase">
       <UniqueIdentifier>{bec639ae-838b-4a7c-bfe0-c91abedcb539}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\01.DamagedBase">
+      <UniqueIdentifier>{19a86084-9d5e-4430-98fb-2598ef36c8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.MoveBase">
+      <UniqueIdentifier>{0a34f35c-6fff-4507-9d87-3dc903eb6e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\02.Idle">
+      <UniqueIdentifier>{aa624834-e693-4964-9aa8-ca8ed19d814b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\04.Jump">
+      <UniqueIdentifier>{1ce6168e-8834-4ce2-864a-268dc3f983d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\05.Fall">
+      <UniqueIdentifier>{b94727c1-8baa-423f-8c2b-4591580b4ee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\06.Dash">
+      <UniqueIdentifier>{e3f3d3a5-8aa9-43d9-841e-e56135eed7dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Walk">
+      <UniqueIdentifier>{c1aa9586-a8be-4031-a937-70535444f75c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -421,16 +427,16 @@
       <Filter>01.Core\03.Manager/Controller\01.KeyMgr</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Jump.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Jump</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\04.Jump</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Fall.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\04.Fall</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\05.Fall</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.Idle</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\02.Idle</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerState_Move.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\02.Move</Filter>
+    <ClCompile Include="PlayerState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Walk</Filter>
     </ClCompile>
     <ClCompile Include="RCGDefine.cpp">
       <Filter>01.Core\02.Define</Filter>
@@ -517,7 +523,7 @@
       <Filter>99.Test\ColorWave</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_Dash.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\05.Dash</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\06.Dash</Filter>
     </ClCompile>
     <ClCompile Include="GlichSideAttack.cpp">
       <Filter>03.Actor\06.Effect\01.GlichSideAttack</Filter>
@@ -681,6 +687,12 @@
     <ClCompile Include="EnemyState_AttackBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\04.AttackBase</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_DamagedBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\01.DamagedBase</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_MovementBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.MoveBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -720,16 +732,16 @@
       <Filter>01.Core\03.Manager/Controller\01.KeyMgr</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Jump.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Jump</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\04.Jump</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Fall.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\04.Fall</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\05.Fall</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.Idle</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\02.Idle</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerState_Move.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\02.Move</Filter>
+    <ClInclude Include="PlayerState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\03.Walk</Filter>
     </ClInclude>
     <ClInclude Include="RCGDefine.h">
       <Filter>01.Core\02.Define</Filter>
@@ -810,7 +822,7 @@
       <Filter>99.Test\ColorWave</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_Dash.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\05.Dash</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\06.Dash</Filter>
     </ClInclude>
     <ClInclude Include="GlichSideAttack.h">
       <Filter>03.Actor\06.Effect\01.GlichSideAttack</Filter>
@@ -967,6 +979,12 @@
     </ClInclude>
     <ClInclude Include="EnemyState_AttackBase.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\04.AttackBase</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_DamagedBase.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\01.DamagedBase</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_MovementBase.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\01.MoveBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

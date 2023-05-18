@@ -26,7 +26,7 @@ PlayerState_Jump::~PlayerState_Jump()
 
 void PlayerState_Jump::Start()
 {
-	PlayerStateBase::Start();
+	PlayerState_MovementBase::Start();
 
 	FsmPtr = GetConvertFSM<PlayerFSM>();
 	LoadAnimation();
@@ -65,7 +65,7 @@ void PlayerState_Jump::CreateAnimation()
 
 void PlayerState_Jump::EnterState()
 {
-	PlayerStateBase::EnterState();
+	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -74,7 +74,7 @@ void PlayerState_Jump::EnterState()
 
 void PlayerState_Jump::Update(float _DeltaTime)
 {
-	PlayerStateBase::Update(_DeltaTime);
+	PlayerState_MovementBase::Update(_DeltaTime);
 
 	float Ratio = (GetLiveTime() / Duration);
 	float NowHeight = MaxHeight * Ratio;
