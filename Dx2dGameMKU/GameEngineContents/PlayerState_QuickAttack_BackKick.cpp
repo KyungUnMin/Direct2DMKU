@@ -2,6 +2,7 @@
 #include "PlayerState_QuickAttack_BackKick.h"
 
 #include "KeyMgr.h"
+#include "DataMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -103,5 +104,6 @@ void PlayerState_QuickAttack_BackKick::ExitState()
 
 void PlayerState_QuickAttack_BackKick::Attack(FieldEnemyBase* _Enemy)
 {
+	DataMgr::PlusPlayerMP(Damage);
 	_Enemy->OnDamage_Jaw(Damage);
 }

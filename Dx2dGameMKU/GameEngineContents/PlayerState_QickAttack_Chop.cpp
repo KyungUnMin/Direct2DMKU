@@ -2,6 +2,7 @@
 #include "PlayerState_QickAttack_Chop.h"
 
 #include "KeyMgr.h"
+#include "DataMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -106,5 +107,6 @@ void PlayerState_QickAttack_Chop::ExitState()
 
 void PlayerState_QickAttack_Chop::Attack(FieldEnemyBase* _Enemy)
 {
+	DataMgr::PlusPlayerMP(Damage);
 	_Enemy->OnDamage_Face(Damage);
 }
