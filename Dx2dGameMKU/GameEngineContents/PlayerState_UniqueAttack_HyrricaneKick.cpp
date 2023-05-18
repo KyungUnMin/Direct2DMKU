@@ -61,6 +61,12 @@ void PlayerState_UniqueAttack_HyrricaneKick::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	//나중에 Attack함수 내에서 인트로 구분한다거나 하자
+	for (size_t i = 5; i < 20; ++i)
+	{
+		PlayerState_AttackBase::SetAttackCheckFrame(AniName, i);
+	}
 }
 
 void PlayerState_UniqueAttack_HyrricaneKick::EnterState()

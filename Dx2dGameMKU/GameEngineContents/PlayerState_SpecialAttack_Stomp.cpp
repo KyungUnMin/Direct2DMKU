@@ -52,6 +52,8 @@ void PlayerState_SpecialAttack_Stomp::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 4);
 }
 
 void PlayerState_SpecialAttack_Stomp::EnterState()

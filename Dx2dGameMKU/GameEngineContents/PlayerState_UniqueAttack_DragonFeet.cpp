@@ -61,6 +61,14 @@ void PlayerState_UniqueAttack_DragonFeet::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	//나중에 Attack함수 내에서 인트로 구분한다거나 하자
+	for (size_t i = 4; i < 12; ++i)
+	{
+		PlayerState_AttackBase::SetAttackCheckFrame(AniName, i);
+	}
+	
+	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 14);
 }
 
 void PlayerState_UniqueAttack_DragonFeet::EnterState()

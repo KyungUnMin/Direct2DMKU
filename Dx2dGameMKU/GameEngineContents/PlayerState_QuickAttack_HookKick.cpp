@@ -56,6 +56,8 @@ void PlayerState_QuickAttack_HookKick::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 3);
 }
 
 void PlayerState_QuickAttack_HookKick::EnterState()

@@ -46,9 +46,7 @@ void PlayerState_QickAttack_Chop::LoadAnimation()
 
 void PlayerState_QickAttack_Chop::CreateAnimation() 
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
-
-	Render->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -56,7 +54,7 @@ void PlayerState_QickAttack_Chop::CreateAnimation()
 		.Loop = false
 	});
 
-	//TODO
+	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 2);
 }
 
 void PlayerState_QickAttack_Chop::EnterState()

@@ -54,6 +54,8 @@ void PlayerState_SpecialAttack_AxeKick::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = false
 	});
+
+	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 8);
 }
 
 void PlayerState_SpecialAttack_AxeKick::EnterState()

@@ -62,6 +62,8 @@ void PlayerState_SpecialAttack_DAP::CreateAnimation()
 		.Loop = false,
 		.FrameTime = FrameTime,
 	});
+
+	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 4);
 }
 
 void PlayerState_SpecialAttack_DAP::CreateEffect()
