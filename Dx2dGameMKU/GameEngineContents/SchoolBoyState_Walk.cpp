@@ -26,7 +26,7 @@ void SchoolBoyState_Walk::Start()
 	LoadAnimation();
 	CreateAnimation();
 
-	EnemyState_WalkBase::SetNextState(SchoolBoyStateType::AxeKick);
+	EnemyState_WalkBase::SetNextState(SchoolBoyStateType::Idle);
 }
 
 void SchoolBoyState_Walk::LoadAnimation()

@@ -69,6 +69,15 @@ void EnemyState_WalkBase::Update(float _DeltaTime)
 	float4 NextPos = float4::LerpClamp(StartPos, DestPos, Ratio);
 	GetEnemy()->GetTransform()->SetWorldPosition(NextPos);
 
+	//이 Enemy에서 Player 까지의 벡터
+	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
+	if (VecToPlayer.Size() < SightRadius)
+	{
+		//자식에서 지정해준 상태값으로 이동
+		GetFSM()->ChangeState(NextState);
+		return;
+	}
+
 	if (Ratio < 1.f)
 		return;
 

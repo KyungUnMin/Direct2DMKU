@@ -1,8 +1,13 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_Walk.h"
 
+#include "DataMgr.h"
+
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
+#include "PlayerState_UniqueAttack_HyrricaneKick.h"
+
+
 
 const std::string_view PlayerState_Walk::AniName = "Walk";
 const std::string_view PlayerState_Walk::AniFileName = "Player_Walk.png";
@@ -114,8 +119,12 @@ void PlayerState_Walk::Update(float _DeltaTime)
 	//특수 스킬
 	if (true == KeyMgr::IsPress(KeyNames::C) && true == KeyMgr::IsPress(KeyNames::DownArrow))
 	{
-		GetFSM()->ChangeState(PlayerStateType::UniqueAttack_HyrricaneKick);
-		return;
+		int CurMp = DataMgr::GetPlayerMP();
+		if (PlayerState_UniqueAttack_HyrricaneKick::NeedMp <= CurMp)
+		{
+			GetFSM()->ChangeState(PlayerStateType::UniqueAttack_HyrricaneKick);
+			return;
+		}
 	}
 
 

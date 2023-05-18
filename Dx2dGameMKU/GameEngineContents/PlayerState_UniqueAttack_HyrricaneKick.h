@@ -4,6 +4,8 @@
 class PlayerState_UniqueAttack_HyrricaneKick : public PlayerState_AttackBase
 {
 public:
+	static const int NeedMp;
+
 	PlayerState_UniqueAttack_HyrricaneKick();
 	~PlayerState_UniqueAttack_HyrricaneKick() override;
 

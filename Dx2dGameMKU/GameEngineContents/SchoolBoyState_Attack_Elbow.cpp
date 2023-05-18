@@ -10,6 +10,7 @@ const std::string_view SchoolBoyState_Attack_Elbow::AniName = "Attack_Elbow";
 const std::string_view SchoolBoyState_Attack_Elbow::AniFileName = "SchoolBoy_Elbow_Uppercut.png";
 const std::pair<int, int> SchoolBoyState_Attack_Elbow::AniCutFrame = std::pair<int, int>(5, 2);
 const float SchoolBoyState_Attack_Elbow::AniInterTime = 0.08f;
+const int SchoolBoyState_Attack_Elbow::Damage = 5;
 
 SchoolBoyState_Attack_Elbow::SchoolBoyState_Attack_Elbow()
 {
@@ -92,5 +93,5 @@ void SchoolBoyState_Attack_Elbow::Attack()
 	if (false == Result)
 		return;
 
-	DataMgr::MinusPlayerHP(-5);
+	DataMgr::MinusPlayerHP(Damage);
 }

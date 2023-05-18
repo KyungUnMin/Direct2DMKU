@@ -6,6 +6,8 @@
 
 #include "PlayerFSM.h"
 
+const int PlayerState_UniqueAttack_DragonFeet::NeedMp = 20;
+
 const std::string_view PlayerState_UniqueAttack_DragonFeet::AniName = "UniqueAttack_DragonFeet";
 const std::string_view PlayerState_UniqueAttack_DragonFeet::AniFileName = "Player_UniqueAttack_DragonFeet.png";
 const std::pair<int, int> PlayerState_UniqueAttack_DragonFeet::AniCutFrame = std::pair<int, int>(7, 4);
@@ -63,7 +65,7 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	DataMgr::MinusPlayerMP(20);
+	DataMgr::MinusPlayerMP(NeedMp);
 }
 
 

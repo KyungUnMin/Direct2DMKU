@@ -10,6 +10,7 @@ const std::string_view SchoolBoyState_Attack_SideKick::AniName = "Attack_SideKic
 const std::string_view SchoolBoyState_Attack_SideKick::AniFileName = "SchoolBoy_Side_Kick.png";
 const std::pair<int, int> SchoolBoyState_Attack_SideKick::AniCutFrame = std::pair<int, int>(5, 2);
 const float SchoolBoyState_Attack_SideKick::AniInterTime = 0.08f;
+const int SchoolBoyState_Attack_SideKick::Damage = 5;
 
 SchoolBoyState_Attack_SideKick::SchoolBoyState_Attack_SideKick()
 {
@@ -91,5 +92,5 @@ void SchoolBoyState_Attack_SideKick::Attack()
 	if (false == Result)
 		return;
 
-	DataMgr::MinusPlayerHP(-5);
+	DataMgr::MinusPlayerHP(Damage);
 }

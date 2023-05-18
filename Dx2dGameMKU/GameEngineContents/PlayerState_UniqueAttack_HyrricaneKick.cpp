@@ -6,6 +6,8 @@
 
 #include "PlayerFSM.h"
 
+const int PlayerState_UniqueAttack_HyrricaneKick::NeedMp = 30;
+
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniName = "UniqueAttack_HyrricaneKick";
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniFileName = "Player_UniqueAttack_HyrricaneKick.png";
 const std::pair<int, int> PlayerState_UniqueAttack_HyrricaneKick::AniCutFrame = std::pair<int, int>(7, 4);
@@ -63,7 +65,7 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	DataMgr::MinusPlayerMP(30);
+	DataMgr::MinusPlayerMP(NeedMp);
 }
 
 

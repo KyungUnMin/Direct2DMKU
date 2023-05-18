@@ -8,6 +8,7 @@ const std::string_view SchoolBoyState_Idle::AniName = "Idle";
 const std::string_view SchoolBoyState_Idle::AniFileName = "SchoolBoy_Idle.png";
 const std::pair<int, int> SchoolBoyState_Idle::AniCutFrame = std::pair<int, int>(5, 2);
 const float SchoolBoyState_Idle::AniInterTime = 0.08f;
+const float SchoolBoyState_Idle::SightRadius = 100.f;
 
 SchoolBoyState_Idle::SchoolBoyState_Idle()
 {
@@ -71,11 +72,16 @@ void SchoolBoyState_Idle::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(SchoolBoyStateType::Walk);
-	//GetFSM()->ChangeState(SchoolBoyStateType::AxeKick);
 
-	//TODO
-	//GetRenderer()
+	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
+	if (VecToPlayer.Size() < SightRadius)
+	{
+		GetFSM()->ChangeState(SchoolBoyStateType::AxeKick);
+	}
+	else
+	{
+		GetFSM()->ChangeState(SchoolBoyStateType::Walk);
+	}
 }
 
 

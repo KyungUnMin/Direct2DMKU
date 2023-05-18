@@ -4,6 +4,8 @@
 class PlayerState_UniqueAttack_DragonFeet : public PlayerState_AttackBase
 {
 public:
+	static const int NeedMp;
+	
 	PlayerState_UniqueAttack_DragonFeet();
 	~PlayerState_UniqueAttack_DragonFeet() override;
 

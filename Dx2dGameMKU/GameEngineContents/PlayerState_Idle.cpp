@@ -2,7 +2,11 @@
 #include "PlayerState_Idle.h"
 
 #include "KeyMgr.h"
+#include "DataMgr.h"
+
 #include "PlayerFSM.h"
+#include "PlayerState_UniqueAttack_DragonFeet.h"
+
 
 const std::string_view PlayerState_Idle::AniName = "Idle";
 const std::string_view PlayerState_Idle::AniFileName = "Player_Idle.png";
@@ -116,8 +120,12 @@ void PlayerState_Idle::Update(float _DeltaTime)
 	//특수 스킬
 	if (true == KeyMgr::IsPress(KeyNames::C))
 	{
-		GetFSM()->ChangeState(PlayerStateType::UniqueAttack_DragonFeet);
-		return;
+		int CurMp = DataMgr::GetPlayerMP();
+		if (PlayerState_UniqueAttack_DragonFeet::NeedMp <= CurMp)
+		{
+			GetFSM()->ChangeState(PlayerStateType::UniqueAttack_DragonFeet);
+			return;
+		}
 	}
 
 
