@@ -753,6 +753,9 @@
     <ClCompile Include="SchoolBoyState_Damaged_BlowBack.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\02.BlowBack</Filter>
     </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\03.KnockDown</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1069,6 +1072,9 @@
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Damaged_BlowBack.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\03.KnockDown</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

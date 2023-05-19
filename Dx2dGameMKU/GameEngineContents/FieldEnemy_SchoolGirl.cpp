@@ -43,15 +43,48 @@ void FieldEnemy_SchoolGirl::Render(float _DeltaTime)
 
 void FieldEnemy_SchoolGirl::OnDamage_Face(int _Damage)
 {
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		//TODO
+		return;
+	}
+
 
 }
 
 void FieldEnemy_SchoolGirl::OnDamage_Stomach(int _Damage)
 {
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		//TODO
+		return;
+	}
+
 
 }
 
 void FieldEnemy_SchoolGirl::OnDamage_Jaw(int _Damage)
 {
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		//TODO
+		return;
+	}
+
+
+}
+
+void FieldEnemy_SchoolGirl::OnDamage_BlowBack(int _Damage)
+{
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		//TODO
+		return;
+	}
+
 
 }

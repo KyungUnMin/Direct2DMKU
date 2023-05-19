@@ -23,6 +23,13 @@ void FieldEnemyBase::Start()
 	FieldActorBase::CreateColliders(CollisionOrder::EnemyMain);
 }
 
+void FieldEnemyBase::OnDamage(int _Damage)
+{
+	Hp -= abs(_Damage);
+	if (0 < Hp)
+		return;
 
-
+	Hp = 0;
+	IsKOValue = true;
+}
 

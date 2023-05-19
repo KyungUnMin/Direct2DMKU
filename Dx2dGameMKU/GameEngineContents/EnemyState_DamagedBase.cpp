@@ -37,15 +37,15 @@ bool EnemyState_DamagedBase::Update_BlowBack(float _DeltaTime)
 	float Ratio = (LiveTime / Duration);
 	float ClampRatio = std::clamp(Ratio, 0.f, 1.f);
 
-	Update_BlowHorizon(ClampRatio, _DeltaTime);
+	bool IsMoveOk = Update_BlowHorizon(ClampRatio, _DeltaTime);
 	Update_BlowVertical(ClampRatio);
 
-	return (Ratio < 1.f);
+	return IsMoveOk;
 }
 
 
 
-void EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
+bool EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 {
 	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
 	
@@ -68,9 +68,10 @@ void EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 
 	std::pair<int,int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
-		return;
+		return false;
 
 	EnemyTrans->SetLocalPosition(NextPos);
+	return true;
 }
 
 void EnemyState_DamagedBase::Update_BlowVertical(float _Ratio)

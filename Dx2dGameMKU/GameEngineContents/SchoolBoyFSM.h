@@ -19,6 +19,7 @@ enum class SchoolBoyStateType
 	NormalDamaged_Stomach,
 	NormalDamaged_Jaw,
 	Damaged_BlowBack,
+	Damaged_KnockDown,
 
 
 	COUNT

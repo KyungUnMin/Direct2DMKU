@@ -22,8 +22,20 @@ public:
 protected:
 	void Start() override;
 
+	inline int GetHp() const
+	{
+		return Hp;
+	}
+
+	void OnDamage(int _Damage);
+
+	inline bool IsKO() const
+	{
+		return IsKOValue;
+	}
+
 private:
-
-
+	int Hp = 100;
+	bool IsKOValue= false;
 };
 

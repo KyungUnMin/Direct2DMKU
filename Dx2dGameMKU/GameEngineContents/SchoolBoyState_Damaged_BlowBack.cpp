@@ -9,7 +9,7 @@ const std::string_view SchoolBoyState_Damaged_BlowBack::AniName = "BlowBack";
 const std::string_view SchoolBoyState_Damaged_BlowBack::AniFileName = "SchoolBoy_BlowBack.png";
 const std::pair<int, int> SchoolBoyState_Damaged_BlowBack::AniCutFrame = std::pair<int, int>(5, 7);
 const std::pair<size_t, size_t> SchoolBoyState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 32 };
-const float SchoolBoyState_Damaged_BlowBack::AniInterTime = 0.08f;
+const float SchoolBoyState_Damaged_BlowBack::AniInterTime = 0.05f;
 
 
 
@@ -32,6 +32,7 @@ void SchoolBoyState_Damaged_BlowBack::Start()
 	LoadAnimation();
 	CreateAnimation();
 
+	EnemyState_DamagedBase::SetBlowValue(StartAcc, Duration);
 }
 
 void SchoolBoyState_Damaged_BlowBack::LoadAnimation()
@@ -76,7 +77,11 @@ void SchoolBoyState_Damaged_BlowBack::Update(float _DeltaTime)
 {
 	EnemyState_DamagedBase::Update(_DeltaTime);
 
-	EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
+	bool IsMoveOk = EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
+	if (false == IsMoveOk)
+	{
+		//TODO
+	}
 	
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

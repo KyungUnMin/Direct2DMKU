@@ -56,28 +56,60 @@ void FieldEnemy_SchoolBoy::Render(float _DeltaTime)
 
 void FieldEnemy_SchoolBoy::OnDamage_Face(int _Damage)
 {
-	//TODO
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		if (SchoolBoyStateType::Damaged_KnockDown == Fsm.GetNowState<SchoolBoyStateType>())
+			return;
+
+		Fsm.ChangeState(SchoolBoyStateType::Damaged_KnockDown);
+		return;
+	}
 
 	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Face);
 }
 
 void FieldEnemy_SchoolBoy::OnDamage_Stomach(int _Damage)
 {
-	//TODO
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		if (SchoolBoyStateType::Damaged_KnockDown == Fsm.GetNowState<SchoolBoyStateType>())
+			return;
+
+		Fsm.ChangeState(SchoolBoyStateType::Damaged_KnockDown);
+		return;
+	}
 
 	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Stomach);
 }
 
 void FieldEnemy_SchoolBoy::OnDamage_Jaw(int _Damage)
 {
-	//TODO
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		if (SchoolBoyStateType::Damaged_KnockDown == Fsm.GetNowState<SchoolBoyStateType>())
+			return;
+
+		Fsm.ChangeState(SchoolBoyStateType::Damaged_KnockDown);
+		return;
+	}
 
 	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Jaw);
 }
 
 void FieldEnemy_SchoolBoy::OnDamage_BlowBack(int _Damage)
 {
-	//TODO
+	OnDamage(_Damage);
+	if (true == IsKO())
+	{
+		if (SchoolBoyStateType::Damaged_KnockDown == Fsm.GetNowState<SchoolBoyStateType>())
+			return;
+
+		Fsm.ChangeState(SchoolBoyStateType::Damaged_KnockDown);
+		return;
+	}
 
 	Fsm.ChangeState(SchoolBoyStateType::Damaged_BlowBack);
 }

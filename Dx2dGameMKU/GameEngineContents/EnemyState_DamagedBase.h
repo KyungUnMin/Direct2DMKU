@@ -32,7 +32,7 @@ private:
 	bool PlayerDir = true;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
-	void Update_BlowHorizon(float _Ratio, float _DeltaTime);
+	bool Update_BlowHorizon(float _Ratio, float _DeltaTime);
 	void Update_BlowVertical(float _Ratio);
 };
 
