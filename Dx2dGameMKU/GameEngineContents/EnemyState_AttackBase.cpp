@@ -18,6 +18,13 @@ EnemyState_AttackBase::~EnemyState_AttackBase()
 
 }
 
+void EnemyState_AttackBase::Start()
+{
+	EnemyStateBase::Start();
+
+	AttackCollider = GetEnemy()->GetAttackCollider();
+}
+
 void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index)
 {
 	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
@@ -30,7 +37,7 @@ void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName
 
 void EnemyState_AttackBase::SetAttackColValue(const float4& _Offset, const float4& _Scale)
 {
-	GameEngineTransform* AttackColTrans =  GetEnemy()->GetAttackCollider()->GetTransform();
+	GameEngineTransform* AttackColTrans = AttackCollider->GetTransform();
 
 	if (_Scale.z < 5.f)
 	{
@@ -45,7 +52,6 @@ void EnemyState_AttackBase::SetAttackColValue(const float4& _Offset, const float
 
 void EnemyState_AttackBase::AttackCheck()
 {
-	std::shared_ptr<GameEngineCollision> AttackCollider = GetEnemy()->GetAttackCollider();
 	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
 	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
 

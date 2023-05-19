@@ -6,6 +6,7 @@
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "DapEffect.h"
+#include "FieldEnemyBase.h"
 
 
 const std::string_view PlayerState_SpecialAttack_DAP::AniName = "SpecialAttack_DAP";
@@ -13,6 +14,7 @@ const std::string_view PlayerState_SpecialAttack_DAP::AniFileName = "Player_Spec
 const std::pair<int, int> PlayerState_SpecialAttack_DAP::AniCutFrame = std::pair<int, int>(5, 5);
 const float PlayerState_SpecialAttack_DAP::AniInterTime = 0.05f;
 const size_t PlayerState_SpecialAttack_DAP::EffectCount = 15;
+const int PlayerState_SpecialAttack_DAP::Damage = 20;
 
 PlayerState_SpecialAttack_DAP::PlayerState_SpecialAttack_DAP()
 {
@@ -121,5 +123,10 @@ void PlayerState_SpecialAttack_DAP::ExitState()
 	PlayerState_AttackBase::ExitState();
 
 	Cursor = 0;
+}
+
+void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
+{
+	_Enemy->OnDamage_BlowBack(Damage);
 }
 

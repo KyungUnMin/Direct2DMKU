@@ -418,6 +418,15 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\05.DamagedBase">
       <UniqueIdentifier>{f7702164-1716-4876-a170-fdc48a858973}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{8c34c30d-37d5-45a3-83d8-5f52042603e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{78c0536b-1e83-4f87-9ac1-2a726bd3b778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\04.WallHit">
+      <UniqueIdentifier>{cf8b92c5-23c9-4f0e-80ec-329809371c0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -741,6 +750,9 @@
     <ClCompile Include="EnemyState_DamagedBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\05.DamagedBase</Filter>
     </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1054,6 +1066,9 @@
     </ClInclude>
     <ClInclude Include="EnemyState_DamagedBase.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\05.DamagedBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\02.BlowBack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

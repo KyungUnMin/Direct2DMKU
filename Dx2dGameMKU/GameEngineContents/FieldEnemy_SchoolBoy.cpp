@@ -74,3 +74,10 @@ void FieldEnemy_SchoolBoy::OnDamage_Jaw(int _Damage)
 
 	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Jaw);
 }
+
+void FieldEnemy_SchoolBoy::OnDamage_BlowBack(int _Damage)
+{
+	//TODO
+
+	Fsm.ChangeState(SchoolBoyStateType::Damaged_BlowBack);
+}

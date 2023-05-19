@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "EnemyStateBase.h"
 
+#include <GameEngineCore/GameEngineCollision.h>
+
 #include "EnemyFSMBase.h"
 #include "FieldEnemyBase.h"
 
@@ -23,6 +25,7 @@ void EnemyStateBase::Start()
 	FsmPtr = GetConvertFSM<EnemyFSMBase>();
 	EnemyPtr = FsmPtr->GetEnemy();
 	Renderer = EnemyPtr->GetRenderer();
+	MainCollider = EnemyPtr->GetMainCollider();
 }
 
 
@@ -56,6 +59,17 @@ void EnemyStateBase::ChangeRenderDirection()
 
 
 
+void EnemyStateBase::Update(float _DeltaTime)
+{
+	StateBase::Update(_DeltaTime);
+
+	float Height = EnemyPtr->GetHeight();
+	Renderer->GetTransform()->SetLocalPosition(float4::Up * Height);
+	MainCollider->GetTransform()->SetLocalPosition(float4::Up * Height);
+}
+
+
+
 float4 EnemyStateBase::GetVecToPlayer(bool Is2D /*= false*/)
 {
 	GameEngineTransform* ThisTrans = EnemyPtr->GetTransform();
@@ -72,4 +86,13 @@ float4 EnemyStateBase::GetVecToPlayer(bool Is2D /*= false*/)
 
 	return (PlayerWorldPosition - ThisWorldPosition);
 }
+
+
+
+bool EnemyStateBase::IsRightDir()
+{
+	GameEngineTransform* EnemyTrans = EnemyPtr->GetTransform();
+	return (0.f < EnemyTrans->GetLocalScale().x);
+}
+
 

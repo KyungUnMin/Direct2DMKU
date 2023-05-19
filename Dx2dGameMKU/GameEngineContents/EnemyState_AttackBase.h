@@ -13,6 +13,8 @@ public:
 	EnemyState_AttackBase& operator=(const EnemyState_AttackBase&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
+
 	//_AniName 애니메이션, _Index번째 프레임에 플레이어와 충돌 체크를 하겠다
 	void SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index);
 
@@ -24,7 +26,7 @@ protected:
 
 
 private:
-
+	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
 
 
 	void AttackCheck();

@@ -18,10 +18,7 @@ protected:
 	void EnterState() override;
 	void ExitState() override;
 
-	void Attack(class FieldEnemyBase* _Enemy) override
-	{
-		int a = 0;
-	}
+	void Attack(class FieldEnemyBase* _Enemy) override;
 
 private:
 	static const std::string_view AniName;
@@ -29,6 +26,7 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 	static const size_t EffectCount;
+	static const int Damage;
 
 	std::vector<std::shared_ptr<class DapEffect>> Effects;
 	const float EffectTime = 0.05f;

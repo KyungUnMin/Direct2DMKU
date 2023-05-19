@@ -7,6 +7,7 @@
 
 class EnemyFSMBase;
 class FieldEnemyBase;
+class GameEngineCollision;
 
 class EnemyStateBase : public StateBase
 {
@@ -22,6 +23,7 @@ public:
 protected:
 	void Start() override;
 	void EnterState() override;
+	void Update(float _DeltaTime) override;
 
 
 	inline EnemyFSMBase* GetEnemyFsm() const
@@ -56,9 +58,12 @@ protected:
 		return SightRadius;
 	}
 
+	bool IsRightDir();
 
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
+	std::shared_ptr<GameEngineCollision> MainCollider = nullptr;
+
 	EnemyFSMBase* FsmPtr = nullptr;
 	FieldEnemyBase* EnemyPtr = nullptr;
 	float SightRadius = 100.f;
