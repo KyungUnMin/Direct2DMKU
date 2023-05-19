@@ -31,6 +31,7 @@ void SchoolBoyState_Damaged_KnockDown::Start()
 	CreateAnimation();
 
 	EnemyState_DamagedBase::SetBlowValue(StartAcc);
+	EnemyState_DamagedBase::SetGroundBlow();
 }
 
 void SchoolBoyState_Damaged_KnockDown::LoadAnimation()

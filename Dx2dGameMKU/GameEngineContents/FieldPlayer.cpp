@@ -145,8 +145,8 @@ bool FieldPlayer::OnDamage(PlayerStateType _State)
 	//공중에 떠 있을때는 멀리 나가는 Damaged
 	if (0.f < GetHeight())
 	{
-		//TODO
- 		int a = 0;
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
+		return true;
 	}
 
 

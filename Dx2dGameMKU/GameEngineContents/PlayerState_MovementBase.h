@@ -23,5 +23,6 @@ private:
 	static const std::vector<KeyNames> IdleCheckKeys;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	class GameEngineTransform* PlayerTrans = nullptr;
 };
 

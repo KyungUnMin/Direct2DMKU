@@ -28,7 +28,12 @@ void EnemyState_DamagedBase::EnterState()
 	EnemyStateBase::EnterState();
 
 	//플레이어의 방향
-	PlayerDir = EnemyStateBase::IsRightDir();
+	EnemyDir = EnemyStateBase::IsRightDir();
+
+	if (true == IsHeightFix)
+	{
+		GetEnemy()->SetHeight(0.f);
+	}
 }
 
 bool EnemyState_DamagedBase::Update_BlowBack(float _DeltaTime)
@@ -54,7 +59,7 @@ bool EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 	float4 NextPos = EnemyTrans->GetLocalPosition();
 
 	//적이 오른쪽을 바라보고 있을때
-	if (true == PlayerDir)
+	if (true == EnemyDir)
 	{
 		//바라보는 방향 반대로 날라간다
 		NextPos += (float4::Left * NowAcc * _DeltaTime);
@@ -76,6 +81,10 @@ bool EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 
 void EnemyState_DamagedBase::Update_BlowVertical(float _Ratio)
 {
+	if (true == IsHeightFix)
+		return;
+
+
 	float NowHeight = StartHeight * (1.f - _Ratio);
 	GetEnemy()->SetHeight(NowHeight);
 }

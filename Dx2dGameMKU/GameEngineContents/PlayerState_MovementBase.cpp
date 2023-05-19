@@ -34,6 +34,7 @@ void PlayerState_MovementBase::Start()
 	PlayerStateBase::Start();
 
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+	PlayerTrans = FieldPlayer::GetPtr()->GetTransform();
 }
 
 
@@ -82,14 +83,6 @@ void PlayerState_MovementBase::Update_Move(float _DeltaTime, const float4& _Spee
 	MoveDir.y *= _Speed.y;
 	MoveDir.z = MoveDir.y;
 
-	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
-	if (nullptr == PlayerPtr)
-	{
-		MsgAssert("플레이어가 존재하지 않습니다");
-		return;
-	}
-
-	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 	float4 NextPos = PlayerTrans->GetLocalPosition() + (MoveDir * _DeltaTime);
 
 	if (true == BGPtr->IsBlockPos(NextPos))

@@ -15,7 +15,7 @@ const float PlayerState_Jump::AniInterTime = 0.08f;
 
 PlayerState_Jump::PlayerState_Jump()
 {
-
+	
 }
 
 PlayerState_Jump::~PlayerState_Jump()

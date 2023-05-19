@@ -24,12 +24,20 @@ protected:
 		Duration = _Duration;
 	}
 
+	//날라갈때 땅에 붙어서 날라가기 설정
+	inline void SetGroundBlow()
+	{
+		IsHeightFix = true;
+	}
+
 private:
 	float StartAcc = 2000.f;
 	float Duration = 1.0f;
 	const float StartHeight = 100.f;
+	bool IsHeightFix = false;
 
-	bool PlayerDir = true;
+
+	bool EnemyDir = true;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
 	bool Update_BlowHorizon(float _Ratio, float _DeltaTime);

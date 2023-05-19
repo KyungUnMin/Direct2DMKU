@@ -28,10 +28,11 @@
 
 
 
-//NormalDamaged
+//Damaged
 #include "PlayerState_NormalDamaged_Face.h"
 #include "PlayerState_NormalDamaged_Stomach.h"
 #include "PlayerState_NormalDamaged_Jaw.h"
+#include "PlayerState_Damaged_BlowBack.h"
 
 
 PlayerFSM::PlayerFSM()
@@ -77,10 +78,11 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	
 
 
-	//NormalDamaged
+	//Damaged
 	FSMBase::CreateState<PlayerState_NormalDamaged_Face>(PlayerStateType::NormalDamaged_Face);
 	FSMBase::CreateState<PlayerState_NormalDamaged_Stomach>(PlayerStateType::NormalDamaged_Stomach);
 	FSMBase::CreateState<PlayerState_NormalDamaged_Jaw>(PlayerStateType::NormalDamaged_Jaw);
+	FSMBase::CreateState<PlayerState_Damaged_BlowBack>(PlayerStateType::Damaged_BlowBack);
 
 
 
