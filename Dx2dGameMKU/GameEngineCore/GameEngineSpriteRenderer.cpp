@@ -58,12 +58,6 @@ void AnimationInfo::Update(float _DeltaTime)
 	{
 		//다음 프레임으로 전환
 		++CurFrame;
-		
-		//Start콜백이 있으면 호출
-		if (StartEventFunction.end() != StartEventFunction.find(CurFrameIndex))
-		{
-			StartEventFunction[CurFrameIndex]();
-		}
 
 
 		//방금전이 마지막 프레임이였다면
@@ -84,6 +78,20 @@ void AnimationInfo::Update(float _DeltaTime)
 				--CurFrame;
 			}
 		}
+
+
+		else
+		{
+			CurFrameIndex = FrameIndex[CurFrame];
+
+			//Start콜백이 있으면 호출
+			if (StartEventFunction.end() != StartEventFunction.find(CurFrameIndex))
+			{
+				StartEventFunction[CurFrameIndex]();
+			}
+		}
+
+		
 
 		CurTime += FrameTime[CurFrame];
 	}

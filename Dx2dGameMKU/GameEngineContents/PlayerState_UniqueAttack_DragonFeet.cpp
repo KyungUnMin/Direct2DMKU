@@ -137,7 +137,6 @@ void PlayerState_UniqueAttack_DragonFeet::Attack(FieldEnemyBase* _Enemy)
 
 	if (AttackCallBacks.end() == FindIter)
 	{
-		size_t CurFrame2 = GetRenderer()->GetCurrentFrame();
 		MsgAssert("이벤트를 설정한 애니메이션에 해당되는 콜백이 존재하지 않습니다");
 		return;
 	}
