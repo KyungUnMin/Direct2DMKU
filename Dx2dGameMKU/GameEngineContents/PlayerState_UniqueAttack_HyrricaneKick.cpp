@@ -78,6 +78,7 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
+	PlayerState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 200.f);
 }
 
 

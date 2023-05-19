@@ -67,6 +67,7 @@ void PlayerState_QuickAttack_CrescentKick::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	PlayerState_AttackBase::SetAttackColValue();
 }
 
 

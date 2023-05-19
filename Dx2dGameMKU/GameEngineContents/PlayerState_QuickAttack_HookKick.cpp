@@ -68,6 +68,7 @@ void PlayerState_QuickAttack_HookKick::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	PlayerState_AttackBase::SetAttackColValue();
 }
 
 

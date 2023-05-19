@@ -61,6 +61,7 @@ void PlayerState_SpecialAttack_Stomp::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	PlayerState_AttackBase::SetAttackColValue();
 }
 
 

@@ -106,6 +106,7 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
+	PlayerState_AttackBase::SetAttackColValue();
 }
 
 

@@ -65,6 +65,7 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	PlayerState_AttackBase::SetAttackColValue();
 }
 
 

@@ -66,7 +66,7 @@ void SchoolBoyState_Attack_Punch::EnterState()
 	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue(float4::Right * 50.f);
+	EnemyState_AttackBase::SetAttackColValue();
 }
 
 

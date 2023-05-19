@@ -65,6 +65,7 @@ void PlayerState_QickAttack_Chop::EnterState()
 	PlayerState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	PlayerState_AttackBase::SetAttackColValue();
 }
 
 
