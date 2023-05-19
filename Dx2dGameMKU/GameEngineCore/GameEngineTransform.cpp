@@ -291,8 +291,8 @@ void GameEngineTransform::WorldDecompose()
 	//충돌을 위한 값 세팅
 	ColData.OBB.Center = TransData.WorldPosition.DirectFloat3;
 	ColData.OBB.Extents = (TransData.WorldScale * 0.5f).DirectFloat3;
-	ColData.OBB.Extents.x = abs(ColData.OBB.Extents.x);
 	ColData.OBB.Orientation = TransData.WorldQuaternion.DirectFloat4;
+	ColData.ScaleABS();
 }
 
 

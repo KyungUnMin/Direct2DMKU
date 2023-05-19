@@ -68,8 +68,8 @@ void GameEngineTileMapRenderer::SetTile(int _X, int _Y, const std::string_view& 
 
 	std::shared_ptr<GameEngineSprite> Sprite = GameEngineSprite::Find(_SpriteName);
 
-	Tiles[_X][_Y].Sprite = Sprite.get();
-	Tiles[_X][_Y].Index = _Index;
+	Tiles[_Y][_X].Sprite = Sprite.get();
+	Tiles[_Y][_X].Index = _Index;
 }
 
 bool GameEngineTileMapRenderer::IsOver(int _X, int _Y) const

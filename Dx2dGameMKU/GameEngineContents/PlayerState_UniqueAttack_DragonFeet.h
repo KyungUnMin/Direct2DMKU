@@ -1,6 +1,8 @@
 #pragma once
 #include "PlayerState_AttackBase.h"
 
+class FieldEnemyBase;
+
 class PlayerState_UniqueAttack_DragonFeet : public PlayerState_AttackBase
 {
 public:
@@ -19,20 +21,21 @@ protected:
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
 
-	void Attack(class FieldEnemyBase* _Enemy) override
-	{
-		int a = 0;
-	}
+	void Attack(FieldEnemyBase* _Enemy) override;
 
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	static const int NormalDamage;
+	static const int LastDamage;
+	static std::map<size_t, std::function<void(FieldEnemyBase* _Enemy)>> AttackCallBacks;
 
 	class FieldCamController* CamCtrl = nullptr;
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void SetAniEvents();
 };
 

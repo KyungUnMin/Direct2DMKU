@@ -9,7 +9,7 @@ const std::string_view PlayerState_SpecialAttack_AxeKick::AniName = "SpecialAtta
 const std::string_view PlayerState_SpecialAttack_AxeKick::AniFileName = "Player_SpecialAttack_AxeKick.png";
 const std::pair<int, int> PlayerState_SpecialAttack_AxeKick::AniCutFrame = std::pair<int, int>(4, 5);
 const float PlayerState_SpecialAttack_AxeKick::AniInterTime = 0.05f;
-const float PlayerState_SpecialAttack_AxeKick::Damage = 10;
+const int PlayerState_SpecialAttack_AxeKick::Damage = 10;
 
 PlayerState_SpecialAttack_AxeKick::PlayerState_SpecialAttack_AxeKick()
 {

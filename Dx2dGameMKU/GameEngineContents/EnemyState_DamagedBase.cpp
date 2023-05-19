@@ -43,6 +43,8 @@ bool EnemyState_DamagedBase::Update_BlowBack(float _DeltaTime)
 	return (Ratio < 1.f);
 }
 
+
+
 void EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 {
 	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
@@ -75,4 +77,11 @@ void EnemyState_DamagedBase::Update_BlowVertical(float _Ratio)
 {
 	float NowHeight = StartHeight * (1.f - _Ratio);
 	GetEnemy()->SetHeight(NowHeight);
+}
+
+
+void EnemyState_DamagedBase::ExitState()
+{
+	EnemyStateBase::ExitState();
+	GetEnemy()->SetHeight(0.f);
 }

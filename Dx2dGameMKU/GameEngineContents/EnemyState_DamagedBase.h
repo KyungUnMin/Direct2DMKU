@@ -16,6 +16,7 @@ protected:
 	void Start() override;
 	void EnterState() override;
 	bool Update_BlowBack(float _DeltaTime);
+	void ExitState() override;
 
 	inline void SetBlowValue(float _StartAcc, float _Duration = 1.0f)
 	{
@@ -26,7 +27,7 @@ protected:
 private:
 	float StartAcc = 2000.f;
 	float Duration = 1.0f;
-	float StartHeight = 100.f;
+	const float StartHeight = 100.f;
 
 	bool PlayerDir = true;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;

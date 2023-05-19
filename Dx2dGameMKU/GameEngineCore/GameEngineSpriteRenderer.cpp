@@ -30,14 +30,17 @@ void AnimationInfo::Reset()
 
 void AnimationInfo::Update(float _DeltaTime)
 {
-	IsEndValue = false;
-	CurTime -= _DeltaTime;
+	if (true == Loop)
+	{
+		IsEndValue = false;
+	}
 
 	//정지중이면 return
 	if (true == IsPauseValue)
 	{
 		return;
 	}
+
 
 	//스프라이트 상의 현재 프레임
 	size_t CurFrameIndex = FrameIndex[CurFrame];
@@ -47,6 +50,8 @@ void AnimationInfo::Update(float _DeltaTime)
 	{
 		UpdateEventFunction[CurFrameIndex]();
 	}
+
+	CurTime -= _DeltaTime;
 
 
 	if (CurTime < 0.0f)
@@ -75,6 +80,7 @@ void AnimationInfo::Update(float _DeltaTime)
 			else
 			{
 				//마지막 프레임을 유지
+				IsEndValue = true;
 				--CurFrame;
 			}
 		}
@@ -309,7 +315,7 @@ void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, si
 	}
 
 
-	if (CurAnimation == Find && false == _Force)
+	if (CurAnimation.get() == Find.get() && false == _Force)
 		return;
 
 
