@@ -106,8 +106,6 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
-
-	CamCtrl->SetShakeState(0.5f);
 }
 
 
@@ -131,6 +129,14 @@ void PlayerState_UniqueAttack_DragonFeet::Update(float _DeltaTime)
 
 void PlayerState_UniqueAttack_DragonFeet::Attack(FieldEnemyBase* _Enemy)
 {
+	//처음 공격을 맞췄을때
+	if (false == IsHit)
+	{
+		CamCtrl->SetShakeState(0.5f);
+		IsHit = true;
+	}
+
+
 	size_t CurFrame = GetRenderer()->GetCurrentFrame();
 
 	std::map<size_t, std::function<void(FieldEnemyBase* _Enemy)>>::iterator FindIter = AttackCallBacks.find(CurFrame);
@@ -142,5 +148,12 @@ void PlayerState_UniqueAttack_DragonFeet::Attack(FieldEnemyBase* _Enemy)
 	}
 
 	FindIter->second(_Enemy);
+}
+
+
+void PlayerState_UniqueAttack_DragonFeet::ExitState()
+{
+	PlayerState_AttackBase::ExitState();
+	IsHit = false;
 }
 

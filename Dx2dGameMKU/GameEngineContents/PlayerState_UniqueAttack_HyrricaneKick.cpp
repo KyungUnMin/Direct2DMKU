@@ -7,6 +7,7 @@
 
 #include "PlayerFSM.h"
 #include "FieldLevelBase.h"
+#include "FieldEnemyBase.h"
 
 const int PlayerState_UniqueAttack_HyrricaneKick::NeedMp = 30;
 
@@ -14,6 +15,8 @@ const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniName = "Unique
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniFileName = "Player_UniqueAttack_HyrricaneKick.png";
 const std::pair<int, int> PlayerState_UniqueAttack_HyrricaneKick::AniCutFrame = std::pair<int, int>(7, 4);
 const float PlayerState_UniqueAttack_HyrricaneKick::AniInterTime = 0.05f;
+const int PlayerState_UniqueAttack_HyrricaneKick::Damage = 10;
+
 
 PlayerState_UniqueAttack_HyrricaneKick::PlayerState_UniqueAttack_HyrricaneKick()
 {
@@ -75,8 +78,6 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
-
-	CamCtrl->SetShakeState(0.5f);
 }
 
 
@@ -95,3 +96,38 @@ void PlayerState_UniqueAttack_HyrricaneKick::Update(float _DeltaTime)
 	return;
 
 }
+
+
+
+void PlayerState_UniqueAttack_HyrricaneKick::Attack(FieldEnemyBase* _Enemy)
+{
+	//처음 공격을 맞췄을때
+	if (false == IsHit)
+	{
+		CamCtrl->SetShakeState(0.5f);
+		IsHit = true;
+	}
+
+	size_t CurFrame = GetRenderer()->GetCurrentFrame();
+	if (19 == CurFrame)
+	{
+		_Enemy->OnDamage_BlowBack(Damage);
+	}
+	else if (0 == (CurFrame % 2))
+	{
+		_Enemy->OnDamage_Face(Damage);
+	}
+	else
+	{
+		_Enemy->OnDamage_Jaw(Damage);
+	}
+
+}
+
+void PlayerState_UniqueAttack_HyrricaneKick::ExitState()
+{
+	PlayerState_AttackBase::ExitState();
+	IsHit = false;
+}
+
+

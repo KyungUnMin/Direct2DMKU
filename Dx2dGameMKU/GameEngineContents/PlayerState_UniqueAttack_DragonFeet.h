@@ -20,6 +20,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 	void Attack(FieldEnemyBase* _Enemy) override;
 
@@ -33,6 +34,7 @@ private:
 	static std::map<size_t, std::function<void(FieldEnemyBase* _Enemy)>> AttackCallBacks;
 
 	class FieldCamController* CamCtrl = nullptr;
+	bool IsHit = false;
 
 	void LoadAnimation();
 	void CreateAnimation();
