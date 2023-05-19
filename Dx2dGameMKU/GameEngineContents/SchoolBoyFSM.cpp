@@ -20,6 +20,8 @@
 #include "SchoolBoyState_NormalDamaged_Jaw.h"
 #include "SchoolBoyState_Damaged_BlowBack.h"
 #include "SchoolBoyState_Damaged_KnockDown.h"
+#include "SchoolBoyState_Damaged_WallHit.h"
+#include "SchoolBoyState_Damaged_Dazed.h"
 
 
 const  std::string_view SchoolBoyFSM::NormalDamaged_FileName = "SchoolBoy_Get_Hits.png";
@@ -79,6 +81,8 @@ void SchoolBoyFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<SchoolBoyState_NormalDamaged_Jaw>(SchoolBoyStateType::NormalDamaged_Jaw);
 	FSMBase::CreateState<SchoolBoyState_Damaged_BlowBack>(SchoolBoyStateType::Damaged_BlowBack);
 	FSMBase::CreateState<SchoolBoyState_Damaged_KnockDown>(SchoolBoyStateType::Damaged_KnockDown);
+	FSMBase::CreateState<SchoolBoyState_Damaged_WallHit>(SchoolBoyStateType::Damaged_WallHit);
+	FSMBase::CreateState<SchoolBoyState_Damaged_Dazed>(SchoolBoyStateType::Damaged_Dazed);
 
 
 

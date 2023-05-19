@@ -4,8 +4,9 @@
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
 
-const std::string_view SchoolBoyState_Damaged_KnockDown::AniName = "KnockDown";
 const std::string_view SchoolBoyState_Damaged_KnockDown::AniFileName = "SchoolBoy_KnockDown.png";
+
+const std::string_view SchoolBoyState_Damaged_KnockDown::AniName = "KnockDown";
 const std::pair<int, int> SchoolBoyState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 7);
 const std::pair<size_t, size_t> SchoolBoyState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 24 };
 const float SchoolBoyState_Damaged_KnockDown::AniInterTime = 0.08f;

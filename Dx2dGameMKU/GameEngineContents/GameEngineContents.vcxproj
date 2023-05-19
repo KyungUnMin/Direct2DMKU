@@ -369,7 +369,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SchoolBoyState_Damaged_KnockDown.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_WallHit.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -768,7 +776,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SchoolBoyState_Damaged_KnockDown.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_WallHit.cpp">
       <SubType>
       </SubType>
     </ClCompile>

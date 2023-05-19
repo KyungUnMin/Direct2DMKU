@@ -424,6 +424,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\03.BlowBack">
       <UniqueIdentifier>{b5f68fea-35e1-4bd5-b6f4-93dfa206f4ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.Dazed">
+      <UniqueIdentifier>{c10e9849-eac6-40c9-afa2-307b25b2474c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -750,6 +753,12 @@
     <ClCompile Include="PlayerState_Damaged_BlowBack.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\03.BlowBack</Filter>
     </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\04.WallHit</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.Dazed</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1066,6 +1075,12 @@
     </ClInclude>
     <ClInclude Include="PlayerState_Damaged_BlowBack.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\03.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\04.WallHit</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.Dazed</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

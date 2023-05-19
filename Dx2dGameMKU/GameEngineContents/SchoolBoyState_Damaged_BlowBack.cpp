@@ -80,7 +80,8 @@ void SchoolBoyState_Damaged_BlowBack::Update(float _DeltaTime)
 	bool IsMoveOk = EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
 	if (false == IsMoveOk)
 	{
-		//TODO
+		GetFSM()->ChangeState(SchoolBoyStateType::Damaged_WallHit);
+		return;
 	}
 	
 	if (false == GetRenderer()->IsAnimationEnd())

@@ -4,6 +4,9 @@
 class SchoolBoyState_Damaged_KnockDown : public EnemyState_DamagedBase
 {
 public:
+	static const std::string_view AniFileName;
+
+
 	SchoolBoyState_Damaged_KnockDown();
 	~SchoolBoyState_Damaged_KnockDown() override;
 
@@ -19,7 +22,6 @@ protected:
 
 private:
 	static const std::string_view AniName;
-	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const std::pair<size_t, size_t> AniFrameIndex;
 	static const float AniInterTime;
