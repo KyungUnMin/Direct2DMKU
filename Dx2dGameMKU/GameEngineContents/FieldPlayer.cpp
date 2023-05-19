@@ -73,6 +73,7 @@ void FieldPlayer::CheckDirection()
 }
 
 
+
 void FieldPlayer::SetDirection(bool IsRight)
 {
 	RenderDir = IsRight;
@@ -120,29 +121,21 @@ bool FieldPlayer::IsDashing() const
 
 
 
-bool FieldPlayer::OnDamage(PlayerStateType _State)
-{
-	size_t SelectedDamageState = static_cast<size_t>(_State);
-	size_t DamageStartIndex = static_cast<size_t>(PlayerStateType::NormalDamaged_Face);
-	size_t DamageEndIndex = static_cast<size_t>(PlayerStateType::NormalDamaged_Jaw);
 
-	if ((SelectedDamageState < DamageStartIndex) || (DamageEndIndex < SelectedDamageState))
-	{
-		MsgAssert("플레이어의 FSM을 공격받는 상태가 아닌 다른 상태로 바꾸려고 했습니다");
-		return false;
-	}
 
-	//TODO List
 
+
+//TODO List
 	//방어하고 있는 상태일때,
-
 	//이미 공격받고 있는 상태일때,
-
 	//패링중일때
-
 	//디버그용 뭐시기 등등
-
 	//공중에 떠 있을때는 멀리 나가는 Damaged
+
+
+bool FieldPlayer::OnDamage_Face()
+{
+	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
 	{
 		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
@@ -150,6 +143,40 @@ bool FieldPlayer::OnDamage(PlayerStateType _State)
 	}
 
 
-	Fsm.ChangeState(SelectedDamageState);
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::NormalDamaged_Face));
+	return true;
+}
+
+bool FieldPlayer::OnDamage_Stomach()
+{
+	//공중에 떠 있을땐 날라가기
+	if (0.f < GetHeight())
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
+		return true;
+	}
+
+
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::NormalDamaged_Stomach));
+	return true;
+}
+
+bool FieldPlayer::OnDamage_Jaw()
+{
+	//공중에 떠 있을땐 날라가기
+	if (0.f < GetHeight())
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
+		return true;
+	}
+
+
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::NormalDamaged_Jaw));
+	return true;
+}
+
+bool FieldPlayer::OnDamage_BlowBack() 
+{
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
 	return true;
 }

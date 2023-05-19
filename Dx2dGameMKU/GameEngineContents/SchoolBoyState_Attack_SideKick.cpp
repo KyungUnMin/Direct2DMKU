@@ -101,7 +101,7 @@ void SchoolBoyState_Attack_SideKick::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_SideKick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage(PlayerStateType::NormalDamaged_Stomach);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
 	if (false == Result)
 		return;
 

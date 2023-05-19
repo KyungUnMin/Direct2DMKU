@@ -16,10 +16,10 @@ public:
 
 	void SitDown();
 
-	void OnDamage_Face(int _Damage) override;
-	void OnDamage_Stomach(int _Damage) override;
-	void OnDamage_Jaw(int _Damage) override;
-	void OnDamage_BlowBack(int _Damage) override;
+	bool OnDamage_Face(int _Damage) override;
+	bool OnDamage_Stomach(int _Damage) override;
+	bool OnDamage_Jaw(int _Damage) override;
+	bool OnDamage_BlowBack(int _Damage) override;
 
 protected:
 	void Start() override;

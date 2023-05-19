@@ -14,10 +14,10 @@ public:
 	FieldEnemyBase& operator=(const FieldEnemyBase& _Other) = delete;
 	FieldEnemyBase& operator=(const FieldEnemyBase&& _Other) noexcept = delete;
 
-	virtual void OnDamage_Face(int _Damage) = 0;
-	virtual void OnDamage_Stomach(int _Damage) = 0;
-	virtual void OnDamage_Jaw(int _Damage) = 0;
-	virtual void OnDamage_BlowBack(int _Damage) = 0;
+	virtual bool OnDamage_Face(int _Damage) = 0;
+	virtual bool OnDamage_Stomach(int _Damage) = 0;
+	virtual bool OnDamage_Jaw(int _Damage) = 0;
+	virtual bool OnDamage_BlowBack(int _Damage) = 0;
 
 protected:
 	void Start() override;

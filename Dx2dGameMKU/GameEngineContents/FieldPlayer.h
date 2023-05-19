@@ -36,7 +36,10 @@ public:
 		return RenderDir;
 	}
 
-	bool OnDamage(PlayerStateType _State);
+	bool OnDamage_Face();
+	bool OnDamage_Stomach();
+	bool OnDamage_Jaw();
+	bool OnDamage_BlowBack();
 
 	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
 	void SetDirection(bool IsRight);

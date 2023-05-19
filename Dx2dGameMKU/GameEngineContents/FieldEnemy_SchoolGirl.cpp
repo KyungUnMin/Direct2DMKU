@@ -41,49 +41,49 @@ void FieldEnemy_SchoolGirl::Render(float _DeltaTime)
 	Fsm.Render(_DeltaTime);
 }
 
-void FieldEnemy_SchoolGirl::OnDamage_Face(int _Damage)
+bool FieldEnemy_SchoolGirl::OnDamage_Face(int _Damage)
 {
 	OnDamage(_Damage);
 	if (true == IsKO())
 	{
 		//TODO
-		return;
+		return true;
 	}
 
 
 }
 
-void FieldEnemy_SchoolGirl::OnDamage_Stomach(int _Damage)
+bool FieldEnemy_SchoolGirl::OnDamage_Stomach(int _Damage)
 {
 	OnDamage(_Damage);
 	if (true == IsKO())
 	{
 		//TODO
-		return;
+		return true;
 	}
 
 
 }
 
-void FieldEnemy_SchoolGirl::OnDamage_Jaw(int _Damage)
+bool FieldEnemy_SchoolGirl::OnDamage_Jaw(int _Damage)
 {
 	OnDamage(_Damage);
 	if (true == IsKO())
 	{
 		//TODO
-		return;
+		return true;
 	}
 
 
 }
 
-void FieldEnemy_SchoolGirl::OnDamage_BlowBack(int _Damage)
+bool FieldEnemy_SchoolGirl::OnDamage_BlowBack(int _Damage)
 {
 	OnDamage(_Damage);
 	if (true == IsKO())
 	{
 		//TODO
-		return;
+		return true;
 	}
 
 

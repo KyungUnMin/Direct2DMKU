@@ -53,6 +53,7 @@ public:
 
 	void Init(PlayerStateType _StartState = PlayerStateType::Movement_Idle);
 
+	//마지막이 Walk였는지 Dash였는지 확인하기 위해 override함
 	void ChangeState(size_t _NextIndex) override;
 	
 	inline PlayerStateType GetLastMovement() const
