@@ -66,6 +66,7 @@ void PlayerState_QickAttack_Chop::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -109,5 +110,5 @@ void PlayerState_QickAttack_Chop::ExitState()
 void PlayerState_QickAttack_Chop::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Face(Damage);
+	_Enemy->OnDamage_Face(TotalDamage);
 }

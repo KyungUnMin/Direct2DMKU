@@ -26,6 +26,8 @@ private:
 	static const float AniInterTime;
 	static const int Damage;
 
+	int TotalDamage = 0;
+
 	void LoadAnimation();
 	void CreateAnimation();
 };

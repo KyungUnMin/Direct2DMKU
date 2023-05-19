@@ -66,6 +66,7 @@ void PlayerState_QuickAttack_BackKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -106,5 +107,5 @@ void PlayerState_QuickAttack_BackKick::ExitState()
 void PlayerState_QuickAttack_BackKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Jaw(Damage);
+	_Enemy->OnDamage_Jaw(TotalDamage);
 }

@@ -69,6 +69,7 @@ void PlayerState_QuickAttack_HookKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -109,5 +110,5 @@ void PlayerState_QuickAttack_HookKick::ExitState()
 void PlayerState_QuickAttack_HookKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Jaw(Damage);
+	_Enemy->OnDamage_Jaw(TotalDamage);
 }

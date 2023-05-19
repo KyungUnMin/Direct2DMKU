@@ -66,6 +66,7 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -89,5 +90,5 @@ void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 
 void PlayerState_SpecialAttack_AxeKick::Attack(FieldEnemyBase* _Enemy)
 {
-	_Enemy->OnDamage_Stomach(Damage);
+	_Enemy->OnDamage_Stomach(TotalDamage);
 }

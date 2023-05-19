@@ -119,17 +119,45 @@ public:
 		PlayerMoney = std::clamp(PlayerMoney, 0, 999999);
 	}
 
-	//------------------???---------------------------------
+	//------------------ATT---------------------------------
+
+	static inline int GetPlayerAtt()
+	{
+		return PlayerAtt;
+	}
+
+	static inline void PlayerLevelUp()
+	{
+		PlayerAtt *= 2;
+	}
+
+	//------------------Speed---------------------------------
+
+	static inline float GetPlayerSpeedPer()
+	{
+		return PlayerSpeedPer;
+	}
+
+	static inline void SetPlayerSpeedPer(float _Per)
+	{
+		if (_Per <= 0.f)
+		{
+			MsgAssert("플레이어 속력퍼센트를 음수로 설정할 수는 없습니다");
+			return;
+		}
+
+		PlayerSpeedPer = _Per;
+	}
 
 protected:
 
 private:
 	static int PlayerHp;
 	static int PlayerMp;
+	static int PlayerMoney;
 
 	static float PlayerSpeedPer;
 	static int PlayerAtt;
-	static int PlayerMoney;
 
 
 	//static std::vector<ItemType> Inventory;

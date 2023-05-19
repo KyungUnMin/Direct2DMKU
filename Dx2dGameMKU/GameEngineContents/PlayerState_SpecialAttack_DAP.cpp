@@ -88,6 +88,7 @@ void PlayerState_SpecialAttack_DAP::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -128,6 +129,6 @@ void PlayerState_SpecialAttack_DAP::ExitState()
 
 void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
 {
-	_Enemy->OnDamage_BlowBack(Damage);
+	_Enemy->OnDamage_BlowBack(TotalDamage);
 }
 

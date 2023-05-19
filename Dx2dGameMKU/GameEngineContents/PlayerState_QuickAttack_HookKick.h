@@ -28,6 +28,7 @@ private:
 	static const int Damage;
 
 	bool IsReserveChainAttack = false;
+	int TotalDamage = 0;
 
 	void LoadAnimation();
 	void CreateAnimation();

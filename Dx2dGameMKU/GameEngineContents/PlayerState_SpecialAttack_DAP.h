@@ -32,6 +32,7 @@ private:
 	const float EffectTime = 0.05f;
 	size_t Cursor = 0;
 
+	int TotalDamage = 0;
 
 	void LoadAnimation();
 	void CreateAnimation();

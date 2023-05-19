@@ -31,6 +31,7 @@ private:
 
 	class FieldCamController* CamCtrl = nullptr;
 	bool IsHit = false;
+	int TotalDamage = 0;
 
 	void LoadAnimation();
 	void CreateAnimation();

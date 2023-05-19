@@ -17,7 +17,6 @@
 
 //Special Attack
 #include "PlayerState_SpecialAttack_AxeKick.h"
-#include "PlayerState_SpecialAttack_Stomp.h"
 #include "PlayerState_SpecialAttack_DAP.h"
 
 //Unique Attack
@@ -67,7 +66,6 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 
 	//Special Attack
 	FSMBase::CreateState<PlayerState_SpecialAttack_AxeKick>(PlayerStateType::SpecialAttack_AxeKick);
-	FSMBase::CreateState<PlayerState_SpecialAttack_Stomp>(PlayerStateType::SpecialAttack_Stomp);
 	FSMBase::CreateState<PlayerState_SpecialAttack_DAP>(PlayerStateType::SpecialAttack_DAP);
 
 	//Unique Attack

@@ -329,10 +329,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayerState_SpecialAttack_Stomp.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="PlayerState_UniqueAttack_DragonFeet.h">
       <SubType>
       </SubType>
@@ -458,10 +454,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="LevelMgr.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SkillMgr.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -732,10 +724,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayerState_SpecialAttack_Stomp.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="PlayerState_UniqueAttack_DragonFeet.cpp">
       <SubType>
       </SubType>
@@ -861,10 +849,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="LevelMgr.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SkillMgr.cpp">
       <SubType>
       </SubType>
     </ClCompile>

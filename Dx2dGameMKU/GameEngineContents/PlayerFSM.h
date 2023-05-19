@@ -19,7 +19,6 @@ enum class PlayerStateType
 
 	//Special Attack
 	SpecialAttack_AxeKick,
-	SpecialAttack_Stomp,
 	SpecialAttack_DAP,
 
 	//Unique Attack

@@ -69,6 +69,7 @@ void PlayerState_QuickAttack_SnapKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -109,5 +110,5 @@ void PlayerState_QuickAttack_SnapKick::ExitState()
 void PlayerState_QuickAttack_SnapKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Stomach(Damage);
+	_Enemy->OnDamage_Stomach(TotalDamage);
 }

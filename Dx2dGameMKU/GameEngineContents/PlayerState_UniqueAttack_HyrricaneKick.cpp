@@ -15,7 +15,7 @@ const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniName = "Unique
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniFileName = "Player_UniqueAttack_HyrricaneKick.png";
 const std::pair<int, int> PlayerState_UniqueAttack_HyrricaneKick::AniCutFrame = std::pair<int, int>(7, 4);
 const float PlayerState_UniqueAttack_HyrricaneKick::AniInterTime = 0.05f;
-const int PlayerState_UniqueAttack_HyrricaneKick::Damage = 10;
+const int PlayerState_UniqueAttack_HyrricaneKick::Damage = 5;
 
 
 PlayerState_UniqueAttack_HyrricaneKick::PlayerState_UniqueAttack_HyrricaneKick()
@@ -79,6 +79,7 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
 	PlayerState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 200.f);
+	TotalDamage = Damage + DataMgr::GetPlayerAtt();
 }
 
 
@@ -112,15 +113,15 @@ void PlayerState_UniqueAttack_HyrricaneKick::Attack(FieldEnemyBase* _Enemy)
 	size_t CurFrame = GetRenderer()->GetCurrentFrame();
 	if (19 == CurFrame)
 	{
-		_Enemy->OnDamage_BlowBack(Damage);
+		_Enemy->OnDamage_BlowBack(TotalDamage);
 	}
 	else if (0 == (CurFrame % 2))
 	{
-		_Enemy->OnDamage_Face(Damage);
+		_Enemy->OnDamage_Face(TotalDamage);
 	}
 	else
 	{
-		_Enemy->OnDamage_Jaw(Damage);
+		_Enemy->OnDamage_Jaw(TotalDamage);
 	}
 
 }
