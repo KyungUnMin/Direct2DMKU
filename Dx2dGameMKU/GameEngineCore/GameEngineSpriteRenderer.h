@@ -159,6 +159,10 @@ public:
 protected:
 	void SpriteRenderInit();
 
+	void Start() override;
+	void Update(float _DeltaTime) override;
+	void Render(float _DeltaTime) override;
+
 private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;
 	std::shared_ptr<AnimationInfo> CurAnimation = nullptr;
@@ -169,9 +173,5 @@ private:
 
 	std::shared_ptr<GameEngineSprite> Sprite = nullptr;
 	size_t Frame = -1;
-
-	void Start() override;
-	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override;
 };
 

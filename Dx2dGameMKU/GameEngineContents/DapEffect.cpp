@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineRenderer.h>
 
 #include "RCGDefine.h"
+#include "RCGEnums.h"
 
 #include "FieldPlayer.h"
 
@@ -60,7 +61,7 @@ void DapEffect::LoadEffectImage()
 
 void DapEffect::CreateRender() 
 {
-	RenderPtr = CreateComponent<GameEngineRenderer>();
+	RenderPtr = CreateComponent<GameEngineRenderer>(RenderOrder::Effect);
 	RenderPtr->SetPipeLine(RenderPipeName);
 	RenderPtr->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, EffectImgName);
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("LinkColor", ShaderLinkColor);

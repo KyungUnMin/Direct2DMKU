@@ -427,6 +427,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallDown">
       <UniqueIdentifier>{c10e9849-eac6-40c9-afa2-307b25b2474c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.Component\03.SelfRenderer">
+      <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -759,6 +762,9 @@
     <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallDown</Filter>
     </ClCompile>
+    <ClCompile Include="ContentsSelfRenderer.cpp">
+      <Filter>04.Component\03.SelfRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1081,6 +1087,9 @@
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallDown</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsSelfRenderer.h">
+      <Filter>04.Component\03.SelfRenderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

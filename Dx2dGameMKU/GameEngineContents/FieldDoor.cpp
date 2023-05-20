@@ -101,7 +101,7 @@ void FieldDoor::CreateDoorImage(
 {
 	std::shared_ptr<GameEngineRenderer> RenderPtr = nullptr;
 
-	RenderPtr = CreateComponent<GameEngineRenderer>();
+	RenderPtr = CreateComponent<GameEngineRenderer>(RenderOrder::Door);
 	RenderPtr->SetPipeLine("FieldDoor");
 	RenderPtr->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, _ImageName);
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("AlphaRatio", AlphaRatio);

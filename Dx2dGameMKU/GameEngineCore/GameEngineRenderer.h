@@ -74,6 +74,6 @@ private:
 	GameEngineShaderResHelper ShaderResHelper;
 
 	//등록된 카메라를 바탕으로 행렬을 계산한다
-	void RenderTransformUpdate(GameEngineCamera* _Camera);
+	void RenderTransformUpdate(class GameEngineCamera* _Camera);
 };
 

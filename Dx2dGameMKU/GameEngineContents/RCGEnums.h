@@ -20,6 +20,19 @@ enum class CollisionOrder
 	EnemyAttack,
 };
 
+enum class RenderOrder
+{
+	Defalut = 0,
+	BackGround,
+	Debug_MapCol,
+	Shadow,
+	Character,
+	Effect,
+
+	Door,
+	Debug_Grid
+};
+
 
 
 //BossVersus에서만 사용중, 아마 FSM때문에 이렇게 외부로 뻬놓은거 같음

@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "HUD.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 
 #include "RCGDefine.h"
@@ -22,7 +22,7 @@ HUD::~HUD()
 void HUD::Start()
 {
 	UIBase::Start();
-	GetTransform()->AddLocalPosition(float4::Forward);
+	//GetTransform()->AddLocalPosition(float4::Forward);
 
 	LoadImageRes();
 	CreateBackGround();
@@ -46,7 +46,7 @@ void HUD::LoadImageRes()
 
 void HUD::CreateBackGround()
 {
-	std::shared_ptr<GameEngineSpriteRenderer> Sprite = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> Sprite = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
 	Sprite->SetTexture("HUD_BG.png");
 
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
@@ -65,7 +65,7 @@ void HUD::CreateHpBar()
 	HealthBlocks.resize(HealthCount, nullptr);
 	for (size_t i = 0; i < HealthCount; ++i)
 	{
-		HealthBlocks[i] = CreateComponent<GameEngineSpriteRenderer>();
+		HealthBlocks[i] = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
 		HealthBlocks[i]->SetTexture("HUD_Health.png");
 		HealthBlocks[i]->GetTransform()->SetLocalScale(BlockSize);
 
@@ -80,7 +80,7 @@ void HUD::CreateMpBar()
 	const float4 BarScale = float4{ 360.f, 18.f };
 	const float4 Offset = float4{ -168.f, 294.f , -1.f};
 
-	std::shared_ptr<GameEngineRenderer> MpBar = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> MpBar = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
 	MpBar->SetPipeLine("MpBar");
 	MpBar->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "HUD_MpBar.png");
 	MpBar->GetShaderResHelper().SetConstantBufferLink("MpRatio", HUD::MpData);

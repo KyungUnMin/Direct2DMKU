@@ -27,7 +27,7 @@ private:
 
 	static MpDatas MpData;
 
-	std::vector<std::shared_ptr<class GameEngineSpriteRenderer>> HealthBlocks;
+	std::vector<std::shared_ptr<class GameEngineUIRenderer>> HealthBlocks;
 	float Timer = 0.f;
 
 	void LoadImageRes();

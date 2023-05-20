@@ -207,6 +207,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentsSelfRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="DapEffect.h">
       <SubType>
       </SubType>
@@ -612,6 +616,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
+    <ClCompile Include="ContentsSelfRenderer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="DapEffect.cpp">
       <SubType>
       </SubType>

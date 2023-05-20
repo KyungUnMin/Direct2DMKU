@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "Fader.h"
 
-#include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 Fader* Fader::IsFading = nullptr;
 
@@ -18,9 +18,8 @@ Fader::~Fader()
 void Fader::Start()
 {
 	UIBase::Start();
-	SetOffsetFromCam(float4::Zero);
 
-    RenderPtr = CreateComponent<GameEngineRenderer>();
+    RenderPtr = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::Fade);
 	RenderPtr->SetPipeLine("DirectColor");
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("LinkColor", FadeColor);
 	RenderPtr->GetTransform()->SetWorldScale(GameEngineWindow::GetScreenSize());

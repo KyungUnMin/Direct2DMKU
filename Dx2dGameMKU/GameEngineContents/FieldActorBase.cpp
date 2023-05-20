@@ -30,7 +30,7 @@ void FieldActorBase::Start()
 	GameEngineActor::Start();
 
 	CreateShadow();
-	RendererPtr = CreateComponent<GameEngineSpriteRenderer>();
+	RendererPtr = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Character);
 	RendererPtr->GetTransform()->SetLocalScale(RenderScale);
 
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
@@ -52,7 +52,7 @@ void FieldActorBase::CreateShadow()
 		IsLoad = true;
 	}
 
-	std::shared_ptr<GameEngineSpriteRenderer> ShadowRender = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineSpriteRenderer> ShadowRender = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Shadow);
 	ShadowRender->SetScaleToTexture(ShadowImageName);
 
 	GameEngineTransform* ShadowTrans = ShadowRender->GetTransform();
@@ -62,7 +62,7 @@ void FieldActorBase::CreateShadow()
 
 void FieldActorBase::CreateDebugGridPoint()
 {
-	GridPosRender_Debug = CreateComponent<GameEngineSpriteRenderer>();
+	GridPosRender_Debug = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Debug_Grid);
 	GridPosRender_Debug->GetTransform()->SetWorldScale(BGPtr->GetGridScale());
 	GridPosRender_Debug->Off();
 }

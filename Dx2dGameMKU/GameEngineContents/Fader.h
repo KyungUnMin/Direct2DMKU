@@ -36,6 +36,6 @@ private:
 	float Duration = 0.f;
 	std::function<void()> Callback;
 
-	std::shared_ptr<class GameEngineRenderer> RenderPtr = nullptr;
+	std::shared_ptr<class GameEngineUIRenderer> RenderPtr = nullptr;
 };
 
