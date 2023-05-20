@@ -1,13 +1,14 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_Damaged_Dazed.h"
 
+
 #include "SchoolBoyFSM.h"
 
 const std::string_view SchoolBoyState_Damaged_Dazed::AniName = "Dazed";
 const std::string_view SchoolBoyState_Damaged_Dazed::AniFileName = "SchoolBoy_Dazed.png";
 const std::pair<int, int> SchoolBoyState_Damaged_Dazed::AniCutFrame = std::pair<int, int>(5, 1);
 const std::pair<size_t, size_t> SchoolBoyState_Damaged_Dazed::AniFrameIndex = std::pair<size_t, size_t>{ 0, 3 };
-const float SchoolBoyState_Damaged_Dazed::AniInterTime = 0.1f;
+const float SchoolBoyState_Damaged_Dazed::AniInterTime = 0.15f;
 
 SchoolBoyState_Damaged_Dazed::SchoolBoyState_Damaged_Dazed()
 {
@@ -75,6 +76,9 @@ void SchoolBoyState_Damaged_Dazed::Update(float _DeltaTime)
 	EnemyState_DamagedBase::Update(_DeltaTime);
 
 	if (GetLiveTime() < Duration)
+		return;
+
+	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
 	GetFSM()->ChangeState(SchoolBoyStateType::Idle);

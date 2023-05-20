@@ -7,7 +7,7 @@ const std::string_view SchoolBoyState_Damaged_WallHit::AniName = "WallHit";
 const std::string_view SchoolBoyState_Damaged_WallHit::AniFileName = "SchoolBoy_Wallhit.png";
 const std::pair<int, int> SchoolBoyState_Damaged_WallHit::AniCutFrame = std::pair<int, int>(5, 1);
 const std::pair<size_t, size_t> SchoolBoyState_Damaged_WallHit::AniFrameIndex = std::pair<size_t, size_t>{ 0, 1 };
-const float SchoolBoyState_Damaged_WallHit::AniInterTime = 0.05f;
+const float SchoolBoyState_Damaged_WallHit::AniInterTime = 0.025f;
 
 SchoolBoyState_Damaged_WallHit::SchoolBoyState_Damaged_WallHit()
 {
@@ -77,5 +77,5 @@ void SchoolBoyState_Damaged_WallHit::Update(float _DeltaTime)
 	if (GetLiveTime() < Duration)
 		return;
 
-	GetFSM()->ChangeState(SchoolBoyStateType::Damaged_Dazed);
+	GetFSM()->ChangeState(SchoolBoyStateType::Damaged_WallOut);
 }

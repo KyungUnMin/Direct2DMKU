@@ -21,6 +21,7 @@ enum class SchoolBoyStateType
 	Damaged_BlowBack,
 	Damaged_KnockDown,
 	Damaged_WallHit,
+	Damaged_WallOut,
 	Damaged_Dazed,
 
 

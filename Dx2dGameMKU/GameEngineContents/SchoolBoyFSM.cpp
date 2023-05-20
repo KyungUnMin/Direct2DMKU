@@ -21,6 +21,7 @@
 #include "SchoolBoyState_Damaged_BlowBack.h"
 #include "SchoolBoyState_Damaged_KnockDown.h"
 #include "SchoolBoyState_Damaged_WallHit.h"
+#include "SchoolBoyState_Damaged_WallOut.h"
 #include "SchoolBoyState_Damaged_Dazed.h"
 
 
@@ -82,6 +83,7 @@ void SchoolBoyFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<SchoolBoyState_Damaged_BlowBack>(SchoolBoyStateType::Damaged_BlowBack);
 	FSMBase::CreateState<SchoolBoyState_Damaged_KnockDown>(SchoolBoyStateType::Damaged_KnockDown);
 	FSMBase::CreateState<SchoolBoyState_Damaged_WallHit>(SchoolBoyStateType::Damaged_WallHit);
+	FSMBase::CreateState<SchoolBoyState_Damaged_WallOut>(SchoolBoyStateType::Damaged_WallOut);
 	FSMBase::CreateState<SchoolBoyState_Damaged_Dazed>(SchoolBoyStateType::Damaged_Dazed);
 
 

@@ -2,7 +2,7 @@
 #include "BossIntroMovie.h"
 
 #include <GameEngineCore/GameEngineSprite.h>
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "RCGDefine.h"
 
@@ -54,7 +54,7 @@ void BossIntroMovie::Init(MovieType _MovieType)
 {
 	const std::string_view& MovieName = MovieNames[static_cast<size_t>(_MovieType)];
 	
-	std::shared_ptr<GameEngineSpriteRenderer> Sprite = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> Sprite = CreateComponent<GameEngineUIRenderer>();
 	AniCtrl = Sprite->CreateAnimation
 	({
 		.AnimationName = "Movie",

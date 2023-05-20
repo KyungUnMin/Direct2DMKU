@@ -30,6 +30,13 @@ protected:
 		IsHeightFix = true;
 	}
 
+	//Update_BlowBack을 호출시 날라가는 방향 설정
+	inline void Set_BlowDir(bool _IsRight)
+	{
+		//Update_BlowHorizon에서 Enemy의 반대 방향으로 날라가기 때문
+		EnemyDir = !_IsRight;
+	}
+
 private:
 	float StartAcc = 2000.f;
 	float Duration = 1.0f;

@@ -424,11 +424,14 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\03.BlowBack">
       <UniqueIdentifier>{b5f68fea-35e1-4bd5-b6f4-93dfa206f4ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallDown">
-      <UniqueIdentifier>{c10e9849-eac6-40c9-afa2-307b25b2474c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04.Component\03.SelfRenderer">
       <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed">
+      <UniqueIdentifier>{a1c8a2e1-3171-4ea8-a648-fd5f6f42ee23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallOut">
+      <UniqueIdentifier>{c10e9849-eac6-40c9-afa2-307b25b2474c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -759,11 +762,14 @@
     <ClCompile Include="SchoolBoyState_Damaged_WallHit.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\04.WallHit</Filter>
     </ClCompile>
-    <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallDown</Filter>
+    <ClCompile Include="SchoolBoyState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallOut</Filter>
     </ClCompile>
     <ClCompile Include="ContentsSelfRenderer.cpp">
       <Filter>04.Component\03.SelfRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1085,11 +1091,14 @@
     <ClInclude Include="SchoolBoyState_Damaged_WallHit.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\04.WallHit</Filter>
     </ClInclude>
-    <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallDown</Filter>
+    <ClInclude Include="SchoolBoyState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallOut</Filter>
     </ClInclude>
     <ClInclude Include="ContentsSelfRenderer.h">
       <Filter>04.Component\03.SelfRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
