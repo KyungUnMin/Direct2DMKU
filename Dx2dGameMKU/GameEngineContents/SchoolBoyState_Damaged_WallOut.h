@@ -24,7 +24,7 @@ private:
 	static const float AniInterTime;
 
 	const float Duration = 0.3f;
-	const float StartReflectSize = 800.f;
+	const float StartReflectSize = 700.f;
 
 	void LoadAnimation();
 	void CreateAnimation();

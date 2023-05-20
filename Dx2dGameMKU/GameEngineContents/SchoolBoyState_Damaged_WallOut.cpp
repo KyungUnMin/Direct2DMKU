@@ -7,7 +7,7 @@
 const std::string_view SchoolBoyState_Damaged_WallOut::AniName = "WallOut";
 const std::string_view SchoolBoyState_Damaged_WallOut::AniFileName = "SchoolBoy_WallOut.png";
 const std::pair<int, int> SchoolBoyState_Damaged_WallOut::AniCutFrame = std::pair<int, int>(3, 1);
-const float SchoolBoyState_Damaged_WallOut::AniInterTime = 0.08f;
+const float SchoolBoyState_Damaged_WallOut::AniInterTime = 0.1f;
 
 SchoolBoyState_Damaged_WallOut::SchoolBoyState_Damaged_WallOut()
 {
@@ -56,8 +56,9 @@ void SchoolBoyState_Damaged_WallOut::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameInter = AniInterTime,
-		.Loop = false
+		//.FrameInter = AniInterTime,
+		.Loop = false,
+		.FrameTime = std::vector<float>{0.2f, 0.05f, 0.05f},
 	});
 }
 
