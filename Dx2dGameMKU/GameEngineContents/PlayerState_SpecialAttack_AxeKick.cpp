@@ -90,5 +90,9 @@ void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 
 void PlayerState_SpecialAttack_AxeKick::Attack(FieldEnemyBase* _Enemy)
 {
-	_Enemy->OnDamage_Stomach(TotalDamage);
+	bool Result = _Enemy->OnDamage_Stomach(TotalDamage);
+	if (true == Result)
+	{
+		PlayerState_AttackBase::CreateHitEffect_Face();
+	}
 }

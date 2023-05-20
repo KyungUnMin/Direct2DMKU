@@ -113,15 +113,24 @@ void PlayerState_UniqueAttack_HyrricaneKick::Attack(FieldEnemyBase* _Enemy)
 	size_t CurFrame = GetRenderer()->GetCurrentFrame();
 	if (19 == CurFrame)
 	{
-		_Enemy->OnDamage_BlowBack(TotalDamage);
+		if (true == _Enemy->OnDamage_BlowBack(TotalDamage))
+		{
+			PlayerState_AttackBase::CreateHitEffect_Blow();
+		}
 	}
 	else if (0 == (CurFrame % 2))
 	{
-		_Enemy->OnDamage_Face(TotalDamage);
+		if (true == _Enemy->OnDamage_Face(TotalDamage))
+		{
+			PlayerState_AttackBase::CreateHitEffect_Face();
+		}
 	}
 	else
 	{
-		_Enemy->OnDamage_Jaw(TotalDamage);
+		if (true == _Enemy->OnDamage_Jaw(TotalDamage))
+		{
+			PlayerState_AttackBase::CreateHitEffect_Jaw();
+		}
 	}
 
 }

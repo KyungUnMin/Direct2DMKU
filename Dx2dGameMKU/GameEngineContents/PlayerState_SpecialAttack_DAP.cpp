@@ -129,6 +129,10 @@ void PlayerState_SpecialAttack_DAP::ExitState()
 
 void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
 {
-	_Enemy->OnDamage_BlowBack(TotalDamage);
+	bool Result = _Enemy->OnDamage_BlowBack(TotalDamage);
+	if (true == Result)
+	{
+		PlayerState_AttackBase::CreateHitEffect_Blow();
+	}
 }
 

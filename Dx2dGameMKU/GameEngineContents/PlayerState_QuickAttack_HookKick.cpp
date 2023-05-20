@@ -110,5 +110,9 @@ void PlayerState_QuickAttack_HookKick::ExitState()
 void PlayerState_QuickAttack_HookKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Jaw(TotalDamage);
+	bool Result = _Enemy->OnDamage_Jaw(TotalDamage);
+	if (true == Result)
+	{
+		PlayerState_AttackBase::CreateHitEffect_Jaw();
+	}
 }

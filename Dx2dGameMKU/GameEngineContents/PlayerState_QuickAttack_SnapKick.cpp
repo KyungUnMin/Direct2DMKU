@@ -110,5 +110,9 @@ void PlayerState_QuickAttack_SnapKick::ExitState()
 void PlayerState_QuickAttack_SnapKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Stomach(TotalDamage);
+	bool Result = _Enemy->OnDamage_Stomach(TotalDamage);
+	if (true == Result)
+	{
+		PlayerState_AttackBase::CreateHitEffect_Stomach();
+	}
 }

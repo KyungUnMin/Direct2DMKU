@@ -433,6 +433,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallOut">
       <UniqueIdentifier>{c10e9849-eac6-40c9-afa2-307b25b2474c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\03.HitEffect">
+      <UniqueIdentifier>{382c0421-c337-4c50-8c60-9157e4bdd71d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -771,6 +774,9 @@
     <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed</Filter>
     </ClCompile>
+    <ClCompile Include="HitEffect.cpp">
+      <Filter>03.Actor\06.Effect\03.HitEffect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1099,6 +1105,9 @@
     </ClInclude>
     <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed</Filter>
+    </ClInclude>
+    <ClInclude Include="HitEffect.h">
+      <Filter>03.Actor\06.Effect\03.HitEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

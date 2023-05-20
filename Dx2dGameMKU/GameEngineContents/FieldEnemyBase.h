@@ -34,6 +34,8 @@ protected:
 		return IsKOValue;
 	}
 
+	void CreateHitEffect(const float4& _Offset = float4::Up * 100.f);
+
 private:
 	int Hp = 100;
 	bool IsKOValue= false;

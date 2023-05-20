@@ -107,5 +107,9 @@ void PlayerState_QuickAttack_BackKick::ExitState()
 void PlayerState_QuickAttack_BackKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	_Enemy->OnDamage_Jaw(TotalDamage);
+	bool Result = _Enemy->OnDamage_Jaw(TotalDamage);
+	if (true == Result)
+	{
+		PlayerState_AttackBase::CreateHitEffect_Jaw();
+	}
 }

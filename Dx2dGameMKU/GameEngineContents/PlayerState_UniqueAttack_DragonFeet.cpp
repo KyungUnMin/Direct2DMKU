@@ -77,16 +77,56 @@ void PlayerState_UniqueAttack_DragonFeet::SetAniEvents()
 	static bool IsSeted = false;
 	if (false == IsSeted)
 	{
-		AttackCallBacks[4] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Face(NormalDamage); };
-		AttackCallBacks[5] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Jaw(NormalDamage); };
-		AttackCallBacks[6] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Stomach(NormalDamage); };
-		AttackCallBacks[7] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Stomach(NormalDamage); };
-		AttackCallBacks[8] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Jaw(NormalDamage); };
-		AttackCallBacks[9] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Face(NormalDamage); };
-		AttackCallBacks[10] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Stomach(NormalDamage); };
-		AttackCallBacks[11] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Stomach(NormalDamage); };
-		AttackCallBacks[12] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_Face(NormalDamage); };
-		AttackCallBacks[14] = [](FieldEnemyBase* _Enemy) {_Enemy->OnDamage_BlowBack(LastDamage); };
+		AttackCallBacks[4] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Face(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Face();
+		};
+		AttackCallBacks[5] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Jaw(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Jaw();
+		};
+		AttackCallBacks[6] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Stomach(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Stomach();
+		};
+		AttackCallBacks[7] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Stomach(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Stomach();
+		};
+		AttackCallBacks[8] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Jaw(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Jaw();
+		};
+		AttackCallBacks[9] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Face(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Face();
+		};
+		AttackCallBacks[10] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Stomach(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Stomach();
+		};
+		AttackCallBacks[11] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Stomach(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Stomach();
+		};
+		AttackCallBacks[12] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_Face(NormalDamage))
+				PlayerState_AttackBase::CreateHitEffect_Face();
+		};
+		AttackCallBacks[14] = [](FieldEnemyBase* _Enemy) 
+		{
+			if (true == _Enemy->OnDamage_BlowBack(LastDamage))
+				PlayerState_AttackBase::CreateHitEffect_Blow();
+		};
 		IsSeted = true;
 	}
 

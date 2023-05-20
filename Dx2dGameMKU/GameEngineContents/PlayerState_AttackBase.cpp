@@ -1,12 +1,14 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_AttackBase.h"
 
+#include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
 
 #include "FieldPlayer.h"
 #include "FieldEnemyBase.h"
+#include "HitEffect.h"
 
 PlayerState_AttackBase::PlayerState_AttackBase()
 {
@@ -69,4 +71,47 @@ void PlayerState_AttackBase::AttackCheck()
 	}
 
 	EnemyColliders.clear();
+}
+
+
+
+
+
+
+void PlayerState_AttackBase::CreateHitEffect_Face()
+{
+	static const float4 Offset = float4::Up * 150.f + float4::Right * 50.f + float4::Back * 100.f;
+	std::shared_ptr<HitEffect> EffectPtr = CreateHitEffect(Offset);
+}
+
+void PlayerState_AttackBase::CreateHitEffect_Stomach()
+{
+	static const float4 Offset = float4::Up * 100.f + float4::Right * 50.f + float4::Back * 100.f;
+	std::shared_ptr<HitEffect> EffectPtr = CreateHitEffect(Offset);
+}
+
+void PlayerState_AttackBase::CreateHitEffect_Jaw()
+{
+	static const float4 Offset = float4::Up * 150.f + float4::Right * 100.f + float4::Back * 100.f;
+	std::shared_ptr<HitEffect> EffectPtr = CreateHitEffect(Offset);
+}
+
+void PlayerState_AttackBase::CreateHitEffect_Blow() 
+{
+	static const float4 Offset = float4::Up * 100.f + float4::Right * 50.f + float4::Back * 100.f;
+	std::shared_ptr<HitEffect> EffectPtr = CreateHitEffect(Offset);
+}
+
+
+std::shared_ptr<HitEffect> PlayerState_AttackBase::CreateHitEffect(const float4 _Offset)
+{
+	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
+	std::shared_ptr<HitEffect> EffectPtr = PlayerPtr->GetLevel()->CreateActor<HitEffect>(UpdateOrder::Effect);
+	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
+	GameEngineTransform* EffectTrans = EffectPtr->GetTransform();
+
+	EffectTrans->SetParent(PlayerTrans);
+	EffectTrans->SetLocalPosition(_Offset);
+
+	return EffectPtr;
 }

@@ -13,6 +13,11 @@ public:
 	PlayerState_AttackBase& operator=(const PlayerState_AttackBase& _Other) = delete;
 	PlayerState_AttackBase& operator=(const PlayerState_AttackBase&& _Other) noexcept = delete;
 
+	static void CreateHitEffect_Face();
+	static void CreateHitEffect_Stomach();
+	static void CreateHitEffect_Jaw();
+	static void CreateHitEffect_Blow();
+
 protected:
 	void Start() override;
 	
@@ -28,9 +33,12 @@ protected:
 	//적과 충돌했을때 처리해야 하는 상황
 	virtual void Attack(class FieldEnemyBase* _Enemy) = 0;
 
+
 private:
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
 
 	void AttackCheck();
+
+	static std::shared_ptr<class HitEffect> CreateHitEffect(const float4 _Offset);
 };
 
