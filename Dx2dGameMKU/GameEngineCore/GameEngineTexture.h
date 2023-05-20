@@ -182,6 +182,9 @@ private:
 	//텍스처를 만들었다면 그것을 제어할 수 있는 RTV생성
 	void CreateRenderTargetView();
 
+
+	void CreateShaderResourcesView();
+
 	//깊이 버퍼용 텍스처를 만들었다면 그것을 제어할 수 있는 DSV생성
 	void CreateDepthStencilView();
 

@@ -1,9 +1,12 @@
 #pragma once
 #include "GameEngineTexture.h"
+#include "GameEngineRenderer.h"
 
 //텍스처의 렌더타켓을 이용한 기능들을 처리하는 클래스, 실제 렌더타갯은 텍스처가 가지고 있음
 class GameEngineRenderTarget : public GameEngineResource<GameEngineRenderTarget>
 {
+	friend class GameEngineCore;
+
 public:
 	GameEngineRenderTarget();
 	~GameEngineRenderTarget() override;
@@ -24,6 +27,15 @@ public:
 		return NewRenderTarget;
 	}
 
+
+	static std::shared_ptr<GameEngineRenderTarget> Create(DXGI_FORMAT _Format, float4 _Scale, float4 _Color)
+	{
+		std::shared_ptr<GameEngineRenderTarget> NewRenderTarget = GameEngineResource::CreateUnNamed();
+		NewRenderTarget->ResCreate(_Format, _Scale, _Color);
+		return NewRenderTarget;
+	}
+
+
 	//렌더타겟이 가르키고 있는 이미지를 지우고 깊이버퍼도 초기화한다
 	void Clear();
 
@@ -34,13 +46,24 @@ public:
 	void Reset();
 
 	//사전에 만든 텍스처를 바탕으로 깊이버퍼텍스처 만들기, (아직까진) 디바이스에서만 호출됨
-	void CreateDepthTexture();
+	void CreateDepthTexture(int _Index = 0);
+
+	//
+	void Merge(std::shared_ptr<GameEngineRenderTarget> _Other, size_t _Index = 0);
 
 protected:
 
 private:
+	//MergeUnit에 머지용 렌더링 파이프라인 세팅
+	static void RenderTargetUnitInit();
+	//머지렌더(이미지 복사)를 도와주는 정적 개체
+	static GameEngineRenderUnit MergeUnit;
+
+
 	float4 Color = float4{ 0.f, 0.f, 0.f, 0.f };
-	std::shared_ptr<GameEngineTexture> Texture = nullptr;
+	std::vector<std::shared_ptr<GameEngineTexture>> Textures;
+	std::vector<ID3D11RenderTargetView*> RTVs;
+
 
 	//깊이버퍼용 텍스처
 	std::shared_ptr<GameEngineTexture> DepthTexture;
@@ -48,5 +71,10 @@ private:
 	//텍스처의 경우엔 포인터를 두개로 나눠서
 	//GameEngineTexture와 GameEngineRenderTarget이 각각 한개씩 나눠갖는다
 	void ResCreate(std::shared_ptr<GameEngineTexture> _Texture, float4 _Color);
+
+
+	void ResCreate(DXGI_FORMAT _Format, float4 _Scale, float4 _Color);
+
+
 };
 

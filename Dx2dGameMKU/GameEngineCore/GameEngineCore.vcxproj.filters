@@ -151,6 +151,9 @@
     <ClInclude Include="GameEngineFSM.h">
       <Filter>07.EngineContents\01.FSM</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineUIRenderer.h">
+      <Filter>05.Object\04.Component\02.Render\04.UIRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -293,6 +296,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineFSM.cpp">
       <Filter>07.EngineContents\01.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineUIRenderer.cpp">
+      <Filter>05.Object\04.Component\02.Render\04.UIRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -469,6 +475,9 @@
     </Filter>
     <Filter Include="07.EngineContents\01.FSM">
       <UniqueIdentifier>{f03a8538-1259-4294-becf-9a5c516390c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Object\04.Component\02.Render\04.UIRenderer">
+      <UniqueIdentifier>{56142d6d-a435-4675-93c7-9f3287cbe135}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

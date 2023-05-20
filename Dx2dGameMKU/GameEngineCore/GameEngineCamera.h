@@ -2,8 +2,14 @@
 #include "GameEngineActor.h"
 #include "GameEngineEnum.h"
 
+class GameEngineRenderer;
+class GameEngineRenderTarget;
+
 class GameEngineCamera : public GameEngineActor
 {
+	friend GameEngineLevel;
+	friend GameEngineRenderer;
+
 public:
 	GameEngineCamera();
 	~GameEngineCamera() override;
@@ -44,12 +50,33 @@ public:
 	}
 
 	void Update(float _DeltaTime) override;
+
+	//이 카메라에 등록된 렌더러들을 카메라 렌더타겟에 그린다
 	void Render(float _DeltaTime) override;
+
+	//이 카메라에 대한 뷰행렬을 계산한다, 추가로 뷰포트 행렬도 계산된다
+	void CameraTransformUpdate();
+
+
+	//이 카메라의 렌더타켓 리턴
+	inline std::shared_ptr<GameEngineRenderTarget> GetCamTarget() const
+	{
+		return CamTarget;
+	}
+
+	bool IsView(const TransformData& _TransData);
 
 protected:
 	void Start() override;
 
 private:
+	//렌더러는 카메라가 관리한다.
+	//카메라에 있는 렌더타켓에 이 렌더러들을 그린다.
+	std::map<int, std::list<std::shared_ptr<GameEngineRenderer>>> Renderers;
+
+	//물체가 카메라영역 안에 존재하는지 판단하기 위한 충돌정보
+	DirectX::BoundingOrientedBox Box;
+
 	bool FreeCamera = false;
 
 	//카메라의 뷰 행렬
@@ -76,4 +103,14 @@ private:
 
 	float Near = 0.1f;
 	float Far = 10000.f;
+
+
+	//이 카메라의 도화지가 될 렌더타겟
+	std::shared_ptr<GameEngineRenderTarget> CamTarget;
+
+	//이 카메라에 렌더러를 등록한다(렌더러에서 호출)
+	void PushRenderer(std::shared_ptr<GameEngineRenderer> _Render);
+
+	//렌더러 중 Death된 렌더러는 제거
+	void Release();
 };

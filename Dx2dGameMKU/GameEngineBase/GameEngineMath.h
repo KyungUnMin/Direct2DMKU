@@ -305,6 +305,13 @@ public:
 		return GetAngleRadZ() * GameEngineMath::RadToDeg;
 	}
 
+	//xyz중 가장 큰 값을 반환해준다
+	float MaxFloat() const
+	{
+		return (x < y) ? (y < z ? z : y) : (x < z ? z : x);
+	}
+
+
 	//벡터의 각도 구하기(Radian)
 	float GetAngleRadZ()
 	{

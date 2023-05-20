@@ -1,8 +1,12 @@
 #include "PrecompileHeader.h"
 #include "GameEngineCamera.h"
+
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+
 #include "GameEngineDevice.h"
+#include "GameEngineRenderer.h"
+#include "GameEngineRenderTarget.h"
 
 GameEngineCamera::GameEngineCamera()
 {
@@ -42,7 +46,17 @@ void GameEngineCamera::Start()
 
 	Width = ViewPortData.Width;
 	Height = ViewPortData.Height;
+
+
+	//카메라의 렌더타겟 배경색은 투명색이여야 한다,
+	//(색상 혼합의 원리를 생각하면 알 수 있다)
+	CamTarget = GameEngineRenderTarget::Create(
+		DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT, 
+		GameEngineWindow::GetScreenSize(), float4::Null);
+	CamTarget->CreateDepthTexture();
 }
+
+
 
 void GameEngineCamera::Update(float _DeltaTime)
 {
@@ -138,9 +152,51 @@ void GameEngineCamera::Setting()
 {
 	//여러개 세팅해줄 수 있지만 한개만 세팅
 	GameEngineDevice::GetContext()->RSSetViewports(1, &ViewPortData);
+
+
+	//렌더타겟뷰 설정(그림 그릴 도화지 설정) 및 청소
+	CamTarget->Clear();
+	CamTarget->Setting();
 }
 
 void GameEngineCamera::Render(float _DeltaTime)
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineRenderer>>>::iterator RenderGroupStartIter = Renderers.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineRenderer>>>::iterator RenderGroupEndIter = Renderers.end();
+
+	//이 카메라에 등록된 렌더러들을 순회
+	for (; RenderGroupStartIter != RenderGroupEndIter; ++RenderGroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineRenderer>>& RenderGroup = RenderGroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineRenderer>>::iterator StartRenderer = RenderGroup.begin();
+		std::list<std::shared_ptr<GameEngineRenderer>>::iterator EndRenderer = RenderGroup.end();
+
+		for (; StartRenderer != EndRenderer; ++StartRenderer)
+		{
+			std::shared_ptr<GameEngineRenderer>& Render = *StartRenderer;
+
+
+			if (false == Render->IsUpdate())
+			{
+				continue;
+			}
+
+			if (true == Render->IsCameraCulling && false == IsView(Render->GetTransform()->GetTransDataRef()))
+			{
+				continue;
+			}
+
+			//이 카메라의 뷰행렬과 투영행렬을 바탕으로 렌더러의 행렬을 계산
+			Render->RenderTransformUpdate(this);
+			//이 카메라에 렌더러를 그리기
+			Render->Render(_DeltaTime);
+		}
+	}
+}
+
+
+void GameEngineCamera::CameraTransformUpdate()
 {
 	//현재 카메라의 각 축 계산
 	float4 EyeDir = GetTransform()->GetLocalForwardVector();
@@ -172,4 +228,86 @@ void GameEngineCamera::Render(float _DeltaTime)
 	//뷰포트행렬 만들기
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	ViewPort.ViewPort(ScreenSize.x, ScreenSize.y, 0.f, 0.f);
+
+	//카메라 시야 영역 계산
+	float4 WorldPos = GetTransform()->GetWorldPosition();
+	float4 Dir = GetTransform()->GetLocalForwardVector();
+	Box.Center = (WorldPos + (Dir * Far * 0.5f)).DirectFloat3;
+	Box.Extents.z = Far * 0.6f;
+	Box.Extents.x = Width * 0.6f;
+	Box.Extents.y = Height * 0.6f;
+	Box.Orientation = GetTransform()->GetWorldQuaternion().DirectFloat4;
+}
+
+
+void GameEngineCamera::PushRenderer(std::shared_ptr<GameEngineRenderer> _Render)
+{
+	if (nullptr == _Render)
+	{
+		MsgAssert("랜더러가 nullptr 입니다");
+		return;
+	}
+
+	Renderers[_Render->GetOrder()].push_back(_Render);
+}
+
+
+
+
+bool GameEngineCamera::IsView(const TransformData& _TransData)
+{
+	switch (ProjectionType)
+	{
+	case CameraType::None:
+	{
+		MsgAssert("카메라 투영이 설정되지 않았습니다.");
+		break;
+	}
+	case CameraType::Perspective:
+		// DirectX::BoundingFrustum Box;
+		break;
+	case CameraType::Orthogonal:
+	{
+		//상대 물체는 항상 원으로 판단
+		DirectX::BoundingSphere Sphere;
+		Sphere.Center = _TransData.WorldPosition.DirectFloat3;
+		Sphere.Radius = _TransData.WorldScale.MaxFloat() * 0.5f;
+
+		bool IsCal = Box.Intersects(Sphere);
+		return IsCal;
+	}
+	default:
+		break;
+	}
+
+	return false;
+}
+
+
+void GameEngineCamera::Release()
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineRenderer>>>::iterator RenderGroupStartIter = Renderers.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineRenderer>>>::iterator RenderGroupEndIter = Renderers.end();
+
+	for (; RenderGroupStartIter != RenderGroupEndIter; ++RenderGroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineRenderer>>& RenderGroup = RenderGroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineRenderer>>::iterator StartRenderer = RenderGroup.begin();
+		std::list<std::shared_ptr<GameEngineRenderer>>::iterator EndRenderer = RenderGroup.end();
+
+		for (; StartRenderer != EndRenderer;)
+		{
+			std::shared_ptr<GameEngineRenderer>& Render = *StartRenderer;
+
+			if (false == Render->IsDeath())
+			{
+				++StartRenderer;
+				continue;
+			}
+
+			StartRenderer = RenderGroup.erase(StartRenderer);
+
+		}
+	}
 }

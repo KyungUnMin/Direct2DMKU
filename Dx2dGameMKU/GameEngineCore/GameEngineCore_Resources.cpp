@@ -104,6 +104,28 @@ void GameEngineCore::CoreResourceInit()
 		GameEngineIndexBuffer::Create("Rect", ArrIndex);
 	}
 
+
+	//머지용(카메라 용) 버텍스 버퍼 & 인덱스 버퍼 만들기
+	{
+		std::vector<GameEngineVertex> ArrVertex;
+		ArrVertex.resize(4);
+
+		//특별한 계산 없이 화면을 바로 가득 채우기 위해 범위를 -1 ~ 1로 맞춤
+		//(투영변환시 범위가 -1 ~ 1로 축소되기 때문)
+		ArrVertex[0] = { { -1.0f, 1.0f, 0.0f }, {0.0f, 0.0f} };
+		ArrVertex[1] = { { 1.0f, 1.0f, 0.0f }, {1.0f, 0.0f} };
+		ArrVertex[2] = { { 1.0f, -1.0f, 0.0f }, {1.0f, 1.0f} };
+		ArrVertex[3] = { { -1.0f, -1.0f, 0.0f }, {0.0f, 1.0f} };
+
+		std::vector<UINT> ArrIndex = { 0, 1, 2, 0, 2, 3 };
+
+		GameEngineVertexBuffer::Create("FullRect", ArrVertex);
+		GameEngineIndexBuffer::Create("FullRect", ArrIndex);
+
+	}
+
+
+
 	//블렌드 만들기
 	{
 		D3D11_BLEND_DESC Desc = { 0, };
@@ -146,6 +168,21 @@ void GameEngineCore::CoreResourceInit()
 
 		GameEngineDepthState::Create("EngineDepth", Desc);
 	}
+
+
+	//머지용(카메라 용) 뎁스
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0, };
+		Desc.DepthEnable = true;
+
+		//항상 덮어씌우게 된다
+		Desc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_ALWAYS;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK::D3D11_DEPTH_WRITE_MASK_ALL;
+		Desc.StencilEnable = false;
+
+		GameEngineDepthState::Create("AlwayDepth", Desc);
+	}
+
 
 
 	{
@@ -198,9 +235,11 @@ void GameEngineCore::CoreResourceInit()
 		//해당 확장자를 가지고 있는 파일 가져오기
 		std::vector<GameEngineFile> Files = NewDir.GetAllFile({ ".hlsl",".fx" });
 
-		//일단 쉐이더 파일 하나만 컴파일하기
-		std::shared_ptr<GameEngineVertexShader> VertexShader = GameEngineVertexShader::Load(Files[0].GetFullPath(), "Texture_VS");
-		GameEnginePixelShader::Load(Files[0].GetFullPath(), "Texture_PS");
+		GameEngineVertexShader::Load(Files[0].GetFullPath(), "Merge_VS");
+		GameEnginePixelShader::Load(Files[0].GetFullPath(), "Merge_PS");
+
+		GameEngineVertexShader::Load(Files[1].GetFullPath(), "Texture_VS");
+		GameEnginePixelShader::Load(Files[1].GetFullPath(), "Texture_PS");
 	}
 
 
@@ -251,6 +290,20 @@ void GameEngineCore::CoreResourceInit()
 		Pipe->SetDepthState("EngineDepth");
 	}
 
+	//머지용(카메라 용) 렌더링 파이프 라인 만들고 세팅하기
+	{
+		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("Merge");
+		Pipe->SetVertexBuffer("FullRect");
+		Pipe->SetIndexBuffer("FullRect");
+		Pipe->SetVertexShader("MergeShader.hlsl");
+		Pipe->SetRasterizer("Engine2DBase");
+		Pipe->SetPixelShader("MergeShader.hlsl");
+		Pipe->SetBlendState("AlphaBlend");
+		Pipe->SetDepthState("AlwayDepth");
+
+		//
+		GameEngineRenderTarget::RenderTargetUnitInit();
+	}
 }
 
 

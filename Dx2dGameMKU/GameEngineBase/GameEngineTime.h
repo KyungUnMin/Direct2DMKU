@@ -18,7 +18,12 @@ public:
 
 	float TimeCheck();
 
-	inline float GetFloatDeltaTime() const
+	inline float GetDeltaTime() const
+	{
+		return floatDeltaTime;
+	}
+
+	inline float GetTimeScaleDeltaTime() const
 	{
 		return floatDeltaTime * TimeScale;
 	}

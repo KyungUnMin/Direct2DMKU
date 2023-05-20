@@ -8,6 +8,39 @@
 #include "GameEnginePixelShader.h"
 #include "GameEngineShaderResHelper.h"
 
+
+
+void GameEngineRenderUnit::SetPipeLine(const std::string_view& _Name)
+{
+	Pipe = GameEngineRenderingPipeLine::Find(_Name);
+
+	//버텍스 쉐이더 정보 받아오기
+	{
+		const GameEngineShaderResHelper& Res = Pipe->GetVertexShader()->GetShaderResHelper();
+		ShaderResHelper.Copy(Res);
+	}
+
+	//픽셀 쉐이더 정보 받아오기
+	{
+		const GameEngineShaderResHelper& Res = Pipe->GetPixelShader()->GetShaderResHelper();
+		ShaderResHelper.Copy(Res);
+	}
+}
+
+
+
+void GameEngineRenderUnit::Render(float _DeltaTime)
+{
+	//GPU에 렌더링 파이프라인 단계에 따라 필요한 정보 설정
+	Pipe->RenderingPipeLineSetting();
+	//GPU에 쉐이더 정보를 설정(상수버퍼나 텍스처 같은 정보)
+	ShaderResHelper.Setting();
+	//그리기
+	Pipe->Render();
+}
+
+
+
 GameEngineRenderer::GameEngineRenderer()
 {
 
@@ -18,6 +51,28 @@ GameEngineRenderer::~GameEngineRenderer()
 
 }
 
+void GameEngineRenderer::Start()
+{
+	//메인 카메라에 등록
+	PushCameraRender(0);
+}
+
+
+
+void GameEngineRenderer::RenderTransformUpdate(GameEngineCamera* _Camera)
+{
+	if (nullptr == _Camera)
+	{
+		MsgAssert("카메라가 nullptr입니다");
+		return;
+	}
+
+	//카메라 뷰행렬와 투영행렬 연산
+	GetTransform()->SetCameraMatrix(_Camera->GetView(), _Camera->GetProjection());
+}
+
+
+
 void GameEngineRenderer::Render(float _DeltaTime)
 {
 	if (nullptr == Pipe)
@@ -26,16 +81,6 @@ void GameEngineRenderer::Render(float _DeltaTime)
 		return;
 	}
 
-	std::shared_ptr<GameEngineCamera> MainCamera = GetLevel()->GetMainCamera();
-	if (nullptr == MainCamera)
-	{
-		MsgAssert("카메라 없음");
-		return;
-	}
-
-	//카메라 뷰행렬와 투영행렬 연산
-	GetTransform()->SetCameraMatrix(MainCamera->GetView(), MainCamera->GetProjection());
-
 	Pipe->RenderingPipeLineSetting();
 
 	//텍스처 세팅, 상수버퍼 세팅 등이 이루어진다.
@@ -43,6 +88,9 @@ void GameEngineRenderer::Render(float _DeltaTime)
 
 	Pipe->Render();
 }
+
+
+
 
 
 void GameEngineRenderer::SetPipeLine(const std::string_view& _Name)
@@ -84,3 +132,8 @@ void GameEngineRenderer::SetPipeLine(const std::string_view& _Name)
 	
 }
 
+
+void GameEngineRenderer::PushCameraRender(int _CameraOrder)
+{
+	GetLevel()->PushCameraRenderer(DynamicThis<GameEngineRenderer>(), _CameraOrder);
+}

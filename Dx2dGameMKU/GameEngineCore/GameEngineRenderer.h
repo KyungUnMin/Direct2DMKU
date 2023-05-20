@@ -2,8 +2,25 @@
 #include "GameEngineComponent.h"
 #include "GameEngineShader.h"
 
+//렌더링을 1번 수행하는 단위
+class GameEngineRenderUnit
+{
+public:
+	std::shared_ptr<class GameEngineRenderingPipeLine > Pipe;
+	GameEngineShaderResHelper ShaderResHelper;
+
+public:
+	//파이프라인 세팅 밎 쉐이더 정보 세팅
+	void SetPipeLine(const std::string_view& _Name);
+	//렌더링
+	void Render(float _DeltaTime);
+};
+
+
 class GameEngineRenderer : public GameEngineComponent
 {
+	friend class GameEngineCamera;
+
 public:
 	GameEngineRenderer();
 	~GameEngineRenderer() override;
@@ -22,10 +39,22 @@ public:
 		return ShaderResHelper;
 	}
 
+	inline void CameraCullingOn()
+	{
+		IsCameraCulling = true;
+	}
+
 protected:
+	void Start() override;
+
 	void Render(float _DeltaTime) override;
 
+	//레벨의 _CameraOrder번째 카메라에 이 렌더러를 등록
+	void PushCameraRender(int _CameraOrder);
+
 private:
+	bool IsCameraCulling = false;
+
 	std::shared_ptr<class GameEngineRenderingPipeLine> Pipe;
 
 	/*
@@ -43,5 +72,8 @@ private:
 		그렇게 복사된 세터에 렌더러 별도의 상수버퍼, 텍스처 등을 채워넣으면 된다
 	*/
 	GameEngineShaderResHelper ShaderResHelper;
+
+	//등록된 카메라를 바탕으로 행렬을 계산한다
+	void RenderTransformUpdate(GameEngineCamera* _Camera);
 };
 

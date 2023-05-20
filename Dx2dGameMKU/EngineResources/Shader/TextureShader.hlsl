@@ -97,6 +97,15 @@ Texture2D DiffuseTex : register(t0);
 //UVW 는 각각 XYZ를 의미한다
 SamplerState WRAPSAMPLER : register(s0);
 
+
+struct OutColor
+{
+    float4 Color0 : SV_Target0;
+    float4 Color1 : SV_Target1;
+    float4 Color2 : SV_Target2;
+    float4 Color3 : SV_Target3;
+};
+
 //픽셀 쉐이더가 끝나면 다음 단계는 아웃풋 머지다.
 //그래서 어떤 RTV에 그릴지에 대해 명시해주어야 한다(0번 도화지에 그려라)
 float4 Texture_PS(Output _Value) : SV_Target0

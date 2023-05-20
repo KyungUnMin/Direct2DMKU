@@ -75,6 +75,23 @@ void GameEngineTexture::CreateRenderTargetView()
 }
 
 
+void GameEngineTexture::CreateShaderResourcesView()
+{
+	if (nullptr == Texture2D)
+	{
+		MsgAssert("텍스처가 존재하지 않는 쉐이더 리소스 뷰를 만들 수는 없습니다.");
+		return;
+	}
+
+	HRESULT Result = GameEngineDevice::GetDevice()->CreateShaderResourceView(Texture2D, nullptr, &SRV);
+
+	if (S_OK != Result)
+	{
+		MsgAssert("쉐이더 리소스 뷰 생성에 실패했습니다.");
+		return;
+	}
+}
+
 
 void GameEngineTexture::CreateDepthStencilView()
 {
@@ -146,11 +163,23 @@ void GameEngineTexture::ResLoad(const std::string_view& _Path)
 
 void GameEngineTexture::VSSetting(UINT _Slot)
 {
+	if (nullptr == SRV)
+	{
+		MsgAssert("SRV가 존재하지 않는 텍스처를 쉐이더에 세팅할수 없습니다.");
+		return;
+	}
+
 	GameEngineDevice::GetContext()->VSSetShaderResources(_Slot, 1, &SRV);
 }
 
 void GameEngineTexture::PSSetting(UINT _Slot)
 {
+	if (nullptr == SRV)
+	{
+		MsgAssert("SRV가 존재하지 않는 텍스처를 쉐이더에 세팅할수 없습니다.");
+		return;
+	}
+
 	GameEngineDevice::GetContext()->PSSetShaderResources(_Slot, 1, &SRV);
 }
 
@@ -163,8 +192,20 @@ void GameEngineTexture::ResCreate(const D3D11_TEXTURE2D_DESC& _Value)
 
 	GameEngineDevice::GetDevice()->CreateTexture2D(&Desc, nullptr, &Texture2D);
 
+	//렌더 타겟을 설정하는 옵션이 있다면 렌더타겟 만들기
+	if (D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET & Desc.BindFlags)
+	{
+		CreateRenderTargetView();
+	}
+
+	//쉐이더 사용 설정이 있다면 쉐이더 리소스 뷰 만들기
+	if (D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE & Desc.BindFlags)
+	{
+		CreateShaderResourcesView();
+	}
+
 	//깊이 버퍼용으로 만든 텍스처였다면
-	if (D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL == Desc.BindFlags)
+	if (D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL & Desc.BindFlags)
 	{
 		CreateDepthStencilView();
 	}

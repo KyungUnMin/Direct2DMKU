@@ -1,15 +1,19 @@
 #pragma once
 #include <map>
 #include <string_view>
+
 #include <GameEngineBase/GameEngineTimeEvent.h>
+
 #include "GameEngineObject.h"
 
 class GameEngineActor;
 class GameEngineCamera;
 class GameEngineCollision;
+class GameEngineRenderer;
 
 class GameEngineLevel : public GameEngineObject
 {
+	friend class GameEngineRenderer;
 	friend class GameEngineTransform;
 	friend class GameEngineCore;
 	friend class GameEngineCollision;
@@ -68,6 +72,8 @@ public:
 		return DynamicThis<GameEngineLevel>();
 	}
 
+	std::shared_ptr<GameEngineCamera> GetCamera(int _CameraOrder);
+
 protected:
 	virtual void LevelChangeStart(){}
 	virtual void LevelChangeEnd(){}
@@ -77,12 +83,21 @@ protected:
 	virtual void Render(float _DeltaTime){}
 
 private:
+	//이 레벨에 존재하는 카메라들
+	std::map<int, std::shared_ptr<GameEngineCamera>> Cameras;
+
+	//메인카메라(자주 사용되기 때문에 따로 포인터로 두었음)
 	std::shared_ptr<GameEngineCamera> MainCamera;
-	std::shared_ptr<GameEngineCamera> UICamera;
+
+
 
 	std::map<int, std::list<std::shared_ptr<GameEngineActor>>> Actors;
 
 	std::map<int, std::list<std::shared_ptr<GameEngineCollision>>> Collisions;
+
+
+	//_Index번째 카메라에 렌더러를 등록한다
+	void PushCameraRenderer(std::shared_ptr<GameEngineRenderer> _Renderer, int _CameraOrder);
 
 	//Collision의 SetOrder에서 호출됨
 	void PushCollision(std::shared_ptr<GameEngineCollision> _Collision);

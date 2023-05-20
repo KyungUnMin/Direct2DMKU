@@ -157,6 +157,7 @@ public:
 	std::string GetTexName();
 
 protected:
+	void SpriteRenderInit();
 
 private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;

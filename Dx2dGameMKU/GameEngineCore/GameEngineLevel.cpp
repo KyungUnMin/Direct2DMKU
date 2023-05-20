@@ -1,13 +1,23 @@
 #include "PrecompileHeader.h"
 #include "GameEngineLevel.h"
+
 #include "GameEngineActor.h"
 #include "GameEngineCamera.h"
 #include "GameEngineGUI.h"
 #include "GameEngineCollision.h"
+#include "GameEngineDevice.h"
+#include "GameEngineRenderTarget.h"
 
 GameEngineLevel::GameEngineLevel()
 {
+	//메인 카메라 0번
 	MainCamera = CreateActor<GameEngineCamera>();
+	Cameras.insert(std::make_pair(0, MainCamera));
+
+	//UI 카메라 100번
+	std::shared_ptr<GameEngineCamera> UICamera = CreateActor<GameEngineCamera>();
+	UICamera->SetProjectionType(CameraType::Orthogonal);
+	Cameras.insert(std::make_pair(100, UICamera));
 }
 
 GameEngineLevel::~GameEngineLevel()
@@ -18,46 +28,6 @@ GameEngineLevel::~GameEngineLevel()
 
 void GameEngineLevel::ActorUpdate(float _DeltaTime)
 {
-	//부모가 있는 오브젝트라면 레벨의 List에서 제외시키고
-	//부모쪽을 통해 Update 및 Render 들의 함수를 호출받게끔 한다
-	//{
-	//	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
-	//	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
-	//	//오더 순회
-	//	for (; GroupStartIter != GroupEndIter;++GroupStartIter)
-	//	{
-	//		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
-	//		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
-	//		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
-	//		//엑터 순회
-	//		for (; ActorStart != ActorEnd; )
-	//		{
-	//			std::shared_ptr<GameEngineActor> CheckActor = (*ActorStart);
-	//			GameEngineTransform* ParentTransform = CheckActor->GetTransform()->Parent;
-	//			//부모가 있는 애들만 검출(부모가 있으면 리스트에서 제외)
-	//			if (nullptr != ParentTransform)
-	//			{
-	//				GameEngineObject* Object = ParentTransform->GetMaster();
-	//				if (nullptr == Object)
-	//				{
-	//					MsgAssert("부모가 없는 트랜스폼을 Level에서 사용할수는 없습니다.");
-	//				}
-	//				// 레벨의 리스트가 이 오브젝트를 갖는것이 아니라
-	//				//부모가 이 오브젝트를 책임진다
-	//				//(자식으로 들어갈 Object의 Shared_ptr ref를 유지시키기 위해
-	//				//Transform의 Child 뿐만 아니라 Object의 Childs에도 자식으로 보관한다)
-	//				Object->Childs.push_back(CheckActor);
-	//				//그룹에서 제거
-	//				ActorStart = ActorList.erase(ActorStart);
-	//				continue;
-	//			}
-	//			++ActorStart;
-	//		}
-	//	}
-	//}
-
-
-
 	//프리 카메라 모드일땐 카메라 제외하고 업데이트 실행X
 	if (true == MainCamera->IsFreeCamera())
 	{
@@ -101,43 +71,38 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 
 void GameEngineLevel::ActorRender(float _DeltaTime)
 {
-	//랜파 래스터라이저 과정을 위해 GPU에 뷰 행렬 정보 등록
-	GetMainCamera()->Setting();
-
-
-	//모든 엑터들과 컴포넌트들의 렌더 호출
-	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
-	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
-
-	//그룹순회
-	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	//이 레벨에 존재하는 카메라 순회
+	for (std::pair<int, std::shared_ptr<GameEngineCamera>> Pair : Cameras)
 	{
-		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
-
-		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
-		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
-
-		//엑터 순회
-		for (; ActorStart != ActorEnd; ++ActorStart)
-		{
-			std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
-
-			Actor->AllRender(_DeltaTime);
-
-			/*if (false == Actor->IsUpdate())
-				continue;
-
-			GameEngineTransform* Transform = Actor->GetTransform();
-			Transform->AllRender(_DeltaTime);*/
-		}
+		//이 카메라에 등록된 렌더들을 카메라 렌더타겟에 그린다
+		std::shared_ptr<GameEngineCamera> Cam = Pair.second;
+		Cam->Setting();
+		Cam->CameraTransformUpdate();
+		Cam->Render(_DeltaTime);
 	}
+	
+	//이 레벨에 존재하는 카메라 순회
+	for (std::pair<int, std::shared_ptr<GameEngineCamera>> Pair : Cameras)
+	{
+		std::shared_ptr<GameEngineCamera> Camera = Pair.second;
+		std::shared_ptr<GameEngineRenderTarget> Target = Camera->GetCamTarget();
 
-
+		//메인 백버퍼에 카메라들의 이미지들을 덮어쓴다
+		GameEngineDevice::GetBackBufferTarget()->Merge(Target);
+	}
+	
+	//imgui 렌더
 	GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
 }
 
 void GameEngineLevel::ActorRelease()
 {
+	//렌더러 릴리즈
+	for (std::pair<int, std::shared_ptr<GameEngineCamera>> Pair : Cameras)
+	{
+		std::shared_ptr<GameEngineCamera> Cam = Pair.second;
+		Cam->Release();
+	}
 
 	//콜리전 Release
 	{
@@ -223,7 +188,35 @@ void GameEngineLevel::ActorInit(std::shared_ptr<GameEngineActor> _Actor, int _Or
 }
 
 
+
+
 void GameEngineLevel::PushCollision(std::shared_ptr<GameEngineCollision> _Collision)
 {
 	Collisions[_Collision->GetOrder()].push_back(_Collision);
+}
+
+
+
+
+void GameEngineLevel::PushCameraRenderer(std::shared_ptr<GameEngineRenderer> _Renderer, int _CameraOrder)
+{
+	std::shared_ptr<GameEngineCamera> FindCamera = GetCamera(_CameraOrder);
+	if (nullptr == FindCamera)
+	{
+		MsgAssert("존재하지 않는 카메라에 랜더러를 넣을수는 없습니다.");
+		return;
+	}
+
+	FindCamera->PushRenderer(_Renderer);
+}
+
+
+std::shared_ptr<GameEngineCamera> GameEngineLevel::GetCamera(int _CameraOrder)
+{
+	std::map<int, std::shared_ptr<GameEngineCamera>>::iterator FindIter = Cameras.find(_CameraOrder);
+	if (FindIter == Cameras.end())
+		return nullptr;
+
+	std::shared_ptr<GameEngineCamera> Camera = FindIter->second;
+	return Camera;
 }
