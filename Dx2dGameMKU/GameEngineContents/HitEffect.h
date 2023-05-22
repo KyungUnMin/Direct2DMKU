@@ -21,6 +21,10 @@ public:
 
 	void OffHitSpark();
 
+	void SetAirMaxRatio(float _Ratio)
+	{
+		AirMaxScale *= _Ratio;
+	}
 
 protected:
 	void Start() override;
@@ -29,7 +33,6 @@ protected:
 private:
 	static const std::string_view HitAir_FileName;
 	static const std::string_view HitSpark_FileName;
-	static const float4 AirMaxScale;
 	static float4 SparkScale;
 
 
@@ -37,6 +40,7 @@ private:
 	std::shared_ptr<GameEngineSpriteRenderer> SparkRender = nullptr;
 
 	float Duration = 0.2f;
+	float4 AirMaxScale = float4{ 500.f, 500.f, 1.f };
 
 
 	void LoadImages();

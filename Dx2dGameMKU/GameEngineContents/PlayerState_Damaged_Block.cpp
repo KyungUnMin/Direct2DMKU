@@ -127,6 +127,7 @@ void PlayerState_Damaged_Block::OnDamage()
 	GameEngineActor* PlayerPtr = Render->GetActor();
 	std::shared_ptr<HitEffect> EffectPtr = PlayerPtr->GetLevel()->CreateActor<HitEffect>(UpdateOrder::Effect);
 	EffectPtr->OffHitSpark();
+	EffectPtr->SetAirMaxRatio(0.5f);
 
 	GameEngineTransform* PlayerTrans = PlayerPtr->GetTransform();
 	GameEngineTransform* EffectTrans = EffectPtr->GetTransform();

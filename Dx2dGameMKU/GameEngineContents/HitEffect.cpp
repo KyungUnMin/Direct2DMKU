@@ -10,7 +10,6 @@
 
 const std::string_view HitEffect::HitAir_FileName = "HitAir.png";
 const std::string_view HitEffect::HitSpark_FileName = "HitSpark.png";
-const float4 HitEffect::AirMaxScale = float4{ 500.f, 500.f, 1.f };
 float4 HitEffect::SparkScale = float4::Zero;
 
 
