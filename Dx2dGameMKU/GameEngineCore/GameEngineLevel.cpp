@@ -69,6 +69,53 @@ void GameEngineLevel::ActorUpdate(float _DeltaTime)
 
 
 
+
+void GameEngineLevel::ActorLevelChangeStart()
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
+		for (; ActorStart != ActorEnd; ++ActorStart)
+		{
+			std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
+			Actor->AllLevelChangeStart();
+		}
+	}
+}
+
+
+
+void GameEngineLevel::ActorLevelChangeEnd()
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
+		for (; ActorStart != ActorEnd; ++ActorStart)
+		{
+			std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
+			Actor->AllLevelChangeEnd();
+		}
+	}
+}
+
+
+
+
+
 void GameEngineLevel::ActorRender(float _DeltaTime)
 {
 	//이 레벨에 존재하는 카메라 순회

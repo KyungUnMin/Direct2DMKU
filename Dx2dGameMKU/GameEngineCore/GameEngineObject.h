@@ -85,6 +85,10 @@ protected:
 	//자식들중에서 삭제예정인 오브젝트는 Transform::list와 Object의 List에서 제거
 	virtual void Release();
 
+	//레벨이 전환될때 호출되는 함수들
+	virtual void LevelChangeStart() {}
+	virtual void LevelChangeEnd() {}
+
 	//protected지만 함수로 사용하지 않기 바란다(GameEngineActor의 Component를 위한 것)
 	void PushChild(std::shared_ptr<GameEngineObject> _Child)
 	{
@@ -110,7 +114,11 @@ private:
 	//자신과 자식들의  Render를 호출시킨다
 	void AllRender(float _DeltaTime);
 
-	//
+	
 	void AllRelease();
+
+
+	void AllLevelChangeStart();
+	void AllLevelChangeEnd();
 };
 

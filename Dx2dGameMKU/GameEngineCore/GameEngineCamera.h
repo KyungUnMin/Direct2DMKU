@@ -2,6 +2,13 @@
 #include "GameEngineActor.h"
 #include "GameEngineEnum.h"
 
+enum class SortType
+{
+	None,
+	ZSort,
+	YSort,
+};
+
 class GameEngineRenderer;
 class GameEngineRenderTarget;
 
@@ -66,6 +73,17 @@ public:
 
 	bool IsView(const TransformData& _TransData);
 
+	template<typename EnumType>
+	void SetSortType(EnumType _Index, SortType _Sort)
+	{
+		SetSortType(static_cast<int>(_Index), _Sort);
+	}
+
+	void SetSortType(int _Index, SortType _Sort)
+	{
+		SortValues[_Index] = _Sort;
+	}
+
 protected:
 	void Start() override;
 
@@ -73,6 +91,9 @@ private:
 	//렌더러는 카메라가 관리한다.
 	//카메라에 있는 렌더타켓에 이 렌더러들을 그린다.
 	std::map<int, std::list<std::shared_ptr<GameEngineRenderer>>> Renderers;
+
+	//해당 Render오더가 Sort되고 있는지 여부
+	std::map<int, SortType> SortValues;
 
 	//물체가 카메라영역 안에 존재하는지 판단하기 위한 충돌정보
 	DirectX::BoundingOrientedBox Box;

@@ -131,3 +131,25 @@ bool GameEngineObject::IsUpdate()
 	//부모가 없는 경우
 	return GameEngineObjectBase::IsUpdate();
 }
+
+
+void GameEngineObject::AllLevelChangeStart()
+{
+	LevelChangeStart();
+
+	for (std::shared_ptr<GameEngineObject> Object : Childs)
+	{
+		Object->AllLevelChangeStart();
+	}
+}
+
+
+void GameEngineObject::AllLevelChangeEnd()
+{
+	LevelChangeEnd();
+
+	for (std::shared_ptr<GameEngineObject> Object : Childs)
+	{
+		Object->AllLevelChangeEnd();
+	}
+}

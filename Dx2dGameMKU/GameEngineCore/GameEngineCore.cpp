@@ -31,6 +31,11 @@ GameEngineCore::~GameEngineCore()
 
 void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 {
+	if (false == GameEngineInput::IsKey("GUISwitch"))
+	{
+		GameEngineInput::CreateKey("GUISwitch", VK_F8);
+	}
+
 	//디바이스 초기화
 	GameEngineDevice::Initialize();
 
@@ -56,6 +61,7 @@ void GameEngineCore::EngineUpdate()
 		if (nullptr != MainLevel)
 		{
 			MainLevel->LevelChangeEnd();
+			MainLevel->ActorLevelChangeEnd();
 		}
 
 		MainLevel = NextLevel;
@@ -63,6 +69,7 @@ void GameEngineCore::EngineUpdate()
 		if (nullptr != MainLevel)
 		{
 			MainLevel->LevelChangeStart();
+			MainLevel->ActorLevelChangeStart();
 		}
 
 		NextLevel = nullptr;

@@ -20,13 +20,13 @@ void GlichSideAttack::Start()
 {
 	const float4 RenderScale = float4{ 550.f, 180.f, 1.f };
 
-	std::shared_ptr<GameEngineRenderer> Render1 = CreateComponent<GameEngineRenderer>(RenderOrder::Effect);
+	std::shared_ptr<GameEngineRenderer> Render1 = CreateComponent<GameEngineRenderer>(FieldRenderOrder::ZOrder);
 	Render1->SetPipeLine("GlichStair");
 	Render1->GetShaderResHelper().SetConstantBufferLink("GlichData", Data);
 	Render1->GetTransform()->SetLocalScale(RenderScale);
 	Render1->GetTransform()->AddLocalPosition(float4::Left * RenderScale.hx());
 
-	std::shared_ptr<GameEngineRenderer> Render2 = CreateComponent<GameEngineRenderer>(RenderOrder::Effect);
+	std::shared_ptr<GameEngineRenderer> Render2 = CreateComponent<GameEngineRenderer>(FieldRenderOrder::ZOrder);
 	Render2->SetPipeLine("GlichStair");
 	Render2->GetShaderResHelper().SetConstantBufferLink("GlichData", Data);
 	Render2->GetTransform()->SetLocalScale(RenderScale * float4{ -1.f, 1.f, 1.f });

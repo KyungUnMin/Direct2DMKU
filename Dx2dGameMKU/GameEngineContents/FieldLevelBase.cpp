@@ -36,8 +36,10 @@ void FieldLevelBase::Start()
 	//다른 클래스가 Start시점에서 FieldPlayer::GPtr 를 통해 레벨에 접근할 때를 위함
 	GPtr = this;
 
-	GetMainCamera()->SetProjectionType(CameraType::Orthogonal);
-	GetMainCamera()->GetTransform()->SetWorldPosition(float4::Back * 500.f);
+	std::shared_ptr<GameEngineCamera> CamPtr = GetMainCamera();
+	CamPtr->SetProjectionType(CameraType::Orthogonal);
+	CamPtr->SetSortType(FieldRenderOrder::ZOrder, SortType::ZSort);
+	CamPtr->GetTransform()->SetWorldPosition(float4::Back * 500.f);
 }
 
 

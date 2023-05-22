@@ -57,11 +57,11 @@ void HitEffect::LoadImages()
 
 void HitEffect::CreateRenders() 
 {
-	AirRender = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Effect);
+	AirRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	AirRender->SetTexture(HitAir_FileName);
 
 	static const std::string_view AniName = "Spark";
-	SparkRender = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Effect);
+	SparkRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	SparkRender->CreateAnimation
 	({
 		.AnimationName = AniName,

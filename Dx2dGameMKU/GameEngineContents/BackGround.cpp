@@ -35,7 +35,7 @@ void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileDa
 	MapScale = _Scale;
 	GridScale = float4{ MapScale.x / static_cast<float>(TileInfo.XCount), MapScale.y / static_cast<float>(TileInfo.YCount) };
 
-	TileRender = CreateComponent<GameEngineRenderer>(RenderOrder::Debug_Grid);
+	TileRender = CreateComponent<GameEngineRenderer>(FieldRenderOrder::Debug_Grid);
 	TileRender->SetPipeLine("Tile");
 	TileRender->GetShaderResHelper().SetConstantBufferLink("TileInfo", TileInfo);
 
@@ -49,7 +49,7 @@ void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileDa
 
 std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset /*= float4::Zero*/)
 {
-	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::BackGround);
+	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::BackGround);
 	RendererPtr->SetTexture(_ResName);
 	GameEngineTransform* RenderTransform = RendererPtr->GetTransform();
 
@@ -74,7 +74,7 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 
 void BackGround::CreateCollisionImage(const std::string_view& _ResName)
 {
-	ColRender = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Debug_MapCol);
+	ColRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::Debug_MapCol);
 	ColRender->SetScaleToTexture(_ResName);
 	ColRender->GetTransform()->AddLocalPosition(float4::Forward * DeepMostZ + float4::Back);
 	ColRender->Off();

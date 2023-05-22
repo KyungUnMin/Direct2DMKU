@@ -13,7 +13,7 @@ const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoe
 {
 	{"SchoolEntryBG.png", float4{ 0.f, 0.f, 500.f }},
 
-	{"School_Desks.png", float4{ -598.f, -242.f}},
+	/*{"School_Desks.png", float4{ -598.f, -242.f}},
 	{"School_Desks.png", float4{ -387.f, -242.f}},
 	{"School_Desks.png", float4{ -170.f, -242.f}},
 	{"School_Desks.png", float4{ 45.f, -242.f}},
@@ -25,7 +25,7 @@ const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoe
 
 	{"School_TeacherDesk.png", float4{ 550.f, -236.f}},
 	{"School_Chair1.png", float4{ 527.f, -130.f}},
-	{"School_Chair2.png", float4{ 667.f, -240.f}},
+	{"School_Chair2.png", float4{ 667.f, -240.f}},*/
 };
 
 const std::string_view SchoolEntryLevel::CollisionImageName = "SchoolEntryColBG.png";

@@ -63,6 +63,25 @@ public:
 
 	virtual void Setting(){}
 
+	//수동으로 리소스를 전부 지우는 함수
+	static void ResourcesClear()
+	{
+		for (std::shared_ptr<ResourceType> Type : UnNamedRes)
+		{
+			Type->IsUnLoad = true;
+		}
+
+		for (std::pair<std::string, std::shared_ptr<ResourceType>> Type : NamedResources)
+		{
+			Type.second->IsUnLoad = true;
+		}
+
+		NamedResources.clear();
+		UnNamedRes.clear();
+	}
+
+
+
 protected:
 	static std::shared_ptr<ResourceType> CreateUnNamed()
 	{
@@ -88,15 +107,10 @@ protected:
 		return NewRes;
 	}
 
-	static void ResourcesClear()
-	{
-		NamedResources.clear();
-		UnNamedRes.clear();
-	}
-
 private:
 	std::string Path;
 	//std::string Name;
+	bool IsUnLoad = false;
 
 	static std::map<std::string, std::shared_ptr<ResourceType>> NamedResources;
 	static std::list<std::shared_ptr<ResourceType>> UnNamedRes;

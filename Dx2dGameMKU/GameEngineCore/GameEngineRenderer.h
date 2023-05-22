@@ -16,10 +16,11 @@ public:
 	void Render(float _DeltaTime);
 };
 
+class GameEngineCamera;
 
 class GameEngineRenderer : public GameEngineComponent
 {
-	friend class GameEngineCamera;
+	friend GameEngineCamera;
 
 public:
 	GameEngineRenderer();
@@ -44,6 +45,9 @@ public:
 		IsCameraCulling = true;
 	}
 
+	//카메라을 기준으로 Z값을 계산한다
+	void CalSortZ(GameEngineCamera* _Camera);
+
 protected:
 	void Start() override;
 
@@ -54,6 +58,8 @@ protected:
 
 private:
 	bool IsCameraCulling = false;
+
+	float CalZ = 0.0f;
 
 	std::shared_ptr<class GameEngineRenderingPipeLine> Pipe;
 
@@ -74,6 +80,6 @@ private:
 	GameEngineShaderResHelper ShaderResHelper;
 
 	//등록된 카메라를 바탕으로 행렬을 계산한다
-	void RenderTransformUpdate(class GameEngineCamera* _Camera);
+	void RenderTransformUpdate(GameEngineCamera* _Camera);
 };
 

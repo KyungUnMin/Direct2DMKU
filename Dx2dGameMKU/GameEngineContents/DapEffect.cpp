@@ -61,7 +61,7 @@ void DapEffect::LoadEffectImage()
 
 void DapEffect::CreateRender() 
 {
-	RenderPtr = CreateComponent<GameEngineRenderer>(RenderOrder::Effect);
+	RenderPtr = CreateComponent<GameEngineRenderer>(FieldRenderOrder::ZOrder);
 	RenderPtr->SetPipeLine(RenderPipeName);
 	RenderPtr->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, EffectImgName);
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("LinkColor", ShaderLinkColor);
@@ -73,6 +73,7 @@ void DapEffect::CreateRender()
 	ShaderLinkColor.g = GetStepRand();
 	ShaderLinkColor.b = GetStepRand();
 	ShaderLinkColor.a = 1.f;
+	
 }
 
 float DapEffect::GetStepRand(float _StepValue /*= 0.3f*/)

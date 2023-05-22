@@ -177,6 +177,35 @@ void GameEngineCamera::Render(float _DeltaTime)
 			std::shared_ptr<GameEngineRenderer>& Render = *StartRenderer;
 
 
+			//현재 Render의 Order
+			int Order = RenderGroupStartIter->first;
+			std::map<int, SortType>::iterator SortIter = SortValues.find(Order);
+
+			//Sort를 특별하게 지정해준 경우(SortType::None이 아닌 경우)
+			if (SortIter != SortValues.end() && SortIter->second != SortType::None)
+			{
+				//Z오더인 경우
+				if (SortIter->second == SortType::ZSort)
+				{
+					//해당 그룹의 렌더의 카메라 기준 거리를 계산한다
+					for (std::shared_ptr<GameEngineRenderer>& Render : RenderGroup)
+					{
+						Render->CalSortZ(this);
+					}
+
+					//렌더들을 Z순서대로 정렬한다
+					RenderGroup.sort([](std::shared_ptr<GameEngineRenderer>& _Left, std::shared_ptr<GameEngineRenderer>& _Right) -> bool
+					{
+						return _Left->CalZ < _Right->CalZ;
+						//return _Right->GetTransform()->GetWorldPosition().z < _Left->GetTransform()->GetWorldPosition().z;
+					});
+				}
+
+				//다른 오더링은 TODO
+			}
+
+
+
 			if (false == Render->IsUpdate())
 			{
 				continue;
@@ -256,6 +285,12 @@ void GameEngineCamera::PushRenderer(std::shared_ptr<GameEngineRenderer> _Render)
 
 bool GameEngineCamera::IsView(const TransformData& _TransData)
 {
+	if (true == IsFreeCamera())
+	{
+		return true;
+	}
+
+
 	switch (ProjectionType)
 	{
 	case CameraType::None:

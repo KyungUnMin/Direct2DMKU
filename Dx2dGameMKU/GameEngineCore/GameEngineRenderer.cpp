@@ -137,3 +137,9 @@ void GameEngineRenderer::PushCameraRender(int _CameraOrder)
 {
 	GetLevel()->PushCameraRenderer(DynamicThis<GameEngineRenderer>(), _CameraOrder);
 }
+
+void GameEngineRenderer::CalSortZ(GameEngineCamera* _Camera)
+{
+	//카메라를 향하는 벡터를 만들어 벡터의 길이를 저장
+	CalZ = (_Camera->GetTransform()->GetWorldPosition() - GetTransform()->GetWorldPosition()).z;
+}
