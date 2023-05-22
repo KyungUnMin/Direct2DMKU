@@ -103,7 +103,7 @@ void PlayerState_AttackBase::SetAttackColValue(const float4& _Offset, const floa
 void PlayerState_AttackBase::AttackCheck()
 {
 	static std::vector<std::shared_ptr<GameEngineCollision>> EnemyColliders(10, nullptr);
-	if (false == AttackCollider->CollisionAll(CollisionOrder::EnemyMain, ColType::SPHERE3D, ColType::SPHERE3D, EnemyColliders))
+	if (false == AttackCollider->CollisionAll(CollisionOrder::EnemyMain, EnemyColliders, ColType::SPHERE3D, ColType::SPHERE3D))
 		return;
 
 	for (std::shared_ptr<GameEngineCollision>& EnemyCollider : EnemyColliders)

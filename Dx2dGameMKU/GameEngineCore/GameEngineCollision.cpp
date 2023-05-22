@@ -23,12 +23,24 @@ std::shared_ptr<GameEngineCollision> GameEngineCollision::Collision(int _TargetG
 
 	std::list<std::shared_ptr<GameEngineCollision>>& Group = GetLevel()->Collisions[_TargetGroup];
 
+	//함수 호출시 자신의 충돌 타입을 지정하지 않았다면 자신의 ColType으로
+	if (Type == ColType::MAX)
+	{
+		_ThisColType = Type;
+	}
+
 	for (std::shared_ptr<GameEngineCollision>& _OtherCol : Group)
 	{
 		//업데이트 물체만
 		if (false == _OtherCol->IsUpdate())
 		{
 			continue;
+		}
+
+		//함수 호출시 상대방의 충돌 타입을 지정하지 않았다면 상대방의 ColType으로
+		if (_OtherColtype == ColType::MAX)
+		{
+			_OtherColtype = _OtherCol->Type;
 		}
 
 		//충돌했다면 충돌한 상대방 리턴
@@ -57,7 +69,7 @@ void GameEngineCollision::SetOrder(int _Order)
 }
 
 
-bool GameEngineCollision::CollisionAll(int _TargetGroup, ColType _ThisColType, ColType _OtherColtype, std::vector<std::shared_ptr<GameEngineCollision>>& _Col)
+bool GameEngineCollision::CollisionAll(int _TargetGroup, std::vector<std::shared_ptr<GameEngineCollision>>& _Col, ColType _ThisColType, ColType _OtherColtype)
 {
 	_Col.clear();
 
@@ -66,6 +78,11 @@ bool GameEngineCollision::CollisionAll(int _TargetGroup, ColType _ThisColType, C
 		return false;
 	}
 
+	//함수 호출시 자신의 충돌 타입을 지정하지 않았다면 자신의 ColType으로
+	if (Type == ColType::MAX)
+	{
+		_ThisColType = Type;
+	}
 
 	std::list<std::shared_ptr<GameEngineCollision>>& Group = GetLevel()->Collisions[_TargetGroup];
 
@@ -80,6 +97,12 @@ bool GameEngineCollision::CollisionAll(int _TargetGroup, ColType _ThisColType, C
 		if (false == _OtherCol->IsUpdate())
 		{
 			continue;
+		}
+
+		//함수 호출시 상대방의 충돌 타입을 지정하지 않았다면 상대방의 ColType으로
+		if (_OtherColtype == ColType::MAX)
+		{
+			_OtherColtype = _OtherCol->Type;
 		}
 
 		//벡터에 저장

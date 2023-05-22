@@ -19,8 +19,12 @@ RCG_GameCore::~RCG_GameCore()
 
 }
 
+#include "FileCopier.h"
+
 void RCG_GameCore::GameStart()
 {
+	//FileCopier::Test();
+
 #ifdef _DEBUG
 	bool* DEBUGLEAK = new bool;
 #endif

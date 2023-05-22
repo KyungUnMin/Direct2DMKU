@@ -451,6 +451,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DonkeyKick">
       <UniqueIdentifier>{bad59354-fd16-4d06-8872-bfbe41e9fd78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="05.Tool\02.FileCopier">
+      <UniqueIdentifier>{8fa0af2a-694a-4b19-8928-2a2a3c672545}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -804,6 +807,9 @@
     <ClCompile Include="PlayerState_DashAttack_DropKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick</Filter>
     </ClCompile>
+    <ClCompile Include="FileCopier.cpp">
+      <Filter>05.Tool\02.FileCopier</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1147,6 +1153,9 @@
     </ClInclude>
     <ClInclude Include="PlayerState_DashAttack_DropKick.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick</Filter>
+    </ClInclude>
+    <ClInclude Include="FileCopier.h">
+      <Filter>05.Tool\02.FileCopier</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
