@@ -20,6 +20,8 @@ enum class PlayerStateType
 	//Special Attack
 	SpecialAttack_AxeKick,
 	SpecialAttack_DAP,
+	SpecialAttack_DonkeyKick,
+	
 
 	//Unique Attack
 	UniqueAttack_DragonFeet,
@@ -27,7 +29,8 @@ enum class PlayerStateType
 
 
 	//Dash Attack
-	
+	DashAttack_BackElbow,
+	DashAttack_DropKick,
 
 
 	//Damaged

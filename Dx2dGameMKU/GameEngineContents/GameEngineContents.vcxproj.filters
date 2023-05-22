@@ -439,6 +439,18 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\04.Block">
       <UniqueIdentifier>{536e2843-a19b-4392-9303-bed157d773a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack">
+      <UniqueIdentifier>{e4b7d04c-7729-4472-900b-387f18f6ecce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\01.BackElbow">
+      <UniqueIdentifier>{242ad253-59c6-4299-b77d-7aef8cbd20c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick">
+      <UniqueIdentifier>{f0bf1940-f42b-4a9f-9212-2ca82c500f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DonkeyKick">
+      <UniqueIdentifier>{bad59354-fd16-4d06-8872-bfbe41e9fd78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -783,6 +795,15 @@
     <ClCompile Include="PlayerState_Damaged_Block.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\04.Block</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_DonkeyKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DonkeyKick</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_DashAttack_BackElbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\01.BackElbow</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_DashAttack_DropKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1117,6 +1138,15 @@
     </ClInclude>
     <ClInclude Include="PlayerState_Damaged_Block.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\04.Block</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_DonkeyKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DonkeyKick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_DashAttack_BackElbow.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\01.BackElbow</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_DashAttack_DropKick.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

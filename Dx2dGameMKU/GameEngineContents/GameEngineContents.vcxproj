@@ -301,6 +301,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PlayerState_DashAttack_BackElbow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_DashAttack_DropKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerState_MovementBase.h">
       <SubType>
       </SubType>
@@ -342,6 +350,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PlayerState_SpecialAttack_DAP.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerState_SpecialAttack_DonkeyKick.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -724,6 +736,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PlayerState_DashAttack_BackElbow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_DashAttack_DropKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerState_MovementBase.cpp">
       <SubType>
       </SubType>
@@ -765,6 +785,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PlayerState_SpecialAttack_DAP.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerState_SpecialAttack_DonkeyKick.cpp">
       <SubType>
       </SubType>
     </ClCompile>

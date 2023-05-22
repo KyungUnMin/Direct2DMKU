@@ -17,6 +17,7 @@ public:
 	static void CreateHitEffect_Stomach();
 	static void CreateHitEffect_Jaw();
 	static void CreateHitEffect_Blow();
+	static void CreateHitEffect(const float4 _Offset);
 
 protected:
 	void Start() override;
@@ -35,10 +36,12 @@ protected:
 
 
 private:
+
+
+
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
 
 	void AttackCheck();
 
-	static std::shared_ptr<class HitEffect> CreateHitEffect(const float4 _Offset);
 };
 

@@ -95,7 +95,7 @@ bool FieldEnemy_SchoolBoy::OnDamage_Jaw(int _Damage)
 			return false;
 
 		Fsm.ChangeState(SchoolBoyStateType::Damaged_KnockDown);
-		return false;
+		return true;
 	}
 
 	Fsm.ChangeState(SchoolBoyStateType::NormalDamaged_Jaw);

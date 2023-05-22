@@ -103,6 +103,14 @@ void PlayerState_Damaged_Block::Update(float _DeltaTime)
 
 void PlayerState_Damaged_Block::Update_Block()
 {
+	//특수 공격(동키킥)
+	if (true == KeyMgr::IsPress(KeyNames::X))
+	{
+		GetFSM()->ChangeState(PlayerStateType::SpecialAttack_DonkeyKick);
+		return;
+	}
+
+
 	if (true == KeyMgr::IsPress(KeyNames::LeftShift))
 		return;
 

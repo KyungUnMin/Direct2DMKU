@@ -18,6 +18,7 @@
 //Special Attack
 #include "PlayerState_SpecialAttack_AxeKick.h"
 #include "PlayerState_SpecialAttack_DAP.h"
+#include "PlayerState_SpecialAttack_DonkeyKick.h"
 
 //Unique Attack
 #include "PlayerState_UniqueAttack_DragonFeet.h"
@@ -25,7 +26,8 @@
 
 
 //Dash Attack
-
+#include "PlayerState_DashAttack_BackElbow.h"
+#include "PlayerState_DashAttack_DropKick.h"
 
 
 //Damaged
@@ -69,6 +71,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	//Special Attack
 	FSMBase::CreateState<PlayerState_SpecialAttack_AxeKick>(PlayerStateType::SpecialAttack_AxeKick);
 	FSMBase::CreateState<PlayerState_SpecialAttack_DAP>(PlayerStateType::SpecialAttack_DAP);
+	FSMBase::CreateState<PlayerState_SpecialAttack_DonkeyKick>(PlayerStateType::SpecialAttack_DonkeyKick);
 
 	//Unique Attack
 	FSMBase::CreateState<PlayerState_UniqueAttack_DragonFeet>(PlayerStateType::UniqueAttack_DragonFeet);
@@ -76,7 +79,8 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 
 
 	//Dash Attack
-	
+	FSMBase::CreateState<PlayerState_DashAttack_BackElbow>(PlayerStateType::DashAttack_BackElbow);
+	FSMBase::CreateState<PlayerState_DashAttack_DropKick>(PlayerStateType::DashAttack_DropKick);
 
 
 	//Damaged
