@@ -21,6 +21,8 @@ public:
 
 protected:
 	void Start() override;
+	void EnterState() override;
+	void ExitState() override;
 	
 
 	//_AniName 애니메이션, _Index번째 프레임에 플레이어와 충돌 체크를 하겠다
@@ -35,11 +37,18 @@ protected:
 	virtual void Attack(class FieldEnemyBase* _Enemy) = 0;
 
 
+	void Update_DashIneria(const float _DeltaTime, const float _Duration, const float _StartAcc = 1000.f);
+
+	void Update_Vertical(float _Duration, float _StartHeight = 80.f);
+
+	void Update_SinVertical(float _Duration, float _MaxHeight = 80.f);
+
 private:
-
-
-
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
+
+	//오른쪽일때 true, 왼쪽일때 false
+	bool PlayerDir = true;
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
 	void AttackCheck();
 

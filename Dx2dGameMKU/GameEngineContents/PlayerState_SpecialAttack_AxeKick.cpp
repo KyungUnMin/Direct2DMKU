@@ -77,10 +77,10 @@ void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 {
 	PlayerState_AttackBase::Update(_DeltaTime);
 
+	PlayerState_AttackBase::Update_SinVertical(10.f * AniInterTime);
+
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
-
-	//TODO
 
 	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 	return;

@@ -81,7 +81,17 @@ void PlayerState_Dash::Update(float _DeltaTime)
 		return;
 	}
 
+	if (true == KeyMgr::IsPress(KeyNames::Z))
+	{
+		GetFSM()->ChangeState(PlayerStateType::DashAttack_BackElbow);
+		return;
+	}
 
+	if (true == KeyMgr::IsPress(KeyNames::X))
+	{
+		GetFSM()->ChangeState(PlayerStateType::DashAttack_DropKick);
+		return;
+	}
 
 
 	PlayerState_MovementBase::Update_Move(_DeltaTime, DashSpeed);

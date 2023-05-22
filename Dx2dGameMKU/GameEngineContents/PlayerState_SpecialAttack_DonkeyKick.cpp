@@ -2,8 +2,6 @@
 #include "PlayerState_SpecialAttack_DonkeyKick.h"
 
 
-#include <GameEngineCore/GameEngineLevel.h>
-
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"

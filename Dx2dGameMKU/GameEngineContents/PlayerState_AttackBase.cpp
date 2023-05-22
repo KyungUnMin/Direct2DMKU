@@ -9,6 +9,8 @@
 #include "FieldPlayer.h"
 #include "FieldEnemyBase.h"
 #include "HitEffect.h"
+#include "FieldLevelBase.h"
+#include "BackGround.h"
 
 
 
@@ -70,6 +72,7 @@ void PlayerState_AttackBase::Start()
 	PlayerStateBase::DirChangeOff();
 
 	AttackCollider = FieldPlayer::GetPtr()->GetAttackCollider();
+	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 }
 
 
@@ -96,6 +99,7 @@ void PlayerState_AttackBase::SetAttackColValue(const float4& _Offset, const floa
 	AttackColTrans->SetLocalScale(_Scale);
 }
 
+
 void PlayerState_AttackBase::AttackCheck()
 {
 	static std::vector<std::shared_ptr<GameEngineCollision>> EnemyColliders(10, nullptr);
@@ -118,4 +122,75 @@ void PlayerState_AttackBase::AttackCheck()
 }
 
 
+void PlayerState_AttackBase::EnterState()
+{
+	PlayerStateBase::EnterState();
+	PlayerDir = FieldPlayer::GetPtr()->IsRightDir();
+}
+
+
+void PlayerState_AttackBase::Update_DashIneria(const float _DeltaTime, const float _Duration, const float _StartAcc /*= 1000.f*/)
+{
+	GameEngineActor* PlayerActor = GetRenderer()->GetActor();
+	GameEngineTransform* PlayerTrans = PlayerActor->GetTransform();
+
+	float LiveTime = GetLiveTime();
+	float Ratio = (LiveTime / _Duration);
+	if (1.f < Ratio)
+		return;
+
+
+	float NowAcc = _StartAcc * (1.f - Ratio);
+	float4 NextPos = PlayerTrans->GetLocalPosition();
+
+	//오른쪽을 바라보고 있을때
+	if (true == PlayerDir)
+	{
+		NextPos += (float4::Right * NowAcc * _DeltaTime);
+	}
+	//왼쪽을 바라보고 있을때
+	else
+	{
+		NextPos += (float4::Left * NowAcc * _DeltaTime);
+	}
+
+	//갈수 없는 곳이면 움직이지 않는다
+	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
+	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
+		return;
+
+	PlayerTrans->SetLocalPosition(NextPos);
+}
+
+
+//지금은 안 쓰는데 나중을 위해 남겨둠
+void PlayerState_AttackBase::Update_Vertical(float _Duration, float _StartHeight /*= 80.f*/)
+{
+	float LiveTime = GetLiveTime();
+	float Ratio = (LiveTime / _Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	float NowHeight = _StartHeight * (1.f - Ratio);
+	FieldPlayer::GetPtr()->SetHeight(NowHeight);
+}
+
+
+
+void PlayerState_AttackBase::Update_SinVertical(float _Duration, float _MaxHeight /*= 80.f*/)
+{
+	float LiveTime = GetLiveTime();
+	float Ratio = (LiveTime / _Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	float SinValue = std::sinf(GameEngineMath::PIE * Ratio);
+
+	float NowHeight = _MaxHeight * SinValue;
+	FieldPlayer::GetPtr()->SetHeight(NowHeight);
+}
+
+void PlayerState_AttackBase::ExitState()
+{
+	PlayerStateBase::ExitState();
+	FieldPlayer::GetPtr()->SetHeight(0.f);
+}
 
