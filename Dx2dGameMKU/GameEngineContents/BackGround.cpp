@@ -2,10 +2,13 @@
 #include "BackGround.h"
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineCamera.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGDefine.h"
 #include "KeyMgr.h"
 #include "RCGEnums.h"
+
 
 BackGround::BackGround()
 {
@@ -39,8 +42,12 @@ void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileDa
 	TileRender->SetPipeLine("Tile");
 	TileRender->GetShaderResHelper().SetConstantBufferLink("TileInfo", TileInfo);
 
-	TileRender->GetTransform()->SetLocalScale(_Scale);
-	TileRender->GetTransform()->AddLocalPosition(float4::Back);
+	std::shared_ptr<GameEngineCamera> CamPtr = GetLevel()->GetMainCamera();
+	float OffsetZ = CamPtr->GetTransform()->GetWorldPosition().z;
+
+	GameEngineTransform* TileRenderTrans = TileRender->GetTransform();
+	TileRenderTrans->SetLocalScale(_Scale);
+	TileRenderTrans->SetWorldPosition(float4::Forward * OffsetZ);
 	TileRender->Off();
 }
 
@@ -61,11 +68,6 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 			Offset.z = Offset.y;
 		}
 		RenderTransform->SetWorldPosition(Offset);
-
-		if (DeepMostZ < Offset.z)
-		{
-			DeepMostZ = Offset.z;
-		}
 	}
 
 	RenderTransform->SetLocalScale(_Scale);
@@ -76,7 +78,6 @@ void BackGround::CreateCollisionImage(const std::string_view& _ResName)
 {
 	ColRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::Debug_MapCol);
 	ColRender->SetScaleToTexture(_ResName);
-	ColRender->GetTransform()->AddLocalPosition(float4::Forward * DeepMostZ + float4::Back);
 	ColRender->Off();
 	
 	ColTexture = GameEngineTexture::Find(_ResName);

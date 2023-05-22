@@ -84,7 +84,6 @@ private:
 	float4 MapScale = float4::Zero;
 	float4 GridScale = float4::Zero;
 
-	float DeepMostZ = 0.f;
 	std::shared_ptr <class GameEngineSpriteRenderer> ColRender = nullptr;
 	std::shared_ptr <class GameEngineTexture> ColTexture = nullptr;
 	std::shared_ptr <class GameEngineRenderer> TileRender;
