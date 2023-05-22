@@ -74,6 +74,7 @@ void FieldPlayer::CheckDirection()
 
 
 
+
 void FieldPlayer::SetDirection(bool IsRight)
 {
 	RenderDir = IsRight;
@@ -135,6 +136,10 @@ bool FieldPlayer::IsDashing() const
 
 bool FieldPlayer::OnDamage_Face()
 {
+	if (false == CanPlayerDamage())
+		return false;
+
+
 	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
 	{
@@ -149,6 +154,9 @@ bool FieldPlayer::OnDamage_Face()
 
 bool FieldPlayer::OnDamage_Stomach()
 {
+	if (false == CanPlayerDamage())
+		return false;
+
 	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
 	{
@@ -163,6 +171,9 @@ bool FieldPlayer::OnDamage_Stomach()
 
 bool FieldPlayer::OnDamage_Jaw()
 {
+	if (false == CanPlayerDamage())
+		return false;
+
 	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
 	{
@@ -177,6 +188,19 @@ bool FieldPlayer::OnDamage_Jaw()
 
 bool FieldPlayer::OnDamage_BlowBack() 
 {
+	if (false == CanPlayerDamage())
+		return false;
+
 	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
+	return true;
+}
+
+
+bool FieldPlayer::CanPlayerDamage()
+{
+	//플레이어가 방어중일때
+	if (true == Fsm.OnDamageInBlock())
+		return false;
+
 	return true;
 }

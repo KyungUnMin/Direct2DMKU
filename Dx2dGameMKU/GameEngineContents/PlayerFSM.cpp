@@ -33,6 +33,7 @@
 #include "PlayerState_NormalDamaged_Stomach.h"
 #include "PlayerState_NormalDamaged_Jaw.h"
 #include "PlayerState_Damaged_BlowBack.h"
+#include "PlayerState_Damaged_Block.h"
 
 
 PlayerFSM::PlayerFSM()
@@ -83,6 +84,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	FSMBase::CreateState<PlayerState_NormalDamaged_Stomach>(PlayerStateType::NormalDamaged_Stomach);
 	FSMBase::CreateState<PlayerState_NormalDamaged_Jaw>(PlayerStateType::NormalDamaged_Jaw);
 	FSMBase::CreateState<PlayerState_Damaged_BlowBack>(PlayerStateType::Damaged_BlowBack);
+	FSMBase::CreateState<PlayerState_Damaged_Block>(PlayerStateType::Damaged_Block);
 
 
 
@@ -102,3 +104,20 @@ void PlayerFSM::ChangeState(size_t _NextIndex)
 	LastMoveState = NextState;
 }
 
+bool PlayerFSM::OnDamageInBlock()
+{
+	if (PlayerStateType::Damaged_Block != FSMBase::GetNowState<PlayerStateType>())
+		return false;
+
+	//TODO
+	std::shared_ptr<PlayerState_Damaged_Block> BlockState = nullptr;
+	BlockState = std::dynamic_pointer_cast<PlayerState_Damaged_Block>(FSMBase::GetNowStatePtr());
+	if (nullptr == BlockState)
+	{
+		MsgAssert("플레이어의 FSM  Damaged_Block 슬롯에 PlayerState_Damaged_Block가 아닌 다른 State가 존재합니다");
+		return false;
+	}
+
+	BlockState->OnDamage();
+	return true;
+}

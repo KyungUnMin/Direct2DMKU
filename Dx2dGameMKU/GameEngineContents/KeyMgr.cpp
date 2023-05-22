@@ -15,6 +15,7 @@ const std::vector<std::string_view> KeyMgr::IndexToString =
 	"X",
 	"C",
 	"Space",
+	"LeftShift",
 
 	"Esc",
 	"DebugF1",
@@ -43,6 +44,7 @@ void KeyMgr::CreateKey()
 	KeyInfo[static_cast<size_t>(KeyNames::X)] = 'X';
 	KeyInfo[static_cast<size_t>(KeyNames::C)] = 'C';
 	KeyInfo[static_cast<size_t>(KeyNames::Space)] = VK_SPACE;
+	KeyInfo[static_cast<size_t>(KeyNames::LeftShift)] = VK_LSHIFT;
 
 	KeyInfo[static_cast<size_t>(KeyNames::Esc)] = VK_ESCAPE;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF1)] = VK_F1;

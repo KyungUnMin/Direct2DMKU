@@ -101,6 +101,12 @@ void PlayerState_Idle::Update(float _DeltaTime)
 		return;
 	}
 
+	//방어
+	if (true == KeyMgr::IsPress(KeyNames::LeftShift))
+	{
+		GetFSM()->ChangeState(PlayerStateType::Damaged_Block);
+		return;
+	}
 
 	//일반 기본 공격
 	if (true == KeyMgr::IsPress(KeyNames::Z))

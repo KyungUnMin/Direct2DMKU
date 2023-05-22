@@ -35,6 +35,7 @@ enum class PlayerStateType
 	NormalDamaged_Stomach,
 	NormalDamaged_Jaw,
 	Damaged_BlowBack,
+	Damaged_Block,
 
 
 	COUNT
@@ -60,6 +61,9 @@ public:
 	{
 		return LastMoveState;
 	}
+
+	//플레이어가 방어중에 공격을 받았는지 여부
+	bool OnDamageInBlock();
 
 protected:
 

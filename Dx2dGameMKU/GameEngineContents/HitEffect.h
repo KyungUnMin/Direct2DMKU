@@ -19,6 +19,9 @@ public:
 		Duration = _Duration;
 	}
 
+	void OffHitSpark();
+
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

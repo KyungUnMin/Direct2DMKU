@@ -93,8 +93,19 @@ void HitEffect::Update(float _DeltaTime)
 	AirRender->ColorOptionValue.MulColor = MulColor;
 	//SparkRender->ColorOptionValue.MulColor = MulColor;
 
+	if (true == SparkRender->IsAnimationEnd())
+	{
+		SparkRender->Off();
+	}
+
 	if (Ratio < 1.f)
 		return;
 
 	Death();
+}
+
+
+void HitEffect::OffHitSpark()
+{
+	SparkRender->Off();
 }

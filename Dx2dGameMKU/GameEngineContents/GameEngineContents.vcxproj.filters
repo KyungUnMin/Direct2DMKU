@@ -436,6 +436,9 @@
     <Filter Include="03.Actor\06.Effect\03.HitEffect">
       <UniqueIdentifier>{382c0421-c337-4c50-8c60-9157e4bdd71d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\04.Block">
+      <UniqueIdentifier>{536e2843-a19b-4392-9303-bed157d773a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -777,6 +780,9 @@
     <ClCompile Include="HitEffect.cpp">
       <Filter>03.Actor\06.Effect\03.HitEffect</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_Damaged_Block.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\04.Block</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1108,6 +1114,9 @@
     </ClInclude>
     <ClInclude Include="HitEffect.h">
       <Filter>03.Actor\06.Effect\03.HitEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_Damaged_Block.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\04.Block</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

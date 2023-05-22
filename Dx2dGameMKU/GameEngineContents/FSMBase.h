@@ -72,6 +72,12 @@ protected:
 	}
 
 
+	std::shared_ptr<StateBase> GetNowStatePtr()
+	{
+		return AllState[CurIndex];
+	}
+
+
 private:
 	std::vector<std::shared_ptr<StateBase>> AllState;
 	size_t CurIndex = 999999;

@@ -8,9 +8,10 @@ enum class KeyNames
 	LeftArrow,
 
 	Z,			//약공격
-	X,		   //강공격
-	C,		   //특수공격
-	Space,
+	X,			//강공격
+	C,			//특수공격
+	Space,	//점프
+	LeftShift,	//방어
 
 	Esc,
 	DebugF1,

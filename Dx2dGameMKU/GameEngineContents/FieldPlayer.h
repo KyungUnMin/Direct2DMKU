@@ -66,5 +66,8 @@ private:
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
 
 	void CheckDirection();
+
+	//플레이어가 공격받을때 데미지를 받는 상황인지 체크
+	bool CanPlayerDamage();
 };
 
