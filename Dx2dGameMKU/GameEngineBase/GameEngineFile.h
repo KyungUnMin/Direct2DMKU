@@ -24,6 +24,12 @@ public:
 
 	void LoadBin(GameEngineSerializer& _Data);
 
+
+	inline size_t GetFileSize()
+	{
+		return std::filesystem::file_size(Path.Path);
+	}
+
 protected:
 
 private:

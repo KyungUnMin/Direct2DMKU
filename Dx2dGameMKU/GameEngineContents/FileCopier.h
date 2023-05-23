@@ -19,5 +19,6 @@ protected:
 private:
 	FileCopier();
 	virtual ~FileCopier() = 0;
+
 };
 
