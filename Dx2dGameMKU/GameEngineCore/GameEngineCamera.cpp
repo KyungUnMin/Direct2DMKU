@@ -196,8 +196,7 @@ void GameEngineCamera::Render(float _DeltaTime)
 					//렌더들을 Z순서대로 정렬한다
 					RenderGroup.sort([](std::shared_ptr<GameEngineRenderer>& _Left, std::shared_ptr<GameEngineRenderer>& _Right) -> bool
 					{
-						return _Left->CalZ < _Right->CalZ;
-						//return _Right->GetTransform()->GetWorldPosition().z < _Left->GetTransform()->GetWorldPosition().z;
+						return _Right->CalZ < _Left->CalZ;
 					});
 				}
 

@@ -140,6 +140,24 @@ void GameEngineRenderer::PushCameraRender(int _CameraOrder)
 
 void GameEngineRenderer::CalSortZ(GameEngineCamera* _Camera)
 {
-	//카메라를 향하는 벡터를 만들어 벡터의 길이를 저장
-	CalZ = (_Camera->GetTransform()->GetWorldPosition() - GetTransform()->GetWorldPosition()).z;
+	// 카메라를 원점으로 한 좌표를 기준으로 계산한다
+	switch (_Camera->ProjectionType)
+	{
+	case CameraType::Orthogonal:
+	{
+		float4 View = GetTransform()->GetWorldPosition() * _Camera->View;
+		CalZ = View.z;
+		break;
+	}
+	case CameraType::Perspective:
+	{
+		float4 View = GetTransform()->GetWorldPosition() * _Camera->View;
+		CalZ = View.Size();
+		break;
+	}
+	default:
+		break;
+	}
+
+
 }
