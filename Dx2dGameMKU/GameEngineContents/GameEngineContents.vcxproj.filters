@@ -256,12 +256,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM">
       <UniqueIdentifier>{3cf47571-d398-4844-9c32-442a5451bc48}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Idle">
-      <UniqueIdentifier>{6a0c8164-2715-4ba7-be11-af682dd7709a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Walk">
-      <UniqueIdentifier>{c33306a0-616c-41a8-991b-19c7c29357fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\03.WalkBase">
       <UniqueIdentifier>{a569f2b5-de88-414a-84fd-f3dab81ea3dc}</UniqueIdentifier>
     </Filter>
@@ -468,6 +462,90 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver">
       <UniqueIdentifier>{1ab4d8e4-3b37-4897-84ac-e3f4b1285f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement">
+      <UniqueIdentifier>{6a0c8164-2715-4ba7-be11-af682dd7709a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack">
+      <UniqueIdentifier>{c33306a0-616c-41a8-991b-19c7c29357fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged">
+      <UniqueIdentifier>{27e1f9b9-8ad8-4c4b-b76e-eaa465f8a235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\01.Actor">
+      <UniqueIdentifier>{9d3a7ed2-93d0-4f5f-94e4-e9766edd4d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM">
+      <UniqueIdentifier>{b8a203fe-dcca-49d4-abc6-ad9b883305be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement">
+      <UniqueIdentifier>{11668dac-b3e8-4b58-9434-e8380702b7c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack">
+      <UniqueIdentifier>{62a68fb3-8cb8-4a3a-b9b9-3eaed666ca8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged">
+      <UniqueIdentifier>{8a9ddf63-254c-4601-8ba5-3e7755f982ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor">
+      <UniqueIdentifier>{bdd7712e-bb5d-428b-81e1-aad70fcdd0c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\02.FSM">
+      <UniqueIdentifier>{e86cee91-c8e2-497e-9ffe-15093df13669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement">
+      <UniqueIdentifier>{36e37eeb-b21f-4e04-8e68-1077348229b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack">
+      <UniqueIdentifier>{6ba8e979-824c-442a-a18e-fdb627b95625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged">
+      <UniqueIdentifier>{75bac63d-fca8-4633-b697-f9ced84bcaf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\01.Actor">
+      <UniqueIdentifier>{349641ec-c567-42be-87a3-af4bd4a7f51e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\02.FSM">
+      <UniqueIdentifier>{e1024f4b-dd5d-401f-9ffd-85fe2c374115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement">
+      <UniqueIdentifier>{6aa52032-ac74-4e76-8082-426e181e96d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack">
+      <UniqueIdentifier>{093fd3fb-94ed-43a2-8163-9900dfb2da29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged">
+      <UniqueIdentifier>{81db7940-e74c-421e-85ee-35bca0bdc151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\01.Actor">
+      <UniqueIdentifier>{542100dd-8b4b-4d41-8cfa-49267cc6b169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\02.FSM">
+      <UniqueIdentifier>{1b5b3ed2-4cb5-45ff-837d-424161626510}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement">
+      <UniqueIdentifier>{8bf5eef5-60a8-4623-aca4-1ce6fbd98736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack">
+      <UniqueIdentifier>{92eb069b-0ce3-4133-971a-fd447fcffcee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged">
+      <UniqueIdentifier>{be6fb8ec-9b09-40dd-a402-12ac8dbfe54e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\01.Actor">
+      <UniqueIdentifier>{25693fae-a4b3-49d6-9b96-1139c98c2f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\02.FSM">
+      <UniqueIdentifier>{dd0b32f9-ba96-44e3-a690-c2bf9579977e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement">
+      <UniqueIdentifier>{c838d23a-bf51-4526-b2aa-7eb1a3ff350a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack">
+      <UniqueIdentifier>{8ac71cd7-2bc1-4851-b4a0-25d21549d1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged">
+      <UniqueIdentifier>{956ddc08-1ac0-4240-8179-271d70852c6a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -813,311 +891,311 @@
     <ClCompile Include="FileCopier.cpp">
       <Filter>05.Tool\02.FileCopier</Filter>
     </ClCompile>
-    <ClCompile Include="SchoolGirlState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+    <ClCompile Include="SchoolGirlFSM.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM</Filter>
     </ClCompile>
     <ClCompile Include="FieldEnemy_SchoolGirl.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
     </ClCompile>
-    <ClCompile Include="CheerleaderState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CheerleaderState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
+    <ClCompile Include="SchoolGirlState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="CheerleaderFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_AxeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_Punch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_SideKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="FieldEnemy_Cheerleader.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldEnemy_Cop.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="CopFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Attack_AxeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Attack_Punch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Attack_SideKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+    <ClCompile Include="CopState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_Cop.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="FieldEnemy_Hooligan.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="HooliganFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="FieldEnemy_TigerMan.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+    <ClCompile Include="HooliganState_Attack_AxeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_Punch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_SideKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="TigerManFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_TigerMan.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="TigerManState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldEnemy_Waver.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="WaverFSM.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_Waver.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1454,311 +1532,311 @@
     <ClInclude Include="FileCopier.h">
       <Filter>05.Tool\02.FileCopier</Filter>
     </ClInclude>
-    <ClInclude Include="SchoolGirlState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+    <ClInclude Include="SchoolGirlFSM.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM</Filter>
     </ClInclude>
     <ClInclude Include="FieldEnemy_SchoolGirl.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
     </ClInclude>
-    <ClInclude Include="CheerleaderState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
+    <ClInclude Include="SchoolGirlState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
     </ClInclude>
-    <ClInclude Include="CheerleaderState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
-    </ClInclude>
-    <ClInclude Include="CheerleaderState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
+    <ClInclude Include="SchoolGirlState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="CheerleaderFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_AxeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_Elbow.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_Punch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_SideKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="FieldEnemy_Cheerleader.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="CopFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\02.FSM</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="CopState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="CopState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="FieldEnemy_Cop.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="FieldEnemy_Hooligan.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\01.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="FieldEnemy_TigerMan.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+    <ClInclude Include="HooliganFSM.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_AxeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_Elbow.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_Punch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_SideKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="TigerManFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_TigerMan.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="TigerManState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldEnemy_Waver.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="WaverFSM.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_Waver.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
