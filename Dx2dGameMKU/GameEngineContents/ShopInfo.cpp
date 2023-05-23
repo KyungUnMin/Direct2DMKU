@@ -1,7 +1,9 @@
 #include "PrecompileHeader.h"
 #include "ShopInfo.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
+
+#include "RCGEnums.h"
 
 #include "Shop_BurgerLevel.h"
 #include "Shop_GymLevel.h"
@@ -38,7 +40,7 @@ void ShopInfo::Start()
 		return;
 	}
 
-	std::shared_ptr<GameEngineSpriteRenderer> SpritePtr = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> SpritePtr = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Info);
 	SpritePtr->SetTexture(TextureName);
 
 	const float4 RenderScale = float4{ 400.f, 139.f } * 0.7f;

@@ -39,6 +39,15 @@ enum class FieldUIRenderOrder
 	BossIntro,
 };
 
+enum class ShopUIRenderOrder
+{
+	Default = 0,
+
+	Info,
+	Cursor,
+	Item,
+};
+
 
 
 //BossVersus에서만 사용중, 아마 FSM때문에 이렇게 외부로 뻬놓은거 같음

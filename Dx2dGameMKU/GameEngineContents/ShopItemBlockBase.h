@@ -1,7 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-class GameEngineSpriteRenderer;
+class GameEngineUIRenderer;
 
 class ShopItemBlockBase : public GameEngineActor
 {
@@ -27,7 +27,7 @@ protected:
 
 	void CallBackExcute();
 
-	inline std::shared_ptr<GameEngineSpriteRenderer> GetTexture() const
+	inline std::shared_ptr<GameEngineUIRenderer> GetTexture() const
 	{
 		return Texture;
 	}
@@ -37,7 +37,7 @@ protected:
 private:
 	std::string_view Name = "UNKNOWN";
 	std::string Description = "";
-	std::shared_ptr<GameEngineSpriteRenderer> Texture = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> Texture = nullptr;
 
 	int Cost = INT32_MAX;
 	std::function<void()> CallBack = nullptr;

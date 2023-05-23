@@ -1,10 +1,12 @@
 #include "PrecompileHeader.h"
 #include "ShopItem_CursorBar.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
+#include "RCGEnums.h"
 #include "RCGDefine.h"
 #include "KeyMgr.h"
+
 #include "Shop_GymLevel.h"
 #include "ShopSlotController.h"
 
@@ -40,14 +42,14 @@ ShopItem_CursorBar::~ShopItem_CursorBar()
 void ShopItem_CursorBar::Start()
 {
 	//구매 확인 의사를 묻는 박스
-	std::shared_ptr<GameEngineSpriteRenderer> ConfirmBox = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> ConfirmBox = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Cursor);
 	ConfirmBox->SetTexture(ConfirmRenderName);
 	ConfirmBoxTrans = ConfirmBox->GetTransform();
 	ConfirmBoxTrans->SetLocalScale(ConfirmRenderScale);
 	ConfirmBoxTrans->SetLocalPosition(ConfirmInnerOffset);
 
 	//아이템을 선택할 수 있는 박스
-	std::shared_ptr<GameEngineSpriteRenderer> BarRender = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> BarRender = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Cursor);
 	BarRender->SetTexture(BarRenderName);
 	BarRender->GetTransform()->SetLocalScale(BarRenderScale);
 

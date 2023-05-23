@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "ShopItemBlock.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "DataMgr.h"
 

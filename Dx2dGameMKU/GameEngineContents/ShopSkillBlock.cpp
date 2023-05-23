@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "ShopSkillBlock.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 ShopSkillBlock::ShopSkillBlock()
 {

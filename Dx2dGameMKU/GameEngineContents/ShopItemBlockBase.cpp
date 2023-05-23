@@ -1,9 +1,10 @@
 #include "PrecompileHeader.h"
 #include "ShopItemBlockBase.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "DataMgr.h"
+#include "RCGEnums.h"
 
 ShopItemBlockBase::ShopItemBlockBase()
 {
@@ -25,7 +26,7 @@ void ShopItemBlockBase::Init(
 	Name = _Name;
 	Description = _Description;
 
-	Texture = CreateComponent<GameEngineSpriteRenderer>();
+	Texture = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Item);
 	/*Texture->SetTexture(_TextureName);
 	Texture->GetTransform()->SetLocalScale(float4::One * 70.f);*/
 	Texture->SetScaleToTexture(_TextureName);
