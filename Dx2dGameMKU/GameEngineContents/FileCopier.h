@@ -12,13 +12,16 @@ public:
 
 	//static void Copy(const GameEngineDirectory& _Dir)
 
-	static void Test(/*GameEngineDirectory _Dir*/);
+	static void FileCopy(const std::string_view& _ChangeName);
+
+
 
 protected:
 
 private:
 	FileCopier();
 	virtual ~FileCopier() = 0;
+
 
 };
 

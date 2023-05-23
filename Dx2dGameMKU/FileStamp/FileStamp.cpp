@@ -1,24 +1,23 @@
-#include "PrecompileHeader.h"
-#include "FileCopier.h"
+ï»¿#include <regex>
 
-#include <regex>
+#include <GameEngineBase/GameEngineFile.h>
+#include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineDirectory.h>
 
-#include <GameEngineBase/GameEngineSerializer.h>
+#pragma comment(lib, "GameEngineBase.lib")
 
-FileCopier::FileCopier()
+void FileCopy(const std::string_view& _ChangeName);
+
+int main()
 {
-
+	FileCopy("Hooligan");
+	return 0;
 }
 
-FileCopier::~FileCopier()
+
+void FileCopy(const std::string_view& _ChangeName)
 {
-
-}
-
-
-void FileCopier::FileCopy(const std::string_view& _ChangeName)
-{
-	MsgTextBox("¸ó½ºÅÍ FSM State ÆÄÀÏÀ» Ä«ÇÇÇÕ´Ï´Ù");
+	MsgTextBox("ëª¬ìŠ¤í„° FSM State íŒŒì¼ì„ ì¹´í”¼í•©ë‹ˆë‹¤");
 
 
 	GameEngineDirectory SourDir;
@@ -35,7 +34,7 @@ void FileCopier::FileCopy(const std::string_view& _ChangeName)
 
 
 
-	std::vector<GameEngineFile> Files = SourDir.GetAllFile({ ".cpp", ".h"});
+	std::vector<GameEngineFile> Files = SourDir.GetAllFile({ ".cpp", ".h" });
 
 	for (GameEngineFile& File : Files)
 	{
@@ -45,7 +44,7 @@ void FileCopier::FileCopy(const std::string_view& _ChangeName)
 
 		size_t FileSize = File.GetFileSize();
 		char* DataPtr = reinterpret_cast<char*>(Serializer.GetData());
-		
+
 		std::string FileStr;
 		for (size_t i = 0; i < FileSize; ++i)
 		{
@@ -75,4 +74,3 @@ void FileCopier::FileCopy(const std::string_view& _ChangeName)
 		SaveFolder.SaveBin(SaveData);
 	}
 }
-
