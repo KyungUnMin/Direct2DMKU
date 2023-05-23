@@ -547,6 +547,42 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged">
       <UniqueIdentifier>{956ddc08-1ac0-4240-8179-271d70852c6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\01.Idle">
+      <UniqueIdentifier>{58934f20-a5a3-4c9e-891f-85bb9fe39df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\02.Walk">
+      <UniqueIdentifier>{559b1435-3fe5-4428-b4d9-285f05a8c00b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\03.Ready">
+      <UniqueIdentifier>{4044bf22-b1b7-42f5-a2be-6aea53119984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{e7675acc-a32c-4ebe-b80d-47410c3d3e36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{987ebab1-4c59-424f-8a3f-2b9f1dfacb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{317b0a7b-f496-4a85-a944-a0877289fa81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{b8d25136-65a2-4d77-b85c-07b47f17c33b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{b74c1c26-7b97-4747-9299-91668d37bcf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{9ebfdadf-a191-4f14-a935-085384989a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\04.WallHit">
+      <UniqueIdentifier>{c27313ab-b34b-4abf-9ffe-aca3db4b9ecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\05.WallOut">
+      <UniqueIdentifier>{2695d928-8b93-4c53-b1a0-c6778a53ab5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed">
+      <UniqueIdentifier>{476dc667-00c7-4119-8edb-1267c7bc5e07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -909,39 +945,6 @@
     <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="SchoolGirlState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
-    </ClCompile>
     <ClCompile Include="CheerleaderFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM</Filter>
     </ClCompile>
@@ -1196,6 +1199,39 @@
     </ClCompile>
     <ClCompile Include="WaverState_Walk.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\01.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\03.Ready</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\02.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\03.KnockDown</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\04.WallHit</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\05.WallOut</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1550,39 +1586,6 @@
     <ClInclude Include="SchoolGirlState_Attack_SideKick.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
     </ClInclude>
-    <ClInclude Include="SchoolGirlState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement</Filter>
-    </ClInclude>
     <ClInclude Include="CheerleaderFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM</Filter>
     </ClInclude>
@@ -1837,6 +1840,39 @@
     </ClInclude>
     <ClInclude Include="WaverState_Walk.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\01.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\03.Ready</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\02.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\03.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\04.WallHit</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\05.WallOut</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

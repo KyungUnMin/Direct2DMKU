@@ -61,8 +61,9 @@ void SchoolGirlState_Ready::CreateAnimation()
 	({
 		.AnimationName = GetUpAniName,
 		.SpriteName = AniFileName,
+		.Start = 1,
+		.End = 5,
 		.FrameInter = AniInterTime,
-		.FrameIndex = std::vector<size_t>{2, 3, 4, 5, 0}
 	});
 
 

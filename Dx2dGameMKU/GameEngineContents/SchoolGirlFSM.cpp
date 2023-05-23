@@ -25,7 +25,7 @@
 #include "SchoolGirlState_Damaged_Dazed.h"
 
 
-const  std::string_view SchoolGirlFSM::NormalDamaged_FileName = "SchoolGirl_Get_Hits.png";
+const  std::string_view SchoolGirlFSM::NormalDamaged_FileName = "SchoolGirl_GetHits.png";
 
 
 const std::vector<SchoolGirlStateType> SchoolGirlFSM::AttackGroup =
@@ -70,10 +70,10 @@ void SchoolGirlFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	FSMBase::CreateState<SchoolGirlState_Attack_AxeKick>(SchoolGirlStateType::AxeKick);
-	FSMBase::CreateState<SchoolGirlState_Attack_Elbow>(SchoolGirlStateType::Elbow);
-	FSMBase::CreateState<SchoolGirlState_Attack_Punch>(SchoolGirlStateType::Punch);
-	FSMBase::CreateState<SchoolGirlState_Attack_SideKick>(SchoolGirlStateType::SideKick);
+	//FSMBase::CreateState<SchoolGirlState_Attack_AxeKick>(SchoolGirlStateType::AxeKick);
+	//FSMBase::CreateState<SchoolGirlState_Attack_Elbow>(SchoolGirlStateType::Elbow);
+	//FSMBase::CreateState<SchoolGirlState_Attack_Punch>(SchoolGirlStateType::Punch);
+	//FSMBase::CreateState<SchoolGirlState_Attack_SideKick>(SchoolGirlStateType::SideKick);
 
 
 	//Damaged
