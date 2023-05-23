@@ -18,6 +18,7 @@ class GameEngineLevel : public GameEngineObject
 	friend class GameEngineCore;
 	friend class GameEngineCollision;
 	friend class GameEngineActor;
+	friend class GameEngineTexture;
 
 public:
 	GameEngineTimeEvent TimeEvent;
@@ -83,6 +84,10 @@ protected:
 	virtual void Render(float _DeltaTime){}
 
 private:
+	//<이름, 경로>, 텍스처를 로드할 때마다 기록한다
+	std::map<std::string, std::string> TexturePath;
+
+
 	//이 레벨에 존재하는 카메라들
 	std::map<int, std::shared_ptr<GameEngineCamera>> Cameras;
 

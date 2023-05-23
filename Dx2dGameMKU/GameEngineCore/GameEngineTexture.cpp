@@ -1,5 +1,7 @@
 #include "PrecompileHeader.h"
 #include "GameEngineTexture.h"
+#include "GameEngineLevel.h"
+#include "GameEngineCore.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\GameEngineCore\\ThirdParty\\DirectXTex\\lib\\x64\\Debug\\DirectXTex.lib")
@@ -181,6 +183,19 @@ void GameEngineTexture::PSSetting(UINT _Slot)
 	}
 
 	GameEngineDevice::GetContext()->PSSetShaderResources(_Slot, 1, &SRV);
+}
+
+
+void GameEngineTexture::VSReset(UINT _Slot)
+{
+	static ID3D11ShaderResourceView* Nullptr = nullptr;
+	GameEngineDevice::GetContext()->VSSetShaderResources(_Slot, 1, &Nullptr);
+}
+
+void GameEngineTexture::PSReset(UINT _Slot) 
+{
+	static ID3D11ShaderResourceView* Nullptr = nullptr;
+	GameEngineDevice::GetContext()->PSSetShaderResources(_Slot, 1, &Nullptr);
 }
 
 
@@ -527,3 +542,12 @@ GameEnginePixelColor GameEngineTexture::GetPixel(int _X, int _Y, const GameEngin
 }
 
 
+void GameEngineTexture::PathCheck(const std::string_view& _Path, const std::string_view& _Name)
+{
+	//레벨이 Start가 호출되는 순간에만
+	if (nullptr == GameEngineCore::CurLoadLevel)
+		return;
+
+	//현재 레벨의 텍스처 리스트에 기록
+	GameEngineCore::CurLoadLevel->TexturePath[_Name.data()] = _Path.data();
+}

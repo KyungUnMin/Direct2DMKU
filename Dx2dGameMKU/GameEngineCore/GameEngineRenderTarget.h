@@ -1,6 +1,8 @@
 #pragma once
-#include "GameEngineTexture.h"
 #include "GameEngineRenderer.h"
+#include "GameEngineCore.h"
+
+class GameEngineTexture;
 
 //텍스처의 렌더타켓을 이용한 기능들을 처리하는 클래스, 실제 렌더타갯은 텍스처가 가지고 있음
 class GameEngineRenderTarget : public GameEngineResource<GameEngineRenderTarget>

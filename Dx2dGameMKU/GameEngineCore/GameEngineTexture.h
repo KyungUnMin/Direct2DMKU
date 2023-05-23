@@ -72,9 +72,15 @@ public:
 		return Load(_Path, NewPath.GetFileName());
 	}
 
+
+	//텍스처를 로드할때마다 현재 레벨에 기록한다
+	static void PathCheck(const std::string_view& _Path, const std::string_view& _Name);
+
 	static std::shared_ptr<GameEngineTexture> Load(const std::string_view& _Path, const std::string_view& _Name)
 	{
 		std::shared_ptr<GameEngineTexture> NewTexture = GameEngineResource::Create(_Name);
+
+		PathCheck(_Path, _Name);
 		NewTexture->ResLoad(_Path);
 		return NewTexture;
 	}
@@ -190,5 +196,13 @@ private:
 
 	void VSSetting(UINT _Slot);
 	void PSSetting(UINT _Slot);
+
+
+	//파이프라인에서 빼내는 작업
+	//Camera의 CamTarget(렌더타겟)이
+	//버텍스 쉐이더에서도 쓰이고
+	//아웃풋 머저에서도 쓰여서 생기는 문제를 방지하기 위함
+	void VSReset(UINT _Slot);
+	void PSReset(UINT _Slot);
 };
 

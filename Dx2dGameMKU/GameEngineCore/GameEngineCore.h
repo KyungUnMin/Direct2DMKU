@@ -16,6 +16,9 @@
 
 class GameEngineCore
 {
+	friend class GameEngineTexture;
+	friend class GameEngineSprite;
+
 public:
 	GameEngineCore();
 	~GameEngineCore();
@@ -68,6 +71,9 @@ public:
 protected:
 
 private:
+	//레벨이 Start되는 순간만 포인터에 값이 존재한다
+	static class GameEngineLevel* CurLoadLevel;
+
 	static void CoreResourceInit();
 	static void CoreResourceEnd();
 

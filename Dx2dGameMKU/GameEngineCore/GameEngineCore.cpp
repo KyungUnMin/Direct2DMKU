@@ -13,6 +13,7 @@ std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::LevelMap
 std::shared_ptr<GameEngineLevel> GameEngineCore::MainLevel = nullptr;
 std::shared_ptr<GameEngineLevel> GameEngineCore::NextLevel = nullptr;
 
+GameEngineLevel* GameEngineCore::CurLoadLevel = nullptr;
 
 GameEngineCore::GameEngineCore()
 {
@@ -60,6 +61,8 @@ void GameEngineCore::EngineUpdate()
 	{
 		if (nullptr != MainLevel)
 		{
+			std::shared_ptr<GameEngineLevel> PrevLevel = MainLevel;
+
 			MainLevel->LevelChangeEnd();
 			MainLevel->ActorLevelChangeEnd();
 		}
@@ -71,6 +74,8 @@ void GameEngineCore::EngineUpdate()
 			MainLevel->LevelChangeStart();
 			MainLevel->ActorLevelChangeStart();
 		}
+
+		//TODO
 
 		NextLevel = nullptr;
 		GameEngineTime::GlobalTime.Reset();
@@ -155,10 +160,6 @@ void GameEngineCore::Start(HINSTANCE _Instance, std::function<void()> _Start, st
 
 
 
-void GameEngineCore::LevelInit(std::shared_ptr<GameEngineLevel> _Level)
-{
-	_Level->Start();
-}
 
 void GameEngineCore::ChangeLevel(const std::string_view& _Name)
 {
@@ -171,4 +172,12 @@ void GameEngineCore::ChangeLevel(const std::string_view& _Name)
 	}
 
 	NextLevel = LevelMap[UpperName];
+}
+
+
+void GameEngineCore::LevelInit(std::shared_ptr<GameEngineLevel> _Level)
+{
+	CurLoadLevel = _Level.get();
+	_Level->Start();
+	CurLoadLevel = nullptr;
 }

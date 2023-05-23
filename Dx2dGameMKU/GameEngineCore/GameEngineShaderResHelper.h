@@ -19,6 +19,7 @@ public:
 
 public:
 	virtual void Setting() = 0;
+	virtual void Reset() {};
 };
 
 //-------------------------Setter-----------------------
@@ -42,6 +43,7 @@ public:
 	std::shared_ptr<GameEngineTexture> Res;
 
 	void Setting() override;
+	void Reset() override;
 };
 
 class GameEngineSamplerSetter : public GameEngineShaderResources
@@ -128,4 +130,8 @@ public:
 
 	//자신 안에 있는 상수버퍼세터나 다른 리소스들의 Setting함수들을 호출시켜준다
 	void Setting();
+
+
+	//렌더링 파이프라인에서 VS, PS 세팅을 해제한다
+	void AllResourcesReset();
 };

@@ -151,4 +151,10 @@ void GameEngineRenderTarget::Merge(std::shared_ptr<GameEngineRenderTarget> _Othe
 
 	//이 객체의 렌더타켓에 상대방의 이미지를 합친다
 	MergeUnit.Render(0.0f);
+
+	//파이프라인에서 빼내는 작업
+	//Camera의 CamTarget(렌더타겟)이
+	//버텍스 쉐이더에서도 쓰이고
+	//아웃풋 머저에서도 쓰여서 생기는 문제를 방지하기 위함
+	MergeUnit.ShaderResHelper.AllResourcesReset();
 }

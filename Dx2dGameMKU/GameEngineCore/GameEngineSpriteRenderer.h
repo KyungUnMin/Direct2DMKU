@@ -163,12 +163,13 @@ protected:
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
+	float4 AtlasData = { 0.f, 0.f, 1.f, 1.f };
+
 private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;
 	std::shared_ptr<AnimationInfo> CurAnimation = nullptr;
 	
 	//애니메이션을 그릴 UV 정보
-	float4 AtlasData = {0.f, 0.f, 1.f, 1.f};
 	float ScaleRatio = 1.0f;
 
 	std::shared_ptr<GameEngineSprite> Sprite = nullptr;
