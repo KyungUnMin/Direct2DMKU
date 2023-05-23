@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "SchoolGirlState_Idle.h"
 
+
 #include "SchoolGirlFSM.h"
 
 const std::string_view SchoolGirlState_Idle::AniName = "Idle";
@@ -18,7 +19,7 @@ SchoolGirlState_Idle::~SchoolGirlState_Idle()
 
 }
 
-void SchoolGirlState_Idle::Start()
+void SchoolGirlState_Idle::Start() 
 {
 	EnemyStateBase::Start();
 
@@ -42,7 +43,7 @@ void SchoolGirlState_Idle::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void SchoolGirlState_Idle::CreateAnimation()
+void SchoolGirlState_Idle::CreateAnimation() 
 {
 	GetRenderer()->CreateAnimation
 	({
@@ -51,7 +52,7 @@ void SchoolGirlState_Idle::CreateAnimation()
 		.Start = 0,
 		.End = 7,
 		.FrameInter = AniInterTime
-		});
+	});
 }
 
 
@@ -63,17 +64,24 @@ void SchoolGirlState_Idle::EnterState()
 }
 
 
-void SchoolGirlState_Idle::Update(float _DeltaTime)
+void SchoolGirlState_Idle::Update(float _DeltaTime) 
 {
 	EnemyStateBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(SchoolGirlStateType::Walk);
 
-	//TODO
-	//GetRenderer()
+	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
+	if (VecToPlayer.Size() < GetSightRadius())
+	{
+		SchoolGirlStateType RandomAttack = SchoolGirlFSM::GetRandomAttack();
+		GetFSM()->ChangeState(RandomAttack);
+	}
+	else
+	{
+		GetFSM()->ChangeState(SchoolGirlStateType::Walk);
+	}
 }
 
 

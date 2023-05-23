@@ -203,6 +203,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="CheerleaderFSM.h" />
+    <ClInclude Include="CheerleaderState_Attack_AxeKick.h" />
+    <ClInclude Include="CheerleaderState_Attack_Elbow.h" />
+    <ClInclude Include="CheerleaderState_Attack_Punch.h" />
+    <ClInclude Include="CheerleaderState_Attack_SideKick.h" />
+    <ClInclude Include="CheerleaderState_Damaged_BlowBack.h" />
+    <ClInclude Include="CheerleaderState_Damaged_Dazed.h" />
+    <ClInclude Include="CheerleaderState_Damaged_KnockDown.h" />
+    <ClInclude Include="CheerleaderState_Damaged_WallHit.h" />
+    <ClInclude Include="CheerleaderState_Damaged_WallOut.h" />
+    <ClInclude Include="CheerleaderState_Idle.h" />
+    <ClInclude Include="CheerleaderState_NormalDamaged_Face.h" />
+    <ClInclude Include="CheerleaderState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="CheerleaderState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="CheerleaderState_Ready.h" />
+    <ClInclude Include="CheerleaderState_Walk.h" />
     <ClInclude Include="ColorWave.h">
       <SubType>
       </SubType>
@@ -211,6 +227,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="CopFSM.h" />
+    <ClInclude Include="CopState_Attack_AxeKick.h" />
+    <ClInclude Include="CopState_Attack_Elbow.h" />
+    <ClInclude Include="CopState_Attack_Punch.h" />
+    <ClInclude Include="CopState_Attack_SideKick.h" />
+    <ClInclude Include="CopState_Damaged_BlowBack.h" />
+    <ClInclude Include="CopState_Damaged_Dazed.h" />
+    <ClInclude Include="CopState_Damaged_KnockDown.h" />
+    <ClInclude Include="CopState_Damaged_WallHit.h" />
+    <ClInclude Include="CopState_Damaged_WallOut.h" />
+    <ClInclude Include="CopState_Idle.h" />
+    <ClInclude Include="CopState_NormalDamaged_Face.h" />
+    <ClInclude Include="CopState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="CopState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="CopState_Ready.h" />
+    <ClInclude Include="CopState_Walk.h" />
     <ClInclude Include="DapEffect.h">
       <SubType>
       </SubType>
@@ -248,14 +280,16 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FieldEnemy_Cheerleader.h" />
+    <ClInclude Include="FieldEnemy_Cop.h" />
+    <ClInclude Include="FieldEnemy_Hooligan.h" />
     <ClInclude Include="FieldEnemy_SchoolBoy.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="FieldEnemy_SchoolGirl.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="FieldEnemy_SchoolGirl.h" />
+    <ClInclude Include="FieldEnemy_TigerMan.h" />
+    <ClInclude Include="FieldEnemy_Waver.h" />
     <ClInclude Include="FileCopier.h">
       <SubType>
       </SubType>
@@ -277,6 +311,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="HooliganFSM.h" />
+    <ClInclude Include="HooliganState_Attack_AxeKick.h" />
+    <ClInclude Include="HooliganState_Attack_Elbow.h" />
+    <ClInclude Include="HooliganState_Attack_Punch.h" />
+    <ClInclude Include="HooliganState_Attack_SideKick.h" />
+    <ClInclude Include="HooliganState_Damaged_BlowBack.h" />
+    <ClInclude Include="HooliganState_Damaged_Dazed.h" />
+    <ClInclude Include="HooliganState_Damaged_KnockDown.h" />
+    <ClInclude Include="HooliganState_Damaged_WallHit.h" />
+    <ClInclude Include="HooliganState_Damaged_WallOut.h" />
+    <ClInclude Include="HooliganState_Idle.h" />
+    <ClInclude Include="HooliganState_NormalDamaged_Face.h" />
+    <ClInclude Include="HooliganState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="HooliganState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="HooliganState_Ready.h" />
+    <ClInclude Include="HooliganState_Walk.h" />
     <ClInclude Include="HUD.h">
       <SubType>
       </SubType>
@@ -437,18 +487,22 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SchoolGirlFSM.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Idle.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Walk.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="SchoolGirlFSM.h" />
+    <ClInclude Include="SchoolGirlState_Attack_AxeKick.h" />
+    <ClInclude Include="SchoolGirlState_Attack_Elbow.h" />
+    <ClInclude Include="SchoolGirlState_Attack_Punch.h" />
+    <ClInclude Include="SchoolGirlState_Attack_SideKick.h" />
+    <ClInclude Include="SchoolGirlState_Damaged_BlowBack.h" />
+    <ClInclude Include="SchoolGirlState_Damaged_Dazed.h" />
+    <ClInclude Include="SchoolGirlState_Damaged_KnockDown.h" />
+    <ClInclude Include="SchoolGirlState_Damaged_WallHit.h" />
+    <ClInclude Include="SchoolGirlState_Damaged_WallOut.h" />
+    <ClInclude Include="SchoolGirlState_Idle.h" />
+    <ClInclude Include="SchoolGirlState_NormalDamaged_Face.h" />
+    <ClInclude Include="SchoolGirlState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="SchoolGirlState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="SchoolGirlState_Ready.h" />
+    <ClInclude Include="SchoolGirlState_Walk.h" />
     <ClInclude Include="ShaderTestActor.h">
       <SubType>
       </SubType>
@@ -505,6 +559,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TigerManFSM.h" />
+    <ClInclude Include="TigerManState_Attack_AxeKick.h" />
+    <ClInclude Include="TigerManState_Attack_Elbow.h" />
+    <ClInclude Include="TigerManState_Attack_Punch.h" />
+    <ClInclude Include="TigerManState_Attack_SideKick.h" />
+    <ClInclude Include="TigerManState_Damaged_BlowBack.h" />
+    <ClInclude Include="TigerManState_Damaged_Dazed.h" />
+    <ClInclude Include="TigerManState_Damaged_KnockDown.h" />
+    <ClInclude Include="TigerManState_Damaged_WallHit.h" />
+    <ClInclude Include="TigerManState_Damaged_WallOut.h" />
+    <ClInclude Include="TigerManState_Idle.h" />
+    <ClInclude Include="TigerManState_NormalDamaged_Face.h" />
+    <ClInclude Include="TigerManState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="TigerManState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="TigerManState_Ready.h" />
+    <ClInclude Include="TigerManState_Walk.h" />
     <ClInclude Include="TownBossLevel.h">
       <SubType>
       </SubType>
@@ -600,6 +670,22 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="WaverFSM.h" />
+    <ClInclude Include="WaverState_Attack_AxeKick.h" />
+    <ClInclude Include="WaverState_Attack_Elbow.h" />
+    <ClInclude Include="WaverState_Attack_Punch.h" />
+    <ClInclude Include="WaverState_Attack_SideKick.h" />
+    <ClInclude Include="WaverState_Damaged_BlowBack.h" />
+    <ClInclude Include="WaverState_Damaged_Dazed.h" />
+    <ClInclude Include="WaverState_Damaged_KnockDown.h" />
+    <ClInclude Include="WaverState_Damaged_WallHit.h" />
+    <ClInclude Include="WaverState_Damaged_WallOut.h" />
+    <ClInclude Include="WaverState_Idle.h" />
+    <ClInclude Include="WaverState_NormalDamaged_Face.h" />
+    <ClInclude Include="WaverState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="WaverState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="WaverState_Ready.h" />
+    <ClInclude Include="WaverState_Walk.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp">
@@ -639,6 +725,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CheerleaderFSM.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_AxeKick.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_Elbow.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_Punch.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_SideKick.cpp" />
+    <ClCompile Include="CheerleaderState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="CheerleaderState_Damaged_Dazed.cpp" />
+    <ClCompile Include="CheerleaderState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="CheerleaderState_Damaged_WallHit.cpp" />
+    <ClCompile Include="CheerleaderState_Damaged_WallOut.cpp" />
+    <ClCompile Include="CheerleaderState_Idle.cpp" />
+    <ClCompile Include="CheerleaderState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="CheerleaderState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="CheerleaderState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="CheerleaderState_Ready.cpp" />
+    <ClCompile Include="CheerleaderState_Walk.cpp" />
     <ClCompile Include="ColorWave.cpp">
       <SubType>
       </SubType>
@@ -648,6 +750,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CopFSM.cpp" />
+    <ClCompile Include="CopState_Attack_AxeKick.cpp" />
+    <ClCompile Include="CopState_Attack_Elbow.cpp" />
+    <ClCompile Include="CopState_Attack_Punch.cpp" />
+    <ClCompile Include="CopState_Attack_SideKick.cpp" />
+    <ClCompile Include="CopState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="CopState_Damaged_Dazed.cpp" />
+    <ClCompile Include="CopState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="CopState_Damaged_WallHit.cpp" />
+    <ClCompile Include="CopState_Damaged_WallOut.cpp" />
+    <ClCompile Include="CopState_Idle.cpp" />
+    <ClCompile Include="CopState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="CopState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="CopState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="CopState_Ready.cpp" />
+    <ClCompile Include="CopState_Walk.cpp" />
     <ClCompile Include="DapEffect.cpp">
       <SubType>
       </SubType>
@@ -687,14 +805,16 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FieldEnemy_Cheerleader.cpp" />
+    <ClCompile Include="FieldEnemy_Cop.cpp" />
+    <ClCompile Include="FieldEnemy_Hooligan.cpp" />
     <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="FieldEnemy_SchoolGirl.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="FieldEnemy_SchoolGirl.cpp" />
+    <ClCompile Include="FieldEnemy_TigerMan.cpp" />
+    <ClCompile Include="FieldEnemy_Waver.cpp" />
     <ClCompile Include="FileCopier.cpp">
       <SubType>
       </SubType>
@@ -716,6 +836,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="HooliganFSM.cpp" />
+    <ClCompile Include="HooliganState_Attack_AxeKick.cpp" />
+    <ClCompile Include="HooliganState_Attack_Elbow.cpp" />
+    <ClCompile Include="HooliganState_Attack_Punch.cpp" />
+    <ClCompile Include="HooliganState_Attack_SideKick.cpp" />
+    <ClCompile Include="HooliganState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="HooliganState_Damaged_Dazed.cpp" />
+    <ClCompile Include="HooliganState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="HooliganState_Damaged_WallHit.cpp" />
+    <ClCompile Include="HooliganState_Damaged_WallOut.cpp" />
+    <ClCompile Include="HooliganState_Idle.cpp" />
+    <ClCompile Include="HooliganState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="HooliganState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="HooliganState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="HooliganState_Ready.cpp" />
+    <ClCompile Include="HooliganState_Walk.cpp" />
     <ClCompile Include="HUD.cpp">
       <SubType>
       </SubType>
@@ -876,18 +1012,22 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SchoolGirlFSM.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Idle.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Walk.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="SchoolGirlFSM.cpp" />
+    <ClCompile Include="SchoolGirlState_Attack_AxeKick.cpp" />
+    <ClCompile Include="SchoolGirlState_Attack_Elbow.cpp" />
+    <ClCompile Include="SchoolGirlState_Attack_Punch.cpp" />
+    <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp" />
+    <ClCompile Include="SchoolGirlState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="SchoolGirlState_Damaged_Dazed.cpp" />
+    <ClCompile Include="SchoolGirlState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="SchoolGirlState_Damaged_WallHit.cpp" />
+    <ClCompile Include="SchoolGirlState_Damaged_WallOut.cpp" />
+    <ClCompile Include="SchoolGirlState_Idle.cpp" />
+    <ClCompile Include="SchoolGirlState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="SchoolGirlState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="SchoolGirlState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="SchoolGirlState_Ready.cpp" />
+    <ClCompile Include="SchoolGirlState_Walk.cpp" />
     <ClCompile Include="ShaderTestActor.cpp">
       <SubType>
       </SubType>
@@ -944,6 +1084,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TigerManFSM.cpp" />
+    <ClCompile Include="TigerManState_Attack_AxeKick.cpp" />
+    <ClCompile Include="TigerManState_Attack_Elbow.cpp" />
+    <ClCompile Include="TigerManState_Attack_Punch.cpp" />
+    <ClCompile Include="TigerManState_Attack_SideKick.cpp" />
+    <ClCompile Include="TigerManState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="TigerManState_Damaged_Dazed.cpp" />
+    <ClCompile Include="TigerManState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="TigerManState_Damaged_WallHit.cpp" />
+    <ClCompile Include="TigerManState_Damaged_WallOut.cpp" />
+    <ClCompile Include="TigerManState_Idle.cpp" />
+    <ClCompile Include="TigerManState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="TigerManState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="TigerManState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="TigerManState_Ready.cpp" />
+    <ClCompile Include="TigerManState_Walk.cpp" />
     <ClCompile Include="TownBossLevel.cpp">
       <SubType>
       </SubType>
@@ -1042,6 +1198,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="WaverFSM.cpp" />
+    <ClCompile Include="WaverState_Attack_AxeKick.cpp" />
+    <ClCompile Include="WaverState_Attack_Elbow.cpp" />
+    <ClCompile Include="WaverState_Attack_Punch.cpp" />
+    <ClCompile Include="WaverState_Attack_SideKick.cpp" />
+    <ClCompile Include="WaverState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="WaverState_Damaged_Dazed.cpp" />
+    <ClCompile Include="WaverState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="WaverState_Damaged_WallHit.cpp" />
+    <ClCompile Include="WaverState_Damaged_WallOut.cpp" />
+    <ClCompile Include="WaverState_Idle.cpp" />
+    <ClCompile Include="WaverState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="WaverState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="WaverState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="WaverState_Ready.cpp" />
+    <ClCompile Include="WaverState_Walk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

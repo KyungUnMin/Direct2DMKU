@@ -59,7 +59,6 @@ SchoolEntryLevel::~SchoolEntryLevel()
 }
 
 #include "FieldEnemy_SchoolBoy.h"
-#include "FieldEnemy_SchoolGirl.h"
 
 #include "BossIntroMovie.h"
 
@@ -142,7 +141,7 @@ void SchoolEntryLevel::CreateDoors()
 void SchoolEntryLevel::CreateEnemies()
 {
 	std::shared_ptr<FieldEnemy_SchoolBoy> SchoolBoyPtr = nullptr;
-	std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
+	//std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
 
 	//5번은 Enemy가 아닌 일반 애니메이션으로 할 계획
 	const size_t BoySitPosArr[3] = {0, 2, 6};

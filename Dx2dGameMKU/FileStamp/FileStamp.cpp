@@ -1,4 +1,5 @@
-﻿#include <regex>
+﻿#include <iostream>
+#include <regex>
 
 #include <GameEngineBase/GameEngineFile.h>
 #include <GameEngineBase/GameEngineDebug.h>
@@ -10,16 +11,18 @@ void FileCopy(const std::string_view& _ChangeName);
 
 int main()
 {
-	FileCopy("Hooligan");
+	std::cout << "새로 만들 Enemy의 이름을 입력해주세요\n";
+
+	std::string InputValue;
+	std::cin >> InputValue;
+
+	FileCopy(InputValue);
 	return 0;
 }
 
 
 void FileCopy(const std::string_view& _ChangeName)
 {
-	MsgTextBox("몬스터 FSM State 파일을 카피합니다");
-
-
 	GameEngineDirectory SourDir;
 	GameEngineDirectory DescDir;
 
@@ -73,4 +76,6 @@ void FileCopy(const std::string_view& _ChangeName)
 		GameEngineFile SaveFolder(DescDir.GetPlusFileName(DescFileName).GetFullPath());
 		SaveFolder.SaveBin(SaveData);
 	}
+
+	MsgTextBox("복사 완료");
 }

@@ -26,3 +26,4 @@ private:
 	void LoadAnimation();
 	void CreateAnimation();
 };
+
