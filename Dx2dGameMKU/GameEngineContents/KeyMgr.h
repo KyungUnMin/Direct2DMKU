@@ -20,7 +20,6 @@ enum class KeyNames
 	DebugF4,
 	DebugF6,
 	DebugF7,
-	DebugF8,
 	DebugF9,
 
 

@@ -72,6 +72,9 @@ bool EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 	}
 
 	//갈수 없는 곳이면 움직이지 않는다
+	if (true == BGPtr->IsBlockPos(NextPos))
+		return false;
+
 	std::pair<int,int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
 		return false;

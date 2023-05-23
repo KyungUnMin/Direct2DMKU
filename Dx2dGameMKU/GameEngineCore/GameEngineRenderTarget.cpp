@@ -38,15 +38,21 @@ void GameEngineRenderTarget::ResCreate(std::shared_ptr<GameEngineTexture> _Textu
 void GameEngineRenderTarget::ResCreate(DXGI_FORMAT _Format, float4 _Scale, float4 _Color)
 {
 	D3D11_TEXTURE2D_DESC Desc = { 0 };
+
 	Desc.ArraySize = 1;
 	Desc.Width = _Scale.uix();
 	Desc.Height = _Scale.uiy();
 	Desc.Format = _Format;
 	Desc.SampleDesc.Count = 1;
+	//샘플링을 안 쓰겠다
 	Desc.SampleDesc.Quality = 0;
 	Desc.MipLevels = 1;
+
+	//디폴트 : 그래픽 카드에 메모리를 만들어라
 	Desc.Usage = D3D11_USAGE_DEFAULT;
+	//렌더 타겟용, 쉐이더에 이 텍스처를 넣어서 사용하겠다
 	Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET | D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
+
 	/*Desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_READ;
 	Desc.MiscFlags = 0;*/
 

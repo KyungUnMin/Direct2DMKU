@@ -124,6 +124,10 @@ bool PlayerState_Damaged_BlowBack::Update_BlowHorizon(float _Ratio, float _Delta
 		NextPos += (float4::Right * NowAcc * _DeltaTime);
 	}
 
+	//벽에 막혔을때
+	if (true == BGPtr->IsBlockPos(NextPos))
+		return false;
+
 	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
 		return false;

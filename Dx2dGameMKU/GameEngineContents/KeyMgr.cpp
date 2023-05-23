@@ -24,7 +24,6 @@ const std::vector<std::string_view> KeyMgr::IndexToString =
 	"DebugF4",
 	"DebugF6",
 	"DebugF7",
-	"DebugF8",
 	"DebugF9"
 
 };
@@ -53,7 +52,6 @@ void KeyMgr::CreateKey()
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF4)] = VK_F4;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF6)] = VK_F6;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF7)] = VK_F7;
-	KeyInfo[static_cast<size_t>(KeyNames::DebugF8)] = VK_F8;
 	KeyInfo[static_cast<size_t>(KeyNames::DebugF9)] = VK_F9;
 
 	for (int i = 0; i < KeyInfo.size(); ++i)

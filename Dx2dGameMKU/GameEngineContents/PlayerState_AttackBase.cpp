@@ -155,6 +155,9 @@ void PlayerState_AttackBase::Update_DashIneria(const float _DeltaTime, const flo
 	}
 
 	//갈수 없는 곳이면 움직이지 않는다
+	if (true == BGPtr->IsBlockPos(NextPos))
+		return;
+
 	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
 		return;
