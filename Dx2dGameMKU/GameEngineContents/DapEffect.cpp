@@ -68,6 +68,7 @@ void DapEffect::CreateRender()
 
 	GameEngineTransform* RenderTrans = RenderPtr->GetTransform();
 	RenderTrans->SetLocalScale(EffectScale);
+	RenderTrans->SetLocalPosition(float4::Forward);
 }
 
 
