@@ -68,29 +68,69 @@ void DapEffect::CreateRender()
 
 	GameEngineTransform* RenderTrans = RenderPtr->GetTransform();
 	RenderTrans->SetLocalScale(EffectScale);
-
-	ShaderLinkColor.r = GetStepRand();
-	ShaderLinkColor.g = GetStepRand();
-	ShaderLinkColor.b = GetStepRand();
-	ShaderLinkColor.a = 1.f;
-	
 }
+
+
+
+
+
+
+void DapEffect::Init()
+{
+	On();
+	Timer = 0.f;
+	SettingColor();
+}
+
+void DapEffect::SettingColor()
+{
+	//1¾È
+	{
+		ShaderLinkColor.r = GetStepRand();
+		ShaderLinkColor.g = GetStepRand();
+		ShaderLinkColor.b = GetStepRand();
+	}
+
+
+	//2¾È
+	/*{
+		static UINT Count = 0;
+		UINT  ModValue = (Count++) % 3;
+		if (0 == ModValue)
+		{
+			ShaderLinkColor.r = 0.0f;
+			ShaderLinkColor.g = 1.0f;
+			ShaderLinkColor.b = 1.0f;
+		}
+		else if (1 == ModValue)
+		{
+			ShaderLinkColor.r = 1.0f;
+			ShaderLinkColor.g = 0.0f;
+			ShaderLinkColor.b = 1.0f;
+		}
+		else
+		{
+			ShaderLinkColor.r = 1.0f;
+			ShaderLinkColor.g = 1.0f;
+			ShaderLinkColor.b = 1.0f;
+		}
+	}*/
+
+	ShaderLinkColor.a = 1.f;
+}
+
 
 float DapEffect::GetStepRand(float _StepValue /*= 0.3f*/)
 {
 	float RandValue = GameEngineRandom::MainRandom.RandomFloat(0.f, 1.f);
-	
+
 	if (RandValue < _StepValue)
 		return 1.f;
 
 	return RandValue;
 }
 
-void DapEffect::Init()
-{
-	On();
-	Timer = 0.f;
-}
+
 
 void DapEffect::Update(float _DeltaTime) 
 {

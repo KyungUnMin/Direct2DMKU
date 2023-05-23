@@ -56,7 +56,7 @@ void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileDa
 
 std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std::string_view& _ResName, const float4& _Scale, const float4& _Offset /*= float4::Zero*/)
 {
-	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::BackGround);
+	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	RendererPtr->SetTexture(_ResName);
 	GameEngineTransform* RenderTransform = RendererPtr->GetTransform();
 
@@ -68,6 +68,11 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 			Offset.z = Offset.y;
 		}
 		RenderTransform->SetWorldPosition(Offset);
+
+		if (DeepMostZ < Offset.z)
+		{
+			DeepMostZ = Offset.z;
+		}
 	}
 
 	RenderTransform->SetLocalScale(_Scale);
@@ -76,7 +81,8 @@ std::shared_ptr<GameEngineSpriteRenderer> BackGround::CreateBackImage(const std:
 
 void BackGround::CreateCollisionImage(const std::string_view& _ResName)
 {
-	ColRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::Debug_MapCol);
+	ColRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	ColRender->GetTransform()->AddLocalPosition(float4::Forward * DeepMostZ + float4::Back);
 	ColRender->SetScaleToTexture(_ResName);
 	ColRender->Off();
 	

@@ -37,8 +37,6 @@ private:
 
 	void LoadEffectImage();
 	void CreateRender();
+	void SettingColor();
 	float GetStepRand(float _StepValue = 0.3f);
 };
-
-//이 엑터를 생성하는 엑터에 자식으로 들어간다?
-//Actor가 Off되면 자식쪽에 있더라도 Update 안돈다

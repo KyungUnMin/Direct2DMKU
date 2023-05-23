@@ -95,7 +95,7 @@ FieldActorBase::VisualCollider FieldActorBase::CreateVisuableCollision(Collision
 	Family.ParentCollision = CreateComponent<GameEngineCollision>(_Order);
 	GameEngineTransform* CollisionTrans = Family.ParentCollision->GetTransform();
 
-	Family.ChildRender = CreateComponent<GameEngineRenderer>(INT32_MAX);
+	Family.ChildRender = CreateComponent<GameEngineRenderer>(FieldRenderOrder::ZOrder);
 	GameEngineTransform* RenderTrans = Family.ChildRender->GetTransform();
 	RenderTrans->SetParent(CollisionTrans, false);
 

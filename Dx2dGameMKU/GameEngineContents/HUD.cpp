@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineTexture.h>
 
 #include "RCGDefine.h"
+#include "RCGEnums.h"
 #include "DataMgr.h"
 
 HUD::MpDatas HUD::MpData;

@@ -3,6 +3,8 @@
 
 #include <GameEngineCore/GameEngineUIRenderer.h>
 
+#include "RCGEnums.h"
+
 Fader* Fader::IsFading = nullptr;
 
 Fader::Fader()

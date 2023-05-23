@@ -21,26 +21,19 @@ enum class CollisionOrder
 	EnemyAttack,
 };
 
-//enum class RenderOrder
-//{
-//	Defalut = 0,
-//	BackGround,
-//	Debug_MapCol,
-//	Shadow,
-//	Character,
-//	Effect,
-//
-//	Door,
-//	Debug_Grid
-//};
-
 enum class FieldRenderOrder
 {
 	BackGround,
-	Debug_MapCol,
 	ZOrder,
 
 	Debug_Grid
+};
+
+enum class FieldUIRenderOrder
+{
+	Default = 0,
+	HUD,
+	Fade,
 };
 
 
