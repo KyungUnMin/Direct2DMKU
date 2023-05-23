@@ -1,10 +1,15 @@
 #include "PrecompileHeader.h"
 #include "BossVersus.h"
 
+#include <GameEngineCore/GameEngineUIRenderer.h>
+#include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineCamera.h>
+#include <GameEngineCore/GameEngineLevel.h>
+
+
 #include "RCGDefine.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
-#include <GameEngineCore/GameEngineTexture.h>
+
 
 BossVersus* BossVersus::GPtr = nullptr;
 
@@ -61,14 +66,16 @@ BossVersus::~BossVersus()
 
 void BossVersus::Init(BossType _Boss)
 {
+	//UI카메라
+	std::shared_ptr<GameEngineCamera> UICam = GetLevel()->GetCamera(100);
+	UICam->SetSortType(FieldUIRenderOrder::BossVersus, SortType::ZSort);
+
 	//이미지 로드
 	LoadImages();
 	//렌더 생성
 	CreatePortraits(_Boss);
 
 	Fsm.Init(this);
-
-	//CreateNameRenders(_Boss);
 }
 
 
@@ -97,12 +104,12 @@ void BossVersus::LoadImages()
 void BossVersus::CreatePortraits(BossType _Boss)
 {
 	//플레이어 초상화
-	PlayerPortrait = CreateComponent<GameEngineRenderer>();
+	PlayerPortrait = CreateComponent<GameEngineUIRenderer>();
 	PlayerPortrait->SetPipeLine(PortraitPipeName);
 	PlayerPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
 	//보스 초상화
-	BossPortrait = CreateComponent<GameEngineRenderer>();
+	BossPortrait = CreateComponent<GameEngineUIRenderer>();
 	BossPortrait->SetPipeLine(PortraitPipeName);
 	BossPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
@@ -165,8 +172,8 @@ void BossVersus::CreateNameRenders(BossType _Boss)
 		break;
 	}
 
-	std::shared_ptr<GameEngineSpriteRenderer> PlayerNameRender = CreateComponent<GameEngineSpriteRenderer>();
-	std::shared_ptr<GameEngineSpriteRenderer> BossNameRender = CreateComponent<GameEngineSpriteRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> PlayerNameRender = CreateComponent<GameEngineUIRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> BossNameRender = CreateComponent<GameEngineUIRenderer>();
 
 	PlayerNameRender->SetScaleToTexture(PlayerName_FileName);
 	BossNameRender->SetScaleToTexture(BossName);

@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "RCGDefine.h"
+#include "RCGEnums.h"
 
 const std::vector<std::string_view> BossIntroMovie::MovieNames =
 {
@@ -54,7 +55,7 @@ void BossIntroMovie::Init(MovieType _MovieType)
 {
 	const std::string_view& MovieName = MovieNames[static_cast<size_t>(_MovieType)];
 	
-	std::shared_ptr<GameEngineUIRenderer> Sprite = CreateComponent<GameEngineUIRenderer>();
+	std::shared_ptr<GameEngineUIRenderer> Sprite = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::BossIntro);
 	AniCtrl = Sprite->CreateAnimation
 	({
 		.AnimationName = "Movie",

@@ -2,7 +2,7 @@
 #include "BossVersusState_Fire.h"
 
 #include <GameEngineBase/GameEngineRandom.h>
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineSprite.h>
 
 #include "RCGDefine.h"
@@ -49,14 +49,14 @@ void BossVersusState_Fire::CreateRenderers()
 {
 	BossVersus* VersusUI = BossVersus::GetPtr();
 
-	Light = VersusUI->CreateComponent<GameEngineSpriteRenderer>();
+	Light = VersusUI->CreateComponent<GameEngineUIRenderer>();
 	Light->SetTexture(Light_FileName);
 
 	const std::string_view FireAniName = "Fire";
 	Fires.resize(20, nullptr);
-	for (std::shared_ptr<GameEngineSpriteRenderer>& Fire : Fires)
+	for (std::shared_ptr<GameEngineUIRenderer>& Fire : Fires)
 	{
-		Fire = VersusUI->CreateComponent<GameEngineSpriteRenderer>();
+		Fire = VersusUI->CreateComponent<GameEngineUIRenderer>();
 		Fire->CreateAnimation
 		({
 			.AnimationName = FireAniName,
@@ -84,7 +84,7 @@ void BossVersusState_Fire::EnterState()
 {
 	StateBase::EnterState();
 
-	for (std::shared_ptr<GameEngineSpriteRenderer>& Fire : Fires)
+	for (std::shared_ptr<GameEngineUIRenderer>& Fire : Fires)
 	{
 		Fire->On();
 	}

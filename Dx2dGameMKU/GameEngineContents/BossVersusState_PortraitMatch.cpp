@@ -2,7 +2,7 @@
 #include "BossVersusState_PortraitMatch.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
@@ -46,7 +46,7 @@ void BossVersusState_PortraitMatch::CreateRenderers()
 
 	//화면 전체적인 이펙트 색상
 	const float4& ScreenSize = GameEngineWindow::GetScreenSize();
-	UILightRender = VersusUI->CreateComponent<GameEngineRenderer>();
+	UILightRender = VersusUI->CreateComponent<GameEngineUIRenderer>();
 	UILightRender->SetPipeLine(LightPipeName);
 	UILightRender->GetShaderResHelper().SetConstantBufferLink(LinkCBufferName, UILightColor);
 	UILightRender->GetTransform()->SetLocalScale(ScreenSize);

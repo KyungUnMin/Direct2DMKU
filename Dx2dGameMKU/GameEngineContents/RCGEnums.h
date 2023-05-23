@@ -34,6 +34,9 @@ enum class FieldUIRenderOrder
 	Default = 0,
 	HUD,
 	Fade,
+
+	BossVersus,
+	BossIntro,
 };
 
 

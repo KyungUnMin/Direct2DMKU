@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "BossVersusState_Corner.h"
 
-#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "BossVersus.h"
 
@@ -38,14 +38,14 @@ std::shared_ptr<GameEngineSpriteRenderer>  BossVersusState_Corner::CreateCornerR
 {
 	BossVersus* VersusUI = BossVersus::GetPtr();
 
-	std::shared_ptr<GameEngineSpriteRenderer> CornerBlack = nullptr;
-	std::shared_ptr<GameEngineSpriteRenderer> CornerPink = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> CornerBlack = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> CornerPink = nullptr;
 
-	CornerBlack = VersusUI->CreateComponent<GameEngineSpriteRenderer>();
+	CornerBlack = VersusUI->CreateComponent<GameEngineUIRenderer>();
 	CornerBlack->SetScaleToTexture(CornerBlack_FileName);
 	GameEngineTransform* BlackTrans = CornerBlack->GetTransform();
 	
-	CornerPink = VersusUI->CreateComponent<GameEngineSpriteRenderer>();
+	CornerPink = VersusUI->CreateComponent<GameEngineUIRenderer>();
 	CornerPink->SetTexture(CornerPink_FileName);
 	GameEngineTransform* PinkTrans = CornerPink->GetTransform();
 	
