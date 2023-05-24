@@ -27,6 +27,8 @@ private:
 	static const int Damage;
 
 	const float4 ColSize = float4::One * 150.f;
+	const float JumpDuration = 0.8f;
+	const float JumpMaxHeight = 50.f;
 
 	void LoadAnimation();
 	void CreateAnimation();

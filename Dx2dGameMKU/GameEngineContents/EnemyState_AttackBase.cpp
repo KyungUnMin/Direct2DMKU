@@ -141,4 +141,5 @@ void EnemyState_AttackBase::ExitState()
 {
 	EnemyStateBase::ExitState();
 	IsMovingAttack = false;
+	GetEnemy()->SetHeight(0.f);
 }

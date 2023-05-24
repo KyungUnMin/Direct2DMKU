@@ -22,6 +22,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 private:
 	static const std::string_view AniName;
@@ -30,6 +31,8 @@ private:
 	static const float AniInterTime;
 	static const float Duration;
 	static const float StartMoveAcc;
+
+	std::shared_ptr<class GameEngineCollision> EnemyMainCollider = nullptr;
 
 	bool MoveOnValue = false;
 	float MoveStartTime = 0.f;

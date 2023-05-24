@@ -103,8 +103,14 @@ bool EnemyStateBase::IsRightDir()
 
 void EnemyStateBase::Update_SinJump(float _Duration, float _MaxHeight /*= 80.f*/)
 {
-	float LiveTime = GetLiveTime();
-	float Ratio = (LiveTime / _Duration);
+	Update_SinJump(GetLiveTime(), _Duration, _MaxHeight);
+}
+
+
+
+void EnemyStateBase::Update_SinJump(float _Timer, float _Duration, float _MaxHeight)
+{
+	float Ratio = (_Timer / _Duration);
 	Ratio = std::clamp(Ratio, 0.f, 1.f);
 
 	float SinValue = std::sinf(GameEngineMath::PIE * Ratio);

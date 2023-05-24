@@ -1,11 +1,14 @@
 #include "PrecompileHeader.h"
 #include "CheerleaderState_CartWheel.h"
 
+#include <GameEngineCore/GameEngineCollision.h>
+
 #include "RCGEnums.h"
 
 #include "CheerleaderFSM.h"
 #include "AfterImageEffect.h"
 #include "FieldLevelBase.h"
+#include "FieldEnemyBase.h"
 
 
 const std::string_view CheerleaderState_CartWheel::AniName = "CartWheel";
@@ -31,6 +34,8 @@ void CheerleaderState_CartWheel::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+
+	EnemyMainCollider = GetEnemy()->GetMainCollider();
 }
 
 void CheerleaderState_CartWheel::LoadAnimation()
@@ -76,7 +81,10 @@ void CheerleaderState_CartWheel::EnterState()
 	MoveDir = EnemyStateBase::IsRightDir() ? float4::Right : float4::Left;
 	MoveOnValue = false;
 	EffectTimer = 0.f;
+
+	EnemyMainCollider->Off();
 }
+
 
 
 void CheerleaderState_CartWheel::Update(float _DeltaTime)
@@ -105,4 +113,11 @@ void CheerleaderState_CartWheel::Update(float _DeltaTime)
 		return;
 
 	GetFSM()->ChangeState(CheerleaderStateType::Idle);
+}
+
+
+void CheerleaderState_CartWheel::ExitState()
+{
+	EnemyStateBase::ExitState();
+	EnemyMainCollider->On();
 }

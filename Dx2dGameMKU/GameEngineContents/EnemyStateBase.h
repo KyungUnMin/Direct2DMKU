@@ -61,7 +61,11 @@ protected:
 
 	bool IsRightDir();
 
+	//State가 시작될 때를 기준으로 점프
 	void Update_SinJump(float _Duration, float _MaxHeight = 80.f);
+
+	//Timer를 직접 넣어주는 점프
+	void Update_SinJump(float _Timer, float _Duration, float _MaxHeight);
 
 	bool Update_AccMove(
 		float _DeltaTime, float _Ratio,

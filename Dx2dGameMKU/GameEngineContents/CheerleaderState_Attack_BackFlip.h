@@ -12,10 +12,17 @@ public:
 	CheerleaderState_Attack_BackFlip& operator=(const CheerleaderState_Attack_BackFlip& _Other) = delete;
 	CheerleaderState_Attack_BackFlip& operator=(const CheerleaderState_Attack_BackFlip&& _Other) noexcept = delete;
 
+	inline void Jump()
+	{
+		JumpValue = true;
+		JumpStartTime = GetLiveTime();
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 	void Attack() override;
 
@@ -28,6 +35,11 @@ private:
 
 	const float4 ColOffset = float4::Right * 100.f;
 	const float4 ColSize = float4::One * 150.f;
+
+	const float MaxJumpHeight = 150.f;
+	const float JumpDuration = 0.5f;
+	bool JumpValue = false;
+	float JumpStartTime = 0.f;
 
 	void LoadAnimation();
 	void CreateAnimation();

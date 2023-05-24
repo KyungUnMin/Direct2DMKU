@@ -81,6 +81,7 @@ void CheerleaderState_Attack_DoublePom::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
+	EnemyStateBase::Update_SinJump(JumpDuration, JumpMaxHeight);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

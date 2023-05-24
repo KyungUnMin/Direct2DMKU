@@ -148,6 +148,14 @@ void PlayerState_Damaged_Block::OnDamage()
 
 void PlayerState_Damaged_Block::Update_Damage()
 {
+	if (false == KeyMgr::IsPress(KeyNames::LeftShift))
+	{
+		CurState = State::Exit;
+		size_t Index = static_cast<size_t>(CurState);
+		GetRenderer()->ChangeAnimation(AniInfoes[Index].AniName);
+		return;
+	}
+
 	std::shared_ptr<GameEngineSpriteRenderer> RenderPtr = GetRenderer();
 	if (false == RenderPtr->IsAnimationEnd())
 		return;

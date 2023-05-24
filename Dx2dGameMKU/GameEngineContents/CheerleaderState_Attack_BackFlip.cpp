@@ -62,6 +62,11 @@ void CheerleaderState_Attack_BackFlip::CreateAnimation()
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 7);
 	EnemyState_AttackBase::SetMoveEvent(AniName, 6, true);
+
+	EnemyRender->SetAnimationStartEvent(AniName, 12, [this]()
+	{
+		this->Jump();
+	});
 }
 
 
@@ -78,9 +83,16 @@ void CheerleaderState_Attack_BackFlip::EnterState()
 
 
 
+
 void CheerleaderState_Attack_BackFlip::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
+
+	if (false == JumpValue)
+		return;
+
+	float Timer = GetLiveTime() - JumpStartTime;
+	EnemyStateBase::Update_SinJump(Timer, JumpDuration, MaxJumpHeight);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -113,4 +125,11 @@ void CheerleaderState_Attack_BackFlip::Attack()
 		return;
 
 	DataMgr::MinusPlayerHP(Damage);
+}
+
+
+void CheerleaderState_Attack_BackFlip::ExitState()
+{
+	EnemyState_AttackBase::ExitState();
+	JumpValue = false;
 }
