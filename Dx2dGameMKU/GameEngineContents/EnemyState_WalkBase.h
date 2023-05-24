@@ -27,6 +27,8 @@ protected:
 	}
 
 private:
+	//static std::map<std::pair<int, int>, > IsEnemyExistInGrid;
+
 	std::pair<int, int> GridMapScale;
 
 	std::vector<std::pair<int, int>> PathStack;

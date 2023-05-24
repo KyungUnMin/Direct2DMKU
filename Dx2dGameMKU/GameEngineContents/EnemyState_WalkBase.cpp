@@ -8,6 +8,7 @@
 #include "EnemyFSMBase.h"
 
 
+//std::set<std::pair<int, int>> EnemyState_WalkBase::IsEnemyExistInGrid;
 
 EnemyState_WalkBase::EnemyState_WalkBase()
 {
@@ -65,6 +66,9 @@ void EnemyState_WalkBase::Update(float _DeltaTime)
 
 	float Ratio = (Timer / MoveDuration);
 	float4 NextPos = float4::LerpClamp(StartPos, DestPos, Ratio);
+
+
+
 	GetEnemy()->GetTransform()->SetWorldPosition(NextPos);
 
 	//이 Enemy에서 Player 까지의 벡터
