@@ -84,6 +84,7 @@ void BackGround::CreateCollisionImage(const std::string_view& _ResName)
 	ColRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	ColRender->GetTransform()->AddLocalPosition(float4::Forward * DeepMostZ + float4::Back);
 	ColRender->SetScaleToTexture(_ResName);
+	ColRender->ColorOptionValue.MulColor = float4{ 1.f, 1.f, 1.f, 0.5f };
 	ColRender->Off();
 	
 	ColTexture = GameEngineTexture::Find(_ResName);

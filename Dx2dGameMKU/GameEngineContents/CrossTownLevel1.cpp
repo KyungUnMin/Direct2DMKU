@@ -39,6 +39,7 @@ void CrossTownLevel1::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
+	CreateEnemies();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
 }
@@ -61,7 +62,7 @@ void CrossTownLevel1::LoadImgRes()
 void CrossTownLevel1::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("CrossTown1BG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData(200, 100));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
@@ -81,4 +82,37 @@ void CrossTownLevel1::CreateDoors()
 	DoorPtr->Init(DoorType::Gym, float4{0.f, 100.f, 100.f});
 	DoorPtr->Unlock(LevelNames::Shop_GymLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{1250.f, -100.f, -100.f});
+}
+
+
+#include <GameEngineBase/GameEngineRandom.h>
+#include "FieldEnemy_SchoolBoy.h"
+#include "FieldEnemy_SchoolGirl.h"
+
+
+void CrossTownLevel1::CreateEnemies()
+{
+	std::shared_ptr<FieldEnemy_SchoolBoy> SchoolBoyPtr = nullptr;
+	std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
+
+	const float RangeWidth = 1000.f;
+	const float RangeHeight = 100.f;
+
+	for (size_t i = 0; i < 5; ++i)
+	{
+		SchoolBoyPtr = CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
+		
+		float PosX = GameEngineRandom::MainRandom.RandomFloat(-RangeWidth, RangeWidth);
+		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
+		SchoolBoyPtr->GetTransform()->SetWorldPosition(float4{PosX, PosY, PosY, 1});
+	}
+	
+	for (size_t i = 0; i < 5; ++i)
+	{
+		SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
+
+		float PosX = GameEngineRandom::MainRandom.RandomFloat(-RangeWidth, RangeWidth);
+		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
+		SchoolGirlPtr->GetTransform()->SetWorldPosition(float4{ PosX, PosY, PosY, 1 });
+	}
 }
