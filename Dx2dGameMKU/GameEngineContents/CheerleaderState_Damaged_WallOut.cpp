@@ -6,7 +6,7 @@
 
 const std::string_view CheerleaderState_Damaged_WallOut::AniName = "WallOut";
 const std::string_view CheerleaderState_Damaged_WallOut::AniFileName = "Cheerleader_WallOut.png";
-const std::pair<int, int> CheerleaderState_Damaged_WallOut::AniCutFrame = std::pair<int, int>(3, 1);
+const std::pair<int, int> CheerleaderState_Damaged_WallOut::AniCutFrame = std::pair<int, int>(5, 1);
 const float CheerleaderState_Damaged_WallOut::AniInterTime = 0.1f;
 
 CheerleaderState_Damaged_WallOut::CheerleaderState_Damaged_WallOut()
@@ -56,9 +56,10 @@ void CheerleaderState_Damaged_WallOut::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		//.FrameInter = AniInterTime,
+		.Start = 0,
+		.End = 3,
 		.Loop = false,
-		.FrameTime = std::vector<float>{0.2f, 0.05f, 0.05f},
+		.FrameTime = std::vector<float>{0.2f, 0.05f, 0.05f, 0.05f},
 	});
 }
 

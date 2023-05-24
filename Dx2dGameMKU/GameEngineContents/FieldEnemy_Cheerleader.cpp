@@ -27,12 +27,6 @@ void FieldEnemy_Cheerleader::Start()
 	Fsm.Init(this);
 }
 
-void FieldEnemy_Cheerleader::SitDown()
-{
-	Fsm.ChangeState(CheerleaderStateType::Ready);
-}
-
-
 void FieldEnemy_Cheerleader::Update(float _DeltaTime)
 {
 	if (GameState::OnField != RCG_GameCore::GetCurGameState())

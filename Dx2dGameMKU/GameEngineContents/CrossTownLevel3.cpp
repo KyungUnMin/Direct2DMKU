@@ -34,6 +34,7 @@ void CrossTownLevel3::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
+	CreateEnemies();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
 }
@@ -54,7 +55,7 @@ void CrossTownLevel3::LoadImgRes()
 void CrossTownLevel3::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("CrossTown3BG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData(200, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
@@ -77,4 +78,12 @@ void CrossTownLevel3::CreateDoors()
 	DoorPtr->Init(DoorType::Shop, float4{0.f, 100.f, 100.f});
 	DoorPtr->Unlock(LevelNames::Shop_BurgerLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4::Right * 980.f);
+}
+
+#include "FieldEnemy_Cheerleader.h"
+
+
+void CrossTownLevel3::CreateEnemies()
+{
+	CreateActor<FieldEnemy_Cheerleader>(UpdateOrder::Enemy);
 }

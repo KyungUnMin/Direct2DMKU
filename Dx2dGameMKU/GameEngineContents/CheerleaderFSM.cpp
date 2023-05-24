@@ -6,13 +6,13 @@
 //Movement
 #include "CheerleaderState_Idle.h"
 #include "CheerleaderState_Walk.h"
-#include "CheerleaderState_Ready.h"
+//#include "CheerleaderState_Ready.h"
 
 //Attack
-#include "CheerleaderState_Attack_AxeKick.h"
-#include "CheerleaderState_Attack_Elbow.h"
-#include "CheerleaderState_Attack_Punch.h"
-#include "CheerleaderState_Attack_SideKick.h"
+//#include "CheerleaderState_Attack_AxeKick.h"
+//#include "CheerleaderState_Attack_Elbow.h"
+//#include "CheerleaderState_Attack_Punch.h"
+//#include "CheerleaderState_Attack_SideKick.h"
 
 //Damaged
 #include "CheerleaderState_NormalDamaged_Face.h"
@@ -25,15 +25,15 @@
 #include "CheerleaderState_Damaged_Dazed.h"
 
 
-const  std::string_view CheerleaderFSM::NormalDamaged_FileName = "Cheerleader_Get_Hits.png";
+const  std::string_view CheerleaderFSM::NormalDamaged_FileName = "Cheerleader_GetHit.png";
 
 
 const std::vector<CheerleaderStateType> CheerleaderFSM::AttackGroup =
 {
-	CheerleaderStateType::AxeKick,
-	CheerleaderStateType::Elbow,
-	CheerleaderStateType::Punch,
-	CheerleaderStateType::SideKick
+	//CheerleaderStateType::AxeKick,
+	//CheerleaderStateType::Elbow,
+	//CheerleaderStateType::Punch,
+	//CheerleaderStateType::SideKick
 };
 
 CheerleaderStateType CheerleaderFSM::GetRandomAttack()
@@ -66,14 +66,14 @@ void CheerleaderFSM::Init(FieldEnemyBase* _Enemy)
 	//Movement
 	FSMBase::CreateState<CheerleaderState_Idle>(CheerleaderStateType::Idle);
 	FSMBase::CreateState<CheerleaderState_Walk>(CheerleaderStateType::Walk);
-	FSMBase::CreateState<CheerleaderState_Ready>(CheerleaderStateType::Ready);
+	//FSMBase::CreateState<CheerleaderState_Ready>(CheerleaderStateType::Ready);
 
 
 	//Attack
-	FSMBase::CreateState<CheerleaderState_Attack_AxeKick>(CheerleaderStateType::AxeKick);
-	FSMBase::CreateState<CheerleaderState_Attack_Elbow>(CheerleaderStateType::Elbow);
-	FSMBase::CreateState<CheerleaderState_Attack_Punch>(CheerleaderStateType::Punch);
-	FSMBase::CreateState<CheerleaderState_Attack_SideKick>(CheerleaderStateType::SideKick);
+	//FSMBase::CreateState<CheerleaderState_Attack_AxeKick>(CheerleaderStateType::AxeKick);
+	//FSMBase::CreateState<CheerleaderState_Attack_Elbow>(CheerleaderStateType::Elbow);
+	//FSMBase::CreateState<CheerleaderState_Attack_Punch>(CheerleaderStateType::Punch);
+	//FSMBase::CreateState<CheerleaderState_Attack_SideKick>(CheerleaderStateType::SideKick);
 
 
 	//Damaged

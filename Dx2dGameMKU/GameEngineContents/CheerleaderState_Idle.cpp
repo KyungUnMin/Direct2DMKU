@@ -6,7 +6,7 @@
 
 const std::string_view CheerleaderState_Idle::AniName = "Idle";
 const std::string_view CheerleaderState_Idle::AniFileName = "Cheerleader_Idle.png";
-const std::pair<int, int> CheerleaderState_Idle::AniCutFrame = std::pair<int, int>(5, 2);
+const std::pair<int, int> CheerleaderState_Idle::AniCutFrame = std::pair<int, int>(5, 3);
 const float CheerleaderState_Idle::AniInterTime = 0.08f;
 
 CheerleaderState_Idle::CheerleaderState_Idle()
@@ -50,7 +50,7 @@ void CheerleaderState_Idle::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 7,
+		.End = 11,
 		.FrameInter = AniInterTime
 	});
 }
@@ -72,13 +72,13 @@ void CheerleaderState_Idle::Update(float _DeltaTime)
 		return;
 
 
-	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
+	/*float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
 	if (VecToPlayer.Size() < GetSightRadius())
 	{
 		CheerleaderStateType RandomAttack = CheerleaderFSM::GetRandomAttack();
 		GetFSM()->ChangeState(RandomAttack);
 	}
-	else
+	else*/
 	{
 		GetFSM()->ChangeState(CheerleaderStateType::Walk);
 	}
