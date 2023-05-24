@@ -25,6 +25,18 @@ void EnemyState_AttackBase::Start()
 	AttackCollider = GetEnemy()->GetAttackCollider();
 }
 
+
+
+
+void EnemyState_AttackBase::EnterState()
+{
+	EnemyStateBase::EnterState();
+	EnemyDir = EnemyStateBase::IsRightDir();
+}
+
+
+
+
 void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index)
 {
 	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
@@ -55,7 +67,6 @@ void EnemyState_AttackBase::AttackCheck()
 	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
 	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
 
-	//디버깅용
 	const TransformData& EnemyColData = AttackCollider->GetTransform()->GetTransDataRef();
 	const TransformData& PlayerColData = PlayerCol->GetTransform()->GetTransDataRef();
 
@@ -81,4 +92,53 @@ void EnemyState_AttackBase::AttackCheck()
 	}
 
 	Attack();
+}
+
+
+
+
+
+void EnemyState_AttackBase::SetMoveEvent(
+	const std::string_view& _AniName, size_t _MoveStartFrame, 
+	bool _IsReverseDir /*= false*/, float _MoveDuration /*= 0.5f*/, float _StartAcc /*= 1000.f*/)
+{
+	StartAcc = _StartAcc;
+	IsReverseMoveDir = _IsReverseDir;
+	MoveDuration = _MoveDuration;
+
+	GetRenderer()->SetAnimationStartEvent(_AniName, _MoveStartFrame, [this]()
+	{
+		this->MoveOn();
+	});
+}
+
+
+void EnemyState_AttackBase::Update(float _DeltaTime)
+{
+	EnemyStateBase::Update(_DeltaTime);
+
+	//이벤트를 통해 움직이는 상황일때만
+	if (false == IsMovingAttack)
+		return;
+
+	//이동할 방향(true면 오른쪽, false면 왼쪽)
+	bool MoveDir = EnemyDir;
+	//Enemy가 바라보고 있는 방향의 역방향으로 이동하는 경우
+	if (true == IsReverseMoveDir)
+	{
+		MoveDir = !MoveDir;
+	}
+
+	float4 MoveDirVec = MoveDir ? float4::Right : float4::Left;
+
+	float Timer = GetLiveTime() - MoveStartTime;
+	float Ratio = (Timer / MoveDuration);
+	EnemyStateBase::Update_AccMove(_DeltaTime, Ratio, MoveDirVec, StartAcc);
+}
+
+
+void EnemyState_AttackBase::ExitState()
+{
+	EnemyStateBase::ExitState();
+	IsMovingAttack = false;
 }

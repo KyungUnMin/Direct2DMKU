@@ -61,6 +61,7 @@ void CheerleaderState_Attack_DoublePom::CreateAnimation()
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
+	EnemyState_AttackBase::SetMoveEvent(AniName, 2);
 }
 
 
@@ -71,7 +72,7 @@ void CheerleaderState_Attack_DoublePom::EnterState()
 	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue();
+	EnemyState_AttackBase::SetAttackColValue(float4::Zero, ColSize);
 }
 
 
@@ -80,9 +81,9 @@ void CheerleaderState_Attack_DoublePom::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
+
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
-
 
 
 	//일정 범위 밖에 있다면 idle

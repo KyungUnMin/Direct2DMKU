@@ -26,6 +26,9 @@ private:
 	static const float AniInterTime;
 	static const int Damage;
 
+	const float4 ColOffset = float4::Right * 100.f;
+	const float4 ColSize = float4::One * 150.f;
+
 	void LoadAnimation();
 	void CreateAnimation();
 };
