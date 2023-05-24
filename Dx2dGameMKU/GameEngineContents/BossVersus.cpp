@@ -1,7 +1,6 @@
 #include "PrecompileHeader.h"
 #include "BossVersus.h"
 
-#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/GameEngineLevel.h>
@@ -9,6 +8,7 @@
 
 #include "RCGDefine.h"
 
+#include "ShaderUIRenderer.h"
 
 
 BossVersus* BossVersus::GPtr = nullptr;
@@ -104,12 +104,12 @@ void BossVersus::LoadImages()
 void BossVersus::CreatePortraits(BossType _Boss)
 {
 	//플레이어 초상화
-	PlayerPortrait = CreateComponent<GameEngineUIRenderer>();
+	PlayerPortrait = CreateComponent<ShaderUIRenderer>();
 	PlayerPortrait->SetPipeLine(PortraitPipeName);
 	PlayerPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
 	//보스 초상화
-	BossPortrait = CreateComponent<GameEngineUIRenderer>();
+	BossPortrait = CreateComponent<ShaderUIRenderer>();
 	BossPortrait->SetPipeLine(PortraitPipeName);
 	BossPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 

@@ -418,9 +418,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\03.BlowBack">
       <UniqueIdentifier>{b5f68fea-35e1-4bd5-b6f4-93dfa206f4ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04.Component\03.SelfRenderer">
-      <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed">
       <UniqueIdentifier>{a1c8a2e1-3171-4ea8-a648-fd5f6f42ee23}</UniqueIdentifier>
     </Filter>
@@ -444,9 +441,6 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\03.DonkeyKick">
       <UniqueIdentifier>{bad59354-fd16-4d06-8872-bfbe41e9fd78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05.Tool\02.FileCopier">
-      <UniqueIdentifier>{8fa0af2a-694a-4b19-8928-2a2a3c672545}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader">
       <UniqueIdentifier>{ff3f3cab-b708-4145-8525-f8d9da61a74f}</UniqueIdentifier>
@@ -582,6 +576,9 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed">
       <UniqueIdentifier>{476dc667-00c7-4119-8edb-1267c7bc5e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Component\03.ShaderUIRenderer">
+      <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -903,9 +900,6 @@
     <ClCompile Include="SchoolBoyState_Damaged_WallOut.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallOut</Filter>
     </ClCompile>
-    <ClCompile Include="ContentsSelfRenderer.cpp">
-      <Filter>04.Component\03.SelfRenderer</Filter>
-    </ClCompile>
     <ClCompile Include="SchoolBoyState_Damaged_Dazed.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed</Filter>
     </ClCompile>
@@ -923,9 +917,6 @@
     </ClCompile>
     <ClCompile Include="PlayerState_DashAttack_DropKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick</Filter>
-    </ClCompile>
-    <ClCompile Include="FileCopier.cpp">
-      <Filter>05.Tool\02.FileCopier</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM</Filter>
@@ -1232,6 +1223,9 @@
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_Dazed.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUIRenderer.cpp">
+      <Filter>04.Component\03.ShaderUIRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1544,9 +1538,6 @@
     <ClInclude Include="SchoolBoyState_Damaged_WallOut.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\05.WallOut</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsSelfRenderer.h">
-      <Filter>04.Component\03.SelfRenderer</Filter>
-    </ClInclude>
     <ClInclude Include="SchoolBoyState_Damaged_Dazed.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.SchoolBoy\05.Damaged\06.Dazed</Filter>
     </ClInclude>
@@ -1564,9 +1555,6 @@
     </ClInclude>
     <ClInclude Include="PlayerState_DashAttack_DropKick.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\05.DashAttack\02.DropKick</Filter>
-    </ClInclude>
-    <ClInclude Include="FileCopier.h">
-      <Filter>05.Tool\02.FileCopier</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\02.FSM</Filter>
@@ -1873,6 +1861,9 @@
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_Dazed.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUIRenderer.h">
+      <Filter>04.Component\03.ShaderUIRenderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

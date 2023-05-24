@@ -2,7 +2,7 @@
 #include "StateBase.h"
 #include "RCGEnums.h"
 
-class GameEngineRenderer;
+class ShaderUIRenderer;
 
 class BossVersusState_PortraitMatch : public StateBase
 {
@@ -24,9 +24,9 @@ private:
 	static const std::string_view LightPipeName;
 	static const std::string_view LinkCBufferName;
 
-	std::shared_ptr<GameEngineRenderer> PlayerPortrait = nullptr;
-	std::shared_ptr<GameEngineRenderer> BossPortrait = nullptr;
-	std::shared_ptr<GameEngineRenderer> UILightRender = nullptr;
+	std::shared_ptr<ShaderUIRenderer> PlayerPortrait = nullptr;
+	std::shared_ptr<ShaderUIRenderer> BossPortrait = nullptr;
+	std::shared_ptr<ShaderUIRenderer> UILightRender = nullptr;
 	
 	struct ShaderData
 	{

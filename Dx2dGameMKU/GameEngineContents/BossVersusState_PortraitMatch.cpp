@@ -2,14 +2,14 @@
 #include "BossVersusState_PortraitMatch.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEngineCore/GameEngineUIRenderer.h>
+
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 
 #include "BossVersus.h"
 #include "BossVersusUIFSM.h"
-
+#include "ShaderUIRenderer.h"
 
 const std::string_view BossVersusState_PortraitMatch::LightPipeName = "DirectColor";
 const std::string_view BossVersusState_PortraitMatch::LinkCBufferName = "LinkColor";
@@ -46,7 +46,7 @@ void BossVersusState_PortraitMatch::CreateRenderers()
 
 	//화면 전체적인 이펙트 색상
 	const float4& ScreenSize = GameEngineWindow::GetScreenSize();
-	UILightRender = VersusUI->CreateComponent<GameEngineUIRenderer>();
+	UILightRender = VersusUI->CreateComponent<ShaderUIRenderer>();
 	UILightRender->SetPipeLine(LightPipeName);
 	UILightRender->GetShaderResHelper().SetConstantBufferLink(LinkCBufferName, UILightColor);
 	UILightRender->GetTransform()->SetLocalScale(ScreenSize);

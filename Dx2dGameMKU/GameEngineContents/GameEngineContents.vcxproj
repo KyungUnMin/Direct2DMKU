@@ -223,10 +223,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ContentsSelfRenderer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="CopFSM.h" />
     <ClInclude Include="CopState_Attack_AxeKick.h" />
     <ClInclude Include="CopState_Attack_Elbow.h" />
@@ -290,10 +286,6 @@
     <ClInclude Include="FieldEnemy_SchoolGirl.h" />
     <ClInclude Include="FieldEnemy_TigerMan.h" />
     <ClInclude Include="FieldEnemy_Waver.h" />
-    <ClInclude Include="FileCopier.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="FreeCamMoveController.h">
       <SubType>
       </SubType>
@@ -504,6 +496,10 @@
     <ClInclude Include="SchoolGirlState_Ready.h" />
     <ClInclude Include="SchoolGirlState_Walk.h" />
     <ClInclude Include="ShaderTestActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShaderUIRenderer.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -746,10 +742,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
-    <ClCompile Include="ContentsSelfRenderer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="CopFSM.cpp" />
     <ClCompile Include="CopState_Attack_AxeKick.cpp" />
     <ClCompile Include="CopState_Attack_Elbow.cpp" />
@@ -815,10 +807,6 @@
     <ClCompile Include="FieldEnemy_SchoolGirl.cpp" />
     <ClCompile Include="FieldEnemy_TigerMan.cpp" />
     <ClCompile Include="FieldEnemy_Waver.cpp" />
-    <ClCompile Include="FileCopier.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="FreeCamMoveController.cpp">
       <SubType>
       </SubType>
@@ -1029,6 +1017,10 @@
     <ClCompile Include="SchoolGirlState_Ready.cpp" />
     <ClCompile Include="SchoolGirlState_Walk.cpp" />
     <ClCompile Include="ShaderTestActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShaderUIRenderer.cpp">
       <SubType>
       </SubType>
     </ClCompile>

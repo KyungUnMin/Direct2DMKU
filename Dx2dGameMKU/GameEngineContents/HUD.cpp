@@ -1,12 +1,14 @@
 #include "PrecompileHeader.h"
 #include "HUD.h"
 
-#include <GameEngineCore/GameEngineUIRenderer.h>
+//#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+
+#include "ShaderUIRenderer.h"
 
 HUD::MpDatas HUD::MpData;
 
@@ -81,7 +83,7 @@ void HUD::CreateMpBar()
 	const float4 BarScale = float4{ 360.f, 18.f };
 	const float4 Offset = float4{ -168.f, 294.f , -1.f};
 
-	std::shared_ptr<GameEngineUIRenderer> MpBar = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
+	std::shared_ptr<ShaderUIRenderer> MpBar = CreateComponent<ShaderUIRenderer>(FieldUIRenderOrder::HUD);
 	MpBar->SetPipeLine("MpBar");
 	MpBar->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "HUD_MpBar.png");
 	MpBar->GetShaderResHelper().SetConstantBufferLink("MpRatio", HUD::MpData);

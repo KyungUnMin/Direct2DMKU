@@ -49,7 +49,3 @@ private:
 	virtual ~RCGDefine() = 0;
 };
 
-
-
-
-
