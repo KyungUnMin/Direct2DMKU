@@ -7,6 +7,7 @@ enum class CheerleaderStateType
 	Idle,
 	Walk,
 	//Ready,
+	CartWheel,
 
 	//Attack
 	//AxeKick,

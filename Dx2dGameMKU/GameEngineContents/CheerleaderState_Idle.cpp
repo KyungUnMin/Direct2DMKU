@@ -72,13 +72,13 @@ void CheerleaderState_Idle::Update(float _DeltaTime)
 		return;
 
 
-	/*float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
+	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
 	if (VecToPlayer.Size() < GetSightRadius())
 	{
 		CheerleaderStateType RandomAttack = CheerleaderFSM::GetRandomAttack();
 		GetFSM()->ChangeState(RandomAttack);
 	}
-	else*/
+	else
 	{
 		GetFSM()->ChangeState(CheerleaderStateType::Walk);
 	}

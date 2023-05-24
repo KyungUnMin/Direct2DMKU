@@ -7,6 +7,7 @@
 #include "CheerleaderState_Idle.h"
 #include "CheerleaderState_Walk.h"
 //#include "CheerleaderState_Ready.h"
+#include "CheerleaderState_CartWheel.h"
 
 //Attack
 //#include "CheerleaderState_Attack_AxeKick.h"
@@ -30,6 +31,7 @@ const  std::string_view CheerleaderFSM::NormalDamaged_FileName = "Cheerleader_Ge
 
 const std::vector<CheerleaderStateType> CheerleaderFSM::AttackGroup =
 {
+	CheerleaderStateType::CartWheel,
 	//CheerleaderStateType::AxeKick,
 	//CheerleaderStateType::Elbow,
 	//CheerleaderStateType::Punch,
@@ -67,6 +69,7 @@ void CheerleaderFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<CheerleaderState_Idle>(CheerleaderStateType::Idle);
 	FSMBase::CreateState<CheerleaderState_Walk>(CheerleaderStateType::Walk);
 	//FSMBase::CreateState<CheerleaderState_Ready>(CheerleaderStateType::Ready);
+	FSMBase::CreateState<CheerleaderState_CartWheel>(CheerleaderStateType::CartWheel);
 
 
 	//Attack

@@ -208,6 +208,10 @@
     <ClInclude Include="CheerleaderState_Attack_Elbow.h" />
     <ClInclude Include="CheerleaderState_Attack_Punch.h" />
     <ClInclude Include="CheerleaderState_Attack_SideKick.h" />
+    <ClInclude Include="CheerleaderState_CartWheel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CheerleaderState_Damaged_BlowBack.h" />
     <ClInclude Include="CheerleaderState_Damaged_Dazed.h" />
     <ClInclude Include="CheerleaderState_Damaged_KnockDown.h" />
@@ -219,6 +223,10 @@
     <ClInclude Include="CheerleaderState_NormalDamaged_Stomach.h" />
     <ClInclude Include="CheerleaderState_Ready.h" />
     <ClInclude Include="CheerleaderState_Walk.h" />
+    <ClInclude Include="AfterImageEffect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ColorWave.h">
       <SubType>
       </SubType>
@@ -762,6 +770,10 @@
     <ClCompile Include="CheerleaderState_Attack_Elbow.cpp" />
     <ClCompile Include="CheerleaderState_Attack_Punch.cpp" />
     <ClCompile Include="CheerleaderState_Attack_SideKick.cpp" />
+    <ClCompile Include="CheerleaderState_CartWheel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CheerleaderState_Damaged_BlowBack.cpp" />
     <ClCompile Include="CheerleaderState_Damaged_Dazed.cpp" />
     <ClCompile Include="CheerleaderState_Damaged_KnockDown.cpp" />
@@ -773,6 +785,10 @@
     <ClCompile Include="CheerleaderState_NormalDamaged_Stomach.cpp" />
     <ClCompile Include="CheerleaderState_Ready.cpp" />
     <ClCompile Include="CheerleaderState_Walk.cpp" />
+    <ClCompile Include="AfterImageEffect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ColorWave.cpp">
       <SubType>
       </SubType>
