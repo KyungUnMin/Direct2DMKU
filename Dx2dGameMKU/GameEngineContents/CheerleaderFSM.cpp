@@ -10,10 +10,11 @@
 #include "CheerleaderState_CartWheel.h"
 
 //Attack
-//#include "CheerleaderState_Attack_AxeKick.h"
-//#include "CheerleaderState_Attack_Elbow.h"
-//#include "CheerleaderState_Attack_Punch.h"
-//#include "CheerleaderState_Attack_SideKick.h"
+#include "CheerleaderState_Attack_BackFlip.h"
+#include "CheerleaderState_Attack_DoublePom.h"
+#include "CheerleaderState_Attack_Jab.h"
+#include "CheerleaderState_Attack_SpinPom.h"
+
 
 //Damaged
 #include "CheerleaderState_NormalDamaged_Face.h"
@@ -32,10 +33,10 @@ const  std::string_view CheerleaderFSM::NormalDamaged_FileName = "Cheerleader_Ge
 const std::vector<CheerleaderStateType> CheerleaderFSM::AttackGroup =
 {
 	CheerleaderStateType::CartWheel,
-	//CheerleaderStateType::AxeKick,
-	//CheerleaderStateType::Elbow,
-	//CheerleaderStateType::Punch,
-	//CheerleaderStateType::SideKick
+	CheerleaderStateType::BackFlip,
+	CheerleaderStateType::DoublePom,
+	CheerleaderStateType::Jab,
+	CheerleaderStateType::SpinPom
 };
 
 CheerleaderStateType CheerleaderFSM::GetRandomAttack()
@@ -73,10 +74,10 @@ void CheerleaderFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<CheerleaderState_Attack_AxeKick>(CheerleaderStateType::AxeKick);
-	//FSMBase::CreateState<CheerleaderState_Attack_Elbow>(CheerleaderStateType::Elbow);
-	//FSMBase::CreateState<CheerleaderState_Attack_Punch>(CheerleaderStateType::Punch);
-	//FSMBase::CreateState<CheerleaderState_Attack_SideKick>(CheerleaderStateType::SideKick);
+	FSMBase::CreateState<CheerleaderState_Attack_BackFlip>(CheerleaderStateType::BackFlip);
+	FSMBase::CreateState<CheerleaderState_Attack_DoublePom>(CheerleaderStateType::DoublePom);
+	FSMBase::CreateState<CheerleaderState_Attack_Jab>(CheerleaderStateType::Jab);
+	FSMBase::CreateState<CheerleaderState_Attack_SpinPom>(CheerleaderStateType::SpinPom);
 
 
 	//Damaged

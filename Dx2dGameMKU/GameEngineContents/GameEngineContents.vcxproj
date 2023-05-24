@@ -205,9 +205,25 @@
     </ClInclude>
     <ClInclude Include="CheerleaderFSM.h" />
     <ClInclude Include="CheerleaderState_Attack_AxeKick.h" />
+    <ClInclude Include="CheerleaderState_Attack_BackFlip.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_DoublePom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CheerleaderState_Attack_Elbow.h" />
+    <ClInclude Include="CheerleaderState_Attack_Jab.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CheerleaderState_Attack_Punch.h" />
     <ClInclude Include="CheerleaderState_Attack_SideKick.h" />
+    <ClInclude Include="CheerleaderState_Attack_SpinPom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CheerleaderState_CartWheel.h">
       <SubType>
       </SubType>
@@ -767,9 +783,25 @@
     </ClCompile>
     <ClCompile Include="CheerleaderFSM.cpp" />
     <ClCompile Include="CheerleaderState_Attack_AxeKick.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_BackFlip.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_DoublePom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CheerleaderState_Attack_Elbow.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_Jab.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CheerleaderState_Attack_Punch.cpp" />
     <ClCompile Include="CheerleaderState_Attack_SideKick.cpp" />
+    <ClCompile Include="CheerleaderState_Attack_SpinPom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CheerleaderState_CartWheel.cpp">
       <SubType>
       </SubType>

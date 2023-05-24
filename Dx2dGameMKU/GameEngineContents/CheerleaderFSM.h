@@ -9,11 +9,13 @@ enum class CheerleaderStateType
 	//Ready,
 	CartWheel,
 
+
 	//Attack
-	//AxeKick,
-	//Elbow,
-	//Punch,
-	//SideKick,
+	BackFlip,
+	DoublePom,
+	Jab,
+	SpinPom,
+
 
 	//Damaged
 	NormalDamaged_Face,

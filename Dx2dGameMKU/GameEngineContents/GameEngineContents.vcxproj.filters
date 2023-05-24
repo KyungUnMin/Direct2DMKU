@@ -640,6 +640,18 @@
     <Filter Include="03.Actor\06.Effect\04.AterImageEffect">
       <UniqueIdentifier>{5ec455dd-e801-4686-a7db-56d229a39cfe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\01.BackFlip">
+      <UniqueIdentifier>{b665074d-e536-4608-92fc-cfaf346cc3dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\02.DoublePom">
+      <UniqueIdentifier>{a5b5cd23-fcda-47a9-b690-bc36a05cc93c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.Jab">
+      <UniqueIdentifier>{f3ecbe13-a912-4daf-986a-4a1e8e06b63a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.SpinPom">
+      <UniqueIdentifier>{bd41bb86-a6e2-44bc-b1d7-e2df43f83ebd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1305,6 +1317,18 @@
     <ClCompile Include="AfterImageEffect.cpp">
       <Filter>03.Actor\06.Effect\04.AterImageEffect</Filter>
     </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_BackFlip.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\01.BackFlip</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_DoublePom.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\02.DoublePom</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_Jab.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.Jab</Filter>
+    </ClCompile>
+    <ClCompile Include="CheerleaderState_Attack_SpinPom.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.SpinPom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1960,6 +1984,18 @@
     </ClInclude>
     <ClInclude Include="AfterImageEffect.h">
       <Filter>03.Actor\06.Effect\04.AterImageEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_BackFlip.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\01.BackFlip</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_DoublePom.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\02.DoublePom</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_Jab.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.Jab</Filter>
+    </ClInclude>
+    <ClInclude Include="CheerleaderState_Attack_SpinPom.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.SpinPom</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

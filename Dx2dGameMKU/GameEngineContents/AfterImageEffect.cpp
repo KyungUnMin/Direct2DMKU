@@ -31,7 +31,7 @@ void AfterImageEffect::Init(std::shared_ptr<GameEngineSpriteRenderer> _OwnerRend
 	GameEngineTransform* OwnerRenderTrans = _OwnerRender->GetTransform();
 	GameEngineTransform* EffectTrans = GetTransform();
 
-	EffectTrans->SetWorldPosition(OwnerRenderTrans->GetWorldPosition());
+	EffectTrans->SetWorldPosition(OwnerRenderTrans->GetWorldPosition() + float4::Forward);
 	EffectTrans->SetLocalScale(OwnerRenderTrans->GetLocalScale());
 }
 
