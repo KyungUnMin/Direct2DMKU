@@ -88,7 +88,7 @@ void EnemyState_WalkBase::FindPath()
 				continue;
 
 			//막힌 곳일때
-			if (true == BGPtr->IsBlockGrid(NextX, NextY))
+			if (true == GetBackGround()->IsBlockGrid(NextX, NextY))
 				continue;
 
 			//이미 방문한 곳일때

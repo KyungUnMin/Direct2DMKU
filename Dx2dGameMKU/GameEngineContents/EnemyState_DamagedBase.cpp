@@ -17,12 +17,6 @@ EnemyState_DamagedBase::~EnemyState_DamagedBase()
 
 
 
-void EnemyState_DamagedBase::Start()
-{
-	EnemyStateBase::Start();
-	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
-}
-
 void EnemyState_DamagedBase::EnterState()
 {
 	EnemyStateBase::EnterState();
@@ -52,35 +46,18 @@ bool EnemyState_DamagedBase::Update_BlowBack(float _DeltaTime)
 
 bool EnemyState_DamagedBase::Update_BlowHorizon(float _Ratio, float _DeltaTime)
 {
-	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
-	
-	float NowAcc = StartAcc * (1.f - _Ratio);
-
-	float4 NextPos = EnemyTrans->GetLocalPosition();
-
 	//적이 오른쪽을 바라보고 있을때
 	if (true == EnemyDir)
 	{
 		//바라보는 방향 반대로 날라간다
-		NextPos += (float4::Left * NowAcc * _DeltaTime);
+		return EnemyStateBase::Update_AccMove(_DeltaTime, _Ratio, float4::Left, StartAcc);
 	}
 	//적이 왼쪽을 바라보고 있을때
 	else
 	{
 		//바라보는 방향 반대로 날라간다
-		NextPos += (float4::Right* NowAcc * _DeltaTime);
+		return EnemyStateBase::Update_AccMove(_DeltaTime, _Ratio, float4::Right, StartAcc);
 	}
-
-	//갈수 없는 곳이면 움직이지 않는다
-	if (true == BGPtr->IsBlockPos(NextPos))
-		return false;
-
-	std::pair<int,int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
-	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
-		return false;
-
-	EnemyTrans->SetLocalPosition(NextPos);
-	return true;
 }
 
 void EnemyState_DamagedBase::Update_BlowVertical(float _Ratio)

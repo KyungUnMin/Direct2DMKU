@@ -9,10 +9,10 @@ enum class SchoolGirlStateType
 	Ready,
 
 	//Attack
-	AxeKick,
-	Elbow,
-	Punch,
-	SideKick,
+	CrescentKick,
+	Jab,
+	JumpKneeKick,
+	Kick,
 
 	//Damaged
 	NormalDamaged_Face,

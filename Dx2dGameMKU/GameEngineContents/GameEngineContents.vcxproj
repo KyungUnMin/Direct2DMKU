@@ -480,10 +480,46 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SchoolGirlFSM.h" />
-    <ClInclude Include="SchoolGirlState_Attack_AxeKick.h" />
-    <ClInclude Include="SchoolGirlState_Attack_Elbow.h" />
-    <ClInclude Include="SchoolGirlState_Attack_Punch.h" />
-    <ClInclude Include="SchoolGirlState_Attack_SideKick.h" />
+    <ClInclude Include="SchoolGirlState_Attack_AxeKick.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_CrescentKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Elbow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Jab.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_JumpKneeKick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Kick.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Punch.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_SideKick.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="SchoolGirlState_Damaged_BlowBack.h" />
     <ClInclude Include="SchoolGirlState_Damaged_Dazed.h" />
     <ClInclude Include="SchoolGirlState_Damaged_KnockDown.h" />
@@ -1001,10 +1037,46 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SchoolGirlFSM.cpp" />
-    <ClCompile Include="SchoolGirlState_Attack_AxeKick.cpp" />
-    <ClCompile Include="SchoolGirlState_Attack_Elbow.cpp" />
-    <ClCompile Include="SchoolGirlState_Attack_Punch.cpp" />
-    <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp" />
+    <ClCompile Include="SchoolGirlState_Attack_AxeKick.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_CrescentKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Elbow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Jab.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_JumpKneeKick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Kick.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Punch.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SchoolGirlState_Damaged_BlowBack.cpp" />
     <ClCompile Include="SchoolGirlState_Damaged_Dazed.cpp" />
     <ClCompile Include="SchoolGirlState_Damaged_KnockDown.cpp" />

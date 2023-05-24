@@ -25,6 +25,7 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 	static const int Damage;
+	static const float JumpMaxHeight;
 
 	int TotalDamage = 0;
 

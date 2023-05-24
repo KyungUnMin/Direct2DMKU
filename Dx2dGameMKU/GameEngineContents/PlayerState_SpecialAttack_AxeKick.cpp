@@ -10,6 +10,7 @@ const std::string_view PlayerState_SpecialAttack_AxeKick::AniFileName = "Player_
 const std::pair<int, int> PlayerState_SpecialAttack_AxeKick::AniCutFrame = std::pair<int, int>(4, 5);
 const float PlayerState_SpecialAttack_AxeKick::AniInterTime = 0.05f;
 const int PlayerState_SpecialAttack_AxeKick::Damage = 10;
+const float PlayerState_SpecialAttack_AxeKick::JumpMaxHeight = 150.f;
 
 PlayerState_SpecialAttack_AxeKick::PlayerState_SpecialAttack_AxeKick()
 {
@@ -77,7 +78,7 @@ void PlayerState_SpecialAttack_AxeKick::Update(float _DeltaTime)
 {
 	PlayerState_AttackBase::Update(_DeltaTime);
 
-	PlayerState_AttackBase::Update_SinVertical(10.f * AniInterTime);
+	PlayerState_AttackBase::Update_SinVertical(10.f * AniInterTime, JumpMaxHeight);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

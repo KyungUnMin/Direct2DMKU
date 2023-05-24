@@ -43,12 +43,12 @@ const std::vector<float4> SchoolEntryLevel::DestSitPos =
 	{-502.f, -156.f, -156.f},
 	{-290.f, -156.f, -156.f},
 	{-70.f, -156.f, -156.f},
-	{-147.f, -156.f, -156.f},
+	{147.f, -156.f, -156.f},
 
 	{-632.f, -291.f, -291.f},
 	{-420.f, -291.f, -291.f},
 	{-205.f, -291.f, -291.f},
-	{-13.f, -291.f, -291.f}
+	{13.f, -291.f, -291.f}
 };
 
 SchoolEntryLevel::SchoolEntryLevel()
@@ -155,12 +155,13 @@ void SchoolEntryLevel::CreateEnemies()
 		SchoolBoyPtr->SitDown();
 	}
 	
-
-	
-	
-	SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
-	SchoolGirlPtr->GetTransform()->SetWorldPosition(float4{ -100.f, -200.f , -200.f });
-	SchoolGirlPtr->SitDown();
-
+	const size_t GirlSitPosArr[3] = { 1, 3, 4 };
+	for (size_t i = 0; i < 3; ++i)
+	{
+		SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
+		size_t SitIndex = GirlSitPosArr[i];
+		SchoolGirlPtr->GetTransform()->SetWorldPosition(DestSitPos[SitIndex]);
+		SchoolGirlPtr->SitDown();
+	}
 
 }

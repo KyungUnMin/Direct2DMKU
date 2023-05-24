@@ -23,9 +23,7 @@ EnemyState_WalkBase::~EnemyState_WalkBase()
 void EnemyState_WalkBase::Start()
 {
 	EnemyStateBase::Start();
-
-	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
-	GridMapScale = BGPtr->GetGridMapScale();
+	GridMapScale = GetBackGround()->GetGridMapScale();
 }
 
 void EnemyState_WalkBase::EnterState()
@@ -50,7 +48,7 @@ bool EnemyState_WalkBase::SetDest()
 	std::pair<int, int> DestGridPos = PathStack.back();
 	PathStack.pop_back();
 
-	DestPos = BGPtr->GetPosFromGrid(DestGridPos.first, DestGridPos.second);
+	DestPos = GetBackGround()->GetPosFromGrid(DestGridPos.first, DestGridPos.second);
 	DestPos.z = DestPos.y;
 	StartPos = GetEnemy()->GetTransform()->GetWorldPosition();
 	return true;

@@ -9,10 +9,10 @@
 #include "SchoolGirlState_Ready.h"
 
 //Attack
-#include "SchoolGirlState_Attack_AxeKick.h"
-#include "SchoolGirlState_Attack_Elbow.h"
-#include "SchoolGirlState_Attack_Punch.h"
-#include "SchoolGirlState_Attack_SideKick.h"
+#include "SchoolGirlState_Attack_CrescentKick.h"
+#include "SchoolGirlState_Attack_Jab.h"
+#include "SchoolGirlState_Attack_JumpKneeKick.h"
+#include "SchoolGirlState_Attack_Kick.h"
 
 //Damaged
 #include "SchoolGirlState_NormalDamaged_Face.h"
@@ -30,10 +30,10 @@ const  std::string_view SchoolGirlFSM::NormalDamaged_FileName = "SchoolGirl_GetH
 
 const std::vector<SchoolGirlStateType> SchoolGirlFSM::AttackGroup =
 {
-	SchoolGirlStateType::AxeKick,
-	SchoolGirlStateType::Elbow,
-	SchoolGirlStateType::Punch,
-	SchoolGirlStateType::SideKick
+	SchoolGirlStateType::CrescentKick,
+	SchoolGirlStateType::Jab,
+	SchoolGirlStateType::JumpKneeKick,
+	SchoolGirlStateType::Kick
 };
 
 SchoolGirlStateType SchoolGirlFSM::GetRandomAttack()
@@ -70,10 +70,10 @@ void SchoolGirlFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<SchoolGirlState_Attack_AxeKick>(SchoolGirlStateType::AxeKick);
-	//FSMBase::CreateState<SchoolGirlState_Attack_Elbow>(SchoolGirlStateType::Elbow);
-	//FSMBase::CreateState<SchoolGirlState_Attack_Punch>(SchoolGirlStateType::Punch);
-	//FSMBase::CreateState<SchoolGirlState_Attack_SideKick>(SchoolGirlStateType::SideKick);
+	FSMBase::CreateState<SchoolGirlState_Attack_CrescentKick>(SchoolGirlStateType::CrescentKick);
+	FSMBase::CreateState<SchoolGirlState_Attack_Jab>(SchoolGirlStateType::Jab);
+	FSMBase::CreateState<SchoolGirlState_Attack_JumpKneeKick>(SchoolGirlStateType::JumpKneeKick);
+	FSMBase::CreateState<SchoolGirlState_Attack_Kick>(SchoolGirlStateType::Kick);
 
 
 	//Damaged

@@ -27,7 +27,6 @@ protected:
 	}
 
 private:
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::pair<int, int> GridMapScale;
 
 	std::vector<std::pair<int, int>> PathStack;

@@ -8,6 +8,7 @@
 class EnemyFSMBase;
 class FieldEnemyBase;
 class GameEngineCollision;
+class BackGround;
 
 class EnemyStateBase : public StateBase
 {
@@ -60,12 +61,26 @@ protected:
 
 	bool IsRightDir();
 
+	void Update_SinJump(float _Duration, float _MaxHeight = 80.f);
+
+	bool Update_AccMove(
+		float _DeltaTime, float _Ratio,
+		const float4& _Dir, float _StartAcc = 2000.f);
+
+
+	inline std::shared_ptr<BackGround> GetBackGround() const
+	{
+		return BGPtr;
+	}
+
+
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 	std::shared_ptr<GameEngineCollision> MainCollider = nullptr;
 
 	EnemyFSMBase* FsmPtr = nullptr;
 	FieldEnemyBase* EnemyPtr = nullptr;
+	std::shared_ptr<BackGround> BGPtr = nullptr;
 	float SightRadius = 100.f;
 
 	inline void ValidCheck(void* _Ptr) const

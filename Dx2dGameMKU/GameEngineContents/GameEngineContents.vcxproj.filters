@@ -580,6 +580,21 @@
     <Filter Include="04.Component\03.ShaderUIRenderer">
       <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage">
+      <UniqueIdentifier>{06a91abb-c5e2-48b3-a1e6-f657e02ebedf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\01.CrescentKick">
+      <UniqueIdentifier>{0abe34a4-f284-41c9-bc61-04fec58e4c55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\02.Jab">
+      <UniqueIdentifier>{5c311fa7-6d48-4144-be6c-15a97df54114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\03.JumpKneeKick">
+      <UniqueIdentifier>{44cf5149-9879-4984-a44b-dabbe29c29e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\04.Kick">
+      <UniqueIdentifier>{6500f84e-62b5-4904-946d-535a91935b46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -924,18 +939,6 @@
     <ClCompile Include="FieldEnemy_SchoolGirl.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="SchoolGirlState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="CheerleaderFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM</Filter>
     </ClCompile>
@@ -1226,6 +1229,30 @@
     </ClCompile>
     <ClCompile Include="ShaderUIRenderer.cpp">
       <Filter>04.Component\03.ShaderUIRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_AxeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Punch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_SideKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_CrescentKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\01.CrescentKick</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Jab.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\02.Jab</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_JumpKneeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\03.JumpKneeKick</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolGirlState_Attack_Kick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\04.Kick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1562,18 +1589,6 @@
     <ClInclude Include="FieldEnemy_SchoolGirl.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\01.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="SchoolGirlState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="SchoolGirlState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="CheerleaderFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\02.FSM</Filter>
     </ClInclude>
@@ -1864,6 +1879,30 @@
     </ClInclude>
     <ClInclude Include="ShaderUIRenderer.h">
       <Filter>04.Component\03.ShaderUIRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_AxeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Elbow.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Punch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_SideKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\99.Garbage</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_CrescentKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\01.CrescentKick</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Jab.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\02.Jab</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_JumpKneeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\03.JumpKneeKick</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolGirlState_Attack_Kick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\04.Kick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

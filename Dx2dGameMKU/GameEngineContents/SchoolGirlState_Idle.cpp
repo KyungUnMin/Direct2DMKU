@@ -70,13 +70,13 @@ void SchoolGirlState_Idle::Update(float _DeltaTime)
 		return;
 
 
-	/*float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
+	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
 	if (VecToPlayer.Size() < GetSightRadius())
 	{
 		SchoolGirlStateType RandomAttack = SchoolGirlFSM::GetRandomAttack();
 		GetFSM()->ChangeState(RandomAttack);
 	}
-	else*/
+	else
 	{
 		GetFSM()->ChangeState(SchoolGirlStateType::Walk);
 	}

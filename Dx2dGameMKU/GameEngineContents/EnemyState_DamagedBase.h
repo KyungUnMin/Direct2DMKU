@@ -13,7 +13,6 @@ public:
 	EnemyState_DamagedBase& operator=(const EnemyState_DamagedBase&& _Other) noexcept = delete;
 
 protected:
-	void Start() override;
 	void EnterState() override;
 	bool Update_BlowBack(float _DeltaTime);
 	void ExitState() override;
@@ -45,7 +44,6 @@ private:
 
 
 	bool EnemyDir = true;
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
 	bool Update_BlowHorizon(float _Ratio, float _DeltaTime);
 	void Update_BlowVertical(float _Ratio);
