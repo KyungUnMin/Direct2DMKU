@@ -11,9 +11,10 @@ const std::string_view SchoolGirlState_Attack_CrescentKick::AniFileName = "Schoo
 const std::pair<int, int> SchoolGirlState_Attack_CrescentKick::AniCutFrame = std::pair<int, int>(5, 3);
 const float SchoolGirlState_Attack_CrescentKick::AniInterTime = 0.08f;
 const int SchoolGirlState_Attack_CrescentKick::Damage = 5;
-const float SchoolGirlState_Attack_CrescentKick::Duration = 0.8f;
-const float4 SchoolGirlState_Attack_CrescentKick::ColOffset = float4::Left * 100.f;
-const float4 SchoolGirlState_Attack_CrescentKick::ColSize = float4::One * 300.f;
+
+const float SchoolGirlState_Attack_CrescentKick::MoveDuration = 0.8f;
+const float SchoolGirlState_Attack_CrescentKick::MoveStartAccTime = 500.f;
+
 
 
 SchoolGirlState_Attack_CrescentKick::SchoolGirlState_Attack_CrescentKick()
@@ -65,6 +66,7 @@ void SchoolGirlState_Attack_CrescentKick::CreateAnimation()
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 6);
+	EnemyState_AttackBase::SetMoveEvent(AniName, 2, false, MoveDuration, MoveStartAccTime);
 }
 
 
@@ -75,16 +77,7 @@ void SchoolGirlState_Attack_CrescentKick::EnterState()
 	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue(float4::Left * 100.f, float4::One * 300.f);
-
-	if (true == EnemyStateBase::IsRightDir())
-	{
-		EnemyDir = float4::Right;
-	}
-	else
-	{
-		EnemyDir = float4::Left;
-	}
+	EnemyState_AttackBase::SetAttackColValue(ColOffset, ColSize);
 }
 
 
@@ -94,10 +87,8 @@ void SchoolGirlState_Attack_CrescentKick::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
-
-	float Ratio = (GetLiveTime() / Duration);
-	EnemyStateBase::Update_AccMove(_DeltaTime, Ratio, EnemyDir, 500.f);
-
+	
+	
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 

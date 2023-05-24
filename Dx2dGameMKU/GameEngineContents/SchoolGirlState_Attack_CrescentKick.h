@@ -26,12 +26,15 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 	static const int Damage;
-	static const float Duration;
-	static const float4 ColOffset;
-	static const float4 ColSize;
+
+	static const float MoveDuration;
+	static const float MoveStartAccTime;
+
+	const float4 ColOffset = float4::Left * 100.f;
+	const float4 ColSize = float4::One * 200.f;
+	
 
 	int AttackCount = 0;
-	float4 EnemyDir = float4::Zero;
 
 	void LoadAnimation();
 	void CreateAnimation();
