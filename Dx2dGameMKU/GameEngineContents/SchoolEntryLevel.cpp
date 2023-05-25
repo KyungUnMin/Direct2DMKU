@@ -139,31 +139,29 @@ void SchoolEntryLevel::CreateDoors()
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
 }
 
+
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
 
 void SchoolEntryLevel::CreateEnemies()
 {
-	std::shared_ptr<FieldEnemy_SchoolBoy> SchoolBoyPtr = nullptr;
-	std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
+	EnemySpawner& Spawner = GetEnemySpawner();
 
 	//5번은 Enemy가 아닌 일반 애니메이션으로 할 계획
 	const size_t BoySitPosArr[3] = {0, 2, 6};
 	for (size_t i = 0; i < 3; ++i)
 	{
-		SchoolBoyPtr = CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
 		size_t SitIndex = BoySitPosArr[i];
-		SchoolBoyPtr->GetTransform()->SetWorldPosition(DestSitPos[SitIndex]);
-		SchoolBoyPtr->SitDown();
+		std::shared_ptr<FieldEnemyBase> EnemyPtr = Spawner.CreateEnemy(EnemyType::SchoolBoy, DestSitPos[SitIndex]);
+		std::dynamic_pointer_cast<FieldEnemy_SchoolBoy>(EnemyPtr)->SitDown();
 	}
 	
 	const size_t GirlSitPosArr[3] = { 1, 3, 4 };
 	for (size_t i = 0; i < 3; ++i)
 	{
-		SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
 		size_t SitIndex = GirlSitPosArr[i];
-		SchoolGirlPtr->GetTransform()->SetWorldPosition(DestSitPos[SitIndex]);
-		SchoolGirlPtr->SitDown();
+		std::shared_ptr<FieldEnemyBase> EnemyPtr = Spawner.CreateEnemy(EnemyType::SchoolGirl, DestSitPos[SitIndex]);
+		std::dynamic_pointer_cast<FieldEnemy_SchoolGirl>(EnemyPtr)->SitDown();
 	}
 
 }

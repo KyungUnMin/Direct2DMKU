@@ -43,7 +43,7 @@ void EnemySpawner::CreateEnemies(const std::vector<EnemyCreateParameter>& _Creat
 	}
 }
 
-void EnemySpawner::CreateEnemy(EnemyType _Type, const float4& _CreatePos)
+std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const float4& _CreatePos)
 {
 	std::shared_ptr<BackGround> BGPtr = Level->GetBackGround();
 	std::shared_ptr<FieldEnemyBase> EnemyPtr = nullptr;
@@ -85,6 +85,8 @@ void EnemySpawner::CreateEnemy(EnemyType _Type, const float4& _CreatePos)
 	EnemyDataBlock& Date = Enemies.emplace_back();
 	Date.EnemyPtr = EnemyPtr;
 	Date.GridPos = BGPtr->GetGridFromPos(Pos);
+
+	return EnemyPtr;
 }
 
 

@@ -38,7 +38,7 @@ public:
 	void CreateEnemies(const std::vector<EnemyCreateParameter>& _CreateInfoes);
 
 	//템플릿을 쓰고싶지만 순환참조 때문에 Enum으로 인자 받는다
-	void CreateEnemy(EnemyType _Type,const float4& _CreatePos);
+	std::shared_ptr<FieldEnemyBase> CreateEnemy(EnemyType _Type,const float4& _CreatePos);
 
 
 	inline void SetAllKillCallback(std::function<void()> _Callback)
