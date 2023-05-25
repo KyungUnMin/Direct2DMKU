@@ -8,16 +8,20 @@
 #include "RCGEnums.h"
 
 #include "HitEffect.h"
+#include "FieldLevelBase.h"
+#include "EnemySpawner.h"
 
 FieldEnemyBase::FieldEnemyBase()
 {
-
+	//BindPosChecker();
 }
 
 FieldEnemyBase::~FieldEnemyBase()
 {
 
 }
+
+
 
 void FieldEnemyBase::Start()
 {
@@ -31,6 +35,13 @@ void FieldEnemyBase::OnDamage(int _Damage)
 	if (0 < Hp)
 		return;
 
+	//적이 죽은 한순간
+	if (false == IsKOValue)
+	{
+		EnemySpawner& Spawner = FieldLevelBase::GetPtr()->GetEnemySpawner();
+		Spawner.KillEnemy(DynamicThis<FieldEnemyBase>());
+	}
+	
 	Hp = 0;
 	IsKOValue = true;
 }
@@ -42,4 +53,5 @@ void FieldEnemyBase::CreateHitEffect(const float4& _Offset)
 	float4 EffectPos = GetTransform()->GetWorldPosition() + _Offset;
 	EffectTrans->SetLocalPosition(EffectPos);
 }
+
 

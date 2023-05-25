@@ -646,6 +646,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.SpinPom">
       <UniqueIdentifier>{bd41bb86-a6e2-44bc-b1d7-e2df43f83ebd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\07.EnemySpawner">
+      <UniqueIdentifier>{2ebf8842-f051-421c-ba64-242a61d76614}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1299,6 +1302,9 @@
     <ClCompile Include="CheerleaderState_Attack_SpinPom.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.SpinPom</Filter>
     </ClCompile>
+    <ClCompile Include="EnemySpawner.cpp">
+      <Filter>03.Actor\07.EnemySpawner</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1942,6 +1948,9 @@
     </ClInclude>
     <ClInclude Include="CheerleaderState_Attack_SpinPom.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\05.Cheerleader\04.Attack\03.SpinPom</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpawner.h">
+      <Filter>03.Actor\07.EnemySpawner</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

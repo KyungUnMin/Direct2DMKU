@@ -3,6 +3,7 @@
 
 class EnemyFSMBase;
 class FieldEnemyBase;
+class EnemySpawner;
 
 class EnemyState_WalkBase : public EnemyStateBase
 {
@@ -26,8 +27,13 @@ protected:
 		NextState = static_cast<size_t>(_NextState);
 	}
 
+	inline void SetMoveVolume(const std::pair<int, int>& _Volume)
+	{
+		MoveVolume = _Volume;
+	}
+
 private:
-	//static std::map<std::pair<int, int>, > IsEnemyExistInGrid;
+	EnemySpawner* EnemySpawnerPtr = nullptr;
 
 	std::pair<int, int> GridMapScale;
 
@@ -38,6 +44,9 @@ private:
 	float Timer = 0.f;
 	const float MoveDuration = 0.1f;
 	size_t NextState = -1;
+	
+
+	std::pair<int, int> MoveVolume = std::pair<int, int>{ 3, 3 };
 
 
 	void FindPath();

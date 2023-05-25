@@ -3,6 +3,7 @@
 #include "FieldCamController.h"
 #include "FreeCamMoveController.h"
 #include "ResourceHelper.h"
+#include "EnemySpawner.h"
 
 class FieldPlayer;
 class BackGround;
@@ -39,6 +40,11 @@ public:
 	{
 		return BGPtr;
 	}
+
+	inline EnemySpawner& GetEnemySpawner()
+	{
+		return EnemySpawnerCtrl;
+	}
 	
 
 protected:
@@ -64,7 +70,6 @@ private:
 	std::shared_ptr<FieldPlayer> PlayerPtr = nullptr;
 	FieldCamController CamCtrl;
 	FreeCamMoveController FreeCamDebugMoveCtrl;
-
-	//GameEngineTransform PlayerDebugTransform;
+	EnemySpawner EnemySpawnerCtrl = EnemySpawner(this);
 };
 

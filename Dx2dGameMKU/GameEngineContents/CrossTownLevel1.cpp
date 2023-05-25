@@ -86,33 +86,26 @@ void CrossTownLevel1::CreateDoors()
 
 
 #include <GameEngineBase/GameEngineRandom.h>
-#include "FieldEnemy_SchoolBoy.h"
-#include "FieldEnemy_SchoolGirl.h"
 
 
 void CrossTownLevel1::CreateEnemies()
 {
-	std::shared_ptr<FieldEnemy_SchoolBoy> SchoolBoyPtr = nullptr;
-	std::shared_ptr<FieldEnemy_SchoolGirl> SchoolGirlPtr = nullptr;
+	EnemySpawner& Spawner = FieldLevelBase::GetEnemySpawner();
 
 	const float RangeWidth = 1000.f;
 	const float RangeHeight = 100.f;
 
 	for (size_t i = 0; i < 5; ++i)
 	{
-		SchoolBoyPtr = CreateActor<FieldEnemy_SchoolBoy>(static_cast<int>(UpdateOrder::Enemy));
-		
 		float PosX = GameEngineRandom::MainRandom.RandomFloat(-RangeWidth, RangeWidth);
 		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
-		SchoolBoyPtr->GetTransform()->SetWorldPosition(float4{PosX, PosY, PosY, 1});
+		Spawner.CreateEnemy(EnemyType::SchoolBoy, float4{ PosX , PosY });
 	}
 	
 	for (size_t i = 0; i < 5; ++i)
 	{
-		SchoolGirlPtr = CreateActor<FieldEnemy_SchoolGirl>(static_cast<int>(UpdateOrder::Enemy));
-
 		float PosX = GameEngineRandom::MainRandom.RandomFloat(-RangeWidth, RangeWidth);
 		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
-		SchoolGirlPtr->GetTransform()->SetWorldPosition(float4{ PosX, PosY, PosY, 1 });
+		Spawner.CreateEnemy(EnemyType::SchoolGirl, float4{ PosX , PosY });
 	}
 }

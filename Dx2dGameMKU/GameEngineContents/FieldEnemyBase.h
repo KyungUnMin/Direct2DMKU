@@ -5,6 +5,8 @@ class GameEngineSpriteRenderer;
 
 class FieldEnemyBase : public FieldActorBase
 {
+	friend class EnemySpawner;
+
 public:
 	FieldEnemyBase();
 	~FieldEnemyBase() override;
@@ -18,6 +20,12 @@ public:
 	virtual bool OnDamage_Stomach(int _Damage) = 0;
 	virtual bool OnDamage_Jaw(int _Damage) = 0;
 	virtual bool OnDamage_BlowBack(int _Damage) = 0;
+
+
+	inline size_t GetSpawnID() const
+	{
+		return SpawnIdx;
+	}
 
 protected:
 	void Start() override;
@@ -39,5 +47,12 @@ protected:
 private:
 	int Hp = 100;
 	bool IsKOValue= false;
+	size_t SpawnIdx = -1;
+
+
+	inline void SetSpawnIdx(size_t _Index)
+	{
+		SpawnIdx = _Index;
+	}
 };
 

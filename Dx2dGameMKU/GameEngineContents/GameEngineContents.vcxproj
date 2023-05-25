@@ -268,6 +268,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EnemyFSMBase.h" />
+    <ClInclude Include="EnemySpawner.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EnemyStateBase.h">
       <SubType>
       </SubType>
@@ -819,6 +823,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="EnemyFSMBase.cpp" />
+    <ClCompile Include="EnemySpawner.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EnemyStateBase.cpp">
       <SubType>
       </SubType>

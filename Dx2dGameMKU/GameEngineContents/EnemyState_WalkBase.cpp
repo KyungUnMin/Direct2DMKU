@@ -8,8 +8,6 @@
 #include "EnemyFSMBase.h"
 
 
-//std::set<std::pair<int, int>> EnemyState_WalkBase::IsEnemyExistInGrid;
-
 EnemyState_WalkBase::EnemyState_WalkBase()
 {
 
@@ -25,6 +23,7 @@ void EnemyState_WalkBase::Start()
 {
 	EnemyStateBase::Start();
 	GridMapScale = GetBackGround()->GetGridMapScale();
+	EnemySpawnerPtr = &(FieldLevelBase::GetPtr()->GetEnemySpawner());
 }
 
 void EnemyState_WalkBase::EnterState()
@@ -49,9 +48,22 @@ bool EnemyState_WalkBase::SetDest()
 	std::pair<int, int> DestGridPos = PathStack.back();
 	PathStack.pop_back();
 
+	std::shared_ptr<FieldEnemyBase> EnemyPtr = GetEnemy()->DynamicThis<FieldEnemyBase>();
+
+	//이동하려는 위치에 다른 Enemy가 존재한다면 이동하지 않고 다른 상태로 전환
+	if (true == EnemySpawnerPtr->IsOtherStay(EnemyPtr, DestGridPos/*, MoveVolume*/))
+	{
+		PathStack.clear();
+		return false;
+	}
+
+	//이동하려는 위치를 기록
+	EnemySpawnerPtr->MarkGridPos(EnemyPtr, DestGridPos);
+
+	//목적지 설정
 	DestPos = GetBackGround()->GetPosFromGrid(DestGridPos.first, DestGridPos.second);
 	DestPos.z = DestPos.y;
-	StartPos = GetEnemy()->GetTransform()->GetWorldPosition();
+	StartPos = EnemyPtr->GetTransform()->GetWorldPosition();
 	return true;
 }
 
