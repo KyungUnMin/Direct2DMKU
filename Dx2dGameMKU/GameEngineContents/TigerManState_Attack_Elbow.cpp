@@ -88,7 +88,7 @@ void TigerManState_Attack_Elbow::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	TigerManStateType RandomAttack = TigerManFSM::GetRandomAttack();
+	TigerManStateType RandomAttack = static_cast<TigerManStateType>(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<TigerManStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(TigerManStateType::Idle);

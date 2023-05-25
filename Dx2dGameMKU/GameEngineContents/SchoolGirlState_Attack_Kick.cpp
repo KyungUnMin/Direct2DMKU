@@ -93,7 +93,7 @@ void SchoolGirlState_Attack_Kick::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	SchoolGirlStateType RandomAttack = SchoolGirlFSM::GetRandomAttack();
+	SchoolGirlStateType RandomAttack = static_cast<SchoolGirlStateType>(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<SchoolGirlStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(SchoolGirlStateType::Idle);

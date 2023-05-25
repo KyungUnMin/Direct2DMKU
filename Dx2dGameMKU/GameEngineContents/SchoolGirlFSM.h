@@ -41,7 +41,7 @@ public:
 	SchoolGirlFSM& operator=(const SchoolGirlFSM& _Other) = delete;
 	SchoolGirlFSM& operator=(const SchoolGirlFSM&& _Other) noexcept = delete;
 
-	static SchoolGirlStateType GetRandomAttack();
+	size_t GetRandomAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 

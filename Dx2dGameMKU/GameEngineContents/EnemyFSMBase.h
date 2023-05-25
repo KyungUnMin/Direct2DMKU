@@ -21,6 +21,8 @@ public:
 		Enemy = _Enemy;
 	}
 
+	virtual size_t GetRandomAttack() = 0;
+
 protected:
 
 	

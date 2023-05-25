@@ -85,7 +85,7 @@ void CopState_Attack_SideKick::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	CopStateType RandomAttack = CopFSM::GetRandomAttack();
+	CopStateType RandomAttack = static_cast<CopStateType>(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<CopStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(CopStateType::Idle);

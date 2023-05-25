@@ -39,11 +39,12 @@ const std::vector<CheerleaderStateType> CheerleaderFSM::AttackGroup =
 	CheerleaderStateType::SpinPom
 };
 
-CheerleaderStateType CheerleaderFSM::GetRandomAttack()
+size_t CheerleaderFSM::GetRandomAttack()
 {
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(AttackGroup.size() - 1));
-	return AttackGroup[RandValue];
+	return static_cast<size_t>(AttackGroup[RandValue]);
 }
+
 
 
 

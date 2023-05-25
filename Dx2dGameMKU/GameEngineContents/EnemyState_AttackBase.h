@@ -1,9 +1,16 @@
 #pragma once
 #include "EnemyStateBase.h"
 
+class FieldEnemyBase;
+
 class EnemyState_AttackBase : public EnemyStateBase
 {
 public:
+	static const FieldEnemyBase* const IsAttackAnyone()
+	{
+		return AttackEnemy;
+	}
+
 	EnemyState_AttackBase();
 	~EnemyState_AttackBase() override;
 
@@ -39,6 +46,9 @@ protected:
 		bool _IsReverseDir = false, float _MoveDuration = 0.5f, float _StartAcc = 1000.f);
 
 private:
+	//지금 공격을 하고 있는 Enemy(모든 Enemy들 중에 한명만 공격시키기 위함)
+	static FieldEnemyBase* AttackEnemy;
+
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
 
 	//True면 오른쪽, false면 왼쪽

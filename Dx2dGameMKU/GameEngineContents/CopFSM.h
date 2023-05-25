@@ -41,7 +41,7 @@ public:
 	CopFSM& operator=(const CopFSM& _Other) = delete;
 	CopFSM& operator=(const CopFSM&& _Other) noexcept = delete;
 
-	static CopStateType GetRandomAttack();
+	size_t GetRandomAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 

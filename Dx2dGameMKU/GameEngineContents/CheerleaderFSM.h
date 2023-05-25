@@ -44,7 +44,7 @@ public:
 	CheerleaderFSM& operator=(const CheerleaderFSM& _Other) = delete;
 	CheerleaderFSM& operator=(const CheerleaderFSM&& _Other) noexcept = delete;
 
-	static CheerleaderStateType GetRandomAttack();
+	size_t GetRandomAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 

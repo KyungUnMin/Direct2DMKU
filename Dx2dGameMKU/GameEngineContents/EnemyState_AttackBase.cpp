@@ -8,6 +8,8 @@
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
 
+FieldEnemyBase* EnemyState_AttackBase::AttackEnemy = nullptr;
+
 EnemyState_AttackBase::EnemyState_AttackBase()
 {
 
@@ -32,6 +34,8 @@ void EnemyState_AttackBase::EnterState()
 {
 	EnemyStateBase::EnterState();
 	EnemyDir = EnemyStateBase::IsRightDir();
+
+	AttackEnemy = GetEnemy();
 }
 
 
@@ -142,4 +146,6 @@ void EnemyState_AttackBase::ExitState()
 	EnemyStateBase::ExitState();
 	IsMovingAttack = false;
 	GetEnemy()->SetHeight(0.f);
+
+	AttackEnemy = nullptr;
 }

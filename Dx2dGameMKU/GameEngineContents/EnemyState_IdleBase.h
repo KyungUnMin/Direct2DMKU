@@ -17,6 +17,10 @@ protected:
 
 	bool IsWaitFinished();
 
+	bool IsAttackerEmpty();
+
+	bool ChangeAttackState();
+
 private:
 	static const std::pair<float, float> SettingTime;
 

@@ -41,7 +41,7 @@ public:
 	HooliganFSM& operator=(const HooliganFSM& _Other) = delete;
 	HooliganFSM& operator=(const HooliganFSM&& _Other) noexcept = delete;
 
-	static HooliganStateType GetRandomAttack();
+	size_t GetRandomAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 

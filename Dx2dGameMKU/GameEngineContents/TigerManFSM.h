@@ -41,7 +41,7 @@ public:
 	TigerManFSM& operator=(const TigerManFSM& _Other) = delete;
 	TigerManFSM& operator=(const TigerManFSM&& _Other) noexcept = delete;
 
-	static TigerManStateType GetRandomAttack();
+	size_t GetRandomAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 

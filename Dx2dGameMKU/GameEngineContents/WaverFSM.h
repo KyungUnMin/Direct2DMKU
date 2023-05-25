@@ -41,7 +41,7 @@ public:
 	WaverFSM& operator=(const WaverFSM& _Other) = delete;
 	WaverFSM& operator=(const WaverFSM&& _Other) noexcept = delete;
 
-	static WaverStateType GetRandomAttack();
+	size_t GetRandomAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 

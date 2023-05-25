@@ -92,7 +92,7 @@ void CheerleaderState_Attack_SpinPom::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	CheerleaderStateType RandomAttack = CheerleaderFSM::GetRandomAttack();
+	CheerleaderStateType RandomAttack = static_cast<CheerleaderStateType>(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<CheerleaderStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(CheerleaderStateType::Idle);

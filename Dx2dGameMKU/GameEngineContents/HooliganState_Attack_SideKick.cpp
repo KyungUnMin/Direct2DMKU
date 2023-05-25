@@ -85,7 +85,7 @@ void HooliganState_Attack_SideKick::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	HooliganStateType RandomAttack = HooliganFSM::GetRandomAttack();
+	HooliganStateType RandomAttack = static_cast<HooliganStateType>(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<HooliganStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(HooliganStateType::Idle);

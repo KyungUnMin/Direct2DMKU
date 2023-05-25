@@ -92,7 +92,7 @@ void SchoolBoyState_Attack_AxeKick::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	SchoolBoyStateType RandomAttack = SchoolBoyFSM::GetRandomAttack();
+	SchoolBoyStateType RandomAttack = static_cast<SchoolBoyStateType>(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<SchoolBoyStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(SchoolBoyStateType::Idle);

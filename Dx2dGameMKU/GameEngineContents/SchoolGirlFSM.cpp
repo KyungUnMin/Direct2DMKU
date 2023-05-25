@@ -36,10 +36,10 @@ const std::vector<SchoolGirlStateType> SchoolGirlFSM::AttackGroup =
 	SchoolGirlStateType::Kick
 };
 
-SchoolGirlStateType SchoolGirlFSM::GetRandomAttack()
+size_t SchoolGirlFSM::GetRandomAttack()
 {
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(AttackGroup.size() - 1));
-	return AttackGroup[RandValue];
+	return static_cast<size_t>(AttackGroup[RandValue]);
 }
 
 

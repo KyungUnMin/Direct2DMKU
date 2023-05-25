@@ -21,7 +21,7 @@ WaverState_Idle::~WaverState_Idle()
 
 void WaverState_Idle::Start() 
 {
-	EnemyStateBase::Start();
+	EnemyState_IdleBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -58,7 +58,7 @@ void WaverState_Idle::CreateAnimation()
 
 void WaverState_Idle::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_IdleBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -66,22 +66,23 @@ void WaverState_Idle::EnterState()
 
 void WaverState_Idle::Update(float _DeltaTime) 
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_IdleBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
 
-	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
-	if (VecToPlayer.Size() < GetSightRadius())
-	{
-		WaverStateType RandomAttack = WaverFSM::GetRandomAttack();
-		GetFSM()->ChangeState(RandomAttack);
-	}
-	else
-	{
-		GetFSM()->ChangeState(WaverStateType::Walk);
-	}
+	//공격 상태로 바꾸거나 Idle을 유지하는 경우
+	if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;
+
+
+	//Idle 대기시간이 끝났을때만 이동상태로 변경
+	if (false == EnemyState_IdleBase::IsWaitFinished())
+		return;
+
+	GetFSM()->ChangeState(WaverStateType::Walk);
+	
 }
 
 

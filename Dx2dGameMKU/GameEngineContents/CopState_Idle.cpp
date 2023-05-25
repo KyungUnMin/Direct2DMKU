@@ -21,7 +21,7 @@ CopState_Idle::~CopState_Idle()
 
 void CopState_Idle::Start() 
 {
-	EnemyStateBase::Start();
+	EnemyState_IdleBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -58,7 +58,7 @@ void CopState_Idle::CreateAnimation()
 
 void CopState_Idle::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_IdleBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -66,22 +66,23 @@ void CopState_Idle::EnterState()
 
 void CopState_Idle::Update(float _DeltaTime) 
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_IdleBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
 
-	float4 VecToPlayer = EnemyStateBase::GetVecToPlayer();
-	if (VecToPlayer.Size() < GetSightRadius())
-	{
-		CopStateType RandomAttack = CopFSM::GetRandomAttack();
-		GetFSM()->ChangeState(RandomAttack);
-	}
-	else
-	{
-		GetFSM()->ChangeState(CopStateType::Walk);
-	}
+	//공격 상태로 바꾸거나 Idle을 유지하는 경우
+	if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;
+
+
+	//Idle 대기시간이 끝났을때만 이동상태로 변경
+	if (false == EnemyState_IdleBase::IsWaitFinished())
+		return;
+
+	GetFSM()->ChangeState(CopStateType::Walk);
+	
 }
 
 

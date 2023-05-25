@@ -36,11 +36,12 @@ const std::vector<CopStateType> CopFSM::AttackGroup =
 	CopStateType::SideKick
 };
 
-CopStateType CopFSM::GetRandomAttack()
+size_t CopFSM::GetRandomAttack()
 {
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(AttackGroup.size() - 1));
-	return AttackGroup[RandValue];
+	return static_cast<size_t>(AttackGroup[RandValue]);
 }
+
 
 
 
