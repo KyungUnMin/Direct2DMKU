@@ -71,13 +71,15 @@ void PlayerState_Jump::EnterState()
 }
 
 
-
 void PlayerState_Jump::Update(float _DeltaTime)
 {
 	PlayerState_MovementBase::Update(_DeltaTime);
 
 	float Ratio = (GetLiveTime() / Duration);
-	float NowHeight = MaxHeight * Ratio;
+	float ClampRatio = std::clamp(Ratio, 0.f, 1.f);
+
+	float SinRadian = GameEngineMath::PIE * ClampRatio * 0.5f;
+	float NowHeight = MaxHeight * sinf(SinRadian);
 	FieldPlayer::GetPtr()->SetHeight(NowHeight);
 
 	if (1.f < Ratio)
@@ -96,4 +98,5 @@ void PlayerState_Jump::Update(float _DeltaTime)
 		PlayerState_MovementBase::Update_Move(_DeltaTime);
 	}
 }
+
 

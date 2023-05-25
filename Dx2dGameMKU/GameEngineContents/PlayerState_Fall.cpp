@@ -65,6 +65,9 @@ void PlayerState_Fall::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnterHeight = FieldPlayer::GetPtr()->GetHeight();
+
+	//이전에 움직임이 대시였는지 걷기였는지
+	PrevMoveState = static_cast<size_t>(FsmPtr->GetLastMovement());
 }
 
 
@@ -73,18 +76,39 @@ void PlayerState_Fall::Update(float _DeltaTime)
 	PlayerState_MovementBase::Update(_DeltaTime);
 
 	float Ratio = (GetLiveTime() / Duration);
-	float NowHeight = EnterHeight * (1.f - Ratio);
+	float ClampRatio = std::clamp(Ratio, 0.f, 1.f);
+
+	float CosRadian = GameEngineMath::PIE * ClampRatio * 0.5f;
+	float NowHeight = EnterHeight * cosf(CosRadian);
+
 	FieldPlayer::GetPtr()->SetHeight(NowHeight);
+
+
+	//이전에 움직임이 대시였는지 걷기였는지
+	PlayerStateType PrevMoveStyle = static_cast<PlayerStateType>(PrevMoveState);
 	if (1.f < Ratio)
 	{
-		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
+		//이전에 Dash였으면 대시로 상태 변경
+		if (PlayerStateType::Movement_Dash == PrevMoveStyle)
+		{
+			GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
+		}
+		//이전에 Walk였으면 대시로 상태 변경
+		else
+		{
+			GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
+		}
+
 		return;
 	}
 
-	if (PlayerStateType::Movement_Dash == FsmPtr->GetLastMovement())
+	//이전에 Dash였으면 대시 속도로 이동
+	if (PlayerStateType::Movement_Dash == PrevMoveStyle)
 	{
 		PlayerState_MovementBase::Update_Move(_DeltaTime, PlayerState_Dash::DashSpeed);
 	}
+
+	//이전에 Walk였으면 걷기 속도로 이동
 	else
 	{
 		PlayerState_MovementBase::Update_Move(_DeltaTime);

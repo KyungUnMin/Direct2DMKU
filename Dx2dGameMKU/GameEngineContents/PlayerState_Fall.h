@@ -1,6 +1,7 @@
 #pragma once
 #include "PlayerState_MovementBase.h"
 
+
 class PlayerState_Fall : public PlayerState_MovementBase
 {
 public:
@@ -24,8 +25,11 @@ private:
 	static const float AniInterTime;
 
 	class PlayerFSM* FsmPtr = nullptr;
-	const float Duration = 0.25f;
+	const float Duration = 0.3f;
 	float EnterHeight = 0.f;
+
+	//이전에 움직임이 대시였는지 걷기였는지
+	size_t PrevMoveState = -1;
 
 	void LoadAnimation();
 	void CreateAnimation();
