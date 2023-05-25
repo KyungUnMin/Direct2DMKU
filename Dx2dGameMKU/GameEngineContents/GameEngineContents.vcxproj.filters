@@ -649,6 +649,9 @@
     <Filter Include="03.Actor\07.EnemySpawner">
       <UniqueIdentifier>{2ebf8842-f051-421c-ba64-242a61d76614}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\06.IdleBase">
+      <UniqueIdentifier>{691c9323-db01-4d08-b60a-03941f254955}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1305,6 +1308,9 @@
     <ClCompile Include="EnemySpawner.cpp">
       <Filter>03.Actor\07.EnemySpawner</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyState_IdleBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\06.IdleBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1951,6 +1957,9 @@
     </ClInclude>
     <ClInclude Include="EnemySpawner.h">
       <Filter>03.Actor\07.EnemySpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState_IdleBase.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\06.IdleBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

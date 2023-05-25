@@ -61,7 +61,6 @@ void SchoolGirlState_Walk::CreateAnimation()
 void SchoolGirlState_Walk::EnterState()
 {
 	EnemyState_WalkBase::EnterState();
-
 	GetRenderer()->ChangeAnimation(AniName);
 }
 

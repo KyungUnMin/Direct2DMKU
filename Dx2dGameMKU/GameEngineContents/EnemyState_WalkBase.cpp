@@ -32,6 +32,7 @@ void EnemyState_WalkBase::EnterState()
 	Timer = 0.f;
 	FindPath();
 	SetDest();
+	DestSetCount = 0;
 
 	if (-1 == ArriveState)
 	{
@@ -40,7 +41,7 @@ void EnemyState_WalkBase::EnterState()
 	}
 }
 
-bool EnemyState_WalkBase::SetDest()
+bool EnemyState_WalkBase::SetDest(int _OtherCheckRange /*= 0*/)
 {
 	if (true == PathStack.empty())
 		return false;
@@ -49,12 +50,17 @@ bool EnemyState_WalkBase::SetDest()
 	std::shared_ptr<FieldEnemyBase> EnemyPtr = GetEnemy()->DynamicThis<FieldEnemyBase>();
 
 
-	//제자리 걸음
-	if (true == EnemySpawnerPtr->IsOtherStay(EnemyPtr, DestGridPos))
+	//이동하려는 목적지에 다른 Enemy가 존재하는 경우
+	if (true == EnemySpawnerPtr->IsOtherStay(EnemyPtr, DestGridPos, _OtherCheckRange))
 	{
-		StartPos = EnemyPtr->GetTransform()->GetWorldPosition();
+		//제자리 걸음
+		/*StartPos = EnemyPtr->GetTransform()->GetWorldPosition();
 		DestPos = StartPos;
-		return true;
+		return true;*/
+
+		//Idle로 전환
+		GetFSM()->ChangeState(ArriveState);
+		return false;
 	}
 
 	PathStack.pop_back();
@@ -115,6 +121,7 @@ void EnemyState_WalkBase::Update(float _DeltaTime)
 		{
 			FindPath();
 			SetDest();
+			DestSetCount = 0;
 			EnemyStateBase::ChangeRenderDirection();
 			return;
 		}
@@ -122,7 +129,7 @@ void EnemyState_WalkBase::Update(float _DeltaTime)
 
 
 	Timer -= MoveDuration;
-	if (true == SetDest())
+	if (true == SetDest(DestSetCount++ % 5))
 		return;
 
 	//자식에서 지정해준 상태값으로 이동

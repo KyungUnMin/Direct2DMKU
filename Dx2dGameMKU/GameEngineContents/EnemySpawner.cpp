@@ -156,7 +156,8 @@ void EnemySpawner::MarkGridPos(std::shared_ptr<FieldEnemyBase> _Enemy, const std
 
 bool EnemySpawner::IsOtherStay(
 	std::shared_ptr<FieldEnemyBase> _Enemy,
-	const std::pair<int, int>& _NextPos)
+	const std::pair<int, int>& _NextPos,
+	int _CheckArea /*= 0*/)
 {
 	CheckValidIndex(_Enemy);
 	
@@ -166,6 +167,7 @@ bool EnemySpawner::IsOtherStay(
 
 	//인자로 들어온 Enemy의 데이터 블럭
 	size_t EnemyIndex = _Enemy->GetSpawnID();
+	std::pair<int, int> CheckGrid;
 
 	for (size_t i = 0; i < Enemies.size(); ++i)
 	{
@@ -180,6 +182,28 @@ bool EnemySpawner::IsOtherStay(
 		//이동하려는 위치에 다른 Enemy가 존재하는 경우
 		if (_NextPos == Enemies[i].GridPos)
 			return true;
+
+		if (0 == _CheckArea)
+			continue;
+
+		CheckGrid = Enemies[i].GridPos;
+		//이동하려는 위치가 범위보다 왼쪽인 경우
+		if (_NextPos.first < (CheckGrid.first - _CheckArea))
+			continue;
+
+		//이동하려는 위치가 범위보다 오른쪽인 경우
+		if ((CheckGrid.first + _CheckArea) < _NextPos.first)
+			continue;
+
+		//이동하려는 위치가 범위보다 아래쪽인 경우
+		if (_NextPos.second < (CheckGrid.second - _CheckArea))
+			continue;
+
+		//이동하려는 위치가 범위보다 위쪽인 경우
+		if ((CheckGrid.second + _CheckArea) < _NextPos.second)
+			continue;
+
+		return true;
 	}
 
 	return false;

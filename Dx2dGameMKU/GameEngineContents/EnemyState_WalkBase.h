@@ -27,6 +27,7 @@ protected:
 		ArriveState = static_cast<size_t>(_ArriveState);
 	}
 
+
 private:
 	std::pair<int, int> GridMapScale;
 
@@ -36,12 +37,15 @@ private:
 	float4 StartPos = float4::Zero;
 
 	float Timer = 0.f;
+
 	const float MoveDuration = 0.1f;
 	const float ReFindPathRange = 150.f;
 	size_t ArriveState = -1;
-	
+
+	//목적지 세팅한 횟수에 따라 범위 조정?
+	int DestSetCount = 0;
 
 	void FindPath();
-	bool SetDest();
+	bool SetDest(int _OtherCheckRange = 0);
 };
 

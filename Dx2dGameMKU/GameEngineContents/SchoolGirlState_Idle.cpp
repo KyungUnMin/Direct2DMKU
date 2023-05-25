@@ -21,7 +21,7 @@ SchoolGirlState_Idle::~SchoolGirlState_Idle()
 
 void SchoolGirlState_Idle::Start() 
 {
-	EnemyStateBase::Start();
+	EnemyState_IdleBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -56,7 +56,7 @@ void SchoolGirlState_Idle::CreateAnimation()
 
 void SchoolGirlState_Idle::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_IdleBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -64,7 +64,7 @@ void SchoolGirlState_Idle::EnterState()
 
 void SchoolGirlState_Idle::Update(float _DeltaTime) 
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_IdleBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -75,11 +75,13 @@ void SchoolGirlState_Idle::Update(float _DeltaTime)
 	{
 		SchoolGirlStateType RandomAttack = SchoolGirlFSM::GetRandomAttack();
 		GetFSM()->ChangeState(RandomAttack);
+		return;
 	}
-	else
-	{
-		GetFSM()->ChangeState(SchoolGirlStateType::Walk);
-	}
+
+	if (false == EnemyState_IdleBase::IsWaitFinished())
+		return;
+
+	GetFSM()->ChangeState(SchoolGirlStateType::Walk);
 }
 
 

@@ -21,7 +21,7 @@ SchoolBoyState_Idle::~SchoolBoyState_Idle()
 
 void SchoolBoyState_Idle::Start() 
 {
-	EnemyStateBase::Start();
+	EnemyState_IdleBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -58,7 +58,7 @@ void SchoolBoyState_Idle::CreateAnimation()
 
 void SchoolBoyState_Idle::EnterState()
 {
-	EnemyStateBase::EnterState();
+	EnemyState_IdleBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -66,7 +66,7 @@ void SchoolBoyState_Idle::EnterState()
 
 void SchoolBoyState_Idle::Update(float _DeltaTime) 
 {
-	EnemyStateBase::Update(_DeltaTime);
+	EnemyState_IdleBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -77,11 +77,13 @@ void SchoolBoyState_Idle::Update(float _DeltaTime)
 	{
 		SchoolBoyStateType RandomAttack = SchoolBoyFSM::GetRandomAttack();
 		GetFSM()->ChangeState(RandomAttack);
+		return;
 	}
-	else
-	{
-		GetFSM()->ChangeState(SchoolBoyStateType::Walk);
-	}
+
+	if (false == EnemyState_IdleBase::IsWaitFinished())
+		return;
+
+	GetFSM()->ChangeState(SchoolBoyStateType::Walk);
 }
 
 

@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemyStateBase.h"
+#include "EnemyState_IdleBase.h"
 
-class SchoolBoyState_Idle : public EnemyStateBase
+class SchoolBoyState_Idle : public EnemyState_IdleBase
 {
 public:
 	SchoolBoyState_Idle();
