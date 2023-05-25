@@ -57,8 +57,7 @@ public:
 	//_Enemy가 이동하려는 위치인 _NextPos에 다른 Enemy가 존재하는지 확인하는 함수
 	bool IsOtherStay(
 		std::shared_ptr<FieldEnemyBase> _Enemy,
-		const std::pair<int, int>& _NextPos,
-		const std::pair<int, int>& _Volume = std::pair<int, int>{ 0, 0 });
+		const std::pair<int, int>& _NextPos);
 
 protected:
 

@@ -29,6 +29,16 @@ void FieldEnemyBase::Start()
 	FieldActorBase::CreateColliders(CollisionOrder::EnemyMain);
 }
 
+void FieldEnemyBase::Update(float _DeltaTime)
+{
+	FieldActorBase::Update(_DeltaTime);
+
+	if (-1 != SpawnIdx)
+		return;
+
+	MsgAssert("Enemy는 반드시 EnemySpawner를 통해 생성되어야 합니다");
+}
+
 void FieldEnemyBase::OnDamage(int _Damage)
 {
 	Hp -= abs(_Damage);

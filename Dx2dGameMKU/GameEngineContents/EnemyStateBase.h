@@ -9,6 +9,7 @@ class EnemyFSMBase;
 class FieldEnemyBase;
 class GameEngineCollision;
 class BackGround;
+class EnemySpawner;
 
 class EnemyStateBase : public StateBase
 {
@@ -49,6 +50,9 @@ protected:
 
 	float4 GetVecToPlayer(bool Is2D = false);
 
+	float4 GetVecToPlayer(const float4& _Pos, bool _Is2D = false);
+
+
 	inline void SetSight(float _Radius)
 	{
 		SightRadius = _Radius;
@@ -85,6 +89,7 @@ private:
 	EnemyFSMBase* FsmPtr = nullptr;
 	FieldEnemyBase* EnemyPtr = nullptr;
 	std::shared_ptr<BackGround> BGPtr = nullptr;
+
 	float SightRadius = 100.f;
 
 	inline void ValidCheck(void* _Ptr) const

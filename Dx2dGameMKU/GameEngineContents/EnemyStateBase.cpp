@@ -28,7 +28,9 @@ void EnemyStateBase::Start()
 	EnemyPtr = FsmPtr->GetEnemy();
 	Renderer = EnemyPtr->GetRenderer();
 	MainCollider = EnemyPtr->GetMainCollider();
-	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+
+	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
+	BGPtr = Level->GetBackGround();
 }
 
 
@@ -73,23 +75,28 @@ void EnemyStateBase::Update(float _DeltaTime)
 
 
 
-float4 EnemyStateBase::GetVecToPlayer(bool Is2D /*= false*/)
+float4 EnemyStateBase::GetVecToPlayer(bool _Is2D /*= false*/)
 {
 	GameEngineTransform* ThisTrans = EnemyPtr->GetTransform();
-	GameEngineTransform* PlayerTrans = FieldPlayer::GetPtr()->GetTransform();
-
 	float4 ThisWorldPosition = ThisTrans->GetWorldPosition();
+	return GetVecToPlayer(ThisWorldPosition, _Is2D);
+}
+
+
+float4 EnemyStateBase::GetVecToPlayer(const float4& _Pos, bool _Is2D /*= false*/)
+{
+	GameEngineTransform* PlayerTrans = FieldPlayer::GetPtr()->GetTransform();
 	float4 PlayerWorldPosition = PlayerTrans->GetWorldPosition();
 
-	if (true == Is2D)
+	float4 CheckPos = _Pos;
+	if (true == _Is2D)
 	{
-		ThisWorldPosition.z = 0.f;
+		CheckPos.z = 0.f;
 		PlayerWorldPosition.z = 0.f;
 	}
 
-	return (PlayerWorldPosition - ThisWorldPosition);
+	return (PlayerWorldPosition - CheckPos);
 }
-
 
 
 bool EnemyStateBase::IsRightDir()
@@ -146,3 +153,4 @@ bool EnemyStateBase::Update_AccMove(
 	EnemyTrans->SetLocalPosition(NextPos);
 	return true;
 }
+

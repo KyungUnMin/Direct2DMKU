@@ -80,10 +80,8 @@ void CrossTownLevel3::CreateDoors()
 	DoorPtr->GetTransform()->SetLocalPosition(float4::Right * 980.f);
 }
 
-#include "FieldEnemy_Cheerleader.h"
-
 
 void CrossTownLevel3::CreateEnemies()
 {
-	CreateActor<FieldEnemy_Cheerleader>(UpdateOrder::Enemy);
+	GetEnemySpawner().CreateEnemy(EnemyType::Cheerleader, float4::Zero);
 }

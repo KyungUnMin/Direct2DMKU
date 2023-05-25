@@ -22,32 +22,24 @@ protected:
 	void Update(float _DeltaTime) final;
 
 	template <typename EnumType>
-	inline void SetNextState(EnumType _NextState)
+	inline void SetNextState(EnumType _ArriveState)
 	{
-		NextState = static_cast<size_t>(_NextState);
-	}
-
-	inline void SetMoveVolume(const std::pair<int, int>& _Volume)
-	{
-		MoveVolume = _Volume;
+		ArriveState = static_cast<size_t>(_ArriveState);
 	}
 
 private:
-	EnemySpawner* EnemySpawnerPtr = nullptr;
-
 	std::pair<int, int> GridMapScale;
 
+	class EnemySpawner* EnemySpawnerPtr = nullptr;
 	std::vector<std::pair<int, int>> PathStack;
 	float4 DestPos = float4::Zero;
 	float4 StartPos = float4::Zero;
 
 	float Timer = 0.f;
 	const float MoveDuration = 0.1f;
-	size_t NextState = -1;
+	const float ReFindPathRange = 150.f;
+	size_t ArriveState = -1;
 	
-
-	std::pair<int, int> MoveVolume = std::pair<int, int>{ 3, 3 };
-
 
 	void FindPath();
 	bool SetDest();
