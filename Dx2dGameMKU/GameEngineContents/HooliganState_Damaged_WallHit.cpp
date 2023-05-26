@@ -4,7 +4,7 @@
 #include "HooliganFSM.h"
 
 const std::string_view HooliganState_Damaged_WallHit::AniName = "WallHit";
-const std::string_view HooliganState_Damaged_WallHit::AniFileName = "Hooligan_Wallhit.png";
+const std::string_view HooliganState_Damaged_WallHit::AniFileName = "Hooligan_WallHit.png";
 const std::pair<int, int> HooliganState_Damaged_WallHit::AniCutFrame = std::pair<int, int>(5, 1);
 const std::pair<size_t, size_t> HooliganState_Damaged_WallHit::AniFrameIndex = std::pair<size_t, size_t>{ 0, 1 };
 const float HooliganState_Damaged_WallHit::AniInterTime = 0.025f;

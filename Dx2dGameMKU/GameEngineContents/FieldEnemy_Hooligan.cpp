@@ -27,10 +27,7 @@ void FieldEnemy_Hooligan::Start()
 	Fsm.Init(this);
 }
 
-void FieldEnemy_Hooligan::SitDown()
-{
-	Fsm.ChangeState(HooliganStateType::Ready);
-}
+
 
 
 void FieldEnemy_Hooligan::Update(float _DeltaTime)

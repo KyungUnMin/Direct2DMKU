@@ -6,13 +6,13 @@ enum class HooliganStateType
 	//Movement
 	Idle,
 	Walk,
-	Ready,
+	//Ready,
 
 	//Attack
-	AxeKick,
-	Elbow,
-	Punch,
-	SideKick,
+	//AxeKick,
+	//Elbow,
+	//Punch,
+	//SideKick,
 
 	//Damaged
 	NormalDamaged_Face,

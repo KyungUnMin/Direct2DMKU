@@ -8,7 +8,7 @@
 const std::string_view HooliganState_Damaged_BlowBack::AniName = "BlowBack";
 const std::string_view HooliganState_Damaged_BlowBack::AniFileName = "Hooligan_BlowBack.png";
 const std::pair<int, int> HooliganState_Damaged_BlowBack::AniCutFrame = std::pair<int, int>(5, 7);
-const std::pair<size_t, size_t> HooliganState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 32 };
+const std::pair<size_t, size_t> HooliganState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 31 };
 const float HooliganState_Damaged_BlowBack::AniInterTime = 0.05f;
 
 

@@ -49,8 +49,6 @@ void HooliganState_Idle::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = 0,
-		.End = 7,
 		.FrameInter = AniInterTime
 	});
 }
@@ -73,8 +71,8 @@ void HooliganState_Idle::Update(float _DeltaTime)
 
 
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
-	if (true == EnemyState_IdleBase::ChangeAttackState())
-		return;
+	/*if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;*/
 
 
 	//Idle 대기시간이 끝났을때만 이동상태로 변경

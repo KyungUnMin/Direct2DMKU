@@ -14,8 +14,6 @@ public:
 	FieldEnemy_Hooligan& operator=(const FieldEnemy_Hooligan& _Other) = delete;
 	FieldEnemy_Hooligan& operator=(const FieldEnemy_Hooligan&& _Other) noexcept = delete;
 
-	void SitDown();
-
 	bool OnDamage_Face(int _Damage) override;
 	bool OnDamage_Stomach(int _Damage) override;
 	bool OnDamage_Jaw(int _Damage) override;
