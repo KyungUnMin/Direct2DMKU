@@ -63,7 +63,9 @@ void GameEngineCore::EngineUpdate()
 		{
 			std::shared_ptr<GameEngineLevel> PrevLevel = MainLevel;
 
+			CurLoadLevel = MainLevel.get();
 			MainLevel->LevelChangeEnd();
+			CurLoadLevel = nullptr;
 			MainLevel->ActorLevelChangeEnd();
 		}
 
@@ -71,7 +73,9 @@ void GameEngineCore::EngineUpdate()
 
 		if (nullptr != MainLevel)
 		{
+			CurLoadLevel = MainLevel.get();
 			MainLevel->LevelChangeStart();
+			CurLoadLevel = nullptr;
 			MainLevel->ActorLevelChangeStart();
 		}
 
@@ -103,10 +107,12 @@ void GameEngineCore::EngineUpdate()
 	GameEngineSound::SoundUpdate();
 
 	//이벤트 시간 동작
+	CurLoadLevel = MainLevel.get();
 	MainLevel->TimeEvent.Update(TimeDeltaTime);
 	MainLevel->AccLiveTime(TimeDeltaTime);
 	MainLevel->Update(TimeDeltaTime);
 	MainLevel->ActorUpdate(TimeDeltaTime);
+	CurLoadLevel = nullptr;
 
 
 	GameEngineVideo::VideoState State = GameEngineVideo::GetCurState();

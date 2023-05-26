@@ -32,6 +32,8 @@ public:
 		return Type;
 	}
 
+	static void AutoCompile(GameEngineFile& _File);
+
 protected:
 	ShaderType Type = ShaderType::None;
 

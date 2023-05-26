@@ -109,6 +109,45 @@ public:
 	}
 
 
+	//텍스처를 GPU상에서 소멸시킨다
+	static std::shared_ptr<GameEngineTexture> UnLoad(const std::string_view& _Name)
+	{
+		std::shared_ptr<GameEngineTexture> FindTexture = GameEngineResource::Find(_Name);
+
+		if (nullptr == FindTexture)
+		{
+			MsgAssert("존재하지 않는 텍스처를 언로드 하려고 했습니다.");
+			return nullptr;
+		}
+
+		FindTexture->Release();
+		return FindTexture;
+	}
+
+	//Unload시킨 텍스처를 다시 로드한다
+	static std::shared_ptr<GameEngineTexture> ReLoad(const std::string_view& _Path)
+	{
+		GameEnginePath NewPath(_Path);
+		return ReLoad(_Path, NewPath.GetFileName());
+	}
+
+	//Unload시킨 텍스처를 다시 로드한다
+	static std::shared_ptr<GameEngineTexture> ReLoad(const std::string_view& _Path, const std::string_view& _Name)
+	{
+		std::shared_ptr<GameEngineTexture> FindTexture = GameEngineResource<GameEngineTexture>::Find(_Name);
+
+		if (nullptr == FindTexture)
+		{
+			MsgAssert("존재하지 않는 텍스처를 로드 하려고 했습니다.");
+			return nullptr;
+		}
+
+		FindTexture->ResLoad(_Path);
+		return FindTexture;
+	}
+
+
+
 	ID3D11ShaderResourceView* GetSRV()
 	{
 		return SRV;
@@ -204,5 +243,9 @@ private:
 	//아웃풋 머저에서도 쓰여서 생기는 문제를 방지하기 위함
 	void VSReset(UINT _Slot);
 	void PSReset(UINT _Slot);
+
+
+	//텍스처를 GPU상에서 소멸시킨다
+	void Release();
 };
 

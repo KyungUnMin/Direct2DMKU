@@ -85,3 +85,12 @@ void GameEngineSerializer::Read(void* _Ptr, size_t _Size)
 
 	Offset += _Size;
 }
+
+std::string GameEngineSerializer::GetString()
+{
+	std::string AllString;
+	AllString.resize(Datas.size());
+
+	memcpy_s(&AllString[0], Datas.size(), &Datas[0], Datas.size());
+	return AllString;
+}

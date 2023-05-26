@@ -226,7 +226,7 @@ void GameEngineCore::CoreResourceInit()
 	}
 
 	
-	//버텍스 쉐이더 컴파일
+	//쉐이더 컴파일
 	{
 		GameEngineDirectory NewDir;
 		NewDir.MoveParentToDirectory("EngineResources");
@@ -236,11 +236,16 @@ void GameEngineCore::CoreResourceInit()
 		//해당 확장자를 가지고 있는 파일 가져오기
 		std::vector<GameEngineFile> Files = NewDir.GetAllFile({ ".hlsl",".fx" });
 
-		GameEngineVertexShader::Load(Files[0].GetFullPath(), "Merge_VS");
+		for (size_t i = 0; i < Files.size(); i++)
+		{
+			GameEngineShader::AutoCompile(Files[i]);
+		}
+
+		/*GameEngineVertexShader::Load(Files[0].GetFullPath(), "Merge_VS");
 		GameEnginePixelShader::Load(Files[0].GetFullPath(), "Merge_PS");
 
 		GameEngineVertexShader::Load(Files[1].GetFullPath(), "Texture_VS");
-		GameEnginePixelShader::Load(Files[1].GetFullPath(), "Texture_PS");
+		GameEnginePixelShader::Load(Files[1].GetFullPath(), "Texture_PS");*/
 	}
 
 

@@ -267,3 +267,37 @@ std::shared_ptr<GameEngineCamera> GameEngineLevel::GetCamera(int _CameraOrder)
 	std::shared_ptr<GameEngineCamera> Camera = FindIter->second;
 	return Camera;
 }
+
+
+//void GameEngineLevel::TextureUnLoad(GameEngineLevel* _NextLevel)
+//{
+//	for (const std::pair<std::string, std::string>& Pair : LoadEndPath)
+//	{
+//		if (nullptr != _NextLevel && true == _NextLevel->TexturePath.contains(Pair.first))
+//		{
+//			continue;
+//		}
+//
+//		GameEngineTexture::UnLoad(Pair.first);
+//		TexturePath.insert(std::make_pair(Pair.first, Pair.second));
+//	}
+//
+//	LoadEndPath.clear();
+//}
+//
+//void GameEngineLevel::TextureReLoad(GameEngineLevel* _PrevLevel)
+//{
+//
+//	for (const std::pair<std::string, std::string>& Pair : TexturePath)
+//	{
+//		if (nullptr != _PrevLevel && true == _PrevLevel->TexturePath.contains(Pair.first))
+//		{
+//			continue;
+//		}
+//
+//		GameEngineTexture::ReLoad(Pair.second, Pair.first);
+//		LoadEndPath.insert(std::make_pair(Pair.first, Pair.second));
+//	}
+//
+//	TexturePath.clear();
+//}

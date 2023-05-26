@@ -45,7 +45,7 @@ void FileCopy(const std::string_view& _ChangeName)
 		Serializer.BufferResize(1024 * 1000);
 		File.LoadBin(Serializer);
 
-		size_t FileSize = File.GetFileSize();
+		size_t FileSize = static_cast<size_t>(File.GetFileSize());
 		char* DataPtr = reinterpret_cast<char*>(Serializer.GetData());
 
 		std::string FileStr;

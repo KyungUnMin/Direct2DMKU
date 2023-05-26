@@ -24,7 +24,7 @@ std::shared_ptr<GameEngineCollision> GameEngineCollision::Collision(int _TargetG
 	std::list<std::shared_ptr<GameEngineCollision>>& Group = GetLevel()->Collisions[_TargetGroup];
 
 	//함수 호출시 자신의 충돌 타입을 지정하지 않았다면 자신의 ColType으로
-	if (Type == ColType::MAX)
+	if (_ThisColType == ColType::MAX)
 	{
 		_ThisColType = Type;
 	}

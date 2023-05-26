@@ -1,6 +1,9 @@
 #include "PrecompileHeader.h"
 #include "GameEngineShader.h"
 
+#include "GameEngineVertexShader.h"
+#include "GameEnginePixelShader.h"
+
 GameEngineShader::GameEngineShader()
 {
 
@@ -24,6 +27,8 @@ void GameEngineShader::CreateVersion(const std::string_view& _ShaderType, UINT _
 	Version += "_";
 	Version += std::to_string(_VersionLow);
 }
+
+
 
 
 //쉐이더 파일을 컴파일 하고 난 후 리플렉션을 통해 정보를 얻어오는 함수
@@ -125,6 +130,44 @@ void GameEngineShader::ShaderResCheck()
 		}
 		default:
 			break;
+		}
+	}
+
+}
+
+
+void GameEngineShader::AutoCompile(GameEngineFile& _File)
+{
+	std::string ShaderCode = _File.GetString();
+
+	//버텍스 쉐이더
+	{
+		size_t EntryIndex = ShaderCode.find("_VS(");
+		// unsigned __int64 == max값이 std::string::npos
+		if (EntryIndex != std::string::npos)
+		{
+			{
+				size_t FirstIndex = ShaderCode.find_last_of(" ", EntryIndex);
+				std::string EntryName = ShaderCode.substr(FirstIndex + 1, EntryIndex - FirstIndex - 1);
+				EntryName += "_VS";
+				GameEngineVertexShader::Load(_File.GetFullPath(), EntryName);
+			}
+		}
+	}
+
+
+	//픽셀 쉐이더
+	{
+		size_t EntryIndex = ShaderCode.find("_PS(");
+		// unsigned __int64 == max값이 std::string::npos
+		if (EntryIndex != std::string::npos)
+		{
+			{
+				size_t FirstIndex = ShaderCode.find_last_of(" ", EntryIndex);
+				std::string EntryName = ShaderCode.substr(FirstIndex + 1, EntryIndex - FirstIndex - 1);
+				EntryName += "_PS";
+				GameEnginePixelShader::Load(_File.GetFullPath(), EntryName);
+			}
 		}
 	}
 

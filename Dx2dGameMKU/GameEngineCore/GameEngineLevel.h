@@ -86,6 +86,8 @@ protected:
 private:
 	//<이름, 경로>, 텍스처를 로드할 때마다 기록한다
 	std::map<std::string, std::string> TexturePath;
+	//std::map<std::string, std::string> LoadEndPath;
+
 
 
 	//이 레벨에 존재하는 카메라들
@@ -116,5 +118,8 @@ private:
 
 	void ActorLevelChangeStart();
 	void ActorLevelChangeEnd();
+
+	/*void TextureUnLoad(GameEngineLevel* _NextLevel);
+	void TextureReLoad(GameEngineLevel* _PrevLevel);*/
 };
 

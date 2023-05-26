@@ -22,13 +22,16 @@ public:
 	void SaveBin(const GameEngineSerializer& _Data);
 	void SaveText(const std::string_view& _View);
 
+
 	void LoadBin(GameEngineSerializer& _Data);
+	void LoadText(GameEngineSerializer& _Data);
 
 
-	inline size_t GetFileSize()
-	{
-		return std::filesystem::file_size(Path.Path);
-	}
+	std::string GetString();
+	
+	uintmax_t GetFileSize();
+
+
 
 protected:
 
