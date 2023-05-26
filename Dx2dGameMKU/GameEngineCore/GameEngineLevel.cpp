@@ -133,10 +133,9 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		Cam->Render(_DeltaTime);
 
 		//이 카메라에 대한 포스트 프로세싱 적용
-		Cam->CamTarget->Effect();
+		Cam->CamTarget->Effect(_DeltaTime);
 	}
 	
-
 	LastTarget->Clear();
 
 	//이 레벨에 존재하는 카메라 순회
@@ -148,24 +147,38 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		//카메라의 그림들을 LastTarget에 종합한다
 		LastTarget->Merge(Target);
 	}
+
+	//전체 화면에 대한 포스트 프로세싱
+	LastTarget->Effect(_DeltaTime);
+
 	
 	//메인 백버퍼에 LastTarget의 이미지를 덮어쓴다
 	GameEngineDevice::GetBackBufferTarget()->Merge(LastTarget);
 
 
 
-	//static bool GUIRender = true;
-	//if (true == GameEngineInput::IsDown("GUISwitch"))
-	//{
-	//	GUIRender = !GUIRender;
-	//}
-	//if (true == GUIRender)
-	//{
-	//	// GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
-	//}
+	static bool GUIRender = true;
+	if (true == GameEngineInput::IsDown("GUISwitch"))
+	{
+		GUIRender = !GUIRender;
+
+		if (false == GUIRender)
+		{
+			GameEngineGUI::Release();
+		}
+		else
+		{
+			GameEngineGUI::Initialize();
+		}
+	}
+
 
 	//imgui 렌더
-	GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
+	if (true == GUIRender)
+	{
+		GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
+	}
+
 }
 
 void GameEngineLevel::ActorRelease()

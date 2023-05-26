@@ -79,9 +79,24 @@ public:
 		SetSortType(static_cast<int>(_Index), _Sort);
 	}
 
-	void SetSortType(int _Index, SortType _Sort)
+	inline void SetSortType(int _Index, SortType _Sort)
 	{
 		SortValues[_Index] = _Sort;
+	}
+
+	inline void AddZoomRatio(float _Value)
+	{
+		ZoomRatio -= _Value;
+	}
+
+	inline void SetZoomRatio(float _Value)
+	{
+		ZoomRatio = _Value;
+	}
+
+	inline float GetZoomRatio() const
+	{
+		return ZoomRatio;
 	}
 
 protected:
@@ -99,6 +114,8 @@ private:
 	DirectX::BoundingOrientedBox Box;
 
 	bool FreeCamera = false;
+
+	float ZoomRatio = 1.0f;
 
 	//카메라의 뷰 행렬
 	float4x4 View;

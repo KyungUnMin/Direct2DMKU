@@ -330,18 +330,11 @@ void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, si
 
 void GameEngineSpriteRenderer::Update(float _Delta)
 {
-	if (nullptr != CurAnimation)
-	{
-		CurAnimation->Update(_Delta);
-	}
-}
-
-
-void GameEngineSpriteRenderer::Render(float _DeltaTime)
-{
 	//애니메이션 용 Sprite인 경우
 	if (nullptr != CurAnimation)
 	{
+		CurAnimation->Update(_Delta);
+
 		const SpriteInfo& Info = CurAnimation->CurSpriteInfo();
 
 		GetShaderResHelper().SetTexture("DiffuseTex", Info.Texture);
@@ -363,7 +356,11 @@ void GameEngineSpriteRenderer::Render(float _DeltaTime)
 			GetTransform()->SetLocalScale(Scale);
 		}
 	}
+}
 
+
+void GameEngineSpriteRenderer::Render(float _DeltaTime)
+{
 	//일반 이미지 Sprite인 경우
 	GameEngineRenderer::Render(_DeltaTime);
 }

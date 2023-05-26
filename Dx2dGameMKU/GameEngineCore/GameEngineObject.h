@@ -23,6 +23,7 @@ class GameEngineObject :
 	friend class GameEngineActor;
 	friend class GameEngineLevel;
 	friend class GameEngineTransform;
+	friend class GameEngineCore;
 
 public:
 	GameEngineObject();

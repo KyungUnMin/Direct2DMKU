@@ -9,6 +9,8 @@ std::map<std::string, std::shared_ptr<GameEngineGUIWindow>> GameEngineGUI::AllWi
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
+bool GameEngineGUI::IsInit = false;
+
 GameEngineGUI::GameEngineGUI()
 {
 
@@ -22,6 +24,10 @@ GameEngineGUI::~GameEngineGUI()
 
 void GameEngineGUI::Initialize()
 {
+    if (true == IsInit)
+        return;
+
+
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
@@ -49,6 +55,8 @@ void GameEngineGUI::Initialize()
     Dir.Move("EngineResources");
     Dir.Move("Font");
     io.Fonts->AddFontFromFileTTF(Dir.GetPlusFileName("malgun.ttf").GetFullPath().c_str(), 18.f, nullptr, io.Fonts->GetGlyphRangesKorean());
+
+    IsInit = true;
 }
 
 
@@ -89,7 +97,13 @@ void GameEngineGUI::Render(std::shared_ptr<class GameEngineLevel> _Level, float 
 
 void GameEngineGUI::Release() 
 {
+    if (false == IsInit)
+        return;
+
+
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
     ImGui::DestroyContext();
+
+    IsInit = false;
 }

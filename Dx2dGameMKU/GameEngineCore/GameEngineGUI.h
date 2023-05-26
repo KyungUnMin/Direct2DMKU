@@ -29,6 +29,8 @@ public:
 class GameEngineGUI 
 {
 public:
+	static bool IsInit;
+
 	GameEngineGUI();
 	~GameEngineGUI();
 

@@ -55,6 +55,7 @@ void GameEngineCore::CoreResourceInit()
 		//Å¬·¥ÇÁ »ùÇÃ·¯
 		D3D11_SAMPLER_DESC SamplerData = {};
 
+		//SamplerData.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
 		SamplerData.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
 		SamplerData.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
@@ -73,6 +74,7 @@ void GameEngineCore::CoreResourceInit()
 		//·¦ »ùÇÃ·¯
 		D3D11_SAMPLER_DESC SamplerData = {};
 
+		//SamplerData.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
 		SamplerData.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
 		SamplerData.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
@@ -148,9 +150,9 @@ void GameEngineCore::CoreResourceInit()
 
 		//¾ËÆÄ°ªÀ» È¥ÇÕ
 		//Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-		Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_MAX;
-		Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_SRC_ALPHA;
-		Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_INV_SRC_ALPHA;
+		Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+		Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ONE;
 
 		//¾ËÆÄ = (SrcAlpha * SrcBlendAlpha) BlendOpAlpha (DestAlpha * DestBlendAlpha)
 
