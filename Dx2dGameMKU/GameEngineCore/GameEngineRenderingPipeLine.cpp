@@ -252,3 +252,20 @@ void GameEngineRenderingPipeLine::Render()
 	UINT IndexCount = IndexBufferPtr->GetIndexCount();
 	GameEngineDevice::GetContext()->DrawIndexed(IndexCount, 0, 0);
 }
+
+std::shared_ptr<GameEngineRenderingPipeLine> GameEngineRenderingPipeLine::Clone()
+{
+	std::shared_ptr<GameEngineRenderingPipeLine> ClonePipe = std::make_shared<GameEngineRenderingPipeLine>();
+
+	ClonePipe->InputLayOutPtr = InputLayOutPtr;
+	ClonePipe->VertexBufferPtr = VertexBufferPtr;
+	ClonePipe->IndexBufferPtr = IndexBufferPtr;
+	ClonePipe->VertexShaderPtr = VertexShaderPtr;
+	ClonePipe->RasterizerPtr = RasterizerPtr;
+	ClonePipe->PixelShaderPtr = PixelShaderPtr;
+	ClonePipe->BlendStatePtr = BlendStatePtr;
+	ClonePipe->DepthStatePtr = DepthStatePtr;
+	ClonePipe->IsCloneValue = true;
+
+	return ClonePipe;
+}

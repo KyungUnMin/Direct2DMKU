@@ -46,11 +46,19 @@ public:
 	//실질적으로 그리는 단계
 	void Render();
 
+	std::shared_ptr<GameEngineRenderingPipeLine> Clone();
 
+	bool IsClone()
+	{
+		return IsCloneValue;
+	}
 
 protected:
 
 private:
+	//클론된 파이프라인인지 여부
+	bool IsCloneValue = false;
+
 	//래스터 라이저 단계에서 픽셀들을 어떻게 그릴지에 대한 값
 	D3D11_FILL_MODE FILL_MODE = D3D11_FILL_MODE::D3D11_FILL_SOLID;
 	//인풋 어셈블러2 단계에서 어떤 모양의 도형을 그릴 것인지에 대한 값

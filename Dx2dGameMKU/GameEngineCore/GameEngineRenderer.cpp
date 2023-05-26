@@ -75,29 +75,75 @@ void GameEngineRenderer::RenderTransformUpdate(GameEngineCamera* _Camera)
 
 void GameEngineRenderer::Render(float _DeltaTime)
 {
-	if (nullptr == Pipe)
+	for (size_t i = 0; i < Units.size(); ++i)
 	{
-		MsgAssert("아직 렌더러에 렌더링 파이프라인을 설정해주지 않았습니다");
-		return;
+		Units[i]->Pipe->RenderingPipeLineSetting();
+
+		//텍스처 세팅, 상수버퍼 세팅 등이 이루어진다.
+		Units[i]->ShaderResHelper.Setting();
+
+		Units[i]->Pipe->Render();
+	}
+	
+}
+
+std::shared_ptr<GameEngineRenderingPipeLine> GameEngineRenderer::GetPipeLine(int _index/* = 0*/)
+{
+	if (Units.size() <= _index)
+	{
+		MsgAssert("존재하지 않는 랜더 유니트를 사용하려고 했습니다.");
 	}
 
-	Pipe->RenderingPipeLineSetting();
+	return Units[_index]->Pipe;
+}
 
-	//텍스처 세팅, 상수버퍼 세팅 등이 이루어진다.
-	ShaderResHelper.Setting();
 
-	Pipe->Render();
+std::shared_ptr<GameEngineRenderingPipeLine> GameEngineRenderer::GetPipeLineClone(int _index/* = 0*/)
+{
+	if (Units.size() <= _index)
+	{
+		MsgAssert("존재하지 않는 랜더 유니트를 사용하려고 했습니다.");
+	}
+
+	//클론이 안된 파이프라인만
+	if (false == Units[_index]->Pipe->IsClone())
+	{
+		//별도의 똑같은 파이프라인을 생성한다
+		Units[_index]->Pipe = Units[_index]->Pipe->Clone();
+	}
+
+	return Units[_index]->Pipe;
 }
 
 
 
-
-
-void GameEngineRenderer::SetPipeLine(const std::string_view& _Name)
+void GameEngineRenderer::SetPipeLine(const std::string_view& _Name, int _index /*= 0*/)
 {
-	Pipe = GameEngineRenderingPipeLine::Find(_Name);
+	//_index를 한개씩만 증가시켜서 확장할 수 있음
+	if (Units.size() + 1 <= _index)
+	{
+		MsgAssert("너무큰 랜더유니트 확장을 하려고 했습니다");
+		return;
+	}
 
-	if (nullptr == Pipe)
+	//렌더 유닛 생성
+	if (Units.size() <= _index)
+	{
+		Units.resize(_index + 1);
+		Units[_index] = std::make_shared<GameEngineRenderUnit>();
+	}
+
+
+	std::shared_ptr<GameEngineRenderUnit> Unit = Units[_index];
+	if (nullptr == Unit)
+	{
+		MsgAssert("존재하지 않는 랜더유니트를 사용하려고 했습니다.");
+		return;
+	}
+
+
+	Unit->Pipe = GameEngineRenderingPipeLine::Find(_Name);
+	if (nullptr == Unit->Pipe)
 	{
 		MsgAssert("존재하지 않는 이름의 렌더링 파이프 라인입니다");
 		return;
@@ -112,22 +158,22 @@ void GameEngineRenderer::SetPipeLine(const std::string_view& _Name)
 
 	//버텍스 쉐이더의 상수버퍼, 텍스처 등의 세터들을 ShaderResHelper에 저장한다
 	{
-		const GameEngineShaderResHelper& Res = Pipe->GetVertexShader()->GetShaderResHelper();
-		ShaderResHelper.Copy(Res);
+		const GameEngineShaderResHelper& Res = Unit->Pipe->GetVertexShader()->GetShaderResHelper();
+		Unit->ShaderResHelper.Copy(Res);
 	}
 
 	//픽셀 쉐이더의 상수버퍼, 텍스처 등의 세터들을 ShaderResHelper에 저장한다
 	{
-		const GameEngineShaderResHelper& Res = Pipe->GetPixelShader()->GetShaderResHelper();
-		ShaderResHelper.Copy(Res);
+		const GameEngineShaderResHelper& Res = Unit->Pipe->GetPixelShader()->GetShaderResHelper();
+		Unit->ShaderResHelper.Copy(Res);
 	}
 
 
 	//트랜스폼 정보 자동으로 넣어주기(쉐이더 파일에 TransformData와 같은 상수버퍼가 있어야만 함)
-	if (true == ShaderResHelper.IsConstantBufferSetter("TransformData"))
+	if (true == Unit->ShaderResHelper.IsConstantBufferSetter("TransformData"))
 	{
 		const TransformData& Data= GetTransform()->GetTransDataRef();
-		ShaderResHelper.SetConstantBufferLink("TransformData", Data);
+		Unit->ShaderResHelper.SetConstantBufferLink("TransformData", Data);
 	}
 	
 }
