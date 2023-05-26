@@ -12,7 +12,7 @@
 const std::string_view PlayerState_Walk::AniName = "Walk";
 const std::string_view PlayerState_Walk::AniFileName = "Player_Walk.png";
 const std::pair<int, int> PlayerState_Walk::AniCutFrame = std::pair<int, int>(4, 3);
-const float PlayerState_Walk::AniInterTime = 0.08f;
+const float PlayerState_Walk::AniInterTime = 0.06f;
 
 std::vector<KeyNames>  PlayerState_Walk::CheckArrows =
 {
