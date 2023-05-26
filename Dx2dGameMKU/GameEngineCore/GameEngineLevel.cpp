@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "GameEngineLevel.h"
 
+#include <GameEnginePlatform/GameEngineInput.h>
+
 #include "GameEngineActor.h"
 #include "GameEngineCamera.h"
 #include "GameEngineGUI.h"
@@ -18,6 +20,9 @@ GameEngineLevel::GameEngineLevel()
 	std::shared_ptr<GameEngineCamera> UICamera = CreateActor<GameEngineCamera>();
 	UICamera->SetProjectionType(CameraType::Orthogonal);
 	Cameras.insert(std::make_pair(100, UICamera));
+
+	//모든 카메라의 이미지가 종합된 도화지 생성(포스트 프로세싱때 효과를 주기 위함)
+	LastTarget = GameEngineRenderTarget::Create(DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT, GameEngineWindow::GetScreenSize(), float4::Null);
 }
 
 GameEngineLevel::~GameEngineLevel()
@@ -126,18 +131,39 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		Cam->Setting();
 		Cam->CameraTransformUpdate();
 		Cam->Render(_DeltaTime);
+
+		//이 카메라에 대한 포스트 프로세싱 적용
+		Cam->CamTarget->Effect();
 	}
 	
+
+	LastTarget->Clear();
+
 	//이 레벨에 존재하는 카메라 순회
 	for (std::pair<int, std::shared_ptr<GameEngineCamera>> Pair : Cameras)
 	{
 		std::shared_ptr<GameEngineCamera> Camera = Pair.second;
 		std::shared_ptr<GameEngineRenderTarget> Target = Camera->GetCamTarget();
 
-		//메인 백버퍼에 카메라들의 이미지들을 덮어쓴다
-		GameEngineDevice::GetBackBufferTarget()->Merge(Target);
+		//카메라의 그림들을 LastTarget에 종합한다
+		LastTarget->Merge(Target);
 	}
 	
+	//메인 백버퍼에 LastTarget의 이미지를 덮어쓴다
+	GameEngineDevice::GetBackBufferTarget()->Merge(LastTarget);
+
+
+
+	//static bool GUIRender = true;
+	//if (true == GameEngineInput::IsDown("GUISwitch"))
+	//{
+	//	GUIRender = !GUIRender;
+	//}
+	//if (true == GUIRender)
+	//{
+	//	// GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
+	//}
+
 	//imgui 렌더
 	GameEngineGUI::Render(GetSharedThis(), _DeltaTime);
 }

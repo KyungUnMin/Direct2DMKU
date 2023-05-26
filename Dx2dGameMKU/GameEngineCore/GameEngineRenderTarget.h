@@ -3,9 +3,27 @@
 #include "GameEngineCore.h"
 
 class GameEngineTexture;
+class GameEngineRenderTarget;
+
+class GameEnginePostProcess
+	: std::enable_shared_from_this<GameEnginePostProcess>
+{
+	friend GameEngineRenderTarget;
+
+public:
+	std::shared_ptr<GameEngineRenderTarget> ResultTarget;
+
+protected:
+	virtual void Start(std::shared_ptr<GameEngineRenderTarget> _Target) = 0;
+	virtual void Effect(std::shared_ptr<GameEngineRenderTarget> _Target) = 0;
+};
+
+
 
 //텍스처의 렌더타켓을 이용한 기능들을 처리하는 클래스, 실제 렌더타갯은 텍스처가 가지고 있음
-class GameEngineRenderTarget : public GameEngineResource<GameEngineRenderTarget>
+class GameEngineRenderTarget 
+	: public GameEngineResource<GameEngineRenderTarget>
+	, std::enable_shared_from_this<GameEngineRenderTarget>
 {
 	friend class GameEngineCore;
 
@@ -50,8 +68,23 @@ public:
 	//사전에 만든 텍스처를 바탕으로 깊이버퍼텍스처 만들기, (아직까진) 디바이스에서만 호출됨
 	void CreateDepthTexture(int _Index = 0);
 
-	//
+	//이미지 덮어쓰기
 	void Merge(std::shared_ptr<GameEngineRenderTarget> _Other, size_t _Index = 0);
+
+
+	//이 렌더타겟에 포스트 프로세싱 이펙트 만들기
+	template<typename EffectType>
+	std::shared_ptr<EffectType> CreateEffect()
+	{
+		std::shared_ptr<EffectType> Effect = std::make_shared<EffectType>();
+		std::shared_ptr<GameEnginePostProcess> UpCast = std::dynamic_pointer_cast<GameEnginePostProcess>(Effect);
+		// UpCast->Start((shared_from_this()));
+		Effects.push_back(Effect);
+		return Effect;
+	}
+
+	//포스트 프로세싱 실행
+	void Effect();
 
 protected:
 
@@ -63,6 +96,10 @@ private:
 
 
 	float4 Color = float4{ 0.f, 0.f, 0.f, 0.f };
+
+	//이 렌더타겟에 포스트프로세싱을 적용할 이펙트들
+	std::vector<std::shared_ptr<GameEnginePostProcess>> Effects;
+
 	std::vector<std::shared_ptr<GameEngineTexture>> Textures;
 	std::vector<ID3D11RenderTargetView*> RTVs;
 

@@ -10,6 +10,7 @@ class GameEngineActor;
 class GameEngineCamera;
 class GameEngineCollision;
 class GameEngineRenderer;
+class GameEngineRenderTarget;
 
 class GameEngineLevel : public GameEngineObject
 {
@@ -75,6 +76,11 @@ public:
 
 	std::shared_ptr<GameEngineCamera> GetCamera(int _CameraOrder);
 
+	inline std::shared_ptr<GameEngineRenderTarget> GetLastTarget() const
+	{
+		return LastTarget;
+	}
+
 protected:
 	virtual void LevelChangeStart(){}
 	virtual void LevelChangeEnd(){}
@@ -84,6 +90,9 @@ protected:
 	virtual void Render(float _DeltaTime){}
 
 private:
+	//모든 카메라의 이미지가 다 종합된 렌더타겟(도화지)
+	std::shared_ptr<GameEngineRenderTarget> LastTarget;
+
 	//<이름, 경로>, 텍스처를 로드할 때마다 기록한다
 	std::map<std::string, std::string> TexturePath;
 	//std::map<std::string, std::string> LoadEndPath;

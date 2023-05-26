@@ -4,6 +4,7 @@
 
 GameEngineRenderUnit GameEngineRenderTarget::MergeUnit;
 
+
 void GameEngineRenderTarget::RenderTargetUnitInit()
 {
 	MergeUnit.SetPipeLine("Merge");
@@ -163,4 +164,12 @@ void GameEngineRenderTarget::Merge(std::shared_ptr<GameEngineRenderTarget> _Othe
 	//버텍스 쉐이더에서도 쓰이고
 	//아웃풋 머저에서도 쓰여서 생기는 문제를 방지하기 위함
 	MergeUnit.ShaderResHelper.AllResourcesReset();
+}
+
+void GameEngineRenderTarget::Effect()
+{
+	for (size_t i = 0; i < Effects.size(); i++)
+	{
+		Effects[i]->Effect(shared_from_this());
+	}
 }
