@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_UniqueAttack_HyrricaneKick.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 
 #include "DataMgr.h"
 #include "FieldCamController.h"
@@ -16,6 +17,7 @@ const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniFileName = "Pl
 const std::pair<int, int> PlayerState_UniqueAttack_HyrricaneKick::AniCutFrame = std::pair<int, int>(7, 4);
 const float PlayerState_UniqueAttack_HyrricaneKick::AniInterTime = 0.05f;
 const int PlayerState_UniqueAttack_HyrricaneKick::Damage = 5;
+const float PlayerState_UniqueAttack_HyrricaneKick::EffectRange = 100.f;
 
 
 PlayerState_UniqueAttack_HyrricaneKick::PlayerState_UniqueAttack_HyrricaneKick()
@@ -110,29 +112,31 @@ void PlayerState_UniqueAttack_HyrricaneKick::Attack(FieldEnemyBase* _Enemy)
 		IsHit = true;
 	}
 
+	bool IsHited = false;
 	size_t CurFrame = GetRenderer()->GetCurrentFrame();
 	if (19 == CurFrame)
 	{
-		if (true == _Enemy->OnDamage_BlowBack(TotalDamage))
-		{
-			PlayerState_AttackBase::CreateHitEffect_Blow();
-		}
+		IsHited = _Enemy->OnDamage_BlowBack(TotalDamage);
 	}
 	else if (0 == (CurFrame % 2))
 	{
-		if (true == _Enemy->OnDamage_Face(TotalDamage))
-		{
-			PlayerState_AttackBase::CreateHitEffect_Face();
-		}
+		IsHited = _Enemy->OnDamage_Face(TotalDamage);
 	}
 	else
 	{
-		if (true == _Enemy->OnDamage_Jaw(TotalDamage))
-		{
-			PlayerState_AttackBase::CreateHitEffect_Jaw();
-		}
+		IsHited = _Enemy->OnDamage_Jaw(TotalDamage);
 	}
 
+	//공격이 정상적으로 맞았다면
+	if (false == IsHited)
+		return;
+
+	static const float4 EffectPivot = float4::Up * 100.f;
+	static float4 EffectOffset = float4::Zero;
+	EffectOffset.x = GameEngineRandom::MainRandom.RandomFloat(-EffectRange, EffectRange);
+	EffectOffset.y = GameEngineRandom::MainRandom.RandomFloat(0.f, EffectRange * 0.5f);
+
+	PlayerState_AttackBase::CreateHitEffect(EffectPivot + EffectOffset);
 }
 
 void PlayerState_UniqueAttack_HyrricaneKick::ExitState()

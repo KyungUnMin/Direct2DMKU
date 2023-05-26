@@ -16,25 +16,25 @@
 
 void PlayerState_AttackBase::CreateHitEffect_Face()
 {
-	static const float4 Offset = float4::Up * 150.f + float4::Right * 50.f + float4::Back * 100.f;
+	static const float4 Offset = float4::Up * 150.f + float4::Right * 50.f/* + float4::Back * 100.f*/;
 	CreateHitEffect(Offset);
 }
 
 void PlayerState_AttackBase::CreateHitEffect_Stomach()
 {
-	static const float4 Offset = float4::Up * 100.f + float4::Right * 50.f + float4::Back * 100.f;
+	static const float4 Offset = float4::Up * 100.f + float4::Right * 50.f/* + float4::Back * 100.f*/;
 	CreateHitEffect(Offset);
 }
 
 void PlayerState_AttackBase::CreateHitEffect_Jaw()
 {
-	static const float4 Offset = float4::Up * 150.f + float4::Right * 100.f + float4::Back * 100.f;
+	static const float4 Offset = float4::Up * 150.f + float4::Right * 100.f/* + float4::Back * 100.f*/;
 	CreateHitEffect(Offset);
 }
 
 void PlayerState_AttackBase::CreateHitEffect_Blow()
 {
-	static const float4 Offset = float4::Up * 100.f + float4::Right * 50.f + float4::Back * 100.f;
+	static const float4 Offset = float4::Up * 100.f + float4::Right * 50.f/* + float4::Back * 100.f*/;
 	CreateHitEffect(Offset);
 }
 

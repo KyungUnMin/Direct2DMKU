@@ -28,6 +28,7 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 	static const int Damage;
+	static const float EffectRange;
 
 	class FieldCamController* CamCtrl = nullptr;
 	bool IsHit = false;
