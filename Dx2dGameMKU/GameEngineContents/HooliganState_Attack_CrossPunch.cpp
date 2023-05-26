@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "HooliganState_Attack_SideKick.h"
-
-#include "DataMgr.h"
+#include "HooliganState_Attack_CrossPunch.h"
 
 #include "HooliganFSM.h"
+#include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
+#include "DataMgr.h"
 
-const std::string_view HooliganState_Attack_SideKick::AniName = "Attack_SideKick";
-const std::string_view HooliganState_Attack_SideKick::AniFileName = "Hooligan_Side_Kick.png";
-const std::pair<int, int> HooliganState_Attack_SideKick::AniCutFrame = std::pair<int, int>(5, 2);
-const float HooliganState_Attack_SideKick::AniInterTime = 0.08f;
-const int HooliganState_Attack_SideKick::Damage = 5;
+const std::string_view HooliganState_Attack_CrossPunch::AniName = "Attack_CrossPunch";
+const std::string_view HooliganState_Attack_CrossPunch::AniFileName = "Hooligan_CrossPunch.png";
+const std::pair<int, int> HooliganState_Attack_CrossPunch::AniCutFrame = std::pair<int, int>(5, 2);
+const float HooliganState_Attack_CrossPunch::AniInterTime = 0.08f;
+const int HooliganState_Attack_CrossPunch::Damage = 5;
 
-HooliganState_Attack_SideKick::HooliganState_Attack_SideKick()
+HooliganState_Attack_CrossPunch::HooliganState_Attack_CrossPunch()
 {
 
 }
 
-HooliganState_Attack_SideKick::~HooliganState_Attack_SideKick()
+HooliganState_Attack_CrossPunch::~HooliganState_Attack_CrossPunch()
 {
 
 }
 
-void HooliganState_Attack_SideKick::Start()
+void HooliganState_Attack_CrossPunch::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void HooliganState_Attack_SideKick::Start()
 	CreateAnimation();
 }
 
-void HooliganState_Attack_SideKick::LoadAnimation()
+void HooliganState_Attack_CrossPunch::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,9 +46,11 @@ void HooliganState_Attack_SideKick::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void HooliganState_Attack_SideKick::CreateAnimation()
+void HooliganState_Attack_CrossPunch::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
+
+	EnemyRender->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -57,11 +59,13 @@ void HooliganState_Attack_SideKick::CreateAnimation()
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
 }
 
 
-void HooliganState_Attack_SideKick::EnterState()
+
+
+void HooliganState_Attack_CrossPunch::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
@@ -70,13 +74,16 @@ void HooliganState_Attack_SideKick::EnterState()
 }
 
 
-void HooliganState_Attack_SideKick::Update(float _DeltaTime)
+
+void HooliganState_Attack_CrossPunch::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
+	
 
+	
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
 	{
@@ -85,7 +92,8 @@ void HooliganState_Attack_SideKick::Update(float _DeltaTime)
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	HooliganStateType RandomAttack = static_cast<HooliganStateType>(GetEnemyFsm()->GetRandomAttack());
+	
+	HooliganStateType RandomAttack = static_cast<HooliganStateType >(GetEnemyFsm()->GetRandomAttack());
 	if (GetStateEnum<HooliganStateType>() == RandomAttack)
 	{
 		GetFSM()->ChangeState(HooliganStateType::Idle);
@@ -97,11 +105,9 @@ void HooliganState_Attack_SideKick::Update(float _DeltaTime)
 }
 
 
-
-
-void HooliganState_Attack_SideKick::Attack()
+void HooliganState_Attack_CrossPunch::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
 	if (false == Result)
 		return;
 

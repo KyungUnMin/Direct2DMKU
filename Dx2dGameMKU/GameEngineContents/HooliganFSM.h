@@ -9,10 +9,11 @@ enum class HooliganStateType
 	//Ready,
 
 	//Attack
-	//AxeKick,
-	//Elbow,
-	//Punch,
-	//SideKick,
+	CrossPunch,
+	DodgeKick,
+	JumpBackKick,
+	SnapKick,
+
 
 	//Damaged
 	NormalDamaged_Face,

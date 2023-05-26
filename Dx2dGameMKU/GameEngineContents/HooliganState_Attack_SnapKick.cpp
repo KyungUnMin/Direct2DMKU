@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "HooliganState_Attack_Elbow.h"
+#include "HooliganState_Attack_SnapKick.h"
 
 #include "DataMgr.h"
 
 #include "HooliganFSM.h"
 #include "FieldPlayer.h"
 
-const std::string_view HooliganState_Attack_Elbow::AniName = "Attack_Elbow";
-const std::string_view HooliganState_Attack_Elbow::AniFileName = "Hooligan_Elbow_Uppercut.png";
-const std::pair<int, int> HooliganState_Attack_Elbow::AniCutFrame = std::pair<int, int>(5, 2);
-const float HooliganState_Attack_Elbow::AniInterTime = 0.08f;
-const int HooliganState_Attack_Elbow::Damage = 5;
+const std::string_view HooliganState_Attack_SnapKick::AniName = "Attack_SnapKick";
+const std::string_view HooliganState_Attack_SnapKick::AniFileName = "Hooligan_SnapKick.png";
+const std::pair<int, int> HooliganState_Attack_SnapKick::AniCutFrame = std::pair<int, int>(5, 2);
+const float HooliganState_Attack_SnapKick::AniInterTime = 0.08f;
+const int HooliganState_Attack_SnapKick::Damage = 5;
 
-HooliganState_Attack_Elbow::HooliganState_Attack_Elbow()
+HooliganState_Attack_SnapKick::HooliganState_Attack_SnapKick()
 {
 
 }
 
-HooliganState_Attack_Elbow::~HooliganState_Attack_Elbow()
+HooliganState_Attack_SnapKick::~HooliganState_Attack_SnapKick()
 {
 
 }
 
-void HooliganState_Attack_Elbow::Start()
+void HooliganState_Attack_SnapKick::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void HooliganState_Attack_Elbow::Start()
 	CreateAnimation();
 }
 
-void HooliganState_Attack_Elbow::LoadAnimation()
+void HooliganState_Attack_SnapKick::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,39 +46,36 @@ void HooliganState_Attack_Elbow::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void HooliganState_Attack_Elbow::CreateAnimation()
+void HooliganState_Attack_SnapKick::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 6,
+		.End = 8,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
 }
 
 
-void HooliganState_Attack_Elbow::EnterState()
+void HooliganState_Attack_SnapKick::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-
 	EnemyState_AttackBase::SetAttackColValue();
 }
 
 
-
-void HooliganState_Attack_Elbow::Update(float _DeltaTime)
+void HooliganState_Attack_SnapKick::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
-
 
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
@@ -101,9 +98,10 @@ void HooliganState_Attack_Elbow::Update(float _DeltaTime)
 
 
 
-void HooliganState_Attack_Elbow::Attack()
+
+void HooliganState_Attack_SnapKick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
 	if (false == Result)
 		return;
 

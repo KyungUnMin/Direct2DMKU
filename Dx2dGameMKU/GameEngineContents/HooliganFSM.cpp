@@ -9,10 +9,10 @@
 //#include "HooliganState_Ready.h"
 
 //Attack
-//#include "HooliganState_Attack_AxeKick.h"
-//#include "HooliganState_Attack_Elbow.h"
-//#include "HooliganState_Attack_Punch.h"
-//#include "HooliganState_Attack_SideKick.h"
+#include "HooliganState_Attack_CrossPunch.h"
+#include "HooliganState_Attack_DodgeKick.h"
+#include "HooliganState_Attack_JumpBackKick.h"
+#include "HooliganState_Attack_SnapKick.h"
 
 //Damaged
 #include "HooliganState_NormalDamaged_Face.h"
@@ -30,10 +30,10 @@ const  std::string_view HooliganFSM::NormalDamaged_FileName = "Hooligan_GetHit.p
 
 const std::vector<HooliganStateType> HooliganFSM::AttackGroup =
 {
-	//HooliganStateType::AxeKick,
-	//HooliganStateType::Elbow,
-	//HooliganStateType::Punch,
-	//HooliganStateType::SideKick
+	HooliganStateType::CrossPunch,
+	HooliganStateType::DodgeKick,
+	HooliganStateType::JumpBackKick,
+	HooliganStateType::SnapKick
 };
 
 size_t HooliganFSM::GetRandomAttack()
@@ -70,10 +70,10 @@ void HooliganFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<HooliganState_Attack_AxeKick>(HooliganStateType::AxeKick);
-	//FSMBase::CreateState<HooliganState_Attack_Elbow>(HooliganStateType::Elbow);
-	//FSMBase::CreateState<HooliganState_Attack_Punch>(HooliganStateType::Punch);
-	//FSMBase::CreateState<HooliganState_Attack_SideKick>(HooliganStateType::SideKick);
+	FSMBase::CreateState<HooliganState_Attack_CrossPunch>(HooliganStateType::CrossPunch);
+	FSMBase::CreateState<HooliganState_Attack_DodgeKick>(HooliganStateType::DodgeKick);
+	FSMBase::CreateState<HooliganState_Attack_JumpBackKick>(HooliganStateType::JumpBackKick);
+	FSMBase::CreateState<HooliganState_Attack_SnapKick>(HooliganStateType::SnapKick);
 
 
 	//Damaged

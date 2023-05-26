@@ -688,6 +688,18 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged\06.Dazed">
       <UniqueIdentifier>{4e758353-eb35-4dfd-bfbf-503866376219}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\01.CrossPunch">
+      <UniqueIdentifier>{be490f7c-4878-4e6b-96d8-25a2a411eb2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\02.DodgeKick">
+      <UniqueIdentifier>{e225941d-2077-4454-97c2-f5b4cedfd36a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\03.JumpBackKick">
+      <UniqueIdentifier>{5899dae2-476b-4ed9-a01d-bb7b31e32d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\04.SnapKick">
+      <UniqueIdentifier>{9940470d-bdcd-482a-84dd-87eb8729df0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1095,18 +1107,6 @@
     <ClCompile Include="HooliganFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="HooliganState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="HooliganState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="HooliganState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="HooliganState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="TigerManFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\02.FSM</Filter>
     </ClCompile>
@@ -1346,6 +1346,18 @@
     </ClCompile>
     <ClCompile Include="HooliganState_Damaged_WallOut.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged\05.WallOut</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_SnapKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\04.SnapKick</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_CrossPunch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\01.CrossPunch</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_DodgeKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\02.DodgeKick</Filter>
+    </ClCompile>
+    <ClCompile Include="HooliganState_Attack_JumpBackKick.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\03.JumpBackKick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1745,18 +1757,6 @@
     <ClInclude Include="HooliganFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\02.FSM</Filter>
     </ClInclude>
-    <ClInclude Include="HooliganState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="HooliganState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="TigerManFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\02.FSM</Filter>
     </ClInclude>
@@ -1996,6 +1996,18 @@
     </ClInclude>
     <ClInclude Include="HooliganState_Damaged_WallOut.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\05.Damaged\05.WallOut</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_SnapKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\04.SnapKick</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_CrossPunch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\01.CrossPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_DodgeKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\02.DodgeKick</Filter>
+    </ClInclude>
+    <ClInclude Include="HooliganState_Attack_JumpBackKick.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\03.JumpBackKick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

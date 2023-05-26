@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "HooliganState_Attack_Punch.h"
+#include "HooliganState_Attack_JumpBackKick.h"
 
 #include "DataMgr.h"
 
 #include "HooliganFSM.h"
 #include "FieldPlayer.h"
 
-const std::string_view HooliganState_Attack_Punch::AniName = "Attack_Punch";
-const std::string_view HooliganState_Attack_Punch::AniFileName = "Hooligan_Punch.png";
-const std::pair<int, int> HooliganState_Attack_Punch::AniCutFrame = std::pair<int, int>(5, 2);
-const float HooliganState_Attack_Punch::AniInterTime = 0.08f;
-const int HooliganState_Attack_Punch::Damage = 5;
+const std::string_view HooliganState_Attack_JumpBackKick::AniName = "Attack_JumpBackKick";
+const std::string_view HooliganState_Attack_JumpBackKick::AniFileName = "Hooligan_JumpBackKick.png";
+const std::pair<int, int> HooliganState_Attack_JumpBackKick::AniCutFrame = std::pair<int, int>(5, 3);
+const float HooliganState_Attack_JumpBackKick::AniInterTime = 0.08f;
+const int HooliganState_Attack_JumpBackKick::Damage = 5;
 
-HooliganState_Attack_Punch::HooliganState_Attack_Punch()
+HooliganState_Attack_JumpBackKick::HooliganState_Attack_JumpBackKick()
 {
 
 }
 
-HooliganState_Attack_Punch::~HooliganState_Attack_Punch()
+HooliganState_Attack_JumpBackKick::~HooliganState_Attack_JumpBackKick()
 {
 
 }
 
-void HooliganState_Attack_Punch::Start()
+void HooliganState_Attack_JumpBackKick::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void HooliganState_Attack_Punch::Start()
 	CreateAnimation();
 }
 
-void HooliganState_Attack_Punch::LoadAnimation()
+void HooliganState_Attack_JumpBackKick::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,22 +46,22 @@ void HooliganState_Attack_Punch::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void HooliganState_Attack_Punch::CreateAnimation()
+void HooliganState_Attack_JumpBackKick::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 6,
+		.End = 12,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
 }
 
 
-void HooliganState_Attack_Punch::EnterState()
+void HooliganState_Attack_JumpBackKick::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
@@ -71,9 +71,11 @@ void HooliganState_Attack_Punch::EnterState()
 
 
 
-void HooliganState_Attack_Punch::Update(float _DeltaTime)
+void HooliganState_Attack_JumpBackKick::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
+
+	EnemyState_AttackBase::Update_SinJump(0.5f, 30.f);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -99,9 +101,9 @@ void HooliganState_Attack_Punch::Update(float _DeltaTime)
 
 
 
-void HooliganState_Attack_Punch::Attack()
+void HooliganState_Attack_JumpBackKick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
 	if (false == Result)
 		return;
 

@@ -332,10 +332,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="HooliganFSM.h" />
-    <ClInclude Include="HooliganState_Attack_AxeKick.h" />
-    <ClInclude Include="HooliganState_Attack_Elbow.h" />
-    <ClInclude Include="HooliganState_Attack_Punch.h" />
-    <ClInclude Include="HooliganState_Attack_SideKick.h" />
+    <ClInclude Include="HooliganState_Attack_CrossPunch.h" />
+    <ClInclude Include="HooliganState_Attack_DodgeKick.h" />
+    <ClInclude Include="HooliganState_Attack_JumpBackKick.h" />
+    <ClInclude Include="HooliganState_Attack_SnapKick.h" />
     <ClInclude Include="HooliganState_Damaged_BlowBack.h" />
     <ClInclude Include="HooliganState_Damaged_Dazed.h" />
     <ClInclude Include="HooliganState_Damaged_KnockDown.h" />
@@ -893,10 +893,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="HooliganFSM.cpp" />
-    <ClCompile Include="HooliganState_Attack_AxeKick.cpp" />
-    <ClCompile Include="HooliganState_Attack_Elbow.cpp" />
-    <ClCompile Include="HooliganState_Attack_Punch.cpp" />
-    <ClCompile Include="HooliganState_Attack_SideKick.cpp" />
+    <ClCompile Include="HooliganState_Attack_CrossPunch.cpp" />
+    <ClCompile Include="HooliganState_Attack_DodgeKick.cpp" />
+    <ClCompile Include="HooliganState_Attack_JumpBackKick.cpp" />
+    <ClCompile Include="HooliganState_Attack_SnapKick.cpp" />
     <ClCompile Include="HooliganState_Damaged_BlowBack.cpp" />
     <ClCompile Include="HooliganState_Damaged_Dazed.cpp" />
     <ClCompile Include="HooliganState_Damaged_KnockDown.cpp" />
