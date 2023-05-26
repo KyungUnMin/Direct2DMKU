@@ -81,6 +81,9 @@ protected:
 		return BGPtr;
 	}
 
+	
+	
+
 
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;

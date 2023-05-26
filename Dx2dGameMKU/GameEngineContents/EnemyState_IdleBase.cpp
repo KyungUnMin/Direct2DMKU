@@ -35,7 +35,7 @@ bool EnemyState_IdleBase::IsWaitFinished()
 bool EnemyState_IdleBase::IsAttackerEmpty()
 {
 	const FieldEnemyBase* const CurAttacker = EnemyState_AttackBase::IsAttackAnyone();
-	return (nullptr != CurAttacker);
+	return (nullptr == CurAttacker);
 }
 
 
@@ -48,7 +48,7 @@ bool EnemyState_IdleBase::ChangeAttackState()
 	//플레이어와 가까이 있으면서 다른 Enemy가 공격중이 아니라면 공격상태로 변경
 	if (VecToPlayer.Size() < GetSightRadius())
 	{
-		if (false == EnemyState_IdleBase::IsAttackerEmpty())
+		if (true == IsAttackerEmpty())
 		{
 			size_t RandomAttack = GetEnemyFsm()->GetRandomAttack();
 			GetFSM()->ChangeState(RandomAttack);

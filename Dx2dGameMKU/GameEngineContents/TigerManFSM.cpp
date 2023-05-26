@@ -6,13 +6,13 @@
 //Movement
 #include "TigerManState_Idle.h"
 #include "TigerManState_Walk.h"
-#include "TigerManState_Ready.h"
+//#include "TigerManState_Ready.h"
 
 //Attack
-#include "TigerManState_Attack_AxeKick.h"
-#include "TigerManState_Attack_Elbow.h"
-#include "TigerManState_Attack_Punch.h"
-#include "TigerManState_Attack_SideKick.h"
+#include "TigerManState_Attack_Boot.h"
+#include "TigerManState_Attack_Chop.h"
+#include "TigerManState_Attack_Rolling.h"
+
 
 //Damaged
 #include "TigerManState_NormalDamaged_Face.h"
@@ -25,15 +25,13 @@
 #include "TigerManState_Damaged_Dazed.h"
 
 
-const  std::string_view TigerManFSM::NormalDamaged_FileName = "TigerMan_Get_Hits.png";
+const  std::string_view TigerManFSM::NormalDamaged_FileName = "TigerMan_GetHit.png";
 
 
 const std::vector<TigerManStateType> TigerManFSM::AttackGroup =
 {
-	TigerManStateType::AxeKick,
-	TigerManStateType::Elbow,
-	TigerManStateType::Punch,
-	TigerManStateType::SideKick
+	TigerManStateType::Boot,
+	TigerManStateType::Chop,
 };
 
 size_t TigerManFSM::GetRandomAttack()
@@ -67,14 +65,13 @@ void TigerManFSM::Init(FieldEnemyBase* _Enemy)
 	//Movement
 	FSMBase::CreateState<TigerManState_Idle>(TigerManStateType::Idle);
 	FSMBase::CreateState<TigerManState_Walk>(TigerManStateType::Walk);
-	FSMBase::CreateState<TigerManState_Ready>(TigerManStateType::Ready);
+	//FSMBase::CreateState<TigerManState_Ready>(TigerManStateType::Ready);
 
 
 	//Attack
-	FSMBase::CreateState<TigerManState_Attack_AxeKick>(TigerManStateType::AxeKick);
-	FSMBase::CreateState<TigerManState_Attack_Elbow>(TigerManStateType::Elbow);
-	FSMBase::CreateState<TigerManState_Attack_Punch>(TigerManStateType::Punch);
-	FSMBase::CreateState<TigerManState_Attack_SideKick>(TigerManStateType::SideKick);
+	FSMBase::CreateState<TigerManState_Attack_Boot>(TigerManStateType::Boot);
+	FSMBase::CreateState<TigerManState_Attack_Chop>(TigerManStateType::Chop);
+	FSMBase::CreateState<TigerManState_Attack_Rolling>(TigerManStateType::Rolling);
 
 
 	//Damaged

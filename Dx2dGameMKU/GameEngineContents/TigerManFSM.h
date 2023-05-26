@@ -6,13 +6,12 @@ enum class TigerManStateType
 	//Movement
 	Idle,
 	Walk,
-	Ready,
+	//Ready,
 
 	//Attack
-	AxeKick,
-	Elbow,
-	Punch,
-	SideKick,
+	Boot,
+	Chop,
+	Rolling,
 
 	//Damaged
 	NormalDamaged_Face,

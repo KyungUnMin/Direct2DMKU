@@ -14,7 +14,6 @@ public:
 	FieldEnemy_TigerMan& operator=(const FieldEnemy_TigerMan& _Other) = delete;
 	FieldEnemy_TigerMan& operator=(const FieldEnemy_TigerMan&& _Other) noexcept = delete;
 
-	void SitDown();
 
 	bool OnDamage_Face(int _Damage) override;
 	bool OnDamage_Stomach(int _Damage) override;

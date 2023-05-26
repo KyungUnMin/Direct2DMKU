@@ -596,10 +596,9 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TigerManFSM.h" />
-    <ClInclude Include="TigerManState_Attack_AxeKick.h" />
-    <ClInclude Include="TigerManState_Attack_Elbow.h" />
-    <ClInclude Include="TigerManState_Attack_Punch.h" />
-    <ClInclude Include="TigerManState_Attack_SideKick.h" />
+    <ClInclude Include="TigerManState_Attack_Boot.h" />
+    <ClInclude Include="TigerManState_Attack_Chop.h" />
+    <ClInclude Include="TigerManState_Attack_Rolling.h" />
     <ClInclude Include="TigerManState_Damaged_BlowBack.h" />
     <ClInclude Include="TigerManState_Damaged_Dazed.h" />
     <ClInclude Include="TigerManState_Damaged_KnockDown.h" />
@@ -1157,10 +1156,9 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TigerManFSM.cpp" />
-    <ClCompile Include="TigerManState_Attack_AxeKick.cpp" />
-    <ClCompile Include="TigerManState_Attack_Elbow.cpp" />
-    <ClCompile Include="TigerManState_Attack_Punch.cpp" />
-    <ClCompile Include="TigerManState_Attack_SideKick.cpp" />
+    <ClCompile Include="TigerManState_Attack_Boot.cpp" />
+    <ClCompile Include="TigerManState_Attack_Chop.cpp" />
+    <ClCompile Include="TigerManState_Attack_Rolling.cpp" />
     <ClCompile Include="TigerManState_Damaged_BlowBack.cpp" />
     <ClCompile Include="TigerManState_Damaged_Dazed.cpp" />
     <ClCompile Include="TigerManState_Damaged_KnockDown.cpp" />

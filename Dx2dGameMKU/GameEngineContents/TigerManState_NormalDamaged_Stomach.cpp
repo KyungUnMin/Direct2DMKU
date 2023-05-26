@@ -5,7 +5,7 @@
 
 const std::string_view TigerManState_NormalDamaged_Stomach::AniName = "NormalDamaged_Stomach";
 const std::pair<int, int> TigerManState_NormalDamaged_Stomach::AniCutFrame = std::pair<int, int>{ 5, 2 };
-const std::pair<size_t, size_t> TigerManState_NormalDamaged_Stomach::AniFrameIndex = std::pair<size_t, size_t>{ 3,5 };
+const std::pair<size_t, size_t> TigerManState_NormalDamaged_Stomach::AniFrameIndex = std::pair<size_t, size_t>{ 4,6 };
 const float TigerManState_NormalDamaged_Stomach::AniInterTime = 0.08f;
 
 TigerManState_NormalDamaged_Stomach::TigerManState_NormalDamaged_Stomach()
@@ -51,7 +51,8 @@ void TigerManState_NormalDamaged_Stomach::CreateAnimation()
 		.SpriteName = TigerManFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false
 		});
 }
 

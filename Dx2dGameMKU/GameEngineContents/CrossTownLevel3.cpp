@@ -83,6 +83,5 @@ void CrossTownLevel3::CreateDoors()
 
 void CrossTownLevel3::CreateEnemies()
 {
-	//GetEnemySpawner().CreateEnemy(EnemyType::Cheerleader, float4::Zero);
-	GetEnemySpawner().CreateEnemy(EnemyType::Hooligan, float4::Zero);
+	GetEnemySpawner().CreateEnemy(EnemyType::TigerMan, float4::Down * 50.f);
 }

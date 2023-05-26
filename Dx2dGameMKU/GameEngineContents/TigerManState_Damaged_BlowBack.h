@@ -24,7 +24,7 @@ private:
 	static const std::pair<size_t, size_t> AniFrameIndex;
 	static const float AniInterTime;
 
-	const float StartAcc = 2500.f;
+	const float StartAcc = 1500.f;
 	const float Duration = 0.5f;
 
 	void LoadAnimation();

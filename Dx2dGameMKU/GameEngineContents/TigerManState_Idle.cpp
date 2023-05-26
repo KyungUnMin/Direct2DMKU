@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "TigerManState_Idle.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 
 #include "TigerManFSM.h"
 
@@ -49,8 +50,6 @@ void TigerManState_Idle::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = 0,
-		.End = 7,
 		.FrameInter = AniInterTime
 	});
 }
@@ -72,6 +71,11 @@ void TigerManState_Idle::Update(float _DeltaTime)
 		return;
 
 
+	//인자로 들어간 확률로 Rolling 공격을 시도한다
+	if (true == RollingExcute(10))
+		return;
+
+	
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
 	if (true == EnemyState_IdleBase::ChangeAttackState())
 		return;
@@ -82,8 +86,20 @@ void TigerManState_Idle::Update(float _DeltaTime)
 		return;
 
 	GetFSM()->ChangeState(TigerManStateType::Walk);
-	
 }
 
+bool TigerManState_Idle::RollingExcute(int _Percent)
+{
+	//누군가가 공격중이라면 무조건 Rolling 스킬 발동하지 않는다
+	if (false == EnemyState_IdleBase::IsAttackerEmpty())
+		return false;
 
+
+	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, 100);
+	if (_Percent < RandValue)
+		return false;
+
+	GetFSM()->ChangeState(TigerManStateType::Rolling);
+	return true;
+}
 

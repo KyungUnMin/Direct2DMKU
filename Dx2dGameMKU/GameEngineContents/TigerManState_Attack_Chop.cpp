@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "TigerManState_Attack_Punch.h"
+#include "TigerManState_Attack_Chop.h"
 
 #include "DataMgr.h"
 
 #include "TigerManFSM.h"
 #include "FieldPlayer.h"
 
-const std::string_view TigerManState_Attack_Punch::AniName = "Attack_Punch";
-const std::string_view TigerManState_Attack_Punch::AniFileName = "TigerMan_Punch.png";
-const std::pair<int, int> TigerManState_Attack_Punch::AniCutFrame = std::pair<int, int>(5, 2);
-const float TigerManState_Attack_Punch::AniInterTime = 0.08f;
-const int TigerManState_Attack_Punch::Damage = 5;
+const std::string_view TigerManState_Attack_Chop::AniName = "Attack_Chop";
+const std::string_view TigerManState_Attack_Chop::AniFileName = "TigerMan_Chop.png";
+const std::pair<int, int> TigerManState_Attack_Chop::AniCutFrame = std::pair<int, int>(5, 2);
+const float TigerManState_Attack_Chop::AniInterTime = 0.08f;
+const int TigerManState_Attack_Chop::Damage = 8;
 
-TigerManState_Attack_Punch::TigerManState_Attack_Punch()
+TigerManState_Attack_Chop::TigerManState_Attack_Chop()
 {
 
 }
 
-TigerManState_Attack_Punch::~TigerManState_Attack_Punch()
+TigerManState_Attack_Chop::~TigerManState_Attack_Chop()
 {
 
 }
 
-void TigerManState_Attack_Punch::Start()
+void TigerManState_Attack_Chop::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void TigerManState_Attack_Punch::Start()
 	CreateAnimation();
 }
 
-void TigerManState_Attack_Punch::LoadAnimation()
+void TigerManState_Attack_Chop::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,37 +46,39 @@ void TigerManState_Attack_Punch::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void TigerManState_Attack_Punch::CreateAnimation()
+void TigerManState_Attack_Chop::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 6,
+		.End = 8,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
 }
 
 
-void TigerManState_Attack_Punch::EnterState()
+void TigerManState_Attack_Chop::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
 	EnemyState_AttackBase::SetAttackColValue();
 }
 
 
 
-void TigerManState_Attack_Punch::Update(float _DeltaTime)
+void TigerManState_Attack_Chop::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
+
 
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
@@ -99,9 +101,9 @@ void TigerManState_Attack_Punch::Update(float _DeltaTime)
 
 
 
-void TigerManState_Attack_Punch::Attack()
+void TigerManState_Attack_Chop::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
 	if (false == Result)
 		return;
 

@@ -700,6 +700,51 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\04.SnapKick">
       <UniqueIdentifier>{9940470d-bdcd-482a-84dd-87eb8729df0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\01.Idle">
+      <UniqueIdentifier>{548be1f3-fc3a-489a-9444-44f4c9c79bd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\02.Walk">
+      <UniqueIdentifier>{9b2d5877-f748-4523-9964-f5fa2eebb008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\03.Ready">
+      <UniqueIdentifier>{ea664450-23a8-4db6-9882-63bd53caf97a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{f9b96800-37ba-4dc8-8982-4639b2b8da3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{79381e47-dc4b-46aa-838a-472099a4ddb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{ed2afbdb-aa68-4bca-9b6b-a6504766e710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{15a207b9-7d86-48cb-8a41-21ae95d8313e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{68e2f55a-6f03-401a-b19b-dd0ad0b848b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{48eb944c-d79b-4a49-8985-d82feebf04f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\04.WallHit">
+      <UniqueIdentifier>{f3427fcb-ab51-4b00-916d-29121b65d422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\05.WallOut">
+      <UniqueIdentifier>{d890ba14-1707-47eb-ac45-52a5f1e63ae8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\06.Dazed">
+      <UniqueIdentifier>{22c4aeab-0e99-4f01-b3ba-98dd2619ddc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\01.Boot">
+      <UniqueIdentifier>{ba8c38ed-518a-4793-bc1a-0ea1168615c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\02.Chop">
+      <UniqueIdentifier>{c9ab4dff-8c10-4816-b929-6f5f0100cc1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\03.Rolling">
+      <UniqueIdentifier>{b37e0e2f-d069-4393-b49c-a30710eef544}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1113,51 +1158,6 @@
     <ClCompile Include="FieldEnemy_TigerMan.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="TigerManState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="TigerManState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
-    </ClCompile>
     <ClCompile Include="WaverFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\02.FSM</Filter>
     </ClCompile>
@@ -1358,6 +1358,48 @@
     </ClCompile>
     <ClCompile Include="HooliganState_Attack_JumpBackKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\03.JumpBackKick</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\03.Ready</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\01.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\02.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\06.Dazed</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\03.KnockDown</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\04.WallHit</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\05.WallOut</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Attack_Boot.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\01.Boot</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Attack_Chop.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\02.Chop</Filter>
+    </ClCompile>
+    <ClCompile Include="TigerManState_Attack_Rolling.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\03.Rolling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1763,51 +1805,6 @@
     <ClInclude Include="FieldEnemy_TigerMan.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\01.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="TigerManState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerManState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement</Filter>
-    </ClInclude>
     <ClInclude Include="WaverFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\02.FSM</Filter>
     </ClInclude>
@@ -2008,6 +2005,48 @@
     </ClInclude>
     <ClInclude Include="HooliganState_Attack_JumpBackKick.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\07.Hooligan\04.Attack\03.JumpBackKick</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\03.Ready</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\01.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\03.Movement\02.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\06.Dazed</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\03.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\04.WallHit</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\05.Damaged\05.WallOut</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Attack_Boot.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\01.Boot</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Attack_Chop.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\02.Chop</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerManState_Attack_Rolling.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\03.Rolling</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

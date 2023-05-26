@@ -45,6 +45,11 @@ protected:
 	void SetMoveEvent(const std::string_view& _AniName, size_t _MoveStartFrame,
 		bool _IsReverseDir = false, float _MoveDuration = 0.5f, float _StartAcc = 1000.f);
 
+
+
+	void Update_AccTraceAttack(float _DeltaTime, float _Acc = 1000.f, float _MaxSpeed = 2000.f);
+
+
 private:
 	//지금 공격을 하고 있는 Enemy(모든 Enemy들 중에 한명만 공격시키기 위함)
 	static FieldEnemyBase* AttackEnemy;
@@ -66,6 +71,14 @@ private:
 
 	float MoveDuration = 0.5f;
 
+
+	float4 TraceVec = float4::Zero;
+
+
 	void AttackCheck();
+
+	void ChangeTraceDir(const float4& _DirToPlayer);
+
+	void Rotate90Dir(float4& _Vec);
 };
 

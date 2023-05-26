@@ -5,7 +5,7 @@
 
 const std::string_view TigerManState_NormalDamaged_Jaw::AniName = "NormalDamaged_Jaw";
 const std::pair<int, int> TigerManState_NormalDamaged_Jaw::AniCutFrame = std::pair<int, int>{ 5, 2 };
-const std::pair<size_t, size_t> TigerManState_NormalDamaged_Jaw::AniFrameIndex = std::pair<size_t, size_t>{ 6,8 };
+const std::pair<size_t, size_t> TigerManState_NormalDamaged_Jaw::AniFrameIndex = std::pair<size_t, size_t>{ 7,9 };
 const float TigerManState_NormalDamaged_Jaw::AniInterTime = 0.08f;
 
 TigerManState_NormalDamaged_Jaw::TigerManState_NormalDamaged_Jaw()
@@ -51,7 +51,8 @@ void TigerManState_NormalDamaged_Jaw::CreateAnimation()
 		.SpriteName = TigerManFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 }
 

@@ -27,10 +27,6 @@ void FieldEnemy_TigerMan::Start()
 	Fsm.Init(this);
 }
 
-void FieldEnemy_TigerMan::SitDown()
-{
-	Fsm.ChangeState(TigerManStateType::Ready);
-}
 
 
 void FieldEnemy_TigerMan::Update(float _DeltaTime)

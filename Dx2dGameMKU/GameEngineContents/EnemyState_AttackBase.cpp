@@ -7,6 +7,7 @@
 
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
+#include "BackGround.h"
 
 FieldEnemyBase* EnemyState_AttackBase::AttackEnemy = nullptr;
 
@@ -141,6 +142,99 @@ void EnemyState_AttackBase::Update(float _DeltaTime)
 }
 
 
+
+void EnemyState_AttackBase::Update_AccTraceAttack(float _DeltaTime, float _Acc /*= 200.f*/, float _MaxSpeed /*= 200.f*/)
+{
+	//플레이어를 향하는 방향
+	float4 DirToPlayer = GetVecToPlayer();
+	DirToPlayer.Normalize();
+
+	//항상 플레이어 바라보기
+	EnemyStateBase::ChangeRenderDirection();
+
+	//가속도 더하기
+	TraceVec += DirToPlayer * _Acc * _DeltaTime;
+
+	//최대 속도 상한선
+	if (_MaxSpeed < TraceVec.Size())
+	{
+		TraceVec.Normalize();
+		TraceVec *= _MaxSpeed;
+	}
+
+
+	//다음에 움직일 위치 계산
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+	float4 NowPos = EnemyTrans->GetLocalPosition();
+	float4 NextPos = NowPos + (TraceVec * _DeltaTime);
+
+	//벽에 막힌 경우1
+	std::shared_ptr<BackGround> BGPtr = GetBackGround();
+	if (true == BGPtr->IsBlockPos(NextPos))
+	{
+		//ChangeTraceDir(DirToPlayer);
+		Rotate90Dir(TraceVec);
+		return;
+	}
+
+	//벽에 막힌 경우2
+	std::pair<int, int> GriNextPos = BGPtr->GetGridFromPos(NextPos);
+	if (true == BGPtr->IsBlockGrid(GriNextPos.first, GriNextPos.second))
+	{
+		//ChangeTraceDir(DirToPlayer);
+		Rotate90Dir(TraceVec);
+		return;
+	}
+	
+	//실제 이동
+	EnemyTrans->SetLocalPosition(NextPos);
+
+	//공격 처리
+	AttackCheck();
+}
+
+
+void EnemyState_AttackBase::ChangeTraceDir(const float4& _DirToPlayer)
+{
+	float4 LookDir= TraceVec;
+	LookDir.z = 0.f;
+	float4 ToPlayer = _DirToPlayer;
+	ToPlayer.z = 0.f;
+
+	float4 DotVec = float4::Cross3DReturnNormal(LookDir, ToPlayer);
+
+	
+	float4 PrevTraceVec = TraceVec;
+
+	//오른쪽으로 회전하는 것이 빠를때
+	if (DotVec.z < 0.f)
+	{
+		TraceVec.x = PrevTraceVec.y;
+		TraceVec.y = -PrevTraceVec.x;
+	}
+
+	//왼쪽으로 회전하는 것이 빠를때
+	else
+	{
+		TraceVec.x = -PrevTraceVec.y;
+		TraceVec.y = PrevTraceVec.x;
+	}
+
+	TraceVec.z = TraceVec.y;
+}
+
+
+void EnemyState_AttackBase::Rotate90Dir(float4& _Vec)
+{
+	float4 PrevTraceVec = _Vec;
+
+	_Vec.x = PrevTraceVec.y;
+	_Vec.y = -PrevTraceVec.x;
+	_Vec.z = _Vec.y;
+}
+
+
+
 void EnemyState_AttackBase::ExitState()
 {
 	EnemyStateBase::ExitState();
@@ -148,4 +242,9 @@ void EnemyState_AttackBase::ExitState()
 	GetEnemy()->SetHeight(0.f);
 
 	AttackEnemy = nullptr;
+
+	TraceVec = float4::Zero;
 }
+
+
+

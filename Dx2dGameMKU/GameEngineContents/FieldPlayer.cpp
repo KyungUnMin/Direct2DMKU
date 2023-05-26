@@ -202,5 +202,9 @@ bool FieldPlayer::CanPlayerDamage()
 	if (true == Fsm.OnDamageInBlock())
 		return false;
 
+	//쓰러져있는 상태일때
+	if (PlayerStateType::Damaged_BlowBack == Fsm.GetNowState<PlayerStateType>())
+		return false;
+
 	return true;
 }

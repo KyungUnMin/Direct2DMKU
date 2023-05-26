@@ -25,5 +25,8 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
+
+	//확률적으로 Rolling공격을 한다
+	bool RollingExcute(int _Percent);
 };
 

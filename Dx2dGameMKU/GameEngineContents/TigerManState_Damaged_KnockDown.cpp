@@ -7,8 +7,7 @@
 const std::string_view TigerManState_Damaged_KnockDown::AniFileName = "TigerMan_KnockDown.png";
 
 const std::string_view TigerManState_Damaged_KnockDown::AniName = "KnockDown";
-const std::pair<int, int> TigerManState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 7);
-const std::pair<size_t, size_t> TigerManState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 24 };
+const std::pair<int, int> TigerManState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 5);
 const float TigerManState_Damaged_KnockDown::AniInterTime = 0.08f;
 const float TigerManState_Damaged_KnockDown::LiveDuration = 5.f;
 
@@ -53,14 +52,21 @@ void TigerManState_Damaged_KnockDown::LoadAnimation()
 
 void TigerManState_Damaged_KnockDown::CreateAnimation()
 {
+	std::vector<size_t> AniFrmIndex;
+	AniFrmIndex.reserve(19);
+	AniFrmIndex.push_back(0);
+	for (size_t i = 2; i < 20; ++i)
+	{
+		AniFrmIndex.push_back(i);
+	}
+
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = AniFrameIndex.first,
-		.End = AniFrameIndex.second,
 		.FrameInter = AniInterTime,
-		.Loop = false
+		.Loop = false,
+		.FrameIndex = AniFrmIndex
 	});
 }
 

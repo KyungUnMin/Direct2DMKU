@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "TigerManState_Attack_AxeKick.h"
+#include "TigerManState_Attack_Boot.h"
 
 #include "TigerManFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
 #include "DataMgr.h"
 
-const std::string_view TigerManState_Attack_AxeKick::AniName = "Attack_AxeKick";
-const std::string_view TigerManState_Attack_AxeKick::AniFileName = "TigerMan_Axe_Kick.png";
-const std::pair<int, int> TigerManState_Attack_AxeKick::AniCutFrame = std::pair<int, int>(5, 2);
-const float TigerManState_Attack_AxeKick::AniInterTime = 0.08f;
-const int TigerManState_Attack_AxeKick::Damage = 5;
+const std::string_view TigerManState_Attack_Boot::AniName = "Attack_Boot";
+const std::string_view TigerManState_Attack_Boot::AniFileName = "TigerMan_Boot.png";
+const std::pair<int, int> TigerManState_Attack_Boot::AniCutFrame = std::pair<int, int>(5, 3);
+const float TigerManState_Attack_Boot::AniInterTime = 0.05f;
+const int TigerManState_Attack_Boot::Damage = 10;
 
-TigerManState_Attack_AxeKick::TigerManState_Attack_AxeKick()
+TigerManState_Attack_Boot::TigerManState_Attack_Boot()
 {
 
 }
 
-TigerManState_Attack_AxeKick::~TigerManState_Attack_AxeKick()
+TigerManState_Attack_Boot::~TigerManState_Attack_Boot()
 {
 
 }
 
-void TigerManState_Attack_AxeKick::Start()
+void TigerManState_Attack_Boot::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void TigerManState_Attack_AxeKick::Start()
 	CreateAnimation();
 }
 
-void TigerManState_Attack_AxeKick::LoadAnimation()
+void TigerManState_Attack_Boot::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,7 +46,7 @@ void TigerManState_Attack_AxeKick::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void TigerManState_Attack_AxeKick::CreateAnimation()
+void TigerManState_Attack_Boot::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
 
@@ -55,17 +55,17 @@ void TigerManState_Attack_AxeKick::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 8,
+		.End = 13,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 5);
 }
 
 
 
 
-void TigerManState_Attack_AxeKick::EnterState()
+void TigerManState_Attack_Boot::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
@@ -75,7 +75,7 @@ void TigerManState_Attack_AxeKick::EnterState()
 
 
 
-void TigerManState_Attack_AxeKick::Update(float _DeltaTime)
+void TigerManState_Attack_Boot::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
@@ -104,7 +104,7 @@ void TigerManState_Attack_AxeKick::Update(float _DeltaTime)
 }
 
 
-void TigerManState_Attack_AxeKick::Attack()
+void TigerManState_Attack_Boot::Attack()
 {
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
 	if (false == Result)

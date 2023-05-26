@@ -20,7 +20,6 @@ protected:
 private:
 	static const std::string_view AniName;
 	static const std::pair<int, int> AniCutFrame;
-	static const std::pair<size_t, size_t> AniFrameIndex;
 	static const float AniInterTime;
 
 	void LoadAnimation();
