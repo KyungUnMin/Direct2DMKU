@@ -108,4 +108,6 @@ void CrossTownLevel1::CreateEnemies()
 		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
 		Spawner.CreateEnemy(EnemyType::SchoolGirl, float4{ PosX , PosY });
 	}
+
+	Spawner.CreateEnemy(EnemyType::TigerMan, float4::Zero);
 }

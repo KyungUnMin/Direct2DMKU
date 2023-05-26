@@ -37,19 +37,31 @@ private:
 		COUNT
 	};
 
-	const float RollingDuration = 5.f;
+
+	const float Duration = 5.f;
 	const float AttackWaitTime = 0.1f;
 
+	const float TraceAcc = 1000.f;
+	const float MaxSpeed = 2000.f;
+	
 	State CurState = State::RollStart;
 	float RollInTime = 0.f;
 	float LastAttack = 0.f;
-
+	float4 TraceVec = float4::Zero;
+	
 
 	void LoadAnimation();
 	void CreateAnimation();
 
 	void Update_RollStart();
 	void Update_Rolling(float _DeltaTime);
+	void TracePlayer(float _DeltaTime);
+
+	//일단 여기에 만들고 나중에 부모쪽으로 이동할꺼면 그때 하자
+	void TeamKill();
+
 	void Update_RollEnd();
+
+	
 };
 

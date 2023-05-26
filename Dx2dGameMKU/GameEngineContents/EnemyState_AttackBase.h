@@ -2,6 +2,7 @@
 #include "EnemyStateBase.h"
 
 class FieldEnemyBase;
+class GameEngineCollision;
 
 class EnemyState_AttackBase : public EnemyStateBase
 {
@@ -37,6 +38,9 @@ protected:
 	//이 Enemy의 Collision Transform 값 변경
 	void SetAttackColValue(const float4& _Offset = float4{50.f, 0.f, 0.f}, const float4& _Scale = float4{100.f, 100.f, 100.f});
 
+
+	void AttackCheck();
+
 	//플레이어와 충돌했을때 처리해야 하는 상황
 	virtual void Attack() = 0;
 
@@ -47,14 +51,16 @@ protected:
 
 
 
-	void Update_AccTraceAttack(float _DeltaTime, float _Acc = 1000.f, float _MaxSpeed = 2000.f);
-
+	inline std::shared_ptr<GameEngineCollision> GetAttackCollider() const
+	{
+		return AttackCollider;
+	}
 
 private:
 	//지금 공격을 하고 있는 Enemy(모든 Enemy들 중에 한명만 공격시키기 위함)
 	static FieldEnemyBase* AttackEnemy;
 
-	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
+	std::shared_ptr<GameEngineCollision> AttackCollider = nullptr;
 
 	//True면 오른쪽, false면 왼쪽
 	bool EnemyDir = false;
@@ -70,15 +76,5 @@ private:
 	float MoveStartTime = 0.0f;
 
 	float MoveDuration = 0.5f;
-
-
-	float4 TraceVec = float4::Zero;
-
-
-	void AttackCheck();
-
-	void ChangeTraceDir(const float4& _DirToPlayer);
-
-	void Rotate90Dir(float4& _Vec);
 };
 
