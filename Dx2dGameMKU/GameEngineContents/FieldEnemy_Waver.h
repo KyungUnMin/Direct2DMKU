@@ -14,7 +14,6 @@ public:
 	FieldEnemy_Waver& operator=(const FieldEnemy_Waver& _Other) = delete;
 	FieldEnemy_Waver& operator=(const FieldEnemy_Waver&& _Other) noexcept = delete;
 
-	void SitDown();
 
 	bool OnDamage_Face(int _Damage) override;
 	bool OnDamage_Stomach(int _Damage) override;
@@ -26,6 +25,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
+	void LevelChangeEnd() override;
 
 private:
 	WaverFSM Fsm;

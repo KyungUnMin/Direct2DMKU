@@ -114,3 +114,12 @@ bool FieldEnemy_TigerMan::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+void FieldEnemy_TigerMan::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (TigerManStateType::Damaged_KnockDown == Fsm.GetNowState<TigerManStateType>())
+		return;
+
+	Fsm.ChangeState(TigerManStateType::Idle);
+}

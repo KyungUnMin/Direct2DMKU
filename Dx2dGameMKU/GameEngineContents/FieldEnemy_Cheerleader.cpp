@@ -112,3 +112,13 @@ bool FieldEnemy_Cheerleader::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+
+void FieldEnemy_Cheerleader::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (CheerleaderStateType::Damaged_KnockDown == Fsm.GetNowState<CheerleaderStateType>())
+		return;
+
+	Fsm.ChangeState(CheerleaderStateType::Idle);
+}

@@ -86,6 +86,7 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 	Date.EnemyPtr = EnemyPtr;
 	Date.GridPos = BGPtr->GetGridFromPos(Pos);
 
+
 	return EnemyPtr;
 }
 
@@ -125,6 +126,12 @@ void EnemySpawner::KillEnemy(std::shared_ptr<FieldEnemyBase> _Enemy)
 	//자료구조에서 죽이려는 Enemy찾기
 	size_t EnemyIndex = _Enemy->GetSpawnID();
 	EnemyDataBlock& Data = Enemies[EnemyIndex];
+
+	if ((_Enemy.get() != Data.EnemyPtr.get()) || (true == Data.IsDeath))
+	{
+		MsgAssert("EnemySpawner에 잘못된 Enemy가 등록되어 있거나, 이미 죽은 Enemy를 또 죽일려고 했습니다");
+		return;
+	}
 
 	//죽이기 작업
 	Data.EnemyPtr = nullptr;

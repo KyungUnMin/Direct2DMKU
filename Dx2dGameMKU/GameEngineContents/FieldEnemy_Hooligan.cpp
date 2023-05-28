@@ -115,3 +115,12 @@ bool FieldEnemy_Hooligan::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+void FieldEnemy_Hooligan::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (HooliganStateType::Damaged_KnockDown == Fsm.GetNowState<HooliganStateType>())
+		return;
+
+	Fsm.ChangeState(HooliganStateType::Idle);
+}

@@ -118,3 +118,13 @@ bool FieldEnemy_SchoolGirl::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+
+void FieldEnemy_SchoolGirl::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (SchoolGirlStateType::Damaged_KnockDown == Fsm.GetNowState<SchoolGirlStateType>())
+		return;
+
+	Fsm.ChangeState(SchoolGirlStateType::Idle);
+}

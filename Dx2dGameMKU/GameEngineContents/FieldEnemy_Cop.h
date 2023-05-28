@@ -14,8 +14,6 @@ public:
 	FieldEnemy_Cop& operator=(const FieldEnemy_Cop& _Other) = delete;
 	FieldEnemy_Cop& operator=(const FieldEnemy_Cop&& _Other) noexcept = delete;
 
-	void SitDown();
-
 	bool OnDamage_Face(int _Damage) override;
 	bool OnDamage_Stomach(int _Damage) override;
 	bool OnDamage_Jaw(int _Damage) override;
@@ -26,6 +24,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
+	void LevelChangeEnd() override;
 
 private:
 	CopFSM Fsm;

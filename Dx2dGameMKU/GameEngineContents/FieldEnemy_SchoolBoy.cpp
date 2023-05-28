@@ -118,3 +118,12 @@ bool FieldEnemy_SchoolBoy::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+void FieldEnemy_SchoolBoy::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (SchoolBoyStateType::Damaged_KnockDown == Fsm.GetNowState<SchoolBoyStateType>())
+		return;
+
+	Fsm.ChangeState(SchoolBoyStateType::Idle);
+}

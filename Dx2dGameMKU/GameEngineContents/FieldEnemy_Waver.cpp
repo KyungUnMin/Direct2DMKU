@@ -27,10 +27,6 @@ void FieldEnemy_Waver::Start()
 	Fsm.Init(this);
 }
 
-void FieldEnemy_Waver::SitDown()
-{
-	Fsm.ChangeState(WaverStateType::Ready);
-}
 
 
 void FieldEnemy_Waver::Update(float _DeltaTime)
@@ -116,5 +112,15 @@ bool FieldEnemy_Waver::OnDamage_BlowBack(int _Damage)
 
 	Fsm.ChangeState(WaverStateType::Damaged_BlowBack);
 	return true;
+}
+
+void FieldEnemy_Waver::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (WaverStateType::Damaged_KnockDown == Fsm.GetNowState<WaverStateType>())
+		return;
+
+	Fsm.ChangeState(WaverStateType::Idle);
 }
 

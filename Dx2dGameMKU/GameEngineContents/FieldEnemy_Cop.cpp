@@ -27,10 +27,6 @@ void FieldEnemy_Cop::Start()
 	Fsm.Init(this);
 }
 
-void FieldEnemy_Cop::SitDown()
-{
-	Fsm.ChangeState(CopStateType::Ready);
-}
 
 
 void FieldEnemy_Cop::Update(float _DeltaTime)
@@ -118,3 +114,12 @@ bool FieldEnemy_Cop::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+void FieldEnemy_Cop::LevelChangeEnd()
+{
+	FieldEnemyBase::LevelChangeEnd();
+
+	if (CopStateType::Damaged_KnockDown == Fsm.GetNowState<CopStateType>())
+		return;
+
+	Fsm.ChangeState(CopStateType::Idle);
+}
