@@ -2,8 +2,10 @@
 #include "PlayerState_Dash.h"
 
 #include "KeyMgr.h"
+
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
+
 
 const float4 PlayerState_Dash::DashSpeed = float4{ 800.f, 400.f };
 
@@ -62,6 +64,7 @@ void PlayerState_Dash::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
+
 
 
 

@@ -25,7 +25,6 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 
-
 	void LoadAnimation();
 	void CreateAnimation();
 };

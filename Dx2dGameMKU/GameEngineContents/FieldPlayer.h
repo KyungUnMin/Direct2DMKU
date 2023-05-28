@@ -49,6 +49,8 @@ protected:
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
+	void LevelChangeEnd() override;
+
 private:
 	//레벨쪽에서 매 프레임마다 실행중인 플레이어를 설정해준다
 	static FieldPlayer* GPtr;

@@ -105,6 +105,8 @@ void FieldPlayer::Render(float _DeltaTime)
 }
 
 
+
+
 bool FieldPlayer::IsDashing() const
 {
 	//지금  대시 상태라면 true
@@ -227,4 +229,12 @@ void FieldPlayer::CreateDamageEffect(const float4& _Offset)
 	float4 EffectPos = GetTransform()->GetWorldPosition() + _Offset;
 	EffectTrans->SetLocalPosition(EffectPos);
 	Effect->OffHitAir();
+}
+
+void FieldPlayer::LevelChangeEnd()
+{
+	FieldActorBase::LevelChangeEnd();
+
+	//플레이어 아이들 상태로 변경
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Movement_Idle));
 }

@@ -50,6 +50,9 @@ private:
 	bool PlayerDir = true;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
+
+	class FieldCamController* CamCtrl = nullptr;
+
 	void AttackCheck();
 
 };

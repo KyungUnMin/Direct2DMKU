@@ -52,6 +52,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	
 	void LevelChangeStart() override;
+	void LevelChangeEnd() override;
 
 	void Init(const float4& _Scale, const class TileInfoData& _TileData);
 

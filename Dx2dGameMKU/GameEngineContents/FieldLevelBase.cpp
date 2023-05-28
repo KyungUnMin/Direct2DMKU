@@ -100,12 +100,22 @@ void FieldLevelBase::SetPlayerStartPosition(const float4& _StartPos)
 
 void FieldLevelBase::LevelChangeStart()
 {
+	GameEngineLevel::LevelChangeStart();
+
 	GPtr = this;
 	FieldPlayer::GPtr = PlayerPtr.get();
 
 	CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
 }
 
+
+void FieldLevelBase::LevelChangeEnd()
+{
+	GameEngineLevel::LevelChangeEnd();
+
+	//카메라 줌 초기화
+	CamCtrl.SetZoom();
+}
 
 
 void FieldLevelBase::Update(float _DeltaTime)

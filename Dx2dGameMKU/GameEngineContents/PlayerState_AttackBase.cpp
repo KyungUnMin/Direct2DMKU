@@ -11,7 +11,7 @@
 #include "HitEffect.h"
 #include "FieldLevelBase.h"
 #include "BackGround.h"
-
+#include "FieldCamController.h"
 
 
 void PlayerState_AttackBase::CreateHitEffect_Face()
@@ -48,11 +48,12 @@ void PlayerState_AttackBase::CreateHitEffect(const float4 _Offset)
 
 	EffectTrans->SetParent(PlayerTrans);
 	EffectTrans->SetLocalPosition(_Offset);
+
+	//카메라 줌인 효과
+	FieldCamController& CamCtrl = FieldLevelBase::GetPtr()->GetCameraController();
+	CamCtrl.SetZoom(FieldCamController::ZoomOrigin - 0.01f);
+	CamCtrl.SetZoom(FieldCamController::ZoomOrigin, 0.1f);
 }
-
-
-
-
 
 
 
@@ -66,13 +67,18 @@ PlayerState_AttackBase::~PlayerState_AttackBase()
 
 }
 
+
+
 void PlayerState_AttackBase::Start()
 {
 	PlayerStateBase::Start();
 	PlayerStateBase::DirChangeOff();
 
 	AttackCollider = FieldPlayer::GetPtr()->GetAttackCollider();
-	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+
+	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
+	BGPtr = Level->GetBackGround();
+	CamCtrl = &(Level->GetCameraController());
 }
 
 
@@ -115,6 +121,7 @@ void PlayerState_AttackBase::AttackCheck()
 			return;
 		}
 
+		
 		Attack(EnemyPtr);
 	}
 

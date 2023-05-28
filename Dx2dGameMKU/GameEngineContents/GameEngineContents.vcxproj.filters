@@ -1401,6 +1401,12 @@
     <ClCompile Include="TigerManState_Attack_Rolling.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\03.Rolling</Filter>
     </ClCompile>
+    <ClCompile Include="FieldCamController_StateUpdate.cpp">
+      <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldCamController_ZoomUpdate.cpp">
+      <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
