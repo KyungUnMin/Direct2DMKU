@@ -3,10 +3,14 @@
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCG_GameCore.h"
 #include "RCGEnums.h"
 #include "KeyMgr.h"
+
+#include "HitEffect.h"
+
 
 FieldPlayer* FieldPlayer::GPtr = nullptr;
 
@@ -139,6 +143,7 @@ bool FieldPlayer::OnDamage_Face()
 	if (false == CanPlayerDamage())
 		return false;
 
+	CreateDamageEffect(DamageEffect_FaceOffset);
 
 	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
@@ -157,6 +162,8 @@ bool FieldPlayer::OnDamage_Stomach()
 	if (false == CanPlayerDamage())
 		return false;
 
+	CreateDamageEffect(DamageEffect_StomachOffset);
+
 	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
 	{
@@ -173,6 +180,8 @@ bool FieldPlayer::OnDamage_Jaw()
 {
 	if (false == CanPlayerDamage())
 		return false;
+
+	CreateDamageEffect(DamageEffect_JawOffset);
 
 	//공중에 떠 있을땐 날라가기
 	if (0.f < GetHeight())
@@ -191,6 +200,8 @@ bool FieldPlayer::OnDamage_BlowBack()
 	if (false == CanPlayerDamage())
 		return false;
 
+	CreateDamageEffect(DamageEffect_BlowBackOffset);
+
 	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_BlowBack));
 	return true;
 }
@@ -207,4 +218,13 @@ bool FieldPlayer::CanPlayerDamage()
 		return false;
 
 	return true;
+}
+
+void FieldPlayer::CreateDamageEffect(const float4& _Offset)
+{
+	std::shared_ptr<HitEffect> Effect = GetLevel()->CreateActor<HitEffect>(UpdateOrder::Effect);
+	GameEngineTransform* EffectTrans = Effect->GetTransform();
+	float4 EffectPos = GetTransform()->GetWorldPosition() + _Offset;
+	EffectTrans->SetLocalPosition(EffectPos);
+	Effect->OffHitAir();
 }

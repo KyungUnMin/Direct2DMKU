@@ -21,6 +21,8 @@ public:
 
 	void OffHitSpark();
 
+	void OffHitAir();
+
 	void SetAirMaxRatio(float _Ratio)
 	{
 		AirMaxScale *= _Ratio;

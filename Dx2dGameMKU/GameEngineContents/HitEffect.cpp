@@ -108,3 +108,8 @@ void HitEffect::OffHitSpark()
 {
 	SparkRender->Off();
 }
+
+void HitEffect::OffHitAir()
+{
+	AirRender->Off();
+}

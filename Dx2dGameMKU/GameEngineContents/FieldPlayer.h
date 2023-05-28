@@ -53,6 +53,7 @@ private:
 	//레벨쪽에서 매 프레임마다 실행중인 플레이어를 설정해준다
 	static FieldPlayer* GPtr;
 
+
 	PlayerFSM Fsm;
 
 	//true일때 오른쪽, false면 왼쪽
@@ -65,9 +66,17 @@ private:
 
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
 
+	
+	const float4 DamageEffect_FaceOffset = float4{ 50.f, 150.f, -100.f };
+	const float4 DamageEffect_StomachOffset = float4{ 0.f, 100.f, -100.f };
+	const float4 DamageEffect_JawOffset = float4{ 0.f, 150.f, -100.f };
+	const float4 DamageEffect_BlowBackOffset = float4{ 0.f, 100.f, -100.f };
+
 	void CheckDirection();
 
 	//플레이어가 공격받을때 데미지를 받는 상황인지 체크
 	bool CanPlayerDamage();
+
+	void CreateDamageEffect(const float4& _Offset);
 };
 
