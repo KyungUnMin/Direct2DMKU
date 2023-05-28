@@ -12,6 +12,11 @@ public:
 	PlayerState_SpecialAttack_DAP& operator=(const PlayerState_SpecialAttack_DAP& _Other) = delete;
 	PlayerState_SpecialAttack_DAP& operator=(const PlayerState_SpecialAttack_DAP&& _Other) noexcept = delete;
 
+	inline void EffectEnd()
+	{
+		EffectOnValue = false;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -33,6 +38,7 @@ private:
 	size_t Cursor = 0;
 
 	int TotalDamage = 0;
+	bool EffectOnValue = false;
 
 	void LoadAnimation();
 	void CreateAnimation();

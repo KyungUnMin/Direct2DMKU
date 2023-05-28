@@ -745,6 +745,42 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\03.Rolling">
       <UniqueIdentifier>{b37e0e2f-d069-4393-b49c-a30710eef544}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\01.Idle">
+      <UniqueIdentifier>{0d1331c3-861a-44de-99f2-23d31d86e625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\02.Walk">
+      <UniqueIdentifier>{da37e7d9-b6ba-4a4d-a613-1191204e8ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\03.Ready">
+      <UniqueIdentifier>{297d13f7-85dc-4e94-8135-7f1c22273d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{8ff545f6-8c6f-47e7-8306-87caf8a89eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{655aae0d-5425-4c4f-807f-954bb3527cc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{bd8073e2-7691-4bca-9bfb-79fc210ff128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{d5e84d59-4b2b-4138-a392-b5481a2d02be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{e524ff02-9ad4-4574-98f8-2a62373d91ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{b4e49747-5198-40ed-86f9-c219445cafe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\04.WallHit">
+      <UniqueIdentifier>{7cb9541b-b47f-485d-9335-5b8524441921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\05.WallOut">
+      <UniqueIdentifier>{d1b96d2e-683f-4785-91ce-fed04620af0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\06.Dazed">
+      <UniqueIdentifier>{52a1e6f7-c6bf-4b5a-b51e-58db542780e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1110,39 +1146,6 @@
     <ClCompile Include="CopState_Attack_SideKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="CopState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
-    </ClCompile>
     <ClCompile Include="FieldEnemy_Cop.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor</Filter>
     </ClCompile>
@@ -1406,6 +1409,39 @@
     </ClCompile>
     <ClCompile Include="FieldCamController_ZoomUpdate.cpp">
       <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\01.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\03.Ready</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\02.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\03.KnockDown</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\06.Dazed</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\04.WallHit</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\05.WallOut</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1763,39 +1799,6 @@
     <ClInclude Include="CopState_Attack_SideKick.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
     </ClInclude>
-    <ClInclude Include="CopState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement</Filter>
-    </ClInclude>
     <ClInclude Include="FieldEnemy_Cop.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor</Filter>
     </ClInclude>
@@ -2053,6 +2056,39 @@
     </ClInclude>
     <ClInclude Include="TigerManState_Attack_Rolling.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\08.TigerMan\04.Attack\03.Rolling</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\01.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\03.Ready</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\03.Movement\02.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\03.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\06.Dazed</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\04.WallHit</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\05.WallOut</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

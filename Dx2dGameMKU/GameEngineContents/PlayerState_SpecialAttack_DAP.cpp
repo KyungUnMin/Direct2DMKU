@@ -3,10 +3,14 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
+#include "RCGEnums.h"
+
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "DapEffect.h"
 #include "FieldEnemyBase.h"
+#include "FieldLevelBase.h"
+#include "Fader.h"
 
 
 const std::string_view PlayerState_SpecialAttack_DAP::AniName = "SpecialAttack_DAP";
@@ -57,7 +61,8 @@ void PlayerState_SpecialAttack_DAP::CreateAnimation()
 	std::vector<float> FrameTime(static_cast<size_t>(FrameCnt), AniInterTime);
 	FrameTime[3] = AniInterTime * 2.5f;
 
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -125,14 +130,29 @@ void PlayerState_SpecialAttack_DAP::ExitState()
 	PlayerState_AttackBase::ExitState();
 
 	Cursor = 0;
+	EffectOnValue = false;
 }
 
 void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
 {
 	bool Result = _Enemy->OnDamage_BlowBack(TotalDamage);
-	if (true == Result)
+	if (false == Result)
+		return;
+	
+	//¿Ã∆Â∆Æ ª˝º∫
+	//PlayerState_AttackBase::CreateHitEffect_Blow();
+
+	//»≠∏È π›¬¶¿” ¿Ã∆Â∆Æ
+	if (true == EffectOnValue)
+		return;
+
+
+	EffectOnValue = true;
+	std::shared_ptr<Fader> FadePtr = nullptr;
+	FadePtr = FieldLevelBase::GetPtr()->CreateActor<Fader>(UpdateOrder::UI);
+	FadePtr->Init(float4::One, 0.2f,[this]()
 	{
-		PlayerState_AttackBase::CreateHitEffect_Blow();
-	}
+		this->EffectEnd();
+	});
 }
 
