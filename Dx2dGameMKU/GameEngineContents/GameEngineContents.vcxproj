@@ -244,10 +244,12 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="CopFSM.h" />
-    <ClInclude Include="CopState_Attack_AxeKick.h" />
-    <ClInclude Include="CopState_Attack_Elbow.h" />
-    <ClInclude Include="CopState_Attack_Punch.h" />
-    <ClInclude Include="CopState_Attack_SideKick.h" />
+    <ClInclude Include="CopGrenade.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CopState_Attack_BatonSmash.h" />
+    <ClInclude Include="CopState_Attack_TossNades.h" />
     <ClInclude Include="CopState_Damaged_BlowBack.h" />
     <ClInclude Include="CopState_Damaged_Dazed.h" />
     <ClInclude Include="CopState_Damaged_KnockDown.h" />
@@ -802,10 +804,12 @@
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
     <ClCompile Include="CopFSM.cpp" />
-    <ClCompile Include="CopState_Attack_AxeKick.cpp" />
-    <ClCompile Include="CopState_Attack_Elbow.cpp" />
-    <ClCompile Include="CopState_Attack_Punch.cpp" />
-    <ClCompile Include="CopState_Attack_SideKick.cpp" />
+    <ClCompile Include="CopGrenade.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CopState_Attack_BatonSmash.cpp" />
+    <ClCompile Include="CopState_Attack_TossNades.cpp" />
     <ClCompile Include="CopState_Damaged_BlowBack.cpp" />
     <ClCompile Include="CopState_Damaged_Dazed.cpp" />
     <ClCompile Include="CopState_Damaged_KnockDown.cpp" />

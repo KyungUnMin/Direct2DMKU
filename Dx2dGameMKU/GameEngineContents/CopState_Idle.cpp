@@ -50,7 +50,7 @@ void CopState_Idle::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 7,
+		.End = 6,
 		.FrameInter = AniInterTime
 	});
 }

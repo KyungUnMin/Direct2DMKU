@@ -6,13 +6,11 @@
 //Movement
 #include "CopState_Idle.h"
 #include "CopState_Walk.h"
-#include "CopState_Ready.h"
+//#include "CopState_Ready.h"
 
 //Attack
-#include "CopState_Attack_AxeKick.h"
-#include "CopState_Attack_Elbow.h"
-#include "CopState_Attack_Punch.h"
-#include "CopState_Attack_SideKick.h"
+#include "CopState_Attack_BatonSmash.h"
+#include "CopState_Attack_TossNades.h"
 
 //Damaged
 #include "CopState_NormalDamaged_Face.h"
@@ -25,15 +23,13 @@
 #include "CopState_Damaged_Dazed.h"
 
 
-const  std::string_view CopFSM::NormalDamaged_FileName = "Cop_Get_Hits.png";
+const  std::string_view CopFSM::NormalDamaged_FileName = "Cop_GetHit.png";
 
 
 const std::vector<CopStateType> CopFSM::AttackGroup =
 {
-	CopStateType::AxeKick,
-	CopStateType::Elbow,
-	CopStateType::Punch,
-	CopStateType::SideKick
+	CopStateType::BotonSmash,
+	CopStateType::TossNades,
 };
 
 size_t CopFSM::GetRandomAttack()
@@ -67,14 +63,12 @@ void CopFSM::Init(FieldEnemyBase* _Enemy)
 	//Movement
 	FSMBase::CreateState<CopState_Idle>(CopStateType::Idle);
 	FSMBase::CreateState<CopState_Walk>(CopStateType::Walk);
-	FSMBase::CreateState<CopState_Ready>(CopStateType::Ready);
+	//FSMBase::CreateState<CopState_Ready>(CopStateType::Ready);
 
 
 	//Attack
-	FSMBase::CreateState<CopState_Attack_AxeKick>(CopStateType::AxeKick);
-	FSMBase::CreateState<CopState_Attack_Elbow>(CopStateType::Elbow);
-	FSMBase::CreateState<CopState_Attack_Punch>(CopStateType::Punch);
-	FSMBase::CreateState<CopState_Attack_SideKick>(CopStateType::SideKick);
+	FSMBase::CreateState<CopState_Attack_BatonSmash>(CopStateType::BotonSmash);
+	FSMBase::CreateState<CopState_Attack_TossNades>(CopStateType::TossNades);
 
 
 	//Damaged

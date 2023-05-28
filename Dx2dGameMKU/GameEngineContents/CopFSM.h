@@ -6,13 +6,11 @@ enum class CopStateType
 	//Movement
 	Idle,
 	Walk,
-	Ready,
+	//Ready,
 
 	//Attack
-	AxeKick,
-	Elbow,
-	Punch,
-	SideKick,
+	BotonSmash,
+	TossNades,
 
 	//Damaged
 	NormalDamaged_Face,

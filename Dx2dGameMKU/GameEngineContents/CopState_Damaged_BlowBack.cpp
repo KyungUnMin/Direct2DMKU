@@ -8,7 +8,7 @@
 const std::string_view CopState_Damaged_BlowBack::AniName = "BlowBack";
 const std::string_view CopState_Damaged_BlowBack::AniFileName = "Cop_BlowBack.png";
 const std::pair<int, int> CopState_Damaged_BlowBack::AniCutFrame = std::pair<int, int>(5, 7);
-const std::pair<size_t, size_t> CopState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 32 };
+const std::pair<size_t, size_t> CopState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 30 };
 const float CopState_Damaged_BlowBack::AniInterTime = 0.05f;
 
 

@@ -6,7 +6,7 @@
 
 const std::string_view CopState_Damaged_WallOut::AniName = "WallOut";
 const std::string_view CopState_Damaged_WallOut::AniFileName = "Cop_WallOut.png";
-const std::pair<int, int> CopState_Damaged_WallOut::AniCutFrame = std::pair<int, int>(3, 1);
+const std::pair<int, int> CopState_Damaged_WallOut::AniCutFrame = std::pair<int, int>(5, 1);
 const float CopState_Damaged_WallOut::AniInterTime = 0.1f;
 
 CopState_Damaged_WallOut::CopState_Damaged_WallOut()
@@ -56,7 +56,8 @@ void CopState_Damaged_WallOut::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		//.FrameInter = AniInterTime,
+		.Start = 0,
+		.End = 2,
 		.Loop = false,
 		.FrameTime = std::vector<float>{0.2f, 0.05f, 0.05f},
 	});

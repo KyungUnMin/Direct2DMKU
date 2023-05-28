@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "CopState_Attack_AxeKick.h"
+#include "CopState_Attack_BatonSmash.h"
 
 #include "CopFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
 #include "DataMgr.h"
 
-const std::string_view CopState_Attack_AxeKick::AniName = "Attack_AxeKick";
-const std::string_view CopState_Attack_AxeKick::AniFileName = "Cop_Axe_Kick.png";
-const std::pair<int, int> CopState_Attack_AxeKick::AniCutFrame = std::pair<int, int>(5, 2);
-const float CopState_Attack_AxeKick::AniInterTime = 0.08f;
-const int CopState_Attack_AxeKick::Damage = 5;
+const std::string_view CopState_Attack_BatonSmash::AniName = "Attack_BatonSmack";
+const std::string_view CopState_Attack_BatonSmash::AniFileName = "Cop_BatonSmack.png";
+const std::pair<int, int> CopState_Attack_BatonSmash::AniCutFrame = std::pair<int, int>(5, 3);
+const float CopState_Attack_BatonSmash::AniInterTime = 0.06f;
+const int CopState_Attack_BatonSmash::Damage = 5;
 
-CopState_Attack_AxeKick::CopState_Attack_AxeKick()
+CopState_Attack_BatonSmash::CopState_Attack_BatonSmash()
 {
 
 }
 
-CopState_Attack_AxeKick::~CopState_Attack_AxeKick()
+CopState_Attack_BatonSmash::~CopState_Attack_BatonSmash()
 {
 
 }
 
-void CopState_Attack_AxeKick::Start()
+void CopState_Attack_BatonSmash::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void CopState_Attack_AxeKick::Start()
 	CreateAnimation();
 }
 
-void CopState_Attack_AxeKick::LoadAnimation()
+void CopState_Attack_BatonSmash::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,7 +46,7 @@ void CopState_Attack_AxeKick::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void CopState_Attack_AxeKick::CreateAnimation()
+void CopState_Attack_BatonSmash::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
 
@@ -55,17 +55,17 @@ void CopState_Attack_AxeKick::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 8,
+		.End = 11,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 4);
 }
 
 
 
 
-void CopState_Attack_AxeKick::EnterState()
+void CopState_Attack_BatonSmash::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
@@ -75,7 +75,7 @@ void CopState_Attack_AxeKick::EnterState()
 
 
 
-void CopState_Attack_AxeKick::Update(float _DeltaTime)
+void CopState_Attack_BatonSmash::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
@@ -104,7 +104,7 @@ void CopState_Attack_AxeKick::Update(float _DeltaTime)
 }
 
 
-void CopState_Attack_AxeKick::Attack()
+void CopState_Attack_BatonSmash::Attack()
 {
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
 	if (false == Result)

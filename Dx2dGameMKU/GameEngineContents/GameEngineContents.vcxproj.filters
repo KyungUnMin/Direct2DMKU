@@ -781,6 +781,15 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\06.Dazed">
       <UniqueIdentifier>{52a1e6f7-c6bf-4b5a-b51e-58db542780e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack\01.BatonSmash">
+      <UniqueIdentifier>{3d2a9819-4104-4d7e-b374-7ec8ea74c1eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack\02.TossNades">
+      <UniqueIdentifier>{25cfdd33-45a1-46f4-b533-3574a4cadb85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\05.CopGrenade">
+      <UniqueIdentifier>{f82e86a2-d3ea-4c09-982b-d92412100c54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1134,18 +1143,6 @@
     <ClCompile Include="CopFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="CopState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="CopState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="FieldEnemy_Cop.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor</Filter>
     </ClCompile>
@@ -1442,6 +1439,15 @@
     </ClCompile>
     <ClCompile Include="CopState_Damaged_WallOut.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\05.WallOut</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Attack_BatonSmash.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack\01.BatonSmash</Filter>
+    </ClCompile>
+    <ClCompile Include="CopState_Attack_TossNades.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack\02.TossNades</Filter>
+    </ClCompile>
+    <ClCompile Include="CopGrenade.cpp">
+      <Filter>03.Actor\06.Effect\05.CopGrenade</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1787,18 +1793,6 @@
     <ClInclude Include="CopFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\02.FSM</Filter>
     </ClInclude>
-    <ClInclude Include="CopState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="CopState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="FieldEnemy_Cop.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\01.Actor</Filter>
     </ClInclude>
@@ -2089,6 +2083,15 @@
     </ClInclude>
     <ClInclude Include="CopState_Damaged_WallOut.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\05.Damaged\05.WallOut</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Attack_BatonSmash.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack\01.BatonSmash</Filter>
+    </ClInclude>
+    <ClInclude Include="CopState_Attack_TossNades.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\06.Cop\04.Attack\02.TossNades</Filter>
+    </ClInclude>
+    <ClInclude Include="CopGrenade.h">
+      <Filter>03.Actor\06.Effect\05.CopGrenade</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
