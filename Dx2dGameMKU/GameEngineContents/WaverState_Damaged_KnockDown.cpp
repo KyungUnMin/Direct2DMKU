@@ -7,8 +7,8 @@
 const std::string_view WaverState_Damaged_KnockDown::AniFileName = "Waver_KnockDown.png";
 
 const std::string_view WaverState_Damaged_KnockDown::AniName = "KnockDown";
-const std::pair<int, int> WaverState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 7);
-const std::pair<size_t, size_t> WaverState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 24 };
+const std::pair<int, int> WaverState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 5);
+const std::pair<size_t, size_t> WaverState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 23 };
 const float WaverState_Damaged_KnockDown::AniInterTime = 0.08f;
 const float WaverState_Damaged_KnockDown::LiveDuration = 5.f;
 

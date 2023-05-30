@@ -6,7 +6,7 @@ enum class WaverStateType
 	//Movement
 	Idle,
 	Walk,
-	Ready,
+	//Ready,
 
 	//Attack
 	AxeKick,

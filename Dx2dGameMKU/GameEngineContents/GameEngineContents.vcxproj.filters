@@ -535,9 +535,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement">
       <UniqueIdentifier>{c838d23a-bf51-4526-b2aa-7eb1a3ff350a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack">
-      <UniqueIdentifier>{8ac71cd7-2bc1-4851-b4a0-25d21549d1a0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged">
       <UniqueIdentifier>{956ddc08-1ac0-4240-8179-271d70852c6a}</UniqueIdentifier>
     </Filter>
@@ -789,6 +786,45 @@
     </Filter>
     <Filter Include="03.Actor\06.Effect\05.CopGrenade">
       <UniqueIdentifier>{f82e86a2-d3ea-4c09-982b-d92412100c54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\01.Idle">
+      <UniqueIdentifier>{48703000-34be-4460-b624-dc37c32d13eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\02.Walk">
+      <UniqueIdentifier>{e60000f2-ae2d-421e-b4c6-a36972e7f180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\03.Ready">
+      <UniqueIdentifier>{0836ca9f-1193-41bc-973e-39ebdedeac98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack">
+      <UniqueIdentifier>{8ac71cd7-2bc1-4851-b4a0-25d21549d1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{d159615a-3c8c-405f-8eb8-5d14ccf8246f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{1636b9f3-8ccc-4827-a5d5-5a31ce0f15d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{5ce9610b-964c-4c08-93e4-2319440d3ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{2a3635f7-5eb2-4c0b-a431-6cfbd93ef275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{f67ae09a-a6f8-4e0f-b2d0-63283193685a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{73ae04ec-d000-45fb-9944-83e5a0524e3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\04.WallHit">
+      <UniqueIdentifier>{a4d564ab-d15f-4aa4-b13e-894df1fcb935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\05.WallOut">
+      <UniqueIdentifier>{c8e2c6c9-1420-4ef3-89a9-b35a9952708d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\06.Dazed">
+      <UniqueIdentifier>{74cc535a-a6f5-4922-bf1e-6d1376557519}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1165,49 +1201,16 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="WaverState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Damaged_Dazed.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Damaged_WallHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Damaged_WallOut.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_NormalDamaged_Stomach.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Idle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Ready.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="WaverState_Walk.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Idle.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\01.Idle</Filter>
@@ -1448,6 +1451,39 @@
     </ClCompile>
     <ClCompile Include="CopGrenade.cpp">
       <Filter>03.Actor\06.Effect\05.CopGrenade</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\01.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Ready.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\03.Ready</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\02.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\03.KnockDown</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Damaged_WallHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\04.WallHit</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Damaged_WallOut.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\05.WallOut</Filter>
+    </ClCompile>
+    <ClCompile Include="WaverState_Damaged_Dazed.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\06.Dazed</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1815,49 +1851,16 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="WaverState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Damaged_Dazed.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Damaged_WallHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Damaged_WallOut.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_NormalDamaged_Stomach.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Idle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Ready.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="WaverState_Walk.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\04.Attack</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Idle.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\03.Movement\01.Idle</Filter>
@@ -2092,6 +2095,39 @@
     </ClInclude>
     <ClInclude Include="CopGrenade.h">
       <Filter>03.Actor\06.Effect\05.CopGrenade</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\01.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Ready.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\03.Ready</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\03.Movement\02.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\03.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Damaged_WallHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\04.WallHit</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Damaged_WallOut.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\05.WallOut</Filter>
+    </ClInclude>
+    <ClInclude Include="WaverState_Damaged_Dazed.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\05.Damaged\06.Dazed</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

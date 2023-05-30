@@ -4,7 +4,7 @@
 #include "WaverFSM.h"
 
 const std::string_view WaverState_Damaged_WallHit::AniName = "WallHit";
-const std::string_view WaverState_Damaged_WallHit::AniFileName = "Waver_Wallhit.png";
+const std::string_view WaverState_Damaged_WallHit::AniFileName = "Waver_WallHit.png";
 const std::pair<int, int> WaverState_Damaged_WallHit::AniCutFrame = std::pair<int, int>(5, 1);
 const std::pair<size_t, size_t> WaverState_Damaged_WallHit::AniFrameIndex = std::pair<size_t, size_t>{ 0, 1 };
 const float WaverState_Damaged_WallHit::AniInterTime = 0.025f;

@@ -6,13 +6,13 @@
 //Movement
 #include "WaverState_Idle.h"
 #include "WaverState_Walk.h"
-#include "WaverState_Ready.h"
+//#include "WaverState_Ready.h"
 
 //Attack
-#include "WaverState_Attack_AxeKick.h"
-#include "WaverState_Attack_Elbow.h"
-#include "WaverState_Attack_Punch.h"
-#include "WaverState_Attack_SideKick.h"
+//#include "WaverState_Attack_AxeKick.h"
+//#include "WaverState_Attack_Elbow.h"
+//#include "WaverState_Attack_Punch.h"
+//#include "WaverState_Attack_SideKick.h"
 
 //Damaged
 #include "WaverState_NormalDamaged_Face.h"
@@ -25,7 +25,7 @@
 #include "WaverState_Damaged_Dazed.h"
 
 
-const  std::string_view WaverFSM::NormalDamaged_FileName = "Waver_Get_Hits.png";
+const  std::string_view WaverFSM::NormalDamaged_FileName = "Waver_GetHit.png";
 
 
 const std::vector<WaverStateType> WaverFSM::AttackGroup =
@@ -66,14 +66,14 @@ void WaverFSM::Init(FieldEnemyBase* _Enemy)
 	//Movement
 	FSMBase::CreateState<WaverState_Idle>(WaverStateType::Idle);
 	FSMBase::CreateState<WaverState_Walk>(WaverStateType::Walk);
-	FSMBase::CreateState<WaverState_Ready>(WaverStateType::Ready);
+	//FSMBase::CreateState<WaverState_Ready>(WaverStateType::Ready);
 
 
 	//Attack
-	FSMBase::CreateState<WaverState_Attack_AxeKick>(WaverStateType::AxeKick);
-	FSMBase::CreateState<WaverState_Attack_Elbow>(WaverStateType::Elbow);
-	FSMBase::CreateState<WaverState_Attack_Punch>(WaverStateType::Punch);
-	FSMBase::CreateState<WaverState_Attack_SideKick>(WaverStateType::SideKick);
+	//FSMBase::CreateState<WaverState_Attack_AxeKick>(WaverStateType::AxeKick);
+	//FSMBase::CreateState<WaverState_Attack_Elbow>(WaverStateType::Elbow);
+	//FSMBase::CreateState<WaverState_Attack_Punch>(WaverStateType::Punch);
+	//FSMBase::CreateState<WaverState_Attack_SideKick>(WaverStateType::SideKick);
 
 
 	//Damaged
