@@ -75,6 +75,17 @@ public:
 
 	void Update(float _DeltaTime);
 
+	inline void SetCycleDuration(float _MinDuration, float _MaxDuration)
+	{
+		MinDuration = _MinDuration;
+		MaxDuration = _MaxDuration;
+	}
+
+	inline void SetCycleMax(size_t _MaxSpawnCount)
+	{
+		MaxSpawnCount = _MaxSpawnCount;
+	}
+
 protected:
 
 private:
@@ -94,9 +105,9 @@ private:
 
 	float Timer = 0.f;
 	float Duration = 0.f;
-	const float MinDuration = 1.f;
-	const float MaxDuration = 10.f;
-	const size_t MaxSpawnCount = 10;
+	float MinDuration = 1.f;
+	float MaxDuration = 10.f;
+	size_t MaxSpawnCount = 10;
 
 	const float4 SpawnPosColor = float4{ 0.f, 0.f, 1.f, 0.5f };
 	bool IsCycleSpawnRenderOnValue = false;

@@ -27,7 +27,9 @@ const std::vector<float4> CrossTownLevel1::EnemySpawnPoses =
 	float4{-1920.f, 170.f},
 	float4{-2235.f, -605.f},
 	float4{830.f, 180.f},
-	float4{-1050.f, - 595.f}
+	float4{-1050.f, - 595.f},
+	float4{305.f, -595.f},
+	float4{855.f, -595.f},
 };
 
 CrossTownLevel1::CrossTownLevel1()
@@ -93,34 +95,16 @@ void CrossTownLevel1::CreateDoors()
 }
 
 
-#include "DebugActor.h"
+//#include "DebugActor.h"
 
 
 void CrossTownLevel1::CreateEnemies()
 {
 	EnemySpawner& Spawner = FieldLevelBase::GetEnemySpawner();
 
+	Spawner.SetCycleDuration(1.f, 5.f);
+	Spawner.SetCycleMax(6);
 	Spawner.OnCycleSpawn({EnemyType::SchoolBoy,EnemyType::SchoolGirl }, EnemySpawnPoses);
 
-	/*const float RangeWidth = 1000.f;
-	const float RangeHeight = 100.f;
-
-	for (size_t i = 0; i < 5; ++i)
-	{
-		float PosX = GameEngineRandom::MainRandom.RandomFloat(-RangeWidth, RangeWidth);
-		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
-		Spawner.CreateEnemy(EnemyType::SchoolBoy, float4{ PosX , PosY });
-	}
-	
-	for (size_t i = 0; i < 5; ++i)
-	{
-		float PosX = GameEngineRandom::MainRandom.RandomFloat(-RangeWidth, RangeWidth);
-		float PosY = GameEngineRandom::MainRandom.RandomFloat(-RangeHeight, 0.f);
-		Spawner.CreateEnemy(EnemyType::SchoolGirl, float4{ PosX , PosY });
-	}
-
-	Spawner.CreateEnemy(EnemyType::TigerMan, float4::Zero);*/
-
-
-	GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
+	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }

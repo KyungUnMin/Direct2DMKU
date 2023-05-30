@@ -266,7 +266,7 @@ void EnemySpawner::OnCycleSpawn(const std::vector<EnemyType>& _SpawnTypes, const
 		//입력받은 위치를 그리드에 딱 맞게 지정
 		std::pair<int, int> GridPos = BGPtr->GetGridFromPos(_SpawnPoses[i]);
 		float4 Pos = BGPtr->GetPosFromGrid(GridPos.first, GridPos.second);
-		Pos.z = -500.f;
+		Pos.z = -499.f;
 		RenderTrans->SetWorldPosition(Pos);
 
 		//텍스처 생성
