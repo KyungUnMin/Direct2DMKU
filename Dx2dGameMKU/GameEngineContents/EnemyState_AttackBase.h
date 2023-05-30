@@ -33,7 +33,7 @@ protected:
 	void ExitState() override;
 
 	//_AniName 애니메이션, _Index번째 프레임에 플레이어와 충돌 체크를 하겠다
-	void SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index);
+	void SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index, bool _IsUpdateCallBack = false);
 
 	//이 Enemy의 Collision Transform 값 변경
 	void SetAttackColValue(const float4& _Offset = float4{50.f, 0.f, 0.f}, const float4& _Scale = float4{100.f, 100.f, 100.f});
@@ -61,6 +61,7 @@ private:
 	static FieldEnemyBase* AttackEnemy;
 
 	std::shared_ptr<GameEngineCollision> AttackCollider = nullptr;
+
 
 	//True면 오른쪽, false면 왼쪽
 	bool EnemyDir = false;

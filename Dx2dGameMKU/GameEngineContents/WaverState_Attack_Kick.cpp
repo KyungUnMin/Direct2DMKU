@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "WaverState_Attack_AxeKick.h"
+#include "WaverState_Attack_Kick.h"
 
-#include "WaverFSM.h"
-#include "FieldEnemyBase.h"
-#include "FieldPlayer.h"
 #include "DataMgr.h"
 
-const std::string_view WaverState_Attack_AxeKick::AniName = "Attack_AxeKick";
-const std::string_view WaverState_Attack_AxeKick::AniFileName = "Waver_Axe_Kick.png";
-const std::pair<int, int> WaverState_Attack_AxeKick::AniCutFrame = std::pair<int, int>(5, 2);
-const float WaverState_Attack_AxeKick::AniInterTime = 0.08f;
-const int WaverState_Attack_AxeKick::Damage = 5;
+#include "WaverFSM.h"
+#include "FieldPlayer.h"
 
-WaverState_Attack_AxeKick::WaverState_Attack_AxeKick()
+const std::string_view WaverState_Attack_Kick::AniName = "Attack_Kick";
+const std::string_view WaverState_Attack_Kick::AniFileName = "Waver_Kick.png";
+const std::pair<int, int> WaverState_Attack_Kick::AniCutFrame = std::pair<int, int>(5, 1);
+const float WaverState_Attack_Kick::AniInterTime = 0.08f;
+const int WaverState_Attack_Kick::Damage = 5;
+
+WaverState_Attack_Kick::WaverState_Attack_Kick()
 {
 
 }
 
-WaverState_Attack_AxeKick::~WaverState_Attack_AxeKick()
+WaverState_Attack_Kick::~WaverState_Attack_Kick()
 {
 
 }
 
-void WaverState_Attack_AxeKick::Start()
+void WaverState_Attack_Kick::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void WaverState_Attack_AxeKick::Start()
 	CreateAnimation();
 }
 
-void WaverState_Attack_AxeKick::LoadAnimation()
+void WaverState_Attack_Kick::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,26 +46,20 @@ void WaverState_Attack_AxeKick::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void WaverState_Attack_AxeKick::CreateAnimation()
+void WaverState_Attack_Kick::CreateAnimation()
 {
-	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
-
-	EnemyRender->CreateAnimation
+	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = 0,
-		.End = 8,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
 }
 
 
-
-
-void WaverState_Attack_AxeKick::EnterState()
+void WaverState_Attack_Kick::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
@@ -74,16 +68,13 @@ void WaverState_Attack_AxeKick::EnterState()
 }
 
 
-
-void WaverState_Attack_AxeKick::Update(float _DeltaTime)
+void WaverState_Attack_Kick::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
-	
 
-	
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
 	{
@@ -104,7 +95,9 @@ void WaverState_Attack_AxeKick::Update(float _DeltaTime)
 }
 
 
-void WaverState_Attack_AxeKick::Attack()
+
+
+void WaverState_Attack_Kick::Attack()
 {
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
 	if (false == Result)

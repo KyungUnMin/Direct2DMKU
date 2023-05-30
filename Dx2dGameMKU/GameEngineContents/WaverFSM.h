@@ -9,10 +9,12 @@ enum class WaverStateType
 	//Ready,
 
 	//Attack
-	AxeKick,
-	Elbow,
-	Punch,
-	SideKick,
+	DiceSpike,
+	DoubleSlash,
+	Frog,
+	Kick,
+	Slash,
+	WindSlash,
 
 	//Damaged
 	NormalDamaged_Face,

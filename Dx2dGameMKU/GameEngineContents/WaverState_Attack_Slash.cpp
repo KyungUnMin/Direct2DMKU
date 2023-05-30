@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "WaverState_Attack_Punch.h"
+#include "WaverState_Attack_Slash.h"
 
 #include "DataMgr.h"
 
 #include "WaverFSM.h"
 #include "FieldPlayer.h"
 
-const std::string_view WaverState_Attack_Punch::AniName = "Attack_Punch";
-const std::string_view WaverState_Attack_Punch::AniFileName = "Waver_Punch.png";
-const std::pair<int, int> WaverState_Attack_Punch::AniCutFrame = std::pair<int, int>(5, 2);
-const float WaverState_Attack_Punch::AniInterTime = 0.08f;
-const int WaverState_Attack_Punch::Damage = 5;
+const std::string_view WaverState_Attack_Slash::AniName = "Attack_Slash";
+const std::string_view WaverState_Attack_Slash::AniFileName = "Waver_Slash.png";
+const std::pair<int, int> WaverState_Attack_Slash::AniCutFrame = std::pair<int, int>(5, 2);
+const float WaverState_Attack_Slash::AniInterTime = 0.08f;
+const int WaverState_Attack_Slash::Damage = 5;
 
-WaverState_Attack_Punch::WaverState_Attack_Punch()
+WaverState_Attack_Slash::WaverState_Attack_Slash()
 {
 
 }
 
-WaverState_Attack_Punch::~WaverState_Attack_Punch()
+WaverState_Attack_Slash::~WaverState_Attack_Slash()
 {
 
 }
 
-void WaverState_Attack_Punch::Start()
+void WaverState_Attack_Slash::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void WaverState_Attack_Punch::Start()
 	CreateAnimation();
 }
 
-void WaverState_Attack_Punch::LoadAnimation()
+void WaverState_Attack_Slash::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -46,22 +46,20 @@ void WaverState_Attack_Punch::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void WaverState_Attack_Punch::CreateAnimation()
+void WaverState_Attack_Slash::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = 0,
-		.End = 6,
 		.FrameInter = AniInterTime
-	});
+		});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 4);
 }
 
 
-void WaverState_Attack_Punch::EnterState()
+void WaverState_Attack_Slash::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
@@ -70,8 +68,7 @@ void WaverState_Attack_Punch::EnterState()
 }
 
 
-
-void WaverState_Attack_Punch::Update(float _DeltaTime)
+void WaverState_Attack_Slash::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
@@ -99,7 +96,8 @@ void WaverState_Attack_Punch::Update(float _DeltaTime)
 
 
 
-void WaverState_Attack_Punch::Attack()
+
+void WaverState_Attack_Slash::Attack()
 {
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
 	if (false == Result)

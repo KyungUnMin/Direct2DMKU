@@ -9,10 +9,12 @@
 //#include "WaverState_Ready.h"
 
 //Attack
-//#include "WaverState_Attack_AxeKick.h"
-//#include "WaverState_Attack_Elbow.h"
-//#include "WaverState_Attack_Punch.h"
-//#include "WaverState_Attack_SideKick.h"
+#include "WaverState_Attack_DiceSpike.h"
+#include "WaverState_Attack_DoubleSlash.h"
+#include "WaverState_Attack_Frog.h"
+#include "WaverState_Attack_Kick.h"
+#include "WaverState_Attack_Slash.h"
+#include "WaverState_Attack_WindSlash.h"
 
 //Damaged
 #include "WaverState_NormalDamaged_Face.h"
@@ -30,10 +32,12 @@ const  std::string_view WaverFSM::NormalDamaged_FileName = "Waver_GetHit.png";
 
 const std::vector<WaverStateType> WaverFSM::AttackGroup =
 {
-	WaverStateType::AxeKick,
-	WaverStateType::Elbow,
-	WaverStateType::Punch,
-	WaverStateType::SideKick
+	WaverStateType::DiceSpike,
+	WaverStateType::DoubleSlash,
+	WaverStateType::Frog,
+	WaverStateType::Kick,
+	WaverStateType::Slash,
+	WaverStateType::WindSlash
 };
 
 size_t WaverFSM::GetRandomAttack()
@@ -70,10 +74,12 @@ void WaverFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<WaverState_Attack_AxeKick>(WaverStateType::AxeKick);
-	//FSMBase::CreateState<WaverState_Attack_Elbow>(WaverStateType::Elbow);
-	//FSMBase::CreateState<WaverState_Attack_Punch>(WaverStateType::Punch);
-	//FSMBase::CreateState<WaverState_Attack_SideKick>(WaverStateType::SideKick);
+	FSMBase::CreateState<WaverState_Attack_DiceSpike>(WaverStateType::DiceSpike);
+	FSMBase::CreateState<WaverState_Attack_DoubleSlash>(WaverStateType::DoubleSlash);
+	FSMBase::CreateState<WaverState_Attack_Frog>(WaverStateType::Frog);
+	FSMBase::CreateState<WaverState_Attack_Kick>(WaverStateType::Kick);
+	FSMBase::CreateState<WaverState_Attack_Slash>(WaverStateType::Slash);
+	FSMBase::CreateState<WaverState_Attack_WindSlash>(WaverStateType::WindSlash);
 
 
 	//Damaged

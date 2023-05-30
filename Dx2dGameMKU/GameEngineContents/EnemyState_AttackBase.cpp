@@ -42,13 +42,27 @@ void EnemyState_AttackBase::EnterState()
 
 
 
-void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index)
+void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index, bool _IsUpdateCallBack /*= false*/)
 {
 	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
 
-	//n번째 프레임에 처리할 콜백 등록
-	EnemyRender->SetAnimationStartEvent(_AniName, _Index,
-		std::bind(&EnemyState_AttackBase::AttackCheck, this));
+
+	//Start 애니메이션 콜백
+	if (false == _IsUpdateCallBack)
+	{
+		//n번째 프레임에 처리할 콜백 등록
+		EnemyRender->SetAnimationStartEvent(_AniName, _Index,
+			std::bind(&EnemyState_AttackBase::AttackCheck, this));
+	}
+
+	//Update 애니메이션 콜백
+	else
+	{
+		//n번째 프레임에 처리할 콜백 등록
+		EnemyRender->SetAnimationUpdateEvent(_AniName, _Index,
+			std::bind(&EnemyState_AttackBase::AttackCheck, this));
+	}
+	
 }
 
 

@@ -708,10 +708,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="WaverFSM.h" />
-    <ClInclude Include="WaverState_Attack_AxeKick.h" />
-    <ClInclude Include="WaverState_Attack_Elbow.h" />
-    <ClInclude Include="WaverState_Attack_Punch.h" />
-    <ClInclude Include="WaverState_Attack_SideKick.h" />
+    <ClInclude Include="WaverState_Attack_DiceSpike.h" />
+    <ClInclude Include="WaverState_Attack_DoubleSlash.h" />
+    <ClInclude Include="WaverState_Attack_Frog.h" />
+    <ClInclude Include="WaverState_Attack_Kick.h" />
+    <ClInclude Include="WaverState_Attack_Slash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="WaverState_Damaged_BlowBack.h" />
     <ClInclude Include="WaverState_Damaged_Dazed.h" />
     <ClInclude Include="WaverState_Damaged_KnockDown.h" />
@@ -723,6 +727,10 @@
     <ClInclude Include="WaverState_NormalDamaged_Stomach.h" />
     <ClInclude Include="WaverState_Ready.h" />
     <ClInclude Include="WaverState_Walk.h" />
+    <ClInclude Include="WaverState_Attack_WindSlash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp">
@@ -1275,10 +1283,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="WaverFSM.cpp" />
-    <ClCompile Include="WaverState_Attack_AxeKick.cpp" />
-    <ClCompile Include="WaverState_Attack_Elbow.cpp" />
-    <ClCompile Include="WaverState_Attack_Punch.cpp" />
-    <ClCompile Include="WaverState_Attack_SideKick.cpp" />
+    <ClCompile Include="WaverState_Attack_DiceSpike.cpp" />
+    <ClCompile Include="WaverState_Attack_DoubleSlash.cpp" />
+    <ClCompile Include="WaverState_Attack_Frog.cpp" />
+    <ClCompile Include="WaverState_Attack_Kick.cpp" />
+    <ClCompile Include="WaverState_Attack_Slash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="WaverState_Damaged_BlowBack.cpp" />
     <ClCompile Include="WaverState_Damaged_Dazed.cpp" />
     <ClCompile Include="WaverState_Damaged_KnockDown.cpp" />
@@ -1290,6 +1302,10 @@
     <ClCompile Include="WaverState_NormalDamaged_Stomach.cpp" />
     <ClCompile Include="WaverState_Ready.cpp" />
     <ClCompile Include="WaverState_Walk.cpp" />
+    <ClCompile Include="WaverState_Attack_WindSlash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
