@@ -83,5 +83,5 @@ void CrossTownLevel3::CreateDoors()
 
 void CrossTownLevel3::CreateEnemies()
 {
-	GetEnemySpawner().CreateEnemy(EnemyType::Waver, float4::Down * 50.f);
+	GetEnemySpawner().CreateEnemy(EnemyType::Cop, float4::Down * 50.f);
 }
