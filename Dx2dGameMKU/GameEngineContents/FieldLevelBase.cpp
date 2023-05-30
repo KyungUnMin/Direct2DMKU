@@ -59,7 +59,11 @@ void FieldLevelBase::Init(const float4& _Scale, const TileInfoData& _TileData)
 
 void FieldLevelBase::CreateBackGrounds(const std::vector<std::pair<std::string_view, float4>> _BackGroundInfoes, const size_t _GuiSelect /*= UINT64_MAX*/)
 {
-	std::shared_ptr<GameEngineActorGUI> TransCtrlGUI = GUIManager::Find<GameEngineActorGUI>();
+	std::shared_ptr<GameEngineActorGUI> TransCtrlGUI = nullptr;
+	if (UINT64_MAX != _GuiSelect)
+	{
+		TransCtrlGUI = GUIManager::CreateGui<GameEngineActorGUI>();
+	}
 
 	for (size_t i = 0; i < _BackGroundInfoes.size(); ++i)
 	{

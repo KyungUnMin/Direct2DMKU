@@ -3,12 +3,12 @@
 
 #include "GameEngineActorGUI.h"
 
-void GUIManager::Init()
-{
-	CreateGui<GameEngineActorGUI>();
-
-
-}
+//void GUIManager::Init()
+//{
+//	CreateGui<GameEngineActorGUI>();
+//
+//
+//}
 
 
 GUIManager::GUIManager()

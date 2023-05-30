@@ -24,7 +24,6 @@ void RCG_GameCore::GameStart()
 {
 #ifdef _DEBUG
 	bool* DEBUGLEAK = new bool;
-	//GUIManager::Init();
 #endif
 
 	ContentsResourceInit();
