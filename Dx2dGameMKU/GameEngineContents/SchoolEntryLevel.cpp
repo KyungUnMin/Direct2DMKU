@@ -9,7 +9,8 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 
-
+#include "FieldEnemy_SchoolBoy.h"
+#include "FieldEnemy_SchoolGirl.h"
 
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
@@ -133,15 +134,18 @@ void SchoolEntryLevel::CreateDesks()
 
 void SchoolEntryLevel::CreateDoors()
 {
-	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal, float4{0.f, 100.f, 100.f});
-	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
+	GetEnemySpawner().SetAllKillCallback(std::bind(&SchoolEntryLevel::DoorOpen, this));
+}
+
+void SchoolEntryLevel::DoorOpen()
+{
+	DoorPtr->Unlock(LevelNames::SchoolBossLevel);
 }
 
 
-#include "FieldEnemy_SchoolBoy.h"
-#include "FieldEnemy_SchoolGirl.h"
 
 void SchoolEntryLevel::CreateEnemies()
 {

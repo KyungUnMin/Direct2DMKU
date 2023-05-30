@@ -23,11 +23,13 @@ private:
 	static const std::string_view CollisionImageName;
 	static const std::vector<float4> DestSitPos;
 
+	std::shared_ptr<class FieldDoor> DoorPtr = nullptr;
 
 	void LoadImgRes();
 	void CreateBackGrounds();
 	void CreateDesks();
 	void CreateDoors();
+	void DoorOpen();
 	void CreateEnemies();
 };
 
