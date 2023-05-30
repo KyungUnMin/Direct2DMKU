@@ -140,10 +140,10 @@ void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
 		return;
 	
 	//ÀÌÆåÆ® »ý¼º
-	//PlayerState_AttackBase::CreateHitEffect_Blow();
+	PlayerState_AttackBase::CreateHitEffect_Blow();
 
 	//È­¸é ¹ÝÂ¦ÀÓ ÀÌÆåÆ®
-	if (true == EffectOnValue)
+	/*if (true == EffectOnValue)
 		return;
 
 
@@ -153,6 +153,6 @@ void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
 	FadePtr->Init(float4::One, 0.2f,[this]()
 	{
 		this->EffectEnd();
-	});
+	});*/
 }
 
