@@ -92,7 +92,16 @@ void CrossTownLevel1::CreateEnemies()
 {
 	EnemySpawner& Spawner = FieldLevelBase::GetEnemySpawner();
 
-	const float RangeWidth = 1000.f;
+	Spawner.OnCycleSpawn({EnemyType::SchoolBoy,EnemyType::SchoolGirl },
+		{
+			{800.f, -50.f},
+			{600.f, -50.f},
+			{400.f, -50.f},
+			{200.f, -50.f},
+			{0.f, -50.f},
+		});
+
+	/*const float RangeWidth = 1000.f;
 	const float RangeHeight = 100.f;
 
 	for (size_t i = 0; i < 5; ++i)
@@ -109,5 +118,5 @@ void CrossTownLevel1::CreateEnemies()
 		Spawner.CreateEnemy(EnemyType::SchoolGirl, float4{ PosX , PosY });
 	}
 
-	Spawner.CreateEnemy(EnemyType::TigerMan, float4::Zero);
+	Spawner.CreateEnemy(EnemyType::TigerMan, float4::Zero);*/
 }

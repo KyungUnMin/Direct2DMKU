@@ -6,6 +6,7 @@ Enemy의 생성/소멸을 관리해준다
 
 class FieldLevelBase;
 class FieldEnemyBase;
+class GameEngineRenderer;
 
 enum class EnemyType
 {
@@ -37,12 +38,18 @@ public:
 
 	void CreateEnemies(const std::vector<EnemyCreateParameter>& _CreateInfoes);
 
-	//템플릿을 쓰고싶지만 순환참조 때문에 Enum으로 인자 받는다
+	
 	std::shared_ptr<FieldEnemyBase> CreateEnemy(EnemyType _Type,const float4& _CreatePos);
 
 
 	inline void SetAllKillCallback(std::function<void()> _Callback)
 	{
+		if (false == CycleSpawnTypes.empty())
+		{
+			MsgAssert("몬스터를 주기적으로 생성하는 EnemySpawner는 AllKill콜백함수를 등록할 수 없습니다");
+			return;
+		}
+		
 		Callback = _Callback;
 	}
 
@@ -60,6 +67,14 @@ public:
 		const std::pair<int, int>& _NextPos,
 		int _CheckArea = 0);
 
+	
+
+	//해당 레벨에서 몬스터를 주기적으로 생성할 때 호출
+	void OnCycleSpawn(const std::vector<EnemyType>& _SpawnTypes, const std::vector<float4>& _SpawnPoses);
+
+
+	void Update(float _DeltaTime);
+
 protected:
 
 private:
@@ -73,9 +88,25 @@ private:
 	std::vector<EnemyDataBlock> Enemies;
 	FieldLevelBase* Level = nullptr;
 
+	
 	size_t KillCount = 0;
 	std::function<void()> Callback = nullptr;
 
+	float Timer = 0.f;
+	float Duration = 0.f;
+	const float MinDuration = 1.f;
+	const float MaxDuration = 10.f;
+	const size_t MaxSpawnCount = 10;
+
+	const float4 SpawnPosColor = float4{ 0.f, 0.f, 1.f, 1.f };
+	bool IsCycleSpawnRenderOnValue = false;
+
+	std::vector<EnemyType> CycleSpawnTypes;
+	std::vector<std::shared_ptr<GameEngineRenderer>> SpawnPoses;
+
 	bool CheckValidIndex(std::shared_ptr<FieldEnemyBase> _Enemy);
+
+	//스폰 위치 디버깅렌더러 On/Off 처리
+	void Update_DebugRender();
 };
 

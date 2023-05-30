@@ -1,10 +1,16 @@
 #include "PrecompileHeader.h"
 #include "EnemySpawner.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
+#include <GameEngineCore/GameEngineRenderer.h>
+
 #include "RCGEnums.h"
+#include "RCGDefine.h"
+#include "KeyMgr.h"
 
 #include "FieldLevelBase.h"
 #include "BackGround.h"
+#include "DebugActor.h"
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
@@ -170,8 +176,6 @@ bool EnemySpawner::IsOtherStay(
 {
 	CheckValidIndex(_Enemy);
 	
-	std::shared_ptr<BackGround> BGPtr = Level->GetBackGround();
-
 	float4 PrevFieldPos = _Enemy->GetTransform()->GetWorldPosition();
 
 	//인자로 들어온 Enemy의 데이터 블럭
@@ -216,4 +220,137 @@ bool EnemySpawner::IsOtherStay(
 	}
 
 	return false;
+}
+
+
+
+
+
+
+
+void EnemySpawner::OnCycleSpawn(const std::vector<EnemyType>& _SpawnTypes, const std::vector<float4>& _SpawnPoses)
+{
+	if (nullptr != Callback)
+	{
+		MsgAssert("몬스터를 주기적으로 생성하는 EnemySpawner는 AllKill콜백함수를 등록할 수 없습니다");
+		return;
+	}
+
+
+	std::shared_ptr<BackGround> BGPtr = Level->GetBackGround();
+	std::shared_ptr<GameEngineActor> Debuger = Level->CreateActor<DebugActor>(UpdateOrder::Defalut);
+
+
+	//그리드 스케일 알아오기
+	const float4& GridScale = BGPtr->GetGridScale();
+	if (true == GridScale.IsZero())
+	{
+		MsgAssert("BackGround의 GridScale을 알아오기 위해 BackGround를 초기화를 해주고 EnemySpawner::OnCycleSpawn를 호출해주어야 합니다");
+		return;
+	}
+
+
+	CycleSpawnTypes = _SpawnTypes;
+	SpawnPoses.resize(_SpawnPoses.size(), nullptr);
+
+	//입력받은 스포너 위치에 Renderer생성
+	std::shared_ptr<GameEngineRenderer> Render = nullptr;
+	for (size_t i = 0; i < _SpawnPoses.size(); ++i)
+	{
+		Render = Debuger->CreateComponent<GameEngineRenderer>(FieldRenderOrder::Debug_Grid);
+		GameEngineTransform* RenderTrans = Render->GetTransform();
+
+		//크기 그리드 스케일로 지정
+		RenderTrans->SetWorldScale(GridScale);
+
+		//입력받은 위치를 그리드에 딱 맞게 지정
+		std::pair<int, int> GridPos = BGPtr->GetGridFromPos(_SpawnPoses[i]);
+		float4 Pos = BGPtr->GetPosFromGrid(GridPos.first, GridPos.second);
+		Pos.z = -500.f;
+		RenderTrans->SetWorldPosition(Pos);
+
+		//텍스처 생성
+		Render->SetPipeLine("DirectColor");
+		Render->GetShaderResHelper().SetConstantBufferLink("LinkColor", SpawnPosColor);
+		Render->Off();
+
+		SpawnPoses[i] = Render;
+	}
+	
+
+	if (true == CycleSpawnTypes.empty())
+	{
+		MsgAssert("주기적으로 Enemy를 생성하려고 할 때 생성하려는 EnemyType를 지정해주지 않았습니다");
+		return;
+	}
+
+	if (true == SpawnPoses.empty())
+	{
+		MsgAssert("주기적으로 Enemy를 생성하려고 할 때 생성위치를 지정해주지 않았습니다");
+		return;
+	}
+}
+
+
+
+
+void EnemySpawner::Update(float _DeltaTime)
+{
+	//Enemy를 주기적으로 생성시키는 EnemySpawner인 경우에만
+	if (true == CycleSpawnTypes.empty())
+		return;
+
+	//스폰 위치 디버깅렌더러 On/Off 처리
+	Update_DebugRender();
+	
+
+	//Enemy의 최대 갯수 제한
+	size_t CurEnemyCount = Enemies.size() - KillCount;
+	if (MaxSpawnCount < CurEnemyCount)
+		return;
+
+	//Spawn 시간
+	Timer += _DeltaTime;
+	if (Timer < Duration)
+		return;
+
+
+	int CreateIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(CycleSpawnTypes.size() - 1));
+	int PosIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(SpawnPoses.size() - 1));
+	GameEngineTransform* SpawnPosRenderTrans = SpawnPoses[PosIndex]->GetTransform();
+	CreateEnemy(static_cast<EnemyType>(CreateIndex), SpawnPosRenderTrans->GetWorldPosition());
+
+	Timer -= Duration;
+	Duration = GameEngineRandom::MainRandom.RandomFloat(MinDuration, MaxDuration);
+}
+
+void EnemySpawner::Update_DebugRender()
+{
+	//디버깅 키를 누를때만
+	if (false == KeyMgr::IsDown(KeyNames::DebugF2))
+		return;
+
+
+	IsCycleSpawnRenderOnValue = !IsCycleSpawnRenderOnValue;
+
+	//디버그 On이라면
+	if (true == IsCycleSpawnRenderOnValue)
+	{
+		//스폰 위치 렌더러 켜기
+		for (std::shared_ptr<GameEngineRenderer> SpawnPos : SpawnPoses)
+		{
+			SpawnPos->On();
+		}
+	}
+
+	//디버그 Off라면
+	else
+	{
+		//스폰 위치 렌더러 끄기
+		for (std::shared_ptr<GameEngineRenderer> SpawnPos : SpawnPoses)
+		{
+			SpawnPos->Off();
+		}
+	}
+
 }

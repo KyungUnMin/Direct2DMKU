@@ -121,8 +121,10 @@ void FieldLevelBase::LevelChangeEnd()
 
 void FieldLevelBase::Update(float _DeltaTime)
 {
+	FieldActorBase::Update_CheckDebugKey();
 	CamCtrl.Update(_DeltaTime);
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
+	EnemySpawnerCtrl.Update(_DeltaTime);
 	Update_DoorOpen_ForDebug();
 }
 

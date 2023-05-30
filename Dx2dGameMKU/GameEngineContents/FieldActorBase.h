@@ -9,6 +9,8 @@ enum class CollisionOrder;
 class FieldActorBase : public GameEngineActor
 {
 public:
+	static void Update_CheckDebugKey();
+
 	FieldActorBase();
 	virtual ~FieldActorBase() = 0;
 
@@ -75,6 +77,7 @@ public:
 		return AttackCollider.ParentCollision;
 	}
 
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -92,6 +95,7 @@ protected:
 private:
 	static const float4 RenderScale;
 	static const float4 CollisionColor;
+	static bool IsGridPosRenderOn_ForDebug;
 
 	float Height = 0.f;
 

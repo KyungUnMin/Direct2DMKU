@@ -13,6 +13,8 @@
 
 const float4 FieldActorBase::RenderScale = float4{ 200.f, 200.f } *2.5f;
 const float4 FieldActorBase::CollisionColor = float4{ 0.f, 1.f, 0.f, 0.5f };
+bool FieldActorBase::IsGridPosRenderOn_ForDebug = false;
+
 
 FieldActorBase::FieldActorBase()
 {
@@ -137,20 +139,23 @@ void FieldActorBase::Update(float _DeltaTime)
 }
 
 
-
-
-void FieldActorBase::Update_GridDebug()
+void FieldActorBase::Update_CheckDebugKey()
 {
 	if (true == KeyMgr::IsDown(KeyNames::DebugF2))
 	{
-		if (true == GridPosRender_Debug->IsUpdate())
-		{
-			GridPosRender_Debug->Off();
-		}
-		else
-		{
-			GridPosRender_Debug->On();
-		}
+		IsGridPosRenderOn_ForDebug = !IsGridPosRenderOn_ForDebug;
+	}
+}
+
+void FieldActorBase::Update_GridDebug()
+{
+	if (true == IsGridPosRenderOn_ForDebug)
+	{
+		GridPosRender_Debug->On();
+	}
+	else
+	{
+		GridPosRender_Debug->Off();
 	}
 
 	if (false == GridPosRender_Debug->IsUpdate())
