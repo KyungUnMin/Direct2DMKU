@@ -77,7 +77,11 @@ void SchoolEntryLevel::Start()
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 	CreateEnemies();
 
+
 	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
+
+	//디버깅용 DoorOpen함수 등록
+	FieldLevelBase::SetDoorOpenFunc(std::bind(&SchoolEntryLevel::DoorOpen, this));
 }
 
 
@@ -169,3 +173,4 @@ void SchoolEntryLevel::CreateEnemies()
 	}
 
 }
+

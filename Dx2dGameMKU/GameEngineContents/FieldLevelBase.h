@@ -64,6 +64,13 @@ protected:
 
 	void CreateCollisionImage(const std::string_view& _ImageName);
 
+
+	inline void SetDoorOpenFunc(std::function<void()> _DoorOpenFunc)
+	{
+		DoorOpenFunc = _DoorOpenFunc;
+	}
+
+
 private:
 	static FieldLevelBase* GPtr;
 
@@ -72,5 +79,10 @@ private:
 	FieldCamController CamCtrl;
 	FreeCamMoveController FreeCamDebugMoveCtrl;
 	EnemySpawner EnemySpawnerCtrl = EnemySpawner(this);
+
+
+	std::function<void()> DoorOpenFunc = nullptr;
+
+	void Update_DoorOpen_ForDebug();
 };
 

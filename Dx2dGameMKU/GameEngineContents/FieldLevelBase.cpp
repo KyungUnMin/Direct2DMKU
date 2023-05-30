@@ -7,6 +7,7 @@
 
 #include "RCGEnums.h"
 #include "RCGDefine.h"
+#include "KeyMgr.h"
 #include "GUIManager.h"
 #include "GameEngineActorGUI.h"
 
@@ -122,12 +123,18 @@ void FieldLevelBase::Update(float _DeltaTime)
 {
 	CamCtrl.Update(_DeltaTime);
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
+	Update_DoorOpen_ForDebug();
 }
 
 
-//
-//bool FieldLevelBase::IsBlockPos(const float4& _Pos)
-//{
-//	return BGPtr->IsBlockPos(_Pos);
-//}
-//
+void FieldLevelBase::Update_DoorOpen_ForDebug()
+{
+	if (nullptr == DoorOpenFunc)
+		return;
+
+	if (false == KeyMgr::IsDown(KeyNames::DebugF4))
+		return;
+
+	DoorOpenFunc();
+}
+
