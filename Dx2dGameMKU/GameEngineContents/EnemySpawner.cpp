@@ -289,6 +289,7 @@ void EnemySpawner::OnCycleSpawn(const std::vector<EnemyType>& _SpawnTypes, const
 		MsgAssert("주기적으로 Enemy를 생성하려고 할 때 생성위치를 지정해주지 않았습니다");
 		return;
 	}
+
 }
 
 
@@ -309,15 +310,35 @@ void EnemySpawner::Update(float _DeltaTime)
 	if (MaxSpawnCount < CurEnemyCount)
 		return;
 
+
 	//Spawn 시간
 	Timer += _DeltaTime;
 	if (Timer < Duration)
 		return;
 
 
+	//어떤 Enemy를 생성할 것인지
 	int CreateIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(CycleSpawnTypes.size() - 1));
+	
+	//어떤 위치에 생성할 것인지
 	int PosIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(SpawnPoses.size() - 1));
 	GameEngineTransform* SpawnPosRenderTrans = SpawnPoses[PosIndex]->GetTransform();
+	float4 SpawnPos = SpawnPosRenderTrans->GetWorldPosition();
+	std::pair<int, int> GridSpawnPos = Level->GetBackGround()->GetGridFromPos(SpawnPos);
+
+	//생성하려는 위치에 다른 Enemy가 존재한다면 생성하지 않음
+	for (const EnemyDataBlock& Enemy : Enemies)
+	{
+		//죽은 Enemy들은 제외
+		if (true == Enemy.IsDeath)
+			continue;
+
+		//생성하려는 위치에 다른 Enemy가 존재하는 경우(다음 프레임에 다른 랜덤한 위치에 생성)
+		if (Enemy.GridPos == GridSpawnPos)
+			return;
+	}
+
+	
 	CreateEnemy(static_cast<EnemyType>(CreateIndex), SpawnPosRenderTrans->GetWorldPosition());
 
 	Timer -= Duration;

@@ -98,9 +98,10 @@ private:
 	const float MaxDuration = 10.f;
 	const size_t MaxSpawnCount = 10;
 
-	const float4 SpawnPosColor = float4{ 0.f, 0.f, 1.f, 1.f };
+	const float4 SpawnPosColor = float4{ 0.f, 0.f, 1.f, 0.5f };
 	bool IsCycleSpawnRenderOnValue = false;
 
+	size_t SpawnIndex = 0;
 	std::vector<EnemyType> CycleSpawnTypes;
 	std::vector<std::shared_ptr<GameEngineRenderer>> SpawnPoses;
 
