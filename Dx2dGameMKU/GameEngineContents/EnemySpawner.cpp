@@ -307,7 +307,7 @@ void EnemySpawner::Update(float _DeltaTime)
 
 	//Enemy의 최대 갯수 제한
 	size_t CurEnemyCount = Enemies.size() - KillCount;
-	if (MaxSpawnCount < CurEnemyCount)
+	if (MaxSpawnCount <= CurEnemyCount)
 		return;
 
 

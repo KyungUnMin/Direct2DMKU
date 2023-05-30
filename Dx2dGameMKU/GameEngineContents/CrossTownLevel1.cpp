@@ -22,6 +22,14 @@ const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::BGInfoes
 
 const std::string_view CrossTownLevel1::CollisionImageName = "CrossTown1ColBG.png";
 
+const std::vector<float4> CrossTownLevel1::EnemySpawnPoses = 
+{
+	float4{-1920.f, 170.f},
+	float4{-2235.f, -605.f},
+	float4{830.f, 180.f},
+	float4{-1050.f, - 595.f}
+};
+
 CrossTownLevel1::CrossTownLevel1()
 {
 
@@ -85,21 +93,14 @@ void CrossTownLevel1::CreateDoors()
 }
 
 
-#include <GameEngineBase/GameEngineRandom.h>
+#include "DebugActor.h"
 
 
 void CrossTownLevel1::CreateEnemies()
 {
 	EnemySpawner& Spawner = FieldLevelBase::GetEnemySpawner();
 
-	Spawner.OnCycleSpawn({EnemyType::SchoolBoy,EnemyType::SchoolGirl },
-		{
-			{800.f, -50.f},
-			{600.f, -50.f},
-			{400.f, -50.f},
-			{200.f, -50.f},
-			{0.f, -50.f},
-		});
+	Spawner.OnCycleSpawn({EnemyType::SchoolBoy,EnemyType::SchoolGirl }, EnemySpawnPoses);
 
 	/*const float RangeWidth = 1000.f;
 	const float RangeHeight = 100.f;
@@ -119,4 +120,7 @@ void CrossTownLevel1::CreateEnemies()
 	}
 
 	Spawner.CreateEnemy(EnemyType::TigerMan, float4::Zero);*/
+
+
+	GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }

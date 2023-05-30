@@ -11,6 +11,7 @@ enum class UpdateOrder
 	Effect,
 
 	UI,
+	FOR_DEBUG		//나중에 반드시 지워야 할 애들
 };
 
 enum class CollisionOrder
