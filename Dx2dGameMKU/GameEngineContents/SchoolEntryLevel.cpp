@@ -41,11 +41,11 @@ const float4 SchoolEntryLevel::LevelAreaScale = float4{ 672.f, 224.f } *RCGDefin
 const std::vector<float4> SchoolEntryLevel::DestSitPos =
 {
 	{-502.f, -156.f, -156.f},
-	{-290.f, -156.f, -156.f},
+		{-300.f, -156.f, -156.f},
 	{-70.f, -156.f, -156.f},
-	{147.f, -156.f, -156.f},
+		{137.f, -156.f, -156.f},
 
-	{-632.f, -291.f, -291.f},
+		{-642.f, -291.f, -291.f},
 	{-420.f, -291.f, -291.f},
 	{-205.f, -291.f, -291.f},
 	{13.f, -291.f, -291.f}

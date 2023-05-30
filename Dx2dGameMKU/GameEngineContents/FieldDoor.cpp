@@ -131,6 +131,10 @@ void FieldDoor::Update(float _DeltaTime)
 		return;
 	}
 
+	//문이 아직 열리지 않았다면 아래 코드들을 실행시키지 않음
+	if (LevelNames::OpeningLevel == NextLevel)
+		return;
+
 
 	CheckNearPlayer();
 
@@ -183,6 +187,10 @@ void FieldDoor::CheckNearPlayer()
 
 void FieldDoor::Unlock(LevelNames _NextLevel)
 {
+	//문이 아직 안 열렸을때만
+	if (LevelNames::OpeningLevel != NextLevel)
+		return;
+
 	NextLevel = _NextLevel;
 
 	if (nullptr != LockRender)
