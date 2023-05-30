@@ -10,6 +10,8 @@
 #include "GameEngineDevice.h"
 #include "GameEngineRenderTarget.h"
 
+bool GameEngineLevel::IsDebugRender = false;
+
 GameEngineLevel::GameEngineLevel()
 {
 	//메인 카메라 0번
@@ -119,6 +121,39 @@ void GameEngineLevel::ActorLevelChangeEnd()
 
 
 
+void GameEngineLevel::CollisionDebugRender(GameEngineCamera* _Camera, float _DeltaTime)
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupStartIter = Collisions.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupEndIter = Collisions.end();
+
+	//콜리전 그룹을 순회하면서
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineCollision>>& ObjectList = GroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectStart = ObjectList.begin();
+		std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectEnd = ObjectList.end();
+
+		for (; ObjectStart != ObjectEnd; ++ObjectStart)
+		{
+			std::shared_ptr<GameEngineCollision> CollisionObject = (*ObjectStart);
+
+			if (nullptr == CollisionObject)
+				continue;
+
+			//Update되어있는 콜리전만 그린다
+			if (false == CollisionObject->IsUpdate())
+				continue;
+
+			//인자로 받은 이 카메라와 콜리전에 등록한 카메라가 같은 경우에만
+			if (CollisionObject->DebugCamera != _Camera)
+				continue;
+
+			CollisionObject->DebugRender(_DeltaTime);
+		}
+	}
+}
+
 
 
 void GameEngineLevel::ActorRender(float _DeltaTime)
@@ -132,8 +167,15 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		Cam->CameraTransformUpdate();
 		Cam->Render(_DeltaTime);
 
+
 		//이 카메라에 대한 포스트 프로세싱 적용
 		Cam->CamTarget->Effect(_DeltaTime);
+
+		//콜리전 디버깅 기능이 On됐을때만
+		if (false == IsDebugRender)
+			continue;
+
+		CollisionDebugRender(Cam.get(), _DeltaTime);
 	}
 	
 	LastTarget->Clear();
@@ -150,6 +192,10 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 
 	//전체 화면에 대한 포스트 프로세싱
 	LastTarget->Effect(_DeltaTime);
+
+
+	//TODO
+	//LastTarget->Setting();
 
 	
 	//메인 백버퍼에 LastTarget의 이미지를 덮어쓴다

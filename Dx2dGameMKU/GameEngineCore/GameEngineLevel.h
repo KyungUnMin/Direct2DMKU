@@ -22,6 +22,12 @@ class GameEngineLevel : public GameEngineObject
 	friend class GameEngineTexture;
 
 public:
+	static void IsDebugSwitch()
+	{
+		IsDebugRender = !IsDebugRender;
+	}
+
+
 	GameEngineTimeEvent TimeEvent;
 
 	GameEngineLevel();
@@ -81,6 +87,8 @@ public:
 		return LastTarget;
 	}
 
+	void CollisionDebugRender(GameEngineCamera* _Camera, float _DeltaTime);
+
 protected:
 	virtual void LevelChangeStart(){}
 	virtual void LevelChangeEnd(){}
@@ -90,6 +98,8 @@ protected:
 	virtual void Render(float _DeltaTime){}
 
 private:
+	static bool IsDebugRender;
+
 	//모든 카메라의 이미지가 다 종합된 렌더타겟(도화지)
 	std::shared_ptr<GameEngineRenderTarget> LastTarget;
 
