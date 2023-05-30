@@ -23,6 +23,7 @@ private:
 	void LoadImgRes();
 	void CreateBackGrounds();
 	void CreateDoors();
+	void CreateEnemies();
 };
 
 

@@ -7,6 +7,7 @@
 #include "RCGEnums.h"
 #include "BackGround.h"
 #include "FieldDoor.h"
+#include "EnemySpawner.h"
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel2::BGInfoes =
 {
@@ -34,6 +35,7 @@ void CrossTownLevel2::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
+	CreateEnemies();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1300.f, -200.f , -200.f });
 }
@@ -54,7 +56,7 @@ void CrossTownLevel2::LoadImgRes()
 void CrossTownLevel2::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("CrossTown2BG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData(200, 100));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
@@ -77,4 +79,10 @@ void CrossTownLevel2::CreateDoors()
 	DoorPtr->Init(DoorType::Shop, float4{ 0.f, 50.f, 50.f });
 	DoorPtr->Unlock(LevelNames::Shop_StoreLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{-1000.f, -50.f, -50.f});
+}
+
+void CrossTownLevel2::CreateEnemies()
+{
+	//GetEnemySpawner().CreateEnemy(EnemyType::Hooligan, float4::Down * 100.f);
+	GetEnemySpawner().CreateEnemy(EnemyType::TigerMan, float4::Down * 80.f);
 }
