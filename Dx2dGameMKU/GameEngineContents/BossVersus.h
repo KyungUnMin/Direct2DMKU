@@ -7,10 +7,6 @@ class ShaderUIRenderer;
 class GameEngineSpriteRenderer;
 
 
-/*
-	UI 구조 바뀐다고 하니
-	UI기능이 업데이트되면 그때 나머지 만들자
-*/
 
 class BossVersus : public UIBase
 {

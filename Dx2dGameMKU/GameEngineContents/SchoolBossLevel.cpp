@@ -8,6 +8,7 @@
 
 #include "BackGround.h"
 #include "FieldDoor.h"
+#include "BossIntroMovie.h"
 
 
 
@@ -69,6 +70,13 @@ void SchoolBossLevel::CreateDoors()
 	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal);
 	DoorPtr->Unlock(LevelNames::CrossTownLevel1);
+}
+
+void SchoolBossLevel::LevelChangeStart()
+{
+	FieldLevelBase::LevelChangeStart();
+
+	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School);
 }
 
 
