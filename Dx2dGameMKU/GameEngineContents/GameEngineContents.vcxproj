@@ -324,10 +324,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="FieldNPC_Teacher.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="FreeCamMoveController.h">
       <SubType>
       </SubType>
@@ -905,10 +901,6 @@
     <ClCompile Include="FieldEnemy_TigerMan.cpp" />
     <ClCompile Include="FieldEnemy_Waver.cpp" />
     <ClCompile Include="FieldNPCBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="FieldNPC_Teacher.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -27,9 +27,10 @@ private:
 
 	void LoadImgRes();
 	void CreateBackGrounds();
-	void CreateDesks();
+	//void CreateDesks();
 	void CreateDoors();
 	void DoorOpen();
 	void CreateEnemies();
+	void CreateNPC();
 };
 

@@ -8,6 +8,7 @@ enum class UpdateOrder
 	FieldDoor,
 	Player,
 	Enemy,
+	NPC,
 	Effect,
 
 	UI,

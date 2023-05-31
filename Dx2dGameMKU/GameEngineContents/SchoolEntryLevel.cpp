@@ -8,6 +8,7 @@
 #include "RCGEnums.h"
 #include "BackGround.h"
 #include "FieldDoor.h"
+#include "FieldNPCBase.h"
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
@@ -62,8 +63,6 @@ SchoolEntryLevel::~SchoolEntryLevel()
 }
 
 
-#include "BossIntroMovie.h"
-
 
 void SchoolEntryLevel::Start()
 {
@@ -77,8 +76,7 @@ void SchoolEntryLevel::Start()
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
 	CreateEnemies();
 
-
-	//CreateActor<BossIntroMovie>(static_cast<int>(UpdateOrder::UI))->Init(MovieType::School);
+	CreateNPC();
 
 	//디버깅용 DoorOpen함수 등록
 	FieldLevelBase::SetDoorOpenFunc(std::bind(&SchoolEntryLevel::DoorOpen, this));
@@ -108,33 +106,33 @@ void SchoolEntryLevel::CreateBackGrounds()
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 
-void SchoolEntryLevel::CreateDesks()
-{
-	const std::vector<float4> DeskPoses =
-	{
-		 float4{ -598.f, -343.f},
-		 float4{ -387.f, -343.f},
-		float4{ -170.f, -343.f},
-		float4{ 45.f, -343.f},
-
-		float4{ -470.f, -207.f},
-		float4{ -258.f, -207.f },
-		float4{ -37.f, -207.f },
-		float4{ 177.f, -207.f }
-	};
-
-
-	std::shared_ptr<BackGround> BGPtr = FieldLevelBase::GetBackGround();
-	for (const float4& DeskPos : DeskPoses)
-	{
-		std::shared_ptr<GameEngineSpriteRenderer> Render = BGPtr->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
-		float4 Pos = DeskPos;
-		Pos.z = Pos.y;
-		Render->GetTransform()->SetWorldPosition(Pos);
-
-		Render->SetScaleToTexture("School_Desks.png");
-	}
-}
+//void SchoolEntryLevel::CreateDesks()
+//{
+//	const std::vector<float4> DeskPoses =
+//	{
+//		 float4{ -598.f, -343.f},
+//		 float4{ -387.f, -343.f},
+//		float4{ -170.f, -343.f},
+//		float4{ 45.f, -343.f},
+//
+//		float4{ -470.f, -207.f},
+//		float4{ -258.f, -207.f },
+//		float4{ -37.f, -207.f },
+//		float4{ 177.f, -207.f }
+//	};
+//
+//
+//	std::shared_ptr<BackGround> BGPtr = FieldLevelBase::GetBackGround();
+//	for (const float4& DeskPos : DeskPoses)
+//	{
+//		std::shared_ptr<GameEngineSpriteRenderer> Render = BGPtr->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+//		float4 Pos = DeskPos;
+//		Pos.z = Pos.y;
+//		Render->GetTransform()->SetWorldPosition(Pos);
+//
+//		Render->SetScaleToTexture("School_Desks.png");
+//	}
+//}
 
 void SchoolEntryLevel::CreateDoors()
 {
@@ -174,3 +172,18 @@ void SchoolEntryLevel::CreateEnemies()
 
 }
 
+//#include "DebugActor.h"
+
+void SchoolEntryLevel::CreateNPC()
+{
+	const float4 NpcPos = float4{ 550.f, -150.f ,-150.f };
+
+	std::shared_ptr<FieldNPCBase> Teacher = nullptr;
+	Teacher = CreateActor<FieldNPCBase>(UpdateOrder::NPC);
+	Teacher->AnimationCreate("Teacher");
+
+	GameEngineTransform* NpcTrans = Teacher->GetTransform();
+	NpcTrans->SetLocalPosition(NpcPos);
+
+	//CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
+}
