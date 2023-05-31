@@ -63,6 +63,7 @@ bool EnemyState_WalkBase::SetDest(int _OtherCheckRange /*= 0*/)
 		return false;
 	}
 
+	GameEngineTransform* EnemyTrans = EnemyPtr->GetTransform();
 	PathStack.pop_back();
 
 
@@ -72,7 +73,19 @@ bool EnemyState_WalkBase::SetDest(int _OtherCheckRange /*= 0*/)
 	//목적지 설정
 	DestPos = GetBackGround()->GetPosFromGrid(DestGridPos.first, DestGridPos.second);
 	DestPos.z = DestPos.y;
-	StartPos = EnemyPtr->GetTransform()->GetWorldPosition();
+	StartPos = EnemyTrans->GetWorldPosition();
+
+	//이동하려는 방향에 따라 바라보는 위치 변경
+	float4 MoveDir = (DestPos - StartPos);
+	if (0.f < MoveDir.x)
+	{
+		EnemyTrans->SetLocalPositiveScaleX();
+	}
+	else
+	{
+		EnemyTrans->SetLocalNegativeScaleX();
+	}
+
 	return true;
 }
 
