@@ -24,7 +24,7 @@ void DebugActor::Init_PositionPointer(const std::string_view& _TexName /*= ""*/)
 {
 	MsgTextBox("DebugActor에서 TransViewer를 실행합니다");
 
-	PositionPointerRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::Debug_Grid);
+	PositionPointerRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	if (false == _TexName.empty())
 	{
 		PositionPointerRender->SetTexture(_TexName);

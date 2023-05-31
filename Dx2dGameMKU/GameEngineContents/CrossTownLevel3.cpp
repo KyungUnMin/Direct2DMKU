@@ -15,7 +15,11 @@ const std::vector<std::pair<std::string_view, float4>> CrossTownLevel3::BGInfoes
 };
 
 const std::string_view CrossTownLevel3::CollisionImageName = "CrossTown3ColBG.png";
-
+const std::vector<float4> CrossTownLevel3::EnemySpawnPoses =
+{
+	float4{-955.f, -10.f},
+	float4{10.f, -10.f}
+};
 
 CrossTownLevel3::CrossTownLevel3()
 {
@@ -80,8 +84,20 @@ void CrossTownLevel3::CreateDoors()
 	DoorPtr->GetTransform()->SetLocalPosition(float4::Right * 980.f);
 }
 
+//#include "DebugActor.h"
 
 void CrossTownLevel3::CreateEnemies()
 {
-	GetEnemySpawner().CreateEnemy(EnemyType::Waver, float4::Down * 50.f);
+	EnemySpawner& Spawner = FieldLevelBase::GetEnemySpawner();
+
+	Spawner.SetCycleDuration(1.f, 3.f);
+	Spawner.SetCycleMax(8);
+	Spawner.OnCycleSpawn({
+		EnemyType::Cheerleader,
+		EnemyType::Cheerleader,
+		EnemyType::Cop,
+		EnemyType::TigerMan,
+		}, EnemySpawnPoses);
+
+	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }

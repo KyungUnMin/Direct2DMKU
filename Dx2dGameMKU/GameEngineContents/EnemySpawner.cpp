@@ -319,6 +319,7 @@ void EnemySpawner::Update(float _DeltaTime)
 
 	//어떤 Enemy를 생성할 것인지
 	int CreateIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(CycleSpawnTypes.size() - 1));
+	EnemyType CreateEnemyType = CycleSpawnTypes[CreateIndex];
 	
 	//어떤 위치에 생성할 것인지
 	int PosIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(SpawnPoses.size() - 1));
@@ -339,7 +340,7 @@ void EnemySpawner::Update(float _DeltaTime)
 	}
 
 	
-	CreateEnemy(static_cast<EnemyType>(CreateIndex), SpawnPosRenderTrans->GetWorldPosition());
+	CreateEnemy(CreateEnemyType, SpawnPosRenderTrans->GetWorldPosition());
 
 	Timer -= Duration;
 	Duration = GameEngineRandom::MainRandom.RandomFloat(MinDuration, MaxDuration);

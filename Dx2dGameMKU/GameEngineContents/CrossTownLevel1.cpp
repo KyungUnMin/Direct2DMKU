@@ -104,7 +104,14 @@ void CrossTownLevel1::CreateEnemies()
 
 	Spawner.SetCycleDuration(1.f, 5.f);
 	Spawner.SetCycleMax(6);
-	Spawner.OnCycleSpawn({EnemyType::SchoolBoy,EnemyType::SchoolGirl }, EnemySpawnPoses);
+	Spawner.OnCycleSpawn({
+		EnemyType::Cheerleader,
+		EnemyType::Hooligan,
+		EnemyType::SchoolBoy,
+		EnemyType::SchoolGirl,
+		EnemyType::SchoolBoy,
+		EnemyType::SchoolGirl
+		}, EnemySpawnPoses);
 
 	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }
