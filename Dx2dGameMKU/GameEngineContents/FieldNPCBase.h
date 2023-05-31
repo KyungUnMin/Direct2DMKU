@@ -8,8 +8,8 @@ class AnimationParameter;
 class FieldNPCBase : public FieldActorBase
 {
 public:
-	static const std::string_view IdleAniName;
-	static const std::string_view ReactAniName;
+	static const std::string IdleAniName;
+	static const std::string ReactAniName;
 	static const float4 RenderScale;
 
 	FieldNPCBase();
@@ -24,6 +24,11 @@ public:
 
 	//Idle애니메이션과 React애니메이션을 생성
 	void AnimationCreate(const std::string_view& _NpcFolderName);
+
+	inline void DonLookAtReact()
+	{
+		IsLookPlayer = false;
+	}
 
 protected:
 	void Start() override;
@@ -43,5 +48,8 @@ private:
 	};
 
 	State CurState = State::Idle;
+
+	//플레이어에게 공격 받았을 때 플레이어를 바라보는지 여부
+	bool IsLookPlayer = true;
 };
 

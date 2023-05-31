@@ -9,8 +9,8 @@
 #include "FieldPlayer.h"
 
 
-const std::string_view FieldNPCBase::IdleAniName = "Idle";
-const std::string_view FieldNPCBase::ReactAniName = "React";
+const std::string FieldNPCBase::IdleAniName = "_Idle";
+const std::string FieldNPCBase::ReactAniName = "_React";
 const float4 FieldNPCBase::RenderScale = float4{ 32.f, 80.f, 1.f } *RCGDefine::ResourceScaleConvertor;
 
 
@@ -42,15 +42,21 @@ void FieldNPCBase::AnimationCreate(const std::string_view& _NpcFolderName)
 	Dir.Move("NPC");
 	Dir.Move(_NpcFolderName);
 
-	GameEnginePath IdleSheetPath = Dir.GetPlusFileName(IdleAniName);
-	GameEnginePath ReactSheetPath = Dir.GetPlusFileName(ReactAniName);
+	std::string FolderName = _NpcFolderName.data();
 
-	if (nullptr == GameEngineSprite::Find(IdleAniName))
+	//Sprite이름이자 폴더 이름
+	std::string IdleSpriteName = FolderName + IdleAniName;
+	std::string ReactSpriteName = FolderName + ReactAniName;
+	
+	GameEnginePath IdleSheetPath = Dir.GetPlusFileName(IdleSpriteName);
+	GameEnginePath ReactSheetPath = Dir.GetPlusFileName(ReactSpriteName);
+
+	if (nullptr == GameEngineSprite::Find(IdleSpriteName))
 	{
 		GameEngineSprite::LoadFolder(IdleSheetPath.GetFullPath());
 	}
 
-	if (nullptr == GameEngineSprite::Find(ReactAniName))
+	if (nullptr == GameEngineSprite::Find(ReactSpriteName))
 	{
 		GameEngineSprite::LoadFolder(ReactSheetPath.GetFullPath());
 	}
@@ -61,15 +67,15 @@ void FieldNPCBase::AnimationCreate(const std::string_view& _NpcFolderName)
 	Render->CreateAnimation
 	({
 		.AnimationName = IdleAniName,
-		.SpriteName = IdleAniName,
+		.SpriteName = IdleSpriteName,
 		.Loop = true,
 		});
 
 	Render->CreateAnimation
 	({
 		.AnimationName = ReactAniName,
-		.SpriteName = ReactAniName,
-		.Loop = true,
+		.SpriteName = ReactSpriteName,
+		.Loop = false,
 		});
 
 	Render->ChangeAnimation(IdleAniName);
@@ -119,6 +125,14 @@ void FieldNPCBase::React()
 	if (State::React == CurState)
 		return;
 
+	//상태 및 애니메이션 변경
+	CurState = State::React;
+	GetRenderer()->ChangeAnimation(ReactAniName);
+
+	//플레이어 바라보기 설정된 경우에만
+	if (false == IsLookPlayer)
+		return;
+
 	GameEngineTransform* PlayerTrans = FieldPlayer::GetPtr()->GetTransform();
 	GameEngineTransform* ThisTrans = GetTransform();
 
@@ -136,9 +150,6 @@ void FieldNPCBase::React()
 	{
 		ThisTrans->SetLocalNegativeScaleX();
 	}
-
-	CurState = State::React;
-	GetRenderer()->ChangeAnimation(ReactAniName);
 }
 
 

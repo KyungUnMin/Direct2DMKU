@@ -20,10 +20,12 @@ private:
 	static const std::vector<std::pair<std::string_view, float4>> BGInfoes;
 	static const std::string_view CollisionImageName;
 	static const std::vector<float4> EnemySpawnPoses;
+	static const std::vector<std::pair<std::string_view, float4>> NpcInfoes;
 
 	void LoadImgRes();
 	void CreateBackGrounds();
 	void CreateDoors();
 	void CreateEnemies();
+	void CreateNPC();
 };
 

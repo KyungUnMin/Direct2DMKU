@@ -5,9 +5,11 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "ResourceHelper.h"
+#include "FieldNPCBase.h"
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::BGInfoes =
 {
@@ -32,6 +34,14 @@ const std::vector<float4> CrossTownLevel1::EnemySpawnPoses =
 	float4{855.f, -595.f},
 };
 
+const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::NpcInfoes =
+{
+	{"CasualBoyD", float4{100.f, 0.f, 0.f}},
+	{"CoolArtists", float4{200.f, 0.f, 0.f}},
+	{"SchoolBoyB", float4{300.f, 0.f, 0.f}},
+};
+
+
 CrossTownLevel1::CrossTownLevel1()
 {
 
@@ -50,6 +60,7 @@ void CrossTownLevel1::Start()
 	CreateBackGrounds();
 	CreateDoors();
 	CreateEnemies();
+	CreateNPC();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
 }
@@ -114,4 +125,19 @@ void CrossTownLevel1::CreateEnemies()
 		}, EnemySpawnPoses);
 
 	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
+}
+
+void CrossTownLevel1::CreateNPC()
+{
+	for (const std::pair<std::string_view, float4>& Pair : NpcInfoes)
+	{
+		const std::string_view& FileName = Pair.first;
+		const float4& Pos = Pair.second;
+
+		std::shared_ptr<FieldNPCBase> Npc = nullptr;
+		Npc = CreateActor<FieldNPCBase>(UpdateOrder::NPC);
+		Npc->AnimationCreate(FileName);
+		Npc->GetTransform()->SetLocalPosition(Pos);
+	}
+
 }

@@ -176,7 +176,7 @@ void SchoolEntryLevel::CreateEnemies()
 
 void SchoolEntryLevel::CreateNPC()
 {
-	const float4 NpcPos = float4{ 550.f, -150.f ,-150.f };
+	const float4 NpcPos = float4{ 595.f, -175.f ,-175.f };
 
 	std::shared_ptr<FieldNPCBase> Teacher = nullptr;
 	Teacher = CreateActor<FieldNPCBase>(UpdateOrder::NPC);
