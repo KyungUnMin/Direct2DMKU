@@ -230,6 +230,7 @@ void GameEngineShaderResHelper::SetTexture(const std::string_view& _SettingName,
 		return;
 	}
 
+	
 
 	//해당 이름의 텍스처 버퍼를 쉐이더 파일에서 사용하는지 검사
 	std::string UpperName = GameEngineString::ToUpper(_SettingName);
@@ -271,6 +272,9 @@ void GameEngineShaderResHelper::SetTexture(const std::string_view& _SettingName,
 
 
 	std::shared_ptr<GameEngineTexture> FindTex = GameEngineTexture::Find(_ImageName);
+	
+	
+
 	if (nullptr == FindTex)
 	{
 		std::string TexName = _ImageName.data();

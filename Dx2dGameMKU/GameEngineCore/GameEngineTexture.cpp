@@ -559,3 +559,17 @@ void GameEngineTexture::Release()
 		Texture2D = nullptr;
 	}
 }
+
+void GameEngineTexture::ReLoad()
+{
+	if (nullptr != Texture2D)
+		return;
+
+	if (nullptr != SRV)
+		return;
+
+	if ("" == GetPath())
+		return;
+
+	ResLoad(GetPath());
+}

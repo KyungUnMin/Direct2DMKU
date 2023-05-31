@@ -81,6 +81,7 @@ public:
 		std::shared_ptr<GameEngineTexture> NewTexture = GameEngineResource::Create(_Name);
 
 		PathCheck(_Path, _Name);
+		NewTexture->SetPath(_Path);
 		NewTexture->ResLoad(_Path);
 		return NewTexture;
 	}
@@ -142,7 +143,7 @@ public:
 			return nullptr;
 		}
 
-		FindTexture->ResLoad(_Path);
+		FindTexture->ReLoad();
 		return FindTexture;
 	}
 
@@ -183,6 +184,11 @@ public:
 
 
 	GameEnginePixelColor GetPixel(int _X, int _Y, const GameEnginePixelColor& _DefaultColor = GameEnginePixelColor::Black);
+
+	void ReLoad();
+
+	//텍스처를 GPU상에서 소멸시킨다
+	void Release();
 
 protected:
 
@@ -245,7 +251,6 @@ private:
 	void PSReset(UINT _Slot);
 
 
-	//텍스처를 GPU상에서 소멸시킨다
-	void Release();
+	
 };
 

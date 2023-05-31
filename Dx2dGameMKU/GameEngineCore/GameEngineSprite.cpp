@@ -80,3 +80,20 @@ void GameEngineSprite::ResLoadSheet(const std::string_view& _Path, size_t _X, si
 		Start.y += UVScale.y;
 	}
 }
+
+void GameEngineSprite::Release()
+{
+	for (size_t i = 0; i < Sprites.size(); i++)
+	{
+		Sprites[i].Texture->Release();
+	}
+}
+
+
+void GameEngineSprite::ReLoad()
+{
+	for (size_t i = 0; i < Sprites.size(); i++)
+	{
+		Sprites[i].Texture->ReLoad();
+	}
+}
