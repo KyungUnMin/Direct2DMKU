@@ -4,9 +4,13 @@
 #include <GameEngineCore/GameEngineSprite.h>
 #include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "KeyMgr.h"
+
+#include "Fader.h"
 
 const std::vector<std::string_view> BossIntroMovie::MovieNames =
 {
@@ -70,22 +74,35 @@ void BossIntroMovie::LoadSprite(const std::string_view& _MovieName)
 }
 
 
-#include <GameEngineCore/GameEngineLevel.h>
-#include "Fader.h"
+
 
 void BossIntroMovie::Update(float _DelatTime)
 {
 	UIBase::Update(_DelatTime);
 
+	if (true == KeyMgr::IsDown(KeyNames::Esc) && 1.f < GetLiveTime())
+	{
+		DeleteThis();
+		return;
+	}
+
 	if (false == Render->IsAnimationEnd())
 		return;
 
-	Clear();
-	GetLevel()->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero);
+	DeleteThis();
 }
 
-void BossIntroMovie::Clear()
+void BossIntroMovie::DeleteThis()
 {
+	//페이드인 생성
+	//GetLevel()->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero);
+
+	if (nullptr != EndCallback)
+	{
+		EndCallback();
+		EndCallback = nullptr;
+	}
+
 	Render->Off();
 	Render->Death();
 	Render = nullptr;
@@ -96,5 +113,5 @@ void BossIntroMovie::Clear()
 	}
 
 	TexNames.clear();
-	Death();
+	this->Death();
 }

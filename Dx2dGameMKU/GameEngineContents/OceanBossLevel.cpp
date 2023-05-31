@@ -5,7 +5,12 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+
 #include "BackGround.h"
+#include "Fader.h"
+#include "BossVersus.h"
+#include "BossIntroMovie.h"
+
 
 const std::vector<std::pair<std::string_view, float4>> OceanBossLevel::BGInfoes =
 {
@@ -60,4 +65,18 @@ void OceanBossLevel::CreateBackGrounds()
 	FieldLevelBase::Init(LevelArea, TileInfoData());
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
+}
+
+void OceanBossLevel::LevelChangeStart()
+{
+	FieldLevelBase::LevelChangeStart();
+
+	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
+	{
+		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
+		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+		{
+			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Noise);
+		});
+	});
 }

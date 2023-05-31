@@ -26,6 +26,7 @@ void RCG_GameCore::LoadShaders()
 	
 	for (const GameEngineFile& File : ShaderFiles)
 	{
+		//GameEngineShader::AutoCompile()
 		GameEngineVertexShader::Load(File.GetFullPath(), "Texture_VS");
 		GameEnginePixelShader::Load(File.GetFullPath(), "Texture_PS");
 	}

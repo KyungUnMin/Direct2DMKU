@@ -6,7 +6,7 @@
 #include "EnemyFSMBase.h"
 #include "EnemyState_AttackBase.h"
 
-const std::pair<float, float> EnemyState_IdleBase::SettingTime = { 1.f, 3.f };
+const std::pair<float, float> EnemyState_IdleBase::SettingTime = { 0.f, 1.5f };
 
 EnemyState_IdleBase::EnemyState_IdleBase()
 {

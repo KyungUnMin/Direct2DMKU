@@ -9,6 +9,8 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "BossIntroMovie.h"
+#include "BossVersus.h"
+#include "Fader.h"
 
 
 
@@ -76,19 +78,14 @@ void SchoolBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
 
-	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School);
-}
-
-
-#include "BossVersus.h"
-#include "KeyMgr.h"
-
-void SchoolBossLevel::Update(float _DeltaTime)
-{
-	FieldLevelBase::Update(_DeltaTime);
-
-	if (true == KeyMgr::IsDown(KeyNames::DebugF7))
+	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School, [this]()
 	{
-		CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
-	}
+		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
+		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+		{
+			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
+		});
+	});
 }
+
+

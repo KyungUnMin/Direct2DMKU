@@ -32,6 +32,6 @@ private:
 	std::function<void()> EndCallback = nullptr;
 
 	void LoadSprite(const std::string_view& _MovieName);
-	void Clear();
+	void DeleteThis();
 };
 

@@ -143,7 +143,7 @@ void BossVersus::CreatePortraits(BossType _Boss)
 
 
 	//테스트 코드 : 나중에 리소스에서 직접 스케일을 줄이자
-	{
+	/*{
 		GameEngineTransform* PlayerRenderTrans = PlayerPortrait->GetTransform();
 		GameEngineTransform* BossRenderTrans = BossPortrait->GetTransform();
 
@@ -152,7 +152,7 @@ void BossVersus::CreatePortraits(BossType _Boss)
 
 		PlayerRenderTrans->SetLocalScale(PlayerRenderScale * 0.65f);
 		BossRenderTrans->SetLocalScale(BossRenderScale * 0.65f);
-	}
+	}*/
 }
 
 void BossVersus::CreateNameRenders(BossType _Boss)
