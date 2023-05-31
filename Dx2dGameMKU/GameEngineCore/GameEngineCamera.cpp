@@ -169,47 +169,56 @@ void GameEngineCamera::Render(float _DeltaTime)
 	{
 		std::list<std::shared_ptr<GameEngineRenderer>>& RenderGroup = RenderGroupStartIter->second;
 
+
+		//현재 Render의 Order
+		int Order = RenderGroupStartIter->first;
+		std::map<int, SortType>::iterator SortIter = SortValues.find(Order);
+
+		//소팅을 하는 그룹인 경우
+		if (SortIter != SortValues.end() && SortIter->second != SortType::None)
+		{
+			//Z소팅인 경우
+			if (SortIter->second == SortType::ZSort)
+			{
+				//Z소팅을 하기 전에 카메라 기준 Z값을 계산한다
+				for (std::shared_ptr<GameEngineRenderer>& Render : RenderGroup)
+				{
+					Render->CalSortZ(this);
+				}
+
+				//Z값 기준 정렬
+				RenderGroup.sort([](std::shared_ptr<GameEngineRenderer>& _Left, std::shared_ptr<GameEngineRenderer>& _Right)
+				{
+					return _Right->CalZ < _Left->CalZ;
+				});
+			}
+
+			//나머지는 나중에
+			else
+			{
+				//TODO
+			}
+		}
+
+
+
 		std::list<std::shared_ptr<GameEngineRenderer>>::iterator StartRenderer = RenderGroup.begin();
 		std::list<std::shared_ptr<GameEngineRenderer>>::iterator EndRenderer = RenderGroup.end();
+
+		//해당 Render그룹의 타임스케일을 받아온다
+		float ScaleTime = _DeltaTime * GameEngineTime::GlobalTime.GetRenderOrderTimeScale(RenderGroupStartIter->first);
 
 		for (; StartRenderer != EndRenderer; ++StartRenderer)
 		{
 			std::shared_ptr<GameEngineRenderer>& Render = *StartRenderer;
 
-
-			//현재 Render의 Order
-			int Order = RenderGroupStartIter->first;
-			std::map<int, SortType>::iterator SortIter = SortValues.find(Order);
-
-			//Sort를 특별하게 지정해준 경우(SortType::None이 아닌 경우)
-			if (SortIter != SortValues.end() && SortIter->second != SortType::None)
-			{
-				//Z오더인 경우
-				if (SortIter->second == SortType::ZSort)
-				{
-					//해당 그룹의 렌더의 카메라 기준 거리를 계산한다
-					for (std::shared_ptr<GameEngineRenderer>& Render : RenderGroup)
-					{
-						Render->CalSortZ(this);
-					}
-
-					//렌더들을 Z순서대로 정렬한다
-					RenderGroup.sort([](std::shared_ptr<GameEngineRenderer>& _Left, std::shared_ptr<GameEngineRenderer>& _Right) -> bool
-					{
-						return _Right->CalZ < _Left->CalZ;
-					});
-				}
-
-				//다른 오더링은 TODO
-			}
-
-
-
+			//활성화 되어있는 렌더러만
 			if (false == Render->IsUpdate())
 			{
 				continue;
 			}
 
+			//카메라 컬링
 			if (true == Render->IsCameraCulling && false == IsView(Render->GetTransform()->GetTransDataRef()))
 			{
 				continue;
@@ -218,7 +227,7 @@ void GameEngineCamera::Render(float _DeltaTime)
 			//이 카메라의 뷰행렬과 투영행렬을 바탕으로 렌더러의 행렬을 계산
 			Render->RenderTransformUpdate(this);
 			//이 카메라에 렌더러를 그리기
-			Render->Render(_DeltaTime);
+			Render->Render(ScaleTime);
 		}
 	}
 }

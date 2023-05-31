@@ -25,12 +25,71 @@ public:
 
 	inline float GetTimeScaleDeltaTime() const
 	{
-		return floatDeltaTime * TimeScale;
+		return floatDeltaTime * GlobalTimeScale;
 	}
 
-	inline void SetTimeScale(float _TimeScale)
+	inline void SetGlobalTimeScale(float _TimeScale)
 	{
-		TimeScale = _TimeScale;
+		GlobalTimeScale = _TimeScale;
+	}
+
+	template<typename EnumType>
+	void SetUpdateOrderTimeScale(EnumType _Order, float _Time)
+	{
+		SetOrderTimeScale(static_cast<int>(_Order), _Time);
+	}
+
+	void SetUpdateOrderTimeScale(int _Order, float _Time)
+	{
+		UpdateTimeScale[_Order] = _Time;
+	}
+
+	void SetAllUpdateOrderTimeScale(float _Time)
+	{
+		for (std::pair<const int, float>& Pair : UpdateTimeScale)
+		{
+			Pair.second = _Time;
+		}
+	}
+
+	float GetUpdateOrderTimeScale(int _Order)
+	{
+		if (UpdateTimeScale.end() == UpdateTimeScale.find(_Order))
+		{
+			UpdateTimeScale[_Order] = 1.0f;
+		}
+
+		return UpdateTimeScale[_Order];
+	}
+
+
+	template<typename EnumType>
+	void SetRenderOrderTimeScale(EnumType _Order, float _Time)
+	{
+		SetRenderOrderTimeScale(static_cast<int>(_Order), _Time);
+	}
+
+	void SetRenderOrderTimeScale(int _Order, float _Time)
+	{
+		RenderTimeScale[_Order] = _Time;
+	}
+
+	void SetAllRenderOrderTimeScale(float _Time)
+	{
+		for (std::pair<const int, float>& Pair : RenderTimeScale)
+		{
+			Pair.second = _Time;
+		}
+	}
+
+	float GetRenderOrderTimeScale(int _Order)
+	{
+		if (RenderTimeScale.end() == RenderTimeScale.find(_Order))
+		{
+			RenderTimeScale[_Order] = 1.0f;
+		}
+
+		return RenderTimeScale[_Order];
 	}
 
 protected:
@@ -43,6 +102,9 @@ private:
 	LARGE_INTEGER Second						= LARGE_INTEGER();
 	double					DoubleDeltaTime		= 0.0;
 	float					floatDeltaTime		= 0.0f;
-	float					TimeScale				= 1.f;
+	float					GlobalTimeScale		= 1.f;
+
+	std::map<int, float> UpdateTimeScale;
+	std::map<int, float> RenderTimeScale;
 };
 
