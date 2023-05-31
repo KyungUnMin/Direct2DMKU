@@ -320,6 +320,14 @@
     <ClInclude Include="FieldEnemy_SchoolGirl.h" />
     <ClInclude Include="FieldEnemy_TigerMan.h" />
     <ClInclude Include="FieldEnemy_Waver.h" />
+    <ClInclude Include="FieldNPCBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldNPC_Teacher.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FreeCamMoveController.h">
       <SubType>
       </SubType>
@@ -896,6 +904,14 @@
     <ClCompile Include="FieldEnemy_SchoolGirl.cpp" />
     <ClCompile Include="FieldEnemy_TigerMan.cpp" />
     <ClCompile Include="FieldEnemy_Waver.cpp" />
+    <ClCompile Include="FieldNPCBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FieldNPC_Teacher.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FreeCamMoveController.cpp">
       <SubType>
       </SubType>

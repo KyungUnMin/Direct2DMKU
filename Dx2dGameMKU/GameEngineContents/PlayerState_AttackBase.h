@@ -54,6 +54,7 @@ private:
 	class FieldCamController* CamCtrl = nullptr;
 
 	void AttackCheck();
-
+	void AttackCheck_Enemy();
+	void AttackCheck_NPC();
 };
 

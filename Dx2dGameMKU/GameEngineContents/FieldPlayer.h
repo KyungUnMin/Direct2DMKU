@@ -44,6 +44,7 @@ public:
 	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
 	void SetDirection(bool IsRight);
 
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

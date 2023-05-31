@@ -205,6 +205,9 @@ void BossVersus::Update_PortShader(float _DeltaTime)
 	}
 
 	float Ratio = (LiveTime / Duration);
-	Ratio = std::clamp(Ratio, 0.2f, 1.f);
-	CBufferData.NoiseFilterValue = Ratio;
+	Ratio = std::clamp(Ratio, 0.0f, 1.f);
+
+	//Ä¡¿ª 0 ~ 1
+	float SinValue = sinf(GameEngineMath::PIE * Ratio * 0.5f);
+	CBufferData.NoiseFilterValue = SinValue;
 }

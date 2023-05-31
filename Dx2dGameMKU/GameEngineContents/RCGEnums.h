@@ -20,6 +20,7 @@ enum class CollisionOrder
 	PlayerAttack,
 	EnemyMain,
 	EnemyAttack,
+	NPC,
 };
 
 enum class FieldRenderOrder

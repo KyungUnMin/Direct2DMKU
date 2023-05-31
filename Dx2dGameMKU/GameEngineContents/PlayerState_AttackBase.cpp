@@ -8,6 +8,7 @@
 
 #include "FieldPlayer.h"
 #include "FieldEnemyBase.h"
+#include "FieldNPCBase.h"
 #include "HitEffect.h"
 #include "FieldLevelBase.h"
 #include "BackGround.h"
@@ -108,6 +109,13 @@ void PlayerState_AttackBase::SetAttackColValue(const float4& _Offset, const floa
 
 void PlayerState_AttackBase::AttackCheck()
 {
+	AttackCheck_Enemy();
+	AttackCheck_NPC();
+}
+
+
+void PlayerState_AttackBase::AttackCheck_Enemy()
+{
 	static std::vector<std::shared_ptr<GameEngineCollision>> EnemyColliders(10, nullptr);
 	if (false == AttackCollider->CollisionAll(CollisionOrder::EnemyMain, EnemyColliders, ColType::SPHERE3D, ColType::SPHERE3D))
 		return;
@@ -121,11 +129,32 @@ void PlayerState_AttackBase::AttackCheck()
 			return;
 		}
 
-		
+
 		Attack(EnemyPtr);
 	}
 
 	EnemyColliders.clear();
+}
+
+void PlayerState_AttackBase::AttackCheck_NPC() 
+{
+	static std::vector<std::shared_ptr<GameEngineCollision>> NpcColliders(10, nullptr);
+	if (false == AttackCollider->CollisionAll(CollisionOrder::NPC, NpcColliders, ColType::SPHERE3D, ColType::SPHERE3D))
+		return;
+
+	for (std::shared_ptr<GameEngineCollision>& NpcCollider : NpcColliders)
+	{
+		FieldNPCBase* NpcPtr = dynamic_cast<FieldNPCBase*>(NpcCollider->GetActor());
+		if (nullptr == NpcPtr)
+		{
+			MsgAssert("CollisionOrder::NPC 충돌그룹에 FieldNPCBase가 아닌 Actor가 속해있습니다");
+			return;
+		}
+
+		NpcPtr->React();
+	}
+
+	NpcColliders.clear();
 }
 
 

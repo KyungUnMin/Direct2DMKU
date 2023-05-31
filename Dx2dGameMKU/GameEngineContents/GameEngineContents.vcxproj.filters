@@ -844,8 +844,17 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack\06.WindSlash">
       <UniqueIdentifier>{bccf6914-bb65-4117-84e4-808530391e80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\08.DebugActor">
+    <Filter Include="05.Tool\02.DebugActor">
       <UniqueIdentifier>{165df60a-7650-4ee4-89f4-fb746cb1124b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\04.FieldNPC">
+      <UniqueIdentifier>{dfe9290a-b568-4b79-b827-7d4b524f9133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\04.FieldNPC\01.Base">
+      <UniqueIdentifier>{4361de86-6836-46ae-a383-12e021dc11bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\04.FieldNPC\02.Teacher">
+      <UniqueIdentifier>{037bca2a-ef6f-43e6-bccc-bc353c1264b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1513,7 +1522,13 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack\06.WindSlash</Filter>
     </ClCompile>
     <ClCompile Include="DebugActor.cpp">
-      <Filter>03.Actor\08.DebugActor</Filter>
+      <Filter>05.Tool\02.DebugActor</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldNPCBase.cpp">
+      <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldNPC_Teacher.cpp">
+      <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\02.Teacher</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2166,7 +2181,13 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack\06.WindSlash</Filter>
     </ClInclude>
     <ClInclude Include="DebugActor.h">
-      <Filter>03.Actor\08.DebugActor</Filter>
+      <Filter>05.Tool\02.DebugActor</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldNPCBase.h">
+      <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldNPC_Teacher.h">
+      <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\02.Teacher</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

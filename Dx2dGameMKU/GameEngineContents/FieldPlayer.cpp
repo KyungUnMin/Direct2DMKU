@@ -238,3 +238,5 @@ void FieldPlayer::LevelChangeEnd()
 	//플레이어 아이들 상태로 변경
 	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Movement_Idle));
 }
+
+

@@ -96,6 +96,7 @@ private:
 	static const float4 RenderScale;
 	static const float4 CollisionColor;
 	static bool IsGridPosRenderOn_ForDebug;
+	static bool IsColRenderOn_ForDebug;
 
 	float Height = 0.f;
 
@@ -112,6 +113,7 @@ private:
 		std::shared_ptr<GameEngineCollision> ParentCollision = nullptr;
 		std::shared_ptr<GameEngineRenderer> ChildRender = nullptr;
 	};
+
 
 	VisualCollider MainCollider;
 	VisualCollider AttackCollider;

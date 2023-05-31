@@ -14,6 +14,7 @@
 const float4 FieldActorBase::RenderScale = float4{ 200.f, 200.f } *2.5f;
 const float4 FieldActorBase::CollisionColor = float4{ 0.f, 1.f, 0.f, 0.5f };
 bool FieldActorBase::IsGridPosRenderOn_ForDebug = false;
+bool FieldActorBase::IsColRenderOn_ForDebug = false;
 
 
 FieldActorBase::FieldActorBase()
@@ -83,9 +84,13 @@ void FieldActorBase::CreateColliders(CollisionOrder _Order)
 		MainCollider = CreateVisuableCollision(CollisionOrder::PlayerMain);
 		AttackCollider = CreateVisuableCollision(CollisionOrder::PlayerAttack);
 	}
+	else if(CollisionOrder::NPC == _Order)
+	{
+		MainCollider = CreateVisuableCollision(CollisionOrder::NPC);
+	}
 	else
 	{
-		MsgAssert("Player 또는 Enemy의 충돌체만 만들수 있습니다");
+		MsgAssert("Player, Enemy, NPC의 충돌체만 만들수 있습니다");
 	}
 }
 
@@ -145,7 +150,13 @@ void FieldActorBase::Update_CheckDebugKey()
 	{
 		IsGridPosRenderOn_ForDebug = !IsGridPosRenderOn_ForDebug;
 	}
+
+	if (true == KeyMgr::IsDown(KeyNames::DebugF3))
+	{
+		IsColRenderOn_ForDebug = !IsColRenderOn_ForDebug;
+	}
 }
+
 
 void FieldActorBase::Update_GridDebug()
 {
@@ -169,25 +180,30 @@ void FieldActorBase::Update_GridDebug()
 
 void FieldActorBase::Update_ColliderView()
 {
-	if (nullptr == MainCollider.ParentCollision)
+	if (nullptr != MainCollider.ParentCollision)
 	{
-		MsgAssert("충돌체를 만들어주지 않았습니다\nFieldActorBase::CreateColliders를 호출하세요");
-		return;
+		if (false == IsColRenderOn_ForDebug)
+		{
+			MainCollider.ChildRender->Off();
+		}
+		else
+		{
+			MainCollider.ChildRender->On();
+		}
 	}
 
-	if (false == KeyMgr::IsDown(KeyNames::DebugF3))
-		return;
+	if (nullptr != AttackCollider.ParentCollision)
+	{
+		if (false == IsColRenderOn_ForDebug)
+		{
+			AttackCollider.ChildRender->Off();
+		}
+		else
+		{
+			AttackCollider.ChildRender->On();
+		}
+	}
 
-	if (true == MainCollider.ChildRender->IsUpdate())
-	{
-		MainCollider.ChildRender->Off();
-		AttackCollider.ChildRender->Off();
-	}
-	else
-	{
-		MainCollider.ChildRender->On();
-		AttackCollider.ChildRender->On();
-	}
 }
 
 
