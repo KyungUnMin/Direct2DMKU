@@ -195,7 +195,7 @@ void BossVersus::Update(float _DeltaTime)
 
 void BossVersus::Update_PortShader(float _DeltaTime)
 {
-	const float Duration = 1.0f;
+	const float Duration = 2.0f;
 
 	float LiveTime = GetLiveTime();
 	if (Duration < LiveTime)

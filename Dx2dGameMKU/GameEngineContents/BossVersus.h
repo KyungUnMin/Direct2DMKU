@@ -61,7 +61,7 @@ private:
 
 		float NoiseFilterValue = 0.0f;
 		const float NoiseImageScale = 15.f; /*±âÁ¸°ª 5.0f*/
-		const float OffsetRatio = 0.01f;
+		const float OffsetRatio = 0.02f;
 		const float Garbage2 = 0.f;
 	};
 
