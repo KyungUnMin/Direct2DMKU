@@ -58,7 +58,7 @@ void OceanLevel::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
-	//CreateEnemies();
+	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
