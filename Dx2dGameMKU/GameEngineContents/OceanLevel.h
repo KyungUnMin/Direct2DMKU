@@ -26,5 +26,6 @@ private:
 	void CreateBackGrounds();
 	void CreateDoors();
 	void CreateEnemies();
+	void CreateWaveRender();
 };
 

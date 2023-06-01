@@ -2,6 +2,8 @@
 #include "OceanLevel.h"
 
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineSprite.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
@@ -60,6 +62,7 @@ void OceanLevel::Start()
 	LoadImgRes();
 
 	CreateBackGrounds();
+	CreateWaveRender();
 	CreateDoors();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
@@ -108,4 +111,33 @@ void OceanLevel::CreateEnemies()
 		EnemyType::Cop,
 		EnemyType::Waver
 		}, EnemySpawnPoses);
+}
+
+
+
+void OceanLevel::CreateWaveRender()
+{
+	const std::string_view FileName = "Ocean_WaveAni";
+	const std::string_view AniName = "Wave";
+	const float4 TexScale = { 932.f, 450.f, 1.f };
+
+
+	GameEngineDirectory Dir;
+	RCGDefine::MoveContentPath(Dir, ResType::Image);
+	Dir.Move("Level");
+	GameEngineSprite::LoadFolder(Dir.GetPlusFileName(FileName).GetFullPath());
+
+	std::shared_ptr<GameEngineSpriteRenderer> Render = nullptr;
+	Render = GetBackGround()->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	Render->CreateAnimation
+	({
+		.AnimationName = AniName,
+		.SpriteName = FileName,
+		.Loop = true,
+		});
+	Render->ChangeAnimation(AniName);
+
+	GameEngineTransform* WaveTrans = Render->GetTransform();
+	WaveTrans->SetLocalScale(TexScale * RCGDefine::ResourceScaleConvertor);
+	WaveTrans->SetLocalPosition(float4::Forward * 501.f);
 }
