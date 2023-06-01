@@ -154,6 +154,9 @@
     <ClInclude Include="GameEngineUIRenderer.h">
       <Filter>05.Object\04.Component\02.Render\04.UIRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineButton.h">
+      <Filter>07.EngineContents\02.UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -299,6 +302,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineUIRenderer.cpp">
       <Filter>05.Object\04.Component\02.Render\04.UIRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineButton.cpp">
+      <Filter>07.EngineContents\02.UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -478,6 +484,9 @@
     </Filter>
     <Filter Include="05.Object\04.Component\02.Render\04.UIRenderer">
       <UniqueIdentifier>{56142d6d-a435-4675-93c7-9f3287cbe135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.EngineContents\02.UI">
+      <UniqueIdentifier>{a1f9b5de-29c2-4c9f-8050-c43d64014bdd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

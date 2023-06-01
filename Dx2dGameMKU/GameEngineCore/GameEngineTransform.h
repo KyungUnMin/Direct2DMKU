@@ -9,12 +9,10 @@
 
 enum class ColType
 {
-	POINT2D, 
 	SPHERE2D,
 	AABBBOX2D,
 	OBBBOX2D,
 
-	POINT3D,
 	SPHERE3D,
 	AABBBOX3D,
 	OBBBOX3D,
@@ -391,6 +389,11 @@ public:
 		TransData = _Data;
 	}
 
+	CollisionData GetCollisionData()
+	{
+		return ColData;
+	}
+
 protected:
 
 private:
@@ -467,30 +470,31 @@ private:
 
 	CollisionData ColData;
 
-	static std::function<bool(GameEngineTransform*, GameEngineTransform*)> ArrColFunction[static_cast<int>(ColType::MAX)][static_cast<int>(ColType::MAX)];
+	static std::function<bool(const CollisionData&, const CollisionData&)> ArrColFunction[static_cast<int>(ColType::MAX)][static_cast<int>(ColType::MAX)];
 
-	static bool SphereToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool SphereToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool SphereToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+public:
+	static bool SphereToSpehre(const CollisionData& _Left, const CollisionData& _Right);
+	static bool SphereToAABB(const CollisionData& _Left, const CollisionData& _Right);
+	static bool SphereToOBB(const CollisionData& _Left, const CollisionData& _Right);
 
-	static bool AABBToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool AABBToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool AABBToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool AABBToSpehre(const CollisionData& _Left, const CollisionData& _Right);
+	static bool AABBToAABB(const CollisionData& _Left, const CollisionData& _Right);
+	static bool AABBToOBB(const CollisionData& _Left, const CollisionData& _Right);
 
-	static bool OBBToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool OBBToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool OBBToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool OBBToSpehre(const CollisionData& _Left, const CollisionData& _Right);
+	static bool OBBToAABB(const CollisionData& _Left, const CollisionData& _Right);
+	static bool OBBToOBB(const CollisionData& _Left, const CollisionData& _Right);
 
-	static bool Sphere2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool Sphere2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool Sphere2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool Sphere2DToSpehre2D(const CollisionData& _Left, const CollisionData& _Right);
+	static bool Sphere2DToAABB2D(const CollisionData& _Left, const CollisionData& _Right);
+	static bool Sphere2DToOBB2D(const CollisionData& _Left, const CollisionData& _Right);
 
-	static bool AABB2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool AABB2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool AABB2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool AABB2DToSpehre2D(const CollisionData& _Left, const CollisionData& _Right);
+	static bool AABB2DToAABB2D(const CollisionData& _Left, const CollisionData& _Right);
+	static bool AABB2DToOBB2D(const CollisionData& _Left, const CollisionData& _Right);
 
-	static bool OBB2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool OBB2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
-	static bool OBB2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right);
+	static bool OBB2DToSpehre2D(const CollisionData& _Left, const CollisionData& _Right);
+	static bool OBB2DToAABB2D(const CollisionData& _Left, const CollisionData& _Right);
+	static bool OBB2DToOBB2D(const CollisionData& _Left, const CollisionData& _Right);
 };
 

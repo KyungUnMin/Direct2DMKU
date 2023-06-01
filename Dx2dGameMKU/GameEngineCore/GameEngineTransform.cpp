@@ -6,7 +6,7 @@
 
 //--------------------------Collision-------------------------
 
-std::function<bool(GameEngineTransform*, GameEngineTransform*)> GameEngineTransform::ArrColFunction[static_cast<int>(ColType::MAX)][static_cast<int>(ColType::MAX)];
+std::function<bool(const CollisionData&, const CollisionData&)> GameEngineTransform::ArrColFunction[static_cast<int>(ColType::MAX)][static_cast<int>(ColType::MAX)];
 
 class InitColFunction
 {
@@ -42,142 +42,143 @@ public:
 
 InitColFunction InitFunction;
 
-bool GameEngineTransform::SphereToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::SphereToSpehre(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.SPHERE.Intersects(_Right->ColData.SPHERE);
+	return _Left.SPHERE.Intersects(_Right.SPHERE);
 }
 
-bool GameEngineTransform::SphereToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::SphereToAABB(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.SPHERE.Intersects(_Right->ColData.AABB);
+	return _Left.SPHERE.Intersects(_Right.AABB);
 }
 
-bool GameEngineTransform::SphereToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::SphereToOBB(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.SPHERE.Intersects(_Right->ColData.OBB);
+	return _Left.SPHERE.Intersects(_Right.OBB);
 }
 
-bool GameEngineTransform::AABBToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::AABBToSpehre(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.AABB.Intersects(_Right->ColData.SPHERE);
+	return _Left.AABB.Intersects(_Right.SPHERE);
 }
 
-bool GameEngineTransform::AABBToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::AABBToAABB(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.AABB.Intersects(_Right->ColData.AABB);
+	return _Left.AABB.Intersects(_Right.AABB);
 }
 
-bool GameEngineTransform::AABBToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::AABBToOBB(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.AABB.Intersects(_Right->ColData.OBB);
+	return _Left.AABB.Intersects(_Right.OBB);
 }
 
-bool GameEngineTransform::OBBToSpehre(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::OBBToSpehre(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.OBB.Intersects(_Right->ColData.SPHERE);
+	return _Left.OBB.Intersects(_Right.SPHERE);
 }
 
-bool GameEngineTransform::OBBToAABB(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::OBBToAABB(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.OBB.Intersects(_Right->ColData.AABB);
+	return _Left.OBB.Intersects(_Right.AABB);
 }
 
-bool GameEngineTransform::OBBToOBB(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::OBBToOBB(const CollisionData& _Left, const CollisionData& _Right)
 {
-	return _Left->ColData.OBB.Intersects(_Right->ColData.OBB);
+	return _Left.OBB.Intersects(_Right.OBB);
 }
 
 
 
-bool GameEngineTransform::Sphere2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::Sphere2DToSpehre2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.SPHERE.Intersects(RightData.SPHERE);
 }
 
-bool GameEngineTransform::Sphere2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::Sphere2DToAABB2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.SPHERE.Intersects(RightData.AABB);
 }
 
-bool GameEngineTransform::Sphere2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::Sphere2DToOBB2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.SPHERE.Intersects(RightData.OBB);
 }
 
-bool GameEngineTransform::AABB2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::AABB2DToSpehre2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.AABB.Intersects(RightData.SPHERE);
 }
 
-bool GameEngineTransform::AABB2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::AABB2DToAABB2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.AABB.Intersects(RightData.AABB);
 }
 
-bool GameEngineTransform::AABB2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::AABB2DToOBB2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.AABB.Intersects(RightData.OBB);
 }
 
-bool GameEngineTransform::OBB2DToSpehre2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::OBB2DToSpehre2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.OBB.Intersects(RightData.SPHERE);
 }
 
-bool GameEngineTransform::OBB2DToAABB2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::OBB2DToAABB2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.OBB.Intersects(RightData.AABB);
 }
 
-bool GameEngineTransform::OBB2DToOBB2D(GameEngineTransform* _Left, GameEngineTransform* _Right)
+bool GameEngineTransform::OBB2DToOBB2D(const CollisionData& _Left, const CollisionData& _Right)
 {
-	CollisionData LeftData = _Left->ColData;
+	CollisionData LeftData = _Left;
 	LeftData.OBB.Center.z = 0.0f;
-	CollisionData RightData = _Right->ColData;
+	CollisionData RightData = _Right;
 	RightData.OBB.Center.z = 0.0f;
 
 	return LeftData.OBB.Intersects(RightData.OBB);
 }
+
 
 
 //--------------------------Transform-------------------------
@@ -606,5 +607,5 @@ bool GameEngineTransform::Collision(const CollisionParameter& Data)
 		MsgAssert("nullptr인 트랜스 폼과는 충돌을 할수가 없습니다.");
 	}
 
-	return ArrColFunction[static_cast<int>(Data.ThisType)][static_cast<int>(Data.OtherType)](this, Data._OtherTrans);
+	return ArrColFunction[static_cast<int>(Data.ThisType)][static_cast<int>(Data.OtherType)](this->GetCollisionData(), Data._OtherTrans->GetCollisionData());
 }
