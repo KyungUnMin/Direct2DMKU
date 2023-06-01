@@ -11,9 +11,9 @@
 const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 {
 	{"OceanBG.png", float4{0.f, 0.f, 500.f}},
-	{"OceanBox.png", float4{-651.f, -12.f, -139.f}},
-	//{"OceanBosRight.png", float4{-651.f, -12.f, -139.f}},
-	//{"OceanMarket.png", float4{0.f, 0.f, 500.f}},
+	{"OceanBoxBack.png", float4{-651.f, -12.f, -41.f}},
+	{"OceanBoxFront.png", float4{-651.f, -12.f, -125.f}},
+	{"OceanMarket.png", float4{-77.f, -322.f, -462.f}},
 };
 
 const std::string_view OceanLevel::CollisionImageName = "OceanColBG.png";
@@ -61,7 +61,7 @@ void OceanLevel::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
-	//CreateEnemies();
+	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
