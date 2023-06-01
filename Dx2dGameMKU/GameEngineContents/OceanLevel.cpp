@@ -24,6 +24,23 @@ const std::vector<float4> OceanLevel::EnemySpawnPoses =
 };
 
 
+
+const std::vector<NpcCreateInfo> OceanLevel::NpcInfoes =
+{
+	{"WorkingFemaleC", float4{-1080.f, 18.f, 18.f}, true, true},
+	{"CasualGirlC", float4{-553.f, 185.f, 185.f}, true, false},
+	{"SchoolGirlA2", float4{-152.f, 152.f, 152.f}, false, false},
+	{"CasualGirlB", float4{-102.f, 152.f, 152.f}, false, false},
+	{"SchoolBoyE", float4{-38.f, 140.f, 140.f}, false, false},
+	{"CasualBoyB", float4{0.f, 150.f, 150.f}, false, false},
+	{"CasualBoyA", float4{53.f, 163.f, 163.f}, false, false},
+	{"CasualBoyD", float4{115.f, 150.f, 150.f}, false, false},
+	{"SchoolGirlB2", float4{200.f, 150.f, 150.f}, false, false},
+	{"SchoolBoyF", float4{267.f, 150.f, 150.f}, false, false},
+	{"CasualGirlD", float4{322.f, 163.f, 163.f}, false, false},
+	{"SchoolGirlE", float4{365.f, 174.f, 174.f}, false, false},
+};
+
 OceanLevel::OceanLevel()
 {
 
@@ -41,9 +58,12 @@ void OceanLevel::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
-	CreateEnemies();
+	//CreateEnemies();
+	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
+
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 void OceanLevel::LoadImgRes()
