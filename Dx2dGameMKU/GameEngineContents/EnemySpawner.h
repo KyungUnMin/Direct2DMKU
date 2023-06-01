@@ -86,6 +86,10 @@ public:
 		MaxSpawnCount = _MaxSpawnCount;
 	}
 
+	//(혹시나 나중에 문제 생기면 FleldLevelBase::LevelChangeEnd에서 이 함수를 호출시키지 말자)
+	//내부 자료구조를 청소한다
+	void ClearDeathEnemy();
+
 protected:
 
 private:

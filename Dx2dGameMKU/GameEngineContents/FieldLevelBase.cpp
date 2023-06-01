@@ -148,6 +148,9 @@ void FieldLevelBase::LevelChangeEnd()
 
 	//카메라 줌 초기화
 	CamCtrl.SetZoom();
+
+	//내부의 자료구조 청소
+	EnemySpawnerCtrl.ClearDeathEnemy();
 }
 
 

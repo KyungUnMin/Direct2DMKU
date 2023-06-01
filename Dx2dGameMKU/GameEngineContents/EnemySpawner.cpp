@@ -376,3 +376,23 @@ void EnemySpawner::Update_DebugRender()
 	}
 
 }
+
+void EnemySpawner::ClearDeathEnemy()
+{
+	std::vector<EnemyDataBlock> AliveEnemies;
+	AliveEnemies.reserve(Enemies.size());
+
+	for (const EnemyDataBlock& Data : Enemies)
+	{
+		//죽은 Enemy는 AliveEnemies에 옮기지 않는다
+		if (true == Data.IsDeath)
+			continue;
+
+		size_t NewIndex = AliveEnemies.size();
+		Data.EnemyPtr->SetSpawnIdx(NewIndex);
+		AliveEnemies.push_back(Data);
+	}
+
+	Enemies = AliveEnemies;
+	KillCount = 0;
+}
