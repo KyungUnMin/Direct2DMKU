@@ -11,6 +11,9 @@
 const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 {
 	{"OceanBG.png", float4{0.f, 0.f, 500.f}},
+	{"OceanBox.png", float4{-651.f, -12.f, -139.f}},
+	//{"OceanBosRight.png", float4{-651.f, -12.f, -139.f}},
+	//{"OceanMarket.png", float4{0.f, 0.f, 500.f}},
 };
 
 const std::string_view OceanLevel::CollisionImageName = "OceanColBG.png";
@@ -58,7 +61,7 @@ void OceanLevel::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
-	CreateEnemies();
+	//CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
@@ -94,7 +97,6 @@ void OceanLevel::CreateDoors()
 	DoorPtr->Unlock(LevelNames::OceanBossLevel);
 }
 
-//#include "DebugActor.h"
 
 void OceanLevel::CreateEnemies()
 {
@@ -106,6 +108,4 @@ void OceanLevel::CreateEnemies()
 		EnemyType::Cop,
 		EnemyType::Waver
 		}, EnemySpawnPoses);
-
-	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }
