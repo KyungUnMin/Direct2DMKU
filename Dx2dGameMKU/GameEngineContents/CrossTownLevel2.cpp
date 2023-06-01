@@ -24,6 +24,18 @@ const std::vector<float4> CrossTownLevel2::EnemySpawnPoses =
 	float4{765.f, -170.f}
 };
 
+const std::vector<NpcCreateInfo> CrossTownLevel2::NpcInfoes =
+{
+	{"SchoolGirlB", float4{-875.f, 145.f, 145.f}, true, false},
+	{"CoolArtists", float4{-945.f, 130.f, 130.f}, false, false},
+	{"SchoolBoyB", float4{-1010.f, -45.f, -45.f}, true, true},
+	{"SchoolGirlA", float4{-310.f, -5.f, -5.f}, false, false},
+	{"CasualGirlC", float4{-240.f, -20.f, -20.f}, true, false},
+	{"SchoolGirlE", float4{1645.f, -480.f, -480.f}, false, false},
+	{"SchoolBoyC", float4{1715.f, -465.f, -465.f}, true, false},
+};
+
+
 CrossTownLevel2::CrossTownLevel2()
 {
 

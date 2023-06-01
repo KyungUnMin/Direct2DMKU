@@ -11,7 +11,6 @@
 
 const std::string FieldNPCBase::IdleAniName = "_Idle";
 const std::string FieldNPCBase::ReactAniName = "_React";
-const float4 FieldNPCBase::RenderScale = float4{ 32.f, 80.f, 1.f } *RCGDefine::ResourceScaleConvertor;
 
 
 FieldNPCBase::FieldNPCBase()
@@ -28,9 +27,7 @@ FieldNPCBase::~FieldNPCBase()
 void FieldNPCBase::Start() 
 {
 	FieldActorBase::Start();
-
 	FieldActorBase::CreateColliders(CollisionOrder::NPC);
-	GetRenderer()->GetTransform()->SetLocalScale(RenderScale);
 }
 
 
@@ -86,8 +83,8 @@ void FieldNPCBase::Update(float _DeltaTime)
 {
 	FieldActorBase::Update(_DeltaTime);
 
-	//렌더러 오프셋 조정
-	Update_RenderOffset();
+	//렌더러 Trans 조정
+	Update_RenderTrans();
 	
 	switch (CurState)
 	{
@@ -102,12 +99,22 @@ void FieldNPCBase::Update(float _DeltaTime)
 
 
 
-void FieldNPCBase::Update_RenderOffset()
+void FieldNPCBase::Update_RenderTrans()
 {
-	GameEngineTransform* RenderTrans = GetRenderer()->GetTransform();
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	GameEngineTransform* RenderTrans = Render->GetTransform();
 
-	float4 RenderScale = RenderTrans->GetLocalScale();
-	RenderTrans->SetLocalPosition(float4::Up * RenderScale.hy());
+	std::string CurTexName = Render->GetTexName();
+	std::shared_ptr<GameEngineTexture> TexPtr = GameEngineTexture::Find(CurTexName);
+	if (nullptr == TexPtr)
+	{
+		MsgAssert("이런 이름을 가진 텍스처를 만들어 준 적이 없습니다 : " + CurTexName);
+		return;
+	}
+
+	float4 TexScale = TexPtr->GetScale() * RCGDefine::ResourceScaleConvertor;
+	RenderTrans->SetLocalScale(TexScale);
+	RenderTrans->SetLocalPosition(float4::Up * TexScale.hy());
 }
 
 

@@ -11,11 +11,12 @@
 #include "GUIManager.h"
 #include "GameEngineActorGUI.h"
 
+#include "DebugActor.h"
+#include "FieldNPCBase.h"
 #include "BackGround.h"
 #include "FieldPlayer.h"
 #include "Fader.h"
 #include "HUD.h"
-
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
 
@@ -98,8 +99,35 @@ void FieldLevelBase::SetPlayerStartPosition(const float4& _StartPos)
 }
 
 
+void FieldLevelBase::CreateNpcs(const std::vector<class NpcCreateInfo>& _NpcInfoes)
+{
+	for (const NpcCreateInfo& Info : _NpcInfoes)
+	{
+		const std::string_view& FileName = Info.NpcFileName;
+		const float4& Pos = Info.CreatePos;
+
+		std::shared_ptr<FieldNPCBase> Npc = nullptr;
+		Npc = CreateActor<FieldNPCBase>(UpdateOrder::NPC);
+		Npc->AnimationCreate(FileName);
+		Npc->GetTransform()->SetLocalPosition(Pos);
+
+		if (false == Info.LookPlayerAtReact)
+		{
+			Npc->DonLookAtReact();
+		}
+
+		if (true == Info.RenderFlip)
+		{
+			Npc->GetTransform()->SetLocalNegativeScaleX();
+		}
+	}
+}
 
 
+void FieldLevelBase::OnTransView_ForDebug()
+{
+	CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
+}
 
 
 

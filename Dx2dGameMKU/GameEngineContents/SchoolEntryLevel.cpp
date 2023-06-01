@@ -172,8 +172,6 @@ void SchoolEntryLevel::CreateEnemies()
 
 }
 
-//#include "DebugActor.h"
-
 void SchoolEntryLevel::CreateNPC()
 {
 	const float4 NpcPos = float4{ 595.f, -175.f ,-175.f };
@@ -184,6 +182,4 @@ void SchoolEntryLevel::CreateNPC()
 
 	GameEngineTransform* NpcTrans = Teacher->GetTransform();
 	NpcTrans->SetLocalPosition(NpcPos);
-
-	//CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }

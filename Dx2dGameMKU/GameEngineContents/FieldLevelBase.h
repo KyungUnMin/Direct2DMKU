@@ -70,6 +70,9 @@ protected:
 		DoorOpenFunc = _DoorOpenFunc;
 	}
 
+	void CreateNpcs(const std::vector<class NpcCreateInfo>& _NpcInfoes);
+
+	void OnTransView_ForDebug();
 
 private:
 	static FieldLevelBase* GPtr;
@@ -86,3 +89,11 @@ private:
 	void Update_DoorOpen_ForDebug();
 };
 
+class NpcCreateInfo
+{
+public:
+	std::string_view NpcFileName = "";
+	float4 CreatePos = float4::Zero;
+	bool RenderFlip = false;
+	bool LookPlayerAtReact = true;
+};

@@ -9,7 +9,6 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "ResourceHelper.h"
-#include "FieldNPCBase.h"
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::BGInfoes =
 {
@@ -34,11 +33,15 @@ const std::vector<float4> CrossTownLevel1::EnemySpawnPoses =
 	float4{855.f, -595.f},
 };
 
-const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::NpcInfoes =
+const std::vector<NpcCreateInfo> CrossTownLevel1::NpcInfoes =
 {
-	{"CasualBoyD", float4{100.f, 0.f, 0.f}},
-	{"CoolArtists", float4{200.f, 0.f, 0.f}},
-	{"SchoolBoyB", float4{300.f, 0.f, 0.f}},
+	{"CasualBoyD", float4{-875.f, 145.f, 145.f}, true, false},
+	{"CoolArtists", float4{-945.f, 130.f, 130.f}, false, false},
+	{"SchoolBoyB", float4{-1010.f, -45.f, -45.f}, true, true},
+	{"SchoolGirlA", float4{-310.f, -5.f, -5.f}, false, false},
+	{"CasualGirlC", float4{-240.f, -20.f, -20.f}, true, false},
+	{"SchoolGirlE", float4{1645.f, -480.f, -480.f}, false, false},
+	{"SchoolBoyC", float4{1715.f, -465.f, -465.f}, true, false},
 };
 
 
@@ -60,9 +63,11 @@ void CrossTownLevel1::Start()
 	CreateBackGrounds();
 	CreateDoors();
 	CreateEnemies();
-	CreateNPC();
+	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
+
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 
@@ -106,7 +111,6 @@ void CrossTownLevel1::CreateDoors()
 }
 
 
-//#include "DebugActor.h"
 
 
 void CrossTownLevel1::CreateEnemies()
@@ -124,20 +128,6 @@ void CrossTownLevel1::CreateEnemies()
 		EnemyType::SchoolGirl
 		}, EnemySpawnPoses);
 
-	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }
 
-void CrossTownLevel1::CreateNPC()
-{
-	for (const std::pair<std::string_view, float4>& Pair : NpcInfoes)
-	{
-		const std::string_view& FileName = Pair.first;
-		const float4& Pos = Pair.second;
 
-		std::shared_ptr<FieldNPCBase> Npc = nullptr;
-		Npc = CreateActor<FieldNPCBase>(UpdateOrder::NPC);
-		Npc->AnimationCreate(FileName);
-		Npc->GetTransform()->SetLocalPosition(Pos);
-	}
-
-}
