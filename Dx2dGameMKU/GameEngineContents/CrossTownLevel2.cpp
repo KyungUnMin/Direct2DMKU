@@ -58,12 +58,12 @@ void CrossTownLevel2::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
-	//CreateEnemies();
+	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1300.f, -200.f , -200.f });
 
-	FieldLevelBase::OnTransView_ForDebug();
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 void CrossTownLevel2::LoadImgRes()

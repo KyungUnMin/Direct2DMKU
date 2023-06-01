@@ -21,6 +21,20 @@ const std::vector<float4> CrossTownLevel3::EnemySpawnPoses =
 	float4{10.f, -10.f}
 };
 
+
+
+const std::vector<NpcCreateInfo> CrossTownLevel3::NpcInfoes =
+{
+	{"SchoolBoyC", float4{-1394.f, -156.f, -156.f}, false, true},
+	{"WorkingFemaleB", float4{-1224.f, -84.f, -84.f}, true, false},
+	{"SchoolBoyB", float4{-241.f, -30.f, -30.f}, false, true},
+	{"SchoolGirlE2", float4{451.f, -154.f, -154.f}, true, false},
+	{"WorkingMaleA", float4{1203.f, -45.f, -45.f}, false, true},
+	{"SchoolGirlD", float4{1350.f, -190.f, -190.f}, true, false},
+	{"WorkingMaleC", float4{1605.f, -210.f, -210.f}, true, false},
+};
+
+
 CrossTownLevel3::CrossTownLevel3()
 {
 
@@ -39,8 +53,11 @@ void CrossTownLevel3::Start()
 	CreateBackGrounds();
 	CreateDoors();
 	CreateEnemies();
+	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1000.f, 0.f , 0.f });
+
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 void CrossTownLevel3::LoadImgRes()
@@ -84,7 +101,6 @@ void CrossTownLevel3::CreateDoors()
 	DoorPtr->GetTransform()->SetLocalPosition(float4::Right * 980.f);
 }
 
-//#include "DebugActor.h"
 
 void CrossTownLevel3::CreateEnemies()
 {
@@ -98,6 +114,4 @@ void CrossTownLevel3::CreateEnemies()
 		EnemyType::Cop,
 		EnemyType::TigerMan,
 		}, EnemySpawnPoses);
-
-	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }
