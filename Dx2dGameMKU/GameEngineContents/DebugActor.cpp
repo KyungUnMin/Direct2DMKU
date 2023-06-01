@@ -34,3 +34,8 @@ void DebugActor::Init_PositionPointer(const std::string_view& _TexName /*= ""*/)
 	TransViewer = GUIManager::CreateGui<GameEngineActorGUI>();
 	TransViewer->SetTarget(PositionPointerRender->GetTransform());
 }
+
+void DebugActor::Change_PointerRender(const std::string_view& _TexName)
+{
+	PositionPointerRender->SetTexture(_TexName);
+}

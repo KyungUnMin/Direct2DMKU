@@ -26,13 +26,18 @@ const std::vector<float4> CrossTownLevel2::EnemySpawnPoses =
 
 const std::vector<NpcCreateInfo> CrossTownLevel2::NpcInfoes =
 {
-	{"SchoolGirlB", float4{-875.f, 145.f, 145.f}, true, false},
-	{"CoolArtists", float4{-945.f, 130.f, 130.f}, false, false},
-	{"SchoolBoyB", float4{-1010.f, -45.f, -45.f}, true, true},
-	{"SchoolGirlA", float4{-310.f, -5.f, -5.f}, false, false},
-	{"CasualGirlC", float4{-240.f, -20.f, -20.f}, true, false},
-	{"SchoolGirlE", float4{1645.f, -480.f, -480.f}, false, false},
-	{"SchoolBoyC", float4{1715.f, -465.f, -465.f}, true, false},
+	{"SchoolGirlB", float4{-1260.f, -145.f, -145.f}, true, false},
+	{"CasualBoyC", float4{-915.f, -155.f, -155.f}, true, true},
+	{"CasualGirlC", float4{-830.f, -178.f, -178.f}, false, true},
+	{"CasualGirlD", float4{-10.f, 65.f, 65.f}, false, false},
+	{"WorkingFemaleD", float4{250.f, 65.f, 65.f}, false, false},
+	{"Nick", float4{335.f, 65.f, 65.f}, true, false},
+	{"CasualBoyB", float4{-1434.f, -572.f, -572.f}, true, true},
+	{"SchoolBoyC", float4{-181.f, -548.f, -548.f}, false, false},
+	{"SchoolGirlD", float4{-118.f, -548.f, -548.f}, true, false},
+
+	{"SchoolBoyB2", float4{852.f, 62.f, 62.f}, false, true},
+	{"WorkingMaleA", float4{1780.f, -573.f, -573.f}, true, true},
 };
 
 
@@ -53,9 +58,12 @@ void CrossTownLevel2::Start()
 
 	CreateBackGrounds();
 	CreateDoors();
-	CreateEnemies();
+	//CreateEnemies();
+	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1300.f, -200.f , -200.f });
+
+	FieldLevelBase::OnTransView_ForDebug();
 }
 
 void CrossTownLevel2::LoadImgRes()
@@ -100,9 +108,6 @@ void CrossTownLevel2::CreateDoors()
 }
 
 
-
-//#include "DebugActor.h"
-
 void CrossTownLevel2::CreateEnemies()
 {
 	EnemySpawner& Spawner = FieldLevelBase::GetEnemySpawner();
@@ -114,6 +119,4 @@ void CrossTownLevel2::CreateEnemies()
 		EnemyType::Hooligan, 
 		EnemyType::Cop 
 		}, EnemySpawnPoses);
-
-	//GetLevel()->CreateActor<DebugActor>(UpdateOrder::FOR_DEBUG)->Init_PositionPointer();
 }

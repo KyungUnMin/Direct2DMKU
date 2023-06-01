@@ -15,6 +15,8 @@ public:
 	DebugActor& operator=(const DebugActor&& _Other) noexcept = delete;
 
 	void Init_PositionPointer(const std::string_view& _TexName = "");
+	
+	void Change_PointerRender(const std::string_view& _TexName);
 
 protected:
 
