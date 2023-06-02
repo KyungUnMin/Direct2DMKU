@@ -85,6 +85,7 @@ void OceanLevel::LoadImgRes()
 	}
 }
 
+
 void OceanLevel::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBG.png") * RCGDefine::ResourceScaleConvertor;
@@ -94,16 +95,17 @@ void OceanLevel::CreateBackGrounds()
 
 	//앞쪽 마켓 렌더
 	const std::string_view MarketFileName = "OceanMarket.png";
-	const float4 MarketPos = float4{ -77.f, -322.f, -462.f };
+	const float4 MarketPos = float4{ -79.f, -322.f, -462.f };
 	std::shared_ptr<GameEngineSpriteRenderer> MarketRender = nullptr;
 	MarketRender = GetBackGround()->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	MarketRender->SetScaleToTexture(MarketFileName);
-	MarketRender->ColorOptionValue.MulColor = float4::Zero * 0.5f;
+	MarketRender->ColorOptionValue.MulColor = float4{ 1.f, 1.f, 1.f, 0.5f };
 
 	GameEngineTransform* MarketRenderTrans = MarketRender->GetTransform();
 	float4 MarketScale = MarketRenderTrans->GetLocalScale();
 	MarketRenderTrans->SetLocalScale(MarketScale * RCGDefine::ResourceScaleConvertor);
 	MarketRenderTrans->SetLocalPosition(MarketPos);
+
 }
 
 void OceanLevel::CreateDoors()

@@ -117,3 +117,13 @@ void SchoolGirlState_Ready::Update_GetUp()
 	GetFSM()->ChangeState(SchoolGirlStateType::Idle);
 }
 
+
+
+void SchoolGirlState_Ready::ExitState()
+{
+	EnemyStateBase::ExitState();
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+	float4 Pos = EnemyTrans->GetLocalPosition();
+	Pos.z = Pos.y;
+	EnemyTrans->SetLocalPosition(Pos);
+}

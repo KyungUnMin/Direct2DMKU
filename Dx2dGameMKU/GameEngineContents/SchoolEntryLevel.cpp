@@ -19,18 +19,28 @@ const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoe
 	{"SchoolEntryBG.png", float4{ 0.f, 0.f, 500.f }},
 
 
-	{"School_Desks.png", float4{ -598.f, -311.f}},
-	{"School_Desks.png", float4{ -387.f, -311.f}},
-	{"School_Desks.png", float4{ -170.f, -311.f}},
-	{"School_Desks.png", float4{ 45.f, -311.f}},
+	{"School_Desks.png", float4{ -598.f, -310.f, -286.f}},
+	{"School_Desks.png", float4{ -387.f, -310.f, -286.f}},
+	{"School_Desks.png", float4{ -170.f, -310.f, -286.f}},
+	{"School_Desks.png", float4{ 45.f, -310.f, -286.f}},
 
-	{"School_Desks.png", float4{ -470.f, -175.f}},
-	{"School_Desks.png", float4{ -258.f, -175.f}},
-	{"School_Desks.png", float4{ -37.f, -175.f}},
-	{"School_Desks.png", float4{ 177.f, -175.f}},
+	{"School_Desks.png", float4{ -470.f, -173.f, -150.f}},
+	{"School_Desks.png", float4{ -258.f, -173.f, -150.f}},
+	{"School_Desks.png", float4{ -37.f, -173.f, -150.f}},
+	{"School_Desks.png", float4{ 177.f, -173.f, -150.f}},
 
-	/*{"School_TeacherDesk.png", float4{550.f, -236.f}},
-	{"School_Chair1.png", float4{ 527.f, -130.f}},
+	{"School_DeskHalf2.png", float4{ -598.f, -310.f}},
+	{"School_DeskHalf.png", float4{ -387.f, -310.f}},
+	{"School_DeskHalf.png", float4{ -170.f, -310.f}},
+	{"School_DeskHalf2.png", float4{ 45.f, -310.f}},
+						   
+	{"School_DeskHalf.png", float4{ -470.f, -173.f}},
+	{"School_DeskHalf2.png", float4{ -258.f, -173.f}},
+	{"School_DeskHalf2.png", float4{ -37.f, -173.f}},
+	{"School_DeskHalf2.png", float4{ 177.f, -173.f}},
+
+	{"School_TeacherDesk.png", float4{550.f, -236.f, -400.f}},
+	/*{"School_Chair1.png", float4{ 527.f, -130.f}},
 	{"School_Chair2.png", float4{ 667.f, -240.f}},*/
 };
 
@@ -41,15 +51,15 @@ const float4 SchoolEntryLevel::LevelAreaScale = float4{ 672.f, 224.f } *RCGDefin
 //좌측 상단부터
 const std::vector<float4> SchoolEntryLevel::DestSitPos =
 {
-	{-502.f, -156.f, -156.f},
-		{-300.f, -156.f, -156.f},
-	{-70.f, -156.f, -156.f},
-		{137.f, -156.f, -156.f},
+	{-502.f, -156.f, -176.f},
+	{-300.f, -156.f, -176.f},
+	{-70.f, -156.f, -176.f},
+	{137.f, -156.f, -176.f},
 
-		{-642.f, -291.f, -291.f},
-	{-420.f, -291.f, -291.f},
-	{-205.f, -291.f, -291.f},
-	{13.f, -291.f, -291.f}
+	{-642.f, -291.f, -312.f},
+	{-420.f, -291.f, -312.f},
+	{-205.f, -291.f, -312.f},
+	{13.f, -291.f, -312.f}
 };
 
 SchoolEntryLevel::SchoolEntryLevel()
@@ -70,7 +80,6 @@ void SchoolEntryLevel::Start()
 	LoadImgRes();
 
 	CreateBackGrounds();
-	//CreateDesks();
 	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
@@ -105,34 +114,6 @@ void SchoolEntryLevel::CreateBackGrounds()
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
-
-//void SchoolEntryLevel::CreateDesks()
-//{
-//	const std::vector<float4> DeskPoses =
-//	{
-//		 float4{ -598.f, -343.f},
-//		 float4{ -387.f, -343.f},
-//		float4{ -170.f, -343.f},
-//		float4{ 45.f, -343.f},
-//
-//		float4{ -470.f, -207.f},
-//		float4{ -258.f, -207.f },
-//		float4{ -37.f, -207.f },
-//		float4{ 177.f, -207.f }
-//	};
-//
-//
-//	std::shared_ptr<BackGround> BGPtr = FieldLevelBase::GetBackGround();
-//	for (const float4& DeskPos : DeskPoses)
-//	{
-//		std::shared_ptr<GameEngineSpriteRenderer> Render = BGPtr->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
-//		float4 Pos = DeskPos;
-//		Pos.z = Pos.y;
-//		Render->GetTransform()->SetWorldPosition(Pos);
-//
-//		Render->SetScaleToTexture("School_Desks.png");
-//	}
-//}
 
 void SchoolEntryLevel::CreateDoors()
 {

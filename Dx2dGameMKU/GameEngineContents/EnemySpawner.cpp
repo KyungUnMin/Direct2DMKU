@@ -82,7 +82,10 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 
 	//»ý¼º
 	float4 Pos = _CreatePos;
-	Pos.z = Pos.y;
+	if (0.f == Pos.z)
+	{
+		Pos.z = Pos.y;
+	}
 	EnemyPtr->GetTransform()->SetLocalPosition(Pos);
 	EnemyPtr->SetSpawnIdx(Enemies.size());
 
