@@ -15,7 +15,7 @@ const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 	{"OceanBG.png", float4{0.f, 0.f, 500.f}},
 	{"OceanBoxBack.png", float4{-651.f, -12.f, -41.f}},
 	{"OceanBoxFront.png", float4{-651.f, -12.f, -125.f}},
-	{"OceanMarket.png", float4{-77.f, -322.f, -462.f}},
+	//{"OceanMarket.png", float4{-77.f, -322.f, -462.f}},
 };
 
 const std::string_view OceanLevel::CollisionImageName = "OceanColBG.png";
@@ -91,6 +91,19 @@ void OceanLevel::CreateBackGrounds()
 	FieldLevelBase::Init(LevelArea, TileInfoData(150, 100));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
+
+	//앞쪽 마켓 렌더
+	const std::string_view MarketFileName = "OceanMarket.png";
+	const float4 MarketPos = float4{ -77.f, -322.f, -462.f };
+	std::shared_ptr<GameEngineSpriteRenderer> MarketRender = nullptr;
+	MarketRender = GetBackGround()->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	MarketRender->SetScaleToTexture(MarketFileName);
+	MarketRender->ColorOptionValue.MulColor = float4::Zero * 0.5f;
+
+	GameEngineTransform* MarketRenderTrans = MarketRender->GetTransform();
+	float4 MarketScale = MarketRenderTrans->GetLocalScale();
+	MarketRenderTrans->SetLocalScale(MarketScale * RCGDefine::ResourceScaleConvertor);
+	MarketRenderTrans->SetLocalPosition(MarketPos);
 }
 
 void OceanLevel::CreateDoors()
