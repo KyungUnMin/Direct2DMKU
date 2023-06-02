@@ -88,7 +88,19 @@ void SchoolBossLevel::LevelChangeStart()
 	//	});
 	//});
 
-	CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
 }
 
 
+//테스트 코드
+
+#include "KeyMgr.h"
+void SchoolBossLevel::Update(float _DeltaTime)
+{
+	FieldLevelBase::Update(_DeltaTime);
+
+	
+	if (false == KeyMgr::IsDown(KeyNames::DebugF7))
+		return;
+
+	CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
+}

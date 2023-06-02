@@ -75,6 +75,8 @@ void BossVersusState_PortraitMatch::Update(float _DeltaTime)
 	const float4 NowPortraitPos = float4::LerpClamp(PortraitStartPos, PortraitEndPos, Ratio);
 	PlayerPortrait->GetTransform()->SetLocalPosition(NowPortraitPos * float4{ -1.f, 1.f, 1.f });
 	BossPortrait->GetTransform()->SetLocalPosition(NowPortraitPos);
+	//PlayerPortrait->GetTransform()->SetLocalPosition(PortraitEndPos * float4{ -1.f, 1.f, 1.f });
+	//BossPortrait->GetTransform()->SetLocalPosition(PortraitEndPos);
 
 	float ColorRatio = (1.f - Ratio);
 	UILightColor = float4{ ColorRatio, ColorRatio , 1.f, ColorRatio };

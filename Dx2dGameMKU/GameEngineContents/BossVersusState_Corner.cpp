@@ -34,7 +34,7 @@ void BossVersusState_Corner::Start()
 
 
 
-std::shared_ptr<GameEngineSpriteRenderer>  BossVersusState_Corner::CreateCornerRenders()
+std::shared_ptr<SelfRenderer> BossVersusState_Corner::CreateCornerRenders()
 {
 	BossVersus* VersusUI = BossVersus::GetPtr();
 
@@ -52,12 +52,6 @@ std::shared_ptr<GameEngineSpriteRenderer>  BossVersusState_Corner::CreateCornerR
 	CornerPink->SetEnginePipe();
 	CornerPink->SetTexture(CornerPink_FileName);
 	GameEngineTransform* PinkTrans = CornerPink->GetTransform();
-	
-
-	//테스트 코드
-	{
-		BlackTrans->SetLocalScale(BlackTrans->GetLocalScale() * 0.8f);
-	}
 	
 	PinkTrans->SetParent(BlackTrans);
 	PinkTrans->SetLocalScale(float4::One * 0.9f);
@@ -114,7 +108,7 @@ void BossVersusState_Corner::Update_CornerScale()
 	float LiveTime = GetLiveTime();
 	if (ScaleDuration < LiveTime)
 	{
-		GetFSM()->ChangeState(BossVersusStateType::Fire);
+		GetFSM()->ChangeState(BossVersusStateType::Spark);
 		return;
 	}
 

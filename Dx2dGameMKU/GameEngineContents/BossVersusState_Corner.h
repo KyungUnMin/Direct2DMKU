@@ -1,13 +1,13 @@
 #pragma once
 #include "StateBase.h"
 
-class GameEngineSpriteRenderer;
+class SelfRenderer;
 
 class BossVersusState_Corner : public StateBase
 {
 public:
 	BossVersusState_Corner();
-	~BossVersusState_Corner();
+	~BossVersusState_Corner() override;
 
 	BossVersusState_Corner(const BossVersusState_Corner& _Other) = delete;
 	BossVersusState_Corner(BossVersusState_Corner&& _Other) noexcept = delete;
@@ -23,8 +23,8 @@ private:
 	static const std::string_view CornerBlack_FileName;
 	static const std::string_view CornerPink_FileName;
 
-	std::shared_ptr<GameEngineSpriteRenderer> LeftCorner = nullptr;
-	std::shared_ptr<GameEngineSpriteRenderer> RightCorner = nullptr;
+	std::shared_ptr<SelfRenderer> LeftCorner = nullptr;
+	std::shared_ptr<SelfRenderer> RightCorner = nullptr;
 
 	enum class State
 	{
@@ -42,7 +42,7 @@ private:
 	float4 OriginScale = float4::Zero;
 	const float4 ScaleOffset = float4::One * 50.f;
 
-	std::shared_ptr<GameEngineSpriteRenderer>  CreateCornerRenders();
+	std::shared_ptr<SelfRenderer>  CreateCornerRenders();
 	void Update_CornerPosition();
 	void Update_CornerScale();
 };

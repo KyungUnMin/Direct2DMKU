@@ -5,7 +5,7 @@ enum class BossVersusStateType
 {
 	PortraitMatch,
 	Corner,
-	Fire,
+	Spark,
 	CallName,
 	Versus,
 

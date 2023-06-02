@@ -841,9 +841,6 @@
     <Filter Include="03.Actor\04.UI\06.BossVersus\04.Corner">
       <UniqueIdentifier>{17cb0953-9a99-41ed-9cbc-51140825b329}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\05.Fire">
-      <UniqueIdentifier>{37e6f998-6b54-43c7-ae35-041c775f0cc4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\04.UI\06.BossVersus\06.CallName">
       <UniqueIdentifier>{b49051e7-b37c-495d-8509-95f018ab06bd}</UniqueIdentifier>
     </Filter>
@@ -852,6 +849,9 @@
     </Filter>
     <Filter Include="04.Component\03.Renderer">
       <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\05.Spark">
+      <UniqueIdentifier>{37e6f998-6b54-43c7-ae35-041c775f0cc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1100,9 +1100,6 @@
     </ClCompile>
     <ClCompile Include="BossVersusState_Corner.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\04.Corner</Filter>
-    </ClCompile>
-    <ClCompile Include="BossVersusState_Fire.cpp">
-      <Filter>03.Actor\04.UI\06.BossVersus\05.Fire</Filter>
     </ClCompile>
     <ClCompile Include="DapEffect.cpp">
       <Filter>03.Actor\06.Effect\02.DapEffect</Filter>
@@ -1524,6 +1521,9 @@
     <ClCompile Include="SelfRenderer.cpp">
       <Filter>04.Component\03.Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="BossVersusState_Spark.cpp">
+      <Filter>03.Actor\04.UI\06.BossVersus\05.Spark</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -1765,9 +1765,6 @@
     </ClInclude>
     <ClInclude Include="BossVersusState_Corner.h">
       <Filter>03.Actor\04.UI\06.BossVersus\04.Corner</Filter>
-    </ClInclude>
-    <ClInclude Include="BossVersusState_Fire.h">
-      <Filter>03.Actor\04.UI\06.BossVersus\05.Fire</Filter>
     </ClInclude>
     <ClInclude Include="DapEffect.h">
       <Filter>03.Actor\06.Effect\02.DapEffect</Filter>
@@ -2182,6 +2179,9 @@
     </ClInclude>
     <ClInclude Include="SelfRenderer.h">
       <Filter>04.Component\03.Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVersusState_Spark.h">
+      <Filter>03.Actor\04.UI\06.BossVersus\05.Spark</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

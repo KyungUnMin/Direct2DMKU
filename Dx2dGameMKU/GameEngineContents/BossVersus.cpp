@@ -67,10 +67,6 @@ BossVersus::~BossVersus()
 
 void BossVersus::Init(BossType _Boss)
 {
-	//UI카메라
-	std::shared_ptr<GameEngineCamera> UICam = GetLevel()->GetCamera(100);
-	//UICam->SetSortType(FieldUIRenderOrder::BossVersus, SortType::ZSort);
-
 	//이미지 로드
 	LoadImages();
 	//렌더 생성
@@ -143,19 +139,6 @@ void BossVersus::CreatePortraits(BossType _Boss)
 	BossPortrait->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, BossPortName);
 	const float4& BossPortScale = GameEngineTexture::Find(BossPortName)->GetScale();
 	BossPortrait->GetTransform()->SetLocalScale(BossPortScale);
-
-
-	//테스트 코드 : 나중에 리소스에서 직접 스케일을 줄이자
-	/*{
-		GameEngineTransform* PlayerRenderTrans = PlayerPortrait->GetTransform();
-		GameEngineTransform* BossRenderTrans = BossPortrait->GetTransform();
-
-		float4 PlayerRenderScale = PlayerRenderTrans->GetLocalScale();
-		float4 BossRenderScale = BossRenderTrans->GetLocalScale();
-
-		PlayerRenderTrans->SetLocalScale(PlayerRenderScale * 0.65f);
-		BossRenderTrans->SetLocalScale(BossRenderScale * 0.65f);
-	}*/
 }
 
 void BossVersus::CreateNameRenders(BossType _Boss)
