@@ -545,6 +545,10 @@
     <ClInclude Include="SchoolGirlState_NormalDamaged_Stomach.h" />
     <ClInclude Include="SchoolGirlState_Ready.h" />
     <ClInclude Include="SchoolGirlState_Walk.h" />
+    <ClInclude Include="SelfRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ShaderTestActor.h">
       <SubType>
       </SubType>
@@ -1125,6 +1129,10 @@
     <ClCompile Include="SchoolGirlState_NormalDamaged_Stomach.cpp" />
     <ClCompile Include="SchoolGirlState_Ready.cpp" />
     <ClCompile Include="SchoolGirlState_Walk.cpp" />
+    <ClCompile Include="SelfRenderer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ShaderTestActor.cpp">
       <SubType>
       </SubType>

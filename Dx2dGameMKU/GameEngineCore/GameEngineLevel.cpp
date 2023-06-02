@@ -349,6 +349,21 @@ std::shared_ptr<GameEngineCamera> GameEngineLevel::GetCamera(int _CameraOrder)
 	return Camera;
 }
 
+std::shared_ptr<GameEngineCamera> GameEngineLevel::CreateCamera(int _CameraNum, CameraType _ProjectionType)
+{
+	if (Cameras.end() != Cameras.find(_CameraNum))
+	{
+		std::string CamNum = GameEngineString::ToString(_CameraNum);
+		MsgAssert("이미 존재하는 카메라를 또 만들려고 했습니다 : " + CamNum);
+		return nullptr;
+	}
+
+	std::shared_ptr<GameEngineCamera> NewCamera = CreateActor<GameEngineCamera>();
+	NewCamera->SetProjectionType(_ProjectionType);
+	Cameras.insert(std::make_pair(_CameraNum, NewCamera));
+	return NewCamera;
+}
+
 
 //void GameEngineLevel::TextureUnLoad(GameEngineLevel* _NextLevel)
 //{

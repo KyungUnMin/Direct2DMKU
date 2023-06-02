@@ -68,7 +68,7 @@ void BossVersus::Init(BossType _Boss)
 {
 	//UI카메라
 	std::shared_ptr<GameEngineCamera> UICam = GetLevel()->GetCamera(100);
-	UICam->SetSortType(FieldUIRenderOrder::BossVersus, SortType::ZSort);
+	//UICam->SetSortType(FieldUIRenderOrder::BossVersus, SortType::ZSort);
 
 	//이미지 로드
 	LoadImages();

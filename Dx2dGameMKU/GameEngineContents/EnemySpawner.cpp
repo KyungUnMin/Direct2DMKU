@@ -342,8 +342,8 @@ void EnemySpawner::Update(float _DeltaTime)
 			return;
 	}
 
-	
-	CreateEnemy(CreateEnemyType, SpawnPosRenderTrans->GetWorldPosition());
+	SpawnPos.z = SpawnPos.y;
+	CreateEnemy(CreateEnemyType, SpawnPos);
 
 	Timer -= Duration;
 	Duration = GameEngineRandom::MainRandom.RandomFloat(MinDuration, MaxDuration);

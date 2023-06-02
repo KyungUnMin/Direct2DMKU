@@ -265,24 +265,6 @@
     <Filter Include="03.Actor\04.UI\06.BossVersus\01.Actor">
       <UniqueIdentifier>{0e1f8029-45f0-495c-8df9-1ac3506394a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\02.FSM">
-      <UniqueIdentifier>{320d4564-1466-4917-880a-6fdf61b831a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\03.PortraitMatch">
-      <UniqueIdentifier>{da1b53dd-0c03-4792-bc0a-6c3586a5ae68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\04.Corner">
-      <UniqueIdentifier>{17cb0953-9a99-41ed-9cbc-51140825b329}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\06.CallName">
-      <UniqueIdentifier>{b49051e7-b37c-495d-8509-95f018ab06bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\07.Versus">
-      <UniqueIdentifier>{14fb1d14-120f-4944-ade0-dc4e3253f688}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\04.UI\06.BossVersus\05.Fire">
-      <UniqueIdentifier>{37e6f998-6b54-43c7-ae35-041c775f0cc4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\06.Effect\02.DapEffect">
       <UniqueIdentifier>{77514335-a823-4ce3-a6c4-b3a0f6c7e094}</UniqueIdentifier>
     </Filter>
@@ -574,9 +556,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed">
       <UniqueIdentifier>{476dc667-00c7-4119-8edb-1267c7bc5e07}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04.Component\03.ShaderUIRenderer">
-      <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\01.CrescentKick">
       <UniqueIdentifier>{0abe34a4-f284-41c9-bc61-04fec58e4c55}</UniqueIdentifier>
     </Filter>
@@ -852,6 +831,27 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\04.FieldNPC\01.Base">
       <UniqueIdentifier>{4361de86-6836-46ae-a383-12e021dc11bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\02.FSM">
+      <UniqueIdentifier>{320d4564-1466-4917-880a-6fdf61b831a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\03.PortraitMatch">
+      <UniqueIdentifier>{da1b53dd-0c03-4792-bc0a-6c3586a5ae68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\04.Corner">
+      <UniqueIdentifier>{17cb0953-9a99-41ed-9cbc-51140825b329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\05.Fire">
+      <UniqueIdentifier>{37e6f998-6b54-43c7-ae35-041c775f0cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\06.CallName">
+      <UniqueIdentifier>{b49051e7-b37c-495d-8509-95f018ab06bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\06.BossVersus\07.Versus">
+      <UniqueIdentifier>{14fb1d14-120f-4944-ade0-dc4e3253f688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Component\03.Renderer">
+      <UniqueIdentifier>{46ec6a73-9b78-4eea-ac0d-49f7e37feaa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1261,7 +1261,7 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed</Filter>
     </ClCompile>
     <ClCompile Include="ShaderUIRenderer.cpp">
-      <Filter>04.Component\03.ShaderUIRenderer</Filter>
+      <Filter>04.Component\03.Renderer</Filter>
     </ClCompile>
     <ClCompile Include="SchoolGirlState_Attack_CrescentKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\01.CrescentKick</Filter>
@@ -1523,6 +1523,9 @@
     </ClCompile>
     <ClCompile Include="FieldNPCBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SelfRenderer.cpp">
+      <Filter>04.Component\03.Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1923,7 +1926,7 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\05.Damaged\06.Dazed</Filter>
     </ClInclude>
     <ClInclude Include="ShaderUIRenderer.h">
-      <Filter>04.Component\03.ShaderUIRenderer</Filter>
+      <Filter>04.Component\03.Renderer</Filter>
     </ClInclude>
     <ClInclude Include="SchoolGirlState_Attack_CrescentKick.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.SchoolGirl\04.Attack\01.CrescentKick</Filter>
@@ -2179,6 +2182,9 @@
     </ClInclude>
     <ClInclude Include="FieldNPCBase.h">
       <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SelfRenderer.h">
+      <Filter>04.Component\03.Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

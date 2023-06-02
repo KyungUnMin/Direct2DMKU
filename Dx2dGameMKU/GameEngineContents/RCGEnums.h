@@ -24,6 +24,14 @@ enum class CollisionOrder
 	NPC,
 };
 
+enum class RCG_CamNumType
+{
+	Main = 0,
+
+	UI = 100,
+
+};
+
 enum class FieldRenderOrder
 {
 	BackGround,
@@ -38,8 +46,9 @@ enum class FieldUIRenderOrder
 	HUD,
 	Fade,
 
-	BossVersus,
-	BossIntro,
+	//보스 Versus UI
+	BossVersus,	
+	BossIntro,	//Boss 등장 무비
 };
 
 enum class ShopUIRenderOrder

@@ -2,12 +2,14 @@
 #include "GameEngineComponent.h"
 #include "GameEngineShader.h"
 
+class GameEngineRenderingPipeLine;
+
 //렌더링을 1번 수행하는 단위
 class GameEngineRenderUnit
 	:std::enable_shared_from_this<GameEngineRenderUnit>
 {
 public:
-	std::shared_ptr<class GameEngineRenderingPipeLine> Pipe;
+	std::shared_ptr<GameEngineRenderingPipeLine> Pipe;
 
 	/*
 		유니티나 언리얼 같은 엔진에서는 여러 엑터들이

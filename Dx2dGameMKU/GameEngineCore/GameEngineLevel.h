@@ -11,6 +11,7 @@ class GameEngineCamera;
 class GameEngineCollision;
 class GameEngineRenderer;
 class GameEngineRenderTarget;
+enum class CameraType;
 
 class GameEngineLevel : public GameEngineObject
 {
@@ -88,6 +89,8 @@ public:
 	}
 
 	void CollisionDebugRender(GameEngineCamera* _Camera, float _DeltaTime);
+
+	std::shared_ptr<GameEngineCamera> CreateCamera(int _CameraNum, CameraType _ProjectionType);
 
 protected:
 	virtual void LevelChangeStart(){}
