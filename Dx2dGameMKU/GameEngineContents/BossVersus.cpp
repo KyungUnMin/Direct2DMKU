@@ -40,9 +40,7 @@ const std::string_view BossVersus::PortraitCBufferName = "NoiseFilter";
 
 
 
-//
-//const std::string_view BossVersus::NameTag_FileName				= "VersusPortrait_NameTag.png";
-//const std::string_view BossVersus::VersusLogo_FileName			= "VS_LOGO.png";
+
 
 
 

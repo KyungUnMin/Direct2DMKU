@@ -33,6 +33,7 @@ private:
 
 	std::shared_ptr<SelfRenderer> Spark1 = nullptr;
 	std::shared_ptr<SelfRenderer> Spark2 = nullptr;
+	std::shared_ptr<SelfRenderer> Versus = nullptr;
 
 	float4 ScreenSize = float4::Zero;
 	const float Duration_Spark1 = 0.5f;
@@ -40,7 +41,7 @@ private:
 	float StateChangeTime = 0.0f;
 
 	void CreateRenders();
-	std::shared_ptr<SelfRenderer> CreateSparkRender(const std::string_view& _TexName);
+	std::shared_ptr<SelfRenderer> CreateRender(const std::string_view& _TexName);
 
 
 	void Update_Spark1(float _DeltaTime);

@@ -15,8 +15,11 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DelatTime) override;
+	void EnterState() override;
 
 private:
+
+
 
 };
 

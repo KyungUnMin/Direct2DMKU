@@ -52,9 +52,6 @@ private:
 	static const std::string_view PortraitPipeName;
 	static const std::string_view PortraitCBufferName;
 
-	//static const std::string_view NameTag_FileName;
-	//static const std::string_view VersusLogo_FileName;
-	
 	struct ShaderData
 	{
 		const float4 FireColor = float4{ 1.f, 0.f, 0.f, 1.f };

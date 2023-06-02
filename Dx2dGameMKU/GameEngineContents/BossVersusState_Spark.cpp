@@ -32,17 +32,27 @@ void BossVersusState_Spark::CreateRenders()
 {
 	const std::string_view Spark1_FileName = "VersusSpark1.png";
 	const std::string_view Spark2_FileName = "VersusSpark2.png";
+	const std::string_view Versus_FileName = "VS_LOGO.png";
+	const float4 VersusScale = float4{ 400.f, 200.f };
 	
 
-	Spark1 = CreateSparkRender(Spark1_FileName);
-	Spark2 = CreateSparkRender(Spark2_FileName);
+	Spark1 = CreateRender(Spark1_FileName);
+	Spark2 = CreateRender(Spark2_FileName);
 	Spark2->GetTransform()->SetLocalScale(ScreenSize);
+
+	Spark1->ColorOptionValue.PlusColor = float4{ 0.f, 0.f, 1.0f, 0.f };
+	Spark2->ColorOptionValue.PlusColor = float4{ 0.f, 0.f, 1.0f, 0.f };
 
 	Spark1->Off();
 	Spark2->Off();
+
+
+	Versus = CreateRender(Versus_FileName);
+	Versus->GetTransform()->SetLocalScale(VersusScale);
+	Versus->Off();
 }
 
-std::shared_ptr<SelfRenderer> BossVersusState_Spark::CreateSparkRender(const std::string_view& _TexName)
+std::shared_ptr<SelfRenderer> BossVersusState_Spark::CreateRender(const std::string_view& _TexName)
 {
 	BossVersus* VersusUI = BossVersus::GetPtr();
 
@@ -50,7 +60,11 @@ std::shared_ptr<SelfRenderer> BossVersusState_Spark::CreateSparkRender(const std
 	Render = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::ScreenLight);
 	Render->SetCamera(RCG_CamNumType::BossVersusUI);
 	Render->SetEnginePipe();
-	Render->SetTexture(_TexName);
+
+	if (false == _TexName.empty())
+	{
+		Render->SetTexture(_TexName);
+	}
 
 	return Render;
 }
@@ -96,6 +110,7 @@ void BossVersusState_Spark::Update_Spark1(float _DeltaTime)
 	CurState = State::Act_Spark2;
 	StateChangeTime = Timer;
 	Spark2->On();
+	Versus->On();
 }
 
 void BossVersusState_Spark::Update_Spark2(float _DeltaTime) 
