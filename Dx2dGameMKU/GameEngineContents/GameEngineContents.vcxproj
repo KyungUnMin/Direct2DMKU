@@ -757,7 +757,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BossVersusFSMInstance.cpp" />
     <ClCompile Include="BossVersusState_CallName.cpp">
       <SubType>
       </SubType>

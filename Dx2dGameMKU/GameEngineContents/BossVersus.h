@@ -3,7 +3,7 @@
 #include "RCGEnums.h"
 #include "BossVersusUIFSM.h"
 
-class ShaderUIRenderer;
+class SelfRenderer;
 class GameEngineSpriteRenderer;
 
 
@@ -23,12 +23,12 @@ public:
 
 	void Init(BossType _Boss);
 
-	inline std::shared_ptr<ShaderUIRenderer> GetPlayerPortrait() const
+	inline std::shared_ptr<SelfRenderer> GetPlayerPortrait() const
 	{
 		return PlayerPortrait;
 	}
 
-	inline std::shared_ptr<ShaderUIRenderer> GetBossPortrait() const
+	inline std::shared_ptr<SelfRenderer> GetBossPortrait() const
 	{
 		return BossPortrait;
 	}
@@ -66,8 +66,8 @@ private:
 	};
 
 	ShaderData CBufferData;
-	std::shared_ptr<ShaderUIRenderer> PlayerPortrait = nullptr;
-	std::shared_ptr<ShaderUIRenderer> BossPortrait = nullptr;
+	std::shared_ptr<SelfRenderer> PlayerPortrait = nullptr;
+	std::shared_ptr<SelfRenderer> BossPortrait = nullptr;
 
 	BossVersusUIFSM Fsm;
 

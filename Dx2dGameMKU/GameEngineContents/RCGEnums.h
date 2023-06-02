@@ -29,7 +29,7 @@ enum class RCG_CamNumType
 	Main = 0,
 
 	UI = 100,
-
+	BossVersusUI = 101,
 };
 
 enum class FieldRenderOrder
@@ -58,6 +58,17 @@ enum class ShopUIRenderOrder
 	Info,
 	Cursor,
 	Item,
+};
+
+enum class BossVersusUIRenderOrder
+{
+	ScreenLight,
+	Corner_Black,
+	Portrait,
+	Corner_Pink,
+	Light,
+	Fire,
+	Name,
 };
 
 

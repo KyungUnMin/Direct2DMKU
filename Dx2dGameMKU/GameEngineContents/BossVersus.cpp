@@ -8,7 +8,8 @@
 
 #include "RCGDefine.h"
 
-#include "ShaderUIRenderer.h"
+//#include "ShaderUIRenderer.h"
+#include "SelfRenderer.h"
 
 
 BossVersus* BossVersus::GPtr = nullptr;
@@ -104,12 +105,14 @@ void BossVersus::LoadImages()
 void BossVersus::CreatePortraits(BossType _Boss)
 {
 	//플레이어 초상화
-	PlayerPortrait = CreateComponent<ShaderUIRenderer>();
+	PlayerPortrait = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Portrait);
+	PlayerPortrait->SetCamera(RCG_CamNumType::BossVersusUI);
 	PlayerPortrait->SetPipeLine(PortraitPipeName);
 	PlayerPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
 	//보스 초상화
-	BossPortrait = CreateComponent<ShaderUIRenderer>();
+	BossPortrait = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Portrait);
+	BossPortrait->SetCamera(RCG_CamNumType::BossVersusUI);
 	BossPortrait->SetPipeLine(PortraitPipeName);
 	BossPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
@@ -172,8 +175,14 @@ void BossVersus::CreateNameRenders(BossType _Boss)
 		break;
 	}
 
-	std::shared_ptr<GameEngineUIRenderer> PlayerNameRender = CreateComponent<GameEngineUIRenderer>();
-	std::shared_ptr<GameEngineUIRenderer> BossNameRender = CreateComponent<GameEngineUIRenderer>();
+	std::shared_ptr<SelfRenderer> PlayerNameRender = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Name);
+	std::shared_ptr<SelfRenderer> BossNameRender = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Name);
+
+	PlayerNameRender->SetCamera(RCG_CamNumType::BossVersusUI);
+	BossNameRender->SetCamera(RCG_CamNumType::BossVersusUI);
+
+	PlayerNameRender->SetEnginePipe();
+	BossNameRender->SetEnginePipe();
 
 	PlayerNameRender->SetScaleToTexture(PlayerName_FileName);
 	BossNameRender->SetScaleToTexture(BossName);

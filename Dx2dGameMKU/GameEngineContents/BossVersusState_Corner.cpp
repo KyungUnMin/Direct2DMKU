@@ -1,9 +1,9 @@
 #include "PrecompileHeader.h"
 #include "BossVersusState_Corner.h"
 
-#include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "BossVersus.h"
+#include "SelfRenderer.h"
 
 
 const std::string_view BossVersusState_Corner::CornerBlack_FileName	= "VersusPortrait_CornerBlack.png";
@@ -38,14 +38,18 @@ std::shared_ptr<GameEngineSpriteRenderer>  BossVersusState_Corner::CreateCornerR
 {
 	BossVersus* VersusUI = BossVersus::GetPtr();
 
-	std::shared_ptr<GameEngineUIRenderer> CornerBlack = nullptr;
-	std::shared_ptr<GameEngineUIRenderer> CornerPink = nullptr;
+	std::shared_ptr<SelfRenderer> CornerBlack = nullptr;
+	std::shared_ptr<SelfRenderer> CornerPink = nullptr;
 
-	CornerBlack = VersusUI->CreateComponent<GameEngineUIRenderer>();
+	CornerBlack = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Corner_Black);
+	CornerBlack->SetCamera(RCG_CamNumType::BossVersusUI);
+	CornerBlack->SetEnginePipe();
 	CornerBlack->SetScaleToTexture(CornerBlack_FileName);
 	GameEngineTransform* BlackTrans = CornerBlack->GetTransform();
 	
-	CornerPink = VersusUI->CreateComponent<GameEngineUIRenderer>();
+	CornerPink = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Corner_Pink);
+	CornerPink->SetCamera(RCG_CamNumType::BossVersusUI);
+	CornerPink->SetEnginePipe();
 	CornerPink->SetTexture(CornerPink_FileName);
 	GameEngineTransform* PinkTrans = CornerPink->GetTransform();
 	

@@ -2,13 +2,14 @@
 #include "BossVersusState_Fire.h"
 
 #include <GameEngineBase/GameEngineRandom.h>
-#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineSprite.h>
+
 
 #include "RCGDefine.h"
 
 
 #include "BossVersus.h"
+#include "SelfRenderer.h"
 
 const std::string_view BossVersusState_Fire::Light_FileName = "VersusPointLight.png";
 const std::string_view BossVersusState_Fire::Fire_FileName = "VersusFire.png";
@@ -49,19 +50,27 @@ void BossVersusState_Fire::CreateRenderers()
 {
 	BossVersus* VersusUI = BossVersus::GetPtr();
 
-	Light = VersusUI->CreateComponent<GameEngineUIRenderer>();
+	Light = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Light);
+	Light->SetCamera(RCG_CamNumType::BossVersusUI);
+	Light->SetEnginePipe();
 	Light->SetTexture(Light_FileName);
+
 
 	const std::string_view FireAniName = "Fire";
 	Fires.resize(20, nullptr);
-	for (std::shared_ptr<GameEngineUIRenderer>& Fire : Fires)
+	for (std::shared_ptr<SelfRenderer>& Fire : Fires)
 	{
-		Fire = VersusUI->CreateComponent<GameEngineUIRenderer>();
+		Fire = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Fire);
+		Fire->SetCamera(RCG_CamNumType::BossVersusUI);
+		Fire->SetEnginePipe();
 		Fire->CreateAnimation
 		({
 			.AnimationName = FireAniName,
 			.SpriteName = Fire_FileName,
 		});
+
+		Fire->ColorOptionValue.MulColor = float4{ 1.f, 0.1f, 0.1f, 1.f };
+
 
 		GameEngineTransform* FireTrans = Fire->GetTransform();
 		float4 Offset = 
@@ -84,7 +93,7 @@ void BossVersusState_Fire::EnterState()
 {
 	StateBase::EnterState();
 
-	for (std::shared_ptr<GameEngineUIRenderer>& Fire : Fires)
+	for (std::shared_ptr<SelfRenderer>& Fire : Fires)
 	{
 		Fire->On();
 	}

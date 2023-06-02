@@ -1,7 +1,7 @@
 #pragma once
 #include "StateBase.h"
 
-class GameEngineUIRenderer;
+class SelfRenderer;
 
 class BossVersusState_Fire : public StateBase
 {
@@ -24,8 +24,8 @@ private:
 	static const std::string_view Fire_FileName;
 
 	const float4 FireArea = float4{ 100.f, 50.f };
-	std::vector<std::shared_ptr<GameEngineUIRenderer>> Fires;
-	std::shared_ptr<GameEngineUIRenderer> Light = nullptr;
+	std::vector<std::shared_ptr<SelfRenderer>> Fires;
+	std::shared_ptr<SelfRenderer> Light = nullptr;
 
 	const float4 LightMaxScale = float4{ 720.f, 720.f };
 	const float LightDuration = 0.5f;

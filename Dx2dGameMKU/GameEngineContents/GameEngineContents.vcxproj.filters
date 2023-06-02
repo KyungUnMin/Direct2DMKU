@@ -1086,9 +1086,6 @@
     <ClCompile Include="BossVersus.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="BossVersusFSMInstance.cpp">
-      <Filter>03.Actor\04.UI\06.BossVersus\01.Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BossVersusUIFSM.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\02.FSM</Filter>
     </ClCompile>

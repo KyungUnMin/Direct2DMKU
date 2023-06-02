@@ -15,7 +15,7 @@ EnemyState_IdleBase::EnemyState_IdleBase()
 
 EnemyState_IdleBase::~EnemyState_IdleBase()
 {
-
+	
 }
 
 

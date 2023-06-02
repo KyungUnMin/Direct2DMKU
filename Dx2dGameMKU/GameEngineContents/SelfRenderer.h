@@ -21,9 +21,13 @@ public:
 	SelfRenderer& operator=(const SelfRenderer& _Other) = delete;
 	SelfRenderer& operator=(const SelfRenderer&& _Other) noexcept = delete;
 
+	
 	void SetCamera(RCG_CamNumType _CamType);
 
+	void SetEnginePipe();
+
 protected:
+	void Start() override {}
 
 private:
 
