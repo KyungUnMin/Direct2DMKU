@@ -68,6 +68,7 @@ enum class BossVersusUIRenderOrder
 	Corner_Pink,
 	Light,
 	Fire,
+	NameTag,
 	Name,
 };
 

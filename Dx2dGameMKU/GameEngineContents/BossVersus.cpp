@@ -8,7 +8,6 @@
 
 #include "RCGDefine.h"
 
-//#include "ShaderUIRenderer.h"
 #include "SelfRenderer.h"
 
 
@@ -42,11 +41,6 @@ const std::string_view BossVersus::PortraitCBufferName = "NoiseFilter";
 
 
 
-
-
-
-
-
 BossVersus::BossVersus()
 {
 	GPtr = this;
@@ -69,6 +63,7 @@ void BossVersus::Init(BossType _Boss)
 	LoadImages();
 	//렌더 생성
 	CreatePortraits(_Boss);
+	CreateNameRenders(_Boss);
 
 	Fsm.Init(this);
 }
@@ -139,6 +134,8 @@ void BossVersus::CreatePortraits(BossType _Boss)
 	BossPortrait->GetTransform()->SetLocalScale(BossPortScale);
 }
 
+
+
 void BossVersus::CreateNameRenders(BossType _Boss)
 {
 	std::string_view BossName = "";
@@ -156,21 +153,25 @@ void BossVersus::CreateNameRenders(BossType _Boss)
 		break;
 	}
 
-	std::shared_ptr<SelfRenderer> PlayerNameRender = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Name);
-	std::shared_ptr<SelfRenderer> BossNameRender = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Name);
-
-	PlayerNameRender->SetCamera(RCG_CamNumType::BossVersusUI);
-	BossNameRender->SetCamera(RCG_CamNumType::BossVersusUI);
-
-	PlayerNameRender->SetEnginePipe();
-	BossNameRender->SetEnginePipe();
-
-	PlayerNameRender->SetScaleToTexture(PlayerName_FileName);
-	BossNameRender->SetScaleToTexture(BossName);
-
-	//TODO 자식으로 넣기
+	PlayerNameRender = CreataEngineUIRender(PlayerName_FileName, BossVersusUIRenderOrder::Name);
+	BossNameRender = CreataEngineUIRender(BossName, BossVersusUIRenderOrder::Name);
+	
+	PlayerNameRender->Off();
+	BossNameRender->Off();
 }
 
+
+
+std::shared_ptr<SelfRenderer> BossVersus::CreataEngineUIRender(const std::string_view& _TexFileName, BossVersusUIRenderOrder _RenderOrder)
+{
+	std::shared_ptr<SelfRenderer> Render = CreateComponent<SelfRenderer>(_RenderOrder);
+
+	Render->SetCamera(RCG_CamNumType::BossVersusUI);
+	Render->SetEnginePipe();
+	Render->SetScaleToTexture(_TexFileName);
+
+	return Render;
+}
 
 
 

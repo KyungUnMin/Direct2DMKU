@@ -33,6 +33,18 @@ public:
 		return BossPortrait;
 	}
 
+	inline std::shared_ptr <SelfRenderer> GetPlayerName() const
+	{
+		return PlayerNameRender;
+	}
+
+	inline std::shared_ptr <SelfRenderer> GetBossName() const
+	{
+		return BossNameRender;
+	}
+
+	std::shared_ptr<SelfRenderer> CreataEngineUIRender(const std::string_view& _TexFileName, BossVersusUIRenderOrder _RenderOrder);
+
 protected:
 	void Update(float _DeltaTime) override;
 
@@ -65,6 +77,9 @@ private:
 	ShaderData CBufferData;
 	std::shared_ptr<SelfRenderer> PlayerPortrait = nullptr;
 	std::shared_ptr<SelfRenderer> BossPortrait = nullptr;
+
+	std::shared_ptr<SelfRenderer> PlayerNameRender = nullptr;
+	std::shared_ptr<SelfRenderer> BossNameRender = nullptr;
 
 	BossVersusUIFSM Fsm;
 

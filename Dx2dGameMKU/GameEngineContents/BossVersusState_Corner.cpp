@@ -41,16 +41,10 @@ std::shared_ptr<SelfRenderer> BossVersusState_Corner::CreateCornerRenders()
 	std::shared_ptr<SelfRenderer> CornerBlack = nullptr;
 	std::shared_ptr<SelfRenderer> CornerPink = nullptr;
 
-	CornerBlack = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Corner_Black);
-	CornerBlack->SetCamera(RCG_CamNumType::BossVersusUI);
-	CornerBlack->SetEnginePipe();
-	CornerBlack->SetScaleToTexture(CornerBlack_FileName);
+	CornerBlack  = VersusUI->CreataEngineUIRender(CornerBlack_FileName, BossVersusUIRenderOrder::Corner_Black);
 	GameEngineTransform* BlackTrans = CornerBlack->GetTransform();
 	
-	CornerPink = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Corner_Pink);
-	CornerPink->SetCamera(RCG_CamNumType::BossVersusUI);
-	CornerPink->SetEnginePipe();
-	CornerPink->SetTexture(CornerPink_FileName);
+	CornerPink = VersusUI->CreataEngineUIRender(CornerPink_FileName, BossVersusUIRenderOrder::Corner_Pink);
 	GameEngineTransform* PinkTrans = CornerPink->GetTransform();
 	
 	PinkTrans->SetParent(BlackTrans);

@@ -1,6 +1,8 @@
 #pragma once
 #include "StateBase.h"
 
+class SelfRenderer;
+
 class BossVersusState_CallName : public StateBase
 {
 public:
@@ -18,8 +20,20 @@ protected:
 	void EnterState() override;
 
 private:
+	static const std::string_view NameTag_FileName;
+	static const float4 NameTagScale;
+	static const float4 NameTagOffset;
+
+	std::shared_ptr<SelfRenderer> PlayerName = nullptr;
+	std::shared_ptr<SelfRenderer> BossName = nullptr;
+	std::shared_ptr<SelfRenderer> PlayerNameTag = nullptr;
+	std::shared_ptr<SelfRenderer> BossNameTag = nullptr;
+
+	float4 ScreenSize = float4::Zero;
 
 
-
+	void CreateNameTags();
+	void BindNameRenders();
+	void SettingTrans();
 };
 
