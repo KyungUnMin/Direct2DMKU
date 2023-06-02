@@ -68,7 +68,7 @@ void CrossTownLevel2::Start()
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -1300.f, -200.f , -200.f });
+	FieldLevelBase::SetPlayerStartPosition(float4{ -2125.f, -261.f });
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }

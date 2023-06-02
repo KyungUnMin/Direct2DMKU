@@ -38,7 +38,9 @@ void TownBossLevel::Start()
 	CreateBackGrounds();
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
+	FieldLevelBase::SetPlayerStartPosition(float4{ -257.f, -117.f });
+
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 void TownBossLevel::LoadImgRes()
@@ -57,7 +59,7 @@ void TownBossLevel::LoadImgRes()
 void TownBossLevel::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("TownBossBG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData(80, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }

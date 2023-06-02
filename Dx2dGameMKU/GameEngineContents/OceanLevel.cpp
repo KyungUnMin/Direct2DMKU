@@ -15,7 +15,6 @@ const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 	{"OceanBG.png", float4{0.f, 0.f, 500.f}},
 	{"OceanBoxBack.png", float4{-651.f, -12.f, -41.f}},
 	{"OceanBoxFront.png", float4{-651.f, -12.f, -125.f}},
-	//{"OceanMarket.png", float4{-77.f, -322.f, -462.f}},
 };
 
 const std::string_view OceanLevel::CollisionImageName = "OceanColBG.png";
@@ -67,7 +66,7 @@ void OceanLevel::Start()
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
-	FieldLevelBase::SetPlayerStartPosition(float4::Zero);
+	FieldLevelBase::SetPlayerStartPosition(float4{ -1106.f, -187.f });
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -89,7 +88,7 @@ void OceanLevel::LoadImgRes()
 void OceanLevel::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData(150, 100));
+	FieldLevelBase::Init(LevelArea, TileInfoData(100, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 

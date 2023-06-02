@@ -39,11 +39,12 @@ void OceanBossLevel::Start()
 
 
 	CreateBackGrounds();
+	FieldLevelBase::SetPlayerStartPosition(float4{ -149.f, -223.f });
 
-
-	FieldLevelBase::SetPlayerStartPosition(float4{ 0.f, -200.f, -200.f });
 
 	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
+
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 void OceanBossLevel::LoadImgRes()
@@ -62,7 +63,7 @@ void OceanBossLevel::LoadImgRes()
 void OceanBossLevel::CreateBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("OceanBossBG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData(80, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }

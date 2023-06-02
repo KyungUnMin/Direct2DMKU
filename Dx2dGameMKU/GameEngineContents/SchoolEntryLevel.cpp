@@ -82,13 +82,16 @@ void SchoolEntryLevel::Start()
 	CreateBackGrounds();
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -200.f, -200.f , 0.f});
+	FieldLevelBase::SetPlayerStartPosition(float4{ -612.f, -152.f });
 	CreateEnemies();
 
 	CreateNPC();
 
 	//디버깅용 DoorOpen함수 등록
 	FieldLevelBase::SetDoorOpenFunc(std::bind(&SchoolEntryLevel::DoorOpen, this));
+
+
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 

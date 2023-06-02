@@ -40,8 +40,9 @@ void SchoolBossLevel::Start()
 	CreatBackGrounds();
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -700.f, 0.f , 0.f });
+	FieldLevelBase::SetPlayerStartPosition(float4{ -290.f, -205.f });
 
+	//FieldLevelBase::OnTransView_ForDebug();
 }
 
 
@@ -62,7 +63,7 @@ void SchoolBossLevel::LoadImgRes()
 void SchoolBossLevel::CreatBackGrounds()
 {
 	const float4 LevelArea = ResourceHelper::GetTextureScale("SchoolBossBG.png") * RCGDefine::ResourceScaleConvertor;
-	FieldLevelBase::Init(LevelArea, TileInfoData());
+	FieldLevelBase::Init(LevelArea, TileInfoData(100, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
