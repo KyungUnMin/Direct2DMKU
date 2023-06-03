@@ -63,6 +63,7 @@ void DashSmokeEffect::Update(float _DeltaTime)
 	float LiveTime = GetLiveTime();
 	float Duration = AniInter * 4.f;
 	float Ratio = (LiveTime / Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
 
 	Render->ColorOptionValue.MulColor.a = (1.f - Ratio);
 

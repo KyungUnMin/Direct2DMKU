@@ -1,7 +1,13 @@
 #include "PrecompileHeader.h"
 #include "CheerleaderState_Walk.h"
 
+#include "RCGEnums.h"
+
 #include "CheerleaderFSM.h"
+
+#include "FieldLevelBase.h"
+#include "DashSmokeEffect.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view CheerleaderState_Walk::AniName = "Walk";
 const std::string_view CheerleaderState_Walk::AniFileName = "Cheerleader_Walk.png";
@@ -47,7 +53,9 @@ void CheerleaderState_Walk::LoadAnimation()
 
 void CheerleaderState_Walk::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -55,6 +63,23 @@ void CheerleaderState_Walk::CreateAnimation()
 		.End = 11,
 		.FrameInter = AniInterTime
 	});
+
+	std::vector<size_t> Indexs = { 1, 7 };
+	for (size_t Idx : Indexs)
+	{
+		Render->SetAnimationStartEvent(AniName, Idx, [this]()
+		{
+			std::shared_ptr<DashSmokeEffect> Effect = nullptr;
+			Effect = FieldLevelBase::GetPtr()->CreateActor<DashSmokeEffect>(UpdateOrder::Effect);
+
+			FieldEnemyBase* Enemy = this->GetEnemy();
+			float4 EnemyPos = Enemy->GetTransform()->GetWorldPosition();
+
+			GameEngineTransform* EffectTrans = Effect->GetTransform();
+			EffectTrans->SetLocalPosition(EnemyPos);
+			EffectTrans->SetLocalScale(float4::One.half());
+		});
+	}
 }
 
 
