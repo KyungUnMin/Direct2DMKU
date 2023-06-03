@@ -190,23 +190,8 @@
     <Filter Include="03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl">
       <UniqueIdentifier>{dddbf7cf-e21c-4a65-a2f4-14cae7f2b19d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05.Tool">
-      <UniqueIdentifier>{34339328-f996-45ac-8111-c8a2d98e9550}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Core\03.Manager/Controller\06.ResourceHelper">
       <UniqueIdentifier>{9ea38e86-f8b1-463d-86dd-21dc1551a980}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05.Tool\01.GUI">
-      <UniqueIdentifier>{d83ff6ca-e8c5-4f3f-9230-d1050e2e3f4b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05.Tool\01.GUI\02.GUI">
-      <UniqueIdentifier>{2b591757-5736-4613-a991-bcbd27b2bb30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05.Tool\01.GUI\01.GUIMgr">
-      <UniqueIdentifier>{e3df9c9e-0776-4174-9523-7fc5e7812f5b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05.Tool\01.GUI\02.GUI\01.TransformViewer">
-      <UniqueIdentifier>{83d24f76-66fd-4465-a415-6126305fe06d}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy">
       <UniqueIdentifier>{7686a75f-7817-4b3f-90f3-c41533a2d924}</UniqueIdentifier>
@@ -823,9 +808,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack\06.WindSlash">
       <UniqueIdentifier>{bccf6914-bb65-4117-84e4-808530391e80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05.Tool\02.DebugActor">
-      <UniqueIdentifier>{165df60a-7650-4ee4-89f4-fb746cb1124b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\04.FieldNPC">
       <UniqueIdentifier>{dfe9290a-b568-4b79-b827-7d4b524f9133}</UniqueIdentifier>
     </Filter>
@@ -852,6 +834,27 @@
     </Filter>
     <Filter Include="03.Actor\04.UI\06.BossVersus\07.Wait">
       <UniqueIdentifier>{14fb1d14-120f-4944-ade0-dc4e3253f688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Tool">
+      <UniqueIdentifier>{34339328-f996-45ac-8111-c8a2d98e9550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Tool\01.GUI">
+      <UniqueIdentifier>{d83ff6ca-e8c5-4f3f-9230-d1050e2e3f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Tool\01.GUI\02.GUI">
+      <UniqueIdentifier>{2b591757-5736-4613-a991-bcbd27b2bb30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Tool\01.GUI\02.GUI\01.TransformViewer">
+      <UniqueIdentifier>{83d24f76-66fd-4465-a415-6126305fe06d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Tool\01.GUI\01.GUIMgr">
+      <UniqueIdentifier>{e3df9c9e-0776-4174-9523-7fc5e7812f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Tool\02.DebugActor">
+      <UniqueIdentifier>{165df60a-7650-4ee4-89f4-fb746cb1124b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.PostProcessing">
+      <UniqueIdentifier>{d91476d5-e8ba-409f-86c9-247ed8d6e768}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1012,7 +1015,7 @@
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
     </ClCompile>
     <ClCompile Include="GUIManager.cpp">
-      <Filter>05.Tool\01.GUI\01.GUIMgr</Filter>
+      <Filter>06.Tool\01.GUI\01.GUIMgr</Filter>
     </ClCompile>
     <ClCompile Include="ResourceHelper.cpp">
       <Filter>01.Core\03.Manager/Controller\06.ResourceHelper</Filter>
@@ -1021,7 +1024,7 @@
       <Filter>03.Actor\02.OpeningActor</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineActorGUI.cpp">
-      <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
+      <Filter>06.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClCompile>
     <ClCompile Include="EnemyStateBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\02.StateBase</Filter>
@@ -1510,7 +1513,7 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack\06.WindSlash</Filter>
     </ClCompile>
     <ClCompile Include="DebugActor.cpp">
-      <Filter>05.Tool\02.DebugActor</Filter>
+      <Filter>06.Tool\02.DebugActor</Filter>
     </ClCompile>
     <ClCompile Include="FieldNPCBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\01.Base</Filter>
@@ -1523,6 +1526,9 @@
     </ClCompile>
     <ClCompile Include="BossVersusState_Wait.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\07.Wait</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVersus_PostProcessing.cpp">
+      <Filter>07.PostProcessing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1680,7 +1686,7 @@
       <Filter>03.Actor\04.UI\04.Shop\01.ShopItem\02.ShopSlotCtrl</Filter>
     </ClInclude>
     <ClInclude Include="GUIManager.h">
-      <Filter>05.Tool\01.GUI\01.GUIMgr</Filter>
+      <Filter>06.Tool\01.GUI\01.GUIMgr</Filter>
     </ClInclude>
     <ClInclude Include="ResourceHelper.h">
       <Filter>01.Core\03.Manager/Controller\06.ResourceHelper</Filter>
@@ -1689,7 +1695,7 @@
       <Filter>03.Actor\02.OpeningActor</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineActorGUI.h">
-      <Filter>05.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
+      <Filter>06.Tool\01.GUI\02.GUI\01.TransformViewer</Filter>
     </ClInclude>
     <ClInclude Include="EnemyStateBase.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.FSMBase\02.StateBase</Filter>
@@ -2169,7 +2175,7 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\09.Waver\04.Attack\06.WindSlash</Filter>
     </ClInclude>
     <ClInclude Include="DebugActor.h">
-      <Filter>05.Tool\02.DebugActor</Filter>
+      <Filter>06.Tool\02.DebugActor</Filter>
     </ClInclude>
     <ClInclude Include="FieldNPCBase.h">
       <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\01.Base</Filter>
@@ -2182,6 +2188,9 @@
     </ClInclude>
     <ClInclude Include="BossVersusState_Wait.h">
       <Filter>03.Actor\04.UI\06.BossVersus\07.Wait</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVersus_PostProcessing.h">
+      <Filter>07.PostProcessing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
