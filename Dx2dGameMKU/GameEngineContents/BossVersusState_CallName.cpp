@@ -7,8 +7,8 @@
 #include "SelfRenderer.h"
 
 const std::string_view BossVersusState_CallName::NameTag_FileName = "VersusPortrait_NameTag.png";
-const float4 BossVersusState_CallName::NameTagScale = float4{ 800.f, 400.f };
-const float4 BossVersusState_CallName::NameTagOffset = float4{ -500.f, -300.f };
+const float4 BossVersusState_CallName::NameDestPos = float4{ -300.f, -200.f };
+const float4 BossVersusState_CallName::NameTagDestPos = float4{ -388.f, -227.f };
 
 
 BossVersusState_CallName::BossVersusState_CallName()
@@ -26,12 +26,11 @@ void BossVersusState_CallName::Start()
 	StateBase::Start();
 
 	BindNameRenders();
-	ScreenSize = GameEngineWindow::GetScreenSize();
-	SettingTrans();
 	CreateNameTags();
+
+
+	SettingMovePoint();
 }
-
-
 
 
 void BossVersusState_CallName::BindNameRenders()
@@ -40,30 +39,14 @@ void BossVersusState_CallName::BindNameRenders()
 
 	PlayerName = VersusUI->GetPlayerName();
 	BossName = VersusUI->GetBossName();
-}
-
-
-void BossVersusState_CallName::SettingTrans()
-{
-	float WidthHalf = ScreenSize.hx();
-	float HeightHalf = ScreenSize.hy();
-
 
 	//테스트 코드
 	{
-		const float HeightScale = 400.f;
-		const float4 LocalScale = float4{ HeightScale * 2.f, HeightScale };
+		const float4 LocalScale = float4{ 800.f, 400.f };
 		PlayerName->GetTransform()->SetLocalScale(LocalScale);
 		BossName->GetTransform()->SetLocalScale(LocalScale);
 	}
-
-	float4 DestPos = -ScreenSize.half() * 0.5f;
-	float4 FlipPos = { -DestPos.x, DestPos.y };
-
-	PlayerName->GetTransform()->SetLocalPosition(DestPos);
-	BossName->GetTransform()->SetLocalPosition(FlipPos);
 }
-
 
 
 void BossVersusState_CallName::CreateNameTags()
@@ -76,18 +59,41 @@ void BossVersusState_CallName::CreateNameTags()
 	PlayerNameTag ->Off();
 	BossNameTag->Off();
 
+	//임시코드
+	{
+		GameEngineTransform* PlayerNameTagTrans = PlayerNameTag->GetTransform();
+		GameEngineTransform* BossNameTagTrans = BossNameTag->GetTransform();
+
+		const float4 Scale = float4{ 1000.f, 300.f };
+		PlayerNameTagTrans->SetLocalScale(Scale);
+		BossNameTagTrans->SetLocalScale(Scale);
+	}
+
+	BossNameTag->GetTransform()->SetLocalNegativeScaleX();
+}
+
+
+
+
+
+void BossVersusState_CallName::SettingMovePoint()
+{
+	NameStartPos = NameDestPos + float4::Left * 500.f;
+	NameTagStartPos = NameTagDestPos + float4::Left * 400.f;
+
+	GameEngineTransform* PlayerNameTrans = PlayerName->GetTransform();
+	GameEngineTransform* BossNameTrans = BossName->GetTransform();
 	GameEngineTransform* PlayerNameTagTrans = PlayerNameTag->GetTransform();
 	GameEngineTransform* BossNameTagTrans = BossNameTag->GetTransform();
 
-	//위치 조정
-	PlayerNameTagTrans->SetLocalPosition(NameTagOffset);
-	BossNameTagTrans->SetLocalPosition(float4{ -NameTagOffset.x,  NameTagOffset.y });
-
-	//크기 조정
-	PlayerNameTagTrans->SetLocalScale(NameTagScale);
-	BossNameTagTrans->SetLocalScale(NameTagScale);
-	BossNameTagTrans->SetLocalNegativeScaleX();
+	PlayerNameTrans->SetLocalPosition(NameStartPos);
+	BossNameTrans->SetLocalPosition(PosFlip(NameStartPos));
+	PlayerNameTagTrans->SetLocalPosition(NameTagStartPos);
+	BossNameTagTrans->SetLocalPosition(PosFlip(NameTagStartPos));
 }
+
+
+
 
 
 
@@ -105,5 +111,24 @@ void BossVersusState_CallName::Update(float _DelatTime)
 {
 	StateBase::Update(_DelatTime);
 
+	float Ratio = GetLiveTime() / Duration;
+	float SinValue = sinf(GameEngineMath::PIE * 0.5f * Ratio);
 
+	float4 NameNowPos = float4::LerpClamp(NameStartPos, NameDestPos, SinValue);
+	float4 NameTagNowPos = float4::LerpClamp(NameTagStartPos, NameTagDestPos, SinValue);
+
+	GameEngineTransform* PlayerNameTrans = PlayerName->GetTransform();
+	GameEngineTransform* BossNameTrans = BossName->GetTransform();
+	GameEngineTransform* PlayerNameTagTrans = PlayerNameTag->GetTransform();
+	GameEngineTransform* BossNameTagTrans = BossNameTag->GetTransform();
+
+	PlayerNameTrans->SetLocalPosition(NameNowPos);
+	BossNameTrans->SetLocalPosition(PosFlip(NameNowPos));
+	PlayerNameTagTrans->SetLocalPosition(NameTagNowPos);
+	BossNameTagTrans->SetLocalPosition(PosFlip(NameTagNowPos));
+
+	if (Ratio < 1.f)
+		return;
+
+	GetFSM()->ChangeState(BossVersusStateType::Wait);
 }

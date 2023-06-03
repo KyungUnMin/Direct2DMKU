@@ -5,7 +5,7 @@
 #include "BossVersusState_Corner.h"
 #include "BossVersusState_Spark.h"
 #include "BossVersusState_CallName.h"
-#include "BossVersusState_Versus.h"
+#include "BossVersusState_Wait.h"
 
 
 BossVersusUIFSM::BossVersusUIFSM()
@@ -28,7 +28,7 @@ void BossVersusUIFSM::Init(BossVersus* _UI)
 	FSMBase::CreateState<BossVersusState_Corner>(BossVersusStateType::Corner);
 	FSMBase::CreateState<BossVersusState_Spark>(BossVersusStateType::Spark);
 	FSMBase::CreateState<BossVersusState_CallName>(BossVersusStateType::CallName);
-	FSMBase::CreateState<BossVersusState_Versus>(BossVersusStateType::Versus);
+	FSMBase::CreateState<BossVersusState_Wait>(BossVersusStateType::Wait);
 
 	FSMBase::ChangeState(BossVersusStateType::PortraitMatch);
 }

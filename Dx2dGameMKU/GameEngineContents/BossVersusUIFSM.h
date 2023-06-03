@@ -7,7 +7,7 @@ enum class BossVersusStateType
 	Corner,
 	Spark,
 	CallName,
-	Versus,
+	Wait,
 
 	COUNT
 };

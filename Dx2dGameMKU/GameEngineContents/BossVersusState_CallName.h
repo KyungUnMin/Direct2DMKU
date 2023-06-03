@@ -21,19 +21,25 @@ protected:
 
 private:
 	static const std::string_view NameTag_FileName;
-	static const float4 NameTagScale;
-	static const float4 NameTagOffset;
+	static const float4 NameDestPos;
+	static const float4 NameTagDestPos;
 
 	std::shared_ptr<SelfRenderer> PlayerName = nullptr;
 	std::shared_ptr<SelfRenderer> BossName = nullptr;
 	std::shared_ptr<SelfRenderer> PlayerNameTag = nullptr;
 	std::shared_ptr<SelfRenderer> BossNameTag = nullptr;
 
-	float4 ScreenSize = float4::Zero;
-
+	float Duration = 0.5f;
+	float4 NameStartPos = float4::Zero;
+	float4 NameTagStartPos = float4::Zero;
 
 	void CreateNameTags();
 	void BindNameRenders();
-	void SettingTrans();
+	void SettingMovePoint();
+
+	inline float4 PosFlip(const float4& _Pos)
+	{
+		return float4{ -_Pos.x,  _Pos.y };
+	}
 };
 

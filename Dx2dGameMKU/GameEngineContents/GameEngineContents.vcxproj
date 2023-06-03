@@ -195,7 +195,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BossVersusState_Versus.h">
+    <ClInclude Include="BossVersusState_Wait.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -773,7 +773,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BossVersusState_Versus.cpp">
+    <ClCompile Include="BossVersusState_Wait.cpp">
       <SubType>
       </SubType>
     </ClCompile>
