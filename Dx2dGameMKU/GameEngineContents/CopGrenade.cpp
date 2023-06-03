@@ -10,6 +10,8 @@
 #include "DataMgr.h"
 
 #include "FieldPlayer.h"
+#include "FieldLevelBase.h"
+#include "BackGround.h"
 
 const std::string_view CopGrenade::Grenade_FileName = "Cop_Grenade.png";
 const std::string_view CopGrenade::Explosion_FileName = "Cop_Grenade_Explosion.png";
@@ -43,6 +45,7 @@ void CopGrenade::Start()
 
 	Collider = CreateComponent<GameEngineCollision>(CollisionOrder::EnemyAttack);
 	Collider->GetTransform()->SetLocalScale(float4::One * 100.f);
+	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 
 	ImageLoad();
 	CreateAnimation();
@@ -166,6 +169,10 @@ void CopGrenade::Update_ThrowHorizon(float _Ratio)
 {
 	GameEngineTransform* ThisTrans = GetTransform();
 	float4 NextPos = float4::LerpClamp(StartPos, DestPos, _Ratio);
+
+	if (true == BGPtr->IsBlockPos(NextPos))
+		return;
+
 	ThisTrans->SetLocalPosition(NextPos);
 }
 

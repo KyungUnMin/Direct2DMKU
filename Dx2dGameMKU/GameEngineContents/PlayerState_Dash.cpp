@@ -2,9 +2,13 @@
 #include "PlayerState_Dash.h"
 
 #include "KeyMgr.h"
+#include "RCGEnums.h"
 
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
+
+#include "FieldLevelBase.h"
+#include "DashSmokeEffect.h"
 
 
 const float4 PlayerState_Dash::DashSpeed = float4{ 800.f, 400.f };
@@ -63,6 +67,16 @@ void PlayerState_Dash::EnterState()
 	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	CreateEffect();
+}
+
+void PlayerState_Dash::CreateEffect()
+{
+	std::shared_ptr<DashSmokeEffect> Effect = nullptr;
+	Effect = FieldLevelBase::GetPtr()->CreateActor<DashSmokeEffect>(UpdateOrder::Effect);
+
+	float4 PlayerPos = FieldPlayer::GetPtr()->GetTransform()->GetWorldPosition();
+	Effect->GetTransform()->SetLocalPosition(PlayerPos);
 }
 
 

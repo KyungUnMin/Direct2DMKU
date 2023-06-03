@@ -42,6 +42,7 @@ private:
 	State CurState = State::Throw;
 	std::shared_ptr<GameEngineSpriteRenderer> Render = nullptr;
 	std::shared_ptr<GameEngineCollision> Collider = nullptr;
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
 	float4 ThrowDir = float4::Zero;
 	float4 StartPos = float4::Zero;
@@ -51,7 +52,7 @@ private:
 	const float MaxHorizon = 30.f;
 	const float MaxVertical = 150.f;
 	const float PivotVertical = MaxVertical;
-	const float4 ExploRenderScale = float4::One * 300.f;
+	const float4 ExploRenderScale = float4::One * 500.f;
 
 	const int Damage = 30;
 

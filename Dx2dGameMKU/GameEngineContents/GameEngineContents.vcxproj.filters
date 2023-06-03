@@ -856,6 +856,9 @@
     <Filter Include="07.PostProcessing">
       <UniqueIdentifier>{d91476d5-e8ba-409f-86c9-247ed8d6e768}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\06.DashSmoke">
+      <UniqueIdentifier>{3156b2c0-0068-4cb9-b144-a6e362846fe7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1530,6 +1533,9 @@
     <ClCompile Include="BossVersus_PostProcessing.cpp">
       <Filter>07.PostProcessing</Filter>
     </ClCompile>
+    <ClCompile Include="DashSmokeEffect.cpp">
+      <Filter>03.Actor\06.Effect\06.DashSmoke</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2191,6 +2197,9 @@
     </ClInclude>
     <ClInclude Include="BossVersus_PostProcessing.h">
       <Filter>07.PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="DashSmokeEffect.h">
+      <Filter>03.Actor\06.Effect\06.DashSmoke</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
