@@ -3,6 +3,6 @@
   <ItemGroup>
     <FxCompile Include="TextureShader.hlsl" />
     <FxCompile Include="MergeShader.hlsl" />
-    <FxCompile Include="DebugMeshRenderer.hlsl" />
+    <FxCompile Include="DebugMeshRender.hlsl" />
   </ItemGroup>
 </Project>

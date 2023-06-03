@@ -39,7 +39,8 @@ void BackGround::InitLevelArea(const float4& _Scale, const TileInfoData& _TileDa
 	GridScale = float4{ MapScale.x / static_cast<float>(TileInfo.XCount), MapScale.y / static_cast<float>(TileInfo.YCount) };
 
 	TileRender = CreateComponent<GameEngineRenderer>(FieldRenderOrder::Debug_Grid);
-	TileRender->SetPipeLine("Tile");
+	TileRender->SetMesh("Rect");
+	TileRender->SetPipeLine(RCGDefine::GetPipeName(PipeType::Tile));
 	TileRender->GetShaderResHelper().SetConstantBufferLink("TileInfo", TileInfo);
 
 	std::shared_ptr<GameEngineCamera> CamPtr = GetLevel()->GetMainCamera();

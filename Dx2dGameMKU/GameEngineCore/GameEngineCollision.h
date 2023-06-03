@@ -50,12 +50,11 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
 	ColType Type = ColType::SPHERE3D;
 
 	GameEngineCamera* DebugCamera = nullptr;
-
-	void DebugRender(float _DeltaTime);
 };
 

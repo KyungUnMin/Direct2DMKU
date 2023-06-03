@@ -9,6 +9,7 @@
 #include "GameEngineCollision.h"
 #include "GameEngineDevice.h"
 #include "GameEngineRenderTarget.h"
+#include "GameEngineDebug3D.h"
 
 bool GameEngineLevel::IsDebugRender = false;
 
@@ -117,38 +118,7 @@ void GameEngineLevel::ActorLevelChangeEnd()
 
 
 
-void GameEngineLevel::CollisionDebugRender(GameEngineCamera* _Camera, float _DeltaTime)
-{
-	std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupStartIter = Collisions.begin();
-	std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupEndIter = Collisions.end();
 
-	//콜리전 그룹을 순회하면서
-	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
-	{
-		std::list<std::shared_ptr<GameEngineCollision>>& ObjectList = GroupStartIter->second;
-
-		std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectStart = ObjectList.begin();
-		std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectEnd = ObjectList.end();
-
-		for (; ObjectStart != ObjectEnd; ++ObjectStart)
-		{
-			std::shared_ptr<GameEngineCollision> CollisionObject = (*ObjectStart);
-
-			if (nullptr == CollisionObject)
-				continue;
-
-			//Update되어있는 콜리전만 그린다
-			if (false == CollisionObject->IsUpdate())
-				continue;
-
-			//인자로 받은 이 카메라와 콜리전에 등록한 카메라가 같은 경우에만
-			if (CollisionObject->DebugCamera != _Camera)
-				continue;
-
-			CollisionObject->DebugRender(_DeltaTime);
-		}
-	}
-}
 
 
 
@@ -171,7 +141,7 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		if (false == IsDebugRender)
 			continue;
 
-		CollisionDebugRender(Cam.get(), _DeltaTime);
+		GameEngineDebug::DebugRender(Cam.get(), _DeltaTime);
 	}
 	
 	LastTarget->Clear();

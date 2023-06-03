@@ -88,7 +88,6 @@ public:
 		return LastTarget;
 	}
 
-	void CollisionDebugRender(GameEngineCamera* _Camera, float _DeltaTime);
 
 	std::shared_ptr<GameEngineCamera> CreateCamera(int _CameraNum, CameraType _ProjectionType);
 
