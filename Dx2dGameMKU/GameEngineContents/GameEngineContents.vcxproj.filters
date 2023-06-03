@@ -859,6 +859,9 @@
     <Filter Include="03.Actor\06.Effect\06.DashSmoke">
       <UniqueIdentifier>{3156b2c0-0068-4cb9-b144-a6e362846fe7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\07.Conversation">
+      <UniqueIdentifier>{fd9598ff-8329-48c3-bc21-cfc14cc7e769}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1536,6 +1539,9 @@
     <ClCompile Include="DashSmokeEffect.cpp">
       <Filter>03.Actor\06.Effect\06.DashSmoke</Filter>
     </ClCompile>
+    <ClCompile Include="ConversationUI.cpp">
+      <Filter>03.Actor\04.UI\07.Conversation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2200,6 +2206,9 @@
     </ClInclude>
     <ClInclude Include="DashSmokeEffect.h">
       <Filter>03.Actor\06.Effect\06.DashSmoke</Filter>
+    </ClInclude>
+    <ClInclude Include="ConversationUI.h">
+      <Filter>03.Actor\04.UI\07.Conversation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

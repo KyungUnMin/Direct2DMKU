@@ -44,10 +44,10 @@ enum class FieldUIRenderOrder
 {
 	Default = 0,
 	HUD,
-	Fade,
+	Conversation_BackImg,
+	Conversation_Portrait,
 
-	//보스 Versus UI
-	BossVersus,	
+	Fade,
 	BossIntro,	//Boss 등장 무비
 };
 
