@@ -59,6 +59,7 @@ cbuffer NoiseFilter : register(b0)
     float Ratio;            //0~1
     float NoiseSize;    //5.f
     float OffsetRatio;
+    float RGBMinus;
 }
 
 
@@ -136,7 +137,10 @@ float4 Texture_PS(Output _Value) : SV_Target0
     
     //불꽃이 일렁이는 느낌은 나중에 책 보고 다시 해보자
     
-    return Color;
+    float4 Result = Color;
+    Result.xyz -= RGBMinus;
+    Result = saturate(Result);
+    return Result;
 }
 
 

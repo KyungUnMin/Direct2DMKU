@@ -33,7 +33,7 @@ private:
 		float NoiseFilterValue = 1.0f;
 		const float NoiseImageScale = 5.f; /*±âÁ¸°ª 5.0f*/
 		const float OffsetRatio = 0.01f;
-		const float Garbage2 = 0.f;
+		const float Garbage2 = 0.03f;
 	};
 
 	ShaderData CBufferData;
