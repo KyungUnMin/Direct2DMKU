@@ -53,9 +53,9 @@ void RCG_GameCore::CreateRenderingPipeLine()
 void RCG_GameCore::ClonePipeLineForShader(const std::string_view& _PipeName, const std::string_view& _ShaderName)
 {
 	std::shared_ptr<GameEngineRenderingPipeLine> PipeLine = GameEngineRenderingPipeLine::Create(_PipeName);
-	PipeLine->SetVertexBuffer("Rect");
+	//PipeLine->SetVertexBuffer("Rect");
 	PipeLine->SetVertexShader(_ShaderName);
-	PipeLine->SetIndexBuffer("Rect");
+	//PipeLine->SetIndexBuffer("Rect");
 	PipeLine->SetRasterizer("Engine2DBase");
 	PipeLine->SetPixelShader(_ShaderName);
 	PipeLine->SetBlendState("AlphaBlend");

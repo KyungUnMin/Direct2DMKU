@@ -36,6 +36,7 @@ void BossVersusState_Spark::CraeteBackImg()
 
 	BackImg = VersusUI->CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::ScreenLight);
 	BackImg->SetCamera(RCG_CamNumType::BossVersusUI);
+	BackImg->SetMesh("Rect");
 	BackImg->SetPipeLine(RCGDefine::GetPipeName(PipeType::DirectColor));
 	BackImg->GetShaderResHelper().SetConstantBufferLink("LinkColor", BackImgColor);
 

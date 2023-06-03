@@ -273,7 +273,8 @@ void EnemySpawner::OnCycleSpawn(const std::vector<EnemyType>& _SpawnTypes, const
 		RenderTrans->SetWorldPosition(Pos);
 
 		//텍스처 생성
-		Render->SetPipeLine("DirectColor");
+		Render->SetMesh("Rect");
+		Render->SetPipeLine(RCGDefine::GetPipeName(PipeType::DirectColor));
 		Render->GetShaderResHelper().SetConstantBufferLink("LinkColor", SpawnPosColor);
 		Render->Off();
 

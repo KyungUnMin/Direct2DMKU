@@ -28,9 +28,9 @@ public:
 		return PixelShaderPtr;
 	}
 
-	void SetVertexBuffer(const std::string_view& _Value);
+	//void SetVertexBuffer(const std::string_view& _Value);
 	void SetVertexShader(const std::string_view& _Value);
-	void SetIndexBuffer(const std::string_view& _Value);
+	//void SetIndexBuffer(const std::string_view& _Value);
 	void SetRasterizer(const std::string_view& _Value);
 	void SetPixelShader(const std::string_view& _Value);
 	void SetBlendState(const std::string_view& _Value);
@@ -61,11 +61,12 @@ private:
 
 	//래스터 라이저 단계에서 픽셀들을 어떻게 그릴지에 대한 값
 	D3D11_FILL_MODE FILL_MODE = D3D11_FILL_MODE::D3D11_FILL_SOLID;
-	//인풋 어셈블러2 단계에서 어떤 모양의 도형을 그릴 것인지에 대한 값
-	D3D11_PRIMITIVE_TOPOLOGY TOPOLOGY = D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
+
+	//인풋 어셈블러2 단계에서 어떤 모양의 도형을 그릴 것인지에 대한 값(코드를 메시로 이사시킴)
+	//D3D11_PRIMITIVE_TOPOLOGY TOPOLOGY = D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 	
 	std::shared_ptr<class GameEngineVertexBuffer> VertexBufferPtr;
-	std::shared_ptr<class GameEngineInputLayOut> InputLayOutPtr;
+	//std::shared_ptr<class GameEngineInputLayOut> InputLayOutPtr;	(코드를 메시로 이사시킴)
 	std::shared_ptr<class GameEngineVertexShader> VertexShaderPtr;
 	std::shared_ptr<class GameEngineIndexBuffer> IndexBufferPtr;
 	std::shared_ptr<class GameEngineRasterizer> RasterizerPtr;
@@ -78,7 +79,7 @@ private:
 	//-------------REDERING PIPELiNE---------
 
 	//점에 대한 정보가 GPU에 입력된다
-	void InputAssembler1();
+	//void InputAssembler1(); (코드를 메시로 이사시킴)
 
 
 	//버텍스 쉐이더에서 행렬이 곱해진다
@@ -95,7 +96,7 @@ private:
 	//	(점이 어떻게 그려질 지 정하는 단계)
 	//	우리는 점 4개를 이용해
 	//삼각형 두개로 사각형 만들것임
-	void InputAssembler2();
+	//void InputAssembler2();	(코드를 메시로 이사시킴)
 
 
 	//거리에 따라 메쉬를 쪼갬

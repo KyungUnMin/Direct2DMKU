@@ -22,6 +22,11 @@ public:
 	//GPU에 레이아웃 정보를 세팅
 	void Setting() override;
 
+	inline bool IsCreate() const
+	{
+		return (nullptr != InputLayOut);
+	}
+
 protected:
 
 private:

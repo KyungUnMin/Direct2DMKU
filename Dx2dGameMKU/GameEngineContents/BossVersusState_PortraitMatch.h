@@ -21,7 +21,6 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	static const std::string_view LightPipeName;
 	static const std::string_view LinkCBufferName;
 
 	std::shared_ptr<SelfRenderer> PlayerPortrait = nullptr;

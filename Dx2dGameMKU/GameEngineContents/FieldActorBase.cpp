@@ -122,6 +122,7 @@ FieldActorBase::VisualCollider FieldActorBase::CreateVisuableCollision(Collision
 		IsLoad = true;
 	}
 
+	Family.ChildRender->SetMesh("Rect");
 	Family.ChildRender->SetPipeLine(RCGDefine::GetPipeName(PipeType::DirectColor));
 	Family.ChildRender->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, RenderImageName);
 	Family.ChildRender->GetShaderResHelper().SetConstantBufferLink("LinkColor", CollisionColor);

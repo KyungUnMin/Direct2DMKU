@@ -104,6 +104,7 @@ void GameEngineCore::CoreResourceInit()
 
 		GameEngineVertexBuffer::Create("Rect", ArrVertex);
 		GameEngineIndexBuffer::Create("Rect", ArrIndex);
+		GameEngineMesh::Create("Rect");
 	}
 
 
@@ -123,7 +124,7 @@ void GameEngineCore::CoreResourceInit()
 
 		GameEngineVertexBuffer::Create("FullRect", ArrVertex);
 		GameEngineIndexBuffer::Create("FullRect", ArrIndex);
-
+		GameEngineMesh::Create("FullRect");
 	}
 
 
@@ -289,9 +290,9 @@ void GameEngineCore::CoreResourceInit()
 		//랜더링 파이프라인은 자식에서 별도의 Create함수를 갖지 않는다
 		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("2DTexture");
 
-		Pipe->SetVertexBuffer("Rect");
+		//Pipe->SetVertexBuffer("Rect");
 		Pipe->SetVertexShader("TextureShader.hlsl");
-		Pipe->SetIndexBuffer("Rect");
+		//Pipe->SetIndexBuffer("Rect");
 		Pipe->SetRasterizer("Engine2DBase");
 		Pipe->SetPixelShader("TextureShader.hlsl");
 		Pipe->SetBlendState("AlphaBlend");
@@ -301,8 +302,8 @@ void GameEngineCore::CoreResourceInit()
 	//머지용(카메라 용) 렌더링 파이프 라인 만들고 세팅하기
 	{
 		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("Merge");
-		Pipe->SetVertexBuffer("FullRect");
-		Pipe->SetIndexBuffer("FullRect");
+		//Pipe->SetVertexBuffer("FullRect");
+		//Pipe->SetIndexBuffer("FullRect");
 		Pipe->SetVertexShader("MergeShader.hlsl");
 		Pipe->SetRasterizer("Engine2DBase");
 		Pipe->SetPixelShader("MergeShader.hlsl");

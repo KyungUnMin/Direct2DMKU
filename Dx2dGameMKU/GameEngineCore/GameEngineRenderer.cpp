@@ -1,13 +1,34 @@
 #include "PrecompileHeader.h"
 #include "GameEngineRenderer.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
+
 #include "GameEngineLevel.h"
 #include "GameEngineCamera.h"
+
 #include "GameEngineRenderingPipeLine.h"
 #include "GameEngineVertexShader.h"
 #include "GameEnginePixelShader.h"
 #include "GameEngineShaderResHelper.h"
+#include "GameEngineMesh.h"
+#include "GameEngineInputLayOut.h"
 
+
+GameEngineRenderUnit::GameEngineRenderUnit()
+{
+	//유닛 만들때 인풋 레이아웃 생성, (내부 값들은 아직 미정)
+	InputLayOutPtr = std::make_shared<GameEngineInputLayOut>();
+}
+
+void GameEngineRenderUnit::SetMesh(const std::string_view& _Name)
+{
+	Mesh = GameEngineMesh::Find(_Name);
+
+	if ((false == InputLayOutPtr->IsCreate()) && (nullptr != Pipe))
+	{
+		//버텍스 버퍼와 버텍스 쉐이더의 정보들을 바탕으로 인풋 레이아웃 생성
+		InputLayOutPtr->ResCreate(Mesh->GetVertexBuffer(), Pipe->GetVertexShader());
+	}
+}
 
 
 void GameEngineRenderUnit::SetPipeLine(const std::string_view& _Name)
@@ -25,18 +46,47 @@ void GameEngineRenderUnit::SetPipeLine(const std::string_view& _Name)
 		const GameEngineShaderResHelper& Res = Pipe->GetPixelShader()->GetShaderResHelper();
 		ShaderResHelper.Copy(Res);
 	}
+
+	//메시 내부의 버텍스 버퍼와 파이프의 버텍스 쉐이더를 바탕으로 인풋 레이아웃 생성
+	if ((false == InputLayOutPtr->IsCreate()) && (nullptr != Mesh))
+	{
+		InputLayOutPtr->ResCreate(Mesh->GetVertexBuffer(), Pipe->GetVertexShader());
+	}
 }
 
 
 
 void GameEngineRenderUnit::Render(float _DeltaTime)
 {
+	if (nullptr == Mesh)
+	{
+		MsgAssert("매쉬가 존재하지 않는 유니트 입니다");
+		return;
+	}
+
+	if (nullptr == Pipe)
+	{
+		MsgAssert("파이프라인이 존재하지 않는 유니트 입니다");
+		return;
+	}
+
+	InputLayOutPtr->Setting();
+
+	//인풋 어셈블러1과 인풋 어셈블러2 과정을 수행
+	Mesh->Setting();
+
 	//GPU에 렌더링 파이프라인 단계에 따라 필요한 정보 설정
 	Pipe->RenderingPipeLineSetting();
+
 	//GPU에 쉐이더 정보를 설정(상수버퍼나 텍스처 같은 정보)
 	ShaderResHelper.Setting();
+
 	//그리기
-	Pipe->Render();
+	//Pipe->Render();
+
+	//실질적으로 그리는 단계(그리는 방법이 여러가지지만 그 중 꼭 인덱스버퍼를 이용해서 그릴 것)
+	UINT IndexCount = Mesh->IndexBufferPtr->GetIndexCount();
+	GameEngineDevice::GetContext()->DrawIndexed(IndexCount, 0, 0);
 }
 
 
@@ -77,14 +127,8 @@ void GameEngineRenderer::Render(float _DeltaTime)
 {
 	for (size_t i = 0; i < Units.size(); ++i)
 	{
-		Units[i]->Pipe->RenderingPipeLineSetting();
-
-		//텍스처 세팅, 상수버퍼 세팅 등이 이루어진다.
-		Units[i]->ShaderResHelper.Setting();
-
-		Units[i]->Pipe->Render();
+		Units[i]->Render(_DeltaTime);
 	}
-	
 }
 
 std::shared_ptr<GameEngineRenderingPipeLine> GameEngineRenderer::GetPipeLine(int _index/* = 0*/)
@@ -116,6 +160,33 @@ std::shared_ptr<GameEngineRenderingPipeLine> GameEngineRenderer::GetPipeLineClon
 }
 
 
+void GameEngineRenderer::SetMesh(const std::string_view& _Name, int _index /*= 0*/)
+{
+	if (Units.size() + 1 <= _index)
+	{
+		MsgAssert("너무큰 랜더유니트 확장을 하려고 했습니다");
+		return;
+	}
+
+	//아직 존재하지 않는 유닛이라면 유닛을 확장
+	if (Units.size() <= _index)
+	{
+		Units.resize(_index + 1);
+		Units[_index] = std::make_shared<GameEngineRenderUnit>();
+	}
+
+
+	std::shared_ptr<GameEngineRenderUnit> Unit = Units[_index];
+	if (nullptr == Unit)
+	{
+		MsgAssert("존재하지 않는 랜더유니트를 사용하려고 했습니다.");
+	}
+
+	//메시 등록
+	Unit->Mesh = GameEngineMesh::Find(_Name);
+}
+
+
 
 void GameEngineRenderer::SetPipeLine(const std::string_view& _Name, int _index /*= 0*/)
 {
@@ -141,8 +212,7 @@ void GameEngineRenderer::SetPipeLine(const std::string_view& _Name, int _index /
 		return;
 	}
 
-
-	Unit->Pipe = GameEngineRenderingPipeLine::Find(_Name);
+	Unit->SetPipeLine(_Name);
 	if (nullptr == Unit->Pipe)
 	{
 		MsgAssert("존재하지 않는 이름의 렌더링 파이프 라인입니다");

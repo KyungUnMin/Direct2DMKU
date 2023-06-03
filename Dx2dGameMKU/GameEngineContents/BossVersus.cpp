@@ -34,7 +34,6 @@ const std::string_view BossVersus::SchoolName_FileName			= "MISUZU_NAME.png";
 const std::string_view BossVersus::TownName_FileName			= "YAMADA_NAME.png";
 const std::string_view BossVersus::OceneName_FileName			= "NOIZE_NAME.png";
 
-const std::string_view BossVersus::PortraitPipeName = "Burn";
 const std::string_view BossVersus::PortraitCBufferName = "NoiseFilter";
 
 
@@ -96,13 +95,15 @@ void BossVersus::CreatePortraits(BossType _Boss)
 	//플레이어 초상화
 	PlayerPortrait = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Portrait);
 	PlayerPortrait->SetCamera(RCG_CamNumType::BossVersusUI);
-	PlayerPortrait->SetPipeLine(PortraitPipeName);
+	PlayerPortrait->SetMesh("Rect");
+	PlayerPortrait->SetPipeLine(RCGDefine::GetPipeName(PipeType::Burn));
 	PlayerPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
 	//보스 초상화
 	BossPortrait = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Portrait);
 	BossPortrait->SetCamera(RCG_CamNumType::BossVersusUI);
-	BossPortrait->SetPipeLine(PortraitPipeName);
+	BossPortrait->SetMesh("Rect");
+	BossPortrait->SetPipeLine(RCGDefine::GetPipeName(PipeType::Burn));
 	BossPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
 

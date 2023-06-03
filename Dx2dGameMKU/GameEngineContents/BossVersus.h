@@ -61,7 +61,6 @@ private:
 	static const std::string_view OceneName_FileName;
 	static const std::string_view TownName_FileName;
 
-	static const std::string_view PortraitPipeName;
 	static const std::string_view PortraitCBufferName;
 
 	struct ShaderData

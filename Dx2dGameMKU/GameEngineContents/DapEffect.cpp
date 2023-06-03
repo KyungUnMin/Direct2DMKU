@@ -10,7 +10,6 @@
 #include "FieldPlayer.h"
 
 
-const std::string_view DapEffect::RenderPipeName = "DirectColor";
 const std::string_view DapEffect::EffectImgName = "Player_DapEffect.png";
 float4 DapEffect::EffectScale = float4::Zero;
 
@@ -62,7 +61,8 @@ void DapEffect::LoadEffectImage()
 void DapEffect::CreateRender() 
 {
 	RenderPtr = CreateComponent<GameEngineRenderer>(FieldRenderOrder::ZOrder);
-	RenderPtr->SetPipeLine(RenderPipeName);
+	RenderPtr->SetMesh("Rect");
+	RenderPtr->SetPipeLine(RCGDefine::GetPipeName(PipeType::DirectColor));
 	RenderPtr->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, EffectImgName);
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("LinkColor", ShaderLinkColor);
 

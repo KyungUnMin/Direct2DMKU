@@ -9,7 +9,17 @@ class GameEngineRenderUnit
 	:std::enable_shared_from_this<GameEngineRenderUnit>
 {
 public:
-	std::shared_ptr<GameEngineRenderingPipeLine> Pipe;
+	GameEngineRenderUnit();
+
+public:
+	/*
+		인풋 레이아웃은 버텍스 버퍼와 버텍스 쉐이더가 모두 만들어졌을때
+		해당 정보들을 바탕으로 인풋 레이아웃을 만들게 된다
+		그래서 버텍스 버퍼를 가지고 있는 메쉬가 인풋 레이아웃도 가지게 된다
+	*/
+	std::shared_ptr<class GameEngineInputLayOut> InputLayOutPtr = nullptr;
+	std::shared_ptr<class GameEngineMesh> Mesh = nullptr;
+	std::shared_ptr<GameEngineRenderingPipeLine> Pipe = nullptr;
 
 	/*
 		유니티나 언리얼 같은 엔진에서는 여러 엑터들이
@@ -28,8 +38,12 @@ public:
 	GameEngineShaderResHelper ShaderResHelper;
 
 public:
+	//메쉬 세팅
+	void SetMesh(const std::string_view& _Name);
+
 	//파이프라인 세팅 밎 쉐이더 정보 세팅
 	void SetPipeLine(const std::string_view& _Name);
+
 	//렌더링
 	void Render(float _DeltaTime);
 };
@@ -52,6 +66,9 @@ public:
 	//(드로우(그리기) 하기 직전에 쉐이더 파일에 값을 넣어주는 것 같다)
 	//파이프라인을 세팅하면서, 쉐이더 과정들의 헬터들을 한곳에 모은다
 	void SetPipeLine(const std::string_view& _Name, int _index = 0);
+
+	//메쉬 세팅
+	void SetMesh(const std::string_view& _Name, int _Index = 0);
 
 	// 여기서 리턴된 파이프라인을 수정하면 이 파이프라인을 사용하는 모든 애들이 바뀌게 된다.
 	std::shared_ptr<GameEngineRenderingPipeLine> GetPipeLine(int _index = 0);

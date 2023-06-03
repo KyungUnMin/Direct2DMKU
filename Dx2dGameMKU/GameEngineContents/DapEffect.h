@@ -19,7 +19,6 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	static const std::string_view RenderPipeName;
 	static const std::string_view EffectImgName;
 	static float4 EffectScale;
 

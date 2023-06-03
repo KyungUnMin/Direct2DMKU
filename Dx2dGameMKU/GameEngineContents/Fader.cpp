@@ -2,7 +2,7 @@
 #include "Fader.h"
 
 
-
+#include "RCGDefine.h"
 #include "RCGEnums.h"
 
 #include "ShaderUIRenderer.h"
@@ -24,7 +24,8 @@ void Fader::Start()
 	UIBase::Start();
 
     RenderPtr = CreateComponent<ShaderUIRenderer>(FieldUIRenderOrder::Fade);
-	RenderPtr->SetPipeLine("DirectColor");
+	RenderPtr->SetMesh("Rect");
+	RenderPtr->SetPipeLine(RCGDefine::GetPipeName(PipeType::DirectColor));
 	RenderPtr->GetShaderResHelper().SetConstantBufferLink("LinkColor", FadeColor);
 	RenderPtr->GetTransform()->SetWorldScale(GameEngineWindow::GetScreenSize());
 }
