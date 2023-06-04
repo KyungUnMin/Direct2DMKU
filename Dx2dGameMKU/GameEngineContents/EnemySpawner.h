@@ -17,6 +17,9 @@ enum class EnemyType
 	Hooligan,
 	TigerMan,
 	Waver,
+	Misuzu,
+	Yamada,
+	Noise,
 };
 
 struct EnemyCreateParameter

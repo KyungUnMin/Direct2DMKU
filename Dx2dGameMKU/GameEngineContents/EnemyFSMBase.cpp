@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "EnemyFSMBase.h"
 
+#include "EnemyStateBase.h"
 
 EnemyFSMBase::EnemyFSMBase()
 {
@@ -21,4 +22,18 @@ FieldEnemyBase* EnemyFSMBase::GetEnemy() const
 	}
 
 	return Enemy;
+}
+
+bool EnemyFSMBase::IsUnbeatableState()
+{
+	std::shared_ptr<StateBase> StatePtr = GetNowStatePtr();
+
+	std::shared_ptr<EnemyStateBase> EnemyState = std::dynamic_pointer_cast<EnemyStateBase>(StatePtr);
+	if (nullptr == EnemyState)
+	{
+		MsgAssert("Enemy State중에 EnemyStateBase를 상속받지 않은 State가 존재합니다");
+		return false;
+	}
+
+	return EnemyState->IsUnbeatable();
 }

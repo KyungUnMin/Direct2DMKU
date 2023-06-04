@@ -314,6 +314,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FieldBossBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldDoor.h">
       <SubType>
       </SubType>
@@ -325,6 +329,7 @@
     <ClInclude Include="FieldEnemy_Cheerleader.h" />
     <ClInclude Include="FieldEnemy_Cop.h" />
     <ClInclude Include="FieldEnemy_Hooligan.h" />
+    <ClInclude Include="FieldEnemy_Misuzu.h" />
     <ClInclude Include="FieldEnemy_SchoolBoy.h">
       <SubType>
       </SubType>
@@ -373,6 +378,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="MisuzuFSM.h" />
+    <ClInclude Include="MisuzuState_Attack_AxeKick.h" />
+    <ClInclude Include="MisuzuState_Attack_Elbow.h" />
+    <ClInclude Include="MisuzuState_Attack_Punch.h" />
+    <ClInclude Include="MisuzuState_Attack_SideKick.h" />
+    <ClInclude Include="MisuzuState_Damaged_BlowBack.h" />
+    <ClInclude Include="MisuzuState_Damaged_KnockDown.h" />
+    <ClInclude Include="MisuzuState_Damaged_Dizzy.h" />
+    <ClInclude Include="MisuzuState_Idle.h" />
+    <ClInclude Include="MisuzuState_NormalDamaged_Face.h" />
+    <ClInclude Include="MisuzuState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="MisuzuState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="MisuzuState_Walk.h" />
     <ClInclude Include="OpeningDiaEffect.h">
       <SubType>
       </SubType>
@@ -906,6 +924,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FieldBossBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldCamController_StateUpdate.cpp" />
     <ClCompile Include="FieldCamController_ZoomUpdate.cpp" />
     <ClCompile Include="FieldDoor.cpp">
@@ -920,6 +942,7 @@
     <ClCompile Include="FieldEnemy_Cheerleader.cpp" />
     <ClCompile Include="FieldEnemy_Cop.cpp" />
     <ClCompile Include="FieldEnemy_Hooligan.cpp" />
+    <ClCompile Include="FieldEnemy_Misuzu.cpp" />
     <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
       <SubType>
       </SubType>
@@ -968,6 +991,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MisuzuFSM.cpp" />
+    <ClCompile Include="MisuzuState_Attack_AxeKick.cpp" />
+    <ClCompile Include="MisuzuState_Attack_Elbow.cpp" />
+    <ClCompile Include="MisuzuState_Attack_Punch.cpp" />
+    <ClCompile Include="MisuzuState_Attack_SideKick.cpp" />
+    <ClCompile Include="MisuzuState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="MisuzuState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="MisuzuState_Damaged_Dizzy.cpp" />
+    <ClCompile Include="MisuzuState_Idle.cpp" />
+    <ClCompile Include="MisuzuState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="MisuzuState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="MisuzuState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="MisuzuState_Walk.cpp" />
     <ClCompile Include="OpeningDiaEffect.cpp">
       <SubType>
       </SubType>

@@ -1,28 +1,28 @@
 #include "PrecompileHeader.h"
-#include "SchoolBoyState_Attack_Punch.h"
+#include "MisuzuState_Attack_Elbow.h"
 
 #include "DataMgr.h"
 
-#include "SchoolBoyFSM.h"
+#include "MisuzuFSM.h"
 #include "FieldPlayer.h"
 
-const std::string_view SchoolBoyState_Attack_Punch::AniName = "Attack_Punch";
-const std::string_view SchoolBoyState_Attack_Punch::AniFileName = "SchoolBoy_Punch.png";
-const std::pair<int, int> SchoolBoyState_Attack_Punch::AniCutFrame = std::pair<int, int>(5, 2);
-const float SchoolBoyState_Attack_Punch::AniInterTime = 0.08f;
-const int SchoolBoyState_Attack_Punch::Damage = 5;
+const std::string_view MisuzuState_Attack_Elbow::AniName = "Attack_Elbow";
+const std::string_view MisuzuState_Attack_Elbow::AniFileName = "Misuzu_Elbow_Uppercut.png";
+const std::pair<int, int> MisuzuState_Attack_Elbow::AniCutFrame = std::pair<int, int>(5, 2);
+const float MisuzuState_Attack_Elbow::AniInterTime = 0.08f;
+const int MisuzuState_Attack_Elbow::Damage = 5;
 
-SchoolBoyState_Attack_Punch::SchoolBoyState_Attack_Punch()
+MisuzuState_Attack_Elbow::MisuzuState_Attack_Elbow()
 {
 
 }
 
-SchoolBoyState_Attack_Punch::~SchoolBoyState_Attack_Punch()
+MisuzuState_Attack_Elbow::~MisuzuState_Attack_Elbow()
 {
 
 }
 
-void SchoolBoyState_Attack_Punch::Start()
+void MisuzuState_Attack_Elbow::Start()
 {
 	EnemyState_AttackBase::Start();
 
@@ -30,7 +30,7 @@ void SchoolBoyState_Attack_Punch::Start()
 	CreateAnimation();
 }
 
-void SchoolBoyState_Attack_Punch::LoadAnimation()
+void MisuzuState_Attack_Elbow::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -41,12 +41,12 @@ void SchoolBoyState_Attack_Punch::LoadAnimation()
 	RCGDefine::MoveContentPath(Dir, ResType::Image);
 	Dir.Move("Character");
 	Dir.Move("Enemy");
-	Dir.Move("SchoolBoy");
+	Dir.Move("Misuzu");
 	Dir.Move("Attack");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void SchoolBoyState_Attack_Punch::CreateAnimation()
+void MisuzuState_Attack_Elbow::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
@@ -61,35 +61,37 @@ void SchoolBoyState_Attack_Punch::CreateAnimation()
 }
 
 
-void SchoolBoyState_Attack_Punch::EnterState()
+void MisuzuState_Attack_Elbow::EnterState()
 {
 	EnemyState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
 	EnemyState_AttackBase::SetAttackColValue();
 }
 
 
 
-void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
+void MisuzuState_Attack_Elbow::Update(float _DeltaTime)
 {
 	EnemyState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
+
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
 	{
-		GetFSM()->ChangeState(SchoolBoyStateType::Idle);
+		GetFSM()->ChangeState(MisuzuStateType::Idle);
 		return;
 	}
 
 	//1/n로 Idle, 나머지는 현재와 다른 공격
-	SchoolBoyStateType RandomAttack = static_cast<SchoolBoyStateType>(GetEnemyFsm()->GetRandomAttack());
-	if (GetStateEnum<SchoolBoyStateType>() == RandomAttack)
+	MisuzuStateType RandomAttack = static_cast<MisuzuStateType>(GetEnemyFsm()->GetRandomAttack());
+	if (GetStateEnum<MisuzuStateType>() == RandomAttack)
 	{
-		GetFSM()->ChangeState(SchoolBoyStateType::Idle);
+		GetFSM()->ChangeState(MisuzuStateType::Idle);
 	}
 	else
 	{
@@ -99,9 +101,9 @@ void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 
 
 
-void SchoolBoyState_Attack_Punch::Attack()
+void MisuzuState_Attack_Elbow::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
 	if (false == Result)
 		return;
 

@@ -20,6 +20,8 @@
 #include "FieldEnemy_TigerMan.h"
 #include "FieldEnemy_Waver.h"
 
+#include "FieldEnemy_Misuzu.h"
+
 EnemySpawner::EnemySpawner(FieldLevelBase* _Level)
 {
 	if (nullptr == _Level)
@@ -77,6 +79,15 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 		break;
 	case EnemyType::Waver:
 		EnemyPtr = Level->CreateActor<FieldEnemy_Waver>(UpdateOrder::Enemy);
+		break;
+	case EnemyType::Misuzu:
+		EnemyPtr = Level->CreateActor<FieldEnemy_Misuzu>(UpdateOrder::Enemy);
+		break;
+	case EnemyType::Yamada:
+		//EnemyPtr = Level->CreateActor<FieldEnemy_Waver>(UpdateOrder::Enemy);
+		break;
+	case EnemyType::Noise:
+		//EnemyPtr = Level->CreateActor<FieldEnemy_Waver>(UpdateOrder::Enemy);
 		break;
 	}
 

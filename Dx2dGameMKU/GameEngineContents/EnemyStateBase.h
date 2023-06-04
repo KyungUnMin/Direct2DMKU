@@ -22,6 +22,12 @@ public:
 	EnemyStateBase& operator=(const EnemyStateBase& _Other) = delete;
 	EnemyStateBase& operator=(const EnemyStateBase&& _Other) noexcept = delete;
 
+	//공격을 받지 않는 무적상태인지 여부
+	inline bool IsUnbeatable() const
+	{
+		return Unbeatable;
+	}
+
 protected:
 	void Start() override;
 	void EnterState() override;
@@ -81,8 +87,11 @@ protected:
 		return BGPtr;
 	}
 
-	
-	
+	//무적 상태
+	inline void SetUnbeatable()
+	{
+		Unbeatable = true;
+	}
 
 
 private:
@@ -94,6 +103,10 @@ private:
 	std::shared_ptr<BackGround> BGPtr = nullptr;
 
 	float SightRadius = 100.f;
+
+	//무적 상태여부
+	bool Unbeatable = false;
+
 
 	inline void ValidCheck(void* _Ptr) const
 	{

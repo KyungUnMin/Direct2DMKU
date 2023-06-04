@@ -81,6 +81,8 @@ void SchoolBoyState_Ready::EnterState()
 }
 
 
+
+
 void SchoolBoyState_Ready::Update(float _DeltaTime)
 {
 	EnemyStateBase::Update(_DeltaTime);
@@ -116,3 +118,13 @@ void SchoolBoyState_Ready::Update_GetUp()
 	GetFSM()->ChangeState(SchoolBoyStateType::Idle);
 }
 
+
+
+void SchoolBoyState_Ready::ExitState()
+{
+	EnemyStateBase::ExitState();
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+	float4 Pos = EnemyTrans->GetLocalPosition();
+	Pos.z = Pos.y;
+	EnemyTrans->SetLocalPosition(Pos);
+}

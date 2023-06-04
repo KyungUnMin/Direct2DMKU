@@ -1,35 +1,35 @@
 #include "PrecompileHeader.h"
-#include "SchoolBoyState_Walk.h"
+#include "MisuzuState_Walk.h"
 
-#include "SchoolBoyFSM.h"
+#include "MisuzuFSM.h"
 
-const std::string_view SchoolBoyState_Walk::AniName = "Walk";
-const std::string_view SchoolBoyState_Walk::AniFileName = "SchoolBoy_Walk.png";
-const std::pair<int, int> SchoolBoyState_Walk::AniCutFrame = std::pair<int, int>(5, 3);
-const float SchoolBoyState_Walk::AniInterTime = 0.08f;
+const std::string_view MisuzuState_Walk::AniName = "Walk";
+const std::string_view MisuzuState_Walk::AniFileName = "Misuzu_Walk.png";
+const std::pair<int, int> MisuzuState_Walk::AniCutFrame = std::pair<int, int>(5, 2);
+const float MisuzuState_Walk::AniInterTime = 0.08f;
 
-SchoolBoyState_Walk::SchoolBoyState_Walk()
+MisuzuState_Walk::MisuzuState_Walk()
 {
 
 }
 
-SchoolBoyState_Walk::~SchoolBoyState_Walk()
+MisuzuState_Walk::~MisuzuState_Walk()
 {
 
 }
 
 
-void SchoolBoyState_Walk::Start()
+void MisuzuState_Walk::Start()
 {
 	EnemyState_WalkBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
 
-	EnemyState_WalkBase::SetNextState(SchoolBoyStateType::Idle);
+	EnemyState_WalkBase::SetNextState(MisuzuStateType::Idle);
 }
 
-void SchoolBoyState_Walk::LoadAnimation()
+void MisuzuState_Walk::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -40,25 +40,25 @@ void SchoolBoyState_Walk::LoadAnimation()
 	RCGDefine::MoveContentPath(Dir, ResType::Image);
 	Dir.Move("Character");
 	Dir.Move("Enemy");
-	Dir.Move("SchoolBoy");
+	Dir.Move("Misuzu");
 	Dir.Move("Movement");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void SchoolBoyState_Walk::CreateAnimation()
+void MisuzuState_Walk::CreateAnimation()
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 11,
+		.End = 9,
 		.FrameInter = AniInterTime
 	});
 }
 
 
-void SchoolBoyState_Walk::EnterState()
+void MisuzuState_Walk::EnterState()
 {
 	EnemyState_WalkBase::EnterState();
 	GetRenderer()->ChangeAnimation(AniName);

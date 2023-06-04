@@ -1,25 +1,25 @@
 #include "PrecompileHeader.h"
-#include "SchoolBoyState_Idle.h"
+#include "MisuzuState_Idle.h"
 
 
-#include "SchoolBoyFSM.h"
+#include "MisuzuFSM.h"
 
-const std::string_view SchoolBoyState_Idle::AniName = "Idle";
-const std::string_view SchoolBoyState_Idle::AniFileName = "SchoolBoy_Idle.png";
-const std::pair<int, int> SchoolBoyState_Idle::AniCutFrame = std::pair<int, int>(5, 2);
-const float SchoolBoyState_Idle::AniInterTime = 0.08f;
+const std::string_view MisuzuState_Idle::AniName = "Idle";
+const std::string_view MisuzuState_Idle::AniFileName = "Misuzu_Idle.png";
+const std::pair<int, int> MisuzuState_Idle::AniCutFrame = std::pair<int, int>(5, 3);
+const float MisuzuState_Idle::AniInterTime = 0.08f;
 
-SchoolBoyState_Idle::SchoolBoyState_Idle()
+MisuzuState_Idle::MisuzuState_Idle()
 {
 
 }
 
-SchoolBoyState_Idle::~SchoolBoyState_Idle()
+MisuzuState_Idle::~MisuzuState_Idle()
 {
 
 }
 
-void SchoolBoyState_Idle::Start() 
+void MisuzuState_Idle::Start() 
 {
 	EnemyState_IdleBase::Start();
 
@@ -27,7 +27,7 @@ void SchoolBoyState_Idle::Start()
 	CreateAnimation();
 }
 
-void SchoolBoyState_Idle::LoadAnimation()
+void MisuzuState_Idle::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -38,25 +38,25 @@ void SchoolBoyState_Idle::LoadAnimation()
 	RCGDefine::MoveContentPath(Dir, ResType::Image);
 	Dir.Move("Character");
 	Dir.Move("Enemy");
-	Dir.Move("SchoolBoy");
+	Dir.Move("Misuzu");
 	Dir.Move("Movement");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void SchoolBoyState_Idle::CreateAnimation() 
+void MisuzuState_Idle::CreateAnimation() 
 {
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 7,
+		.End = 11,
 		.FrameInter = AniInterTime
 	});
 }
 
 
-void SchoolBoyState_Idle::EnterState()
+void MisuzuState_Idle::EnterState()
 {
 	EnemyState_IdleBase::EnterState();
 
@@ -64,7 +64,7 @@ void SchoolBoyState_Idle::EnterState()
 }
 
 
-void SchoolBoyState_Idle::Update(float _DeltaTime) 
+void MisuzuState_Idle::Update(float _DeltaTime) 
 {
 	EnemyState_IdleBase::Update(_DeltaTime);
 
@@ -73,8 +73,8 @@ void SchoolBoyState_Idle::Update(float _DeltaTime)
 
 
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
-	if (true == EnemyState_IdleBase::ChangeAttackState())
-		return;
+	/*if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;*/
 
 
 	//Idle 대기시간이 끝났을때만 이동상태로 변경
@@ -82,7 +82,7 @@ void SchoolBoyState_Idle::Update(float _DeltaTime)
 		return;
 
 
-	GetFSM()->ChangeState(SchoolBoyStateType::Walk);
+	GetFSM()->ChangeState(MisuzuStateType::Walk);
 }
 
 

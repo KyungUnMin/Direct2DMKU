@@ -11,7 +11,7 @@
 #include "BossIntroMovie.h"
 #include "BossVersus.h"
 #include "Fader.h"
-
+#include "EnemySpawner.h"
 
 
 //<텍스처 이름, 오프셋>
@@ -41,6 +41,7 @@ void SchoolBossLevel::Start()
 	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -290.f, -205.f });
+	GetEnemySpawner().CreateEnemy(EnemyType::Misuzu, float4::Zero);
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }

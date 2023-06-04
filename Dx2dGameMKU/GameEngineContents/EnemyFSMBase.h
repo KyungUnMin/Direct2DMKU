@@ -23,10 +23,11 @@ public:
 
 	virtual size_t GetRandomAttack() = 0;
 
+	//현재 State가 무적 상태인지 확인
+	bool IsUnbeatableState();
+
 protected:
-
 	
-
 
 private:
 	FieldEnemyBase* Enemy = nullptr;
