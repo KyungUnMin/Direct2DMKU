@@ -27,16 +27,17 @@ public:
 		return SpawnIdx;
 	}
 
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+
+	virtual void OnDamage(int _Damage);
 
 	inline int GetHp() const
 	{
 		return Hp;
 	}
-
-	virtual void OnDamage(int _Damage);
 
 	inline bool IsKO() const
 	{

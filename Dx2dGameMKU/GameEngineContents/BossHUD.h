@@ -26,8 +26,14 @@ protected:
 
 private:
 	static const std::vector<std::string_view> FileNames;
+	static const std::string_view KoFileName;
+	static const float SlowTimeRatio;
+	static const float SlowComeBackTime;
+	static const float KoRenderOffTime;
 
-	const float Duration = 0.5f;
+	//-------------Hp-----------
+
+	const float Duration = 1.5f;
 
 	float4 HpRatio = float4::Zero;
 	float StartRatio = 0.f;
@@ -35,12 +41,23 @@ private:
 
 	float MaxHp = -1.f;
 	float Timer = 0.f;
-	
 
+	//-------------Hp-----------
+
+
+
+	//-------------KO-----------
+	
+	std::shared_ptr<class GameEngineUIRenderer> KoRender = nullptr;
+	const float TimeSlowDuration = 0.5f;
+	bool IsKo = false;
+
+	//-------------KO-----------
 
 	void ImageLoad();
 	void CreateRenders();
 	
+	void KoExcute();
 };
 
 //898 120 ResScale

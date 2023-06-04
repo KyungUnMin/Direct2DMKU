@@ -4,6 +4,8 @@
 
 #include "MisuzuFSM.h"
 
+#include "FieldEnemyBase.h"
+
 const std::string_view MisuzuState_Idle::AniName = "Idle";
 const std::string_view MisuzuState_Idle::AniFileName = "Misuzu_Idle.png";
 const std::pair<int, int> MisuzuState_Idle::AniCutFrame = std::pair<int, int>(5, 3);

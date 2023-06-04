@@ -82,6 +82,6 @@ void MisuzuState_Damaged_KnockDown::Update(float _DeltaTime)
 	if (GetLiveTime() < LiveDuration)
 		return;
 
-	GetFSM()->ChangeState(MisuzuStateType::Idle);
+	//GetFSM()->ChangeState(MisuzuStateType::Idle);
 }
 
