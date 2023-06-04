@@ -922,6 +922,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\04.Boss\02.Misuzu\05.Damaged\04.Dizzy">
       <UniqueIdentifier>{e8fc4de8-5081-47a7-a4a3-fd63937c4050}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\08.BossHUD">
+      <UniqueIdentifier>{c9f67245-492c-408a-8039-7f7b9c373a97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1647,6 +1650,9 @@
     <ClCompile Include="MisuzuState_Walk.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.Boss\02.Misuzu\03.Movement\02.Walk</Filter>
     </ClCompile>
+    <ClCompile Include="BossHUD.cpp">
+      <Filter>03.Actor\04.UI\08.BossHUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2359,6 +2365,9 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Walk.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\04.Boss\02.Misuzu\03.Movement\02.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="BossHUD.h">
+      <Filter>03.Actor\04.UI\08.BossHUD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

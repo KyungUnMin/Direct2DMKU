@@ -44,6 +44,7 @@ enum class FieldUIRenderOrder
 {
 	Default = 0,
 	HUD,
+	BossHUD,
 	Conversation_BackImg,
 	Conversation_Portrait,
 
