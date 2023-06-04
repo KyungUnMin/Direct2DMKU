@@ -39,11 +39,11 @@ void FieldEnemyBase::Update(float _DeltaTime)
 	MsgAssert("Enemy는 반드시 EnemySpawner를 통해 생성되어야 합니다");
 }
 
-bool FieldEnemyBase::OnDamage(int _Damage)
+void FieldEnemyBase::OnDamage(int _Damage)
 {
 	Hp -= abs(_Damage);
 	if (0 < Hp)
-		return false;
+		return;
 
 	//적이 죽은 한순간
 	if (false == IsKOValue)
@@ -54,7 +54,6 @@ bool FieldEnemyBase::OnDamage(int _Damage)
 	
 	Hp = 0;
 	IsKOValue = true;
-	return true;
 }
 
 void FieldEnemyBase::CreateHitEffect(const float4& _Offset)

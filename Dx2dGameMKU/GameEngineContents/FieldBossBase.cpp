@@ -26,16 +26,26 @@ void FieldBossBase::Start()
 	FieldEnemyBase::Start();
 
 	GetRenderer()->GetTransform()->SetLocalScale(RenderScale);
+
 	HpBar = GetLevel()->CreateActor<BossHUD>(UpdateOrder::UI);
 	GameEngineTransform* HpBarTrans = HpBar->GetTransform();
 	HpBarTrans->AddLocalPosition(float4::Down * 265.f);
+	HpBar->Init(GetHp());
 }
 
-bool FieldBossBase::OnDamage(int _Damege)
+void FieldBossBase::SetStartHp(int _Hp)
 {
-	if (false == FieldEnemyBase::OnDamage(_Damege))
-		return false;
+	FieldEnemyBase::SetStartHp(_Hp);
+	HpBar->Init(_Hp);
+}
+
+
+
+void FieldBossBase::OnDamage(int _Damege)
+{
+	FieldEnemyBase::OnDamage(_Damege);
 
 	//UI에서 체력 감소 시키기
-	return true;
+	HpBar->SetHp(GetHp());
 }
+

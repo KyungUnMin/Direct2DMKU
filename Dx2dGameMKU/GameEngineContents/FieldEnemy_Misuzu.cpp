@@ -26,7 +26,7 @@ void FieldEnemy_Misuzu::Start()
 	FieldBossBase::Start();
 
 	//юс╫ц
-	FieldBossBase::SetStartHp(9999999);
+	FieldBossBase::SetStartHp(200);
 
 	Fsm.Init(this);
 }

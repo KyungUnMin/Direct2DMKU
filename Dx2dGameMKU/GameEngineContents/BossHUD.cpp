@@ -28,6 +28,7 @@ BossHUD::~BossHUD()
 
 }
 
+
 void BossHUD::Start()
 {
 	UIBase::Start();
@@ -36,11 +37,41 @@ void BossHUD::Start()
 	CreateRenders();
 }
 
+
+void BossHUD::SetHp(int _CurHp)
+{
+	//변경전 Hp비율
+	StartRatio = HpRatio.x;
+
+	//변경후 Hp비율
+	DestRatio = static_cast<float>(_CurHp) / MaxHp;
+
+	Timer = 0.f;
+}
+
+
+
 void BossHUD::Update(float _DeltaTime)
 {
-	static float Timer = 0.f;
+	UIBase::Update(_DeltaTime);
+
+	if (MaxHp <= 0.f)
+	{
+		MsgAssert("최대 체력이 음수입니다.\n Init함수를 호출시켜주세요");
+		return;
+	}
+
+	//이전프레임에서 이미 Duratino을 넘겼다면 return
+	if (Duration < Timer)
+		return;
+
 	Timer += _DeltaTime;
-	HpRatio.x = abs(sinf(Timer));
+	float TimeRatio = (Timer / Duration);
+	TimeRatio = std::clamp(TimeRatio, 0.f, 1.f);
+	float SinValue = sinf(GameEngineMath::PIE * 0.5f * TimeRatio);
+
+	float NowRatio = (StartRatio * (1.f - SinValue)) + (DestRatio * SinValue);
+	HpRatio.x = NowRatio;
 }
 
 
@@ -100,3 +131,5 @@ void BossHUD::CreateRenders()
 		Render->SetScaleToTexture(TexName);
 	}
 }
+
+

@@ -36,7 +36,7 @@ protected:
 		return Hp;
 	}
 
-	virtual bool OnDamage(int _Damage);
+	virtual void OnDamage(int _Damage);
 
 	inline bool IsKO() const
 	{
@@ -45,7 +45,7 @@ protected:
 
 	void CreateHitEffect(const float4& _Offset = float4::Up * 100.f);
 
-	inline void SetStartHp(int _Hp)
+	virtual inline void SetStartHp(int _Hp)
 	{
 		if (_Hp <= 0)
 		{

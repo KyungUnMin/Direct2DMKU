@@ -15,7 +15,9 @@ public:
 protected:
 	void Start() override;
 
-	bool OnDamage(int _Damege) override;
+	void OnDamage(int _Damege) override;
+
+	void SetStartHp(int _Hp) override;
 
 private:
 	static const float4 RenderScale;
