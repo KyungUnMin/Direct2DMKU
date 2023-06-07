@@ -13,6 +13,7 @@
 #include "MisuzuState_Attack_GetUp.h"
 #include "MisuzuState_Attack_Elbow.h"
 #include "MisuzuState_Attack_WUPunch.h"
+#include "MisuzuState_Attack_Tackle.h"
 
 //Damaged
 #include "MisuzuState_NormalDamaged_Face.h"
@@ -26,7 +27,8 @@
 
 const  std::string_view MisuzuFSM::NormalDamaged_FileName = "Misuzu_GetHit.png";
 
-const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::AttackGroup =
+//근거리
+const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::NearAttackGroup =
 {
 	//1페이즈
 	{
@@ -53,12 +55,42 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::AttackGroup =
 	},
 };
 
+//원거리
+const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
+{
+	//1페이즈
+	{
+		MisuzuStateType::Tackle,
+	},
+
+	//2페이즈
+	{
+		MisuzuStateType::Tackle,
+	},
+
+	//3페이즈
+	{
+		MisuzuStateType::Tackle,
+	},
+};
+
+
+
 size_t MisuzuFSM::GetRandomAttack()
 {
-	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(AttackGroup[CurPhase].size() - 1));
-	return static_cast<size_t>(AttackGroup[CurPhase][RandValue]);
+	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(NearAttackGroup[CurPhase].size() - 1));
+	return static_cast<size_t>(NearAttackGroup[CurPhase][RandValue]);
 }
 
+size_t MisuzuFSM::GetRandomFarAttack()
+{
+	//해당 페이즈에 원거리 공격이 존재하지 않는경우
+	if (true == FarAttackGroup[CurPhase].empty())
+		return -1;
+
+	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(FarAttackGroup[CurPhase].size() - 1));
+	return static_cast<size_t>(FarAttackGroup[CurPhase][RandValue]);
+}
 
 
 
@@ -91,7 +123,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<MisuzuState_Attack_GetUp>(MisuzuStateType::GetUpAttack);
 	FSMBase::CreateState<MisuzuState_Attack_Elbow>(MisuzuStateType::Elbow);
 	FSMBase::CreateState<MisuzuState_Attack_WUPunch>(MisuzuStateType::WUPunch);
-	//FSMBase::CreateState<MisuzuState_Attack_SideKick>(MisuzuStateType::SideKick);
+	FSMBase::CreateState<MisuzuState_Attack_Tackle>(MisuzuStateType::Tackle);
 
 
 	//Damaged
@@ -118,7 +150,7 @@ void MisuzuFSM::SetMaxHp(int _MaxHp)
 	}
 	
 	MaxHp = static_cast<size_t>(_MaxHp);
-	PhaseDivicer = (MaxHp / AttackGroup.size()) + 1;
+	PhaseDivicer = (MaxHp / NearAttackGroup.size()) + 1;
 }
 
 void MisuzuFSM::CalPhase(int _CurHp)
@@ -130,7 +162,7 @@ void MisuzuFSM::CalPhase(int _CurHp)
 	}
 
 	//체력에 따른 Phase 계산
-	size_t PhaseCount = AttackGroup.size();
+	size_t PhaseCount = NearAttackGroup.size();
 	for (size_t i = 1; i <= PhaseCount; ++i)
 	{
 		if (_CurHp <= static_cast<int>(PhaseDivicer * i))

@@ -13,6 +13,8 @@ enum class MisuzuStateType
 	GetUpAttack,
 	Elbow,
 	WUPunch,
+	Tackle,
+
 
 	//Damaged
 	NormalDamaged_Face,
@@ -41,6 +43,8 @@ public:
 	MisuzuFSM& operator=(const MisuzuFSM&& _Other) noexcept = delete;
 
 	size_t GetRandomAttack() override;
+
+	size_t GetRandomFarAttack() override;
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 
@@ -50,13 +54,18 @@ public:
 
 	inline bool IsLastPhase() const
 	{
-		return CurPhase == (AttackGroup.size() - 1);
+		return CurPhase == (NearAttackGroup.size() - 1);
 	}
+
+	
 
 protected:
 
 private:
-	static const std::vector<std::vector<MisuzuStateType>> AttackGroup;
+	//근거리
+	static const std::vector<std::vector<MisuzuStateType>> NearAttackGroup;
+	//원거리
+	static const std::vector<std::vector<MisuzuStateType>> FarAttackGroup;
 
 	size_t CurPhase = 0;
 	size_t PhaseDivicer = 0;

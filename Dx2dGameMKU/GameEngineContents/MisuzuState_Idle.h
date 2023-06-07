@@ -25,5 +25,7 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
+
+	bool FarAttackExcute(int _Percent);
 };
 

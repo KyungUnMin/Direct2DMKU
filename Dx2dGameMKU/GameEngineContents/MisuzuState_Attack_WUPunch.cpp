@@ -5,7 +5,6 @@
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
-#include "FieldLevelBase.h"
 #include "FieldCamController.h"
 
 const std::string_view MisuzuState_Attack_WUPunch::AniName = "Attack_WUPunch";
@@ -31,8 +30,6 @@ void MisuzuState_Attack_WUPunch::Start()
 
 	LoadAnimation();
 	CreateAnimation();
-
-	CamCtrl = &(FieldLevelBase::GetPtr()->GetCameraController());
 }
 
 void MisuzuState_Attack_WUPunch::LoadAnimation()
@@ -66,6 +63,7 @@ void MisuzuState_Attack_WUPunch::CreateAnimation()
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
 	Render->SetAnimationStartEvent(AniName, AttackFrm + 1, [this]()
 	{
+		FieldCamController* CamCtrl = this->GetCamCtrl();
 		CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.1f);
 	});
 }
@@ -80,7 +78,7 @@ void MisuzuState_Attack_WUPunch::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue();
 	
-	CamCtrl->SetZoom(0.95f, AniInterTime * static_cast<float>(AttackFrm));
+	GetCamCtrl()->SetZoom(0.95f, AniInterTime * static_cast<float>(AttackFrm));
 }
 
 
@@ -134,6 +132,7 @@ void MisuzuState_Attack_WUPunch::ExitState()
 {
 	EnemyState_AttackBase::ExitState();
 
+	FieldCamController* CamCtrl = this->GetCamCtrl();
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.1f);
 	IsAttackHited = false;
 }

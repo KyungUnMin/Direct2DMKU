@@ -44,6 +44,8 @@ public:
 	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
 	void SetDirection(bool IsRight);
 
+	//플레이어의 이동방향을 담은 벡터 반환
+	float4 GetMoveDirVec();
 
 protected:
 	void Start() override;
@@ -74,6 +76,9 @@ private:
 	const float4 DamageEffect_StomachOffset = float4{ 0.f, 100.f, -100.f };
 	const float4 DamageEffect_JawOffset = float4{ 0.f, 150.f, -100.f };
 	const float4 DamageEffect_BlowBackOffset = float4{ 0.f, 100.f, -100.f };
+
+
+	float4 PrevPos = float4::Zero;
 
 	void CheckDirection();
 

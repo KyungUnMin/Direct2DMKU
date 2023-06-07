@@ -23,6 +23,8 @@ public:
 
 	virtual size_t GetRandomAttack() = 0;
 
+	virtual size_t GetRandomFarAttack() { return -1; };
+
 	//현재 State가 무적 상태인지 확인
 	bool IsUnbeatableState();
 

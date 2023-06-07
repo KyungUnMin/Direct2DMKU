@@ -47,6 +47,9 @@ void FieldPlayer::Update(float _DeltaTime)
 	if (GameState::OnField != RCG_GameCore::GetCurGameState())
 		return;
 
+	//FSM을 이용해 움직이기 전 위치값 저장(이전 프레임의 위치값)
+	PrevPos = GetTransform()->GetWorldPosition();
+
 	FieldActorBase::Update(_DeltaTime);
 	CheckDirection();
 	Fsm.Update(_DeltaTime);
@@ -240,3 +243,9 @@ void FieldPlayer::LevelChangeEnd()
 }
 
 
+
+float4 FieldPlayer::GetMoveDirVec()
+{
+	float4 NowPos = GetTransform()->GetWorldPosition();
+	return (NowPos - PrevPos);
+}

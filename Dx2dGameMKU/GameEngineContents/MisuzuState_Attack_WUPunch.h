@@ -29,7 +29,6 @@ private:
 	static const int Damage;
 	static const int AttackFrm;
 
-	class FieldCamController* CamCtrl = nullptr;
 	bool IsAttackHited = false;
 
 	void LoadAnimation();

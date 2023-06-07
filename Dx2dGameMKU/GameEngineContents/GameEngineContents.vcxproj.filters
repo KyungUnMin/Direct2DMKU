@@ -943,6 +943,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\04.Taunt">
       <UniqueIdentifier>{83e554b3-3d9e-4f8a-9008-8eb511872452}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\04.Tackle">
+      <UniqueIdentifier>{fc89b1e9-7d5d-40ac-a573-26e2bf501841}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1632,9 +1635,6 @@
     <ClCompile Include="MisuzuFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="MisuzuState_Attack_SideKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="MisuzuState_Damaged_BlowBack.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\02.BlowBack</Filter>
     </ClCompile>
@@ -1679,6 +1679,9 @@
     </ClCompile>
     <ClCompile Include="MisuzuState_Taunt.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\04.Taunt</Filter>
+    </ClCompile>
+    <ClCompile Include="MisuzuState_Attack_Tackle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\04.Tackle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2357,9 +2360,6 @@
     <ClInclude Include="MisuzuFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\02.FSM</Filter>
     </ClInclude>
-    <ClInclude Include="MisuzuState_Attack_SideKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="MisuzuState_Damaged_BlowBack.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\02.BlowBack</Filter>
     </ClInclude>
@@ -2404,6 +2404,9 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Taunt.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\04.Taunt</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Attack_Tackle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\04.Tackle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

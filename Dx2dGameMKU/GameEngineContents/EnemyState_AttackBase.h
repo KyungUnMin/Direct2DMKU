@@ -42,7 +42,7 @@ protected:
 	void SetAttackColValue(const float4& _Offset = float4{50.f, 0.f, 0.f}, const float4& _Scale = float4{100.f, 100.f, 100.f});
 
 
-	void AttackCheck();
+	bool AttackCheck();
 
 	//플레이어와 충돌했을때 처리해야 하는 상황
 	virtual void Attack() = 0;
@@ -69,12 +69,17 @@ protected:
 	}
 
 
+	inline FieldCamController* GetCamCtrl() const
+	{
+		return CamCtrl;
+	}
+
 private:
 	//지금 공격을 하고 있는 Enemy(모든 Enemy들 중에 한명만 공격시키기 위함)
 	static FieldEnemyBase* AttackEnemy;
 
 	std::shared_ptr<GameEngineCollision> AttackCollider = nullptr;
-
+	class FieldCamController* CamCtrl = nullptr;
 
 	//True면 오른쪽, false면 왼쪽
 	bool EnemyDir = false;

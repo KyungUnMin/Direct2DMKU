@@ -6,6 +6,7 @@
 
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
+#include "FieldLevelBase.h"
 
 
 FieldEnemyBase* EnemyState_AttackBase::AttackEnemy = nullptr;
@@ -25,6 +26,7 @@ void EnemyState_AttackBase::Start()
 	EnemyStateBase::Start();
 
 	AttackCollider = GetEnemy()->GetAttackCollider();
+	CamCtrl = &(FieldLevelBase::GetPtr()->GetCameraController());
 }
 
 
@@ -80,7 +82,7 @@ void EnemyState_AttackBase::SetAttackColValue(const float4& _Offset, const float
 }
 
 
-void EnemyState_AttackBase::AttackCheck()
+bool EnemyState_AttackBase::AttackCheck()
 {
 	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
 	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
@@ -89,7 +91,7 @@ void EnemyState_AttackBase::AttackCheck()
 	const TransformData& PlayerColData = PlayerCol->GetTransform()->GetTransDataRef();
 
 	if (nullptr == PlayerCol)
-		return;
+		return false;
 
 
 	std::shared_ptr<FieldPlayer> PlayerPtr = FieldPlayer::GetPtr();
@@ -110,6 +112,7 @@ void EnemyState_AttackBase::AttackCheck()
 	}
 
 	Attack();
+	return true;
 }
 
 
