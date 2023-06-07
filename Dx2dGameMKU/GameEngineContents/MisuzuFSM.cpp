@@ -11,9 +11,7 @@
 //Attack
 #include "MisuzuState_Attack_GetUp.h"
 #include "MisuzuState_Attack_Elbow.h"
-//#include "MisuzuState_Attack_AxeKick.h"
-//#include "MisuzuState_Attack_Punch.h"
-//#include "MisuzuState_Attack_SideKick.h"
+#include "MisuzuState_Attack_WUPunch.h"
 
 //Damaged
 #include "MisuzuState_NormalDamaged_Face.h"
@@ -32,7 +30,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::AttackGroup =
 	//1페이즈
 	{
 		MisuzuStateType::Elbow,
-		//MisuzuStateType::AxeKick,
+		MisuzuStateType::WUPunch,
 		//MisuzuStateType::Punch,
 		//MisuzuStateType::SideKick
 	},
@@ -40,7 +38,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::AttackGroup =
 	//2페이즈
 	{
 		MisuzuStateType::Elbow,
-		//MisuzuStateType::AxeKick,
+		MisuzuStateType::WUPunch,
 		//MisuzuStateType::Punch,
 		//MisuzuStateType::SideKick
 	},
@@ -48,7 +46,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::AttackGroup =
 	//3페이즈
 	{
 		MisuzuStateType::Elbow,
-		//MisuzuStateType::AxeKick,
+		MisuzuStateType::WUPunch,
 		//MisuzuStateType::Punch,
 		//MisuzuStateType::SideKick
 	},
@@ -90,7 +88,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	//Attack
 	FSMBase::CreateState<MisuzuState_Attack_GetUp>(MisuzuStateType::GetUpAttack);
 	FSMBase::CreateState<MisuzuState_Attack_Elbow>(MisuzuStateType::Elbow);
-	//FSMBase::CreateState<MisuzuState_Attack_Punch>(MisuzuStateType::Punch);
+	FSMBase::CreateState<MisuzuState_Attack_WUPunch>(MisuzuStateType::WUPunch);
 	//FSMBase::CreateState<MisuzuState_Attack_SideKick>(MisuzuStateType::SideKick);
 
 

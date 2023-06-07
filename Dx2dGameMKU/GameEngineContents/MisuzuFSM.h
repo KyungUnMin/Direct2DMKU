@@ -11,6 +11,7 @@ enum class MisuzuStateType
 	//Attack
 	GetUpAttack,
 	Elbow,
+	WUPunch,
 
 	//Damaged
 	NormalDamaged_Face,
