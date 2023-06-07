@@ -15,6 +15,7 @@
 #include "MisuzuState_Attack_WUPunch.h"
 #include "MisuzuState_Attack_Tackle.h"
 #include "MisuzuState_Attack_Slap.h"
+#include "MisuzuState_Attack_Meteor.h"
 
 //Damaged
 #include "MisuzuState_NormalDamaged_Face.h"
@@ -55,16 +56,20 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
+		//임시
+		MisuzuStateType::Meteor
 	},
 
 	//2페이즈
 	{
 		MisuzuStateType::Tackle,
+
 	},
 
 	//3페이즈
 	{
 		MisuzuStateType::Tackle,
+		MisuzuStateType::Meteor,
 	},
 };
 
@@ -123,6 +128,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<MisuzuState_Attack_WUPunch>(MisuzuStateType::WUPunch);
 	FSMBase::CreateState<MisuzuState_Attack_Tackle>(MisuzuStateType::Tackle);
 	FSMBase::CreateState<MisuzuState_Attack_Slap>(MisuzuStateType::Slap);
+	FSMBase::CreateState<MisuzuState_Attack_Meteor>(MisuzuStateType::Meteor);
 
 
 	//Damaged

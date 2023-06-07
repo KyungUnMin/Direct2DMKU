@@ -15,6 +15,7 @@ enum class MisuzuStateType
 	WUPunch,
 	Tackle,
 	Slap,
+	Meteor,
 
 
 	//Damaged

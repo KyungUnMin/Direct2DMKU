@@ -71,11 +71,29 @@ protected:
 
 	bool IsRightDir();
 
+
+
 	//State가 시작될 때를 기준으로 점프
 	void Update_SinJump(float _Duration, float _MaxHeight = 80.f);
 
 	//Timer를 직접 넣어주는 점프
 	void Update_SinJump(float _Timer, float _Duration, float _MaxHeight);
+
+	//State가 시작될 때를 기준으로 점프(아래로 떨어지지 않음)
+	void Update_SinHalfJump(float _Duration, float _MaxHeight = 80.f);
+
+	//Timer를 직접 넣어주는 점프(아래로 떨어지지 않음)
+	void Update_SinHalfJump(float _Timer, float _Duration, float _MaxHeight);
+
+
+	//State가 시작될 때를 기준으로 착지(공중에서 시작)
+	void Update_SinHalfFall(float _Duration, float _MaxHeight = 80.f);
+
+	//Timer를 직접 넣어주는 착지(공중에서 시작)
+	void Update_SinHalfFall(float _Timer, float _Duration, float _MaxHeight);
+
+
+
 
 	bool Update_AccMove(
 		float _DeltaTime, float _Ratio,

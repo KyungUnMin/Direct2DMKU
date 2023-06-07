@@ -111,6 +111,8 @@ bool EnemyStateBase::IsRightDir()
 
 
 
+
+
 void EnemyStateBase::Update_SinJump(float _Duration, float _MaxHeight /*= 80.f*/)
 {
 	Update_SinJump(GetLiveTime(), _Duration, _MaxHeight);
@@ -128,6 +130,52 @@ void EnemyStateBase::Update_SinJump(float _Timer, float _Duration, float _MaxHei
 	float NowHeight = _MaxHeight * SinValue;
 	EnemyPtr->SetHeight(NowHeight);
 }
+
+
+void EnemyStateBase::Update_SinHalfJump(float _Duration, float _MaxHeight /*= 80.f*/)
+{
+	Update_SinHalfJump(GetLiveTime(), _Duration, _MaxHeight);
+}
+
+
+
+void EnemyStateBase::Update_SinHalfJump(float _Timer, float _Duration, float _MaxHeight)
+{
+	float Ratio = (_Timer / _Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	float SinValue = std::sinf(GameEngineMath::PIE * 0.5f * Ratio);
+
+	float NowHeight = _MaxHeight * SinValue;
+	EnemyPtr->SetHeight(NowHeight);
+}
+
+
+
+void EnemyStateBase::Update_SinHalfFall(float _Duration, float _MaxHeight /*= 80.f*/)
+{
+	Update_SinHalfFall(GetLiveTime(), _Duration, _MaxHeight);
+}
+
+
+
+void EnemyStateBase::Update_SinHalfFall(float _Timer, float _Duration, float _MaxHeight)
+{
+	float Ratio = (_Timer / _Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	float HalfPI = GameEngineMath::PIE * 0.5f;
+
+	//0.5파이 ~ 1파이
+	float SinInput = HalfPI + (HalfPI * Ratio);
+	float SinValue = std::sinf(SinInput);
+
+	float NowHeight = _MaxHeight * SinValue;
+	EnemyPtr->SetHeight(NowHeight);
+}
+
+
+
 
 
 bool EnemyStateBase::Update_AccMove(
