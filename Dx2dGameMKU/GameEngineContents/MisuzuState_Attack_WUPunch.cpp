@@ -92,6 +92,13 @@ void MisuzuState_Attack_WUPunch::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
+	//공격을 적중 시킨 경우
+	if (true == IsAttackHited)
+	{
+		GetFSM()->ChangeState(MisuzuStateType::Taunt);
+		return;
+	}
+
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
 	{
@@ -120,6 +127,7 @@ void MisuzuState_Attack_WUPunch::Attack()
 		return;
 
 	DataMgr::MinusPlayerHP(Damage);
+	IsAttackHited = true;
 }
 
 void MisuzuState_Attack_WUPunch::ExitState()
@@ -127,4 +135,5 @@ void MisuzuState_Attack_WUPunch::ExitState()
 	EnemyState_AttackBase::ExitState();
 
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.1f);
+	IsAttackHited = false;
 }

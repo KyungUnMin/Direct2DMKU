@@ -17,6 +17,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
 	void ExitState() override;
+	
 
 	void Attack() override;
 
@@ -29,7 +30,7 @@ private:
 	static const int AttackFrm;
 
 	class FieldCamController* CamCtrl = nullptr;
-
+	bool IsAttackHited = false;
 
 	void LoadAnimation();
 	void CreateAnimation();

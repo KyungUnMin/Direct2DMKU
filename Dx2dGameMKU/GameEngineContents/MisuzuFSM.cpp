@@ -7,6 +7,7 @@
 #include "MisuzuState_Idle.h"
 #include "MisuzuState_Walk.h"
 #include "MisuzuState_Defeat.h"
+#include "MisuzuState_Taunt.h"
 
 //Attack
 #include "MisuzuState_Attack_GetUp.h"
@@ -83,6 +84,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<MisuzuState_Idle>(MisuzuStateType::Idle);
 	FSMBase::CreateState<MisuzuState_Walk>(MisuzuStateType::Walk);
 	FSMBase::CreateState<MisuzuState_Defeat>(MisuzuStateType::Defeat);
+	FSMBase::CreateState<MisuzuState_Taunt>(MisuzuStateType::Taunt);
 
 
 	//Attack

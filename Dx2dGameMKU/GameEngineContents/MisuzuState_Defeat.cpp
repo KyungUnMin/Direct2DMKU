@@ -24,7 +24,7 @@ MisuzuState_Defeat::~MisuzuState_Defeat()
 
 void MisuzuState_Defeat::Start()
 {
-	EnemyState_IdleBase::Start();
+	EnemyStateBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -73,7 +73,7 @@ void MisuzuState_Defeat::CreateAnimation()
 
 void MisuzuState_Defeat::EnterState()
 {
-	EnemyState_IdleBase::EnterState();
+	EnemyStateBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(Sink_AniName);
 	EnemyStateBase::OffMainCollider();
@@ -82,7 +82,7 @@ void MisuzuState_Defeat::EnterState()
 
 void MisuzuState_Defeat::Update(float _DeltaTime)
 {
-	EnemyState_IdleBase::Update(_DeltaTime);
+	EnemyStateBase::Update(_DeltaTime);
 
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	if (true == IsCrying || false == Render->IsAnimationEnd())

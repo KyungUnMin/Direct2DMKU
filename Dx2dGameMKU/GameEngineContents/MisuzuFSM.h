@@ -7,6 +7,7 @@ enum class MisuzuStateType
 	Idle,
 	Walk,
 	Defeat,
+	Taunt,
 
 	//Attack
 	GetUpAttack,

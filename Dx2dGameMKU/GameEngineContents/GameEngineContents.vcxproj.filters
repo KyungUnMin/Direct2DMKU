@@ -940,6 +940,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\01.Base">
       <UniqueIdentifier>{63d90bb1-f3e0-4609-a597-9745934b1684}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\04.Taunt">
+      <UniqueIdentifier>{83e554b3-3d9e-4f8a-9008-8eb511872452}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1674,6 +1677,9 @@
     <ClCompile Include="MisuzuState_Attack_WUPunch.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\03.WUPunch</Filter>
     </ClCompile>
+    <ClCompile Include="MisuzuState_Taunt.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\04.Taunt</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2395,6 +2401,9 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Attack_WUPunch.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\03.WUPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Taunt.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\04.Taunt</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@ enum class SortType
 
 class GameEngineRenderer;
 class GameEngineRenderTarget;
+class GameEngineLevel;
 
 class GameEngineCamera : public GameEngineActor
 {

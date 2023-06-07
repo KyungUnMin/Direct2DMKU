@@ -402,6 +402,10 @@
     <ClInclude Include="MisuzuState_NormalDamaged_Face.h" />
     <ClInclude Include="MisuzuState_NormalDamaged_Jaw.h" />
     <ClInclude Include="MisuzuState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="MisuzuState_Taunt.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MisuzuState_Walk.h" />
     <ClInclude Include="OpeningDiaEffect.h">
       <SubType>
@@ -1027,6 +1031,10 @@
     <ClCompile Include="MisuzuState_NormalDamaged_Face.cpp" />
     <ClCompile Include="MisuzuState_NormalDamaged_Jaw.cpp" />
     <ClCompile Include="MisuzuState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="MisuzuState_Taunt.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MisuzuState_Walk.cpp" />
     <ClCompile Include="OpeningDiaEffect.cpp">
       <SubType>
