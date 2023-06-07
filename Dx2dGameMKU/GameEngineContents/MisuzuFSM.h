@@ -8,10 +8,7 @@ enum class MisuzuStateType
 	Walk,
 
 	//Attack
-	AxeKick,
-	Elbow,
-	Punch,
-	SideKick,
+	GetUpAttack,
 
 	//Damaged
 	NormalDamaged_Face,

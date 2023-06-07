@@ -65,6 +65,11 @@ bool FieldEnemy_Misuzu::OnDamage_Face(int _Damage)
 		Fsm.ChangeState(MisuzuStateType::Damaged_KnockDown);
 		return true;
 	}
+	//else if (MisuzuStateType::Damaged_Dizzy == Fsm.GetNowState<MisuzuStateType>())
+	//{
+	//	//TODO
+	//	return true;
+	//}
 
 	Fsm.ChangeState(MisuzuStateType::NormalDamaged_Face);
 	return true;

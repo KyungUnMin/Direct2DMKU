@@ -7,7 +7,7 @@ const std::string_view MisuzuState_Damaged_Dizzy::AniName = "Dizzy";
 const std::string_view MisuzuState_Damaged_Dizzy::AniFileName = "Misuzu_Dizzy.png";
 const std::pair<int, int> MisuzuState_Damaged_Dizzy::AniCutFrame = std::pair<int, int>(5, 1);
 const std::pair<size_t, size_t> MisuzuState_Damaged_Dizzy::AniFrameIndex = std::pair<size_t, size_t>{ 0, 3 };
-const float MisuzuState_Damaged_Dizzy::AniInterTime = 0.08f;
+const float MisuzuState_Damaged_Dizzy::AniInterTime = 0.2f;
 
 MisuzuState_Damaged_Dizzy::MisuzuState_Damaged_Dizzy()
 {
@@ -78,6 +78,8 @@ void MisuzuState_Damaged_Dizzy::Update(float _DeltaTime)
 	if (GetLiveTime() < Duration)
 		return;
 
-	//일단 아이들, 나중에 GetUp으로 바꿀예정
-	GetFSM()->ChangeState(MisuzuStateType::Idle);
+	if (false == GetRenderer()->IsAnimationEnd())
+		return;
+
+	GetFSM()->ChangeState(MisuzuStateType::GetUpAttack);
 }

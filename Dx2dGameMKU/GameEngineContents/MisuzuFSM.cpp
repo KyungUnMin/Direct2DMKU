@@ -8,6 +8,7 @@
 #include "MisuzuState_Walk.h"
 
 //Attack
+#include "MisuzuState_Attack_GetUp.h"
 //#include "MisuzuState_Attack_AxeKick.h"
 //#include "MisuzuState_Attack_Elbow.h"
 //#include "MisuzuState_Attack_Punch.h"
@@ -66,7 +67,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<MisuzuState_Attack_AxeKick>(MisuzuStateType::AxeKick);
+	FSMBase::CreateState<MisuzuState_Attack_GetUp>(MisuzuStateType::GetUpAttack);
 	//FSMBase::CreateState<MisuzuState_Attack_Elbow>(MisuzuStateType::Elbow);
 	//FSMBase::CreateState<MisuzuState_Attack_Punch>(MisuzuStateType::Punch);
 	//FSMBase::CreateState<MisuzuState_Attack_SideKick>(MisuzuStateType::SideKick);

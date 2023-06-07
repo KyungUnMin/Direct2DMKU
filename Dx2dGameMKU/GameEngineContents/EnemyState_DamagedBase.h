@@ -14,7 +14,12 @@ public:
 
 protected:
 	void EnterState() override;
+
+	//공격을 맞아 날라가기
 	bool Update_BlowBack(float _DeltaTime);
+	//공격을 맞아 날라가기 + 벽에 튕겨져 나오기
+	void Update_BlowReflect(float _DeltaTime);
+
 	void ExitState() override;
 
 	inline void SetBlowValue(float _StartAcc, float _Duration = 1.0f)
@@ -36,17 +41,19 @@ protected:
 		EnemyDir = !_IsRight;
 	}
 
-	void Update_BlowVertical(float _Ratio);
 
 private:
 	float StartAcc = 2000.f;
 	float Duration = 1.0f;
 	const float StartHeight = 100.f;
 	bool IsHeightFix = false;
+	bool IsWallHit = false;
 
 
 	bool EnemyDir = true;
 
+	void Update_BlowVertical(float _Ratio);
 	bool Update_BlowHorizon(float _Ratio, float _DeltaTime);
+	void CreateWallEffect();
 };
 

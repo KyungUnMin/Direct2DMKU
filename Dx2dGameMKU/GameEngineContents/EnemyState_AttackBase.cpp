@@ -3,7 +3,6 @@
 
 #include <GameEngineCore/GameEngineCollision.h>
 
-#include "RCGEnums.h"
 
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
@@ -171,3 +170,17 @@ void EnemyState_AttackBase::ExitState()
 
 
 
+void EnemyState_AttackBase::EffectInit(std::shared_ptr<GameEngineActor> _Effect, const float4& _Offset, const float4& _Scale)
+{
+	if (nullptr == _Effect)
+	{
+		MsgAssert("Effect 포인터가 nullptr입니다");
+		return;
+	}
+
+	GameEngineTransform* EffectTrans = _Effect->GetTransform();
+	const float4 EnemyPos = GetEnemy()->GetTransform()->GetWorldPosition();
+
+	EffectTrans->SetLocalPosition(EnemyPos + _Offset);
+	EffectTrans->SetLocalScale(_Scale);
+}

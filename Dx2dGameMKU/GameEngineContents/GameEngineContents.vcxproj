@@ -383,7 +383,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="MisuzuFSM.h" />
-    <ClInclude Include="MisuzuState_Attack_AxeKick.h" />
+    <ClInclude Include="MisuzuState_Attack_GetUp.h" />
     <ClInclude Include="MisuzuState_Attack_Elbow.h" />
     <ClInclude Include="MisuzuState_Attack_Punch.h" />
     <ClInclude Include="MisuzuState_Attack_SideKick.h" />
@@ -1000,7 +1000,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="MisuzuFSM.cpp" />
-    <ClCompile Include="MisuzuState_Attack_AxeKick.cpp" />
+    <ClCompile Include="MisuzuState_Attack_GetUp.cpp" />
     <ClCompile Include="MisuzuState_Attack_Elbow.cpp" />
     <ClCompile Include="MisuzuState_Attack_Punch.cpp" />
     <ClCompile Include="MisuzuState_Attack_SideKick.cpp" />

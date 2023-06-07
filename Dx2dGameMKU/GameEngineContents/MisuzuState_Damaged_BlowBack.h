@@ -33,9 +33,5 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
-	
-	void Update_Blow(float _DeltaTime);
-	void CreateWallEffect();
-	void Update_WallHit(float _DeltaTime);
 };
 

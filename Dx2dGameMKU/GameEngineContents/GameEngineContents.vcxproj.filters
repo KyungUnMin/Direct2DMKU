@@ -925,6 +925,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Noise">
       <UniqueIdentifier>{43632a3f-4e4b-4a03-bfbf-ba2d5e94e022}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\01.GetUp">
+      <UniqueIdentifier>{3a05e40d-22d2-4ce2-9161-9cfd00cc90b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\05.GroundHit">
+      <UniqueIdentifier>{28a9b6d4-6300-4f35-9077-ec31a89d4fa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1614,9 +1620,6 @@
     <ClCompile Include="MisuzuFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="MisuzuState_Attack_AxeKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="MisuzuState_Attack_Elbow.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
     </ClCompile>
@@ -1652,6 +1655,9 @@
     </ClCompile>
     <ClCompile Include="BossHUD.cpp">
       <Filter>03.Actor\04.UI\08.BossHUD</Filter>
+    </ClCompile>
+    <ClCompile Include="MisuzuState_Attack_GetUp.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\01.GetUp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2330,9 +2336,6 @@
     <ClInclude Include="MisuzuFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\02.FSM</Filter>
     </ClInclude>
-    <ClInclude Include="MisuzuState_Attack_AxeKick.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="MisuzuState_Attack_Elbow.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
     </ClInclude>
@@ -2368,6 +2371,9 @@
     </ClInclude>
     <ClInclude Include="BossHUD.h">
       <Filter>03.Actor\04.UI\08.BossHUD</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Attack_GetUp.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\01.GetUp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

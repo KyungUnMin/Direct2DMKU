@@ -1,6 +1,9 @@
 #pragma once
 #include "EnemyStateBase.h"
 
+#include "RCGEnums.h"
+#include "FieldLevelBase.h"
+
 class FieldEnemyBase;
 class GameEngineCollision;
 
@@ -56,6 +59,16 @@ protected:
 		return AttackCollider;
 	}
 
+	template<typename EffectType>
+	std::shared_ptr<EffectType> CreateEffect(const float4& _Offset = float4::Zero, const float4& _Scale = float4::One)
+	{
+		std::shared_ptr<EffectType> Effect = nullptr;
+		Effect = FieldLevelBase::GetPtr()->CreateActor<EffectType>(UpdateOrder::Effect);
+		EffectInit(Effect, _Offset, _Scale);
+		return Effect;
+	}
+
+
 private:
 	//지금 공격을 하고 있는 Enemy(모든 Enemy들 중에 한명만 공격시키기 위함)
 	static FieldEnemyBase* AttackEnemy;
@@ -77,5 +90,7 @@ private:
 	float MoveStartTime = 0.0f;
 
 	float MoveDuration = 0.5f;
+
+	void EffectInit(std::shared_ptr<GameEngineActor> _Effect, const float4& _Offset, const float4& _Scale);
 };
 
