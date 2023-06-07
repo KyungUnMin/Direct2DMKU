@@ -7,10 +7,10 @@
 #include "FieldPlayer.h"
 
 const std::string_view MisuzuState_Attack_Elbow::AniName = "Attack_Elbow";
-const std::string_view MisuzuState_Attack_Elbow::AniFileName = "Misuzu_Elbow_Uppercut.png";
-const std::pair<int, int> MisuzuState_Attack_Elbow::AniCutFrame = std::pair<int, int>(5, 2);
+const std::string_view MisuzuState_Attack_Elbow::AniFileName = "Misuzu_Elbow.png";
+const std::pair<int, int> MisuzuState_Attack_Elbow::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Attack_Elbow::AniInterTime = 0.08f;
-const int MisuzuState_Attack_Elbow::Damage = 5;
+const int MisuzuState_Attack_Elbow::Damage = 10;
 
 MisuzuState_Attack_Elbow::MisuzuState_Attack_Elbow()
 {
@@ -53,11 +53,11 @@ void MisuzuState_Attack_Elbow::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 6,
+		.End = 10,
 		.FrameInter = AniInterTime
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 5);
 }
 
 
@@ -103,7 +103,7 @@ void MisuzuState_Attack_Elbow::Update(float _DeltaTime)
 
 void MisuzuState_Attack_Elbow::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
 	if (false == Result)
 		return;
 

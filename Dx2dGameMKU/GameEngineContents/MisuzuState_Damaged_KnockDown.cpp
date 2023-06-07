@@ -77,7 +77,8 @@ void MisuzuState_Damaged_KnockDown::Update(float _DeltaTime)
 {
 	EnemyState_DamagedBase::Update(_DeltaTime);
 
-	EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
+	//EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
+	EnemyState_DamagedBase::Update_BlowReflect(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

@@ -934,6 +934,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\03.Defeat">
       <UniqueIdentifier>{e9d3e3a0-aa49-488f-86d3-662e61fb3fad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\02.Elbow">
+      <UniqueIdentifier>{5cb7de56-ea76-4044-9b74-698e4dd27b2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\03.WUPunch">
+      <UniqueIdentifier>{6a616bbb-e47d-4fe5-a257-f8ac3956300b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1623,12 +1629,6 @@
     <ClCompile Include="MisuzuFSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\02.FSM</Filter>
     </ClCompile>
-    <ClCompile Include="MisuzuState_Attack_Elbow.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="MisuzuState_Attack_Punch.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="MisuzuState_Attack_SideKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
     </ClCompile>
@@ -1667,6 +1667,12 @@
     </ClCompile>
     <ClCompile Include="MisuzuState_Defeat.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\03.Defeat</Filter>
+    </ClCompile>
+    <ClCompile Include="MisuzuState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\02.Elbow</Filter>
+    </ClCompile>
+    <ClCompile Include="MisuzuState_Attack_Punch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\03.WUPunch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2345,12 +2351,6 @@
     <ClInclude Include="MisuzuFSM.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\02.FSM</Filter>
     </ClInclude>
-    <ClInclude Include="MisuzuState_Attack_Elbow.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="MisuzuState_Attack_Punch.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="MisuzuState_Attack_SideKick.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack</Filter>
     </ClInclude>
@@ -2389,6 +2389,12 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Defeat.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\03.Defeat</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Attack_Elbow.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\02.Elbow</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Attack_Punch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\03.WUPunch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

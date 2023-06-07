@@ -10,8 +10,8 @@
 
 //Attack
 #include "MisuzuState_Attack_GetUp.h"
+#include "MisuzuState_Attack_Elbow.h"
 //#include "MisuzuState_Attack_AxeKick.h"
-//#include "MisuzuState_Attack_Elbow.h"
 //#include "MisuzuState_Attack_Punch.h"
 //#include "MisuzuState_Attack_SideKick.h"
 
@@ -27,19 +27,37 @@
 
 const  std::string_view MisuzuFSM::NormalDamaged_FileName = "Misuzu_GetHit.png";
 
-
-const std::vector<MisuzuStateType> MisuzuFSM::AttackGroup =
+const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::AttackGroup =
 {
-	//MisuzuStateType::AxeKick,
-	//MisuzuStateType::Elbow,
-	//MisuzuStateType::Punch,
-	//MisuzuStateType::SideKick
+	//1페이즈
+	{
+		MisuzuStateType::Elbow,
+		//MisuzuStateType::AxeKick,
+		//MisuzuStateType::Punch,
+		//MisuzuStateType::SideKick
+	},
+
+	//2페이즈
+	{
+		MisuzuStateType::Elbow,
+		//MisuzuStateType::AxeKick,
+		//MisuzuStateType::Punch,
+		//MisuzuStateType::SideKick
+	},
+
+	//3페이즈
+	{
+		MisuzuStateType::Elbow,
+		//MisuzuStateType::AxeKick,
+		//MisuzuStateType::Punch,
+		//MisuzuStateType::SideKick
+	},
 };
 
 size_t MisuzuFSM::GetRandomAttack()
 {
-	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(AttackGroup.size() - 1));
-	return static_cast<size_t>(AttackGroup[RandValue]);
+	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(AttackGroup[CurPhase].size() - 1));
+	return static_cast<size_t>(AttackGroup[CurPhase][RandValue]);
 }
 
 
@@ -71,7 +89,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 
 	//Attack
 	FSMBase::CreateState<MisuzuState_Attack_GetUp>(MisuzuStateType::GetUpAttack);
-	//FSMBase::CreateState<MisuzuState_Attack_Elbow>(MisuzuStateType::Elbow);
+	FSMBase::CreateState<MisuzuState_Attack_Elbow>(MisuzuStateType::Elbow);
 	//FSMBase::CreateState<MisuzuState_Attack_Punch>(MisuzuStateType::Punch);
 	//FSMBase::CreateState<MisuzuState_Attack_SideKick>(MisuzuStateType::SideKick);
 
@@ -89,4 +107,38 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	FSMBase::ChangeState(MisuzuStateType::Idle);
+}
+
+void MisuzuFSM::SetMaxHp(int _MaxHp)
+{
+	if (0 != MaxHp)
+	{
+		MsgAssert("이미 초기화한 최대체력을 또 초기화 할 순 없습니다");
+		return;
+	}
+	
+	MaxHp = static_cast<size_t>(_MaxHp);
+	PhaseDivicer = (MaxHp / AttackGroup.size()) + 1;
+}
+
+void MisuzuFSM::CalPhase(int _CurHp)
+{
+	if (0 == PhaseDivicer)
+	{
+		MsgAssert("보스 몬스터의 최대 체력을 설정해주지 않아서 보스전의 Phase를 계산할 수 없습니다");
+		return;
+	}
+
+	//체력에 따른 Phase 계산
+	size_t PhaseCount = AttackGroup.size();
+	for (size_t i = 1; i <= PhaseCount; ++i)
+	{
+		if (_CurHp <= static_cast<int>(PhaseDivicer * i))
+		{
+			CurPhase = static_cast<size_t>(PhaseCount - i);
+			return;
+		}
+	}
+
+	MsgAssert("Phase를 계산하는 수식이 잘못 되었습니다");
 }

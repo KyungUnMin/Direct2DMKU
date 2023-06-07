@@ -39,6 +39,7 @@ protected:
 		return Hp;
 	}
 
+
 	inline bool IsKO() const
 	{
 		return IsKOValue;
@@ -56,6 +57,8 @@ protected:
 
 		Hp = _Hp;
 	}
+
+
 
 private:
 	int Hp = 100;

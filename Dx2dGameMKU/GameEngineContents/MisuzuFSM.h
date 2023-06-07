@@ -10,6 +10,7 @@ enum class MisuzuStateType
 
 	//Attack
 	GetUpAttack,
+	Elbow,
 
 	//Damaged
 	NormalDamaged_Face,
@@ -41,15 +42,22 @@ public:
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 
+	void SetMaxHp(int _MaxHp);
 	
+	void CalPhase(int _CurHp);
 
+	inline bool IsLastPhase() const
+	{
+		return CurPhase == (AttackGroup.size() - 1);
+	}
 
 protected:
 
 private:
-	static const std::vector<MisuzuStateType> AttackGroup;
+	static const std::vector<std::vector<MisuzuStateType>> AttackGroup;
 
-
-
+	size_t CurPhase = 0;
+	size_t PhaseDivicer = 0;
+	size_t MaxHp = 0;
 };
 
