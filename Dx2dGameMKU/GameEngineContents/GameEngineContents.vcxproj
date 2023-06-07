@@ -171,11 +171,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BossFSMBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BossHUD.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="BossIntroMovie.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossState_IdleBase.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -379,6 +387,10 @@
     <ClInclude Include="HooliganState_Ready.h" />
     <ClInclude Include="HooliganState_Walk.h" />
     <ClInclude Include="HUD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Attack_Slap.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -795,11 +807,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BossFSMBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BossHUD.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="BossIntroMovie.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BossState_IdleBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1008,6 +1028,10 @@
     <ClCompile Include="HooliganState_Ready.cpp" />
     <ClCompile Include="HooliganState_Walk.cpp" />
     <ClCompile Include="HUD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MisuzuState_Attack_Slap.cpp">
       <SubType>
       </SubType>
     </ClCompile>

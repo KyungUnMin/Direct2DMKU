@@ -14,6 +14,7 @@
 #include "MisuzuState_Attack_Elbow.h"
 #include "MisuzuState_Attack_WUPunch.h"
 #include "MisuzuState_Attack_Tackle.h"
+#include "MisuzuState_Attack_Slap.h"
 
 //Damaged
 #include "MisuzuState_NormalDamaged_Face.h"
@@ -34,24 +35,18 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::NearAttackGroup =
 	{
 		MisuzuStateType::Elbow,
 		MisuzuStateType::WUPunch,
-		//MisuzuStateType::Punch,
-		//MisuzuStateType::SideKick
+		MisuzuStateType::Slap,
 	},
 
 	//2페이즈
 	{
-		MisuzuStateType::Elbow,
 		MisuzuStateType::WUPunch,
-		//MisuzuStateType::Punch,
-		//MisuzuStateType::SideKick
+		MisuzuStateType::Slap,
 	},
 
 	//3페이즈
 	{
-		MisuzuStateType::Elbow,
 		MisuzuStateType::WUPunch,
-		//MisuzuStateType::Punch,
-		//MisuzuStateType::SideKick
 	},
 };
 
@@ -60,7 +55,6 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		MisuzuStateType::Tackle,
 	},
 
 	//2페이즈
@@ -78,12 +72,16 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 
 size_t MisuzuFSM::GetRandomAttack()
 {
+	size_t CurPhase = BossFSMBase::GetCurPhase();
+
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(NearAttackGroup[CurPhase].size() - 1));
 	return static_cast<size_t>(NearAttackGroup[CurPhase][RandValue]);
 }
 
 size_t MisuzuFSM::GetRandomFarAttack()
 {
+	size_t CurPhase = BossFSMBase::GetCurPhase();
+
 	//해당 페이즈에 원거리 공격이 존재하지 않는경우
 	if (true == FarAttackGroup[CurPhase].empty())
 		return -1;
@@ -124,6 +122,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<MisuzuState_Attack_Elbow>(MisuzuStateType::Elbow);
 	FSMBase::CreateState<MisuzuState_Attack_WUPunch>(MisuzuStateType::WUPunch);
 	FSMBase::CreateState<MisuzuState_Attack_Tackle>(MisuzuStateType::Tackle);
+	FSMBase::CreateState<MisuzuState_Attack_Slap>(MisuzuStateType::Slap);
 
 
 	//Damaged
@@ -141,36 +140,3 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::ChangeState(MisuzuStateType::Idle);
 }
 
-void MisuzuFSM::SetMaxHp(int _MaxHp)
-{
-	if (0 != MaxHp)
-	{
-		MsgAssert("이미 초기화한 최대체력을 또 초기화 할 순 없습니다");
-		return;
-	}
-	
-	MaxHp = static_cast<size_t>(_MaxHp);
-	PhaseDivicer = (MaxHp / NearAttackGroup.size()) + 1;
-}
-
-void MisuzuFSM::CalPhase(int _CurHp)
-{
-	if (0 == PhaseDivicer)
-	{
-		MsgAssert("보스 몬스터의 최대 체력을 설정해주지 않아서 보스전의 Phase를 계산할 수 없습니다");
-		return;
-	}
-
-	//체력에 따른 Phase 계산
-	size_t PhaseCount = NearAttackGroup.size();
-	for (size_t i = 1; i <= PhaseCount; ++i)
-	{
-		if (_CurHp <= static_cast<int>(PhaseDivicer * i))
-		{
-			CurPhase = static_cast<size_t>(PhaseCount - i);
-			return;
-		}
-	}
-
-	MsgAssert("Phase를 계산하는 수식이 잘못 되었습니다");
-}

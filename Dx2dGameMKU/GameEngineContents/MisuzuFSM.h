@@ -1,5 +1,5 @@
 #pragma once
-#include "EnemyFSMBase.h"
+#include "BossFSMBase.h"
 
 enum class MisuzuStateType
 {
@@ -14,6 +14,7 @@ enum class MisuzuStateType
 	Elbow,
 	WUPunch,
 	Tackle,
+	Slap,
 
 
 	//Damaged
@@ -29,7 +30,9 @@ enum class MisuzuStateType
 	COUNT
 };
 
-class MisuzuFSM : public EnemyFSMBase
+
+
+class MisuzuFSM : public BossFSMBase
 {
 public:
 	static const std::string_view NormalDamaged_FileName;
@@ -48,16 +51,7 @@ public:
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 
-	void SetMaxHp(int _MaxHp);
-	
-	void CalPhase(int _CurHp);
 
-	inline bool IsLastPhase() const
-	{
-		return CurPhase == (NearAttackGroup.size() - 1);
-	}
-
-	
 
 protected:
 
@@ -67,8 +61,5 @@ private:
 	//¿ø°Å¸®
 	static const std::vector<std::vector<MisuzuStateType>> FarAttackGroup;
 
-	size_t CurPhase = 0;
-	size_t PhaseDivicer = 0;
-	size_t MaxHp = 0;
 };
 

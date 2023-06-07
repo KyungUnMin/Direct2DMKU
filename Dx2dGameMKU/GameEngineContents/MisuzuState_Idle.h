@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemyState_IdleBase.h"
+#include "BossState_IdleBase.h"
 
-class MisuzuState_Idle : public EnemyState_IdleBase
+class MisuzuState_Idle : public BossState_IdleBase
 {
 public:
 	MisuzuState_Idle();
@@ -22,6 +22,9 @@ private:
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	static const std::vector<int> FarAttackPercent;
+
+
 
 	void LoadAnimation();
 	void CreateAnimation();

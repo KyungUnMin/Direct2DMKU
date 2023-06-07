@@ -12,6 +12,8 @@ const std::string_view MisuzuState_Idle::AniFileName = "Misuzu_Idle.png";
 const std::pair<int, int> MisuzuState_Idle::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Idle::AniInterTime = 0.08f;
 
+const std::vector<int> MisuzuState_Idle::FarAttackPercent = {0, 20, 50};
+
 MisuzuState_Idle::MisuzuState_Idle()
 {
 
@@ -24,7 +26,7 @@ MisuzuState_Idle::~MisuzuState_Idle()
 
 void MisuzuState_Idle::Start() 
 {
-	EnemyState_IdleBase::Start();
+	BossState_IdleBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -61,7 +63,7 @@ void MisuzuState_Idle::CreateAnimation()
 
 void MisuzuState_Idle::EnterState()
 {
-	EnemyState_IdleBase::EnterState();
+	BossState_IdleBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 }
@@ -69,14 +71,20 @@ void MisuzuState_Idle::EnterState()
 
 void MisuzuState_Idle::Update(float _DeltaTime) 
 {
-	EnemyState_IdleBase::Update(_DeltaTime);
+	BossState_IdleBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	//인자로 들어간 확률에 맞춰 원거리 공격 시도
-	if (true == FarAttackExcute(100))
-		return;
+	//0번 Phase일땐  원거리 공격 없음
+	size_t CurPhase = GetBossFsm()->GetCurPhase();
+	if(0 != CurPhase)
+	{
+		//인자로 들어간 확률에 맞춰 원거리 공격 시도
+		if (true == FarAttackExcute(FarAttackPercent[CurPhase]))
+			return;
+	}
+
 
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
 	if (true == EnemyState_IdleBase::ChangeAttackState())
