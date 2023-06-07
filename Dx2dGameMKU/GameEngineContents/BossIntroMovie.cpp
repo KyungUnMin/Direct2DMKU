@@ -68,7 +68,7 @@ void BossIntroMovie::LoadSprite(const std::string_view& _MovieName)
 void BossIntroMovie::CreateAnimation(const std::string_view& _MovieName)
 {
 	Render = CreateComponent<SelfRenderer>(FieldUIRenderOrder::BossIntro);
-	Render->SetCamera(RCG_CamNumType::BossVersusUI);
+	Render->SetCamera(RCG_CamNumType::BossUI);
 	Render->SetEnginePipe();
 
 	Render->CreateAnimation

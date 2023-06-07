@@ -29,7 +29,7 @@ enum class RCG_CamNumType
 	Main = 0,
 
 	UI = 100,
-	BossVersusUI = 101,
+	BossUI = 101,
 };
 
 enum class FieldRenderOrder

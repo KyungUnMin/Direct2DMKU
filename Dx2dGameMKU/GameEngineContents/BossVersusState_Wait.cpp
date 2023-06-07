@@ -27,7 +27,7 @@ void BossVersusState_Wait::Start()
 	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
 	std::shared_ptr<GameEngineCamera> VersusCam = nullptr;
 
-	VersusCam = Level->GetCamera(static_cast<int>(RCG_CamNumType::BossVersusUI));
+	VersusCam = Level->GetCamera(static_cast<int>(RCG_CamNumType::BossUI));
 	if (nullptr == VersusCam)
 	{
 		MsgAssert("BossVersusUI카메라를 만들어 준 적이 없는데 그 카메라에 포스트 프로세싱을 사용하려고 했습니다");

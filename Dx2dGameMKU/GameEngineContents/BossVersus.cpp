@@ -94,14 +94,14 @@ void BossVersus::CreatePortraits(BossType _Boss)
 {
 	//플레이어 초상화
 	PlayerPortrait = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Portrait);
-	PlayerPortrait->SetCamera(RCG_CamNumType::BossVersusUI);
+	PlayerPortrait->SetCamera(RCG_CamNumType::BossUI);
 	PlayerPortrait->SetMesh("Rect");
 	PlayerPortrait->SetPipeLine(RCGDefine::GetPipeName(PipeType::Burn));
 	PlayerPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
 
 	//보스 초상화
 	BossPortrait = CreateComponent<SelfRenderer>(BossVersusUIRenderOrder::Portrait);
-	BossPortrait->SetCamera(RCG_CamNumType::BossVersusUI);
+	BossPortrait->SetCamera(RCG_CamNumType::BossUI);
 	BossPortrait->SetMesh("Rect");
 	BossPortrait->SetPipeLine(RCGDefine::GetPipeName(PipeType::Burn));
 	BossPortrait->GetShaderResHelper().SetConstantBufferLink(PortraitCBufferName, CBufferData);
@@ -167,7 +167,7 @@ std::shared_ptr<SelfRenderer> BossVersus::CreataEngineUIRender(const std::string
 {
 	std::shared_ptr<SelfRenderer> Render = CreateComponent<SelfRenderer>(_RenderOrder);
 
-	Render->SetCamera(RCG_CamNumType::BossVersusUI);
+	Render->SetCamera(RCG_CamNumType::BossUI);
 	Render->SetEnginePipe();
 	Render->SetScaleToTexture(_TexFileName);
 
