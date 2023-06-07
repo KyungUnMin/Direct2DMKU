@@ -45,6 +45,9 @@ void EnemyStateBase::EnterState()
 
 void EnemyStateBase::ChangeRenderDirection()
 {
+	if (false == IsLookPlayer)
+		return;
+
 	GameEngineTransform* EnemyTransform = EnemyPtr->GetTransform();
 	float4 EnemyPos = EnemyTransform->GetWorldPosition();
 	float4 PlayerPos = FieldPlayer::GetPtr()->GetTransform()->GetWorldPosition();
@@ -154,3 +157,12 @@ bool EnemyStateBase::Update_AccMove(
 	return true;
 }
 
+void EnemyStateBase::OffMainCollider()
+{
+	MainCollider->Off();
+}
+
+void EnemyStateBase::OnMainCollider() 
+{
+	MainCollider->On();
+}

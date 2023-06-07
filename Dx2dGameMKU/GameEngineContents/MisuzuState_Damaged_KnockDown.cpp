@@ -10,7 +10,6 @@ const std::string_view MisuzuState_Damaged_KnockDown::AniName = "KnockDown";
 const std::pair<int, int> MisuzuState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 7);
 const std::pair<size_t, size_t> MisuzuState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 30 };
 const float MisuzuState_Damaged_KnockDown::AniInterTime = 0.08f;
-const float MisuzuState_Damaged_KnockDown::LiveDuration = 5.f;
 
 MisuzuState_Damaged_KnockDown::MisuzuState_Damaged_KnockDown()
 {
@@ -70,6 +69,7 @@ void MisuzuState_Damaged_KnockDown::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	EnemyStateBase::OffMainCollider();
 }
 
 
@@ -79,9 +79,9 @@ void MisuzuState_Damaged_KnockDown::Update(float _DeltaTime)
 
 	EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
 
-	if (GetLiveTime() < LiveDuration)
+	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	//GetFSM()->ChangeState(MisuzuStateType::Idle);
+	GetFSM()->ChangeState(MisuzuStateType::Defeat);
 }
 

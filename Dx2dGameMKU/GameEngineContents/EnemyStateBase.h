@@ -93,6 +93,15 @@ protected:
 		Unbeatable = true;
 	}
 
+	//State가 전환시 플레이어를 향해 방향전환 하지 않는다
+	inline void DontLookPlayer()
+	{
+		IsLookPlayer = false;
+	}
+
+	void OffMainCollider();
+	void OnMainCollider();
+
 
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
@@ -106,6 +115,8 @@ private:
 
 	//무적 상태여부
 	bool Unbeatable = false;
+
+	bool IsLookPlayer = true;
 
 
 	inline void ValidCheck(void* _Ptr) const

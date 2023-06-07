@@ -41,6 +41,8 @@ void FieldEnemy_Misuzu::Update(float _DeltaTime)
 	FieldBossBase::Update(_DeltaTime);
 
 	Fsm.Update(_DeltaTime);
+
+	RageRender(_DeltaTime);
 }
 
 void FieldEnemy_Misuzu::Render(float _DeltaTime)
@@ -146,4 +148,23 @@ void FieldEnemy_Misuzu::LevelChangeEnd()
 		return;
 
 	Fsm.ChangeState(MisuzuStateType::Idle);
+}
+
+void FieldEnemy_Misuzu::RageRender(float _DeltaTime)
+{
+	int CurHp = GetHp();
+	if (RageHpLine < CurHp)
+		return;
+
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+
+	if (0 == CurHp)
+	{
+		Render->ColorOptionValue.PlusColor = float4::Null;
+		return;
+	}
+
+	float LiveTime = GetLiveTime();
+	float RedValue = abs(sinf(LiveTime)) * 0.5f;
+	Render->ColorOptionValue.PlusColor = float4{ RedValue, 0.f, 0.f, 0.f };
 }

@@ -33,7 +33,7 @@ private:
 
 	//-------------Hp-----------
 
-	const float Duration = 1.5f;
+	const float Duration = 0.5f;
 
 	float4 HpRatio = float4::Zero;
 	float StartRatio = 0.f;

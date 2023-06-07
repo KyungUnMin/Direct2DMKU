@@ -26,6 +26,7 @@ void MisuzuState_Damaged_Dizzy::Start()
 	EnemyState_DamagedBase::Start();
 	LoadAnimation();
 	CreateAnimation();
+	EnemyStateBase::DontLookPlayer();
 }
 
 

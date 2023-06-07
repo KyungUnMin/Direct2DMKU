@@ -17,6 +17,7 @@ protected:
 
 	bool IsWaitFinished();
 
+	//다른 Enemy들 중에서 공격하는 Enemy가 없는지 여부
 	bool IsAttackerEmpty();
 
 	bool ChangeAttackState();

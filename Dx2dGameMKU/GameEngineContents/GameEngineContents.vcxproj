@@ -394,6 +394,10 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Damaged_KnockDown.h" />
     <ClInclude Include="MisuzuState_Damaged_Dizzy.h" />
+    <ClInclude Include="MisuzuState_Defeat.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MisuzuState_Idle.h" />
     <ClInclude Include="MisuzuState_NormalDamaged_Face.h" />
     <ClInclude Include="MisuzuState_NormalDamaged_Jaw.h" />
@@ -1015,6 +1019,10 @@
     </ClCompile>
     <ClCompile Include="MisuzuState_Damaged_KnockDown.cpp" />
     <ClCompile Include="MisuzuState_Damaged_Dizzy.cpp" />
+    <ClCompile Include="MisuzuState_Defeat.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MisuzuState_Idle.cpp" />
     <ClCompile Include="MisuzuState_NormalDamaged_Face.cpp" />
     <ClCompile Include="MisuzuState_NormalDamaged_Jaw.cpp" />

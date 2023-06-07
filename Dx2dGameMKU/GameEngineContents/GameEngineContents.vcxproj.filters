@@ -931,6 +931,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\05.GroundHit">
       <UniqueIdentifier>{28a9b6d4-6300-4f35-9077-ec31a89d4fa4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\03.Defeat">
+      <UniqueIdentifier>{e9d3e3a0-aa49-488f-86d3-662e61fb3fad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1662,6 +1665,9 @@
     <ClCompile Include="MisuzuState_Damaged_GroundHit.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\05.GroundHit</Filter>
     </ClCompile>
+    <ClCompile Include="MisuzuState_Defeat.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\03.Defeat</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2380,6 +2386,9 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Damaged_GroundHit.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\05.GroundHit</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Defeat.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\03.Movement\03.Defeat</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

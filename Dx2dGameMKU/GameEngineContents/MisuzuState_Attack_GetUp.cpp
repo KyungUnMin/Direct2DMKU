@@ -8,13 +8,15 @@
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
 #include "HitEffect.h"
+#include "FieldLevelBase.h"
+#include "FieldCamController.h"
 
 
 const std::string_view MisuzuState_Attack_GetUp::AniName = "Attack_GetUp";
 const std::string_view MisuzuState_Attack_GetUp::AniFileName = "Misuzu_GetUp.png";
 const std::pair<int, int> MisuzuState_Attack_GetUp::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Attack_GetUp::AniInterTime = 0.08f;
-const int MisuzuState_Attack_GetUp::Damage = 10;
+const int MisuzuState_Attack_GetUp::Damage = 25;
 
 MisuzuState_Attack_GetUp::MisuzuState_Attack_GetUp()
 {
@@ -32,6 +34,7 @@ void MisuzuState_Attack_GetUp::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	EnemyStateBase::DontLookPlayer();
 }
 
 void MisuzuState_Attack_GetUp::LoadAnimation()
@@ -71,6 +74,9 @@ void MisuzuState_Attack_GetUp::CreateAnimation()
 		std::shared_ptr<HitEffect> Effect = nullptr;
 		Effect = this->EnemyState_AttackBase::CreateEffect<HitEffect>(float4::Zero, Scale);
 		Effect->OffHitSpark();
+
+		//카메라 쉐이킹
+		FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.4f);
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 6);
