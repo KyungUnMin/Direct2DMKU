@@ -27,11 +27,14 @@ protected:
 private:
 	static const std::vector<std::string_view> MovieNames;
 
-	std::shared_ptr<class GameEngineUIRenderer> Render = nullptr;
+	std::shared_ptr<class SelfRenderer> Render = nullptr;
 	std::vector<std::string> TexNames;
 	std::function<void()> EndCallback = nullptr;
 
 	void LoadSprite(const std::string_view& _MovieName);
+	void CreateAnimation(const std::string_view& _MovieName);
+
+
 	void DeleteThis();
 };
 

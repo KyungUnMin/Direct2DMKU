@@ -129,6 +129,10 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 	{
 		//이 카메라에 등록된 렌더들을 카메라 렌더타겟에 그린다
 		std::shared_ptr<GameEngineCamera> Cam = Pair.second;
+
+		if (false == Cam->IsUpdate())
+			continue;
+
 		Cam->Setting();
 		Cam->CameraTransformUpdate();
 		Cam->Render(_DeltaTime);

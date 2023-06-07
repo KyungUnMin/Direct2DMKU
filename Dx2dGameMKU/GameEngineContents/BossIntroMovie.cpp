@@ -2,15 +2,16 @@
 #include "BossIntroMovie.h"
 
 #include <GameEngineCore/GameEngineSprite.h>
-#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
+#include "RCG_GameCore.h"
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "KeyMgr.h"
 
-#include "Fader.h"
+#include "SelfRenderer.h"
+
 
 const std::vector<std::string_view> BossIntroMovie::MovieNames =
 {
@@ -34,24 +35,14 @@ void BossIntroMovie::Init(MovieType _MovieType, std::function<void()> _EndCallba
 {
 	const std::string_view& MovieName = MovieNames[static_cast<size_t>(_MovieType)];
 	LoadSprite(MovieName);
-
-	Render = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::BossIntro);
-	Render->CreateAnimation
-	({
-		.AnimationName = MovieName,
-		.SpriteName = MovieName,
-		.Loop = false
-	});
-
-	Render->ChangeAnimation(MovieName);
-
-	const float4& ScreenSize = GameEngineWindow::GetScreenSize();
-	Render->GetTransform()->SetLocalScale(ScreenSize);
-	Render->GetTransform()->AddLocalPosition(float4::Back);
+	CreateAnimation(MovieName);
 
 	EndCallback = _EndCallback;
+	RCG_GameCore::SetCurGameState(GameState::IntroMovie);
+	GameEngineLevel* Level = GetLevel();
+	Level->GetCamera(static_cast<int>(RCG_CamNumType::Main))->Off();
+	Level->GetCamera(static_cast<int>(RCG_CamNumType::UI))->Off();
 }
-
 
 
 void BossIntroMovie::LoadSprite(const std::string_view& _MovieName)
@@ -74,6 +65,26 @@ void BossIntroMovie::LoadSprite(const std::string_view& _MovieName)
 }
 
 
+void BossIntroMovie::CreateAnimation(const std::string_view& _MovieName)
+{
+	Render = CreateComponent<SelfRenderer>(FieldUIRenderOrder::BossIntro);
+	Render->SetCamera(RCG_CamNumType::BossVersusUI);
+	Render->SetEnginePipe();
+
+	Render->CreateAnimation
+	({
+		.AnimationName = _MovieName,
+		.SpriteName = _MovieName,
+		.Loop = false
+	});
+
+	Render->ChangeAnimation(_MovieName);
+
+	const float4& ScreenSize = GameEngineWindow::GetScreenSize();
+	Render->GetTransform()->SetLocalScale(ScreenSize);
+	Render->GetTransform()->AddLocalPosition(float4::Back);
+}
+
 
 
 void BossIntroMovie::Update(float _DelatTime)
@@ -94,6 +105,11 @@ void BossIntroMovie::Update(float _DelatTime)
 
 void BossIntroMovie::DeleteThis()
 {
+	RCG_GameCore::SetCurGameState(GameState::OnField);
+	GameEngineLevel* Level = GetLevel();
+	Level->GetCamera(static_cast<int>(RCG_CamNumType::Main))->On();
+	Level->GetCamera(static_cast<int>(RCG_CamNumType::UI))->On();
+
 	//페이드인 생성
 	//GetLevel()->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero);
 
