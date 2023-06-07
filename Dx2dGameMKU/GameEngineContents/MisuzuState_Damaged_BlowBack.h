@@ -16,6 +16,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 private:
 	static const std::string_view AniName;
@@ -27,8 +28,14 @@ private:
 	const float StartAcc = 1500.f;
 	const float Duration = 0.5f;
 
+	bool IsWallHit = false;
+	float4 WallOutDir = float4::Zero;
+
 	void LoadAnimation();
 	void CreateAnimation();
 	
+	void Update_Blow(float _DeltaTime);
+	void CreateWallEffect();
+	void Update_WallHit(float _DeltaTime);
 };
 

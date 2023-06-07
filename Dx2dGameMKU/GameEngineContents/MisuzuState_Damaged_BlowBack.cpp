@@ -1,9 +1,12 @@
 #include "PrecompileHeader.h"
 #include "MisuzuState_Damaged_BlowBack.h"
 
+#include "RCGEnums.h"
 
 #include "MisuzuFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldLevelBase.h"
+#include "HitEffect.h"
 
 const std::string_view MisuzuState_Damaged_BlowBack::AniName = "BlowBack";
 const std::string_view MisuzuState_Damaged_BlowBack::AniFileName = "Misuzu_BlowBack.png";
@@ -77,7 +80,16 @@ void MisuzuState_Damaged_BlowBack::Update(float _DeltaTime)
 {
 	EnemyState_DamagedBase::Update(_DeltaTime);
 
-	EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
+	if (false == IsWallHit)
+	{
+		Update_Blow(_DeltaTime);
+	}
+	else
+	{
+		Update_WallHit(_DeltaTime);
+	}
+
+	
 	
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -85,3 +97,49 @@ void MisuzuState_Damaged_BlowBack::Update(float _DeltaTime)
 	GetFSM()->ChangeState(MisuzuStateType::Damaged_Dizzy);
 }
 
+
+void MisuzuState_Damaged_BlowBack::Update_Blow(float _DeltaTime)
+{
+	if (true == EnemyState_DamagedBase::Update_BlowBack(_DeltaTime))
+		return;
+
+	IsWallHit = true;
+
+	//Enemy가 바라보고 있던 방향
+	WallOutDir = IsRightDir() ? float4::Right : float4::Left;
+
+	CreateWallEffect();
+}
+
+void MisuzuState_Damaged_BlowBack::CreateWallEffect()
+{
+	static const float4 Offset = float4::Up * 100.f;
+	static const float4 Scale = float4{ 0.5f, 1.f };
+
+	std::shared_ptr<HitEffect> Effect = nullptr;
+	Effect = FieldLevelBase::GetPtr()->CreateActor<HitEffect>(UpdateOrder::Effect);
+	Effect->OffHitSpark();
+
+	float4 EnemyPos = GetEnemy()->GetTransform()->GetWorldPosition();
+	GameEngineTransform* EffectTrans = Effect->GetTransform();
+	EffectTrans->SetLocalPosition(EnemyPos + Offset);
+	EffectTrans->SetLocalScale(Scale);
+}
+
+void MisuzuState_Damaged_BlowBack::Update_WallHit(float _DeltaTime) 
+{
+	float Ratio = (GetLiveTime() / Duration);
+
+	//벽에 부딪힌 후 튕겨져 나오기
+	EnemyStateBase::Update_AccMove(_DeltaTime, Ratio, WallOutDir, StartAcc);
+
+	EnemyState_DamagedBase::Update_BlowVertical(Ratio);
+}
+
+void MisuzuState_Damaged_BlowBack::ExitState()
+{
+	EnemyState_DamagedBase::ExitState();
+
+	IsWallHit = false;
+	WallOutDir = float4::Zero;
+}

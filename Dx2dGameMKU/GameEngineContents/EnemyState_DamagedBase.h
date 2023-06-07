@@ -36,6 +36,8 @@ protected:
 		EnemyDir = !_IsRight;
 	}
 
+	void Update_BlowVertical(float _Ratio);
+
 private:
 	float StartAcc = 2000.f;
 	float Duration = 1.0f;
@@ -46,6 +48,5 @@ private:
 	bool EnemyDir = true;
 
 	bool Update_BlowHorizon(float _Ratio, float _DeltaTime);
-	void Update_BlowVertical(float _Ratio);
 };
 
