@@ -17,6 +17,7 @@ enum class MisuzuStateType
 	Damaged_BlowBack,
 	Damaged_KnockDown,
 	Damaged_Dizzy,
+	Damaged_GroundHit,
 
 
 	COUNT

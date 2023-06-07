@@ -21,6 +21,7 @@
 #include "MisuzuState_Damaged_BlowBack.h"
 #include "MisuzuState_Damaged_KnockDown.h"
 #include "MisuzuState_Damaged_Dizzy.h"
+#include "MisuzuState_Damaged_GroundHit.h"
 
 
 const  std::string_view MisuzuFSM::NormalDamaged_FileName = "Misuzu_GetHit.png";
@@ -80,6 +81,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<MisuzuState_Damaged_BlowBack>(MisuzuStateType::Damaged_BlowBack);
 	FSMBase::CreateState<MisuzuState_Damaged_KnockDown>(MisuzuStateType::Damaged_KnockDown);
 	FSMBase::CreateState<MisuzuState_Damaged_Dizzy>(MisuzuStateType::Damaged_Dizzy);
+	FSMBase::CreateState<MisuzuState_Damaged_GroundHit>(MisuzuStateType::Damaged_GroundHit);
 
 
 

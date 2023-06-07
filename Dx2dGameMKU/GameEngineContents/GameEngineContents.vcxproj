@@ -388,6 +388,10 @@
     <ClInclude Include="MisuzuState_Attack_Punch.h" />
     <ClInclude Include="MisuzuState_Attack_SideKick.h" />
     <ClInclude Include="MisuzuState_Damaged_BlowBack.h" />
+    <ClInclude Include="MisuzuState_Damaged_GroundHit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MisuzuState_Damaged_KnockDown.h" />
     <ClInclude Include="MisuzuState_Damaged_Dizzy.h" />
     <ClInclude Include="MisuzuState_Idle.h" />
@@ -1005,6 +1009,10 @@
     <ClCompile Include="MisuzuState_Attack_Punch.cpp" />
     <ClCompile Include="MisuzuState_Attack_SideKick.cpp" />
     <ClCompile Include="MisuzuState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="MisuzuState_Damaged_GroundHit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MisuzuState_Damaged_KnockDown.cpp" />
     <ClCompile Include="MisuzuState_Damaged_Dizzy.cpp" />
     <ClCompile Include="MisuzuState_Idle.cpp" />

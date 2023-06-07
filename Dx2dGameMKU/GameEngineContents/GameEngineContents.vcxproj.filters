@@ -1659,6 +1659,9 @@
     <ClCompile Include="MisuzuState_Attack_GetUp.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\01.GetUp</Filter>
     </ClCompile>
+    <ClCompile Include="MisuzuState_Damaged_GroundHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\05.GroundHit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2374,6 +2377,9 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Attack_GetUp.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\04.Attack\01.GetUp</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Damaged_GroundHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\02.Misuzu\05.Damaged\05.GroundHit</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
