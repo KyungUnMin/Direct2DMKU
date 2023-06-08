@@ -141,11 +141,22 @@ void PlayerState_Walk::Update(float _DeltaTime)
 		return;
 	}
 	
-	//대시처리
+	//대시, 회피처리
 	float NowTime = GetFSM()->GetFsmTime();
 	if (NowTime < (LastTime + 0.1f) && (PressArrow == LastArrow))
 	{
-		GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
+		//좌우이동을 빠르게 누른 경우
+		if ((KeyNames::RightArrow == PressArrow) || (KeyNames::LeftArrow == PressArrow))
+		{
+			GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
+		}
+
+		//상하 이동을 빠르게 누른 경우
+		else
+		{
+			GetFSM()->ChangeState(PlayerStateType::Movement_Avoid);
+		}
+
 		return;
 	}
 

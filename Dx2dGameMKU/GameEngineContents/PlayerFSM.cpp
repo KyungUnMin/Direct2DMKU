@@ -7,6 +7,7 @@
 #include "PlayerState_Jump.h"
 #include "PlayerState_Fall.h"
 #include "PlayerState_Dash.h"
+#include "PlayerState_Avoid.h"
 
 //Quick Attack
 #include "PlayerState_QickAttack_Chop.h"
@@ -60,6 +61,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	FSMBase::CreateState<PlayerState_Jump>(PlayerStateType::Movement_Jump);
 	FSMBase::CreateState<PlayerState_Fall>(PlayerStateType::Movement_Fall);
 	FSMBase::CreateState<PlayerState_Dash>(PlayerStateType::Movement_Dash);
+	FSMBase::CreateState<PlayerState_Avoid>(PlayerStateType::Movement_Avoid);
 
 	//Quick Attack
 	FSMBase::CreateState<PlayerState_QickAttack_Chop>(PlayerStateType::QuickAttack_Chop);

@@ -1,6 +1,9 @@
 #pragma once
 #include "PlayerStateBase.h"
 
+class GameEngineTransform;
+class BackGround;
+
 class PlayerState_MovementBase : public PlayerStateBase
 {
 public:
@@ -19,10 +22,22 @@ public:
 protected:
 	void Start() override;
 
+	inline std::shared_ptr<BackGround> GetBackGround() const
+	{
+		return BGPtr;
+	}
+
+
+	inline GameEngineTransform* GetPlayerTransform() const
+	{
+		return PlayerTrans;
+	}
+
+
 private:
 	static const std::vector<KeyNames> IdleCheckKeys;
 
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
-	class GameEngineTransform* PlayerTrans = nullptr;
+	std::shared_ptr<BackGround> BGPtr = nullptr;
+	GameEngineTransform* PlayerTrans = nullptr;
 };
 

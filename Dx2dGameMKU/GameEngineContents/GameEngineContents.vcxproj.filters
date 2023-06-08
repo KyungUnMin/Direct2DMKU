@@ -964,6 +964,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\03.StateBase\02.Attack">
       <UniqueIdentifier>{9b50ee38-6b86-4686-bc12-42d95714b437}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\07.Avoid">
+      <UniqueIdentifier>{a42fcc83-b9dd-4060-b96e-e1acc3bdcff0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1716,6 +1719,9 @@
     <ClCompile Include="BossState_AttackBase.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\03.StateBase\02.Attack</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_Avoid.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\07.Avoid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2455,6 +2461,9 @@
     </ClInclude>
     <ClInclude Include="BossState_AttackBase.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\03.StateBase\02.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_Avoid.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\07.Avoid</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

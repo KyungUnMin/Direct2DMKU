@@ -9,6 +9,7 @@ enum class PlayerStateType
 	Movement_Jump,
 	Movement_Fall,
 	Movement_Dash,
+	Movement_Avoid,
 
 	//Quick Attack
 	QuickAttack_Chop,
