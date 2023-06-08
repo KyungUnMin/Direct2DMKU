@@ -40,6 +40,8 @@ enum class PlayerStateType
 	NormalDamaged_Jaw,
 	Damaged_BlowBack,
 	Damaged_Block,
+	Damaged_Stun,
+
 
 
 	COUNT

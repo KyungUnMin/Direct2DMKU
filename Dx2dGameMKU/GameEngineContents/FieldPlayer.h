@@ -40,6 +40,7 @@ public:
 	bool OnDamage_Stomach();
 	bool OnDamage_Jaw();
 	bool OnDamage_BlowBack();
+	bool OnDamage_Stun();
 
 	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
 	void SetDirection(bool IsRight);
@@ -83,7 +84,7 @@ private:
 	void CheckDirection();
 
 	//플레이어가 공격받을때 데미지를 받는 상황인지 체크
-	bool CanPlayerDamage();
+	bool CanPlayerDamage(bool _IsBreakDefence = false);
 
 	void CreateDamageEffect(const float4& _Offset);
 };

@@ -37,6 +37,7 @@
 #include "PlayerState_NormalDamaged_Jaw.h"
 #include "PlayerState_Damaged_BlowBack.h"
 #include "PlayerState_Damaged_Block.h"
+#include "PlayerState_Damaged_Stun.h"
 
 
 PlayerFSM::PlayerFSM()
@@ -91,6 +92,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	FSMBase::CreateState<PlayerState_NormalDamaged_Jaw>(PlayerStateType::NormalDamaged_Jaw);
 	FSMBase::CreateState<PlayerState_Damaged_BlowBack>(PlayerStateType::Damaged_BlowBack);
 	FSMBase::CreateState<PlayerState_Damaged_Block>(PlayerStateType::Damaged_Block);
+	FSMBase::CreateState<PlayerState_Damaged_Stun>(PlayerStateType::Damaged_Stun);
 
 
 

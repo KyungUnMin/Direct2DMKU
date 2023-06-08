@@ -967,6 +967,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\07.Avoid">
       <UniqueIdentifier>{a42fcc83-b9dd-4060-b96e-e1acc3bdcff0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\05.Stun">
+      <UniqueIdentifier>{fe6f65d9-81cb-4e0a-a065-2a8317686c0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1722,6 +1725,9 @@
     <ClCompile Include="PlayerState_Avoid.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\07.Avoid</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_Damaged_Stun.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\05.Stun</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2464,6 +2470,9 @@
     </ClInclude>
     <ClInclude Include="PlayerState_Avoid.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\07.Avoid</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_Damaged_Stun.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\05.Stun</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

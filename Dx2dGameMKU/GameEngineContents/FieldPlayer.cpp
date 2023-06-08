@@ -211,12 +211,26 @@ bool FieldPlayer::OnDamage_BlowBack()
 	return true;
 }
 
-
-bool FieldPlayer::CanPlayerDamage()
+bool FieldPlayer::OnDamage_Stun()
 {
-	//플레이어가 방어중일때
-	if (true == Fsm.OnDamageInBlock())
+	if (false == CanPlayerDamage(true))
 		return false;
+
+	CreateDamageEffect(DamageEffect_FaceOffset);
+
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_Stun));
+	return true;
+}
+
+
+bool FieldPlayer::CanPlayerDamage(bool _IsBreakDefence /*= false*/)
+{
+	//방어 무시가 아니면서, 플레이어가 방어중일때
+	if (false == _IsBreakDefence)
+	{
+		if (true == Fsm.OnDamageInBlock())
+			return false;
+	}
 
 	//쓰러져있는 상태일때
 	if (PlayerStateType::Damaged_BlowBack == Fsm.GetNowState<PlayerStateType>())

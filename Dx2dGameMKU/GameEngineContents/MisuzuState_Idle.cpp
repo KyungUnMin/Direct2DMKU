@@ -74,6 +74,11 @@ void MisuzuState_Idle::Update(float _DeltaTime)
 {
 	BossState_IdleBase::Update(_DeltaTime);
 
+	
+	//공격 상태로 바꾸거나 Idle을 유지하는 경우
+	if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;
+
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
@@ -85,11 +90,6 @@ void MisuzuState_Idle::Update(float _DeltaTime)
 		if (true == EnemyStateBase::FarAttackExcute(FarAttackPercent[CurPhase]))
 			return;
 	}
-
-
-	//공격 상태로 바꾸거나 Idle을 유지하는 경우
-	if (true == EnemyState_IdleBase::ChangeAttackState())
-		return;
 
 
 	//Idle 대기시간이 끝났을때만 이동상태로 변경

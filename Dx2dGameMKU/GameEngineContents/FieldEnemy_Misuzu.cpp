@@ -103,6 +103,11 @@ bool FieldEnemy_Misuzu::OnDamage_Face(int _Damage)
 		Fsm.ChangeState(MisuzuStateType::Damaged_GroundHit);
 		return true;
 	}
+	else if (true == Fsm.IsLastPhase())
+	{
+		//Fsm.ChangeState(MisuzuStateType::NormalDamaged_Stomach);
+		return true;
+	}
 
 	Fsm.ChangeState(MisuzuStateType::NormalDamaged_Face);
 	return true;
@@ -122,6 +127,11 @@ bool FieldEnemy_Misuzu::OnDamage_Stomach(int _Damage)
 	else if (MisuzuStateType::Damaged_Dizzy == Fsm.GetNowState<MisuzuStateType>())
 	{
 		Fsm.ChangeState(MisuzuStateType::Damaged_GroundHit);
+		return true;
+	}
+	else if (true == Fsm.IsLastPhase())
+	{
+		//Fsm.ChangeState(MisuzuStateType::NormalDamaged_Stomach);
 		return true;
 	}
 
@@ -145,6 +155,11 @@ bool FieldEnemy_Misuzu::OnDamage_Jaw(int _Damage)
 		Fsm.ChangeState(MisuzuStateType::Damaged_GroundHit);
 		return true;
 	}
+	else if (true == Fsm.IsLastPhase())
+	{
+		//Fsm.ChangeState(MisuzuStateType::NormalDamaged_Stomach);
+		return true;
+	}
 
 	Fsm.ChangeState(MisuzuStateType::NormalDamaged_Jaw);
 	return true;
@@ -161,14 +176,14 @@ bool FieldEnemy_Misuzu::OnDamage_BlowBack(int _Damage)
 		Fsm.ChangeState(MisuzuStateType::Damaged_KnockDown);
 		return true;
 	}
-	else if (true == Fsm.IsLastPhase())
-	{
-		Fsm.ChangeState(MisuzuStateType::NormalDamaged_Stomach);
-		return true;
-	}
 	else if (MisuzuStateType::Damaged_Dizzy == Fsm.GetNowState<MisuzuStateType>())
 	{
 		Fsm.ChangeState(MisuzuStateType::Damaged_GroundHit);
+		return true;
+	}
+	else if (true == Fsm.IsLastPhase())
+	{
+		Fsm.ChangeState(MisuzuStateType::NormalDamaged_Stomach);
 		return true;
 	}
 	
