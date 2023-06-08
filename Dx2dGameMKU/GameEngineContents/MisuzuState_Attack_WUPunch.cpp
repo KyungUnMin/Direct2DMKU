@@ -120,7 +120,7 @@ void MisuzuState_Attack_WUPunch::Update(float _DeltaTime)
 
 void MisuzuState_Attack_WUPunch::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(true);
 	if (false == Result)
 		return;
 

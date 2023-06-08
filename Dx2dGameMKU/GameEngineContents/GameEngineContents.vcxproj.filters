@@ -970,6 +970,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\05.Stun">
       <UniqueIdentifier>{fe6f65d9-81cb-4e0a-a065-2a8317686c0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar">
+      <UniqueIdentifier>{6e2a1c69-bfe5-4772-808a-353a6589c2f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1728,6 +1731,9 @@
     <ClCompile Include="PlayerState_Damaged_Stun.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\05.Stun</Filter>
     </ClCompile>
+    <ClCompile Include="MisuzuState_Attack_Roar.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2473,6 +2479,9 @@
     </ClInclude>
     <ClInclude Include="PlayerState_Damaged_Stun.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\05.Stun</Filter>
+    </ClInclude>
+    <ClInclude Include="MisuzuState_Attack_Roar.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

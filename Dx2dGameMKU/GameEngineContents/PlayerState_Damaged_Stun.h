@@ -20,7 +20,7 @@ protected:
 private:
 	static const std::string_view AniName;
 	
-	const float Duration = 1.0f;
+	const float Duration = 1.5f;
 
 	void LoadAnimation();
 	void CreateAnimation();

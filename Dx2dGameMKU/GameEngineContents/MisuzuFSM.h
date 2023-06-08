@@ -16,6 +16,7 @@ enum class MisuzuStateType
 	Tackle,
 	Slap,
 	Meteor,
+	Roar,
 
 
 	//Damaged

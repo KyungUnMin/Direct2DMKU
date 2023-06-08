@@ -16,6 +16,7 @@
 #include "MisuzuState_Attack_Tackle.h"
 #include "MisuzuState_Attack_Slap.h"
 #include "MisuzuState_Attack_Meteor.h"
+#include "MisuzuState_Attack_Roar.h"
 
 //Damaged
 #include "MisuzuState_NormalDamaged_Face.h"
@@ -48,6 +49,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::NearAttackGroup =
 	//3∆‰¿Ã¡Ó
 	{
 		MisuzuStateType::WUPunch,
+		MisuzuStateType::Roar,
 	},
 };
 
@@ -147,6 +149,7 @@ void MisuzuFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<MisuzuState_Attack_Tackle>(MisuzuStateType::Tackle);
 	FSMBase::CreateState<MisuzuState_Attack_Slap>(MisuzuStateType::Slap);
 	FSMBase::CreateState<MisuzuState_Attack_Meteor>(MisuzuStateType::Meteor);
+	FSMBase::CreateState<MisuzuState_Attack_Roar>(MisuzuStateType::Roar);
 
 
 	//Damaged

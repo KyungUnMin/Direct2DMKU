@@ -54,7 +54,8 @@ void MisuzuState_Attack_Elbow::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 10,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 5);
