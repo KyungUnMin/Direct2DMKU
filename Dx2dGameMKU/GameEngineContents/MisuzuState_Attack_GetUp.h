@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemyState_AttackBase.h"
+#include "BossState_AttackBase.h"
 
-class MisuzuState_Attack_GetUp : public EnemyState_AttackBase
+class MisuzuState_Attack_GetUp : public BossState_AttackBase
 {
 public:
 	MisuzuState_Attack_GetUp();

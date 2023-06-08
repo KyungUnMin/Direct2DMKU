@@ -28,7 +28,7 @@ MisuzuState_Attack_Tackle::~MisuzuState_Attack_Tackle()
 
 void MisuzuState_Attack_Tackle::Start()
 {
-	EnemyState_AttackBase::Start();
+	BossState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -76,10 +76,10 @@ void MisuzuState_Attack_Tackle::CreateAnimation()
 
 void MisuzuState_Attack_Tackle::EnterState()
 {
-	EnemyState_AttackBase::EnterState();
+	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(TackleStart_AniFileName);
-	EnemyState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 200.f);
+	EnemyState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 150.f);
 }
 
 
@@ -87,7 +87,7 @@ void MisuzuState_Attack_Tackle::EnterState()
 
 void MisuzuState_Attack_Tackle::Update(float _DeltaTime)
 {
-	EnemyState_AttackBase::Update(_DeltaTime);
+	BossState_AttackBase::Update(_DeltaTime);
 
 	if (false == IsLaunched)
 	{
@@ -99,7 +99,11 @@ void MisuzuState_Attack_Tackle::Update(float _DeltaTime)
 		IsLaunched = true;
 		LaunchTime = GetLiveTime();
 
-		CalMoveDir();
+		
+		GetVecToPlayer();
+
+		TackleDir = BossState_AttackBase::GetExpectPlayerPos();
+		TackleDir.Normalize();
 
 		//이동할 방향으로 바라본다
 		GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
@@ -122,39 +126,6 @@ void MisuzuState_Attack_Tackle::Update(float _DeltaTime)
 	GetFSM()->ChangeState(MisuzuStateType::Idle);
 }
 
-
-
-void MisuzuState_Attack_Tackle::CalMoveDir()
-{
-	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
-	float4 PlayerPos = Player->GetTransform()->GetWorldPosition();
-	float4 EnemyPos = GetEnemy()->GetTransform()->GetWorldPosition();
-
-
-	//이 Enemy->Player 벡터
-	float4 EnemyToPlayer = (PlayerPos - EnemyPos);
-
-	//플레이어가 움직이고 있던 방향
-	float4 PlayerMoveDir = Player->GetMoveDirVec();
-
-	//플레이어가 정지해있었다면 방향을 예측하지 않는다
-	if (true == PlayerMoveDir.IsZero())
-	{
-		TackleDir = EnemyToPlayer.NormalizeReturn();
-		return;
-	}
-
-
-	//Enemy와 플레이어사이 거리
-	float LengthToPlayer = EnemyToPlayer.Size();
-	//플레이어 이동 경로 정규화
-	PlayerMoveDir.Normalize();
-
-	//플레이어의 예상경로
-	float4 PlayerNextPos = PlayerPos + (PlayerMoveDir * LengthToPlayer);
-	
-	TackleDir = (PlayerNextPos - EnemyPos).NormalizeReturn();
-}
 
 
 
@@ -230,7 +201,7 @@ void MisuzuState_Attack_Tackle::Attack()
 
 void MisuzuState_Attack_Tackle::ExitState()
 {
-	EnemyState_AttackBase::ExitState();
+	BossState_AttackBase::ExitState();
 	IsLaunched = false;
 	TackleDir = float4::Zero;
 	LaunchTime = 0.f;

@@ -57,7 +57,8 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 	//1페이즈
 	{
 		//임시
-		MisuzuStateType::Meteor
+		//MisuzuStateType::Meteor
+		MisuzuStateType::Tackle,
 	},
 
 	//2페이즈
@@ -73,6 +74,23 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 	},
 };
 
+/*
+1페이즈
+	엘보
+	WU펀치
+	슬랩
+
+2페이즈
+	태클
+	슬랩
+	WU펀치
+
+3페이즈
+	메테오
+	태클
+	WU펀치
+	로어
+*/
 
 
 size_t MisuzuFSM::GetRandomAttack()

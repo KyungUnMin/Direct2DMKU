@@ -61,7 +61,7 @@ MisuzuState_Attack_Meteor::~MisuzuState_Attack_Meteor()
 
 void MisuzuState_Attack_Meteor::Start()
 {
-	EnemyState_AttackBase::Start();
+	BossState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -116,7 +116,7 @@ void MisuzuState_Attack_Meteor::CreateAnimation()
 
 void MisuzuState_Attack_Meteor::EnterState()
 {
-	EnemyState_AttackBase::EnterState();
+	BossState_AttackBase::EnterState();
 
 	ChangeStateWithAni(State::JumpUp);
 	EnemyState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 300.f);
@@ -135,7 +135,7 @@ void MisuzuState_Attack_Meteor::ChangeStateWithAni(State _NextState)
 
 void MisuzuState_Attack_Meteor::Update(float _DeltaTime)
 {
-	EnemyState_AttackBase::Update(_DeltaTime);
+	BossState_AttackBase::Update(_DeltaTime);
 
 	switch (CurState)
 	{
@@ -233,7 +233,7 @@ void MisuzuState_Attack_Meteor::Update_Land(float _DeltaTime)
 
 void MisuzuState_Attack_Meteor::ExitState()
 {
-	EnemyState_AttackBase::ExitState();
+	BossState_AttackBase::ExitState();
 
 	CurState = State::JumpUp;
 	GetEnemy()->SetHeight(0.f);

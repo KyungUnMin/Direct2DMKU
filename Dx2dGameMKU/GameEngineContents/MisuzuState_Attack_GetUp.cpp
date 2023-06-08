@@ -12,6 +12,7 @@
 #include "FieldCamController.h"
 
 
+
 const std::string_view MisuzuState_Attack_GetUp::AniName = "Attack_GetUp";
 const std::string_view MisuzuState_Attack_GetUp::AniFileName = "Misuzu_GetUp.png";
 const std::pair<int, int> MisuzuState_Attack_GetUp::AniCutFrame = std::pair<int, int>(5, 3);
@@ -30,7 +31,7 @@ MisuzuState_Attack_GetUp::~MisuzuState_Attack_GetUp()
 
 void MisuzuState_Attack_GetUp::Start()
 {
-	EnemyState_AttackBase::Start();
+	BossState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -87,7 +88,7 @@ void MisuzuState_Attack_GetUp::CreateAnimation()
 
 void MisuzuState_Attack_GetUp::EnterState()
 {
-	EnemyState_AttackBase::EnterState();
+	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 400.f);
@@ -97,7 +98,7 @@ void MisuzuState_Attack_GetUp::EnterState()
 
 void MisuzuState_Attack_GetUp::Update(float _DeltaTime)
 {
-	EnemyState_AttackBase::Update(_DeltaTime);
+	BossState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

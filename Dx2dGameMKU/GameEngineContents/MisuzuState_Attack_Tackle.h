@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemyState_AttackBase.h"
+#include "BossState_AttackBase.h"
 
-class MisuzuState_Attack_Tackle : public EnemyState_AttackBase
+class MisuzuState_Attack_Tackle : public BossState_AttackBase
 {
 public:
 	MisuzuState_Attack_Tackle();
@@ -39,7 +39,6 @@ private:
 	void LoadAnimation();
 	void CreateAnimation();
 
-	void CalMoveDir();
 	bool TackleMove(float _DeltaTime);
 	void CreateCollEffect();
 };

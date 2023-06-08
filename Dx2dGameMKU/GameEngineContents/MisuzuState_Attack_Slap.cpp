@@ -26,7 +26,7 @@ MisuzuState_Attack_Slap::~MisuzuState_Attack_Slap()
 
 void MisuzuState_Attack_Slap::Start()
 {
-	EnemyState_AttackBase::Start();
+	BossState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -68,7 +68,7 @@ void MisuzuState_Attack_Slap::CreateAnimation()
 
 void MisuzuState_Attack_Slap::EnterState()
 {
-	EnemyState_AttackBase::EnterState();
+	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue();
@@ -78,7 +78,7 @@ void MisuzuState_Attack_Slap::EnterState()
 
 void MisuzuState_Attack_Slap::Update(float _DeltaTime)
 {
-	EnemyState_AttackBase::Update(_DeltaTime);
+	BossState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;

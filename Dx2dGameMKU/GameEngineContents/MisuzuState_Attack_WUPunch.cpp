@@ -26,7 +26,7 @@ MisuzuState_Attack_WUPunch::~MisuzuState_Attack_WUPunch()
 
 void MisuzuState_Attack_WUPunch::Start()
 {
-	EnemyState_AttackBase::Start();
+	BossState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -73,7 +73,7 @@ void MisuzuState_Attack_WUPunch::CreateAnimation()
 
 void MisuzuState_Attack_WUPunch::EnterState()
 {
-	EnemyState_AttackBase::EnterState();
+	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue();
@@ -85,7 +85,7 @@ void MisuzuState_Attack_WUPunch::EnterState()
 
 void MisuzuState_Attack_WUPunch::Update(float _DeltaTime)
 {
-	EnemyState_AttackBase::Update(_DeltaTime);
+	BossState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -130,7 +130,7 @@ void MisuzuState_Attack_WUPunch::Attack()
 
 void MisuzuState_Attack_WUPunch::ExitState()
 {
-	EnemyState_AttackBase::ExitState();
+	BossState_AttackBase::ExitState();
 
 	FieldCamController* CamCtrl = this->GetCamCtrl();
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.1f);

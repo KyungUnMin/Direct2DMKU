@@ -24,7 +24,7 @@ MisuzuState_Attack_Elbow::~MisuzuState_Attack_Elbow()
 
 void MisuzuState_Attack_Elbow::Start()
 {
-	EnemyState_AttackBase::Start();
+	BossState_AttackBase::Start();
 
 	LoadAnimation();
 	CreateAnimation();
@@ -63,7 +63,7 @@ void MisuzuState_Attack_Elbow::CreateAnimation()
 
 void MisuzuState_Attack_Elbow::EnterState()
 {
-	EnemyState_AttackBase::EnterState();
+	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
 
@@ -74,7 +74,7 @@ void MisuzuState_Attack_Elbow::EnterState()
 
 void MisuzuState_Attack_Elbow::Update(float _DeltaTime)
 {
-	EnemyState_AttackBase::Update(_DeltaTime);
+	BossState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
