@@ -58,7 +58,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 	{
 		//임시
 		//MisuzuStateType::Meteor
-		MisuzuStateType::Tackle,
+		//MisuzuStateType::Tackle,
 	},
 
 	//2페이즈

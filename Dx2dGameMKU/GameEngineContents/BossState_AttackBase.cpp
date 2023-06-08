@@ -3,6 +3,7 @@
 
 #include "FieldPlayer.h"
 #include "FieldEnemyBase.h"
+#include "BackGround.h"
 
 BossState_AttackBase::BossState_AttackBase()
 {
@@ -15,7 +16,7 @@ BossState_AttackBase::~BossState_AttackBase()
 }
 
 
-float4 BossState_AttackBase::GetExpectPlayerPos()
+float4 BossState_AttackBase::GetVecToExpectPlayerPos()
 {
 	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
 
@@ -60,4 +61,56 @@ float4 BossState_AttackBase::GetExpectPlayerPos()
 
 
 	return EnemyToPlayerExpect;
+}
+
+
+
+bool BossState_AttackBase::Update_SinHalfMove(
+	float _Timer, float _Duration,
+	const float4& _StartPos, const float4& _DestPos)
+{
+	float Ratio = (_Timer / _Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	float SinValue = std::sinf(GameEngineMath::PIE * Ratio * 0.5f);
+
+	return Update_LerpMove(SinValue, _StartPos, _DestPos);
+}
+
+
+
+bool BossState_AttackBase::Update_CosHalfMove(
+	float _Timer, float _Duration,
+	const float4& _StartPos, const float4& _DestPos)
+{
+	float Ratio = (_Timer / _Duration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	float CosValue = std::cosf(GameEngineMath::PIE * Ratio * 0.5f);
+
+	//Cos값 이 1부터 0으로 이동하기 때문에 DestPos -> StartPos
+	return Update_LerpMove(CosValue, _DestPos, _StartPos);
+}
+
+
+
+bool BossState_AttackBase::Update_LerpMove(float _Ratio, const float4& _StartPos, const float4& _DestPos)
+{
+	//다음 이동 경로
+	float4 NextPos = float4::LerpClamp(_StartPos, _DestPos, _Ratio);
+
+
+	//벽에 막힌 경우1
+	std::shared_ptr<BackGround> BGPtr = GetBackGround();
+	if (true == BGPtr->IsBlockPos(NextPos))
+		return false;
+
+	//벽에 막힌 경우2
+	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
+	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
+		return false;
+
+	//이동
+	GetEnemy()->GetTransform()->SetLocalPosition(NextPos);
+	return true;
 }

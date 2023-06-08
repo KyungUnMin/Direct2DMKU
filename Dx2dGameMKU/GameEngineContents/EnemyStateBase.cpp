@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "EnemyStateBase.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "EnemyFSMBase.h"
@@ -213,4 +214,22 @@ void EnemyStateBase::OffMainCollider()
 void EnemyStateBase::OnMainCollider() 
 {
 	MainCollider->On();
+}
+
+bool EnemyStateBase::FarAttackExcute(int _Percent)
+{
+	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, 100);
+
+	//확률을 뚫지 못한 경우
+	if (_Percent < RandValue)
+		return false;
+
+	size_t FarAttack = GetEnemyFsm()->GetRandomFarAttack();
+
+	//해당 Phase에서는 원거리 공격이 없는 경우
+	if (-1 == FarAttack)
+		return false;
+
+	GetFSM()->ChangeState(FarAttack);
+	return true;
 }

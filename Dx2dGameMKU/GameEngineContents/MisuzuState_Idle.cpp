@@ -1,18 +1,18 @@
 #include "PrecompileHeader.h"
 #include "MisuzuState_Idle.h"
 
-#include <GameEngineBase/GameEngineRandom.h>
-
 #include "MisuzuFSM.h"
 
 #include "FieldEnemyBase.h"
+
+const std::vector<int> MisuzuState_Idle::FarAttackPercent = { 100, 20, 50 };
+const float MisuzuState_Idle::SightRadius = 100.f;
 
 const std::string_view MisuzuState_Idle::AniName = "Idle";
 const std::string_view MisuzuState_Idle::AniFileName = "Misuzu_Idle.png";
 const std::pair<int, int> MisuzuState_Idle::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Idle::AniInterTime = 0.08f;
 
-const std::vector<int> MisuzuState_Idle::FarAttackPercent = {100, 20, 50};
 
 MisuzuState_Idle::MisuzuState_Idle()
 {
@@ -30,6 +30,7 @@ void MisuzuState_Idle::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	EnemyStateBase::SetSight(SightRadius);
 }
 
 void MisuzuState_Idle::LoadAnimation()
@@ -78,10 +79,10 @@ void MisuzuState_Idle::Update(float _DeltaTime)
 
 	//0번 Phase일땐  원거리 공격 없음
 	size_t CurPhase = GetBossFsm()->GetCurPhase();
-	//if(0 != CurPhase)
+	if(0 != CurPhase)
 	{
 		//인자로 들어간 확률에 맞춰 원거리 공격 시도
-		if (true == FarAttackExcute(FarAttackPercent[CurPhase]))
+		if (true == EnemyStateBase::FarAttackExcute(FarAttackPercent[CurPhase]))
 			return;
 	}
 
@@ -99,21 +100,3 @@ void MisuzuState_Idle::Update(float _DeltaTime)
 	GetFSM()->ChangeState(MisuzuStateType::Walk);
 }
 
-
-bool MisuzuState_Idle::FarAttackExcute(int _Percent)
-{
-	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, 100);
-
-	//확률을 뚫지 못한 경우
-	if (_Percent < RandValue)
-		return false;
-
-	size_t FarAttack = GetEnemyFsm()->GetRandomFarAttack();
-
-	//해당 Phase에서는 원거리 공격이 없는 경우
-	if (-1 == FarAttack)
-		return false;
-
-	GetFSM()->ChangeState(FarAttack);
-	return true;
-}

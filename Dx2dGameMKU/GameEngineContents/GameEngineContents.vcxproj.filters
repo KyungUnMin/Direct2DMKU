@@ -952,14 +952,14 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise">
       <UniqueIdentifier>{43632a3f-4e4b-4a03-bfbf-ba2d5e94e022}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\03.StateBase\01.Idle">
-      <UniqueIdentifier>{c4414bed-ceb7-436b-95a5-825f148c35cb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\05.Slap">
       <UniqueIdentifier>{f697760c-048d-421f-b1dd-eadca27c28b6}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\06.Meteor">
       <UniqueIdentifier>{c87e1db1-784c-4668-8f6c-a7959126f739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\03.StateBase\01.Idle">
+      <UniqueIdentifier>{c4414bed-ceb7-436b-95a5-825f148c35cb}</UniqueIdentifier>
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\03.StateBase\02.Attack">
       <UniqueIdentifier>{9b50ee38-6b86-4686-bc12-42d95714b437}</UniqueIdentifier>

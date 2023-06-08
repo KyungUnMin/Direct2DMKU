@@ -27,6 +27,11 @@ protected:
 		ArriveState = static_cast<size_t>(_ArriveState);
 	}
 
+	//경로를 재설정할 때 플레이어와 멀리있는 경우 처리해주고 싶은 일(State를 바꾸는 경우 true를 return)
+	virtual bool ChangeStateWhenFarWithAwayPlayer()
+	{
+		return false;
+	}
 
 private:
 	std::pair<int, int> GridMapScale;

@@ -12,6 +12,9 @@ public:
 	MisuzuState_Idle& operator=(const MisuzuState_Idle& _Other) = delete;
 	MisuzuState_Idle& operator=(const MisuzuState_Idle&& _Other) noexcept = delete;
 
+	static const std::vector<int> FarAttackPercent;
+	static const float SightRadius;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -22,13 +25,11 @@ private:
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
-	static const std::vector<int> FarAttackPercent;
 
 
 
 	void LoadAnimation();
 	void CreateAnimation();
 
-	bool FarAttackExcute(int _Percent);
 };
 

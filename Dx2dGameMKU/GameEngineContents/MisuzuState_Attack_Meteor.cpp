@@ -143,9 +143,11 @@ void MisuzuState_Attack_Meteor::Update(float _DeltaTime)
 		Update_JumpUp(_DeltaTime);
 		break;
 	case MisuzuState_Attack_Meteor::State::Jumping:
+		Update_JumpingMove(_DeltaTime);
 		Update_Jumping(_DeltaTime);
 		break;
 	case MisuzuState_Attack_Meteor::State::Fall:
+		Update_FallMove(_DeltaTime);
 		Update_Fall(_DeltaTime);
 		break;
 	case MisuzuState_Attack_Meteor::State::Miss:
@@ -163,9 +165,16 @@ void MisuzuState_Attack_Meteor::Update_JumpUp(float _DeltaTime)
 	if (false == Render->IsAnimationEnd())
 		return;
 
+	MoveStartPos = GetEnemy()->GetTransform()->GetLocalPosition();
+	MoveDestPos = MoveStartPos + BossState_AttackBase::GetVecToExpectPlayerPos();
+	MoveHalfPos = (MoveDestPos - MoveStartPos).half();
+	MoveHalfPos = (MoveStartPos + MoveHalfPos);
+
 	MainCollider->Off();
 	ChangeStateWithAni(State::Jumping);
 }
+
+
 
 void MisuzuState_Attack_Meteor::Update_Jumping(float _DeltaTime)
 {
@@ -177,6 +186,16 @@ void MisuzuState_Attack_Meteor::Update_Jumping(float _DeltaTime)
 
 	ChangeStateWithAni(State::Fall);
 }
+
+
+
+void MisuzuState_Attack_Meteor::Update_JumpingMove(float _DeltaTime)
+{
+	BossState_AttackBase::Update_SinHalfMove(Timer, Duration, MoveStartPos, MoveHalfPos);
+}
+
+
+
 
 void MisuzuState_Attack_Meteor::Update_Fall(float _DeltaTime)
 {
@@ -206,6 +225,11 @@ void MisuzuState_Attack_Meteor::Update_Fall(float _DeltaTime)
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.1f);
 }
 
+void MisuzuState_Attack_Meteor::Update_FallMove(float _DeltaTime)
+{
+	//Cos이라 목적지와 시작점의 위치가 반대로
+	BossState_AttackBase::Update_CosHalfMove(Timer, Duration, MoveHalfPos, MoveDestPos);
+}
 
 void MisuzuState_Attack_Meteor::Attack()
 {

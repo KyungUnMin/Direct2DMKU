@@ -56,6 +56,10 @@ private:
 	float Timer = 0.f;
 
 	
+	float4 MoveStartPos = float4::Zero;
+	float4 MoveHalfPos = float4::Zero;
+	float4 MoveDestPos = float4::Zero;
+	
 
 
 	void LoadAnimation();
@@ -65,6 +69,10 @@ private:
 	void Update_JumpUp(float _DeltaTime);
 	void Update_Jumping(float _DeltaTime);
 	void Update_Fall(float _DeltaTime);
+
+	void Update_JumpingMove(float _DeltaTime);
+	void Update_FallMove(float _DeltaTime);
+
 	void Update_Land(float _DeltaTime);
 };
 

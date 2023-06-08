@@ -120,6 +120,8 @@ protected:
 	void OffMainCollider();
 	void OnMainCollider();
 
+	//인자로 받은 확률 만큼 FSM에서 지정한 원거리 공격을 수행한다
+	bool FarAttackExcute(int _Percent);
 
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;

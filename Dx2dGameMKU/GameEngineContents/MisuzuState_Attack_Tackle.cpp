@@ -102,7 +102,7 @@ void MisuzuState_Attack_Tackle::Update(float _DeltaTime)
 		
 		GetVecToPlayer();
 
-		TackleDir = BossState_AttackBase::GetExpectPlayerPos();
+		TackleDir = BossState_AttackBase::GetVecToExpectPlayerPos();
 		TackleDir.Normalize();
 
 		//이동할 방향으로 바라본다

@@ -132,6 +132,9 @@ void EnemyState_WalkBase::Update(float _DeltaTime)
 		//최종목적지와 플레이어 사이 거리가 ReFindPathRange보다 크면 경로를 재 설정
 		if (ReFindPathRange < DistanceToPlayer)
 		{
+			if (true == ChangeStateWhenFarWithAwayPlayer())
+				return;
+
 			FindPath();
 			SetDest();
 			DestSetCount = 0;
