@@ -49,7 +49,11 @@ void FieldCamController::SetShakeState(float _ShakeDuration, float _ShakeRange /
 	ShakeDuration = _ShakeDuration;
 	ShakeRange = _ShakeRange;
 	Timer = 0.f;
-	PrevState = CurState;
+
+	if (CameraCtrlState::Shake != CurState)
+	{
+		PrevState = CurState;
+	}
 
 	CurState = CameraCtrlState::Shake;
 }
