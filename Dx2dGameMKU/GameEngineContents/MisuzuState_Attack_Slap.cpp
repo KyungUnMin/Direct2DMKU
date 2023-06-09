@@ -72,7 +72,7 @@ void MisuzuState_Attack_Slap::EnterState()
 	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue();
+	EnemyState_AttackBase::SetAttackColValue(float4{50.f, 50.f}, float4::One * 150.f);
 }
 
 

@@ -54,7 +54,7 @@ private:
 	const float PivotVertical = MaxVertical;
 	const float4 ExploRenderScale = float4::One * 500.f;
 
-	const int Damage = 30;
+	const int Damage = 3;
 
 
 

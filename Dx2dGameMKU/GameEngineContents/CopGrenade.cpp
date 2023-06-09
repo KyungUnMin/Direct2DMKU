@@ -212,7 +212,7 @@ void CopGrenade::Update_Land()
 		return;
 	}
 
-	bool Result = PlayerPtr->OnDamage_Jaw();
+	bool Result = PlayerPtr->OnDamage_Stun(true);
 	if (false == Result)
 		return;
 

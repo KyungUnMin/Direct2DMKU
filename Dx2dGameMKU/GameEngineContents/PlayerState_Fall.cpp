@@ -71,6 +71,8 @@ void PlayerState_Fall::EnterState()
 }
 
 
+
+
 void PlayerState_Fall::Update(float _DeltaTime)
 {
 	PlayerState_MovementBase::Update(_DeltaTime);
@@ -115,3 +117,8 @@ void PlayerState_Fall::Update(float _DeltaTime)
 	}
 }
 
+void PlayerState_Fall::ExitState()
+{
+	PlayerState_MovementBase::ExitState();
+	FieldPlayer::GetPtr()->SetHeight(0.f);
+}

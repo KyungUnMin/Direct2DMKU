@@ -68,7 +68,7 @@ void MisuzuState_Attack_WUPunch::CreateAnimation()
 		.Loop = false,
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm, true);
 	Render->SetAnimationStartEvent(AniName, AttackFrm + 1, [this]()
 	{
 		FieldCamController* CamCtrl = this->GetCamCtrl();
@@ -98,7 +98,7 @@ void MisuzuState_Attack_WUPunch::EnterState()
 	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue();
+	EnemyState_AttackBase::SetAttackColValue(float4::Right * 50.f, float4::One * 150.f);
 	
 	GetCamCtrl()->SetZoom(0.95f, AniInterTime * static_cast<float>(AttackFrm));
 	OutLineRender->On();
@@ -159,6 +159,9 @@ void MisuzuState_Attack_WUPunch::Update_OutLine()
 
 void MisuzuState_Attack_WUPunch::Attack()
 {
+	if (true == IsAttackHited)
+		return;
+	
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(true);
 	if (false == Result)
 		return;
