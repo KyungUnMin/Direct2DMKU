@@ -45,8 +45,12 @@ public:
 
 	std::shared_ptr<SelfRenderer> CreataEngineUIRender(const std::string_view& _TexFileName, BossVersusUIRenderOrder _RenderOrder);
 
+	void Death() override;
+
+
 protected:
 	void Update(float _DeltaTime) override;
+
 
 private:
 	static BossVersus* GPtr;

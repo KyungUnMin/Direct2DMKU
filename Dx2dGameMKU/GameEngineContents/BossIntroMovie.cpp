@@ -33,6 +33,8 @@ BossIntroMovie::~BossIntroMovie()
 
 void BossIntroMovie::Init(MovieType _MovieType, std::function<void()> _EndCallback /*= nullptr*/)
 {
+	IsInit = true;
+
 	const std::string_view& MovieName = MovieNames[static_cast<size_t>(_MovieType)];
 	LoadSprite(MovieName);
 	CreateAnimation(MovieName);
@@ -90,6 +92,12 @@ void BossIntroMovie::CreateAnimation(const std::string_view& _MovieName)
 void BossIntroMovie::Update(float _DelatTime)
 {
 	UIBase::Update(_DelatTime);
+
+	if (false == IsInit)
+	{
+		MsgAssert("초기화 함수(Init)를 호출시키지 않았습니다");
+		return;
+	}
 
 	if (true == KeyMgr::IsDown(KeyNames::Esc) && 1.f < GetLiveTime())
 	{

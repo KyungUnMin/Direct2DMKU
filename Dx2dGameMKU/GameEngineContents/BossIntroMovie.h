@@ -30,6 +30,7 @@ private:
 	std::shared_ptr<class SelfRenderer> Render = nullptr;
 	std::vector<std::string> TexNames;
 	std::function<void()> EndCallback = nullptr;
+	bool IsInit = false;
 
 	void LoadSprite(const std::string_view& _MovieName);
 	void CreateAnimation(const std::string_view& _MovieName);

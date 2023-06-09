@@ -22,6 +22,8 @@ const std::vector<std::pair<std::string_view, float4>> SchoolBossLevel::BGInfoes
 
 const std::string_view SchoolBossLevel::CollisionImageName = "SchoolBossColBG.png";
 
+const float4 SchoolBossLevel::PlayerStartPos = float4{ -290.f, -205.f };
+
 SchoolBossLevel::SchoolBossLevel()
 {
 
@@ -41,8 +43,9 @@ void SchoolBossLevel::Start()
 	CreatBackGrounds();
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -290.f, -205.f });
-	GetEnemySpawner().CreateEnemy(EnemyType::Misuzu, float4::Zero);
+	FieldLevelBase::SetPlayerStartPosition(PlayerStartPos);
+	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
+	GetEnemySpawner().CreateEnemy(EnemyType::Misuzu, EnemyStartPos);
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -81,14 +84,14 @@ void SchoolBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
 
-	//CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School, [this]()
-	//{
-	//	//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
-	//	this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
-	//	{
-	//		this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
-	//	});
-	//});
+	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School, [this]()
+	{
+		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
+		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+		{
+			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
+		});
+	});
 
 }
 

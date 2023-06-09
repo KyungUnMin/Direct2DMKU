@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 
+#include "RCG_GameCore.h"
 #include "RCGDefine.h"
 
 #include "SelfRenderer.h"
@@ -65,6 +66,7 @@ void BossVersus::Init(BossType _Boss)
 	CreateNameRenders(_Boss);
 
 	Fsm.Init(this);
+	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
 }
 
 
@@ -180,9 +182,16 @@ void BossVersus::Update(float _DeltaTime)
 {
 	UIBase::Update(_DeltaTime);
 
+	if (nullptr == PlayerPortrait)
+	{
+		MsgAssert("초기화 함수(Init)를 호출시키지 않았습니다");
+		return;
+	}
+
 	Update_PortShader(_DeltaTime);
 	Fsm.Update(_DeltaTime);
 }
+
 
 
 void BossVersus::Update_PortShader(float _DeltaTime)
@@ -202,4 +211,10 @@ void BossVersus::Update_PortShader(float _DeltaTime)
 	//치역 0 ~ 1
 	float SinValue = sinf(GameEngineMath::PIE * Ratio * 0.5f);
 	CBufferData.NoiseFilterValue = SinValue;
+}
+
+void BossVersus::Death()
+{
+	UIBase::Death();
+	RCG_GameCore::SetCurGameState(GameState::OnField);
 }

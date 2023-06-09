@@ -34,7 +34,7 @@ public:
 		UpdateValue = false;
 	}
 
-	inline void Death()
+	inline virtual void Death()
 	{
 		DeathValue = true;
 	}
