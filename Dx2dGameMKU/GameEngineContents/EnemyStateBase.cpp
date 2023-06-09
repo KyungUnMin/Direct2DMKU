@@ -233,3 +233,4 @@ bool EnemyStateBase::FarAttackExcute(int _Percent)
 	GetFSM()->ChangeState(FarAttack);
 	return true;
 }
+

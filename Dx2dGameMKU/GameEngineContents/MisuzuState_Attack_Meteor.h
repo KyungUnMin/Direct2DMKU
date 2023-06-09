@@ -45,8 +45,6 @@ private:
 		Land,
 	};
 
-	std::shared_ptr<class GameEngineCollision> MainCollider = nullptr;
-
 	State CurState = State::JumpUp;
 	const float MaxHeight = 2000.f;
 	const float Duration = 1.0f;

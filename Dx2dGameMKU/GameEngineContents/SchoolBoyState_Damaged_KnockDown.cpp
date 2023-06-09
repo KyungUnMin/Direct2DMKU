@@ -70,6 +70,7 @@ void SchoolBoyState_Damaged_KnockDown::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	EnemyStateBase::OffMainCollider();
 }
 
 

@@ -65,8 +65,6 @@ void MisuzuState_Attack_Meteor::Start()
 
 	LoadAnimation();
 	CreateAnimation();
-
-	MainCollider = GetEnemy()->GetMainCollider();
 }
 
 void MisuzuState_Attack_Meteor::LoadAnimation()
@@ -170,7 +168,7 @@ void MisuzuState_Attack_Meteor::Update_JumpUp(float _DeltaTime)
 	MoveHalfPos = (MoveDestPos - MoveStartPos).half();
 	MoveHalfPos = (MoveStartPos + MoveHalfPos);
 
-	MainCollider->Off();
+	EnemyStateBase::OffMainCollider();
 	ChangeStateWithAni(State::Jumping);
 }
 
@@ -217,7 +215,7 @@ void MisuzuState_Attack_Meteor::Update_Fall(float _DeltaTime)
 		ChangeStateWithAni(State::Miss);
 	}
 
-	MainCollider->On();
+	EnemyStateBase::OnMainCollider();
 	CreateEffect<HitEffect>()->OffHitSpark();
 
 	FieldCamController* CamCtrl = GetCamCtrl();
@@ -263,7 +261,7 @@ void MisuzuState_Attack_Meteor::ExitState()
 	GetEnemy()->SetHeight(0.f);
 	Timer = 0.f;
 
-	MainCollider->On();
+	EnemyStateBase::OnMainCollider();
 	FieldCamController* CamCtrl = GetCamCtrl();
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin);
 }
