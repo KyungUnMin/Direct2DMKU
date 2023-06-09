@@ -55,13 +55,27 @@ void FieldActorBase::CreateShadow()
 		IsLoad = true;
 	}
 
-	std::shared_ptr<GameEngineSpriteRenderer> ShadowRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	ShadowRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 	ShadowRender->SetScaleToTexture(ShadowImageName);
 
 	GameEngineTransform* ShadowTrans = ShadowRender->GetTransform();
 	ShadowTrans->SetLocalScale(ShadowTrans->GetLocalScale() * 1.5f);
 	ShadowTrans->AddLocalPosition(float4::Up * 10.f);
 }
+
+void FieldActorBase::SetShadowScale(const float4& _ShadowScale)
+{
+	GameEngineTransform* ShadowTrans = ShadowRender->GetTransform();
+	ShadowTrans->SetLocalScale(_ShadowScale);
+}
+
+void FieldActorBase::SetShadowScale(float _Ratio) 
+{
+	GameEngineTransform* ShadowTrans = ShadowRender->GetTransform();
+	ShadowTrans->SetLocalScale(ShadowTrans->GetLocalScale() * _Ratio);
+}
+
+
 
 void FieldActorBase::CreateDebugGridPoint()
 {

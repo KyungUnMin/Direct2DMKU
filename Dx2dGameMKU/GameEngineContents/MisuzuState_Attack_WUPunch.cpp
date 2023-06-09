@@ -1,11 +1,16 @@
 #include "PrecompileHeader.h"
 #include "MisuzuState_Attack_WUPunch.h"
 
+#include "RCGDefine.h"
+#include "RCGEnums.h"
 #include "DataMgr.h"
+#include "FieldCamController.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
-#include "FieldCamController.h"
+#include "FieldEnemyBase.h"
+
+
 
 const std::string_view MisuzuState_Attack_WUPunch::AniName = "Attack_WUPunch";
 const std::string_view MisuzuState_Attack_WUPunch::AniFileName = "Misuzu_WUPunch.png";
@@ -30,6 +35,8 @@ void MisuzuState_Attack_WUPunch::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	CreateOutLine();
+	EnemyStateBase::SetUnbeatable();
 }
 
 void MisuzuState_Attack_WUPunch::LoadAnimation()
@@ -68,6 +75,20 @@ void MisuzuState_Attack_WUPunch::CreateAnimation()
 	});
 }
 
+void MisuzuState_Attack_WUPunch::CreateOutLine()
+{
+	OutLineRender = GetEnemy()->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	OutLineRender->GetShaderResHelper().SetConstantBufferLink("AtlasData", OutLineAtlas);
+	OutLineRender->ColorOptionValue.MulColor = float4::Null;
+
+	const float4 RenderScale = GetRenderer()->GetTransform()->GetLocalScale();
+	GameEngineTransform* OutLineTrans = OutLineRender->GetTransform();
+	OutLineTrans->SetLocalScale(RenderScale + float4::One * 20.f);
+	OutLineTrans->AddLocalPosition(float4::Forward);
+
+	OutLineRender->Off();
+}
+
 
 
 
@@ -79,6 +100,7 @@ void MisuzuState_Attack_WUPunch::EnterState()
 	EnemyState_AttackBase::SetAttackColValue();
 	
 	GetCamCtrl()->SetZoom(0.95f, AniInterTime * static_cast<float>(AttackFrm));
+	OutLineRender->On();
 }
 
 
@@ -86,6 +108,8 @@ void MisuzuState_Attack_WUPunch::EnterState()
 void MisuzuState_Attack_WUPunch::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
+
+	Update_OutLine();
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -117,6 +141,20 @@ void MisuzuState_Attack_WUPunch::Update(float _DeltaTime)
 }
 
 
+void MisuzuState_Attack_WUPunch::Update_OutLine()
+{
+	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
+	OutLineRender->SetTexture(EnemyRender->GetTexName());
+	OutLineAtlas = EnemyRender->GetAtlasData();
+
+	const float Duration = 1.f;
+	float Ratio = GetLiveTime() / Duration;
+	float4 NowColor = float4::LerpClamp(float4::Black, float4::Red, Ratio);
+	OutLineRender->ColorOptionValue.MulColor = NowColor;
+}
+
+
+
 
 void MisuzuState_Attack_WUPunch::Attack()
 {
@@ -135,4 +173,5 @@ void MisuzuState_Attack_WUPunch::ExitState()
 	FieldCamController* CamCtrl = this->GetCamCtrl();
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.1f);
 	IsAttackHited = false;
+	OutLineRender->Off();
 }

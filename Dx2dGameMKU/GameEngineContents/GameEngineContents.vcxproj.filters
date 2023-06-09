@@ -973,6 +973,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar">
       <UniqueIdentifier>{6e2a1c69-bfe5-4772-808a-353a6589c2f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\07.Light">
+      <UniqueIdentifier>{be80757a-918b-4cf2-a7bf-292a255581ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\09.GatherEnergy">
+      <UniqueIdentifier>{4261f2d7-ba7d-485b-8d42-08369324c7de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1734,6 +1740,12 @@
     <ClCompile Include="MisuzuState_Attack_Roar.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar</Filter>
     </ClCompile>
+    <ClCompile Include="GatherEnergyEffect.cpp">
+      <Filter>03.Actor\06.Effect\09.GatherEnergy</Filter>
+    </ClCompile>
+    <ClCompile Include="LightEffect.cpp">
+      <Filter>03.Actor\06.Effect\07.Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2482,6 +2494,12 @@
     </ClInclude>
     <ClInclude Include="MisuzuState_Attack_Roar.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar</Filter>
+    </ClInclude>
+    <ClInclude Include="GatherEnergyEffect.h">
+      <Filter>03.Actor\06.Effect\09.GatherEnergy</Filter>
+    </ClInclude>
+    <ClInclude Include="LightEffect.h">
+      <Filter>03.Actor\06.Effect\07.Light</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

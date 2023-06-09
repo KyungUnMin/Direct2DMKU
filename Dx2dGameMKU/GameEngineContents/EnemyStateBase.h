@@ -22,7 +22,7 @@ public:
 	EnemyStateBase& operator=(const EnemyStateBase& _Other) = delete;
 	EnemyStateBase& operator=(const EnemyStateBase&& _Other) noexcept = delete;
 
-	//공격을 받지 않는 무적상태인지 여부
+	//공격에 반응하지 않는 슈퍼아머 상태인지 여부
 	inline bool IsUnbeatable() const
 	{
 		return Unbeatable;
@@ -105,7 +105,7 @@ protected:
 		return BGPtr;
 	}
 
-	//무적 상태
+	//슈퍼아머 상태
 	inline void SetUnbeatable()
 	{
 		Unbeatable = true;
@@ -133,7 +133,7 @@ private:
 
 	float SightRadius = 100.f;
 
-	//무적 상태여부
+	//슈퍼아머 상태여부
 	bool Unbeatable = false;
 
 	bool IsLookPlayer = true;

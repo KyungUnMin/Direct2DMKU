@@ -90,7 +90,8 @@ protected:
 	void CreateColliders(CollisionOrder _Order);
 	
 
-
+	void SetShadowScale(const float4& _ShadowScale);
+	void SetShadowScale(float _Ratio);
 
 private:
 	static const float4 RenderScale;
@@ -105,6 +106,7 @@ private:
 	std::pair<int, int> GridPos = { 0, 0 };
 
 	std::shared_ptr<GameEngineSpriteRenderer> RendererPtr = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> ShadowRender = nullptr;
 
 
 

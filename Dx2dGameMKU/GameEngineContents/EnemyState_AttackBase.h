@@ -60,11 +60,11 @@ protected:
 	}
 
 	template<typename EffectType>
-	std::shared_ptr<EffectType> CreateEffect(const float4& _Offset = float4::Zero, const float4& _Scale = float4::One)
+	std::shared_ptr<EffectType> CreateEffect(const float4& _Offset = float4::Zero, const float4& _Scale = float4::One, bool _IsChild = false)
 	{
 		std::shared_ptr<EffectType> Effect = nullptr;
 		Effect = FieldLevelBase::GetPtr()->CreateActor<EffectType>(UpdateOrder::Effect);
-		EffectInit(Effect, _Offset, _Scale);
+		EffectInit(Effect, _Offset, _Scale, _IsChild);
 		return Effect;
 	}
 
@@ -96,6 +96,6 @@ private:
 
 	float MoveDuration = 0.5f;
 
-	void EffectInit(std::shared_ptr<GameEngineActor> _Effect, const float4& _Offset, const float4& _Scale);
+	void EffectInit(std::shared_ptr<GameEngineActor> _Effect, const float4& _Offset, const float4& _Scale, bool _IsChild);
 };
 

@@ -173,7 +173,7 @@ void EnemyState_AttackBase::ExitState()
 
 
 
-void EnemyState_AttackBase::EffectInit(std::shared_ptr<GameEngineActor> _Effect, const float4& _Offset, const float4& _Scale)
+void EnemyState_AttackBase::EffectInit(std::shared_ptr<GameEngineActor> _Effect, const float4& _Offset, const float4& _Scale, bool _IsChild)
 {
 	if (nullptr == _Effect)
 	{
@@ -182,7 +182,13 @@ void EnemyState_AttackBase::EffectInit(std::shared_ptr<GameEngineActor> _Effect,
 	}
 
 	GameEngineTransform* EffectTrans = _Effect->GetTransform();
-	const float4 EnemyPos = GetEnemy()->GetTransform()->GetWorldPosition();
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+	const float4 EnemyPos = EnemyTrans->GetWorldPosition();
+
+	if (true == _IsChild)
+	{
+		EffectTrans->SetParent(EnemyTrans, false);
+	}
 
 	EffectTrans->SetLocalPosition(EnemyPos + _Offset);
 	EffectTrans->SetLocalScale(_Scale);

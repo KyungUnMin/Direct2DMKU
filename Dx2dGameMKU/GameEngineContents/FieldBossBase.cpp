@@ -49,3 +49,8 @@ void FieldBossBase::OnDamage(int _Damege)
 	HpBar->SetHp(GetHp());
 }
 
+//void FieldBossBase::LevelChangeEnd()
+//{
+//	FieldEnemyBase::LevelChangeEnd();
+//	Death();
+//}

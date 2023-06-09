@@ -362,6 +362,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GameEngineActorGUI.h" />
+    <ClInclude Include="GatherEnergyEffect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GlichSideAttack.h">
       <SubType>
       </SubType>
@@ -391,6 +395,10 @@
     <ClInclude Include="HooliganState_Ready.h" />
     <ClInclude Include="HooliganState_Walk.h" />
     <ClInclude Include="HUD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LightEffect.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1023,6 +1031,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameEngineActorGUI.cpp" />
+    <ClCompile Include="GatherEnergyEffect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GlichSideAttack.cpp">
       <SubType>
       </SubType>
@@ -1052,6 +1064,10 @@
     <ClCompile Include="HooliganState_Ready.cpp" />
     <ClCompile Include="HooliganState_Walk.cpp" />
     <ClCompile Include="HUD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LightEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>

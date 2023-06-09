@@ -30,8 +30,13 @@ private:
 	static const int AttackFrm;
 
 	bool IsAttackHited = false;
+	std::shared_ptr<class GameEngineSpriteRenderer> OutLineRender = nullptr;
+	float4 OutLineAtlas = float4::Zero;
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void CreateOutLine();
+
+	void Update_OutLine();
 };
 

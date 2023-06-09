@@ -19,6 +19,8 @@ protected:
 
 	void OnDamage(int _Damege) override;
 
+	//void LevelChangeEnd() override;
+
 private:
 	static const float4 RenderScale;
 
