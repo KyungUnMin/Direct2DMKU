@@ -76,29 +76,10 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 	},
 };
 
-/*
-1페이즈
-	엘보
-	WU펀치
-	슬랩
-
-2페이즈
-	태클
-	슬랩
-	WU펀치
-
-3페이즈
-	메테오
-	태클
-	WU펀치
-	로어
-*/
-
 
 size_t MisuzuFSM::GetRandomAttack()
 {
 	size_t CurPhase = BossFSMBase::GetCurPhase();
-
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(NearAttackGroup[CurPhase].size() - 1));
 	return static_cast<size_t>(NearAttackGroup[CurPhase][RandValue]);
 }

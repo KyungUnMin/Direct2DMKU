@@ -57,7 +57,8 @@ void MisuzuState_Attack_Slap::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 13,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 		});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);

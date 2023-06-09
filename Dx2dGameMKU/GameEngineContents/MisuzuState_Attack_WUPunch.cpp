@@ -64,7 +64,8 @@ void MisuzuState_Attack_WUPunch::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 26,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
