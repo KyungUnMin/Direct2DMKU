@@ -229,12 +229,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\03.BackKick">
       <UniqueIdentifier>{26145561-3735-4f3e-aeb4-27e50d6159e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.HookKick">
-      <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.CrescentKick">
-      <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack">
       <UniqueIdentifier>{69f61c3e-7fa4-4f87-b4fd-315bf66ceebd}</UniqueIdentifier>
     </Filter>
@@ -979,6 +973,12 @@
     <Filter Include="03.Actor\06.Effect\09.GatherEnergy">
       <UniqueIdentifier>{4261f2d7-ba7d-485b-8d42-08369324c7de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.HookKick">
+      <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.CrescentKick">
+      <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1171,13 +1171,13 @@
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\02.SnapKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_HookKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.HookKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.HookKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_BackKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\03.BackKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_QuickAttack_CrescentKick.cpp">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.CrescentKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.CrescentKick</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState_SpecialAttack_AxeKick.cpp">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\01.AxeKick</Filter>
@@ -1932,13 +1932,13 @@
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\02.SnapKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_HookKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.HookKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.HookKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_BackKick.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\03.BackKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_QuickAttack_CrescentKick.h">
-      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.CrescentKick</Filter>
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.CrescentKick</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState_SpecialAttack_AxeKick.h">
       <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\03.SpecialAttack\01.AxeKick</Filter>

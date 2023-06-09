@@ -87,13 +87,13 @@ void PlayerState_QuickAttack_HookKick::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	if (false == IsReserveChainAttack)
+	/*if (false == IsReserveChainAttack)
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
-	}
+	}*/
 
-	GetFSM()->ChangeState(PlayerStateType::QuickAttack_CrescentKick);
+	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 	return;
 
 	//TODO
@@ -110,7 +110,7 @@ void PlayerState_QuickAttack_HookKick::ExitState()
 void PlayerState_QuickAttack_HookKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
-	bool Result = _Enemy->OnDamage_Jaw(TotalDamage);
+	bool Result = _Enemy->OnDamage_BlowBack(TotalDamage);
 	if (true == Result)
 	{
 		PlayerState_AttackBase::CreateHitEffect_Jaw();

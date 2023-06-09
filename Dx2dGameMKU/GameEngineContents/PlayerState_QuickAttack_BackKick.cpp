@@ -90,7 +90,7 @@ void PlayerState_QuickAttack_BackKick::Update(float _DeltaTime)
 		return;
 	}
 
-	GetFSM()->ChangeState(PlayerStateType::QuickAttack_HookKick);
+	GetFSM()->ChangeState(PlayerStateType::QuickAttack_CrescentKick);
 	return;
 
 	//TODO

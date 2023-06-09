@@ -86,13 +86,13 @@ void PlayerState_QuickAttack_CrescentKick::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	/*if (false == IsReserveChainAttack)
+	if (false == IsReserveChainAttack)
 	{
 		GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
 		return;
-	}*/
+	}
 
-	GetFSM()->ChangeState(PlayerStateType::Movement_Idle);
+	GetFSM()->ChangeState(PlayerStateType::QuickAttack_HookKick);
 	return;
 
 	//TODO
