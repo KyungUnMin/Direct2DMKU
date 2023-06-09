@@ -17,7 +17,7 @@ const std::string_view PlayerState_SpecialAttack_DAP::AniName = "SpecialAttack_D
 const std::string_view PlayerState_SpecialAttack_DAP::AniFileName = "Player_SpecialAttack_DAP.png";
 const std::pair<int, int> PlayerState_SpecialAttack_DAP::AniCutFrame = std::pair<int, int>(5, 5);
 const float PlayerState_SpecialAttack_DAP::AniInterTime = 0.05f;
-const size_t PlayerState_SpecialAttack_DAP::EffectCount = 15;
+const size_t PlayerState_SpecialAttack_DAP::EffectCount = 50;
 const int PlayerState_SpecialAttack_DAP::Damage = 20;
 
 PlayerState_SpecialAttack_DAP::PlayerState_SpecialAttack_DAP()

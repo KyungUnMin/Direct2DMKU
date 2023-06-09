@@ -34,7 +34,7 @@ private:
 	static const int Damage;
 
 	std::vector<std::shared_ptr<class DapEffect>> Effects;
-	const float EffectTime = 0.05f;
+	const float EffectTime = 0.01f;
 	size_t Cursor = 0;
 
 	int TotalDamage = 0;
