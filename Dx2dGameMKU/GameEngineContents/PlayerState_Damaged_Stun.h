@@ -16,13 +16,28 @@ protected:
 	void Start() override;
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
+	void ExitState() override;
 
 private:
-	static const std::string_view AniName;
+	static const std::string_view AniFileName;
+	static const std::string_view EnterAniName;
+	static const std::string_view LoopAniName;
 	
 	const float Duration = 1.5f;
 
+	enum class State
+	{
+		Enter,
+		Loop
+	};
+
+	State CurState = State::Enter;
+
+
 	void LoadAnimation();
 	void CreateAnimation();
+
+	void Update_Enter();
+	void Update_Loop();
 };
 
