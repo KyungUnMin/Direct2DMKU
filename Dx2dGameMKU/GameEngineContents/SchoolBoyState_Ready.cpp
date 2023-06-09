@@ -62,7 +62,8 @@ void SchoolBoyState_Ready::CreateAnimation()
 		.AnimationName = GetUpAniName,
 		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime,
-		.FrameIndex = std::vector<size_t>{2, 3, 4, 5, 0}
+		.Loop = false,
+		.FrameIndex = std::vector<size_t>{2, 3, 4, 5, 0},
 	});
 
 

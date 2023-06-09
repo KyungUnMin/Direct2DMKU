@@ -56,7 +56,8 @@ void CopState_Attack_BatonSmash::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 11,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 4);

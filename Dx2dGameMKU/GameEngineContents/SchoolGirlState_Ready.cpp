@@ -64,6 +64,7 @@ void SchoolGirlState_Ready::CreateAnimation()
 		.Start = 1,
 		.End = 5,
 		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 

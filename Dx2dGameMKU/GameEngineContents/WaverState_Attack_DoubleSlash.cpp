@@ -60,7 +60,8 @@ void WaverState_Attack_DoubleSlash::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameTime = AniInters
+		.Loop = false,
+		.FrameTime = AniInters,
 	});
 
 

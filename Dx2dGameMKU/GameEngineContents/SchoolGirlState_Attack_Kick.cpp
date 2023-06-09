@@ -57,7 +57,8 @@ void SchoolGirlState_Attack_Kick::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 7,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 2);

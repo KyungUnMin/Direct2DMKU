@@ -51,7 +51,8 @@ void SchoolBoyState_NormalDamaged_Face::CreateAnimation()
 		.SpriteName = SchoolBoyFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 }
 

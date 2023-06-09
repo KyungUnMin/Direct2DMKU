@@ -51,7 +51,8 @@ void CheerleaderState_NormalDamaged_Jaw::CreateAnimation()
 		.SpriteName = CheerleaderFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 }
 

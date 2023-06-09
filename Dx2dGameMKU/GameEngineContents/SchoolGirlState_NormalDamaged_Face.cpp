@@ -51,7 +51,8 @@ void SchoolGirlState_NormalDamaged_Face::CreateAnimation()
 		.SpriteName = SchoolGirlFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 }
 

@@ -54,7 +54,8 @@ void HooliganState_Attack_SnapKick::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 8,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);

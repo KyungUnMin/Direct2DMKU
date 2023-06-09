@@ -32,6 +32,7 @@ SchoolBossLevel::~SchoolBossLevel()
 
 }
 
+
 void SchoolBossLevel::Start()
 {
 	FieldLevelBase::Start();

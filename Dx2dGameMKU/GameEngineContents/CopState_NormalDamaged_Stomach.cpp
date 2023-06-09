@@ -51,7 +51,8 @@ void CopState_NormalDamaged_Stomach::CreateAnimation()
 		.SpriteName = CopFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 		});
 }
 

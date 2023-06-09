@@ -56,7 +56,8 @@ void CheerleaderState_Attack_Jab::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 5,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 		});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);

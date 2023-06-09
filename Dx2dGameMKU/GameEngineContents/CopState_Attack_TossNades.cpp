@@ -59,7 +59,8 @@ void CopState_Attack_TossNades::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 11,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	Render->SetAnimationStartEvent(AniName, 6, [this]()

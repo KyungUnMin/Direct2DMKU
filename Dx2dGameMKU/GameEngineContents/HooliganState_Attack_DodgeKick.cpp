@@ -56,7 +56,8 @@ void HooliganState_Attack_DodgeKick::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 18,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 11);

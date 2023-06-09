@@ -51,7 +51,8 @@ void CheerleaderState_NormalDamaged_Face::CreateAnimation()
 		.SpriteName = CheerleaderFSM::NormalDamaged_FileName,
 		.Start = AniFrameIndex.first,
 		.End = AniFrameIndex.second,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 }
 

@@ -56,7 +56,8 @@ void HooliganState_Attack_CrossPunch::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 6,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 3);

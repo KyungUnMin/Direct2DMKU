@@ -62,7 +62,8 @@ void CheerleaderState_CartWheel::CreateAnimation()
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 	});
 
 	Render->SetAnimationStartEvent(AniName, 4, [this]

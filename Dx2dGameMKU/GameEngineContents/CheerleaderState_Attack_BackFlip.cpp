@@ -57,7 +57,8 @@ void CheerleaderState_Attack_BackFlip::CreateAnimation()
 		.SpriteName = AniFileName,
 		.Start = 0,
 		.End = 21,
-		.FrameInter = AniInterTime
+		.FrameInter = AniInterTime,
+		.Loop = false,
 		});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 7);
