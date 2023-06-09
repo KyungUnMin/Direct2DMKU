@@ -5,6 +5,7 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "RCG_GameCore.h"
 
 #include "BackGround.h"
 #include "Fader.h"
@@ -74,6 +75,8 @@ void OceanBossLevel::LevelChangeStart()
 
 	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
 	{
+		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+
 		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
 		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
 		{

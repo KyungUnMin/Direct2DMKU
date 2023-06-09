@@ -5,6 +5,7 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "RCG_GameCore.h"
 
 #include "BackGround.h"
 #include "FieldDoor.h"
@@ -86,6 +87,8 @@ void SchoolBossLevel::LevelChangeStart()
 
 	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School, [this]()
 	{
+		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+
 		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
 		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
 		{
@@ -96,16 +99,3 @@ void SchoolBossLevel::LevelChangeStart()
 }
 
 
-//테스트 코드
-
-#include "KeyMgr.h"
-void SchoolBossLevel::Update(float _DeltaTime)
-{
-	FieldLevelBase::Update(_DeltaTime);
-
-	
-	if (false == KeyMgr::IsDown(KeyNames::DebugF7))
-		return;
-
-	CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
-}

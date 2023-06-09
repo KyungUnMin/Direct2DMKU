@@ -16,9 +16,6 @@ protected:
 	void Start() override;
 	void LevelChangeStart() override;
 
-	//테스트 코드
-	void Update(float _DeltaTime) override;
-
 private:
 	//<텍스처 이름, 오프셋>
 	static const std::vector<std::pair<std::string_view, float4>> BGInfoes;
