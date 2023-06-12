@@ -831,7 +831,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="YamadaFSM.h" />
-    <ClInclude Include="YamadaState_Attack_Elbow.h" />
+    <ClInclude Include="YamadaState_Attack_Blast.h" />
     <ClInclude Include="YamadaState_Attack_GetUp.h" />
     <ClInclude Include="YamadaState_Attack_Meteor.h" />
     <ClInclude Include="YamadaState_Attack_Roar.h" />
@@ -1531,7 +1531,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="YamadaFSM.cpp" />
-    <ClCompile Include="YamadaState_Attack_Elbow.cpp" />
+    <ClCompile Include="YamadaState_Attack_Blast.cpp" />
     <ClCompile Include="YamadaState_Attack_GetUp.cpp" />
     <ClCompile Include="YamadaState_Attack_Meteor.cpp" />
     <ClCompile Include="YamadaState_Attack_Roar.cpp" />

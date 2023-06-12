@@ -12,13 +12,13 @@
 #include "YamadaState_TeleportAppear.h"
 
 //Attack
-#include "YamadaState_Attack_GetUp.h"
-#include "YamadaState_Attack_Elbow.h"
-#include "YamadaState_Attack_WUPunch.h"
-#include "YamadaState_Attack_Tackle.h"
-#include "YamadaState_Attack_Slap.h"
-#include "YamadaState_Attack_Meteor.h"
-#include "YamadaState_Attack_Roar.h"
+#include "YamadaState_Attack_Blast.h"
+//#include "YamadaState_Attack_GetUp.h"
+//#include "YamadaState_Attack_WUPunch.h"
+//#include "YamadaState_Attack_Tackle.h"
+//#include "YamadaState_Attack_Slap.h"
+//#include "YamadaState_Attack_Meteor.h"
+//#include "YamadaState_Attack_Roar.h"
 
 //Damaged
 #include "YamadaState_NormalDamaged_Face.h"
@@ -37,21 +37,17 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::NearAttackGroup =
 {
 	//1페이즈
 	{
-		YamadaStateType::Elbow,
-		YamadaStateType::WUPunch,
-		YamadaStateType::Slap,
+		YamadaStateType::Blast,
 	},
 
 	//2페이즈
 	{
-		YamadaStateType::WUPunch,
-		YamadaStateType::Slap,
+		YamadaStateType::Blast,
 	},
 
 	//3페이즈
 	{
-		YamadaStateType::WUPunch,
-		YamadaStateType::Roar,
+		YamadaStateType::Blast,
 	},
 };
 
@@ -124,7 +120,7 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<YamadaState_Attack_GetUp>(YamadaStateType::GetUpAttack);
+	FSMBase::CreateState<YamadaState_Attack_Blast>(YamadaStateType::Blast);
 	//FSMBase::CreateState<YamadaState_Attack_Elbow>(YamadaStateType::Elbow);
 	//FSMBase::CreateState<YamadaState_Attack_WUPunch>(YamadaStateType::WUPunch);
 	//FSMBase::CreateState<YamadaState_Attack_Tackle>(YamadaStateType::Tackle);

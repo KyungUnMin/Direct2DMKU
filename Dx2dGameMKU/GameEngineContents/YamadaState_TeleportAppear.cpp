@@ -12,7 +12,7 @@ const std::string_view YamadaState_TeleportAppear::AniName = "TeleportAppear";
 const std::string_view YamadaState_TeleportAppear::AniFileName = "Yamada_TeleportAppear.png";
 const std::pair<int, int> YamadaState_TeleportAppear::AniCutFrame = std::pair<int, int>(5, 2);
 const float YamadaState_TeleportAppear::AniInterTime = 0.06f;
-const float YamadaState_TeleportAppear::TeleportOffset = 100.f;
+const float YamadaState_TeleportAppear::TeleportOffset = 150.f;
 
 
 YamadaState_TeleportAppear::YamadaState_TeleportAppear()
@@ -115,7 +115,7 @@ void YamadaState_TeleportAppear::Teleport()
 	
 	//순간 이동 하려는 곳이 막히지 않았다면 그 곳으로 이동하고 바로 Blast공격을 수행
 	EnemyTrans->SetLocalPosition(TelePos);
-	NextState = static_cast<size_t>(YamadaStateType::Idle);//임시
+	NextState = static_cast<size_t>(YamadaStateType::Blast);
 }
 
 

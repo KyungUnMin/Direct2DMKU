@@ -87,5 +87,5 @@ void YamadaState_Damaged_GroundHit::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(YamadaStateType::GetUpAttack);
+	GetFSM()->ChangeState(YamadaStateType::Idle);
 }

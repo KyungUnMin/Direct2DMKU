@@ -82,5 +82,5 @@ void YamadaState_Damaged_Dizzy::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(YamadaStateType::GetUpAttack);
+	GetFSM()->ChangeState(YamadaStateType::Idle);
 }

@@ -167,3 +167,5 @@ void SchoolEntryLevel::CreateNPC()
 	GameEngineTransform* NpcTrans = Teacher->GetTransform();
 	NpcTrans->SetLocalPosition(NpcPos);
 }
+
+

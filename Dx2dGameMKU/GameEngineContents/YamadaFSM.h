@@ -12,7 +12,7 @@ enum class YamadaStateType
 	TeleportAppear,
 
 	//Attack
-	GetUpAttack,
+	Blast,
 	Elbow,
 	WUPunch,
 	Tackle,

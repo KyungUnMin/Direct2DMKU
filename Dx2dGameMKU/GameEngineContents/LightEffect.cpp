@@ -64,6 +64,8 @@ void LightEffect::Flicker(float4 _LightColor, float _Duration /*= 0.5f*/)
 }
 
 
+
+
 void LightEffect::Update(float _DeltaTime)
 {
 	GameEngineActor::Update(_DeltaTime);
@@ -86,4 +88,10 @@ void LightEffect::Update_Flickering()
 		return;
 
 	Off();
+}
+
+
+GameEngineTransform* LightEffect::GetRenderTrans()
+{
+	return Light->GetTransform();
 }

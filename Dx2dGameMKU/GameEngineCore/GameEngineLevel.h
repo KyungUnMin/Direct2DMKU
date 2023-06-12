@@ -111,6 +111,7 @@ protected:
 	virtual void Update(float _DeltaTime){}
 	virtual void Render(float _DeltaTime){}
 
+
 private:
 	static bool IsDebugRender;
 
@@ -151,6 +152,7 @@ private:
 
 	//기본 카메라 생성
 	void LevelCameraInit();
+
 	//레벨의 모든 Actor들 파괴
 	void AllActorDestroy();
 

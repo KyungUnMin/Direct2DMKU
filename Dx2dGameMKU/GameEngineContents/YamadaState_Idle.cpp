@@ -76,8 +76,8 @@ void YamadaState_Idle::Update(float _DeltaTime)
 
 	
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
-	/*if (true == EnemyState_IdleBase::ChangeAttackState())
-		return;*/
+	if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
