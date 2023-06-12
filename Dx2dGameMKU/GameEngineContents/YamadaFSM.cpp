@@ -8,6 +8,8 @@
 #include "YamadaState_Walk.h"
 #include "YamadaState_Defeat.h"
 #include "YamadaState_Taunt.h"
+#include "YamadaState_TeleportDisappear.h"
+#include "YamadaState_TeleportAppear.h"
 
 //Attack
 #include "YamadaState_Attack_GetUp.h"
@@ -58,21 +60,17 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		//임시
-		//YamadaStateType::Meteor
-		//YamadaStateType::Tackle,
+		YamadaStateType::TeleportDisappear,
 	},
 
 	//2페이즈
 	{
-		YamadaStateType::Tackle,
-
+		YamadaStateType::TeleportDisappear,
 	},
 
 	//3페이즈
 	{
-		YamadaStateType::Tackle,
-		YamadaStateType::Meteor,
+		YamadaStateType::TeleportDisappear,
 	},
 };
 
@@ -121,6 +119,8 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<YamadaState_Walk>(YamadaStateType::Walk);
 	FSMBase::CreateState<YamadaState_Defeat>(YamadaStateType::Defeat);
 	FSMBase::CreateState<YamadaState_Taunt>(YamadaStateType::Taunt);
+	FSMBase::CreateState<YamadaState_TeleportDisappear>(YamadaStateType::TeleportDisappear);
+	FSMBase::CreateState<YamadaState_TeleportAppear>(YamadaStateType::TeleportAppear);
 
 
 	//Attack

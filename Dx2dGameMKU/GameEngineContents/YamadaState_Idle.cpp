@@ -82,14 +82,11 @@ void YamadaState_Idle::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	////0번 Phase일땐  원거리 공격 없음
-	//size_t CurPhase = GetBossFsm()->GetCurPhase();
-	//if(0 != CurPhase)
-	//{
-	//	//인자로 들어간 확률에 맞춰 원거리 공격 시도
-	//	if (true == EnemyStateBase::FarAttackExcute(FarAttackPercent[CurPhase]))
-	//		return;
-	//}
+
+	//인자로 들어간 확률에 맞춰 원거리 공격 시도
+	size_t CurPhase = GetBossFsm()->GetCurPhase();
+	if (true == EnemyStateBase::FarAttackExcute(FarAttackPercent[CurPhase]))
+		return;
 
 
 	//Idle 대기시간이 끝났을때만 이동상태로 변경

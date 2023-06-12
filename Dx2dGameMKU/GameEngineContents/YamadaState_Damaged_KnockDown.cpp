@@ -55,6 +55,7 @@ void YamadaState_Damaged_KnockDown::CreateAnimation()
 	const size_t GarbageFrmIdx = 24;
 	const size_t TatalFrmIdx = 37;
 
+	//리소스의 X프레임 제거 작업
 	std::vector<size_t> AniFrmIdx;
 	AniFrmIdx.reserve(TatalFrmIdx);
 	for (size_t i = 0; i < GarbageFrmIdx; ++i)
@@ -67,13 +68,21 @@ void YamadaState_Damaged_KnockDown::CreateAnimation()
 		AniFrmIdx.push_back(i);
 	}
 
+	//누워있는 대기시간 조정
+	std::vector<float> AniFrmInter(AniFrmIdx.size());
+	for (size_t i = 0; i < AniFrmInter.size(); ++i)
+	{
+		AniFrmInter[i] = AniInterTime;
+	}
+	AniFrmInter[GarbageFrmIdx - 1] = 1.f;
+
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameInter = AniInterTime,
 		.Loop = false,
-		.FrameIndex = AniFrmIdx
+		.FrameIndex = AniFrmIdx,
+		.FrameTime = AniFrmInter
 	});
 }
 

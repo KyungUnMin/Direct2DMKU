@@ -27,10 +27,12 @@ private:
 	const float StartAcc = 1500.f;
 	const float Duration = 0.5f;
 
-	bool IsWallHit = false;
-	float4 WallOutDir = float4::Zero;
+	std::shared_ptr<class GameEngineSpriteRenderer> ShadowRender = nullptr;
+	const float ShadowDuration = 0.5f;
+	float ShadowTime = -1.f;
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void Update_ShadowScale();
 };
 

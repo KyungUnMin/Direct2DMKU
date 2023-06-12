@@ -1027,6 +1027,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\03.Jaw">
       <UniqueIdentifier>{45c77323-ab2d-4eb2-9a58-04e51c90df83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\05.TeleportDisappear">
+      <UniqueIdentifier>{09452e27-48cf-4b5f-a3e0-a0afcb6f9ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\06.TeleportInAppear">
+      <UniqueIdentifier>{e4f7f889-0461-41cb-8648-ffb5c9288f23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1854,6 +1860,12 @@
     <ClCompile Include="YamadaState_NormalDamaged_Stomach.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
     </ClCompile>
+    <ClCompile Include="YamadaState_TeleportDisappear.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\05.TeleportDisappear</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_TeleportAppear.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\06.TeleportInAppear</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2668,6 +2680,12 @@
     </ClInclude>
     <ClInclude Include="YamadaState_NormalDamaged_Stomach.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_TeleportDisappear.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\05.TeleportDisappear</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_TeleportAppear.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\06.TeleportInAppear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

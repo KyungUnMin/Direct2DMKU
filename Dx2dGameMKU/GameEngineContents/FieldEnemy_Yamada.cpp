@@ -27,7 +27,7 @@ void FieldEnemy_Yamada::Start()
 
 	Fsm.Init(this);
 	SetStartHp(MaxHp);
-	FieldActorBase::SetShadowScale(1.5f);
+	//FieldActorBase::SetShadowScale(1.5f);
 }
 
 void FieldEnemy_Yamada::SetStartHp(int _Hp)

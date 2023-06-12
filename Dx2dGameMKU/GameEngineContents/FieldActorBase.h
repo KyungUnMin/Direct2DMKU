@@ -77,6 +77,10 @@ public:
 		return AttackCollider.ParentCollision;
 	}
 
+	inline std::shared_ptr<GameEngineSpriteRenderer> GetShadowRender() const
+	{
+		return ShadowRender;
+	}
 
 protected:
 	void Start() override;

@@ -33,6 +33,7 @@ void YamadaState_Damaged_BlowBack::Start()
 	CreateAnimation();
 
 	EnemyState_DamagedBase::SetBlowValue(StartAcc, Duration);
+	ShadowRender = GetEnemy()->GetShadowRender();
 }
 
 void YamadaState_Damaged_BlowBack::LoadAnimation()
@@ -55,28 +56,46 @@ void YamadaState_Damaged_BlowBack::CreateAnimation()
 {
 	const size_t GarbageFrmIdx = 24;
 	const size_t TatalFrmIdx = 37;
-
+	
+	//리소스의 X프레임 제거 작업
 	std::vector<size_t> AniFrmIdx;
 	AniFrmIdx.reserve(TatalFrmIdx);
 	for (size_t i = 0; i < GarbageFrmIdx; ++i)
 	{
 		AniFrmIdx.push_back(i);
 	}
-
 	for (size_t i = (GarbageFrmIdx + 1); i <= TatalFrmIdx; ++i)
 	{
 		AniFrmIdx.push_back(i);
 	}
 
-	GetRenderer()->CreateAnimation
+	//누워있는 대기시간 조정
+	std::vector<float> AniFrmInter(AniFrmIdx.size());
+	for (size_t i = 0; i < AniFrmInter.size(); ++i)
+	{
+		AniFrmInter[i] = AniInterTime;
+	}
+	AniFrmInter[GarbageFrmIdx - 1] = 0.2f;
+
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.FrameInter = AniInterTime,
 		.Loop = false,
-		.FrameIndex = AniFrmIdx
+		.FrameIndex = AniFrmIdx,
+		.FrameTime = AniFrmInter
+	});
+
+	//그림자 지우기 시작하는 프레임
+	Render->SetAnimationStartEvent(AniName, GarbageFrmIdx + 1, [this]()
+	{
+		this->ShadowTime = GetLiveTime();
 	});
 }
+
+
+
 
 
 void YamadaState_Damaged_BlowBack::EnterState()
@@ -94,20 +113,29 @@ void YamadaState_Damaged_BlowBack::Update(float _DeltaTime)
 
 	//벽과 충돌시 튕겨져 나오는 BlowBack
 	EnemyState_DamagedBase::Update_BlowReflect(_DeltaTime);
-	
+	Update_ShadowScale();
+
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(YamadaStateType::Idle);
+	GetFSM()->ChangeState(YamadaStateType::TeleportAppear);
 }
 
+void YamadaState_Damaged_BlowBack::Update_ShadowScale()
+{
+	if (ShadowTime < 0.f)
+		return;
 
+	float Time = GetLiveTime() - ShadowTime;
+	float Ratio = (Time / ShadowDuration);
+	Ratio = std::clamp(Ratio, 0.f, 1.f);
+
+	ShadowRender->ColorOptionValue.MulColor = float4::One * (1.f - Ratio);
+}
 
 void YamadaState_Damaged_BlowBack::ExitState()
 {
 	EnemyState_DamagedBase::ExitState();
-
-	IsWallHit = false;
-	WallOutDir = float4::Zero;
 	EnemyStateBase::OnMainCollider();
+	ShadowRender->ColorOptionValue.MulColor = float4::One;
 }

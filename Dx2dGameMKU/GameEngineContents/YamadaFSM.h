@@ -8,6 +8,8 @@ enum class YamadaStateType
 	Walk,
 	Defeat,
 	Taunt,
+	TeleportDisappear,
+	TeleportAppear,
 
 	//Attack
 	GetUpAttack,

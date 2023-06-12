@@ -28,8 +28,6 @@ private:
 	const float StartAcc = 1500.f;
 	const float Duration = 0.5f;
 
-	bool IsWallHit = false;
-	float4 WallOutDir = float4::Zero;
 
 	void LoadAnimation();
 	void CreateAnimation();

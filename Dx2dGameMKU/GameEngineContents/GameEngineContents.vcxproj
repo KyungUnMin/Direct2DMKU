@@ -848,6 +848,14 @@
     <ClInclude Include="YamadaState_NormalDamaged_Jaw.h" />
     <ClInclude Include="YamadaState_NormalDamaged_Stomach.h" />
     <ClInclude Include="YamadaState_Taunt.h" />
+    <ClInclude Include="YamadaState_TeleportAppear.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="YamadaState_TeleportDisappear.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="YamadaState_Walk.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1540,6 +1548,14 @@
     <ClCompile Include="YamadaState_NormalDamaged_Jaw.cpp" />
     <ClCompile Include="YamadaState_NormalDamaged_Stomach.cpp" />
     <ClCompile Include="YamadaState_Taunt.cpp" />
+    <ClCompile Include="YamadaState_TeleportAppear.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="YamadaState_TeleportDisappear.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="YamadaState_Walk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

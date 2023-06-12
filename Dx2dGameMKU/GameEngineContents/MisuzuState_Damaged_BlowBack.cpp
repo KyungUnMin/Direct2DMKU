@@ -93,8 +93,5 @@ void MisuzuState_Damaged_BlowBack::Update(float _DeltaTime)
 void MisuzuState_Damaged_BlowBack::ExitState()
 {
 	EnemyState_DamagedBase::ExitState();
-
-	IsWallHit = false;
-	WallOutDir = float4::Zero;
 	EnemyStateBase::OnMainCollider();
 }
