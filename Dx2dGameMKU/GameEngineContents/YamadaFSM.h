@@ -55,8 +55,6 @@ public:
 	
 	void Init(class FieldEnemyBase* _Enemy) override;
 
-
-
 protected:
 
 private:

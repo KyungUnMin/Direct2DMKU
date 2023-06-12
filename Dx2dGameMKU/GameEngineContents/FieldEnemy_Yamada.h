@@ -35,6 +35,12 @@ private:
 
 	YamadaFSM Fsm;
 
+	//3페이즈에 돌입했을때 나타나는 OutLine효과
+	std::shared_ptr<class GameEngineSpriteRenderer> OutLineRender = nullptr;
+	float4 OutLineAtlas = float4::Zero;
+
+
+	void CreateRageRender();
 
 	//체력이 일정 부분 이하로 떨어지면 이미지가 붉게 물드는 효과
 	void RageRender(float _DeltaTime);

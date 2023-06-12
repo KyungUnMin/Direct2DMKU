@@ -148,3 +148,4 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::ChangeState(YamadaStateType::Idle);
 }
 
+

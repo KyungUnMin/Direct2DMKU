@@ -3,11 +3,13 @@
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineSpriteRenderer.h>
 
 #include "RCG_GameCore.h"
 #include "RCGDefine.h"
+#include "RCGEnums.h"
 
-const int FieldEnemy_Yamada::MaxHp = 450;
+const int FieldEnemy_Yamada::MaxHp = 300;
 
 FieldEnemy_Yamada::FieldEnemy_Yamada()
 {
@@ -27,7 +29,7 @@ void FieldEnemy_Yamada::Start()
 
 	Fsm.Init(this);
 	SetStartHp(MaxHp);
-	//FieldActorBase::SetShadowScale(1.5f);
+	CreateRageRender();
 }
 
 void FieldEnemy_Yamada::SetStartHp(int _Hp)
@@ -35,6 +37,26 @@ void FieldEnemy_Yamada::SetStartHp(int _Hp)
 	FieldBossBase::SetStartHp(_Hp);
 	Fsm.SetMaxHp(_Hp);
 }
+
+
+void FieldEnemy_Yamada::CreateRageRender()
+{
+	const float OutlineRatio = 20.f;
+	
+	OutLineRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	OutLineRender->GetShaderResHelper().SetConstantBufferLink("AtlasData", OutLineAtlas);
+	OutLineRender->ColorOptionValue.MulColor = float4::Null;
+
+	float4 EnemyRenderScale = GetRenderer()->GetTransform()->GetLocalScale();
+	GameEngineTransform* OutLineTrans = OutLineRender->GetTransform();
+	OutLineTrans->SetLocalScale(EnemyRenderScale + (float4::One * OutlineRatio));
+	OutLineTrans->AddLocalPosition(float4::Forward);
+
+	OutLineRender->Off();
+}
+
+
+
 
 
 void FieldEnemy_Yamada::Update(float _DeltaTime)
@@ -49,22 +71,30 @@ void FieldEnemy_Yamada::Update(float _DeltaTime)
 	RageRender(_DeltaTime);
 }
 
+
 void FieldEnemy_Yamada::RageRender(float _DeltaTime)
 {
-	if (false == Fsm.IsLastPhase())
+	if (false == OutLineRender->IsUpdate())
 		return;
 
-	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
-
-	if (0 == GetHp())
+	if (true == IsKO())
 	{
-		Render->ColorOptionValue.PlusColor = float4::Null;
+		OutLineRender->Off();
 		return;
 	}
 
+	//EnemyRender의 정보 받아오기
+	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
+	OutLineRender->SetTexture(EnemyRender->GetTexName());
+	OutLineAtlas = EnemyRender->GetAtlasData();
+
+
 	float LiveTime = GetLiveTime();
-	float RedValue = abs(sinf(LiveTime)) * 0.25f;
-	Render->ColorOptionValue.PlusColor = float4{ RedValue, 0.f, 0.f, 0.f };
+	float SinValue = abs(sinf(GameEngineMath::PIE * LiveTime));
+
+	//파랑 ~ 보라
+	float4 NowColor = float4::LerpClamp(float4::Red, float4::Blue, SinValue);
+	OutLineRender->ColorOptionValue.MulColor = NowColor;
 }
 
 
@@ -86,8 +116,26 @@ void FieldEnemy_Yamada::Render(float _DeltaTime)
 void FieldEnemy_Yamada::OnDamage(int _Damege)
 {
 	FieldBossBase::OnDamage(_Damege);
+
+	size_t PrevPhase = Fsm.GetCurPhase();
 	Fsm.CalPhase(GetHp());
+	size_t NowPhase = Fsm.GetCurPhase();
+
+	if (PrevPhase == NowPhase)
+		return;
+
+	//3페이즈인 경우
+	if (2 == NowPhase)
+	{
+		//레이지 렌더링 시작
+		OutLineRender->On();
+	}
+
+	//페이즈 변경 State
+	//TODO
 }
+
+
 
 bool FieldEnemy_Yamada::OnDamage_Face(int _Damage)
 {
@@ -199,26 +247,7 @@ FieldEnemy_Yamada::ExceptionType FieldEnemy_Yamada::OnDamageException()
 	return ExceptionType::NoException;
 }
 
-/*
-if (true == IsKO())
-	{
-		if (YamadaStateType::Damaged_KnockDown == Fsm.GetNowState<YamadaStateType>())
-			return false;
 
-		Fsm.ChangeState(YamadaStateType::Damaged_KnockDown);
-		return true;
-	}
-	else if (YamadaStateType::Damaged_Dizzy == Fsm.GetNowState<YamadaStateType>())
-	{
-		Fsm.ChangeState(YamadaStateType::Damaged_GroundHit);
-		return true;
-	}
-	else if (true == Fsm.IsLastPhase())
-	{
-		Fsm.ChangeState(YamadaStateType::NormalDamaged_Stomach);
-		return true;
-	}
-*/
 
 
 void FieldEnemy_Yamada::LevelChangeEnd()
