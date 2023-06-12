@@ -22,6 +22,8 @@ const std::vector<std::pair<std::string_view, float4>> TownBossLevel::BGInfoes =
 
 const std::string_view TownBossLevel::CollisionImageName = "TownBossColBG.png";
 
+const float4 TownBossLevel::PlayerStartPos = float4{ -257.f, -117.f };
+
 TownBossLevel::TownBossLevel()
 {
 
@@ -40,7 +42,9 @@ void TownBossLevel::Start()
 	CreateBackGrounds();
 	CreateDoors();
 
-	FieldLevelBase::SetPlayerStartPosition(float4{ -257.f, -117.f });
+	FieldLevelBase::SetPlayerStartPosition(PlayerStartPos);
+	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
+	GetEnemySpawner().CreateEnemy(EnemyType::Yamada, EnemyStartPos);
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }

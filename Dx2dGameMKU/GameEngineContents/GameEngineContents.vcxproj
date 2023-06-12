@@ -353,6 +353,7 @@
     <ClInclude Include="FieldEnemy_SchoolGirl.h" />
     <ClInclude Include="FieldEnemy_TigerMan.h" />
     <ClInclude Include="FieldEnemy_Waver.h" />
+    <ClInclude Include="FieldEnemy_Yamada.h" />
     <ClInclude Include="FieldNPCBase.h">
       <SubType>
       </SubType>
@@ -829,6 +830,25 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="YamadaFSM.h" />
+    <ClInclude Include="YamadaState_Attack_Elbow.h" />
+    <ClInclude Include="YamadaState_Attack_GetUp.h" />
+    <ClInclude Include="YamadaState_Attack_Meteor.h" />
+    <ClInclude Include="YamadaState_Attack_Roar.h" />
+    <ClInclude Include="YamadaState_Attack_Slap.h" />
+    <ClInclude Include="YamadaState_Attack_Tackle.h" />
+    <ClInclude Include="YamadaState_Attack_WUPunch.h" />
+    <ClInclude Include="YamadaState_Damaged_BlowBack.h" />
+    <ClInclude Include="YamadaState_Damaged_Dizzy.h" />
+    <ClInclude Include="YamadaState_Damaged_GroundHit.h" />
+    <ClInclude Include="YamadaState_Damaged_KnockDown.h" />
+    <ClInclude Include="YamadaState_Defeat.h" />
+    <ClInclude Include="YamadaState_Idle.h" />
+    <ClInclude Include="YamadaState_NormalDamaged_Face.h" />
+    <ClInclude Include="YamadaState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="YamadaState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="YamadaState_Taunt.h" />
+    <ClInclude Include="YamadaState_Walk.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp">
@@ -1022,6 +1042,7 @@
     <ClCompile Include="FieldEnemy_SchoolGirl.cpp" />
     <ClCompile Include="FieldEnemy_TigerMan.cpp" />
     <ClCompile Include="FieldEnemy_Waver.cpp" />
+    <ClCompile Include="FieldEnemy_Yamada.cpp" />
     <ClCompile Include="FieldNPCBase.cpp">
       <SubType>
       </SubType>
@@ -1501,6 +1522,25 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="YamadaFSM.cpp" />
+    <ClCompile Include="YamadaState_Attack_Elbow.cpp" />
+    <ClCompile Include="YamadaState_Attack_GetUp.cpp" />
+    <ClCompile Include="YamadaState_Attack_Meteor.cpp" />
+    <ClCompile Include="YamadaState_Attack_Roar.cpp" />
+    <ClCompile Include="YamadaState_Attack_Slap.cpp" />
+    <ClCompile Include="YamadaState_Attack_Tackle.cpp" />
+    <ClCompile Include="YamadaState_Attack_WUPunch.cpp" />
+    <ClCompile Include="YamadaState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="YamadaState_Damaged_Dizzy.cpp" />
+    <ClCompile Include="YamadaState_Damaged_GroundHit.cpp" />
+    <ClCompile Include="YamadaState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="YamadaState_Defeat.cpp" />
+    <ClCompile Include="YamadaState_Idle.cpp" />
+    <ClCompile Include="YamadaState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="YamadaState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="YamadaState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="YamadaState_Taunt.cpp" />
+    <ClCompile Include="YamadaState_Walk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

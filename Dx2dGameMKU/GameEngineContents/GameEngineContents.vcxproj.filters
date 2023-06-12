@@ -979,6 +979,54 @@
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\04.CrescentKick">
       <UniqueIdentifier>{fed9fada-5eb6-463e-9133-468d1cca92f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor">
+      <UniqueIdentifier>{83b779f2-c960-4cfa-9aaa-dcbb384251bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\02.FSM">
+      <UniqueIdentifier>{9518bf6d-ac78-4c81-a052-1cfb5001bab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement">
+      <UniqueIdentifier>{43804dc2-c276-4d02-8813-ae94c087f0a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack">
+      <UniqueIdentifier>{79175b8d-ff6a-452e-9916-c07dd6cf9e30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged">
+      <UniqueIdentifier>{04c954f9-28b8-4b2f-bb25-f5add522ddd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\01.Idle">
+      <UniqueIdentifier>{29ab7efc-ba30-4077-8d31-26ac5fd3aff0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\02.Walk">
+      <UniqueIdentifier>{b8035305-83c1-4697-a61e-45a6ab797a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\03.Defeat">
+      <UniqueIdentifier>{ec29fe6d-9fc8-4e76-9fdf-fc22a00b3648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\04.Taunt">
+      <UniqueIdentifier>{eeb47ab4-0bcf-4e0f-b991-a89278fbdd10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{81c3f180-927c-4f17-a1c9-19cfdbcd064e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{ef3f4503-a61c-4a72-8cbf-6cca7a58f4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{5148f708-6f24-40e8-9e34-f5afc3c70e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\IDK">
+      <UniqueIdentifier>{291e4fac-6f16-4151-bbd1-f14e5b7685bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{7807890b-16b2-4bcf-8208-4268b9f30388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{0c1c4118-955b-43f3-9752-620d201bde8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{45c77323-ab2d-4eb2-9a58-04e51c90df83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1746,6 +1794,66 @@
     <ClCompile Include="LightEffect.cpp">
       <Filter>03.Actor\06.Effect\07.Light</Filter>
     </ClCompile>
+    <ClCompile Include="YamadaFSM.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\02.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldEnemy_Yamada.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Elbow.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_GetUp.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Meteor.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Roar.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Slap.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Tackle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_WUPunch.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Defeat.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\03.Defeat</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Walk.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\02.Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Idle.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\01.Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Taunt.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\04.Taunt</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\03.KnockDown</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Damaged_Dizzy.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\IDK</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Damaged_GroundHit.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\IDK</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2500,6 +2608,66 @@
     </ClInclude>
     <ClInclude Include="LightEffect.h">
       <Filter>03.Actor\06.Effect\07.Light</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaFSM.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\02.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldEnemy_Yamada.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Elbow.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_GetUp.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Meteor.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Roar.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Slap.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Tackle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_WUPunch.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Defeat.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\03.Defeat</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Walk.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\02.Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Idle.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\01.Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Taunt.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\03.Movement\04.Taunt</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\03.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Damaged_Dizzy.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\IDK</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Damaged_GroundHit.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\IDK</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,8 @@
 
 void FileCopy(const std::string_view& _ChangeName);
 
+const std::string PrevName = "Misuzu";
+
 int main()
 {
 	std::cout << "새로 만들 Enemy의 이름을 입력해주세요\n";
@@ -54,7 +56,7 @@ void FileCopy(const std::string_view& _ChangeName)
 			FileStr += DataPtr[i];
 		}
 
-		FileStr = std::regex_replace(FileStr, std::regex("SchoolBoy"), _ChangeName.data());
+		FileStr = std::regex_replace(FileStr, std::regex(PrevName), _ChangeName.data());
 
 		GameEngineSerializer SaveData;
 		for (size_t i = 0; i < FileStr.size(); ++i)
@@ -71,7 +73,7 @@ void FileCopy(const std::string_view& _ChangeName)
 
 		++Index;
 		std::string SourceFileName = FileFullPath.substr(Index, FileFullPath.size() - Index);
-		std::string DescFileName = std::regex_replace(SourceFileName, std::regex("SchoolBoy"), _ChangeName.data());
+		std::string DescFileName = std::regex_replace(SourceFileName, std::regex(PrevName), _ChangeName.data());
 
 		GameEngineFile SaveFolder(DescDir.GetPlusFileName(DescFileName).GetFullPath());
 		SaveFolder.SaveBin(SaveData);

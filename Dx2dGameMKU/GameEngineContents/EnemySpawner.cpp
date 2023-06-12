@@ -21,6 +21,7 @@
 #include "FieldEnemy_Waver.h"
 
 #include "FieldEnemy_Misuzu.h"
+#include "FieldEnemy_Yamada.h"
 
 EnemySpawner::EnemySpawner(FieldLevelBase* _Level)
 {
@@ -84,7 +85,7 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 		EnemyPtr = Level->CreateActor<FieldEnemy_Misuzu>(UpdateOrder::Enemy);
 		break;
 	case EnemyType::Yamada:
-		//EnemyPtr = Level->CreateActor<FieldEnemy_Waver>(UpdateOrder::Enemy);
+		EnemyPtr = Level->CreateActor<FieldEnemy_Yamada>(UpdateOrder::Enemy);
 		break;
 	case EnemyType::Noise:
 		//EnemyPtr = Level->CreateActor<FieldEnemy_Waver>(UpdateOrder::Enemy);
