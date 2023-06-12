@@ -83,6 +83,9 @@ protected:
 	virtual void Update(float _DeltaTime) {}
 	virtual void Render(float _DeltaTime) {}
 
+	//Object가 삭제될 때 호출
+	virtual void Destroy() {}
+
 	//자식들중에서 삭제예정인 오브젝트는 Transform::list와 Object의 List에서 제거
 	virtual void Release();
 
@@ -116,6 +119,8 @@ private:
 	void AllRender(float _DeltaTime);
 
 	
+	void AllDestroy();
+
 	void AllRelease();
 
 

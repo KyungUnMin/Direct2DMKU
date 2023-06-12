@@ -15,6 +15,11 @@ bool GameEngineLevel::IsDebugRender = false;
 
 GameEngineLevel::GameEngineLevel()
 {
+	LevelCameraInit();
+}
+
+void GameEngineLevel::LevelCameraInit()
+{
 	//메인 카메라 0번
 	MainCamera = CreateNewCamera(0);
 
@@ -289,6 +294,9 @@ void GameEngineLevel::ActorRelease()
 					continue;
 				}
 
+				//삭제될때 이벤트 호출
+				ReleaseActor->AllDestroy();
+
 				//자식들 Death가 예약되어 있는지 확인하고 그룹에서 제거
 				ReleaseActor->Release();
 				//(자식들의 경우엔 부모가 소멸하면서 Child list가 사라지고
@@ -365,36 +373,28 @@ std::shared_ptr<GameEngineCamera> GameEngineLevel::CreateNewCamera(int _Order)
 	return NewCamera;
 }
 
+void GameEngineLevel::AllActorDestroy()
+{
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
+	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
 
-//void GameEngineLevel::TextureUnLoad(GameEngineLevel* _NextLevel)
-//{
-//	for (const std::pair<std::string, std::string>& Pair : LoadEndPath)
-//	{
-//		if (nullptr != _NextLevel && true == _NextLevel->TexturePath.contains(Pair.first))
-//		{
-//			continue;
-//		}
-//
-//		GameEngineTexture::UnLoad(Pair.first);
-//		TexturePath.insert(std::make_pair(Pair.first, Pair.second));
-//	}
-//
-//	LoadEndPath.clear();
-//}
-//
-//void GameEngineLevel::TextureReLoad(GameEngineLevel* _PrevLevel)
-//{
-//
-//	for (const std::pair<std::string, std::string>& Pair : TexturePath)
-//	{
-//		if (nullptr != _PrevLevel && true == _PrevLevel->TexturePath.contains(Pair.first))
-//		{
-//			continue;
-//		}
-//
-//		GameEngineTexture::ReLoad(Pair.second, Pair.first);
-//		LoadEndPath.insert(std::make_pair(Pair.first, Pair.second));
-//	}
-//
-//	TexturePath.clear();
-//}
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<std::shared_ptr<GameEngineActor>>& ActorList = GroupStartIter->second;
+
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorStart = ActorList.begin();
+		std::list<std::shared_ptr<GameEngineActor>>::iterator ActorEnd = ActorList.end();
+
+		for (; ActorStart != ActorEnd; ++ActorStart)
+		{
+			std::shared_ptr<GameEngineActor>& Actor = *ActorStart;
+			Actor->Death();
+		}
+	}
+
+	//컴포넌트 및 Actor들을 자료구조에서 제거
+	ActorRelease();
+
+	//기본 카메라만 다시 생성
+	LevelCameraInit();
+}

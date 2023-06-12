@@ -71,6 +71,8 @@ public:
 		return std::dynamic_pointer_cast<ActorType>(NewActor);
 	}
 
+	std::shared_ptr<GameEngineCamera> CreateNewCamera(int _Order);
+
 	std::shared_ptr<GameEngineCamera> GetMainCamera()
 	{
 		return MainCamera;
@@ -81,6 +83,8 @@ public:
 		return DynamicThis<GameEngineLevel>();
 	}
 
+
+
 	std::shared_ptr<GameEngineCamera> GetCamera(int _CameraOrder);
 
 	inline std::shared_ptr<GameEngineRenderTarget> GetLastTarget() const
@@ -88,8 +92,16 @@ public:
 		return LastTarget;
 	}
 
+	template<typename EnumType>
+	const std::list<std::shared_ptr<GameEngineActor>>& GetActorGroup(EnumType _Index)
+	{
+		return GetActorGroup(static_cast<int>(_Index));
+	}
 
-	std::shared_ptr<GameEngineCamera> CreateNewCamera(int _Order);
+	const std::list<std::shared_ptr<GameEngineActor>>& GetActorGroup(int _Index)
+	{
+		return Actors[_Index];
+	}
 
 protected:
 	virtual void LevelChangeStart(){}
@@ -137,10 +149,12 @@ private:
 	void ActorRender(float _DeltaTime);
 	void ActorRelease();
 
+	//기본 카메라 생성
+	void LevelCameraInit();
+	//레벨의 모든 Actor들 파괴
+	void AllActorDestroy();
+
 	void ActorLevelChangeStart();
 	void ActorLevelChangeEnd();
-
-	/*void TextureUnLoad(GameEngineLevel* _NextLevel);
-	void TextureReLoad(GameEngineLevel* _PrevLevel);*/
 };
 

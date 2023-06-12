@@ -80,7 +80,19 @@ void GameEngineObject::AllRender(float _DeltaTime)
 	}
 }
 
-void GameEngineObject::AllRelease() 
+void GameEngineObject::AllDestroy()
+{
+	//자신의 함수 호출
+	Destroy();
+
+	//자식의 함수 호출
+	for (std::shared_ptr<GameEngineObject> Object : Childs)
+	{
+		Object->AllDestroy();
+	}
+}
+
+void GameEngineObject::AllRelease()
 {
 	//부모(자신)이 죽은 경우는 이 함수로 들어오지 않는다(Level의 Release구조 보면 알 수 있다)
 	if (true == IsDeath())
