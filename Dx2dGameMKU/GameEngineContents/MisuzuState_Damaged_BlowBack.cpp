@@ -71,6 +71,7 @@ void MisuzuState_Damaged_BlowBack::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	EnemyStateBase::OffMainCollider();
 }
 
 
@@ -95,4 +96,5 @@ void MisuzuState_Damaged_BlowBack::ExitState()
 
 	IsWallHit = false;
 	WallOutDir = float4::Zero;
+	EnemyStateBase::OnMainCollider();
 }

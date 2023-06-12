@@ -17,7 +17,7 @@ const std::string_view MisuzuState_Attack_GetUp::AniName = "Attack_GetUp";
 const std::string_view MisuzuState_Attack_GetUp::AniFileName = "Misuzu_GetUp.png";
 const std::pair<int, int> MisuzuState_Attack_GetUp::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Attack_GetUp::AniInterTime = 0.08f;
-const int MisuzuState_Attack_GetUp::Damage = 25;
+const int MisuzuState_Attack_GetUp::Damage = 5;
 
 MisuzuState_Attack_GetUp::MisuzuState_Attack_GetUp()
 {

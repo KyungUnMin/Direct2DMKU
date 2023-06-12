@@ -10,7 +10,7 @@ const std::string_view MisuzuState_Attack_Elbow::AniName = "Attack_Elbow";
 const std::string_view MisuzuState_Attack_Elbow::AniFileName = "Misuzu_Elbow.png";
 const std::pair<int, int> MisuzuState_Attack_Elbow::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Attack_Elbow::AniInterTime = 0.08f;
-const int MisuzuState_Attack_Elbow::Damage = 10;
+const int MisuzuState_Attack_Elbow::Damage = 5;
 
 MisuzuState_Attack_Elbow::MisuzuState_Attack_Elbow()
 {

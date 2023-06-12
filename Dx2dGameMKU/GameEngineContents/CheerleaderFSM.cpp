@@ -32,7 +32,7 @@ const  std::string_view CheerleaderFSM::NormalDamaged_FileName = "Cheerleader_Ge
 
 const std::vector<CheerleaderStateType> CheerleaderFSM::AttackGroup =
 {
-	CheerleaderStateType::CartWheel,
+	//CheerleaderStateType::CartWheel,
 	CheerleaderStateType::BackFlip,
 	CheerleaderStateType::DoublePom,
 	CheerleaderStateType::Jab,

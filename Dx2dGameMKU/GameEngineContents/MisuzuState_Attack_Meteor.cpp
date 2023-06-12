@@ -46,7 +46,7 @@ const std::vector<MisuzuState_Attack_Meteor::AniInfo> MisuzuState_Attack_Meteor:
 };
 
 const float MisuzuState_Attack_Meteor::AniInter = 0.08f;
-const int MisuzuState_Attack_Meteor::Damage = 30;
+const int MisuzuState_Attack_Meteor::Damage = 15;
 const int MisuzuState_Attack_Meteor::AttackFrm = 8;
 
 MisuzuState_Attack_Meteor::MisuzuState_Attack_Meteor()

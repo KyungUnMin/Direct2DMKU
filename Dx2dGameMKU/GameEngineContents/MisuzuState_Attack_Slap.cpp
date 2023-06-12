@@ -11,7 +11,7 @@ const std::string_view MisuzuState_Attack_Slap::AniName = "Attack_Slap";
 const std::string_view MisuzuState_Attack_Slap::AniFileName = "Misuzu_Slap.png";
 const std::pair<int, int> MisuzuState_Attack_Slap::AniCutFrame = std::pair<int, int>(5, 3);
 const float MisuzuState_Attack_Slap::AniInterTime = 0.08f;
-const int MisuzuState_Attack_Slap::Damage = 10;
+const int MisuzuState_Attack_Slap::Damage = 5;
 const int MisuzuState_Attack_Slap::AttackFrm = 8;
 
 MisuzuState_Attack_Slap::MisuzuState_Attack_Slap()

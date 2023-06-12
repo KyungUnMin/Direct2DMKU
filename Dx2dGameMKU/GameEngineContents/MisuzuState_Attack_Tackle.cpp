@@ -14,7 +14,7 @@ const std::string_view MisuzuState_Attack_Tackle::TackleLoop_AniFileName = "Misu
 const std::pair<int, int> MisuzuState_Attack_Tackle::TackleStart_AniCutFrame = std::pair<int, int>(5, 1);
 const std::pair<int, int> MisuzuState_Attack_Tackle::TackleLoop_AniCutFrame = std::pair<int, int>(5, 2);
 const float MisuzuState_Attack_Tackle::AniInterTime = 0.08f;
-const int MisuzuState_Attack_Tackle::Damage = 25;
+const int MisuzuState_Attack_Tackle::Damage = 10;
 
 MisuzuState_Attack_Tackle::MisuzuState_Attack_Tackle()
 {

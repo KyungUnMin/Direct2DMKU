@@ -16,7 +16,7 @@ const std::string_view MisuzuState_Attack_WUPunch::AniName = "Attack_WUPunch";
 const std::string_view MisuzuState_Attack_WUPunch::AniFileName = "Misuzu_WUPunch.png";
 const std::pair<int, int> MisuzuState_Attack_WUPunch::AniCutFrame = std::pair<int, int>(5, 6);
 const float MisuzuState_Attack_WUPunch::AniInterTime = 0.08f;
-const int MisuzuState_Attack_WUPunch::Damage = 30;
+const int MisuzuState_Attack_WUPunch::Damage = 15;
 const int MisuzuState_Attack_WUPunch::AttackFrm = 17;
 
 MisuzuState_Attack_WUPunch::MisuzuState_Attack_WUPunch()
