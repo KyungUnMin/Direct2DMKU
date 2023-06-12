@@ -22,7 +22,6 @@ private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
-	static const std::pair<size_t, size_t> AniFrameIndex;
 	static const float AniInterTime;
 
 	const float StartAcc = 1500.f;

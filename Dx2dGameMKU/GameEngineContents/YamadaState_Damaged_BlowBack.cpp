@@ -9,7 +9,6 @@
 const std::string_view YamadaState_Damaged_BlowBack::AniName = "BlowBack";
 const std::string_view YamadaState_Damaged_BlowBack::AniFileName = "Yamada_BlowBack.png";
 const std::pair<int, int> YamadaState_Damaged_BlowBack::AniCutFrame = std::pair<int, int>(5, 8);
-const std::pair<size_t, size_t> YamadaState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 37 };
 const float YamadaState_Damaged_BlowBack::AniInterTime = 0.05f;
 
 
@@ -54,14 +53,28 @@ void YamadaState_Damaged_BlowBack::LoadAnimation()
 
 void YamadaState_Damaged_BlowBack::CreateAnimation()
 {
+	const size_t GarbageFrmIdx = 24;
+	const size_t TatalFrmIdx = 37;
+
+	std::vector<size_t> AniFrmIdx;
+	AniFrmIdx.reserve(TatalFrmIdx);
+	for (size_t i = 0; i < GarbageFrmIdx; ++i)
+	{
+		AniFrmIdx.push_back(i);
+	}
+
+	for (size_t i = (GarbageFrmIdx + 1); i <= TatalFrmIdx; ++i)
+	{
+		AniFrmIdx.push_back(i);
+	}
+
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = AniFrameIndex.first,
-		.End = AniFrameIndex.second,
 		.FrameInter = AniInterTime,
-		.Loop = false
+		.Loop = false,
+		.FrameIndex = AniFrmIdx
 	});
 }
 

@@ -52,14 +52,28 @@ void YamadaState_Damaged_KnockDown::LoadAnimation()
 
 void YamadaState_Damaged_KnockDown::CreateAnimation()
 {
+	const size_t GarbageFrmIdx = 24;
+	const size_t TatalFrmIdx = 37;
+
+	std::vector<size_t> AniFrmIdx;
+	AniFrmIdx.reserve(TatalFrmIdx);
+	for (size_t i = 0; i < GarbageFrmIdx; ++i)
+	{
+		AniFrmIdx.push_back(i);
+	}
+
+	for (size_t i = (GarbageFrmIdx + 1); i <= TatalFrmIdx; ++i)
+	{
+		AniFrmIdx.push_back(i);
+	}
+
 	GetRenderer()->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
-		.Start = AniFrameIndex.first,
-		.End = AniFrameIndex.second,
 		.FrameInter = AniInterTime,
-		.Loop = false
+		.Loop = false,
+		.FrameIndex = AniFrmIdx
 	});
 }
 
