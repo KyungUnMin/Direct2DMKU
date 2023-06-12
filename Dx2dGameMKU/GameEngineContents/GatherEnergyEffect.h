@@ -1,6 +1,11 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+/*
+	지금 당장은 안쓰는데,
+	나중에 파티클 풀링 예시 코드를 위해 남김
+*/
+
 class GatherEnergyEffect : public GameEngineActor
 {
 public:

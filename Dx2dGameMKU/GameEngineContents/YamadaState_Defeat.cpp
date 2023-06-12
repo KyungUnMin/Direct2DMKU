@@ -9,7 +9,7 @@
 const std::string_view YamadaState_Defeat::Sink_AniName = "Defeat_Sink";
 const std::string_view YamadaState_Defeat::Shudder_AniName = "Defeat_Shudder";
 const std::string_view YamadaState_Defeat::AniFileName = "Yamada_Defeated.png";
-const std::pair<int, int> YamadaState_Defeat::AniCutFrame = std::pair<int, int>(5, 3);
+const std::pair<int, int> YamadaState_Defeat::AniCutFrame = std::pair<int, int>(5, 5);
 const float YamadaState_Defeat::AniInterTime = 0.08f;
 
 YamadaState_Defeat::YamadaState_Defeat()
@@ -54,7 +54,7 @@ void YamadaState_Defeat::CreateAnimation()
 		.AnimationName = Sink_AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 10,
+		.End = 20,
 		.FrameInter = AniInterTime,
 		.Loop = false,
 	});
@@ -63,8 +63,8 @@ void YamadaState_Defeat::CreateAnimation()
 	({
 		.AnimationName = Shudder_AniName,
 		.SpriteName = AniFileName,
-		.Start = 9,
-		.End = 10,
+		.Start = 19,
+		.End = 20,
 		.FrameInter = AniInterTime,
 		.Loop = true,
 	});

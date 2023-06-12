@@ -10,7 +10,7 @@
 const std::string_view PlayerState_QuickAttack_CrescentKick::AniName = "QuickAttack_CrescentKick";
 const std::string_view PlayerState_QuickAttack_CrescentKick::AniFileName = "Player_QuickAttack_CrescentKick_Plus.png";
 const std::pair<int, int> PlayerState_QuickAttack_CrescentKick::AniCutFrame = std::pair<int, int>(5, 2);
-const float PlayerState_QuickAttack_CrescentKick::AniInterTime = 0.06f;
+const float PlayerState_QuickAttack_CrescentKick::AniInterTime = 0.05f;
 const int PlayerState_QuickAttack_CrescentKick::Damage = 5;
 
 PlayerState_QuickAttack_CrescentKick::PlayerState_QuickAttack_CrescentKick()
