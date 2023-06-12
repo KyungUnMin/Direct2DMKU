@@ -101,6 +101,16 @@ struct TransformData
 	//카메라와 연산될때 사용하는 월드*뷰*프로젝션*뷰포트행렬
 	float4x4 WorldViewProjectionMatrix;
 
+
+	//월드 행렬 계산
+	void WorldCalculation(const float4x4& _Parent, bool AbsoluteScale, bool AbsoluteRotation, bool AbsolutePosition);
+
+	//로컬 행렬 계산
+	void LocalCalculation();
+
+	//카메라의 뷰와 투영행렬 계산
+	void SetViewAndProjection(const float4x4& _View, const float4x4& _Projection);
+
 public:
 	TransformData()
 	{
@@ -357,9 +367,7 @@ public:
 		//이때 뷰포트 변환시 해상도 적용을 편하게 하기 위해
 		//-1 ~ 1사이 값으로 만드는 정규화 작업이 들어간다
 
-		TransData.View = _View;
-		TransData.Projection = _Projection;
-		TransData.WorldViewProjectionMatrix = TransData.WorldMatrix * TransData.View * TransData.Projection;
+		TransData.SetViewAndProjection(_View, _Projection);
 	}
 
 	//뷰포트 변환
@@ -373,6 +381,25 @@ public:
 	void CalChild();
 
 	void SetParent(GameEngineTransform* _Parent, bool _IsParentWorld = true);
+
+
+
+	inline bool IsAbsoluteScale() const
+	{
+		return  AbsoluteScale;
+	}
+
+	inline bool IsAbsoluteRotation() const
+	{
+		return  AbsoluteRotation;
+	}
+
+	inline bool IsAbsolutePosition() const
+	{
+		return  AbsolutePosition;
+	}
+
+
 
 	inline GameEngineTransform* GetParent() const
 	{

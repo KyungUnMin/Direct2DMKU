@@ -84,10 +84,48 @@ namespace GameEngineDebug
 			//콜리전 데이터의 윈도우 화면위치를 알기 위해 카메라의 뷰행렬과 투영행렬을 곱한다
 			CurData.Trans->SetCameraMatrix(_Camera->GetView(), _Camera->GetProjection());
 
-			const TransformData& TransData = CurData.Trans->GetTransDataRef();
+
+
+			//그리려는 콜리전의 TransData 받아오기
+			static TransformData DrawData;
+			DrawData = CurData.Trans->GetTransDataRef();
+
+			switch (Type)
+			{
+			case GameEngineDebug::DebugDrawType::Box:
+				//DebugRenderUnit.SetMesh("DebugBox");
+				break;
+
+				//구의 경우에는 X값 만이 반지름이 되어야 한다
+			case GameEngineDebug::DebugDrawType::Sphere:
+				//DebugRenderUnit.SetMesh("DebugSphere");
+				
+				//TransData의 Scale.x에 맞춰 행렬 재 계산
+				DrawData.Scale = { DrawData.Scale.x, DrawData.Scale.x, DrawData.Scale.x };
+
+				//로컬행렬 계산
+				DrawData.LocalCalculation();
+				//월드행렬 = 로컬행렬
+				DrawData.WorldMatrix = DrawData.LocalWorldMatrix;
+
+				//부모가 있는 경우 월드행렬 재계산
+				if (nullptr != CurData.Trans->GetParent())
+				{
+					DrawData.WorldCalculation(CurData.Trans->GetParent()->GetWorldMatrixRef(), CurData.Trans->IsAbsoluteScale(), CurData.Trans->IsAbsoluteRotation(), CurData.Trans->IsAbsolutePosition());
+				}
+
+				//뷰행렬과 투영행렬 계산
+				DrawData.SetViewAndProjection(_Camera->GetView(), _Camera->GetProjection());
+				break;
+			case GameEngineDebug::DebugDrawType::Point:
+				break;
+			default:
+				break;
+			}
+
 
 			//상수버퍼 연결
-			DebugRenderUnit.ShaderResHelper.SetConstantBufferLink("TransformData", TransData);
+			DebugRenderUnit.ShaderResHelper.SetConstantBufferLink("TransformData", DrawData);
 			DebugRenderUnit.ShaderResHelper.SetConstantBufferLink("DebugColor", CurData.Color);
 
 			//그리기

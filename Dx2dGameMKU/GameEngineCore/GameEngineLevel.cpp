@@ -122,6 +122,35 @@ void GameEngineLevel::ActorLevelChangeEnd()
 
 void GameEngineLevel::ActorRender(float _DeltaTime)
 {
+	//충돌체 디버깅 기능을 On했을때
+	if (true == IsDebugRender)
+	{
+		std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupStartIter = Collisions.begin();
+		std::map<int, std::list<std::shared_ptr<GameEngineCollision>>>::iterator GroupEndIter = Collisions.end();
+
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+		{
+			std::list<std::shared_ptr<GameEngineCollision>>& ObjectList = GroupStartIter->second;
+
+			std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectStart = ObjectList.begin();
+			std::list<std::shared_ptr<GameEngineCollision>>::iterator ObjectEnd = ObjectList.end();
+
+			for (; ObjectStart != ObjectEnd; ++ObjectStart)
+			{
+				std::shared_ptr<GameEngineCollision> CollisionObject = (*ObjectStart);
+
+				if (nullptr == CollisionObject)
+					continue;
+
+				if (false == CollisionObject->IsUpdate())
+					continue;
+
+				CollisionObject->DebugRender(_DeltaTime);
+			}
+		}
+	}
+
+
 	//이 레벨에 존재하는 카메라 순회
 	for (std::pair<int, std::shared_ptr<GameEngineCamera>> Pair : Cameras)
 	{

@@ -20,6 +20,8 @@ void GameEngineCollision::Start()
 	SetDebugCamera(GetLevel()->GetCamera(0).get());
 }
 
+
+
 std::shared_ptr<GameEngineCollision> GameEngineCollision::Collision(int _TargetGroup, ColType _ThisColType, ColType _OtherColtype)
 {
 	if (false == this->IsUpdate())
@@ -74,11 +76,8 @@ void GameEngineCollision::SetOrder(int _Order)
 	GetLevel()->PushCollision(ConThis);
 }
 
-void GameEngineCollision::Update(float _DeltaTime)
+void GameEngineCollision::DebugRender(float _DeltaTime)
 {
-	if (false == IsDebug())
-		return;
-
 	switch (Type)
 	{
 	case ColType::SPHERE2D:

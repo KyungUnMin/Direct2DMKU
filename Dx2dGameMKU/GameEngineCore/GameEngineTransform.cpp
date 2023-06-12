@@ -181,68 +181,39 @@ bool GameEngineTransform::OBB2DToOBB2D(const CollisionData& _Left, const Collisi
 
 
 
-//--------------------------Transform-------------------------
+
+//--------------------------TransData-------------------------
 
 
-GameEngineTransform::GameEngineTransform()
-{
-	TransformUpdate();
-}
-
-GameEngineTransform::~GameEngineTransform()
-{
-}
-
-//실제 Transform을 변경하는 순간 행렬 계산이 된다
-//반대로 안 움직이면 계산 안된다
-void GameEngineTransform::TransformUpdate()
+void TransformData::LocalCalculation()
 {
 	//크기행렬 만들기
-	TransData.ScaleMatrix.Scale(TransData.Scale);
+	ScaleMatrix.Scale(Scale);
+
 
 	//회전행렬 만들기
-	TransData.Rotation.w = 0.0f;
-
+	Rotation.w = 0.0f;
 	//로테이션 -> 쿼터니언
-	TransData.Quaternion = TransData.Rotation.EulerDegToQuaternion();
+	Quaternion = Rotation.EulerDegToQuaternion();
 	//쿼터니언 -> 로테이션 행렬
-	TransData.RotationMatrix = TransData.Quaternion.QuaternionToRotationMatrix();
+	RotationMatrix = Quaternion.QuaternionToRotationMatrix();
+
 
 	//이동행렬 만들기
-	TransData.PositionMatrix.Pos(TransData.Position);
+	PositionMatrix.Pos(Position);
+
 
 	//크자이 순으로 로컬 행렬 계산
-	TransData.LocalWorldMatrix = TransData.ScaleMatrix * TransData.RotationMatrix * TransData.PositionMatrix;
-
-
-
-	//부모가 없는 경우
-	if (nullptr == Parent)
-	{
-		TransData.WorldMatrix = TransData.LocalWorldMatrix;
-	}
-
-	//부모가 있는 경우
-	else 
-	{
-		WorldCalculation();
-	}
-
-
-	//자신의 월드 행렬에서 월드 크자이 추출
-	WorldDecompose();
-	
-	//자신의 로컬 행렬에서 로컬 크자이 추출
-	LocalDecompose();
+	LocalWorldMatrix = ScaleMatrix * RotationMatrix * PositionMatrix;
 }
 
 
-void GameEngineTransform::WorldCalculation()
+void TransformData::WorldCalculation(const float4x4& _Parent, bool AbsoluteScale, bool AbsoluteRotation, bool AbsolutePosition)
 {
 	//부모의 월드 행렬을 각각 크자이로 분해한다
-	float4x4 ParentWorldMatrix = Parent->GetWorldMatrixRef();
-	float4 PScale, PRoatation, PPosition;
-	ParentWorldMatrix.Decompose(PScale, PRoatation, PPosition);
+	float4 PScale, PRotation, PPosition;
+	_Parent.Decompose(PScale, PRotation, PPosition);
+
 
 	//근데 내가 월드 크기를 사용중이라면 부모의 크기는 무시
 	if (true == AbsoluteScale)
@@ -253,9 +224,10 @@ void GameEngineTransform::WorldCalculation()
 	//근데 내가 월드 회전를 사용중이라면 부모의 회전은 무시
 	if (true == AbsoluteRotation)
 	{
-		PRoatation = float4::Zero;
+		// 부모의 회전 
+		PRotation = float4::Zero;
 		//xyz 0의 쿼터니언 생성
-		PRoatation.EulerDegToQuaternion();
+		PRotation.EulerDegToQuaternion();
 	}
 
 	//근데 내가 월드 이동를 사용중이라면 부모의 이동은 무시
@@ -268,12 +240,75 @@ void GameEngineTransform::WorldCalculation()
 	//위에서 만든 값을 바탕으로 행렬 만들기
 	float4x4 MatScale, MatRot, MatPos;
 	MatScale.Scale(PScale);
-	MatRot = PRoatation.QuaternionToRotationMatrix();
+	MatRot = PRotation.QuaternionToRotationMatrix();
 	MatPos.Pos(PPosition);
 
 
 	//자신의 월드 행렬 = 자신의 로컬행렬에 부모의 월드 행렬 곱하기
-	TransData.WorldMatrix = TransData.LocalWorldMatrix * (MatScale * MatRot * MatPos);
+	WorldMatrix = LocalWorldMatrix * (MatScale * MatRot * MatPos);
+}
+
+void TransformData::SetViewAndProjection(const float4x4& _View, const float4x4& _Projection)
+{
+	//뷰행렬을 이용해 카메라의 행렬에 따라
+		// 모든 물체들을 이동 및 공전시키고
+		//투영 행렬을 이용해 3차원 물체를 2차원에 투영시킴
+		//이때 뷰포트 변환시 해상도 적용을 편하게 하기 위해
+		//-1 ~ 1사이 값으로 만드는 정규화 작업이 들어간다
+
+	View = _View;
+	Projection = _Projection;
+	WorldViewProjectionMatrix = WorldMatrix * View * Projection;
+}
+
+//실제 Transform을 변경하는 순간 행렬 계산이 된다
+//반대로 안 움직이면 계산 안된다
+void GameEngineTransform::TransformUpdate()
+{
+	//로컬 행렬 계산
+	TransData.LocalCalculation();
+
+
+	//부모가 없는 경우
+	if (nullptr == Parent)
+	{
+		TransData.WorldMatrix = TransData.LocalWorldMatrix;
+	}
+
+	//부모가 있는 경우
+	else
+	{
+		WorldCalculation();
+	}
+
+
+	//자신의 월드 행렬에서 월드 크자이 추출
+	WorldDecompose();
+
+	//자신의 로컬 행렬에서 로컬 크자이 추출
+	LocalDecompose();
+}
+
+
+//--------------------------Transform-------------------------
+
+
+GameEngineTransform::GameEngineTransform()
+{
+	TransformUpdate();
+}
+
+GameEngineTransform::~GameEngineTransform()
+{
+}
+
+
+
+void GameEngineTransform::WorldCalculation()
+{
+	//부모의 행렬
+	float4x4 ParentWorldMatrix = Parent->GetWorldMatrixRef();
+	TransData.WorldCalculation(ParentWorldMatrix, AbsoluteScale, AbsoluteRotation, AbsolutePosition);
 }
 
 
