@@ -9,7 +9,7 @@ const std::string_view CheerleaderState_Idle::AniName = "Idle";
 const std::string_view CheerleaderState_Idle::AniFileName = "Cheerleader_Idle.png";
 const std::pair<int, int> CheerleaderState_Idle::AniCutFrame = std::pair<int, int>(5, 3);
 const float CheerleaderState_Idle::AniInterTime = 0.08f;
-const int CheerleaderState_Idle::CartWheelPercent = 10;
+const int CheerleaderState_Idle::CartWheelPercent = 30;
 
 CheerleaderState_Idle::CheerleaderState_Idle()
 {
