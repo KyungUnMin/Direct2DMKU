@@ -24,12 +24,12 @@ public:
 		Order = _Order;
 	}
 
-	inline void On()
+	inline virtual void On()
 	{
 		UpdateValue = true;
 	}
 
-	inline void Off()
+	inline virtual void Off()
 	{
 		UpdateValue = false;
 	}
@@ -39,14 +39,14 @@ public:
 		DeathValue = true;
 	}
 
-	virtual bool IsDeath()
+	inline virtual bool IsDeath()
 	{
 		return DeathValue;
 	}
 
 	virtual bool IsUpdate()
 	{
-		return UpdateValue;
+		return UpdateValue && (false == DeathValue);
 	}
 
 	void DebugOn()

@@ -16,13 +16,11 @@ bool GameEngineLevel::IsDebugRender = false;
 GameEngineLevel::GameEngineLevel()
 {
 	//메인 카메라 0번
-	MainCamera = CreateActor<GameEngineCamera>();
-	Cameras.insert(std::make_pair(0, MainCamera));
+	MainCamera = CreateNewCamera(0);
 
 	//UI 카메라 100번
-	std::shared_ptr<GameEngineCamera> UICamera = CreateActor<GameEngineCamera>();
+	std::shared_ptr<GameEngineCamera> UICamera = CreateNewCamera(100);
 	UICamera->SetProjectionType(CameraType::Orthogonal);
-	Cameras.insert(std::make_pair(100, UICamera));
 
 	//모든 카메라의 이미지가 종합된 도화지 생성(포스트 프로세싱때 효과를 주기 위함)
 	LastTarget = GameEngineRenderTarget::Create(DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT, GameEngineWindow::GetScreenSize(), float4::Null);
@@ -323,18 +321,18 @@ std::shared_ptr<GameEngineCamera> GameEngineLevel::GetCamera(int _CameraOrder)
 	return Camera;
 }
 
-std::shared_ptr<GameEngineCamera> GameEngineLevel::CreateCamera(int _CameraNum, CameraType _ProjectionType)
+std::shared_ptr<GameEngineCamera> GameEngineLevel::CreateNewCamera(int _Order)
 {
-	if (Cameras.end() != Cameras.find(_CameraNum))
+	if (Cameras.end() != Cameras.find(_Order))
 	{
-		std::string CamNum = GameEngineString::ToString(_CameraNum);
+		std::string CamNum = GameEngineString::ToString(_Order);
 		MsgAssert("이미 존재하는 카메라를 또 만들려고 했습니다 : " + CamNum);
 		return nullptr;
 	}
 
 	std::shared_ptr<GameEngineCamera> NewCamera = CreateActor<GameEngineCamera>();
-	NewCamera->SetProjectionType(_ProjectionType);
-	Cameras.insert(std::make_pair(_CameraNum, NewCamera));
+	Cameras.insert(std::make_pair(_Order, NewCamera));
+
 	return NewCamera;
 }
 

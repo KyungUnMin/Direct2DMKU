@@ -26,7 +26,7 @@ void SelfRenderer::SetCamera(RCG_CamNumType _CamType)
 	//카메라가 없다면 만든다
 	if (nullptr == Level->GetCamera(CameraNum))
 	{
-		Level->CreateCamera(CameraNum, CameraType::Orthogonal);
+		Level->CreateNewCamera(CameraNum)->SetProjectionType(CameraType::Orthogonal);
 	}
 
 	//카메라에 등록

@@ -89,7 +89,7 @@ public:
 	}
 
 
-	std::shared_ptr<GameEngineCamera> CreateCamera(int _CameraNum, CameraType _ProjectionType);
+	std::shared_ptr<GameEngineCamera> CreateNewCamera(int _Order);
 
 protected:
 	virtual void LevelChangeStart(){}
