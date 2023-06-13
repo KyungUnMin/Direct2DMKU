@@ -970,9 +970,6 @@
     <Filter Include="03.Actor\06.Effect\07.Light">
       <UniqueIdentifier>{be80757a-918b-4cf2-a7bf-292a255581ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\06.Effect\09.GatherEnergy">
-      <UniqueIdentifier>{4261f2d7-ba7d-485b-8d42-08369324c7de}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\04.Attack\02.QuickAttack\05.HookKick">
       <UniqueIdentifier>{d4e0116b-a83c-4a53-8e6f-7c84d1c6516e}</UniqueIdentifier>
     </Filter>
@@ -1035,6 +1032,12 @@
     </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\01.Blast">
       <UniqueIdentifier>{da6cfd07-3b91-40e9-9821-b29eda5312c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\99.GatherEnergy">
+      <UniqueIdentifier>{4261f2d7-ba7d-485b-8d42-08369324c7de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\08.Yamada_Blast">
+      <UniqueIdentifier>{7da546f9-db30-43c6-8c12-476cae30f89c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1798,7 +1801,7 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar</Filter>
     </ClCompile>
     <ClCompile Include="GatherEnergyEffect.cpp">
-      <Filter>03.Actor\06.Effect\09.GatherEnergy</Filter>
+      <Filter>03.Actor\06.Effect\99.GatherEnergy</Filter>
     </ClCompile>
     <ClCompile Include="LightEffect.cpp">
       <Filter>03.Actor\06.Effect\07.Light</Filter>
@@ -1868,6 +1871,9 @@
     </ClCompile>
     <ClCompile Include="YamadaState_Attack_Blast.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\01.Blast</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaBlastEffect.cpp">
+      <Filter>03.Actor\06.Effect\08.Yamada_Blast</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2619,7 +2625,7 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\04.Misuzu\04.Attack\07.Roar</Filter>
     </ClInclude>
     <ClInclude Include="GatherEnergyEffect.h">
-      <Filter>03.Actor\06.Effect\09.GatherEnergy</Filter>
+      <Filter>03.Actor\06.Effect\99.GatherEnergy</Filter>
     </ClInclude>
     <ClInclude Include="LightEffect.h">
       <Filter>03.Actor\06.Effect\07.Light</Filter>
@@ -2689,6 +2695,9 @@
     </ClInclude>
     <ClInclude Include="YamadaState_Attack_Blast.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\01.Blast</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaBlastEffect.h">
+      <Filter>03.Actor\06.Effect\08.Yamada_Blast</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
 #pragma once
 #include "BossState_AttackBase.h"
 
+class GameEngineSpriteRenderer;
+
 class YamadaState_Attack_Blast : public BossState_AttackBase
 {
 public:
@@ -17,6 +19,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 	void Attack() override;
 
@@ -25,15 +28,20 @@ private:
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+
 	static const int Damage;
 	static const float4 ColOffset;
 	static const float4 ColScale;
 
+	
 	float AfterEffectTimer = 0.f;
+	bool FirstHit = false;
+
 
 	void LoadAnimation();
 	void CreateAnimation();
-	void CreateBlastEffect();
-	void CreateAfterEffect(float _DeltaTime);
+	
+
+	void Update_AfterEffect(float _DeltaTime);
 };
 

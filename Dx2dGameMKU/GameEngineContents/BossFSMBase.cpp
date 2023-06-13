@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "BossFSMBase.h"
 
-const int BossFSMBase::PhaseCount = 3;
+const size_t BossFSMBase::PhaseCount = 3;
 
 
 BossFSMBase::BossFSMBase()

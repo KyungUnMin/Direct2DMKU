@@ -30,7 +30,7 @@ protected:
 
 
 private:
-	static const int PhaseCount;
+	static const size_t PhaseCount;
 
 	size_t CurPhase = 0;
 	size_t PhaseDivicer = 0;
