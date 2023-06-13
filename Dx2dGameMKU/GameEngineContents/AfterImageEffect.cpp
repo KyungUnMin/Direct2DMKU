@@ -33,6 +33,20 @@ void AfterImageEffect::Init(std::shared_ptr<GameEngineSpriteRenderer> _OwnerRend
 
 	EffectTrans->SetWorldPosition(OwnerRenderTrans->GetWorldPosition() + float4::Forward);
 	EffectTrans->SetLocalScale(OwnerRenderTrans->GetLocalScale());
+
+	//이미지가 뒤집혀져 있는 경우에만
+	GameEngineTransform* OwnerActorTrans = _OwnerRender->GetActor()->GetTransform();
+	if (0.f < OwnerActorTrans->GetLocalScale().x)
+		return;
+
+	//이 이펙트로 뒤집는다
+	EffectTrans->SetLocalNegativeScaleX();
+}
+
+void AfterImageEffect::SetPlusColor(float4 _Color)
+{
+	_Color.a = 0.f;
+	EffectRender->ColorOptionValue.PlusColor = _Color;
 }
 
 

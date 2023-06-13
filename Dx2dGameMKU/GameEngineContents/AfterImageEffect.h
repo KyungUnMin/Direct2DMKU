@@ -16,6 +16,8 @@ public:
 
 	void Init(std::shared_ptr<GameEngineSpriteRenderer> _OwnerRender);
 
+	void SetPlusColor(float4 _Color);
+
 protected:
 	void Update(float _DeltaTime) override;
 

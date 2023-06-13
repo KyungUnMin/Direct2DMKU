@@ -6,6 +6,7 @@
 #include "YamadaFSM.h"
 #include "FieldPlayer.h"
 #include "LightEffect.h"
+#include "AfterImageEffect.h"
 
 const std::string_view YamadaState_Attack_Blast::AniName = "Attack_Blast";
 const std::string_view YamadaState_Attack_Blast::AniFileName = "Yamada_Blast.png";
@@ -31,6 +32,7 @@ void YamadaState_Attack_Blast::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	AfterEffectTimer = 0.f;
 }
 
 void YamadaState_Attack_Blast::LoadAnimation()
@@ -63,8 +65,8 @@ void YamadaState_Attack_Blast::CreateAnimation()
 		.Loop = false,
 	});
 
-	//Effect 생성
-	Render->SetAnimationStartEvent(AniName, 7, std::bind(&YamadaState_Attack_Blast::EffectCreate, this));
+	//BlastEffect 생성
+	Render->SetAnimationStartEvent(AniName, 7, std::bind(&YamadaState_Attack_Blast::CreateBlastEffect, this));
 
 	for (size_t i = 8; i < 14; ++i)
 	{
@@ -72,7 +74,7 @@ void YamadaState_Attack_Blast::CreateAnimation()
 	}
 }
 
-void YamadaState_Attack_Blast::EffectCreate()
+void YamadaState_Attack_Blast::CreateBlastEffect()
 {
 	float4 LightOffset = float4{ ColOffset.x ,100.f };
 	const float4 LightScale = float4::One * 300.f;
@@ -111,9 +113,10 @@ void YamadaState_Attack_Blast::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
 
+	CreateAfterEffect(_DeltaTime);
+
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
-
 
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
@@ -134,30 +137,48 @@ void YamadaState_Attack_Blast::Update(float _DeltaTime)
 	}
 }
 
+void YamadaState_Attack_Blast::CreateAfterEffect(float _DeltaTime)
+{
+	AfterEffectTimer += _DeltaTime;
+	if (AfterEffectTimer < 0.05f)
+		return;
+
+	AfterEffectTimer = 0.f;
+	static const float OffsetX = 100.f;
+	const float4 OffsetPos = EnemyStateBase::IsRightDir() ? float4::Left * OffsetX : float4::Right * OffsetX;
+
+	std::shared_ptr<AfterImageEffect> Effect = nullptr;
+	Effect = CreateEffect<AfterImageEffect>(OffsetPos, float4::One * 1.5f);
+	Effect->Init(GetRenderer());
+	Effect->SetPlusColor(float4::Blue);
+}
 
 
 void YamadaState_Attack_Blast::Attack()
 {
 	size_t CurFrm = GetRenderer()->GetCurrentFrame();
 	bool Result = false;
+
+	//마지막 공격은 날라가기
 	if (13 == CurFrm)
 	{
 		Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
 	}
+	//짝수 프레임은 얼굴 공격
+	else if(0 == CurFrm % 2)
+	{
+		Result = FieldPlayer::GetPtr()->OnDamage_Face();
+	}
+	//홀수 프레임은 턱 공격
 	else
 	{
-		if (0 == CurFrm % 2)
-		{
-			Result = FieldPlayer::GetPtr()->OnDamage_Face();
-		}
-		else
-		{
-			Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
-		}
+		Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
 	}
 
+	//공격이 정상적으로 먹혔다면
 	if (false == Result)
 		return;
 
+	//플레이어 데미지 감소
 	DataMgr::MinusPlayerHP(Damage);
 }

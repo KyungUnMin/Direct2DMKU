@@ -29,8 +29,11 @@ private:
 	static const float4 ColOffset;
 	static const float4 ColScale;
 
+	float AfterEffectTimer = 0.f;
+
 	void LoadAnimation();
 	void CreateAnimation();
-	void EffectCreate();
+	void CreateBlastEffect();
+	void CreateAfterEffect(float _DeltaTime);
 };
 
