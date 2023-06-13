@@ -31,6 +31,8 @@ void GameEngineLevel::LevelCameraInit()
 	LastTarget = GameEngineRenderTarget::Create(DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT, GameEngineWindow::GetScreenSize(), float4::Null);
 }
 
+
+
 GameEngineLevel::~GameEngineLevel()
 {
 
@@ -282,6 +284,9 @@ void GameEngineLevel::ActorRelease()
 			{
 				std::shared_ptr<GameEngineActor> ReleaseActor = *ActorStart;
 
+				//삭제될때 이벤트 호출
+				ReleaseActor->AllDestroy();
+
 				//제거되지 않는 엑터의 경우
 				if (nullptr != ReleaseActor && false == ReleaseActor->IsDeath())
 				{
@@ -293,9 +298,6 @@ void GameEngineLevel::ActorRelease()
 					++ActorStart;
 					continue;
 				}
-
-				//삭제될때 이벤트 호출
-				ReleaseActor->AllDestroy();
 
 				//자식들 Death가 예약되어 있는지 확인하고 그룹에서 제거
 				ReleaseActor->Release();
@@ -375,6 +377,7 @@ std::shared_ptr<GameEngineCamera> GameEngineLevel::CreateNewCamera(int _Order)
 
 void GameEngineLevel::AllActorDestroy()
 {
+	DestroyCamera();
 	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupStartIter = Actors.begin();
 	std::map<int, std::list<std::shared_ptr<GameEngineActor>>>::iterator GroupEndIter = Actors.end();
 
@@ -397,4 +400,13 @@ void GameEngineLevel::AllActorDestroy()
 
 	//기본 카메라만 다시 생성
 	LevelCameraInit();
+}
+
+void GameEngineLevel::DestroyCamera()
+{
+	for (std::pair<int, std::shared_ptr<GameEngineCamera>> _Cam : Cameras)
+	{
+		_Cam.second->Renderers.clear();
+	}
+	Cameras.clear();
 }

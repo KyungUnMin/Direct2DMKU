@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "Fader.h"
 
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
@@ -67,9 +68,29 @@ void Fader::Update(float _DeltaTime)
 		Callback();
 	}
 
-	//아직 Death 기능이 없어서 멤버변수로 렌더러를 들고 있음
-	//페이드에서 화면 깜빡이는건 렌더 오프 주석하면 해결됨
-	//RenderPtr->Off();
+	
+
 	IsFading = nullptr;
-	Death();
+
+	if (true == IsDestroy)
+	{
+		Death();
+	}
+}
+
+void Fader::ClearOthers()
+{
+	const std::list<std::shared_ptr<GameEngineActor>>& UIGroup = GetLevel()->GetActorGroup(UpdateOrder::UI);
+
+	for (std::shared_ptr<GameEngineActor> UIActor : UIGroup)
+	{
+		std::shared_ptr<Fader> FaderPtr = std::dynamic_pointer_cast<Fader>(UIActor);
+		if (nullptr == FaderPtr)
+			continue;
+
+		if (FaderPtr.get() == this)
+			continue;
+
+		FaderPtr->Death();
+	}
 }

@@ -97,7 +97,7 @@ public:
 
 		if (nullptr == FindSprite)
 		{
-			MsgAssert("존재하지 않는 텍스처를 리로드 하려고 했습니다.");
+			return LoadFolder(_Name.data(), _Path);
 		}
 
 		FindSprite->ReLoad();

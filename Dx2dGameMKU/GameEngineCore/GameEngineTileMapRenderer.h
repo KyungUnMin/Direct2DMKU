@@ -4,14 +4,18 @@
 #include <map>
 #include "EngineContentRenderingStruct.h"
 
+enum class TileMapMode
+{
+	Rect,
+	Iso
+};
+
 class Tile
 {
 public:
 	GameEngineSprite* Sprite;
 	int Index = 0;
 };
-
-
 
 // Ό³Έν :
 class GameEngineTileMapRenderer : public GameEngineRenderer
@@ -29,11 +33,13 @@ public:
 
 	ColorOption ColorOptionValue;
 
-	void CreateTileMap(int _X, int _Y, const float4& _TileSize);
+	void CreateTileMap(int _X, int _Y, const float4& _TileSize, TileMapMode Mode = TileMapMode::Rect);
 
 	void Clear();
 
-	void SetTile(int _X, int _Y, const std::string_view& _SpriteName, int _Index = 0);
+	void SetTile(int _X, int _Y, const std::string_view& _SpriteName = "Error", int _Index = 0);
+
+	void SetTile(const float4& _Pos, const std::string_view& _SpriteName = "Error", int _Index = 0);
 
 	bool IsOver(int _X, int _Y) const;
 
@@ -62,6 +68,9 @@ private:
 	float4 MapCount;
 	float4 AtlasData;
 	float4 TileSize;
+	float4 TileSizeH;
+
+	TileMapMode Mode = TileMapMode::Rect;
 
 	void Start() override;
 };

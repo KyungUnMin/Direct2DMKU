@@ -82,8 +82,11 @@ void GameEngineObject::AllRender(float _DeltaTime)
 
 void GameEngineObject::AllDestroy()
 {
-	//자신의 함수 호출
-	Destroy();
+	if (true == IsDeath())
+	{
+		//자신이 죽은 경우에만 Death 함수 호출
+		Destroy();
+	}
 
 	//자식의 함수 호출
 	for (std::shared_ptr<GameEngineObject> Object : Childs)

@@ -151,7 +151,9 @@ void FieldDoor::Update(float _DeltaTime)
 
 	//Fader
 	FieldDoor::RegistNextLevel = NextLevel;
-	GetLevel()->CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{ 0.f, 0.f, 0.f, 0.f }, FadeTime, []()
+	std::shared_ptr<Fader> FadePtr = GetLevel()->CreateActor<Fader>(static_cast<int>(UpdateOrder::UI));
+	FadePtr->DontDestory();
+	FadePtr->Init(float4{ 0.f, 0.f, 0.f, 0.f }, FadeTime, []()
 	{
 		LevelMgr::ChangeLevel(FieldDoor::RegistNextLevel);
 	});

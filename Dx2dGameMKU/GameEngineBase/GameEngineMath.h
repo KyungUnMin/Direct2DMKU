@@ -193,7 +193,8 @@ public:
 	float4 QuaternionToEulerRad();
 
 
-
+	float XYDistance(float4 _Value);
+	float XYZDistance(float4 _Value);
 
 
 	int ix() const

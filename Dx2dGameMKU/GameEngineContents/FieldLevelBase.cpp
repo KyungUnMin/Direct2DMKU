@@ -138,7 +138,9 @@ void FieldLevelBase::LevelChangeStart()
 	GPtr = this;
 	FieldPlayer::GPtr = PlayerPtr.get();
 
-	CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
+	std::shared_ptr<Fader> Fade = CreateActor<Fader>(static_cast<int>(UpdateOrder::UI));
+	Fade->ClearOthers();
+	Fade->Init(float4{ 0.f, 0.f, 0.f, 1.0f });
 }
 
 

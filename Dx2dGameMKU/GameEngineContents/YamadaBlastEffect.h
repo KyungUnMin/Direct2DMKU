@@ -16,6 +16,7 @@ public:
 
 	void Init(float _Duration, bool _IsDirRight);
 
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -44,7 +45,7 @@ private:
 	};
 
 	static const std::vector<RenderInfo> ImageInfo;
-
+	static const float4 DarkPupple;
 
 
 	std::vector<std::shared_ptr<GameEngineSpriteRenderer>> Renders;
@@ -55,11 +56,20 @@ private:
 	
 	enum class State
 	{
-		Rot,
-
+		OnAttack,
+		Extinct
 	};
+
+	State CurState = State::OnAttack;
 
 	void ImageLoad();
 	void CreateRenders();
+	void SetEnergyRender();
+	void SetSparkRender();
+
+
+	void Update_OnAttack(float _DeltaTime);
+	void Update_Extinct(float _DeltaTime);
+	void Update_Spark();
 };
 

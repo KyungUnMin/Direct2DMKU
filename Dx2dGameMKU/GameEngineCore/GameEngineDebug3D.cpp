@@ -81,10 +81,6 @@ namespace GameEngineDebug
 				break;
 			}
 
-			//콜리전 데이터의 윈도우 화면위치를 알기 위해 카메라의 뷰행렬과 투영행렬을 곱한다
-			CurData.Trans->SetCameraMatrix(_Camera->GetView(), _Camera->GetProjection());
-
-
 
 			//그리려는 콜리전의 TransData 받아오기
 			static TransformData DrawData;
@@ -96,26 +92,29 @@ namespace GameEngineDebug
 				//DebugRenderUnit.SetMesh("DebugBox");
 				break;
 
-				//구의 경우에는 X값 만이 반지름이 되어야 한다
+				//구의 경우에는 X값 만이 반지름이 되어야 한다 그래서 월드행렬을 분해한뒤 크기를 조정하고 다시 월드행렬을 만든다
 			case GameEngineDebug::DebugDrawType::Sphere:
+			{
 				//DebugRenderUnit.SetMesh("DebugSphere");
-				
-				//TransData의 Scale.x에 맞춰 행렬 재 계산
-				DrawData.Scale = { DrawData.Scale.x, DrawData.Scale.x, DrawData.Scale.x };
+				float4 TempScale, TempRotation, TempPosition;
 
-				//로컬행렬 계산
-				DrawData.LocalCalculation();
-				//월드행렬 = 로컬행렬
-				DrawData.WorldMatrix = DrawData.LocalWorldMatrix;
+				//현재 그릴 물체의 월드 행렬을 바탕으로 크자이를 추출(월드는 이미 부모의 행렬이 계산되어 있기 때문)
+				DrawData.WorldMatrix.Decompose(TempScale, TempRotation, TempPosition);
 
-				//부모가 있는 경우 월드행렬 재계산
-				if (nullptr != CurData.Trans->GetParent())
-				{
-					DrawData.WorldCalculation(CurData.Trans->GetParent()->GetWorldMatrixRef(), CurData.Trans->IsAbsoluteScale(), CurData.Trans->IsAbsoluteRotation(), CurData.Trans->IsAbsolutePosition());
-				}
+				//구의 경우에는 X값 만이 반지름이 되어야 한다
+				TempScale.y = TempScale.z = TempScale.x;
 
-				//뷰행렬과 투영행렬 계산
-				DrawData.SetViewAndProjection(_Camera->GetView(), _Camera->GetProjection());
+				float4x4 MatScale, MatRot, MatPos;
+
+				//크자이 값을 바탕으로 행렬을 만든다
+				MatScale.Scale(TempScale);
+				MatRot = TempRotation.QuaternionToRotationMatrix();
+				MatPos.Pos(TempPosition);
+
+				//다시 월드 행렬을 계산한다
+				DrawData.WorldMatrix = MatScale * MatRot * MatPos;
+			}
+
 				break;
 			case GameEngineDebug::DebugDrawType::Point:
 				break;
@@ -123,6 +122,8 @@ namespace GameEngineDebug
 				break;
 			}
 
+			//뷰행렬과 투영행렬 계산
+			DrawData.SetViewAndProjection(_Camera->GetView(), _Camera->GetProjection());
 
 			//상수버퍼 연결
 			DebugRenderUnit.ShaderResHelper.SetConstantBufferLink("TransformData", DrawData);

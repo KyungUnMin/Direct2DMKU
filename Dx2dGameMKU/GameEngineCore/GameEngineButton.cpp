@@ -5,6 +5,8 @@
 #include "GameEngineLevel.h"
 #include "GameEngineCamera.h"
 
+GameEngineButton* GameEngineButton::SelectButton = nullptr;
+
 GameEngineButton::GameEngineButton()
 {
 }

@@ -24,6 +24,13 @@ public:
 		IsFadeIn = (FadeColor.w < 0.5f) ? true : false;
 	}
 
+	void ClearOthers();
+
+	inline void DontDestory()
+	{
+		IsDestroy = false;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -33,6 +40,7 @@ private:
 
 	float4 FadeColor = float4::One;
 	bool IsFadeIn = false;
+	bool IsDestroy = true;
 	float Duration = 0.f;
 	std::function<void()> Callback;
 
