@@ -160,6 +160,9 @@
     <ClInclude Include="GameEngineDebug3D.h">
       <Filter>08.Debug</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdParty\FW1Font\Inc\FW1FontWrapper.h">
+      <Filter>01.ThirdParty\02.Fw1Font\01.Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp">
@@ -497,6 +500,21 @@
     <Filter Include="08.Debug">
       <UniqueIdentifier>{3775ef32-17c3-49a5-92ed-99bd6a676147}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.ThirdParty\02.Fw1Font">
+      <UniqueIdentifier>{9270cbed-1117-4020-97cb-243c7fd48ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\02.Fw1Font\01.Header">
+      <UniqueIdentifier>{c130e9f8-3340-4751-a95b-16442204eb9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\02.Fw1Font\02.bin">
+      <UniqueIdentifier>{b45ce1b8-e7c7-4775-af65-e426d50fd0d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\02.Fw1Font\02.bin\Debug">
+      <UniqueIdentifier>{967d6798-cda8-4c76-a297-a2baca451c3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.ThirdParty\02.Fw1Font\02.bin\Release">
+      <UniqueIdentifier>{f221683f-edf3-4771-a6e2-76d39a5dabaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ThirdParty\DirectXTex\inc\DirectXTex.inl">
@@ -507,6 +525,18 @@
     </None>
     <None Include="ThirdParty\DirectXTex\lib\x64\Release\DirectXTex.lib">
       <Filter>01.ThirdParty\01.DirectXTex\02.bin\Release</Filter>
+    </None>
+    <None Include="ThirdParty\FW1Font\lib\x64\Debug\FW1FontWrapper.lib">
+      <Filter>01.ThirdParty\02.Fw1Font\02.bin\Debug</Filter>
+    </None>
+    <None Include="ThirdParty\FW1Font\lib\x64\Release\FW1FontWrapper.lib">
+      <Filter>01.ThirdParty\02.Fw1Font\02.bin\Release</Filter>
+    </None>
+    <None Include="ThirdParty\FW1Font\lib\x64\Debug\FW1FontWrapper.dll">
+      <Filter>01.ThirdParty\02.Fw1Font\02.bin\Debug</Filter>
+    </None>
+    <None Include="ThirdParty\FW1Font\lib\x64\Release\FW1FontWrapper.dll">
+      <Filter>01.ThirdParty\02.Fw1Font\02.bin\Release</Filter>
     </None>
   </ItemGroup>
 </Project>
