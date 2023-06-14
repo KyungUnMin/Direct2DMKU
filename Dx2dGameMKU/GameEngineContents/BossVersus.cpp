@@ -19,7 +19,7 @@ BossVersus* BossVersus::GetPtr()
 {
 	if (nullptr == GPtr)
 	{
-		MsgAssert("BossVersusUI를 생성해준 적이 없습니다");
+		//MsgAssert("BossVersusUI를 생성해준 적이 없습니다");
 		return nullptr;
 	}
 

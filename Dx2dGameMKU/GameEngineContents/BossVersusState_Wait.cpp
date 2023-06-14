@@ -54,7 +54,7 @@ void BossVersusState_Wait::EnterState()
 		BossVersus* VersusUI = BossVersus::GetPtr();
 		if (nullptr == VersusUI)
 		{
-			MsgAssert("BossVersus 는 이미 삭제되었습니다");
+			//MsgAssert("BossVersus 는 이미 삭제되었습니다");
 			return;
 		}
 
