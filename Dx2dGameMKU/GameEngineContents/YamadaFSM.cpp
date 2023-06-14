@@ -13,7 +13,7 @@
 
 //Attack
 #include "YamadaState_Attack_Blast.h"
-//#include "YamadaState_Attack_GetUp.h"
+#include "YamadaState_Attack_ForceField.h"
 //#include "YamadaState_Attack_WUPunch.h"
 //#include "YamadaState_Attack_Tackle.h"
 //#include "YamadaState_Attack_Slap.h"
@@ -56,7 +56,7 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		YamadaStateType::TeleportDisappear,
+		YamadaStateType::ForceField,
 	},
 
 	//2페이즈
@@ -121,7 +121,7 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 
 	//Attack
 	FSMBase::CreateState<YamadaState_Attack_Blast>(YamadaStateType::Blast);
-	//FSMBase::CreateState<YamadaState_Attack_Elbow>(YamadaStateType::Elbow);
+	FSMBase::CreateState<YamadaState_Attack_ForceField>(YamadaStateType::ForceField);
 	//FSMBase::CreateState<YamadaState_Attack_WUPunch>(YamadaStateType::WUPunch);
 	//FSMBase::CreateState<YamadaState_Attack_Tackle>(YamadaStateType::Tackle);
 	//FSMBase::CreateState<YamadaState_Attack_Slap>(YamadaStateType::Slap);

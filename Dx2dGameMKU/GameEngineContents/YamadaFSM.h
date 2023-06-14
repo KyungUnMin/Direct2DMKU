@@ -13,7 +13,8 @@ enum class YamadaStateType
 
 	//Attack
 	Blast,
-	Elbow,
+	ForceField,
+
 	WUPunch,
 	Tackle,
 	Slap,
