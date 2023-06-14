@@ -6,7 +6,7 @@
 #include "YamadaFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldLevelBase.h"
-#include "YamadaEnergyBall.h"
+#include "YamadaEnergyBallCtrl.h"
 
 
 
@@ -162,14 +162,13 @@ void YamadaState_Attack_ForceField::Update_Ready(float _DeltaTime)
 		return;
 
 	ChangeStateAndAni(State::Rise);
-	CreateEffect<YamadaEnergyBall>();
+	EnergyBallCtrl = CreateEffect<YamadaEnergyBallCtrl>();
+	EnergyBallCtrl->Init(EtyrtTime + RiseTime);
 }
 
 void YamadaState_Attack_ForceField::Update_Rise(float _DeltaTime)
 {
-	static const float Duration = 1.f;
-
-	float Ratio = GetLiveTime() / Duration;
+	float Ratio = GetLiveTime() / RiseTime;
 	float ClampRatio = std::clamp(Ratio, 0.f, 1.f);
 	float SinValue = sinf(GameEngineMath::PIE * 0.5f * ClampRatio);
 	GetEnemy()->SetHeight(SinValue * MaxHeight);
@@ -182,10 +181,8 @@ void YamadaState_Attack_ForceField::Update_Rise(float _DeltaTime)
 
 void YamadaState_Attack_ForceField::Update_Hang(float _DeltaTime)
 {
-	static const float Duration = 5.f;
-
 	float LiveTime = GetLiveTime();
-	if (Duration < LiveTime)
+	if (EtyrtTime < LiveTime)
 	{
 		GetEnemy()->SetHeight(MaxHeight);
 		ChangeStateAndAni(State::Land);
@@ -227,4 +224,11 @@ void YamadaState_Attack_ForceField::ExitState()
 {
 	BossState_AttackBase::ExitState();
 	GetEnemy()->SetHeight(0.f);
+
+	if (false == EnergyBallCtrl->IsDeath())
+	{
+		EnergyBallCtrl->Clear();
+	}
+
+	EnergyBallCtrl = nullptr;
 }

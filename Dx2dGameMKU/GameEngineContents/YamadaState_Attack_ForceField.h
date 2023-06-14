@@ -39,6 +39,10 @@ private:
 	const float MaxHeight = 15.f;
 	float LandStartHeight = 0.f;
 
+	//공중부양 시간
+	const float EtyrtTime = 5.f;
+	const float RiseTime = 1.f;
+	std::shared_ptr<class YamadaEnergyBallCtrl> EnergyBallCtrl = nullptr;
 
 	void LoadAnimation();
 	void CreateAnimation();

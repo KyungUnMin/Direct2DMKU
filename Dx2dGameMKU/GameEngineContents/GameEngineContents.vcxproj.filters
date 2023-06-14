@@ -1045,8 +1045,14 @@
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics\99.Yamada_Blast">
       <UniqueIdentifier>{7da546f9-db30-43c6-8c12-476cae30f89c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\01.Yamada_EnergyBall">
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\01.ForceField">
+      <UniqueIdentifier>{b4f006e1-a8b1-42f6-af81-438a4d1b7ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\01.ForceField\02.EnergyBall">
       <UniqueIdentifier>{df37977c-3ea8-4def-aef5-335a9b9d4591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl">
+      <UniqueIdentifier>{b8040b91-17da-4959-b9fc-14809b779e88}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1885,7 +1891,10 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\02.ForceField</Filter>
     </ClCompile>
     <ClCompile Include="YamadaEnergyBall.cpp">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\01.Yamada_EnergyBall</Filter>
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\02.EnergyBall</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaEnergyBallCtrl.cpp">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2712,7 +2721,10 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\02.ForceField</Filter>
     </ClInclude>
     <ClInclude Include="YamadaEnergyBall.h">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\01.Yamada_EnergyBall</Filter>
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\02.EnergyBall</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaEnergyBallCtrl.h">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
