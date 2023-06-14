@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Attack_Blast.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 
 #include "DataMgr.h"
 
@@ -8,7 +9,6 @@
 #include "FieldPlayer.h"
 #include "FieldEnemyBase.h"
 
-#include "YamadaBlastEffect.h"
 #include "AfterImageEffect.h"
 
 const std::string_view YamadaState_Attack_Blast::AniName = "Attack_Blast";
@@ -20,6 +20,7 @@ const int YamadaState_Attack_Blast::Damage = 5;
 const float4 YamadaState_Attack_Blast::ColOffset = float4{ 100.f, 0.f, 0.f };
 const float4 YamadaState_Attack_Blast::ColScale = float4{ 150.f, 150.f, 150.f };
 
+const std::string_view YamadaState_Attack_Blast::BlastName = "Yamada_Blast_Effect.png";
 
 YamadaState_Attack_Blast::YamadaState_Attack_Blast()
 {
@@ -37,6 +38,7 @@ void YamadaState_Attack_Blast::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	CreateBlastEffect();
 }
 
 void YamadaState_Attack_Blast::LoadAnimation()
@@ -53,6 +55,7 @@ void YamadaState_Attack_Blast::LoadAnimation()
 	Dir.Move("Yamada");
 	Dir.Move("Attack");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(BlastName).GetFullPath(), 1, 8);
 }
 
 void YamadaState_Attack_Blast::CreateAnimation()
@@ -72,7 +75,7 @@ void YamadaState_Attack_Blast::CreateAnimation()
 	
 	Render->SetAnimationStartEvent(AniName, 7, [this]()
 	{
-		CreateEffect<YamadaBlastEffect>()->Init(AniInterTime * 7.f, IsRightDir());
+		EffectHandler->On();
 	});
 
 
@@ -80,6 +83,50 @@ void YamadaState_Attack_Blast::CreateAnimation()
 	{
 		EnemyState_AttackBase::SetAttackCheckFrame(AniName, i);
 	}
+}
+
+void YamadaState_Attack_Blast::CreateBlastEffect()
+{
+	const float4 EffectRenderScale = float4{ 256.f, 64.f, 1.f };
+	const float4 DarkPupple = { 0.25f, 0.f, 0.6f, 0.5f };
+
+	FieldEnemyBase* Enemy = GetEnemy();
+
+	std::shared_ptr<GameEngineSpriteRenderer> EffectRender = nullptr;
+	EffectHandler = Enemy->CreateComponent<GameEngineComponent>();
+	EffectRender = Enemy->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+
+	GameEngineTransform* EffectRenderTrans = EffectRender->GetTransform();
+	GameEngineTransform* EffectHandlerTrans = EffectHandler->GetTransform();
+	EffectRenderTrans->SetParent(EffectHandlerTrans);
+
+	EffectRenderTrans->SetLocalScale(EffectRenderScale);
+	EffectRenderTrans->SetLocalPosition(float4::Right * EffectRenderScale.hx());
+	EffectHandlerTrans->SetLocalPosition(float4::Up * 100.f);
+
+
+	EffectRender->CreateAnimation
+	({
+		.AnimationName = BlastName,
+		.SpriteName = BlastName,
+		.FrameInter = AniInterTime,
+		.Loop = true,
+	});
+	EffectRender->ChangeAnimation(BlastName);
+	EffectRender->ColorOptionValue.MulColor = DarkPupple;
+	
+	for (size_t i = 0; i < 8; ++i)
+	{
+		EffectRender->SetAnimationStartEvent(BlastName, i, [this]()
+		{
+			static const float RotOffset = 20.f;
+			float RandRot = GameEngineRandom::MainRandom.RandomFloat(-RotOffset, RotOffset);
+
+			EffectHandler->GetTransform()->SetLocalRotation(float4::Forward * RandRot);
+		});
+	}
+
+	EffectHandler->Off();
 }
 
 
@@ -91,6 +138,8 @@ void YamadaState_Attack_Blast::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue(ColOffset, ColScale);
+
+	GetCamCtrl()->SetZoom(0.98f, 0.05f);
 }
 
 
@@ -166,5 +215,9 @@ void YamadaState_Attack_Blast::ExitState()
 {
 	BossState_AttackBase::ExitState();
 	FirstHit = false;
+	EffectHandler->Off();
+
+	FieldCamController* CamCtrl = GetCamCtrl();
+	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.5f);
 }
 

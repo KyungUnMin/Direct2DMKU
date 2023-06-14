@@ -33,13 +33,16 @@ private:
 	static const float4 ColOffset;
 	static const float4 ColScale;
 
+	static const std::string_view BlastName;
 	
 	float AfterEffectTimer = 0.f;
 	bool FirstHit = false;
 
+	std::shared_ptr<GameEngineComponent> EffectHandler = nullptr;
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void CreateBlastEffect();
 	
 
 	void Update_AfterEffect(float _DeltaTime);
