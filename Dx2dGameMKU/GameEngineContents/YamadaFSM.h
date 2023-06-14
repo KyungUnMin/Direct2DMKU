@@ -15,8 +15,8 @@ enum class YamadaStateType
 	Blast,
 	ForceField,
 	QuickCombo,
+	MatterCrush,
 
-	Tackle,
 	Slap,
 	Meteor,
 	Roar,

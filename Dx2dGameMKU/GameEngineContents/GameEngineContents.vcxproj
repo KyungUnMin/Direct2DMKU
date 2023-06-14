@@ -839,11 +839,15 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="YamadaFSM.h" />
+    <ClInclude Include="YamadaMatterBlock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="YamadaState_Attack_Blast.h" />
     <ClInclude Include="YamadaState_Attack_ForceField.h" />
     <ClInclude Include="YamadaState_Attack_Meteor.h" />
     <ClInclude Include="YamadaState_Attack_QuickCombo.h" />
-    <ClInclude Include="YamadaState_Attack_Slap.h" />
+    <ClInclude Include="YamadaState_Attack_MatterCrush.h" />
     <ClInclude Include="YamadaState_Attack_Tackle.h" />
     <ClInclude Include="YamadaState_Attack_WUPunch.h" />
     <ClInclude Include="YamadaState_Damaged_BlowBack.h" />
@@ -1547,11 +1551,15 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="YamadaFSM.cpp" />
+    <ClCompile Include="YamadaMatterBlock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="YamadaState_Attack_Blast.cpp" />
     <ClCompile Include="YamadaState_Attack_ForceField.cpp" />
     <ClCompile Include="YamadaState_Attack_Meteor.cpp" />
     <ClCompile Include="YamadaState_Attack_QuickCombo.cpp" />
-    <ClCompile Include="YamadaState_Attack_Slap.cpp" />
+    <ClCompile Include="YamadaState_Attack_MatterCrush.cpp" />
     <ClCompile Include="YamadaState_Attack_Tackle.cpp" />
     <ClCompile Include="YamadaState_Attack_WUPunch.cpp" />
     <ClCompile Include="YamadaState_Damaged_BlowBack.cpp" />

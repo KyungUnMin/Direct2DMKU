@@ -1,5 +1,5 @@
 #include "PrecompileHeader.h"
-#include "YamadaState_Attack_Slap.h"
+#include "YamadaState_Attack_MatterCrush.h"
 
 #include "DataMgr.h"
 
@@ -7,24 +7,22 @@
 #include "FieldPlayer.h"
 #include "FieldCamController.h"
 
-const std::string_view YamadaState_Attack_Slap::AniName = "Attack_Slap";
-const std::string_view YamadaState_Attack_Slap::AniFileName = "Yamada_Slap.png";
-const std::pair<int, int> YamadaState_Attack_Slap::AniCutFrame = std::pair<int, int>(5, 3);
-const float YamadaState_Attack_Slap::AniInterTime = 0.08f;
-const int YamadaState_Attack_Slap::Damage = 5;
-const int YamadaState_Attack_Slap::AttackFrm = 8;
+const std::string_view YamadaState_Attack_MatterCrush::AniName = "Attack_MatterCrusher";
+const std::string_view YamadaState_Attack_MatterCrush::AniFileName = "Yamada_MatterCrusher.png";
+const std::pair<int, int> YamadaState_Attack_MatterCrush::AniCutFrame = std::pair<int, int>(5, 4);
+const float YamadaState_Attack_MatterCrush::AniInterTime = 0.08f;
 
-YamadaState_Attack_Slap::YamadaState_Attack_Slap()
+YamadaState_Attack_MatterCrush::YamadaState_Attack_MatterCrush()
 {
 
 }
 
-YamadaState_Attack_Slap::~YamadaState_Attack_Slap()
+YamadaState_Attack_MatterCrush::~YamadaState_Attack_MatterCrush()
 {
 
 }
 
-void YamadaState_Attack_Slap::Start()
+void YamadaState_Attack_MatterCrush::Start()
 {
 	BossState_AttackBase::Start();
 
@@ -32,7 +30,7 @@ void YamadaState_Attack_Slap::Start()
 	CreateAnimation();
 }
 
-void YamadaState_Attack_Slap::LoadAnimation()
+void YamadaState_Attack_MatterCrush::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -48,7 +46,7 @@ void YamadaState_Attack_Slap::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void YamadaState_Attack_Slap::CreateAnimation()
+void YamadaState_Attack_MatterCrush::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	Render->CreateAnimation
@@ -56,28 +54,25 @@ void YamadaState_Attack_Slap::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 13,
+		.End = 17,
 		.FrameInter = AniInterTime,
 		.Loop = false,
-		});
-
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
+	});
 }
 
 
 
 
-void YamadaState_Attack_Slap::EnterState()
+void YamadaState_Attack_MatterCrush::EnterState()
 {
 	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue(float4{50.f, 50.f}, float4::One * 150.f);
 }
 
 
 
-void YamadaState_Attack_Slap::Update(float _DeltaTime)
+void YamadaState_Attack_MatterCrush::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
 
@@ -105,11 +100,14 @@ void YamadaState_Attack_Slap::Update(float _DeltaTime)
 
 
 
-void YamadaState_Attack_Slap::Attack()
-{
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
-}
+//
+//
+//
+//void YamadaState_Attack_MatterCrush::Attack()
+//{
+//	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
+//	if (false == Result)
+//		return;
+//
+//	DataMgr::MinusPlayerHP(Damage);
+//}

@@ -1054,6 +1054,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo">
       <UniqueIdentifier>{37204c31-122e-4536-9771-e16d2ad362b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\04.MatterCrush">
+      <UniqueIdentifier>{e0fd311a-8eab-42f5-b5d7-459185e11e89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush">
+      <UniqueIdentifier>{252008bd-3f8f-4ee3-a826-6eca31766be6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1827,9 +1833,6 @@
     <ClCompile Include="FieldEnemy_Yamada.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="YamadaState_Attack_Slap.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="YamadaState_Attack_Tackle.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
     </ClCompile>
@@ -1892,6 +1895,12 @@
     </ClCompile>
     <ClCompile Include="YamadaState_Attack_QuickCombo.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_MatterCrush.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\04.MatterCrush</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaMatterBlock.cpp">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2654,9 +2663,6 @@
     <ClInclude Include="FieldEnemy_Yamada.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="YamadaState_Attack_Slap.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="YamadaState_Attack_Tackle.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
     </ClInclude>
@@ -2719,6 +2725,12 @@
     </ClInclude>
     <ClInclude Include="YamadaState_Attack_QuickCombo.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_MatterCrush.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\04.MatterCrush</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaMatterBlock.h">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,7 +9,6 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
-#include "KeyMgr.h"
 #include "DataMgr.h"
 
 #include "LightEffect.h"
