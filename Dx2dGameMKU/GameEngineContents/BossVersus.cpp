@@ -8,6 +8,7 @@
 
 #include "RCG_GameCore.h"
 #include "RCGDefine.h"
+#include "KeyMgr.h"
 
 #include "SelfRenderer.h"
 
@@ -177,7 +178,6 @@ std::shared_ptr<SelfRenderer> BossVersus::CreataEngineUIRender(const std::string
 }
 
 
-
 void BossVersus::Update(float _DeltaTime) 
 {
 	UIBase::Update(_DeltaTime);
@@ -185,6 +185,12 @@ void BossVersus::Update(float _DeltaTime)
 	if (nullptr == PlayerPortrait)
 	{
 		MsgAssert("초기화 함수(Init)를 호출시키지 않았습니다");
+		return;
+	}
+
+	if ((1.f < GetLiveTime()) && (true == KeyMgr::IsDown(KeyNames::Esc)))
+	{
+		Death();
 		return;
 	}
 

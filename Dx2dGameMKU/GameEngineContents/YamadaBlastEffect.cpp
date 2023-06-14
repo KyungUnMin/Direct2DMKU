@@ -31,10 +31,7 @@ YamadaBlastEffect::~YamadaBlastEffect()
 
 }
 
-/*
-	구슬 없ㅇ ㅣ스파크로만
-	마지막만 별도의 이펙트
-*/
+
 
 
 void YamadaBlastEffect::Start()
