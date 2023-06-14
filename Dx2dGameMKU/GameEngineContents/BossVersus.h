@@ -69,7 +69,7 @@ private:
 
 	struct ShaderData
 	{
-		const float4 FireColor = float4{ 1.f, 0.f, 0.f, 1.f };
+		const float4 FireColor = float4{ 1.f, 1.f, 1.f, 1.f };
 
 		float NoiseFilterValue = 0.0f;
 		const float NoiseImageScale = 15.f; /*±âÁ¸°ª 5.0f*/
