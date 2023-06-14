@@ -14,7 +14,7 @@
 //Attack
 #include "YamadaState_Attack_Blast.h"
 #include "YamadaState_Attack_ForceField.h"
-//#include "YamadaState_Attack_WUPunch.h"
+#include "YamadaState_Attack_QuickCombo.h"
 //#include "YamadaState_Attack_Tackle.h"
 //#include "YamadaState_Attack_Slap.h"
 //#include "YamadaState_Attack_Meteor.h"
@@ -37,17 +37,17 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::NearAttackGroup =
 {
 	//1페이즈
 	{
-		YamadaStateType::Blast,
+		YamadaStateType::QuickCombo,
 	},
 
 	//2페이즈
 	{
-		YamadaStateType::Blast,
+		YamadaStateType::QuickCombo,
 	},
 
 	//3페이즈
 	{
-		YamadaStateType::Blast,
+		YamadaStateType::QuickCombo,
 	},
 };
 
@@ -56,7 +56,7 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		YamadaStateType::ForceField,
+		//YamadaStateType::ForceField,
 	},
 
 	//2페이즈
@@ -122,7 +122,7 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	//Attack
 	FSMBase::CreateState<YamadaState_Attack_Blast>(YamadaStateType::Blast);
 	FSMBase::CreateState<YamadaState_Attack_ForceField>(YamadaStateType::ForceField);
-	//FSMBase::CreateState<YamadaState_Attack_WUPunch>(YamadaStateType::WUPunch);
+	FSMBase::CreateState<YamadaState_Attack_QuickCombo>(YamadaStateType::QuickCombo);
 	//FSMBase::CreateState<YamadaState_Attack_Tackle>(YamadaStateType::Tackle);
 	//FSMBase::CreateState<YamadaState_Attack_Slap>(YamadaStateType::Slap);
 	//FSMBase::CreateState<YamadaState_Attack_Meteor>(YamadaStateType::Meteor);

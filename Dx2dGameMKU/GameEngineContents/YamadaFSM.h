@@ -14,8 +14,8 @@ enum class YamadaStateType
 	//Attack
 	Blast,
 	ForceField,
+	QuickCombo,
 
-	WUPunch,
 	Tackle,
 	Slap,
 	Meteor,

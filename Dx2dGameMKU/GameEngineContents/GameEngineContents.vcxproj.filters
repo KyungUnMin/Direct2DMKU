@@ -1042,9 +1042,6 @@
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics">
       <UniqueIdentifier>{ec6a0b23-9133-4621-91dc-d32d3a124f5e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\99.Yamada_Blast">
-      <UniqueIdentifier>{7da546f9-db30-43c6-8c12-476cae30f89c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics\01.ForceField">
       <UniqueIdentifier>{b4f006e1-a8b1-42f6-af81-438a4d1b7ecb}</UniqueIdentifier>
     </Filter>
@@ -1053,6 +1050,9 @@
     </Filter>
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl">
       <UniqueIdentifier>{b8040b91-17da-4959-b9fc-14809b779e88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo">
+      <UniqueIdentifier>{37204c31-122e-4536-9771-e16d2ad362b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1827,12 +1827,6 @@
     <ClCompile Include="FieldEnemy_Yamada.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="YamadaState_Attack_Meteor.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="YamadaState_Attack_Roar.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="YamadaState_Attack_Slap.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
     </ClCompile>
@@ -1884,9 +1878,6 @@
     <ClCompile Include="YamadaState_Attack_Blast.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\01.Blast</Filter>
     </ClCompile>
-    <ClCompile Include="YamadaBlastEffect.cpp">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\99.Yamada_Blast</Filter>
-    </ClCompile>
     <ClCompile Include="YamadaState_Attack_ForceField.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\02.ForceField</Filter>
     </ClCompile>
@@ -1895,6 +1886,12 @@
     </ClCompile>
     <ClCompile Include="YamadaEnergyBallCtrl.cpp">
       <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Meteor.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_QuickCombo.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2657,12 +2654,6 @@
     <ClInclude Include="FieldEnemy_Yamada.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="YamadaState_Attack_Meteor.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="YamadaState_Attack_Roar.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="YamadaState_Attack_Slap.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
     </ClInclude>
@@ -2714,9 +2705,6 @@
     <ClInclude Include="YamadaState_Attack_Blast.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\01.Blast</Filter>
     </ClInclude>
-    <ClInclude Include="YamadaBlastEffect.h">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\99.Yamada_Blast</Filter>
-    </ClInclude>
     <ClInclude Include="YamadaState_Attack_ForceField.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\02.ForceField</Filter>
     </ClInclude>
@@ -2725,6 +2713,12 @@
     </ClInclude>
     <ClInclude Include="YamadaEnergyBallCtrl.h">
       <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Meteor.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_QuickCombo.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
