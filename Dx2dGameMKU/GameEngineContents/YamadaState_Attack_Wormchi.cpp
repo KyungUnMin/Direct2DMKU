@@ -18,7 +18,7 @@ const std::vector<std::string_view> YamadaState_Attack_Wormchi::AniNames =
 
 const std::pair<int, int> YamadaState_Attack_Wormchi::AniCurFrame = std::pair<int, int>(5, 3);
 const float YamadaState_Attack_Wormchi::AniInterTime = 0.08f;
-const float YamadaState_Attack_Wormchi::SitDuration = 5.f;
+const float YamadaState_Attack_Wormchi::SitDuration = 0.4f;
 
 YamadaState_Attack_Wormchi::YamadaState_Attack_Wormchi()
 {
@@ -93,7 +93,7 @@ void YamadaState_Attack_Wormchi::CreateAnimation()
 		.Start = 5,
 		.End = 9,
 		.FrameInter = AniInterTime,
-		.Loop = true
+		.Loop = false
 	});
 
 	Render->CreateAnimation

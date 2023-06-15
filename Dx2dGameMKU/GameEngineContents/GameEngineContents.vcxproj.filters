@@ -1072,6 +1072,9 @@
     <Filter Include="03.Actor\07.EnemySpawner">
       <UniqueIdentifier>{2ebf8842-f051-421c-ba64-242a61d76614}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\03.Wormchi">
+      <UniqueIdentifier>{6f6e148e-7ad3-4183-b6b2-03b4973644ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1917,6 +1920,9 @@
     <ClCompile Include="YamadaState_Attack_Wormchi.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi</Filter>
     </ClCompile>
+    <ClCompile Include="YamadaWornchiThunder.cpp">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\03.Wormchi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2749,6 +2755,9 @@
     </ClInclude>
     <ClInclude Include="YamadaState_Attack_Wormchi.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaWornchiThunder.h">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\03.Wormchi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
