@@ -28,7 +28,13 @@ private:
 	static const float AniInterTime;
 	static const int Damage;
 
+	static const std::string_view EffectName;
+	static const float4 EffectScale;
+
+	std::shared_ptr<class GameEngineSpriteRenderer> Effect = nullptr;
+
 	void LoadAnimation();
 	void CreateAnimation();
+	void CreateAttackEffect();
 };
 

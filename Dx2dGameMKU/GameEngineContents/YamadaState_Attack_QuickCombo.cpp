@@ -7,12 +7,16 @@
 #include "YamadaFSM.h"
 #include "FieldPlayer.h"
 #include "HitEffect.h"
+#include "FieldEnemyBase.h"
 
 const std::string_view YamadaState_Attack_QuickCombo::AniName = "Attack_QuickCombo";
 const std::string_view YamadaState_Attack_QuickCombo::AniFileName = "Yamada_QuickCombo.png";
 const std::pair<int, int> YamadaState_Attack_QuickCombo::AniCutFrame = std::pair<int, int>(5, 5);
 const float YamadaState_Attack_QuickCombo::AniInterTime = 0.06f;
 const int YamadaState_Attack_QuickCombo::Damage = 5;
+const float4 YamadaState_Attack_QuickCombo::EffectScale = { 200.f ,200.f, 1.f };
+
+const std::string_view YamadaState_Attack_QuickCombo::EffectName = "Yamada_QuickCombo_Effect.png";
 
 YamadaState_Attack_QuickCombo::YamadaState_Attack_QuickCombo()
 {
@@ -30,6 +34,7 @@ void YamadaState_Attack_QuickCombo::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	CreateAttackEffect();
 	EnemyStateBase::SetSight(80.f);
 }
 
@@ -47,6 +52,7 @@ void YamadaState_Attack_QuickCombo::LoadAnimation()
 	Dir.Move("Yamada");
 	Dir.Move("Attack");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(EffectName).GetFullPath(), 4, 2);
 }
 
 void YamadaState_Attack_QuickCombo::CreateAnimation()
@@ -64,6 +70,30 @@ void YamadaState_Attack_QuickCombo::CreateAnimation()
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 4);
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 9);
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 18);
+	
+	Render->SetAnimationStartEvent(AniName, 19, [this]()
+	{
+		Effect->On();
+		Effect->ChangeAnimation(EffectName);
+	});
+}
+
+void YamadaState_Attack_QuickCombo::CreateAttackEffect()
+{
+	Effect = GetEnemy()->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	Effect->CreateAnimation
+	({
+		.AnimationName = EffectName,
+		.SpriteName = EffectName,
+		.FrameInter = 0.05f,
+		.Loop = false,
+	});
+
+	GameEngineTransform* EffectTrans = Effect->GetTransform();
+	EffectTrans->SetLocalScale(EffectScale);
+	EffectTrans->SetLocalNegativeScaleX();
+	EffectTrans->SetLocalPosition({30.f, EffectScale.hy(), -10.f });
+	Effect->Off();
 }
 
 
@@ -83,6 +113,7 @@ void YamadaState_Attack_QuickCombo::EnterState()
 void YamadaState_Attack_QuickCombo::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
+
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
@@ -134,7 +165,9 @@ void YamadaState_Attack_QuickCombo::Attack()
 }
 
 
+
 void YamadaState_Attack_QuickCombo::ExitState()
 {
 	BossState_AttackBase::ExitState();
+	Effect->Off();
 }
