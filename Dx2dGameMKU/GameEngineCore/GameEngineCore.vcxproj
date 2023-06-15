@@ -221,6 +221,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineFont.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GameEngineFontRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GameEngineFSM.h" />
     <ClInclude Include="GameEngineGUI.h">
       <SubType>
@@ -396,6 +404,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameEngineFont.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GameEngineFontRenderer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GameEngineFSM.cpp" />
     <ClCompile Include="GameEngineGUI.cpp">
       <SubType>
@@ -520,18 +536,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ThirdParty\DirectXTex\inc\DirectXTex.inl" />
-    <None Include="ThirdParty\FW1Font\lib\x64\Debug\FW1FontWrapper.dll">
+    <CopyFileToFolders Include="ThirdParty\FW1Font\lib\x64\Debug\FW1FontWrapper.dll">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <FileType>Document</FileType>
-    </None>
-    <None Include="ThirdParty\FW1Font\lib\x64\Release\FW1FontWrapper.dll">
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1Font\lib\x64\Release\FW1FontWrapper.dll">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
       <FileType>Document</FileType>
-    </None>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="ThirdParty\DirectXTex\lib\x64\Debug\DirectXTex.lib">
@@ -546,18 +562,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ThirdParty\FW1Font\lib\x64\Debug\FW1FontWrapper.lib">
+    <CopyFileToFolders Include="ThirdParty\FW1Font\lib\x64\Debug\FW1FontWrapper.lib">
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </None>
-    <None Include="ThirdParty\FW1Font\lib\x64\Release\FW1FontWrapper.lib">
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1Font\lib\x64\Release\FW1FontWrapper.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
       <FileType>Document</FileType>
-    </None>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
