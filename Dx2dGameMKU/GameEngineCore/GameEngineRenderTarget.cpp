@@ -111,6 +111,11 @@ void GameEngineRenderTarget::Setting()
 	ID3D11DepthStencilView* DSV =
 		(DepthTexture != nullptr) ? DepthTexture->GetDSV() : nullptr;
 
+	//깊이 버퍼 비활성화 한 경우
+	if (false == DepthSetting)
+	{
+		DSV = nullptr;
+	}
 
 	GameEngineDevice::GetContext()->OMSetRenderTargets(1, RTV, DSV);
 }

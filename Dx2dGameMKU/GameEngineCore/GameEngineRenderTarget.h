@@ -93,6 +93,16 @@ public:
 		return Textures[_Index];
 	}
 
+	void DepthSettingOn()
+	{
+		DepthSetting = true;
+	}
+
+	void DepthSettingOff()
+	{
+		DepthSetting = false;
+	}
+
 protected:
 
 private:
@@ -100,6 +110,10 @@ private:
 	static void RenderTargetUnitInit();
 	//머지렌더(이미지 복사)를 도와주는 정적 개체
 	static GameEngineRenderUnit MergeUnit;
+
+
+	//깊이버퍼 활성화 유무
+	bool DepthSetting = true;
 
 
 	float4 Color = float4{ 0.f, 0.f, 0.f, 0.f };

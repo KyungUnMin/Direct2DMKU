@@ -71,6 +71,13 @@ public:
 };
 
 
+enum ImagePivot
+{
+	Left,
+	Right,
+	Top,
+	Bot,
+};
 
 class GameEngineSpriteRenderer : public GameEngineRenderer
 {
@@ -125,6 +132,20 @@ public:
 		return AtlasData;
 	}
 
+	//이미지 클리핑(_ScalePivot  : 클리핑 방향, _PosPivot : 클리핑 후 정렬 위치)
+	void ImageClipping(float _Ratio, ImagePivot _ScalePivot = ImagePivot::Bot, ImagePivot _PosPivot = ImagePivot::Bot)
+	{
+		ClippingPercent = _Ratio;
+
+		if (0.0f >= ClippingPercent)
+		{
+			ClippingPercent = 0.0f;
+		}
+
+		ScalePivot = _ScalePivot;
+		PosPivot = _PosPivot;
+	}
+
 	inline float GetScaleRatio() const
 	{
 		return ScaleRatio;
@@ -169,10 +190,18 @@ private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;
 	std::shared_ptr<AnimationInfo> CurAnimation = nullptr;
 	
-	//애니메이션을 그릴 UV 정보
-	float ScaleRatio = 1.0f;
-
 	std::shared_ptr<GameEngineSprite> Sprite = nullptr;
 	size_t Frame = -1;
+
+
+	//클리핑에 관한 값들
+	float ClippingPercent = 1.0f;
+	float4 OriginAtlasData;
+	ImagePivot ScalePivot = ImagePivot::Bot;
+	ImagePivot PosPivot = ImagePivot::Bot;
+	std::shared_ptr<GameEngineTexture> CurTexture;
+
+	//애니메이션을 그릴 UV 정보
+	float ScaleRatio = 1.0f;
 };
 

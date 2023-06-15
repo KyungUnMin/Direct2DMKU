@@ -345,6 +345,7 @@ void GameEngineSpriteRenderer::Update(float _Delta)
 		if (true == CurAnimation->ScaleToImage)
 		{
 			std::shared_ptr<GameEngineTexture> Texture = Info.Texture;
+			CurTexture = Texture;	//이거 오류같음
 			float4 Scale = Texture->GetScale();
 
 			Scale.x *= Info.CutData.SizeX;
@@ -355,14 +356,61 @@ void GameEngineSpriteRenderer::Update(float _Delta)
 
 			GetTransform()->SetLocalScale(Scale);
 		}
+
+		//클리핑 하는 경우
+		if (ClippingPercent != 1.0f)
+		{
+			OriginAtlasData = AtlasData;
+
+			switch (ScalePivot)
+			{
+			case Left:
+				break;
+			case Right:
+				break;
+			case Top:
+				break;
+			case Bot:
+				OriginAtlasData.SizeY *= ClippingPercent;
+				break;
+			default:
+				break;
+			}
+
+			if (nullptr != CurTexture)
+			{
+				float4 Scale = CurTexture->GetScale();
+
+				Scale.x *= OriginAtlasData.SizeX;
+				Scale.y *= OriginAtlasData.SizeY;
+				Scale.z = 1.0f;
+
+				Scale *= ScaleRatio;
+
+				GetTransform()->SetLocalScale(Scale);
+			}
+		}
+
+
 	}
 }
 
 
 void GameEngineSpriteRenderer::Render(float _DeltaTime)
 {
-	//일반 이미지 Sprite인 경우
+	//클리핑 하는 경우
+	if (ClippingPercent != 1.0f)
+	{
+		GetShaderResHelper().SetConstantBufferLink("AtlasData", OriginAtlasData);
+	}
+
 	GameEngineRenderer::Render(_DeltaTime);
+
+	//클리핑 하는 경우
+	if (ClippingPercent != 1.0f)
+	{
+		GetShaderResHelper().SetConstantBufferLink("AtlasData", AtlasData);
+	}
 }
 
 
