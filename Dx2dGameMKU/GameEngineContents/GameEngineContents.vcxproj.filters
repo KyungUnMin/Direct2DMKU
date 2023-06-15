@@ -307,9 +307,6 @@
     <Filter Include="03.Actor\06.Effect\04.AterImageEffect">
       <UniqueIdentifier>{5ec455dd-e801-4686-a7db-56d229a39cfe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\07.EnemySpawner">
-      <UniqueIdentifier>{2ebf8842-f051-421c-ba64-242a61d76614}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\06.Effect\05.CopGrenade">
       <UniqueIdentifier>{f82e86a2-d3ea-4c09-982b-d92412100c54}</UniqueIdentifier>
     </Filter>
@@ -1068,6 +1065,12 @@
     </Filter>
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\03.Fragment">
       <UniqueIdentifier>{c4a60936-c4da-488e-a060-1cebb26856b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi">
+      <UniqueIdentifier>{2a78416a-9480-415f-87a3-af5b8bbf4b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\07.EnemySpawner">
+      <UniqueIdentifier>{2ebf8842-f051-421c-ba64-242a61d76614}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1842,9 +1845,6 @@
     <ClCompile Include="FieldEnemy_Yamada.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="YamadaState_Attack_Tackle.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="YamadaState_Attack_WUPunch.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
     </ClCompile>
@@ -1899,9 +1899,6 @@
     <ClCompile Include="YamadaEnergyBallCtrl.cpp">
       <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl</Filter>
     </ClCompile>
-    <ClCompile Include="YamadaState_Attack_Meteor.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="YamadaState_Attack_QuickCombo.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo</Filter>
     </ClCompile>
@@ -1916,6 +1913,9 @@
     </ClCompile>
     <ClCompile Include="YamadaMatterFragment.cpp">
       <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\03.Fragment</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaState_Attack_Wormchi.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2678,9 +2678,6 @@
     <ClInclude Include="FieldEnemy_Yamada.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\01.Actor</Filter>
     </ClInclude>
-    <ClInclude Include="YamadaState_Attack_Tackle.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="YamadaState_Attack_WUPunch.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
     </ClInclude>
@@ -2735,9 +2732,6 @@
     <ClInclude Include="YamadaEnergyBallCtrl.h">
       <Filter>03.Actor\06.Effect\08.YamadaMagics\01.ForceField\01.EnergyBallCtrl</Filter>
     </ClInclude>
-    <ClInclude Include="YamadaState_Attack_Meteor.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="YamadaState_Attack_QuickCombo.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\03.QuickCombo</Filter>
     </ClInclude>
@@ -2752,6 +2746,9 @@
     </ClInclude>
     <ClInclude Include="YamadaMatterFragment.h">
       <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\03.Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaState_Attack_Wormchi.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

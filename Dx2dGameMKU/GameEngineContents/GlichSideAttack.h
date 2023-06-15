@@ -12,6 +12,12 @@ public:
 	GlichSideAttack& operator=(const GlichSideAttack& _Other) = delete;
 	GlichSideAttack& operator=(const GlichSideAttack&& _Other) noexcept = delete;
 
+	inline void WaveOff(float _DecreseDuration = 1.f)
+	{
+		WaveOffValue = true;
+		DecreseDuration = _DecreseDuration;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -31,5 +37,9 @@ private:
 	};
 
 	GlichData Data;
+
+	bool WaveOffValue = false;
+	float DecreseDuration = 0.f;
+	float DecreaseTimer = 0.f;
 };
 

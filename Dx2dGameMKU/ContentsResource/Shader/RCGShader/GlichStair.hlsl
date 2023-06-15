@@ -139,6 +139,7 @@ float4 Texture_PS(Output _Value) : SV_Target0
         Rect.z = RandomSerie(WaveHeight, Freq * 100.f, t - Offset);
     }
     
+    
     return float4(Rect, 1.f);
 }
 

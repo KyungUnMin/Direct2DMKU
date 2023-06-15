@@ -16,7 +16,7 @@
 #include "YamadaState_Attack_ForceField.h"
 #include "YamadaState_Attack_QuickCombo.h"
 #include "YamadaState_Attack_MatterCrush.h"
-//#include "YamadaState_Attack_Slap.h"
+#include "YamadaState_Attack_Wormchi.h"
 //#include "YamadaState_Attack_Meteor.h"
 //#include "YamadaState_Attack_Roar.h"
 
@@ -56,7 +56,7 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		YamadaStateType::MatterCrush,
+		YamadaStateType::Wormchi,
 	},
 
 	//2페이즈
@@ -124,7 +124,7 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<YamadaState_Attack_ForceField>(YamadaStateType::ForceField);
 	FSMBase::CreateState<YamadaState_Attack_QuickCombo>(YamadaStateType::QuickCombo);
 	FSMBase::CreateState<YamadaState_Attack_MatterCrush>(YamadaStateType::MatterCrush);
-	//FSMBase::CreateState<YamadaState_Attack_Slap>(YamadaStateType::Slap);
+	FSMBase::CreateState<YamadaState_Attack_Wormchi>(YamadaStateType::Wormchi);
 	//FSMBase::CreateState<YamadaState_Attack_Meteor>(YamadaStateType::Meteor);
 	//FSMBase::CreateState<YamadaState_Attack_Roar>(YamadaStateType::Roar);
 

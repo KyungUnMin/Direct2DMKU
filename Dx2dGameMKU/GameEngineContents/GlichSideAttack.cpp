@@ -36,28 +36,21 @@ void GlichSideAttack::Start()
 	Render2->GetTransform()->AddLocalPosition(float4::Right * RenderScale.hx());
 }
 
-//일단 예비(나중에 미래의 내가 알아서 바꾸겠지)
-#include "KeyMgr.h"
 
 void GlichSideAttack::Update(float _DeltaTime)
 {
 	Data.Timer += _DeltaTime;
 
-	static bool WaveOff = false;
-
-	if (false == WaveOff && false == KeyMgr::IsDown(KeyNames::Space))
+	if (false == WaveOffValue)
 		return;
 
-	WaveOff = true;
-
-	static float DecreaseTimer = 0.f;
-	static const float DecreseDuration = 1.0f;
 	DecreaseTimer += _DeltaTime;
 
 	float Ratio = (DecreaseTimer / DecreseDuration);
 	if (1.f < Ratio)
 	{
-		Ratio = 1.f;
+		Death();
+		return;
 	}
 
 	Data.MaxWaveHeight = (1.f - Ratio);

@@ -16,10 +16,7 @@ enum class YamadaStateType
 	ForceField,
 	QuickCombo,
 	MatterCrush,
-
-	Slap,
-	Meteor,
-	Roar,
+	Wormchi,
 
 
 	//Damaged
