@@ -843,6 +843,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="YamadaMatterDust.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="YamadaMatterFragment.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="YamadaState_Attack_Blast.h" />
     <ClInclude Include="YamadaState_Attack_ForceField.h" />
     <ClInclude Include="YamadaState_Attack_Meteor.h" />
@@ -1552,6 +1560,14 @@
     </ClCompile>
     <ClCompile Include="YamadaFSM.cpp" />
     <ClCompile Include="YamadaMatterBlock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="YamadaMatterDust.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="YamadaMatterFragment.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -1,11 +1,12 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Attack_MatterCrush.h"
 
-#include "DataMgr.h"
 
 #include "YamadaFSM.h"
+#include "YamadaMatterBlock.h"
+#include "FieldLevelBase.h"
 #include "FieldPlayer.h"
-#include "FieldCamController.h"
+#include "AfterImageEffect.h"
 
 const std::string_view YamadaState_Attack_MatterCrush::AniName = "Attack_MatterCrusher";
 const std::string_view YamadaState_Attack_MatterCrush::AniFileName = "Yamada_MatterCrusher.png";
@@ -28,6 +29,9 @@ void YamadaState_Attack_MatterCrush::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+
+	//슈퍼아머
+	SetUnbeatable();
 }
 
 void YamadaState_Attack_MatterCrush::LoadAnimation()
@@ -68,6 +72,23 @@ void YamadaState_Attack_MatterCrush::EnterState()
 	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	CreateBlocks();
+}
+
+void YamadaState_Attack_MatterCrush::CreateBlocks()
+{
+	GameEngineTransform* PlayerTrans = FieldPlayer::GetPtr()->GetTransform();
+	float4 PlayerPos = PlayerTrans->GetWorldPosition();
+
+	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
+	GameEngineTransform* BlockTrans = nullptr;
+
+	BlockTrans = Level->CreateActor<YamadaMatterBlock>(UpdateOrder::Effect)->GetTransform();
+	BlockTrans->SetWorldPosition(PlayerPos);
+
+	BlockTrans = Level->CreateActor<YamadaMatterBlock>(UpdateOrder::Effect)->GetTransform();
+	BlockTrans->SetWorldPosition(PlayerPos);
+	BlockTrans->SetLocalNegativeScaleX();
 }
 
 
@@ -76,8 +97,14 @@ void YamadaState_Attack_MatterCrush::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
 
+	Update_AfterEffect(_DeltaTime);
+
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
+
+	//임시
+	GetFSM()->ChangeState(YamadaStateType::TeleportDisappear);
+	return;
 
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
@@ -99,15 +126,18 @@ void YamadaState_Attack_MatterCrush::Update(float _DeltaTime)
 }
 
 
+void YamadaState_Attack_MatterCrush::Update_AfterEffect(float _DeltaTime)
+{
+	AfterEffectTimer += _DeltaTime;
+	if (AfterEffectTimer < 0.05f)
+		return;
 
-//
-//
-//
-//void YamadaState_Attack_MatterCrush::Attack()
-//{
-//	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-//	if (false == Result)
-//		return;
-//
-//	DataMgr::MinusPlayerHP(Damage);
-//}
+	AfterEffectTimer = 0.f;
+
+	std::shared_ptr<AfterImageEffect> Effect = nullptr;
+	Effect = CreateEffect<AfterImageEffect>();
+	Effect->Init(GetRenderer());
+	Effect->SetPlusColor(float4::Red);
+}
+
+

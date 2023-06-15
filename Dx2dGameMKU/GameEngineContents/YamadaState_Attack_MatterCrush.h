@@ -26,8 +26,12 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 
+	float AfterEffectTimer = 0.f;
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void CreateBlocks();
+
+	void Update_AfterEffect(float _DeltaTime);
 };
 

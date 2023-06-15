@@ -36,11 +36,15 @@ public:
 		return RenderDir;
 	}
 
-	bool OnDamage_Face(bool _IsDefenceBreak = false);
-	bool OnDamage_Stomach(bool _IsDefenceBreak = false);
-	bool OnDamage_Jaw(bool _IsDefenceBreak = false);
-	bool OnDamage_BlowBack(bool _IsDefenceBreak = false);
-	bool OnDamage_Stun(bool _IsDefenceBreak = false);
+	bool IsBlowing() const;
+
+	bool IsStuned() const;
+
+	bool OnDamage_Face(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Stomach(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Jaw(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_BlowBack(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Stun(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
 
 	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
 	void SetDirection(bool IsRight);
@@ -84,7 +88,7 @@ private:
 	void CheckDirection();
 
 	//플레이어가 공격받을때 데미지를 받는 상황인지 체크
-	bool CanPlayerDamage(bool _IsBreakDefence = false);
+	bool CanPlayerDamage(bool _IsBreakDefence = false, bool _IsIgnoreBlow = false);
 
 	void CreateDamageEffect(const float4& _Offset);
 };

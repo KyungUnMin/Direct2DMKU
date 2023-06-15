@@ -143,9 +143,11 @@ bool FieldPlayer::IsDashing() const
 	//공중에 떠 있을때는 멀리 나가는 Damaged
 
 
-bool FieldPlayer::OnDamage_Face(bool _IsDefenceBreak/* = false*/)
+
+
+bool FieldPlayer::OnDamage_Face(bool _IsDefenceBreak/* = false*/, bool _IsIgnoreBlow /*= false*/)
 {
-	if (false == CanPlayerDamage(_IsDefenceBreak))
+	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
 
 	CreateDamageEffect(DamageEffect_FaceOffset);
@@ -162,9 +164,9 @@ bool FieldPlayer::OnDamage_Face(bool _IsDefenceBreak/* = false*/)
 	return true;
 }
 
-bool FieldPlayer::OnDamage_Stomach(bool _IsDefenceBreak /*= false*/)
+bool FieldPlayer::OnDamage_Stomach(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
-	if (false == CanPlayerDamage(_IsDefenceBreak))
+	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
 
 	CreateDamageEffect(DamageEffect_StomachOffset);
@@ -181,9 +183,9 @@ bool FieldPlayer::OnDamage_Stomach(bool _IsDefenceBreak /*= false*/)
 	return true;
 }
 
-bool FieldPlayer::OnDamage_Jaw(bool _IsDefenceBreak /*= false*/)
+bool FieldPlayer::OnDamage_Jaw(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
-	if (false == CanPlayerDamage(_IsDefenceBreak))
+	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
 
 	CreateDamageEffect(DamageEffect_JawOffset);
@@ -200,9 +202,9 @@ bool FieldPlayer::OnDamage_Jaw(bool _IsDefenceBreak /*= false*/)
 	return true;
 }
 
-bool FieldPlayer::OnDamage_BlowBack(bool _IsDefenceBreak /*= false*/)
+bool FieldPlayer::OnDamage_BlowBack(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
-	if (false == CanPlayerDamage(_IsDefenceBreak))
+	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
 
 	CreateDamageEffect(DamageEffect_BlowBackOffset);
@@ -211,9 +213,9 @@ bool FieldPlayer::OnDamage_BlowBack(bool _IsDefenceBreak /*= false*/)
 	return true;
 }
 
-bool FieldPlayer::OnDamage_Stun(bool _IsDefenceBreak /*= false*/)
+bool FieldPlayer::OnDamage_Stun(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
-	if (false == CanPlayerDamage(_IsDefenceBreak))
+	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
 
 	CreateDamageEffect(DamageEffect_FaceOffset);
@@ -223,7 +225,7 @@ bool FieldPlayer::OnDamage_Stun(bool _IsDefenceBreak /*= false*/)
 }
 
 
-bool FieldPlayer::CanPlayerDamage(bool _IsBreakDefence /*= false*/)
+bool FieldPlayer::CanPlayerDamage(bool _IsBreakDefence /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	//방어 무시가 아니면서, 플레이어가 방어중일때
 	if (false == _IsBreakDefence)
@@ -232,9 +234,15 @@ bool FieldPlayer::CanPlayerDamage(bool _IsBreakDefence /*= false*/)
 			return false;
 	}
 
-	//쓰러져있는 상태일때
-	if (PlayerStateType::Damaged_BlowBack == Fsm.GetNowState<PlayerStateType>())
-		return false;
+	//쓰러져있는 상태를 무시하지 않으면서
+	if (false == _IsIgnoreBlow)
+	{
+		//쓰러져있는 상태일때
+		if (PlayerStateType::Damaged_BlowBack == Fsm.GetNowState<PlayerStateType>())
+			return false;
+	}
+
+	
 
 	return true;
 }
@@ -262,4 +270,15 @@ float4 FieldPlayer::GetMoveDirVec()
 {
 	float4 NowPos = GetTransform()->GetWorldPosition();
 	return (NowPos - PrevPos);
+}
+
+
+bool FieldPlayer::IsBlowing() const
+{
+	return PlayerStateType::Damaged_BlowBack == Fsm.GetNowState<PlayerStateType>();
+}
+
+bool FieldPlayer::IsStuned() const
+{
+	return PlayerStateType::Damaged_Stun == Fsm.GetNowState<PlayerStateType>();
 }

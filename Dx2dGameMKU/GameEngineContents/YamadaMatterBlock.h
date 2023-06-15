@@ -3,6 +3,7 @@
 
 class GameEngineSpriteRenderer;
 class GameEngineComponent;
+class GameEngineCollision;
 
 class YamadaMatterBlock : public GameEngineActor
 {
@@ -26,16 +27,42 @@ private:
 	static const std::string_view DustName;
 	static const std::string_view FragmentName;
 
+	static const float Duration;
+	static const int Damage;
+
+
 	std::shared_ptr<GameEngineSpriteRenderer> Block = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Dust = nullptr;
 	std::shared_ptr<GameEngineComponent> Pivot = nullptr;
-	
 
-	//파편들, <포인터, 벡터>
-	std::vector<std::pair<std::shared_ptr<GameEngineSpriteRenderer>, float4>> Fragments;
+	std::shared_ptr<GameEngineCollision> Collider = nullptr;
+
+
+	enum class State
+	{
+		Light,
+		BlockCreate,
+		Approach,
+		BlockDestroy,
+	};
+
+	State CurState = State::Light;
+	float4 PrevBlockPos = float4::Zero;
+	std::shared_ptr<class BackGround> BGPtr = nullptr;
 
 	void ImageLoad();
 	void CreateRenders();
+	void CreateCollider();
 	void CreateLight();
+
+	void Update_Light(float _DeltaTime);
+	void Update_BlockCreate(float _DeltaTime);
+	void Update_Approach(float _DeltaTime);
+	void Update_BlockDestroy(float _DeltaTime);
+
+	void CheckColWithPlayer();
+	void Attack();
+	void Attack_FixedBlock();
+	void Attack_MoveBlock();
 };
 

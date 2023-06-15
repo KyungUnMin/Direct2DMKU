@@ -1060,6 +1060,15 @@
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush">
       <UniqueIdentifier>{252008bd-3f8f-4ee3-a826-6eca31766be6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\01.Block">
+      <UniqueIdentifier>{a8d6cb02-46b9-4d40-9008-c951086949ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\02.Dust">
+      <UniqueIdentifier>{afafa33a-16d8-4303-aa9a-e832ea143c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\03.Fragment">
+      <UniqueIdentifier>{c4a60936-c4da-488e-a060-1cebb26856b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1900,7 +1909,13 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\04.MatterCrush</Filter>
     </ClCompile>
     <ClCompile Include="YamadaMatterBlock.cpp">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush</Filter>
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\01.Block</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaMatterDust.cpp">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\02.Dust</Filter>
+    </ClCompile>
+    <ClCompile Include="YamadaMatterFragment.cpp">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\03.Fragment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2730,7 +2745,13 @@
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\04.MatterCrush</Filter>
     </ClInclude>
     <ClInclude Include="YamadaMatterBlock.h">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush</Filter>
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\01.Block</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaMatterDust.h">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\02.Dust</Filter>
+    </ClInclude>
+    <ClInclude Include="YamadaMatterFragment.h">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\02.MatterCrush\03.Fragment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

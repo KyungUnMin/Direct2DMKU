@@ -9,7 +9,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 
-const int FieldEnemy_Yamada::MaxHp = 300;
+const int FieldEnemy_Yamada::MaxHp = 240;
 
 FieldEnemy_Yamada::FieldEnemy_Yamada()
 {
