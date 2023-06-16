@@ -132,7 +132,10 @@ void FieldEnemy_Yamada::OnDamage(int _Damege)
 	}
 
 	//페이즈 변경 State
-	//TODO
+	//마지막 페이즈부터는 해당 페이즈가 끝날때까지
+	//데미지에 따른 State변경 처리가 진행되지 않음, (데미지 계산만 처리됨)
+	//그래서 이 경우에만 여기서 스테이트 변경해도 된다(좋은 방식은 아닐듯)
+	Fsm.ChangeState(YamadaStateType::PhaseTransition);
 }
 
 

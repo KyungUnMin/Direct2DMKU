@@ -39,6 +39,7 @@ private:
 	bool FirstHit = false;
 
 	std::shared_ptr<GameEngineComponent> EffectHandler = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> EffectRender = nullptr;
 
 	void LoadAnimation();
 	void CreateAnimation();

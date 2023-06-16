@@ -856,16 +856,17 @@
     <ClInclude Include="YamadaState_Attack_QuickCombo.h" />
     <ClInclude Include="YamadaState_Attack_MatterCrush.h" />
     <ClInclude Include="YamadaState_Attack_Wormchi.h" />
-    <ClInclude Include="YamadaState_Attack_WUPunch.h" />
     <ClInclude Include="YamadaState_Damaged_BlowBack.h" />
-    <ClInclude Include="YamadaState_Damaged_Dizzy.h" />
-    <ClInclude Include="YamadaState_Damaged_GroundHit.h" />
     <ClInclude Include="YamadaState_Damaged_KnockDown.h" />
     <ClInclude Include="YamadaState_Defeat.h" />
     <ClInclude Include="YamadaState_Idle.h" />
     <ClInclude Include="YamadaState_NormalDamaged_Face.h" />
     <ClInclude Include="YamadaState_NormalDamaged_Jaw.h" />
     <ClInclude Include="YamadaState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="YamadaState_PhaseTransition.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="YamadaState_Taunt.h" />
     <ClInclude Include="YamadaState_TeleportAppear.h">
       <SubType>
@@ -1579,16 +1580,17 @@
     <ClCompile Include="YamadaState_Attack_QuickCombo.cpp" />
     <ClCompile Include="YamadaState_Attack_MatterCrush.cpp" />
     <ClCompile Include="YamadaState_Attack_Wormchi.cpp" />
-    <ClCompile Include="YamadaState_Attack_WUPunch.cpp" />
     <ClCompile Include="YamadaState_Damaged_BlowBack.cpp" />
-    <ClCompile Include="YamadaState_Damaged_Dizzy.cpp" />
-    <ClCompile Include="YamadaState_Damaged_GroundHit.cpp" />
     <ClCompile Include="YamadaState_Damaged_KnockDown.cpp" />
     <ClCompile Include="YamadaState_Defeat.cpp" />
     <ClCompile Include="YamadaState_Idle.cpp" />
     <ClCompile Include="YamadaState_NormalDamaged_Face.cpp" />
     <ClCompile Include="YamadaState_NormalDamaged_Jaw.cpp" />
     <ClCompile Include="YamadaState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="YamadaState_PhaseTransition.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="YamadaState_Taunt.cpp" />
     <ClCompile Include="YamadaState_TeleportAppear.cpp">
       <SubType>

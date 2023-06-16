@@ -10,6 +10,7 @@
 #include "YamadaState_Taunt.h"
 #include "YamadaState_TeleportDisappear.h"
 #include "YamadaState_TeleportAppear.h"
+#include "YamadaState_PhaseTransition.h"
 
 //Attack
 #include "YamadaState_Attack_Blast.h"
@@ -17,8 +18,6 @@
 #include "YamadaState_Attack_QuickCombo.h"
 #include "YamadaState_Attack_MatterCrush.h"
 #include "YamadaState_Attack_Wormchi.h"
-//#include "YamadaState_Attack_Meteor.h"
-//#include "YamadaState_Attack_Roar.h"
 
 //Damaged
 #include "YamadaState_NormalDamaged_Face.h"
@@ -26,8 +25,6 @@
 #include "YamadaState_NormalDamaged_Jaw.h"
 #include "YamadaState_Damaged_BlowBack.h"
 #include "YamadaState_Damaged_KnockDown.h"
-//#include "YamadaState_Damaged_Dizzy.h"
-//#include "YamadaState_Damaged_GroundHit.h"
 
 
 const  std::string_view YamadaFSM::NormalDamaged_FileName = "Yamada_GetHit.png";
@@ -117,6 +114,7 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<YamadaState_Taunt>(YamadaStateType::Taunt);
 	FSMBase::CreateState<YamadaState_TeleportDisappear>(YamadaStateType::TeleportDisappear);
 	FSMBase::CreateState<YamadaState_TeleportAppear>(YamadaStateType::TeleportAppear);
+	FSMBase::CreateState<YamadaState_PhaseTransition>(YamadaStateType::PhaseTransition);
 
 
 	//Attack
@@ -125,8 +123,6 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<YamadaState_Attack_QuickCombo>(YamadaStateType::QuickCombo);
 	FSMBase::CreateState<YamadaState_Attack_MatterCrush>(YamadaStateType::MatterCrush);
 	FSMBase::CreateState<YamadaState_Attack_Wormchi>(YamadaStateType::Wormchi);
-	//FSMBase::CreateState<YamadaState_Attack_Meteor>(YamadaStateType::Meteor);
-	//FSMBase::CreateState<YamadaState_Attack_Roar>(YamadaStateType::Roar);
 
 
 	//Damaged
@@ -135,8 +131,6 @@ void YamadaFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<YamadaState_NormalDamaged_Jaw>(YamadaStateType::NormalDamaged_Jaw);
 	FSMBase::CreateState<YamadaState_Damaged_BlowBack>(YamadaStateType::Damaged_BlowBack);
 	FSMBase::CreateState<YamadaState_Damaged_KnockDown>(YamadaStateType::Damaged_KnockDown);
-	//FSMBase::CreateState<YamadaState_Damaged_Dizzy>(YamadaStateType::Damaged_Dizzy);
-	//FSMBase::CreateState<YamadaState_Damaged_GroundHit>(YamadaStateType::Damaged_GroundHit);
 
 
 

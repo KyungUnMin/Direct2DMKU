@@ -2,6 +2,7 @@
 #include "TownBossLevel.h"
 
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineSpriteRenderer.h>
 
 
 #include "RCGDefine.h"
@@ -23,6 +24,8 @@ const std::vector<std::pair<std::string_view, float4>> TownBossLevel::BGInfoes =
 const std::string_view TownBossLevel::CollisionImageName = "TownBossColBG.png";
 
 const float4 TownBossLevel::PlayerStartPos = float4{ -257.f, -117.f };
+
+const std::string_view TownBossLevel::Night_FileName = "TownBossBG_Night.png";
 
 TownBossLevel::TownBossLevel()
 {
@@ -69,6 +72,14 @@ void TownBossLevel::CreateBackGrounds()
 	FieldLevelBase::Init(LevelArea, TileInfoData(80, 50));
 	FieldLevelBase::CreateBackGrounds(BGInfoes);
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
+
+	NightBackImg = GetBackGround()->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	NightBackImg->SetScaleToTexture(Night_FileName);
+	NightBackImg->Off();
+
+	GameEngineTransform* NightTrans = NightBackImg->GetTransform();
+	NightTrans->SetLocalScale(NightTrans->GetLocalScale() * RCGDefine::ResourceScaleConvertor);
+	NightTrans->SetLocalPosition(BGInfoes.front().second + float4::Back);
 }
 
 void TownBossLevel::CreateDoors()

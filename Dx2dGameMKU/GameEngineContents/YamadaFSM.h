@@ -10,6 +10,7 @@ enum class YamadaStateType
 	Taunt,
 	TeleportDisappear,
 	TeleportAppear,
+	PhaseTransition,
 
 	//Attack
 	Blast,

@@ -92,7 +92,6 @@ void YamadaState_Attack_Blast::CreateBlastEffect()
 
 	FieldEnemyBase* Enemy = GetEnemy();
 
-	std::shared_ptr<GameEngineSpriteRenderer> EffectRender = nullptr;
 	EffectHandler = Enemy->CreateComponent<GameEngineComponent>();
 	EffectRender = Enemy->CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
 
@@ -140,6 +139,11 @@ void YamadaState_Attack_Blast::EnterState()
 	EnemyState_AttackBase::SetAttackColValue(ColOffset, ColScale);
 
 	GetCamCtrl()->SetZoom(0.98f, 0.05f);
+
+	if (true == GetConvertFSM<YamadaFSM>()->IsLastPhase())
+	{
+		EffectRender->ColorOptionValue.MulColor = float4{ 0.6f, 0.f, 0.f, 0.6f };
+	}
 }
 
 
@@ -155,7 +159,7 @@ void YamadaState_Attack_Blast::Update(float _DeltaTime)
 		return;
 
 	
-	GetFSM()->ChangeState(YamadaStateType::Idle);
+	GetFSM()->ChangeState(YamadaStateType::Taunt);
 }
 
 
