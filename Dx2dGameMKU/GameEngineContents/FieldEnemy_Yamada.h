@@ -30,6 +30,7 @@ protected:
 
 	void OnDamage(int _Damege) override;
 
+
 private:
 	static const int MaxHp;
 

@@ -27,5 +27,6 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void BindNightBackImage();
 };
 

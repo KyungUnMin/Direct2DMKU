@@ -5,6 +5,7 @@
 #include "YamadaFSM.h"
 
 #include "FieldEnemyBase.h"
+#include "TownBossLevel.h"
 
 const std::string_view YamadaState_Defeat::Sink_AniName = "Defeat_Sink";
 const std::string_view YamadaState_Defeat::Shudder_AniName = "Defeat_Shudder";
@@ -28,6 +29,7 @@ void YamadaState_Defeat::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	BindNightBackImage();
 }
 
 void YamadaState_Defeat::LoadAnimation()
@@ -71,6 +73,20 @@ void YamadaState_Defeat::CreateAnimation()
 }
 
 
+void YamadaState_Defeat::BindNightBackImage()
+{
+	std::shared_ptr<TownBossLevel> Level = nullptr;
+	Level = std::dynamic_pointer_cast<TownBossLevel>(FieldLevelBase::GetPtr());
+	if (nullptr == Level)
+	{
+		MsgAssert("보스 Yamada가 TownLevel에서 생성되지 않았습니다");
+		return;
+	}
+
+	Night = Level->GetNightBackImg();
+}
+
+
 void YamadaState_Defeat::EnterState()
 {
 	EnemyStateBase::EnterState();
@@ -84,6 +100,8 @@ void YamadaState_Defeat::Update(float _DeltaTime)
 {
 	EnemyStateBase::Update(_DeltaTime);
 
+	Update_Night(_DeltaTime);
+
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	if (true == IsCrying || false == Render->IsAnimationEnd())
 		return;
@@ -93,4 +111,17 @@ void YamadaState_Defeat::Update(float _DeltaTime)
 }
 
 
+void YamadaState_Defeat::Update_Night(float _DeltaTime)
+{
+	static const float Duration = 1.f;
 
+	DawnTimer += _DeltaTime;
+	if (Duration < DawnTimer)
+	{
+		Night->ColorOptionValue.MulColor.a = 0.f;
+		return;
+	}
+
+	float Ratio = (DawnTimer / Duration);
+	Night->ColorOptionValue.MulColor.a = (1.f - Ratio);
+}

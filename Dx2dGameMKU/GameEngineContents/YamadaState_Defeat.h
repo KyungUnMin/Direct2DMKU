@@ -25,8 +25,13 @@ private:
 	static const float AniInterTime;
 
 	bool IsCrying = false;
+	std::shared_ptr<class GameEngineSpriteRenderer> Night = nullptr;
+	float DawnTimer = 0.f;
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void BindNightBackImage();
+
+	void Update_Night(float _DeltaTime);
 };
 

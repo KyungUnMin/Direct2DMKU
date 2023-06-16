@@ -29,16 +29,7 @@ void YamadaState_PhaseTransition::Start()
 
 	LoadAnimation();
 	CreateAnimation();
-
-	std::shared_ptr<TownBossLevel> Level = nullptr;
-	Level = std::dynamic_pointer_cast<TownBossLevel>(FieldLevelBase::GetPtr());
-	if (nullptr == Level)
-	{
-		MsgAssert("보스 Yamada가 TownLevel에서 생성되지 않았습니다");
-		return;
-	}
-
-	Night = Level->GetNightBackImg();
+	BindNightBackImage();
 }
 
 void YamadaState_PhaseTransition::LoadAnimation()
@@ -68,6 +59,19 @@ void YamadaState_PhaseTransition::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = false,
 	});
+}
+
+void YamadaState_PhaseTransition::BindNightBackImage()
+{
+	std::shared_ptr<TownBossLevel> Level = nullptr;
+	Level = std::dynamic_pointer_cast<TownBossLevel>(FieldLevelBase::GetPtr());
+	if (nullptr == Level)
+	{
+		MsgAssert("보스 Yamada가 TownLevel에서 생성되지 않았습니다");
+		return;
+	}
+
+	Night = Level->GetNightBackImg();
 }
 
 

@@ -140,6 +140,7 @@ void FieldEnemy_Yamada::OnDamage(int _Damege)
 
 
 
+
 bool FieldEnemy_Yamada::OnDamage_Face(int _Damage)
 {
 	OnDamage(_Damage);
