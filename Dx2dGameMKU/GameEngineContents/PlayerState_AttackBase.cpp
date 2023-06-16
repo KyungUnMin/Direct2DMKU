@@ -119,7 +119,7 @@ void PlayerState_AttackBase::AttackCheck_Enemy()
 	static std::vector<std::shared_ptr<GameEngineCollision>> EnemyColliders(10, nullptr);
 	if (false == AttackCollider->CollisionAll(CollisionOrder::EnemyMain, EnemyColliders, ColType::SPHERE3D, ColType::SPHERE3D))
 		return;
-
+	
 	for (std::shared_ptr<GameEngineCollision>& EnemyCollider : EnemyColliders)
 	{
 		FieldEnemyBase* EnemyPtr = dynamic_cast<FieldEnemyBase*>(EnemyCollider->GetActor());
@@ -128,7 +128,6 @@ void PlayerState_AttackBase::AttackCheck_Enemy()
 			MsgAssert("CollisionOrder::EnemyMain 충돌그룹에 FieldEnemyBase가 아닌 Actor가 속해있습니다");
 			return;
 		}
-
 
 		Attack(EnemyPtr);
 	}

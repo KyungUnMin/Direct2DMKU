@@ -27,6 +27,15 @@ public:
 		return SpawnIdx;
 	}
 
+	//해당 위치를 바라보면서 다음 Fsm State의 ChangeRenderDirection가 계산되지 않는다
+	void Look(const float4& _LookPos) override;
+
+	inline bool IsDirRegist()
+	{
+		bool Return = IsDirRegistValue;
+		IsDirRegistValue = false;
+		return Return;
+	}
 	
 protected:
 	void Start() override;
@@ -64,6 +73,9 @@ private:
 	int Hp = 100;
 	bool IsKOValue= false;
 	size_t SpawnIdx = -1;
+
+	//외부에서 바라볼 방향을 예약했는지 여부(true라면  Fsm State의 ChangeRenderDirection가 계산되지 않는다)
+	bool IsDirRegistValue = false;
 
 
 	inline void SetSpawnIdx(size_t _Index)

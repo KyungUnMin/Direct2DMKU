@@ -71,7 +71,7 @@ void PlayerState_DashAttack_DropKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 
-	static const float4 AttackColPos = float4::Right * 100.f;
+	static const float4 AttackColPos = float4::Right * 50.f;
 	static const float4 AttackColScale = float4::One * 100.f;
 	PlayerState_AttackBase::SetAttackColValue(AttackColPos, AttackColScale);
 
@@ -98,10 +98,18 @@ void PlayerState_DashAttack_DropKick::Update(float _DeltaTime)
 
 void PlayerState_DashAttack_DropKick::Attack(FieldEnemyBase* _Enemy)
 {
+	float4 PlayerMoveDir = FieldPlayer::GetPtr()->GetMoveDirVec();
+	float4 EnemyLookPos = _Enemy->GetTransform()->GetWorldPosition();
+
+	//플레이어 움직임의 반대 방향으로 바라본 후에 BlowBack처리돼야 함(블로우백은 뒤로 날라가니까 반대방향)
+	EnemyLookPos -= PlayerMoveDir;
+	_Enemy->Look(EnemyLookPos);
+
+
 	bool Result = _Enemy->OnDamage_BlowBack(TotalDamage);
-	if (true == Result)
-	{
-		PlayerState_AttackBase::CreateHitEffect_Blow();
-	}
+	if (false == Result)
+		return;
+
+	PlayerState_AttackBase::CreateHitEffect_Blow();
 }
 

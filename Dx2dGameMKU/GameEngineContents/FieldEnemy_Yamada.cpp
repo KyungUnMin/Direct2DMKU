@@ -125,11 +125,11 @@ void FieldEnemy_Yamada::OnDamage(int _Damege)
 		return;
 
 	//3페이즈인 경우
-	if (2 == NowPhase)
-	{
-		//레이지 렌더링 시작
-		OutLineRender->On();
-	}
+	if (2 != NowPhase)
+		return;
+
+	//레이지 렌더링 시작
+	OutLineRender->On();
 
 	//페이즈 변경 State
 	//마지막 페이즈부터는 해당 페이즈가 끝날때까지

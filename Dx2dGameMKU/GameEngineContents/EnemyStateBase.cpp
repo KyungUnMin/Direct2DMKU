@@ -49,6 +49,10 @@ void EnemyStateBase::ChangeRenderDirection()
 	if (false == IsLookPlayer)
 		return;
 
+	//외부에서 Enemy의 방향을 따로 예약했다면 아래 코드들을 계산하지 않는다
+	if (true == EnemyPtr->IsDirRegist())
+		return;
+
 	GameEngineTransform* EnemyTransform = EnemyPtr->GetTransform();
 	float4 EnemyPos = EnemyTransform->GetWorldPosition();
 	float4 PlayerPos = FieldPlayer::GetPtr()->GetTransform()->GetWorldPosition();

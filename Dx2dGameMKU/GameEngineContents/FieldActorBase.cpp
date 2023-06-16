@@ -28,6 +28,7 @@ FieldActorBase::~FieldActorBase()
 }
 
 
+
 void FieldActorBase::Start()
 {
 	GameEngineActor::Start();
@@ -223,3 +224,21 @@ void FieldActorBase::Update_ColliderView()
 }
 
 
+void FieldActorBase::Look(const float4& _LookPos)
+{
+	GameEngineTransform* ThisTrans = GetTransform();
+	float4 ThisPos = ThisTrans->GetWorldPosition();
+	float4 LookDir = (_LookPos - ThisPos);
+
+	//오른쪽을 바라본다
+	if (0.f < LookDir.x)
+	{
+		ThisTrans->SetLocalPositiveScaleX();
+	}
+
+	//왼쪽을 바라본다
+	else
+	{
+		ThisTrans->SetLocalNegativeScaleX();
+	}
+}

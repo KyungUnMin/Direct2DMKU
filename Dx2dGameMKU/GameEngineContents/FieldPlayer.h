@@ -36,7 +36,7 @@ public:
 		return RenderDir;
 	}
 
-	void Look(const float4& _LookPos);
+	void Look(const float4& _LookPos) override;
 
 	bool IsBlowing() const;
 

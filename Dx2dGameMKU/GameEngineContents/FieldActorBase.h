@@ -19,6 +19,8 @@ public:
 	FieldActorBase& operator=(const FieldActorBase& _Other) = delete;
 	FieldActorBase& operator=(const FieldActorBase&& _Other) noexcept = delete;
 
+	virtual void Look(const float4& _LookPos);
+
 	inline float GetHeight() const
 	{
 		return Height;

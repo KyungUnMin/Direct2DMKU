@@ -23,6 +23,14 @@ FieldEnemyBase::~FieldEnemyBase()
 
 
 
+void FieldEnemyBase::Look(const float4& _LookPos)
+{
+	FieldActorBase::Look(_LookPos);
+	IsDirRegistValue = true;
+}
+
+
+
 void FieldEnemyBase::Start()
 {
 	FieldActorBase::Start();

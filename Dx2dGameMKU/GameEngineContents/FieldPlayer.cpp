@@ -287,9 +287,8 @@ bool FieldPlayer::IsStuned() const
 
 void FieldPlayer::Look(const float4& _LookPos)
 {
-	float4 ThisPos = GetTransform()->GetWorldPosition();
-	float4 LookDir = (_LookPos - ThisPos);
+	FieldActorBase::Look(_LookPos);
 
 	//true일때 오른쪽을 바라본다
-	SetDirection(0.f < LookDir.x);
+	RenderDir = (0.f < GetTransform()->GetLocalScale().x);
 }
