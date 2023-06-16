@@ -330,7 +330,7 @@ void GameEngineCore::CoreResourceInit()
 
 
 
-	//블렌드 만들기
+	//블렌드 만들기(알파블렌드)
 	{
 		D3D11_BLEND_DESC Desc = { 0, };
 
@@ -338,6 +338,8 @@ void GameEngineCore::CoreResourceInit()
 		Desc.AlphaToCoverageEnable = false;
 		//렌더타겟들 마다 여러개의 블렌더를 세팅하는지(false면 무조껀 0번 블렌더로)
 		Desc.IndependentBlendEnable = false;
+
+
 
 		Desc.RenderTarget[0].BlendEnable = true;
 		//모든색(RGBA) 블렌드 마스크 사용시 적용?
@@ -347,7 +349,10 @@ void GameEngineCore::CoreResourceInit()
 
 		//두 색을 혼합 (Op는 오퍼레이션을 의미)
 		Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+
+		//SrcBlend = D3D11_BLEND_SRC_ALPHA : Src(덮어쓸 색상)에 자신의 알파값을 곱한다
 		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		//DestBlend = D3D11_BLEND_INV_SRC_ALPHA : Dest(덮어질 색상)에 [1 - Src의 알파값]을 곱한다
 		Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 
 		//알파값을 혼합
@@ -361,6 +366,45 @@ void GameEngineCore::CoreResourceInit()
 		GameEngineBlend::Create("AlphaBlend", Desc);
 	}
 	
+
+	//블렌드 만들기(머지블렌드)
+	{
+		D3D11_BLEND_DESC Desc = { 0, };
+
+		//자동으로 알파부분을 제거하는지(느려서 false)
+		Desc.AlphaToCoverageEnable = false;
+		//렌더타겟들 마다 여러개의 블렌더를 세팅하는지(false면 무조껀 0번 블렌더로)
+		Desc.IndependentBlendEnable = false;
+
+
+
+		Desc.RenderTarget[0].BlendEnable = true;
+		//모든색(RGBA) 블렌드 마스크 사용시 적용?
+		Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+
+
+		//합칠땐 더하기 연산
+		Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+
+		//SrcBlend = D3D11_BLEND_SRC_ALPHA : Src(덮어쓸 색상)에 자신의 알파값을 곱한다
+		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		//DestBlend = D3D11_BLEND_INV_SRC_ALPHA : Dest(덮어질 색상)에 [1 - Src의 알파값]을 곱한다
+		Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+
+		//알파값 연산
+		//항상 큰 값으로 적용
+		Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_MAX;
+		//Src 알파값에 1을 곱한다
+		Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+		//Desc 알파값에 1을 곱한다
+		Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ONE;
+
+		GameEngineBlend::Create("MergeBlend", Desc);
+	}
+
+
+
+
 
 	//깊이 버퍼
 	{
@@ -508,7 +552,7 @@ void GameEngineCore::CoreResourceInit()
 		Pipe->SetVertexShader("MergeShader.hlsl");
 		Pipe->SetRasterizer("Engine2DBase");
 		Pipe->SetPixelShader("MergeShader.hlsl");
-		Pipe->SetBlendState("AlphaBlend");
+		Pipe->SetBlendState("MergeBlend");
 		Pipe->SetDepthState("AlwayDepth");
 
 		//

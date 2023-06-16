@@ -37,7 +37,18 @@ void GameEngineFontRenderer::Render(float _DeltaTime)
 		return;
 	}
 
-	Font->FontDraw(Text);
+	
+
+	//이 렌더러의 월드 위치에
+	float4 Pos = GetTransform()->GetWorldPosition();
+	GameEngineCamera* Camera = GetCamera();
+
+	//뷰 프로젝션 뷰포트를 곱해서 윈도우 좌표로 만든다
+	Pos *= Camera->GetView();
+	Pos *= Camera->GetProjection();
+	Pos *= Camera->GetViewPort();
+
+	Font->FontDraw(Text, Pos, FontScale, FontColor);
 
 
 	//파이프라인은 다른 누군가가 빼주지 않으면 계속 박혀있는다

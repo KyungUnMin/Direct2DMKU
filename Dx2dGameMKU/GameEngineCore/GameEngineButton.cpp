@@ -35,7 +35,7 @@ void GameEngineButton::Update(float _Delta)
 
 	//마우스의 윈도우 좌표를 이 카메라의 월드좌표로 바꾸기 위해 뷰포트, 프로젝션, 뷰 행렬을 가져온다
 	// (이 방식은 직교 투영일때만 가능하다.)
-	std::shared_ptr<GameEngineCamera> Camera = GetLevel()->GetCamera(100);
+	GameEngineCamera* Camera = Render->GetCamera();
 	float4x4 ViewPort = Camera->GetViewPort();
 	float4x4 Proj = Camera->GetProjection();
 	float4x4 View = Camera->GetView();

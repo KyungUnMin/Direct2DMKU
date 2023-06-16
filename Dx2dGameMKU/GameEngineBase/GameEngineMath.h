@@ -341,7 +341,7 @@ public:
 
 
 
-	UINT ColorToUint()
+	UINT ColorToUint() const
 	{
 		UINT Return;
 

@@ -89,6 +89,11 @@ public:
 	//카메라을 기준으로 Z값을 계산한다
 	void CalSortZ(GameEngineCamera* _Camera);
 
+	inline GameEngineCamera* GetCamera() const
+	{
+		return RenderCamera;
+	}
+
 protected:
 	void Start() override;
 
@@ -101,6 +106,8 @@ private:
 	bool IsCameraCulling = false;
 
 	float CalZ = 0.0f;
+
+	GameEngineCamera* RenderCamera = nullptr;
 
 	std::vector<std::shared_ptr<GameEngineRenderUnit>> Units;
 
