@@ -169,9 +169,15 @@ void FieldActorBase::Update_CheckDebugKey()
 
 	if (true == KeyMgr::IsDown(KeyNames::DebugF3))
 	{
-		//IsColRenderOn_ForDebug = !IsColRenderOn_ForDebug;
-		GameEngineLevel::IsDebugSwitch();
+		IsColRenderOn_ForDebug = !IsColRenderOn_ForDebug;
+		//GameEngineLevel::IsDebugSwitch();
 	}
+}
+
+void FieldActorBase::Reset_CheckDebugKey()
+{
+	IsGridPosRenderOn_ForDebug = false;
+	IsColRenderOn_ForDebug = false;
 }
 
 

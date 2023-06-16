@@ -144,16 +144,9 @@ void FieldLevelBase::LevelChangeStart()
 }
 
 
-void FieldLevelBase::LevelChangeEnd()
-{
-	GameEngineLevel::LevelChangeEnd();
 
-	//카메라 줌 초기화
-	CamCtrl.SetZoom();
 
-	//내부의 자료구조 청소
-	EnemySpawnerCtrl.ClearDeathEnemy();
-}
+		
 
 
 void FieldLevelBase::Update(float _DeltaTime)
@@ -177,3 +170,18 @@ void FieldLevelBase::Update_DoorOpen_ForDebug()
 	DoorOpenFunc();
 }
 
+
+
+void FieldLevelBase::LevelChangeEnd()
+{
+	GameEngineLevel::LevelChangeEnd();
+
+	//카메라 줌 초기화
+	CamCtrl.SetZoom();
+
+	//내부의 자료구조 청소
+	EnemySpawnerCtrl.ClearDeathEnemy();
+
+	//디버그 키 리셋
+	FieldActorBase::Reset_CheckDebugKey();
+}

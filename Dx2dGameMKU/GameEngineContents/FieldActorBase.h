@@ -10,6 +10,7 @@ class FieldActorBase : public GameEngineActor
 {
 public:
 	static void Update_CheckDebugKey();
+	static void Reset_CheckDebugKey();
 
 	FieldActorBase();
 	virtual ~FieldActorBase() = 0;
