@@ -29,6 +29,7 @@ void GameEngineTileMapRenderer::Start()
 
 	GetShaderResHelper().SetConstantBufferLink("AtlasData", AtlasData);
 	GetShaderResHelper().SetConstantBufferLink("ColorOption", ColorOptionValue);
+	GetShaderResHelper().SetConstantBufferLink("ClipData", Clip);
 }
 
 void GameEngineTileMapRenderer::CreateTileMap(int _X, int _Y, const float4& _TileSize, const float4& _RenderSize, TileMapMode _Mode)

@@ -71,10 +71,14 @@ public:
 };
 
 
-enum ImagePivot
+enum class ClipXDir
 {
 	Left,
 	Right,
+};
+
+enum class ClipYDir
+{
 	Top,
 	Bot,
 };
@@ -132,19 +136,10 @@ public:
 		return AtlasData;
 	}
 
-	//이미지 클리핑(_ScalePivot  : 클리핑 방향, _PosPivot : 클리핑 후 정렬 위치)
-	void ImageClipping(float _Ratio, ImagePivot _ScalePivot = ImagePivot::Bot, ImagePivot _PosPivot = ImagePivot::Bot)
-	{
-		ClippingPercent = _Ratio;
+	
+	void ImageClippingX(float _Ratio, ClipXDir _Dir);
+	void ImageClippingY(float _Ratio, ClipYDir _Dir);
 
-		if (0.0f >= ClippingPercent)
-		{
-			ClippingPercent = 0.0f;
-		}
-
-		ScalePivot = _ScalePivot;
-		PosPivot = _PosPivot;
-	}
 
 	inline float GetScaleRatio() const
 	{
@@ -185,6 +180,7 @@ protected:
 	void Render(float _DeltaTime) override;
 
 	float4 AtlasData = { 0.f, 0.f, 1.f, 1.f };
+	float4 Clip = float4::One;
 
 private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;
@@ -194,12 +190,8 @@ private:
 	size_t Frame = -1;
 
 
-	//클리핑에 관한 값들
-	float ClippingPercent = 1.0f;
-	float4 OriginAtlasData;
-	ImagePivot ScalePivot = ImagePivot::Bot;
-	ImagePivot PosPivot = ImagePivot::Bot;
-	std::shared_ptr<GameEngineTexture> CurTexture;
+	
+	//std::shared_ptr<GameEngineTexture> CurTexture;
 
 	//애니메이션을 그릴 UV 정보
 	float ScaleRatio = 1.0f;

@@ -35,13 +35,22 @@ void GameEngineRenderUnit::SetPipeLine(const std::string_view& _Name)
 {
 	Pipe = GameEngineRenderingPipeLine::Find(_Name);
 
+	/*
+	Copy하는 이유
+			같은 랜파를 쓸 때 랜더러마다 다른 상수나 텍스처를 넣어주기 위함
+			그래서 Copy를 통해 쉐이더 리소스 헬퍼에 있는 세터들을 복사받는다
+			쉐이더 안에 있는 리소스헬퍼는 리플렉션할 때 어떤 버퍼들을 사용했는지 조사만 하기 위함
+	*/
+
 	//버텍스 쉐이더 정보 받아오기
+	//버텍스 쉐이더의 상수버퍼, 텍스처 등의 세터들을 ShaderResHelper에 저장한다
 	{
 		const GameEngineShaderResHelper& Res = Pipe->GetVertexShader()->GetShaderResHelper();
 		ShaderResHelper.Copy(Res);
 	}
 
 	//픽셀 쉐이더 정보 받아오기
+	//픽셀 쉐이더의 상수버퍼, 텍스처 등의 세터들을 ShaderResHelper에 저장한다
 	{
 		const GameEngineShaderResHelper& Res = Pipe->GetPixelShader()->GetShaderResHelper();
 		ShaderResHelper.Copy(Res);
@@ -217,25 +226,6 @@ void GameEngineRenderer::SetPipeLine(const std::string_view& _Name, int _index /
 	{
 		MsgAssert("존재하지 않는 이름의 렌더링 파이프 라인입니다");
 		return;
-	}
-
-	/*
-	Copy하는 이유
-			같은 랜파를 쓸 때 랜더러마다 다른 상수나 텍스처를 넣어주기 위함
-			그래서 Copy를 통해 쉐이더 리소스 헬퍼에 있는 세터들을 복사받는다
-			쉐이더 안에 있는 리소스헬퍼는 리플렉션할 때 어떤 버퍼들을 사용했는지 조사만 하기 위함
-	*/
-
-	//버텍스 쉐이더의 상수버퍼, 텍스처 등의 세터들을 ShaderResHelper에 저장한다
-	{
-		const GameEngineShaderResHelper& Res = Unit->Pipe->GetVertexShader()->GetShaderResHelper();
-		Unit->ShaderResHelper.Copy(Res);
-	}
-
-	//픽셀 쉐이더의 상수버퍼, 텍스처 등의 세터들을 ShaderResHelper에 저장한다
-	{
-		const GameEngineShaderResHelper& Res = Unit->Pipe->GetPixelShader()->GetShaderResHelper();
-		Unit->ShaderResHelper.Copy(Res);
 	}
 
 

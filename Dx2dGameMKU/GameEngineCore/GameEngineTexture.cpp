@@ -412,7 +412,6 @@ GameEnginePixelColor GameEngineTexture::GetPixel(int _X, int _Y, const GameEngin
 		break;
 	case DXGI_FORMAT_B5G5R5A1_UNORM:
 		break;
-
 		//RGBA가 8bit인 텍스처(근데 순서는 또 BGRA)
 	case DXGI_FORMAT_B8G8R8A8_UNORM:
 	{
@@ -445,13 +444,23 @@ GameEnginePixelColor GameEngineTexture::GetPixel(int _X, int _Y, const GameEngin
 		Return.a = ColorPtr[3];
 		return Return;
 	}
-		break;
 	case DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM:
 		break;
 	case DXGI_FORMAT_B8G8R8A8_TYPELESS:
 		break;
 	case DXGI_FORMAT_B8G8R8A8_UNORM_SRGB:
-		break;
+	{
+		// 컬러1개에 4바이트인 100 * 100
+		// 10, 10
+		int Index = _Y * static_cast<int>(GetWidth()) + _X;
+		ColorPtr = ColorPtr + (Index * 4);
+		GameEnginePixelColor Return;
+		Return.r = ColorPtr[2];
+		Return.g = ColorPtr[1];
+		Return.b = ColorPtr[0];
+		Return.a = ColorPtr[3];
+		return Return;
+	}
 	case DXGI_FORMAT_B8G8R8X8_TYPELESS:
 		break;
 	case DXGI_FORMAT_B8G8R8X8_UNORM_SRGB:

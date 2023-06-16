@@ -51,7 +51,8 @@ struct Output
 {
 	//레스터라이제이션을 위해 w에 z값이 남겨진 위치값
 	float4 Pos : SV_Position;
-    float4 UV : TEXCOORD;
+    float4 UV : TEXCOORD0;
+    float4 ClipUV : TEXCOORD1;
 };
 
 cbuffer AtlasData : register(b1)
@@ -60,6 +61,11 @@ cbuffer AtlasData : register(b1)
     float2 FramePos;
     //이미지의 UV 크기 ex)0.5, 0.5
     float2 FrameScale;
+}
+
+cbuffer ClipData : register(b2)
+{
+    float4 Clip;
 }
 
 Output Texture_VS(Input _Value)
@@ -74,6 +80,9 @@ Output Texture_VS(Input _Value)
     //아틀라스 이미지인 경우 AtlasData상수버퍼를 통해 쪼개져서 그려진다
     OutputValue.UV.x = (_Value.UV.x * FrameScale.x) + FramePos.x;
     OutputValue.UV.y = (_Value.UV.y * FrameScale.y) + FramePos.y;
+
+    //클립을 위해 메시 자체의 UV값 전달(0~1), Sprite가 적용되지 않은 온전한 UV값
+    OutputValue.ClipUV = _Value.UV;
 
     return OutputValue;
 }
@@ -113,6 +122,38 @@ float4 Texture_PS(Output _Value) : SV_Target0
     //샘플러 설정(0~1사이의 UV값)
     float4 Color = DiffuseTex.Sample(CLAMPSAMPLER, _Value.UV.xy);
 
+    
+    if (Clip.z == 0)
+    {
+        if (_Value.ClipUV.x > Clip.x)
+        {
+            clip(-1);
+        }
+    }
+    else
+    {
+        if (_Value.ClipUV.x < 1.0f - Clip.x)
+        {
+            clip(-1);
+        }
+    }
+    
+    if (Clip.w == 0)
+    {
+        if (_Value.ClipUV.y > Clip.y)
+        {
+            clip(-1);
+        }
+    }
+    else
+    {
+        if (_Value.ClipUV.y < 1.0f - Clip.y)
+        {
+            clip(-1);
+        }
+    }
+    
+    
     Color *= MulColor;
     Color += PlusColor;
     
