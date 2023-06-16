@@ -4,6 +4,8 @@
 class PlayerState_Jump : public PlayerState_MovementBase
 {
 public:
+	static const float MaxHeight;
+
 	PlayerState_Jump();
 	~PlayerState_Jump() override;
 
@@ -16,6 +18,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 private:
 	static const std::string_view AniName;
@@ -25,7 +28,6 @@ private:
 
 	class PlayerFSM* FsmPtr = nullptr;
 	const float Duration = 0.3f;
-	const float MaxHeight = 300.f;
 	
 
 	void LoadAnimation();

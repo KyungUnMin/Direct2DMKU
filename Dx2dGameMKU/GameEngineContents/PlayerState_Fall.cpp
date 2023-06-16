@@ -4,6 +4,7 @@
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "PlayerState_Dash.h"
+#include "PlayerState_Jump.h"
 
 const std::string_view PlayerState_Fall::AniName = "Fall";
 const std::string_view PlayerState_Fall::AniFileName = "Player_Fall.png";
@@ -27,6 +28,8 @@ void PlayerState_Fall::Start()
 	FsmPtr = GetConvertFSM<PlayerFSM>();
 	LoadAnimation();
 	CreateAnimation();
+
+	EnterHeight = PlayerState_Jump::MaxHeight;
 }
 
 
@@ -64,7 +67,7 @@ void PlayerState_Fall::EnterState()
 	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnterHeight = FieldPlayer::GetPtr()->GetHeight();
+	FieldPlayer::GetPtr()->SetHeight(EnterHeight);
 
 	//이전에 움직임이 대시였는지 걷기였는지
 	PrevMoveState = static_cast<size_t>(FsmPtr->GetLastMovement());

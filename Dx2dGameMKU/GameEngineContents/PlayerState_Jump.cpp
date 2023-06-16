@@ -8,6 +8,8 @@
 #include "PlayerState_Dash.h"
 
 
+const float PlayerState_Jump::MaxHeight = 300.f;
+
 const std::string_view PlayerState_Jump::AniName = "Jump";
 const std::string_view PlayerState_Jump::AniFileName = "Player_Jump.png";
 const std::pair<int, int> PlayerState_Jump::AniCutFrame = std::pair<int, int>(3, 1);
@@ -71,6 +73,7 @@ void PlayerState_Jump::EnterState()
 }
 
 
+
 void PlayerState_Jump::Update(float _DeltaTime)
 {
 	PlayerState_MovementBase::Update(_DeltaTime);
@@ -100,3 +103,10 @@ void PlayerState_Jump::Update(float _DeltaTime)
 }
 
 
+
+
+void PlayerState_Jump::ExitState()
+{
+	PlayerState_MovementBase::ExitState();
+	FieldPlayer::GetPtr()->SetHeight(0.f);
+}
