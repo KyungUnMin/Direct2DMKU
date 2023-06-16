@@ -48,12 +48,19 @@ void YamadaState_TeleportDisappear::LoadAnimation()
 
 void YamadaState_TeleportDisappear::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime,
 		.Loop = false,
+	});
+
+	Render->SetAnimationStartEvent(AniName, 3, [this]()
+	{
+		EnemyStateBase::OffMainCollider();
 	});
 }
 
@@ -63,7 +70,6 @@ void YamadaState_TeleportDisappear::EnterState()
 	EnemyStateBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyStateBase::OffMainCollider();
 }
 
 

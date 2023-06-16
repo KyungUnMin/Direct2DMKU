@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Taunt.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 
 #include "YamadaFSM.h"
 
@@ -74,7 +75,23 @@ void YamadaState_Taunt::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(YamadaStateType::Idle);
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 100);
+	if (RandNum < 25)
+	{
+		GetFSM()->ChangeState(YamadaStateType::MatterCrush);
+	}
+	else if(RandNum < 50)
+	{
+		GetFSM()->ChangeState(YamadaStateType::ForceField);
+	}
+	else if (RandNum < 75)
+	{
+		GetFSM()->ChangeState(YamadaStateType::Wormchi);
+	}
+	else
+	{
+		GetFSM()->ChangeState(YamadaStateType::TeleportDisappear);
+	}
 }
 
 

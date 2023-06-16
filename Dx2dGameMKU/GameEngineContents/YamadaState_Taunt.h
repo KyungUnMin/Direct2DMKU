@@ -22,6 +22,7 @@ private:
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	
 
 	void LoadAnimation();
 	void CreateAnimation();

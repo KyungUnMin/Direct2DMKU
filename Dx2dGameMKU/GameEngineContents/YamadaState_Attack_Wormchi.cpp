@@ -18,7 +18,7 @@ const std::vector<std::string_view> YamadaState_Attack_Wormchi::AniNames =
 
 const std::pair<int, int> YamadaState_Attack_Wormchi::AniCurFrame = std::pair<int, int>(5, 3);
 const float YamadaState_Attack_Wormchi::AniInterTime = 0.08f;
-const float YamadaState_Attack_Wormchi::SitDuration = 5.0f;
+const float YamadaState_Attack_Wormchi::SitDuration = 3.0f;
 
 YamadaState_Attack_Wormchi::YamadaState_Attack_Wormchi()
 {
@@ -185,7 +185,7 @@ void YamadaState_Attack_Wormchi::Update_SitDown(float _DeltaTime)
 
 void YamadaState_Attack_Wormchi::Update_Sit(float _DeltaTime)
 {
-	static const float ThrowTime = 0.8f;
+	static const float ThrowTime = 0.48f;
 
 	ThrowTimer += _DeltaTime;
 	if ((ThrowTime < ThrowTimer) && (ThrowIndex < ThrowObjs.size()))
