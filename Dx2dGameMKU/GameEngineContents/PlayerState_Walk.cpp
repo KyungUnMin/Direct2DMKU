@@ -6,6 +6,7 @@
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "PlayerState_UniqueAttack_HyrricaneKick.h"
+#include "PlayerState_UniqueAttack_DragonFeet.h"
 
 
 
@@ -150,14 +151,30 @@ void PlayerState_Walk::Update(float _DeltaTime)
 
 
 	//Æ¯¼ö ½ºÅ³
-	if (true == KeyMgr::IsPress(KeyNames::C) && true == KeyMgr::IsPress(KeyNames::DownArrow))
+	if (true == KeyMgr::IsPress(KeyNames::C))
 	{
 		int CurMp = DataMgr::GetPlayerMP();
-		if (PlayerState_UniqueAttack_HyrricaneKick::NeedMp <= CurMp)
+
+		//Çã¸®ÄÉÀÎ Å±
+		if (true == KeyMgr::IsPress(KeyNames::DownArrow))
 		{
-			GetFSM()->ChangeState(PlayerStateType::UniqueAttack_HyrricaneKick);
-			return;
+			if (PlayerState_UniqueAttack_HyrricaneKick::NeedMp <= CurMp)
+			{
+				GetFSM()->ChangeState(PlayerStateType::UniqueAttack_HyrricaneKick);
+				return;
+			}
 		}
+
+		//µå·¡°ï Å±
+		else
+		{
+			if (PlayerState_UniqueAttack_DragonFeet::NeedMp <= CurMp)
+			{
+				GetFSM()->ChangeState(PlayerStateType::UniqueAttack_DragonFeet);
+				return;
+			}
+		}
+
 	}
 
 

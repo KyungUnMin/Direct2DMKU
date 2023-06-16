@@ -104,7 +104,7 @@ void PlayerState_Dash::Update(float _DeltaTime)
 		return;
 	}
 
-	if (true == KeyMgr::IsPress(KeyNames::X))
+	if (true == KeyMgr::IsPress(KeyNames::X) || true == KeyMgr::IsPress(KeyNames::C))
 	{
 		GetFSM()->ChangeState(PlayerStateType::DashAttack_DropKick);
 		return;
