@@ -27,6 +27,7 @@ private:
 	static const float AniInterTime;
 	static const float SitDuration;
 
+
 	enum class State
 	{
 		SitDown,
@@ -40,10 +41,14 @@ private:
 	float AfterEffectTimer = 0.f;
 
 	float SitTime = 0.f;
+	std::vector<std::shared_ptr<class YamadaWormchiObj>> ThrowObjs;
+	int ThrowIndex = 0;
+	float ThrowTimer = 0.f;
 
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void CreateThrowObjs();
 
 	void Update_SitDown(float _DeltaTime);
 	void Update_Sit(float _DeltaTime);

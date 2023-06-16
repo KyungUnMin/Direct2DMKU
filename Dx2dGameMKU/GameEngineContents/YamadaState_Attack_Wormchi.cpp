@@ -1,12 +1,12 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Attack_Wormchi.h"
 
-#include "FieldCamController.h"
 
 #include "YamadaFSM.h"
 #include "AfterImageEffect.h"
 #include "FieldEnemyBase.h"
 #include "FieldLevelBase.h"
+#include "YamadaWormchiObj.h"
 
 const std::string_view YamadaState_Attack_Wormchi::AniFileName = "Yamada_Wormchi.png";
 const std::vector<std::string_view> YamadaState_Attack_Wormchi::AniNames =
@@ -18,7 +18,7 @@ const std::vector<std::string_view> YamadaState_Attack_Wormchi::AniNames =
 
 const std::pair<int, int> YamadaState_Attack_Wormchi::AniCurFrame = std::pair<int, int>(5, 3);
 const float YamadaState_Attack_Wormchi::AniInterTime = 0.08f;
-const float YamadaState_Attack_Wormchi::SitDuration = 0.4f;
+const float YamadaState_Attack_Wormchi::SitDuration = 5.0f;
 
 YamadaState_Attack_Wormchi::YamadaState_Attack_Wormchi()
 {
@@ -36,7 +36,6 @@ void YamadaState_Attack_Wormchi::Start()
 
 	LoadAnimation();
 	CreateAnimation();
-	//EnemyStateBase::SetUnbeatable();
 }
 
 void YamadaState_Attack_Wormchi::LoadAnimation()
@@ -76,15 +75,9 @@ void YamadaState_Attack_Wormchi::CreateAnimation()
 		.FrameTime = AniFrmTimes
 	});
 
-	Render->SetAnimationStartEvent(AniNames[static_cast<size_t>(State::SitDown)], 4, []()
-	{
-		FieldCamController& CamCtrl = FieldLevelBase::GetPtr()->GetCameraController();
-		CamCtrl.SetZoom(0.95f);
-		CamCtrl.SetZoom(CamCtrl.ZoomOrigin, YamadaState_Attack_Wormchi::SitDuration);
-		CamCtrl.SetShakeState(YamadaState_Attack_Wormchi::SitDuration, 3.f);
-	});
+	Render->SetAnimationStartEvent(AniNames[static_cast<size_t>(State::SitDown)], 4, std::bind(&YamadaState_Attack_Wormchi::CreateThrowObjs, this));
 
-
+	
 
 	Render->CreateAnimation
 	({
@@ -106,6 +99,32 @@ void YamadaState_Attack_Wormchi::CreateAnimation()
 		.Loop = false,
 	});
 }
+
+
+void YamadaState_Attack_Wormchi::CreateThrowObjs()
+{
+	static const float Range = 100.f;
+	size_t Count = static_cast<size_t>(WormchiObjType::COUNT);
+	ThrowObjs.reserve(Count);
+
+	for (size_t i = 0; i < Count; ++i)
+	{
+		float Angle = 60.f * static_cast<float>(i);
+		float4 Offset = float4::AngleToDirection2DToDeg(Angle);
+		Offset *= Range;
+		Offset.z = Offset.y;
+
+		std::shared_ptr<YamadaWormchiObj> Missile = nullptr;
+		Missile = CreateEffect<YamadaWormchiObj>(Offset);
+		Missile->Init(static_cast<WormchiObjType>(i));
+
+		ThrowObjs.push_back(Missile);
+	}
+}
+
+
+
+
 
 
 void YamadaState_Attack_Wormchi::EnterState()
@@ -161,8 +180,20 @@ void YamadaState_Attack_Wormchi::Update_SitDown(float _DeltaTime)
 	ChangeStateAndAni(State::Sit);
 }
 
+
+
+
 void YamadaState_Attack_Wormchi::Update_Sit(float _DeltaTime)
 {
+	static const float ThrowTime = 0.8f;
+
+	ThrowTimer += _DeltaTime;
+	if ((ThrowTime < ThrowTimer) && (ThrowIndex < ThrowObjs.size()))
+	{
+		ThrowObjs[ThrowIndex++]->MoveOn();
+		ThrowTimer = 0.f;
+	}
+
 	float Time = GetLiveTime() - SitTime;
 	if (Time < SitDuration)
 		return;
@@ -175,7 +206,7 @@ void YamadaState_Attack_Wormchi::Update_GetUp(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(YamadaStateType::Idle);
+	GetFSM()->ChangeState(YamadaStateType::TeleportDisappear);
 }
 
 
@@ -186,5 +217,16 @@ void YamadaState_Attack_Wormchi::ExitState()
 {
 	BossState_AttackBase::ExitState();
 	CurState = State::SitDown;
-	FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.f);
+	ThrowIndex = 0;
+	ThrowTimer = 0.f;
+
+	for (std::shared_ptr<YamadaWormchiObj> ObjPtr : ThrowObjs)
+	{
+		if (false == ObjPtr->IsWait())
+			continue;
+
+		ObjPtr->Extinct();
+	}
+
+	ThrowObjs.clear();
 }

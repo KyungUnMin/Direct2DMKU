@@ -34,19 +34,9 @@ TownBossLevel::~TownBossLevel()
 
 }
 
-#include <GameEngineCore/GameEngineFont.h>
-#include <GameEngineCore/GameEngineFontRenderer.h>
-
 
 void TownBossLevel::Start()
 {
-	GameEngineFont::Load("»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ");
-	std::shared_ptr<GameEngineFontRenderer> Test = nullptr;
-	Test = CreateActor<GameEngineActor>()->CreateComponent<GameEngineFontRenderer>(FieldRenderOrder::Debug_Grid);
-	Test->SetFont("»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ");
-	Test->SetText("Test");
-
-
 	FieldLevelBase::Start();
 	LoadImgRes();
 

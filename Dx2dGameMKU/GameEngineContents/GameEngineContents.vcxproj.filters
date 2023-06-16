@@ -1075,6 +1075,9 @@
     <Filter Include="03.Actor\06.Effect\08.YamadaMagics\03.Wormchi">
       <UniqueIdentifier>{6f6e148e-7ad3-4183-b6b2-03b4973644ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\08.YamadaMagics\03.Wormchi\01.WormchiObj">
+      <UniqueIdentifier>{849ada03-02d9-44bf-be64-31f80e11824f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1920,8 +1923,8 @@
     <ClCompile Include="YamadaState_Attack_Wormchi.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi</Filter>
     </ClCompile>
-    <ClCompile Include="YamadaWornchiThunder.cpp">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\03.Wormchi</Filter>
+    <ClCompile Include="YamadaWormchiObj.cpp">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\03.Wormchi\01.WormchiObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2756,8 +2759,8 @@
     <ClInclude Include="YamadaState_Attack_Wormchi.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\05.Yamada\04.Attack\05.Wormchi</Filter>
     </ClInclude>
-    <ClInclude Include="YamadaWornchiThunder.h">
-      <Filter>03.Actor\06.Effect\08.YamadaMagics\03.Wormchi</Filter>
+    <ClInclude Include="YamadaWormchiObj.h">
+      <Filter>03.Actor\06.Effect\08.YamadaMagics\03.Wormchi\01.WormchiObj</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

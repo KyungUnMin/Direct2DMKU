@@ -36,6 +36,8 @@ public:
 		return RenderDir;
 	}
 
+	void Look(const float4& _LookPos);
+
 	bool IsBlowing() const;
 
 	bool IsStuned() const;
@@ -46,7 +48,7 @@ public:
 	bool OnDamage_BlowBack(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
 	bool OnDamage_Stun(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
 
-	//외부에서 강제로 방향을 설정(아직까진 적 몬스터가 플레이어 공격할때만 사용됨)
+	//외부에서 강제로 방향을 설정(true면 오른쪽을 바라본다)
 	void SetDirection(bool IsRight);
 
 	//플레이어의 이동방향을 담은 벡터 반환

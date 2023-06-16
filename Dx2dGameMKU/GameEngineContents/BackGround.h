@@ -75,6 +75,11 @@ public:
 		return std::make_pair(TileInfo.XCount, TileInfo.YCount);
 	}
 
+	inline const float4& GetMapScale() const
+	{
+		return MapScale;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

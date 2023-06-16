@@ -876,7 +876,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="YamadaState_Walk.h" />
-    <ClInclude Include="YamadaWornchiThunder.h">
+    <ClInclude Include="YamadaWormchiObj.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1599,7 +1599,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="YamadaState_Walk.cpp" />
-    <ClCompile Include="YamadaWornchiThunder.cpp">
+    <ClCompile Include="YamadaWormchiObj.cpp">
       <SubType>
       </SubType>
     </ClCompile>

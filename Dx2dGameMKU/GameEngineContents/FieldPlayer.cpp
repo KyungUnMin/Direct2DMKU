@@ -273,6 +273,8 @@ float4 FieldPlayer::GetMoveDirVec()
 }
 
 
+
+
 bool FieldPlayer::IsBlowing() const
 {
 	return PlayerStateType::Damaged_BlowBack == Fsm.GetNowState<PlayerStateType>();
@@ -281,4 +283,13 @@ bool FieldPlayer::IsBlowing() const
 bool FieldPlayer::IsStuned() const
 {
 	return PlayerStateType::Damaged_Stun == Fsm.GetNowState<PlayerStateType>();
+}
+
+void FieldPlayer::Look(const float4& _LookPos)
+{
+	float4 ThisPos = GetTransform()->GetWorldPosition();
+	float4 LookDir = (_LookPos - ThisPos);
+
+	//true일때 오른쪽을 바라본다
+	SetDirection(0.f < LookDir.x);
 }
