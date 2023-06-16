@@ -32,6 +32,9 @@ void PlayerState_Idle::Start()
 	SetArrowKey();
 	LoadAnimation();
 	CreateAnimation();
+
+	//첫 일반 공격 설정
+	NextQuickAttackType = static_cast<size_t>(PlayerStateType::QuickAttack_Chop);
 }
 
 
@@ -111,7 +114,23 @@ void PlayerState_Idle::Update(float _DeltaTime)
 	//일반 기본 공격
 	if (true == KeyMgr::IsPress(KeyNames::Z))
 	{
-		GetFSM()->ChangeState(PlayerStateType::QuickAttack_Chop);
+		float FsmLiveTime = GetFSM()->GetFsmTime();
+
+		//이전에 공격하던 연속공격을 이어서 공격
+		if (FsmLiveTime < LastQuickAttackTime + 1.5f)
+		{
+			GetFSM()->ChangeState(NextQuickAttackType);
+		}
+
+		//처음 공격부터 다시 시작
+		else
+		{
+			NextQuickAttackType = static_cast<size_t>(PlayerStateType::QuickAttack_Chop);
+			GetFSM()->ChangeState(PlayerStateType::QuickAttack_Chop);
+		}
+
+		NextQuickAttackType = PlayerFSM::GetNextQuickAttack(NextQuickAttackType);
+		LastQuickAttackTime = FsmLiveTime;
 		return;
 	}
 

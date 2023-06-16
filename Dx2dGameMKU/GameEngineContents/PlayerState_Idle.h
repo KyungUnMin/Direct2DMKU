@@ -27,6 +27,8 @@ private:
 	
 
 	std::vector<KeyNames> ArrowKeyNames;
+	size_t NextQuickAttackType = -1;
+	float LastQuickAttackTime = 0.f;
 
 	void SetArrowKey();
 	void LoadAnimation();

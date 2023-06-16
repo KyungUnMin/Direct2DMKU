@@ -50,6 +50,8 @@ enum class PlayerStateType
 class PlayerFSM : public FSMBase
 {
 public:
+	static size_t GetNextQuickAttack(size_t _PrevAttack);
+
 	PlayerFSM();
 	~PlayerFSM() override;
 

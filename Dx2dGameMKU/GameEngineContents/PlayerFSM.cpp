@@ -40,6 +40,17 @@
 #include "PlayerState_Damaged_Stun.h"
 
 
+size_t PlayerFSM::GetNextQuickAttack(size_t _PrevAttack)
+{
+	++_PrevAttack;
+	if (PlayerStateType::SpecialAttack_AxeKick <= static_cast<PlayerStateType>(_PrevAttack))
+	{
+		_PrevAttack = static_cast<size_t>(PlayerStateType::QuickAttack_Chop);
+	}
+
+	return _PrevAttack;
+}
+
 PlayerFSM::PlayerFSM()
 {
 
