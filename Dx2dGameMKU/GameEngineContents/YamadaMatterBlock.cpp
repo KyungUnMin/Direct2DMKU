@@ -24,7 +24,7 @@ const std::string_view YamadaMatterBlock::BlockName = "Yamada_MatterCrush_Block.
 const std::string_view YamadaMatterBlock::DustName = "Yamada_MatterCrush_Dust.png";
 
 const float YamadaMatterBlock::Duration = 0.5f;
-const int YamadaMatterBlock::Damage = 5;
+const int YamadaMatterBlock::Damage = 2;
 
 
 

@@ -119,18 +119,16 @@ void YamadaState_Attack_QuickCombo::Update(float _DeltaTime)
 		return;
 
 
-	GetFSM()->ChangeState(YamadaStateType::TeleportDisappear);
 
+	//일정 범위 밖에 있다면 idle
+	if (GetSightRadius() < GetVecToPlayer().Size())
+	{
+		GetFSM()->ChangeState(YamadaStateType::TeleportDisappear);
+		return;
+	}
 
-	////일정 범위 밖에 있다면 idle
-	//if (GetSightRadius() < GetVecToPlayer().Size())
-	//{
-	//	GetFSM()->ChangeState(YamadaStateType::Idle);
-	//	return;
-	//}
-
-	////일정 범위 안에 있다면 공격
-	//GetFSM()->ChangeState(YamadaStateType::Blast);
+	//일정 범위 안에 있다면 공격
+	GetFSM()->ChangeState(YamadaStateType::Blast);
 }
 
 

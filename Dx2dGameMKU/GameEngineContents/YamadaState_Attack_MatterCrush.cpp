@@ -113,16 +113,7 @@ void YamadaState_Attack_MatterCrush::Update(float _DeltaTime)
 		return;
 	}
 
-	//1/n로 Idle, 나머지는 현재와 다른 공격
-	YamadaStateType RandomAttack = static_cast<YamadaStateType>(GetEnemyFsm()->GetRandomAttack());
-	if (GetStateEnum<YamadaStateType>() == RandomAttack)
-	{
-		GetFSM()->ChangeState(YamadaStateType::Idle);
-	}
-	else
-	{
-		GetFSM()->ChangeState(RandomAttack);
-	}
+	GetFSM()->ChangeState(YamadaStateType::Idle);
 }
 
 

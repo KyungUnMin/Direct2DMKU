@@ -20,7 +20,7 @@ const std::string_view YamadaEnergyBall::Ring_FileName = "Yamada_EnergyRing.png"
 const std::string_view YamadaEnergyBall::Air_FileName = "Yamada_EnergyAir.png";
 const float YamadaEnergyBall::AniInterTime = 0.08f;
 const float4 YamadaEnergyBall::DarkPupple = float4{ 0.25f, 0.f, 0.6f, 0.5f };
-const int YamadaEnergyBall::Damage = 10;
+const int YamadaEnergyBall::Damage = 5;
 
 YamadaEnergyBall::YamadaEnergyBall()
 {

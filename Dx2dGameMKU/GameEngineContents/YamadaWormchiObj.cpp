@@ -19,7 +19,7 @@
 const std::string_view YamadaWormchiObj::Ani_FileName = "Wormchi_Obj";
 const std::string_view YamadaWormchiObj::Light_FileName = "Wormchi_ReleaseLight.png";
 const float YamadaWormchiObj::HeightPivot = 100.f;
-const int YamadaWormchiObj::Damage = 10;
+const int YamadaWormchiObj::Damage = 5;
 
 const float4 YamadaWormchiObj::ObjScale = float4{ 64.f, 64.f, 1.f };
 const float4 YamadaWormchiObj::LightScale = float4{ 256.f, 128.f, 1.f };

@@ -86,7 +86,7 @@ void YamadaState_Attack_Wormchi::CreateAnimation()
 		.Start = 5,
 		.End = 9,
 		.FrameInter = AniInterTime,
-		.Loop = false
+		.Loop = true
 	});
 
 	Render->CreateAnimation
@@ -206,7 +206,7 @@ void YamadaState_Attack_Wormchi::Update_GetUp(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(YamadaStateType::TeleportDisappear);
+	GetFSM()->ChangeState(YamadaStateType::Idle);
 }
 
 

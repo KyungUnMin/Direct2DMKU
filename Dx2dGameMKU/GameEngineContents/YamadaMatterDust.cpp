@@ -18,7 +18,7 @@ const std::string_view YamadaMatterDust::CircleEffect_FileName = "Yamada_MatterC
 const std::string_view YamadaMatterDust::Explo_FileName = "Yamada_MatterCrush_BlockEffect2.png";
 const float4 YamadaMatterDust::ExploScale = { 512.f, 512.f, 1.f };
 const float4 YamadaMatterDust::ExploOffset = { 0.f, 200.f, -10.f };
-const int YamadaMatterDust::Damage = 20;
+const int YamadaMatterDust::Damage = 10;
 
 YamadaMatterDust::YamadaMatterDust()
 {

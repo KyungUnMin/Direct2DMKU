@@ -16,7 +16,7 @@ const std::string_view YamadaState_Attack_Blast::AniFileName = "Yamada_Blast.png
 const std::pair<int, int> YamadaState_Attack_Blast::AniCutFrame = std::pair<int, int>(5, 4);
 const float YamadaState_Attack_Blast::AniInterTime = 0.08f;
 
-const int YamadaState_Attack_Blast::Damage = 5;
+const int YamadaState_Attack_Blast::Damage = 2;
 const float4 YamadaState_Attack_Blast::ColOffset = float4{ 100.f, 0.f, 0.f };
 const float4 YamadaState_Attack_Blast::ColScale = float4{ 150.f, 150.f, 150.f };
 
@@ -158,8 +158,13 @@ void YamadaState_Attack_Blast::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	
-	GetFSM()->ChangeState(YamadaStateType::Taunt);
+	if (true == FirstHit)
+	{
+		GetFSM()->ChangeState(YamadaStateType::Taunt);
+		return;
+	}
+
+	GetFSM()->ChangeState(YamadaStateType::Idle);
 }
 
 
