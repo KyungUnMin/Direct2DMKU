@@ -225,6 +225,9 @@ void YamadaState_Attack_ForceField::ExitState()
 	BossState_AttackBase::ExitState();
 	GetEnemy()->SetHeight(0.f);
 
+	if (nullptr == EnergyBallCtrl)
+		return;
+
 	if (false == EnergyBallCtrl->IsDeath())
 	{
 		EnergyBallCtrl->Clear();

@@ -5,7 +5,7 @@
 
 #include "FieldEnemyBase.h"
 
-const std::vector<int> YamadaState_Idle::FarAttackPercent = { 100, 20, 50 };
+const std::vector<int> YamadaState_Idle::FarAttackPercent = { 80, 80, 90 };
 const float YamadaState_Idle::SightRadius = 100.f;
 
 const std::string_view YamadaState_Idle::AniName = "Idle";

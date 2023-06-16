@@ -40,11 +40,14 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::NearAttackGroup =
 	//2페이즈
 	{
 		YamadaStateType::QuickCombo,
+		YamadaStateType::TeleportDisappear,
 	},
 
 	//3페이즈
 	{
 		YamadaStateType::QuickCombo,
+		YamadaStateType::Blast,
+		YamadaStateType::TeleportDisappear,
 	},
 };
 
@@ -54,16 +57,20 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::FarAttackGroup =
 	//1페이즈
 	{
 		YamadaStateType::Wormchi,
+		YamadaStateType::MatterCrush,
 	},
 
 	//2페이즈
 	{
-		YamadaStateType::TeleportDisappear,
+		YamadaStateType::ForceField,
+		YamadaStateType::MatterCrush,
 	},
 
 	//3페이즈
 	{
-		YamadaStateType::TeleportDisappear,
+		YamadaStateType::ForceField,
+		YamadaStateType::MatterCrush,
+		YamadaStateType::Wormchi,
 	},
 };
 

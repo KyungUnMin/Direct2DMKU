@@ -93,6 +93,33 @@ void PlayerState_Walk::Update(float _DeltaTime)
 {
 	PlayerState_MovementBase::Update(_DeltaTime);
 
+
+	float NowTime = GetFSM()->GetFsmTime();
+
+	//상하 이동을 빠르게 누른 경우
+	if (NowTime < (LastTime + 0.1f) && (PressArrow == LastArrow))
+	{
+		if ((KeyNames::UpArrow == PressArrow) || (KeyNames::DownArrow == PressArrow))
+		{
+			GetFSM()->ChangeState(PlayerStateType::Movement_Avoid);
+			return;
+		}
+	}
+
+
+	//대시, 회피처리
+	if (NowTime < (LastTime + 0.5f) && (PressArrow == LastArrow))
+	{
+		//좌우이동을 빠르게 누른 경우
+		if ((KeyNames::RightArrow == PressArrow) || (KeyNames::LeftArrow == PressArrow))
+		{
+			GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
+			return;
+		}
+	}
+
+	
+
 	//아이들 처리
 	if (true == Check_Idle())
 	{
@@ -141,24 +168,7 @@ void PlayerState_Walk::Update(float _DeltaTime)
 		return;
 	}
 	
-	//대시, 회피처리
-	float NowTime = GetFSM()->GetFsmTime();
-	if (NowTime < (LastTime + 0.1f) && (PressArrow == LastArrow))
-	{
-		//좌우이동을 빠르게 누른 경우
-		if ((KeyNames::RightArrow == PressArrow) || (KeyNames::LeftArrow == PressArrow))
-		{
-			GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
-		}
-
-		//상하 이동을 빠르게 누른 경우
-		else
-		{
-			GetFSM()->ChangeState(PlayerStateType::Movement_Avoid);
-		}
-
-		return;
-	}
+	
 
 
 	
