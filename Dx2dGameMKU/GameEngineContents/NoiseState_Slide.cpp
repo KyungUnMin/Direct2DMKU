@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "NoiseState_Slide.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
@@ -11,6 +12,7 @@
 #include "FieldEnemyBase.h"
 #include "AfterImageEffect.h"
 #include "FieldPlayer.h"
+#include "BossFSMBase.h"
 
 
 const std::vector<std::string_view> NoiseState_Slide::AniFileNames =
@@ -21,6 +23,11 @@ const std::vector<std::string_view> NoiseState_Slide::AniFileNames =
 };
 
 const float NoiseState_Slide::AniInterTime = 0.08f;
+
+const std::vector<int> NoiseState_Slide::AxeAttackPercents =
+{
+	0, 40, 80
+};
 
 NoiseState_Slide::NoiseState_Slide()
 {
@@ -41,6 +48,8 @@ void NoiseState_Slide::Start()
 	CreateAnimation();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 	Collider = GetEnemy()->GetAttackCollider();
+
+	BossFsmPtr = GetConvertFSM<BossFSMBase>();
 }
 
 void NoiseState_Slide::LoadAnimation()
@@ -169,7 +178,12 @@ void NoiseState_Slide::Update_Start(float _DeltaTime)
 void NoiseState_Slide::Update_Loop(float _DeltaTime)
 {
 	Update_LoopEffect(_DeltaTime);
-	Update_LoopMove(_DeltaTime);
+	if (true == Update_LoopMove(_DeltaTime))
+	{
+		GetFSM()->ChangeState(NoiseStateType::AxeGrind);
+		return;
+	}
+
 
 	if (2 == ReflectionCount)
 	{
@@ -226,7 +240,7 @@ bool NoiseState_Slide::Update_CheckPos()
 
 
 
-void NoiseState_Slide::Update_LoopMove(float _DeltaTime)
+bool NoiseState_Slide::Update_LoopMove(float _DeltaTime)
 {
 	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
 
@@ -235,28 +249,34 @@ void NoiseState_Slide::Update_LoopMove(float _DeltaTime)
 
 	if (true == BGPtr->IsBlockPos(NextPos))
 	{
-		ChangeDir();
-		return;
+		return ChangeDir();
 	}
 
 	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
 	{
-		ChangeDir();
-		return;
+		return ChangeDir();
 	}
 
 	NextPos.z = NextPos.y;
 	EnemyTrans->SetWorldPosition(NextPos);
+	return false;
 }
 
 
-void NoiseState_Slide::ChangeDir()
+bool NoiseState_Slide::ChangeDir()
 {
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 100);
+	size_t CurPhase = BossFsmPtr->GetCurPhase();
+	if (RandNum < AxeAttackPercents[CurPhase])
+		return true;
+
+
 	MoveDir.x = -MoveDir.x;
 	++ReflectionCount;
 
 	GetEnemy()->DirectionFlip();
+	return false;
 }
 
 

@@ -446,7 +446,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="NoiseFSM.h" />
-    <ClInclude Include="NoiseState_Attack_Elbow.h" />
+    <ClInclude Include="NoiseState_Attack_AxeGrind.h" />
     <ClInclude Include="NoiseState_Attack_GetUp.h" />
     <ClInclude Include="NoiseState_Attack_Meteor.h" />
     <ClInclude Include="NoiseState_Attack_Roar.h" />
@@ -1191,7 +1191,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="NoiseFSM.cpp" />
-    <ClCompile Include="NoiseState_Attack_Elbow.cpp" />
+    <ClCompile Include="NoiseState_Attack_AxeGrind.cpp" />
     <ClCompile Include="NoiseState_Attack_GetUp.cpp" />
     <ClCompile Include="NoiseState_Attack_Meteor.cpp" />
     <ClCompile Include="NoiseState_Attack_Roar.cpp" />

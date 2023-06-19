@@ -10,7 +10,7 @@
 #include "NoiseState_Taunt.h"
 
 //Attack
-//#include "NoiseState_Attack_GetUp.h"
+#include "NoiseState_Attack_AxeGrind.h"
 //#include "NoiseState_Attack_Elbow.h"
 //#include "NoiseState_Attack_WUPunch.h"
 //#include "NoiseState_Attack_Tackle.h"
@@ -124,7 +124,7 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Attack
-	//FSMBase::CreateState<NoiseState_Attack_GetUp>(NoiseStateType::GetUpAttack);
+	FSMBase::CreateState<NoiseState_Attack_AxeGrind>(NoiseStateType::AxeGrind);
 	//FSMBase::CreateState<NoiseState_Attack_Elbow>(NoiseStateType::Elbow);
 	//FSMBase::CreateState<NoiseState_Attack_WUPunch>(NoiseStateType::WUPunch);
 	//FSMBase::CreateState<NoiseState_Attack_Tackle>(NoiseStateType::Tackle);

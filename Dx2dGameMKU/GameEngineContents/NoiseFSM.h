@@ -10,7 +10,7 @@ enum class NoiseStateType
 	Taunt,
 
 	//Attack
-	GetUpAttack,
+	AxeGrind,
 	Elbow,
 	WUPunch,
 	Tackle,

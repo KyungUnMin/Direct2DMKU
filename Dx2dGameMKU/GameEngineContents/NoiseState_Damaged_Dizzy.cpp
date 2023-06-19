@@ -82,5 +82,5 @@ void NoiseState_Damaged_Dizzy::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::GetUpAttack);
+	//GetFSM()->ChangeState(NoiseStateType::GetUpAttack);
 }
