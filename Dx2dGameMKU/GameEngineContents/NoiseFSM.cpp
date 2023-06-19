@@ -5,7 +5,7 @@
 
 //Movement
 #include "NoiseState_Idle.h"
-#include "NoiseState_Walk.h"
+#include "NoiseState_Slide.h"
 #include "NoiseState_Defeat.h"
 #include "NoiseState_Taunt.h"
 
@@ -118,7 +118,7 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 
 	//Movement
 	FSMBase::CreateState<NoiseState_Idle>(NoiseStateType::Idle);
-	//FSMBase::CreateState<NoiseState_Walk>(NoiseStateType::Walk);
+	FSMBase::CreateState<NoiseState_Slide>(NoiseStateType::Slide);
 	//FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
 	//FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
 

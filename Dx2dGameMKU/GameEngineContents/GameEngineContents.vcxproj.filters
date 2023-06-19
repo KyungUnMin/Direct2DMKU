@@ -2007,7 +2007,7 @@
     <ClCompile Include="NoiseState_Taunt.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\04.Taunt</Filter>
     </ClCompile>
-    <ClCompile Include="NoiseState_Walk.cpp">
+    <ClCompile Include="NoiseState_Slide.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\02.Slide</Filter>
     </ClCompile>
     <ClCompile Include="NoiseState_NormalDamaged_Face.cpp">
@@ -2897,7 +2897,7 @@
     <ClInclude Include="NoiseState_Taunt.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\04.Taunt</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseState_Walk.h">
+    <ClInclude Include="NoiseState_Slide.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\02.Slide</Filter>
     </ClInclude>
     <ClInclude Include="NoiseState_NormalDamaged_Face.h">

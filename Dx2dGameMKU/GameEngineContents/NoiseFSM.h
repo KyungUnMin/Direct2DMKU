@@ -5,7 +5,7 @@ enum class NoiseStateType
 {
 	//Movement
 	Idle,
-	Walk,
+	Slide,
 	Defeat,
 	Taunt,
 

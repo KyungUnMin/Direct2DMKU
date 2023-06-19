@@ -459,7 +459,7 @@
     <ClInclude Include="NoiseState_NormalDamaged_Jaw.h" />
     <ClInclude Include="NoiseState_NormalDamaged_Stomach.h" />
     <ClInclude Include="NoiseState_Taunt.h" />
-    <ClInclude Include="NoiseState_Walk.h" />
+    <ClInclude Include="NoiseState_Slide.h" />
     <ClInclude Include="OpeningDiaEffect.h">
       <SubType>
       </SubType>
@@ -1200,7 +1200,7 @@
     <ClCompile Include="NoiseState_NormalDamaged_Jaw.cpp" />
     <ClCompile Include="NoiseState_NormalDamaged_Stomach.cpp" />
     <ClCompile Include="NoiseState_Taunt.cpp" />
-    <ClCompile Include="NoiseState_Walk.cpp" />
+    <ClCompile Include="NoiseState_Slide.cpp" />
     <ClCompile Include="OpeningDiaEffect.cpp">
       <SubType>
       </SubType>
