@@ -30,6 +30,13 @@ void FieldEnemyBase::Look(const float4& _LookPos)
 }
 
 
+void FieldEnemyBase::DirectionFlip()
+{
+	FieldActorBase::DirectionFlip();
+	IsDirRegistValue = true;
+}
+
+
 
 void FieldEnemyBase::Start()
 {

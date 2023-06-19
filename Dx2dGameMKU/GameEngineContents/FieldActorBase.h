@@ -22,6 +22,8 @@ public:
 
 	virtual void Look(const float4& _LookPos);
 
+	virtual void DirectionFlip();
+
 	inline float GetHeight() const
 	{
 		return Height;

@@ -441,6 +441,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="MisuzuState_Walk.h" />
+    <ClInclude Include="NoiseAxe.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NoiseFSM.h" />
     <ClInclude Include="NoiseState_Attack_Elbow.h" />
     <ClInclude Include="NoiseState_Attack_GetUp.h" />
@@ -1182,6 +1186,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="MisuzuState_Walk.cpp" />
+    <ClCompile Include="NoiseAxe.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NoiseFSM.cpp" />
     <ClCompile Include="NoiseState_Attack_Elbow.cpp" />
     <ClCompile Include="NoiseState_Attack_GetUp.cpp" />

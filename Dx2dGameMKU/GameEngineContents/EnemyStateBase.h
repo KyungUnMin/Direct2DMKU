@@ -52,6 +52,7 @@ protected:
 		return Renderer;
 	}
 
+	//플레이어를 바라본다
 	void ChangeRenderDirection();
 
 	float4 GetVecToPlayer(bool Is2D = false);

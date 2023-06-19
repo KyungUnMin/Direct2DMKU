@@ -248,3 +248,18 @@ void FieldActorBase::Look(const float4& _LookPos)
 		ThisTrans->SetLocalNegativeScaleX();
 	}
 }
+
+void FieldActorBase::DirectionFlip()
+{
+	GameEngineTransform* ThisTrans = GetTransform();
+	float4 LocalScale = GetTransform()->GetLocalScale();
+	if (0.f < LocalScale.x)
+	{
+		ThisTrans->SetLocalNegativeScaleX();
+	}
+	else
+	{
+		ThisTrans->SetLocalPositiveScaleX();
+	}
+}
+

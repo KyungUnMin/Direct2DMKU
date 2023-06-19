@@ -30,6 +30,8 @@ public:
 	//해당 위치를 바라보면서 다음 Fsm State의 ChangeRenderDirection가 계산되지 않는다
 	void Look(const float4& _LookPos) override;
 
+	void DirectionFlip() override;
+
 	inline bool IsDirRegist()
 	{
 		bool Return = IsDirRegistValue;

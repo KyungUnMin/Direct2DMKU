@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "NoiseState_Slide.h"
 
+#include <GameEngineCore/GameEngineCollision.h>
+
 #include "RCGEnums.h"
 
 #include "NoiseFSM.h"
@@ -8,6 +10,7 @@
 #include "BackGround.h"
 #include "FieldEnemyBase.h"
 #include "AfterImageEffect.h"
+#include "FieldPlayer.h"
 
 
 const std::vector<std::string_view> NoiseState_Slide::AniFileNames =
@@ -37,6 +40,7 @@ void NoiseState_Slide::Start()
 	LoadAnimation();
 	CreateAnimation();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+	Collider = GetEnemy()->GetAttackCollider();
 }
 
 void NoiseState_Slide::LoadAnimation()
@@ -118,6 +122,10 @@ void NoiseState_Slide::EnterState()
 
 	//바라 보고 있는 방향의 반대로(뒤로) 움직일 예정
 	MoveDir = EnemyStateBase::IsRightDir() ? float4::Left : float4::Right;
+	EnemyStateBase::OffMainCollider();
+
+	Collider->GetTransform()->SetLocalScale(float4::One * 50.f);
+	Collider->GetTransform()->SetLocalPosition(float4::Right * 50.f);
 }
 
 
@@ -149,6 +157,7 @@ void NoiseState_Slide::Update(float _DeltaTime)
 }
 
 
+
 void NoiseState_Slide::Update_Start(float _DeltaTime)
 {
 	if (false == GetRenderer()->IsAnimationEnd())
@@ -161,6 +170,17 @@ void NoiseState_Slide::Update_Loop(float _DeltaTime)
 {
 	Update_LoopEffect(_DeltaTime);
 	Update_LoopMove(_DeltaTime);
+
+	if (2 == ReflectionCount)
+	{
+		ChangeStateAndAni(State::End);
+		return;
+	}
+
+	if (false == Update_CheckPos())
+		return;
+
+	ChangeStateAndAni(State::End);
 }
 
 void NoiseState_Slide::Update_LoopEffect(float _DeltaTime)
@@ -183,6 +203,29 @@ void NoiseState_Slide::Update_LoopEffect(float _DeltaTime)
 	Timer = 0.f;
 }
 
+
+
+bool NoiseState_Slide::Update_CheckPos()
+{
+	if (0 == ReflectionCount)
+		return false;
+
+	if (nullptr == Collider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D))
+	{
+		//CollisionExit 되는 순간
+		if (true == PrevCollision)
+			return true;
+
+		return false;
+	}
+
+	//충돌중
+	PrevCollision = true;
+	return false;
+}
+
+
+
 void NoiseState_Slide::Update_LoopMove(float _DeltaTime)
 {
 	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
@@ -192,20 +235,29 @@ void NoiseState_Slide::Update_LoopMove(float _DeltaTime)
 
 	if (true == BGPtr->IsBlockPos(NextPos))
 	{
-		ChangeStateAndAni(State::End);
+		ChangeDir();
 		return;
 	}
 
 	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
 	{
-		ChangeStateAndAni(State::End);
+		ChangeDir();
 		return;
 	}
 
+	NextPos.z = NextPos.y;
 	EnemyTrans->SetWorldPosition(NextPos);
 }
 
+
+void NoiseState_Slide::ChangeDir()
+{
+	MoveDir.x = -MoveDir.x;
+	++ReflectionCount;
+
+	GetEnemy()->DirectionFlip();
+}
 
 
 
@@ -216,4 +268,14 @@ void NoiseState_Slide::Update_End(float _DeltaTime)
 		return;
 
 	GetFSM()->ChangeState(NoiseStateType::Idle);
+}
+
+
+
+void NoiseState_Slide::ExitState()
+{
+	EnemyStateBase::ExitState();
+	EnemyStateBase::OnMainCollider();
+	ReflectionCount = 0;
+	PrevCollision = false;
 }

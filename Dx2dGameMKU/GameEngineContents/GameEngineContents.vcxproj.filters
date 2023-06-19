@@ -1123,6 +1123,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\03.KnockDown">
       <UniqueIdentifier>{4da3d956-c2df-4996-bc05-dc6598cff5b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\06.Effect\09.NoiseEffects">
+      <UniqueIdentifier>{b5d65b63-78c4-464c-982c-9e23f2dc92f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\06.Effect\09.NoiseEffects\01.NoiseAxe">
+      <UniqueIdentifier>{efb56de8-1267-4b36-9008-bb492dc9b020}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2025,6 +2031,9 @@
     <ClCompile Include="NoiseState_Damaged_KnockDown.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\03.KnockDown</Filter>
     </ClCompile>
+    <ClCompile Include="NoiseAxe.cpp">
+      <Filter>03.Actor\06.Effect\09.NoiseEffects\01.NoiseAxe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2914,6 +2923,9 @@
     </ClInclude>
     <ClInclude Include="NoiseState_Damaged_KnockDown.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\03.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseAxe.h">
+      <Filter>03.Actor\06.Effect\09.NoiseEffects\01.NoiseAxe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
