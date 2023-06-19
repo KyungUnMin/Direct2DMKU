@@ -80,6 +80,12 @@ void GameEngineCamera::Update(float _DeltaTime)
 
 	if (true == GameEngineInput::IsDown("FreeCameraSwitch"))
 	{
+		//메인카메라만 프리카메라 모드
+		if (GetLevel()->GetMainCamera().get() != this)
+		{
+			return;
+		}
+
 		FreeCamera = !FreeCamera;
 
 		if (true == FreeCamera)
