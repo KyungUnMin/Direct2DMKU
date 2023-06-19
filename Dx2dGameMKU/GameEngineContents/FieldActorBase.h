@@ -24,6 +24,8 @@ public:
 
 	virtual void DirectionFlip();
 
+	virtual void LookDir(bool _IsRight);
+
 	inline float GetHeight() const
 	{
 		return Height;

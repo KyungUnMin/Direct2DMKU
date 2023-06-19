@@ -26,7 +26,7 @@ const float NoiseState_Slide::AniInterTime = 0.08f;
 
 const std::vector<int> NoiseState_Slide::AxeAttackPercents =
 {
-	0, 40, 80
+	0, 50, 90
 };
 
 NoiseState_Slide::NoiseState_Slide()
@@ -128,9 +128,8 @@ void NoiseState_Slide::EnterState()
 {
 	EnemyStateBase::EnterState();
 	ChangeStateAndAni(State::Start);
+	SettingDir();
 
-	//바라 보고 있는 방향의 반대로(뒤로) 움직일 예정
-	MoveDir = EnemyStateBase::IsRightDir() ? float4::Left : float4::Right;
 	EnemyStateBase::OffMainCollider();
 
 	Collider->GetTransform()->SetLocalScale(float4::One * 50.f);
@@ -143,6 +142,49 @@ void NoiseState_Slide::ChangeStateAndAni(State _Next)
 	CurState = _Next;
 	size_t Index = static_cast<size_t>(CurState);
 	GetRenderer()->ChangeAnimation(AniFileNames[Index]);
+}
+
+void NoiseState_Slide::SettingDir()
+{
+	FieldEnemyBase* Enemy = GetEnemy();
+	
+	float4 EnemyPos = Enemy->GetTransform()->GetWorldPosition();
+	const float4 VecToPlayer = GetVecToPlayer(true);
+
+
+
+	//플레이어로 향하는 길이보다 벽쪽으로 향하는 길이가 더 짧은 경우 벽쪽으로 이동한다
+	//또는 플레이어와의 거리가 너무 짧은 경우에도 무조껀 벽쪽으로 간다
+	float4 ReversePosToPlayer = (EnemyPos - VecToPlayer);
+	if ((true == BGPtr->IsBlockPos(ReversePosToPlayer)) || (VecToPlayer.Size() < 10.f))
+	{
+		//오른쪽 영역에 있는 경우 오른쪽으로 이동한다
+		if (0.f < EnemyPos.x)
+		{
+			MoveDir = float4::Right;
+			Enemy->LookDir(false);
+		}
+
+		//왼쪽 영역에 있는 경우 왼쪽으로 이동한다
+		else
+		{
+			MoveDir = float4::Left;
+			Enemy->LookDir(true);
+		}
+
+		return;
+	}
+
+
+	//플레이어 쪽으로 이동하는 경우
+	MoveDir = VecToPlayer.NormalizeReturn();
+
+	//뒤로 이동하기 때문에 이동방향과 반대 방향을 바라 본다
+	bool IsDirRight = (MoveDir.x < 0.f) ? true : false;
+	Enemy->LookDir(IsDirRight);
+
+	//플레이어 쪽으로 이동하는 경우엔 벽 충돌과 상관없이 CollisionExit될때 이벤트 발생
+	ReflectionCount = 1;
 }
 
 

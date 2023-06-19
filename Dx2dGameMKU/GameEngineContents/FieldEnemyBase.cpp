@@ -36,6 +36,12 @@ void FieldEnemyBase::DirectionFlip()
 	IsDirRegistValue = true;
 }
 
+void FieldEnemyBase::LookDir(bool _IsRight)
+{
+	FieldActorBase::LookDir(_IsRight);
+	IsDirRegistValue = true;
+}
+
 
 
 void FieldEnemyBase::Start()

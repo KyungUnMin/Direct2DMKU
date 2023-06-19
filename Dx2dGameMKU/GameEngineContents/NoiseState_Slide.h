@@ -44,6 +44,7 @@ private:
 	void LoadAnimation();
 	void CreateAnimation();
 	void ChangeStateAndAni(State _Next);
+	void SettingDir();
 
 	void Update_Start(float _DeltaTime);
 

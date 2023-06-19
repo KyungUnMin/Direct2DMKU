@@ -32,6 +32,8 @@ public:
 
 	void DirectionFlip() override;
 
+	void LookDir(bool _IsRight) override;
+
 	inline bool IsDirRegist()
 	{
 		bool Return = IsDirRegistValue;

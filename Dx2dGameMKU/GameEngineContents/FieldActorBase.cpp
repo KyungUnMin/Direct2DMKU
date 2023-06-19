@@ -263,3 +263,17 @@ void FieldActorBase::DirectionFlip()
 	}
 }
 
+void FieldActorBase::LookDir(bool _IsRight)
+{
+	GameEngineTransform* ThisTrans = GetTransform();
+
+	if (true == _IsRight)
+	{
+		ThisTrans->SetLocalPositiveScaleX();
+	}
+	else
+	{
+		ThisTrans->SetLocalNegativeScaleX();
+	}
+}
+
