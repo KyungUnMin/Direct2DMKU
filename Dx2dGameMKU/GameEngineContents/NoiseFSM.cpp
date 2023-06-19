@@ -10,13 +10,13 @@
 #include "NoiseState_Taunt.h"
 
 //Attack
-#include "NoiseState_Attack_GetUp.h"
-#include "NoiseState_Attack_Elbow.h"
-#include "NoiseState_Attack_WUPunch.h"
-#include "NoiseState_Attack_Tackle.h"
-#include "NoiseState_Attack_Slap.h"
-#include "NoiseState_Attack_Meteor.h"
-#include "NoiseState_Attack_Roar.h"
+//#include "NoiseState_Attack_GetUp.h"
+//#include "NoiseState_Attack_Elbow.h"
+//#include "NoiseState_Attack_WUPunch.h"
+//#include "NoiseState_Attack_Tackle.h"
+//#include "NoiseState_Attack_Slap.h"
+//#include "NoiseState_Attack_Meteor.h"
+//#include "NoiseState_Attack_Roar.h"
 
 //Damaged
 #include "NoiseState_NormalDamaged_Face.h"
@@ -35,21 +35,21 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::NearAttackGroup =
 {
 	//1페이즈
 	{
-		NoiseStateType::Elbow,
-		NoiseStateType::WUPunch,
-		NoiseStateType::Slap,
+		//NoiseStateType::Elbow,
+		//NoiseStateType::WUPunch,
+		//NoiseStateType::Slap,
 	},
 
 	//2페이즈
 	{
-		NoiseStateType::WUPunch,
-		NoiseStateType::Slap,
+		//NoiseStateType::WUPunch,
+		//NoiseStateType::Slap,
 	},
 
 	//3페이즈
 	{
-		NoiseStateType::WUPunch,
-		NoiseStateType::Roar,
+		//NoiseStateType::WUPunch,
+		//NoiseStateType::Roar,
 	},
 };
 
@@ -65,14 +65,14 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::FarAttackGroup =
 
 	//2페이즈
 	{
-		NoiseStateType::Tackle,
+		//NoiseStateType::Tackle,
 
 	},
 
 	//3페이즈
 	{
-		NoiseStateType::Tackle,
-		NoiseStateType::Meteor,
+		//NoiseStateType::Tackle,
+		//NoiseStateType::Meteor,
 	},
 };
 
@@ -118,29 +118,29 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 
 	//Movement
 	FSMBase::CreateState<NoiseState_Idle>(NoiseStateType::Idle);
-	FSMBase::CreateState<NoiseState_Walk>(NoiseStateType::Walk);
-	FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
-	FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
+	//FSMBase::CreateState<NoiseState_Walk>(NoiseStateType::Walk);
+	//FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
+	//FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
 
 
 	//Attack
-	FSMBase::CreateState<NoiseState_Attack_GetUp>(NoiseStateType::GetUpAttack);
-	FSMBase::CreateState<NoiseState_Attack_Elbow>(NoiseStateType::Elbow);
-	FSMBase::CreateState<NoiseState_Attack_WUPunch>(NoiseStateType::WUPunch);
-	FSMBase::CreateState<NoiseState_Attack_Tackle>(NoiseStateType::Tackle);
-	FSMBase::CreateState<NoiseState_Attack_Slap>(NoiseStateType::Slap);
-	FSMBase::CreateState<NoiseState_Attack_Meteor>(NoiseStateType::Meteor);
-	FSMBase::CreateState<NoiseState_Attack_Roar>(NoiseStateType::Roar);
+	//FSMBase::CreateState<NoiseState_Attack_GetUp>(NoiseStateType::GetUpAttack);
+	//FSMBase::CreateState<NoiseState_Attack_Elbow>(NoiseStateType::Elbow);
+	//FSMBase::CreateState<NoiseState_Attack_WUPunch>(NoiseStateType::WUPunch);
+	//FSMBase::CreateState<NoiseState_Attack_Tackle>(NoiseStateType::Tackle);
+	//FSMBase::CreateState<NoiseState_Attack_Slap>(NoiseStateType::Slap);
+	//FSMBase::CreateState<NoiseState_Attack_Meteor>(NoiseStateType::Meteor);
+	//FSMBase::CreateState<NoiseState_Attack_Roar>(NoiseStateType::Roar);
 
 
 	//Damaged
-	FSMBase::CreateState<NoiseState_NormalDamaged_Face>(NoiseStateType::NormalDamaged_Face);
-	FSMBase::CreateState<NoiseState_NormalDamaged_Stomach>(NoiseStateType::NormalDamaged_Stomach);
-	FSMBase::CreateState<NoiseState_NormalDamaged_Jaw>(NoiseStateType::NormalDamaged_Jaw);
-	FSMBase::CreateState<NoiseState_Damaged_BlowBack>(NoiseStateType::Damaged_BlowBack);
-	FSMBase::CreateState<NoiseState_Damaged_KnockDown>(NoiseStateType::Damaged_KnockDown);
-	FSMBase::CreateState<NoiseState_Damaged_Dizzy>(NoiseStateType::Damaged_Dizzy);
-	FSMBase::CreateState<NoiseState_Damaged_GroundHit>(NoiseStateType::Damaged_GroundHit);
+	//FSMBase::CreateState<NoiseState_NormalDamaged_Face>(NoiseStateType::NormalDamaged_Face);
+	//FSMBase::CreateState<NoiseState_NormalDamaged_Stomach>(NoiseStateType::NormalDamaged_Stomach);
+	//FSMBase::CreateState<NoiseState_NormalDamaged_Jaw>(NoiseStateType::NormalDamaged_Jaw);
+	//FSMBase::CreateState<NoiseState_Damaged_BlowBack>(NoiseStateType::Damaged_BlowBack);
+	//FSMBase::CreateState<NoiseState_Damaged_KnockDown>(NoiseStateType::Damaged_KnockDown);
+	//FSMBase::CreateState<NoiseState_Damaged_Dizzy>(NoiseStateType::Damaged_Dizzy);
+	//FSMBase::CreateState<NoiseState_Damaged_GroundHit>(NoiseStateType::Damaged_GroundHit);
 
 
 

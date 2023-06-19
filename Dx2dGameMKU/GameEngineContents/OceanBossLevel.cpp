@@ -20,6 +20,7 @@ const std::vector<std::pair<std::string_view, float4>> OceanBossLevel::BGInfoes 
 
 const std::string_view OceanBossLevel::CollisionImageName = "OceanBossColBG.png";
 
+const float4 OceanBossLevel::PlayerStartPos = float4{ -149.f, -223.f };
 
 OceanBossLevel::OceanBossLevel()
 {
@@ -41,9 +42,10 @@ void OceanBossLevel::Start()
 
 	CreateBackGrounds();
 	FieldLevelBase::SetPlayerStartPosition(float4{ -149.f, -223.f });
+	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
+	GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
 
-
-	CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
+	//CreateActor<GlichSideAttack>()->GetTransform()->SetLocalPosition(float4::Up * 100.f);
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -72,15 +74,15 @@ void OceanBossLevel::CreateBackGrounds()
 void OceanBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
-
-	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
-	{
-		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
-
-		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
-		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
-		{
-			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Noise);
-		});
-	});
+	
+	//CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
+	//{
+	//	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+	//
+	//	//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
+	//	this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+	//	{
+	//		this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Noise);
+	//	});
+	//});
 }
