@@ -8,9 +8,9 @@
 
 const std::string_view NoiseState_Damaged_BlowBack::AniName = "BlowBack";
 const std::string_view NoiseState_Damaged_BlowBack::AniFileName = "Noise_BlowBack.png";
-const std::pair<int, int> NoiseState_Damaged_BlowBack::AniCutFrame = std::pair<int, int>(5, 5);
-const std::pair<size_t, size_t> NoiseState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 21 };
-const float NoiseState_Damaged_BlowBack::AniInterTime = 0.05f;
+const std::pair<int, int> NoiseState_Damaged_BlowBack::AniCutFrame = std::pair<int, int>(5, 2);
+const std::pair<size_t, size_t> NoiseState_Damaged_BlowBack::AniFrameIndex = std::pair<size_t, size_t>{ 0, 6 };
+const float NoiseState_Damaged_BlowBack::AniInterTime = 0.08f;
 
 
 
@@ -33,6 +33,7 @@ void NoiseState_Damaged_BlowBack::Start()
 	LoadAnimation();
 	CreateAnimation();
 
+	EnemyState_DamagedBase::SetGroundBlow();
 	EnemyState_DamagedBase::SetBlowValue(StartAcc, Duration);
 }
 
@@ -79,13 +80,16 @@ void NoiseState_Damaged_BlowBack::Update(float _DeltaTime)
 {
 	EnemyState_DamagedBase::Update(_DeltaTime);
 
+	//벽에 팅겨져 나오지는 않는 BlowBack
+	EnemyState_DamagedBase::Update_BlowBack(_DeltaTime);
+
 	//벽과 충돌시 튕겨져 나오는 BlowBack
-	EnemyState_DamagedBase::Update_BlowReflect(_DeltaTime);
+	//EnemyState_DamagedBase::Update_BlowReflect(_DeltaTime);
 	
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::Damaged_Dizzy);
+	GetFSM()->ChangeState(NoiseStateType::Idle);
 }
 
 

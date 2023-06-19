@@ -4,7 +4,7 @@
 #include "NoiseFSM.h"
 
 const std::string_view NoiseState_NormalDamaged_Jaw::AniName = "NormalDamaged_Jaw";
-const std::pair<int, int> NoiseState_NormalDamaged_Jaw::AniCutFrame = std::pair<int, int>{ 5, 2 };
+const std::pair<int, int> NoiseState_NormalDamaged_Jaw::AniCutFrame = std::pair<int, int>{ 6, 8 };
 const std::pair<size_t, size_t> NoiseState_NormalDamaged_Jaw::AniFrameIndex = std::pair<size_t, size_t>{ 3,5 };
 const float NoiseState_NormalDamaged_Jaw::AniInterTime = 0.08f;
 

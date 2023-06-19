@@ -134,11 +134,11 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 
 
 	//Damaged
-	//FSMBase::CreateState<NoiseState_NormalDamaged_Face>(NoiseStateType::NormalDamaged_Face);
-	//FSMBase::CreateState<NoiseState_NormalDamaged_Stomach>(NoiseStateType::NormalDamaged_Stomach);
-	//FSMBase::CreateState<NoiseState_NormalDamaged_Jaw>(NoiseStateType::NormalDamaged_Jaw);
-	//FSMBase::CreateState<NoiseState_Damaged_BlowBack>(NoiseStateType::Damaged_BlowBack);
-	//FSMBase::CreateState<NoiseState_Damaged_KnockDown>(NoiseStateType::Damaged_KnockDown);
+	FSMBase::CreateState<NoiseState_NormalDamaged_Face>(NoiseStateType::NormalDamaged_Face);
+	FSMBase::CreateState<NoiseState_NormalDamaged_Stomach>(NoiseStateType::NormalDamaged_Stomach);
+	FSMBase::CreateState<NoiseState_NormalDamaged_Jaw>(NoiseStateType::NormalDamaged_Jaw);
+	FSMBase::CreateState<NoiseState_Damaged_BlowBack>(NoiseStateType::Damaged_BlowBack);
+	FSMBase::CreateState<NoiseState_Damaged_KnockDown>(NoiseStateType::Damaged_KnockDown);
 	//FSMBase::CreateState<NoiseState_Damaged_Dizzy>(NoiseStateType::Damaged_Dizzy);
 	//FSMBase::CreateState<NoiseState_Damaged_GroundHit>(NoiseStateType::Damaged_GroundHit);
 

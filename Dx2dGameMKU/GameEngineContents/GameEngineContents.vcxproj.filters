@@ -1105,6 +1105,24 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\04.Taunt">
       <UniqueIdentifier>{b91d2243-7679-4746-a411-091c8be4cf27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged">
+      <UniqueIdentifier>{bcf4ebce-a039-44a9-ac6d-80498040e763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\01.Face">
+      <UniqueIdentifier>{bdfb1fa2-61eb-4e14-9ede-412b4721c481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\02.Stomach">
+      <UniqueIdentifier>{f6a33340-8886-4a01-94af-bd4743194af0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\03.Jaw">
+      <UniqueIdentifier>{0533b767-af45-4711-887d-4dbe827fb211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\02.BlowBack">
+      <UniqueIdentifier>{8fdcde80-c884-45e3-8e16-ad0a1f11fa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\03.KnockDown">
+      <UniqueIdentifier>{4da3d956-c2df-4996-bc05-dc6598cff5b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1974,25 +1992,10 @@
     <ClCompile Include="NoiseState_Attack_WUPunch.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="NoiseState_Damaged_BlowBack.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClCompile>
     <ClCompile Include="NoiseState_Damaged_Dizzy.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="NoiseState_Damaged_GroundHit.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="NoiseState_Damaged_KnockDown.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="NoiseState_NormalDamaged_Face.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="NoiseState_NormalDamaged_Jaw.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClCompile>
-    <ClCompile Include="NoiseState_NormalDamaged_Stomach.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
     </ClCompile>
     <ClCompile Include="NoiseState_Defeat.cpp">
@@ -2006,6 +2009,21 @@
     </ClCompile>
     <ClCompile Include="NoiseState_Walk.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\02.Slide</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_NormalDamaged_Face.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_NormalDamaged_Jaw.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_NormalDamaged_Stomach.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_Damaged_BlowBack.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\02.BlowBack</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_Damaged_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\03.KnockDown</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2864,25 +2882,10 @@
     <ClInclude Include="NoiseState_Attack_WUPunch.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseState_Damaged_BlowBack.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClInclude>
     <ClInclude Include="NoiseState_Damaged_Dizzy.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="NoiseState_Damaged_GroundHit.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="NoiseState_Damaged_KnockDown.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="NoiseState_NormalDamaged_Face.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="NoiseState_NormalDamaged_Jaw.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
-    </ClInclude>
-    <ClInclude Include="NoiseState_NormalDamaged_Stomach.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged</Filter>
     </ClInclude>
     <ClInclude Include="NoiseState_Defeat.h">
@@ -2896,6 +2899,21 @@
     </ClInclude>
     <ClInclude Include="NoiseState_Walk.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\02.Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_NormalDamaged_Face.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\01.Face</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_NormalDamaged_Jaw.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\03.Jaw</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_NormalDamaged_Stomach.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged\02.Stomach</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Damaged_BlowBack.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\02.BlowBack</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Damaged_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\03.KnockDown</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

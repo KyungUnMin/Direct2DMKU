@@ -5,7 +5,7 @@
 
 const std::string_view NoiseState_NormalDamaged_Face::AniName = "NormalDamaged_Face";
 const std::pair<int, int> NoiseState_NormalDamaged_Face::AniCutFrame = std::pair<int, int>{5, 2};
-const std::pair<size_t, size_t> NoiseState_NormalDamaged_Face::AniFrameIndex = std::pair<size_t, size_t>{ 6,8 };
+const std::pair<size_t, size_t> NoiseState_NormalDamaged_Face::AniFrameIndex = std::pair<size_t, size_t>{ 0, 2 };
 const float NoiseState_NormalDamaged_Face::AniInterTime = 0.08f;
 
 NoiseState_NormalDamaged_Face::NoiseState_NormalDamaged_Face()

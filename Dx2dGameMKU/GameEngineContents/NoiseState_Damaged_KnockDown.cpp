@@ -7,8 +7,8 @@
 const std::string_view NoiseState_Damaged_KnockDown::AniFileName = "Noise_KnockDown.png";
 
 const std::string_view NoiseState_Damaged_KnockDown::AniName = "KnockDown";
-const std::pair<int, int> NoiseState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 7);
-const std::pair<size_t, size_t> NoiseState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 30 };
+const std::pair<int, int> NoiseState_Damaged_KnockDown::AniCutFrame = std::pair<int, int>(5, 5);
+const std::pair<size_t, size_t> NoiseState_Damaged_KnockDown::AniFrameIndex = std::pair<size_t, size_t>{ 0, 20 };
 const float NoiseState_Damaged_KnockDown::AniInterTime = 0.08f;
 
 NoiseState_Damaged_KnockDown::NoiseState_Damaged_KnockDown()
@@ -83,6 +83,6 @@ void NoiseState_Damaged_KnockDown::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::Defeat);
+	//GetFSM()->ChangeState(NoiseStateType::Defeat);
 }
 

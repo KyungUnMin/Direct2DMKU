@@ -5,7 +5,7 @@
 
 const std::string_view NoiseState_NormalDamaged_Stomach::AniName = "NormalDamaged_Stomach";
 const std::pair<int, int> NoiseState_NormalDamaged_Stomach::AniCutFrame = std::pair<int, int>{ 5, 2 };
-const std::pair<size_t, size_t> NoiseState_NormalDamaged_Stomach::AniFrameIndex = std::pair<size_t, size_t>{ 0,2 };
+const std::pair<size_t, size_t> NoiseState_NormalDamaged_Stomach::AniFrameIndex = std::pair<size_t, size_t>{ 3,5 };
 const float NoiseState_NormalDamaged_Stomach::AniInterTime = 0.08f;
 
 NoiseState_NormalDamaged_Stomach::NoiseState_NormalDamaged_Stomach()
