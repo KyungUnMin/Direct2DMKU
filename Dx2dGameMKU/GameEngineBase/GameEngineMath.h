@@ -60,6 +60,38 @@ public:
 	}
 
 
+	//GetAngleVectorToVectorDeg함수는 치역이 0.f ~ 180.f 였으나 치역을 360.f로 확장해서 보안한 함수
+	static float GetAngleVectorToVectorDeg360(const float4& _Left, const float4& _Right)
+	{
+		return GetAngleVectorToVectorRad360(_Left, _Right) * GameEngineMath::RadToDeg;
+	}
+
+	//GetAngleVectorToVectorDeg함수는 치역이 0.f ~ 180.f 였으나 치역을 360.f로 확장해서 보안한 함수
+	static float GetAngleVectorToVectorRad360(const float4& _Left, const float4& _Right)
+	{
+		float4 Left = _Left;
+		float4 Right = _Right;
+
+		Left.Normalize();
+		Right.Normalize();
+
+		float CosSeta = DotProduct3D(Left, Right);
+
+		float Angle = 0.f;
+		if (0.0f < ((Left.y * Right.x) + (Left.x * Right.y)))
+		{
+			Angle = acosf(CosSeta);
+		}
+		else
+		{
+			Angle = -acosf(CosSeta);
+		}
+
+		return Angle;
+	}
+
+
+
 	//두 벡터 사이 각을 구하는 함수
 	static float GetAngleVectorToVectorDeg(const float4& _Left, const float4& _Right)
 	{

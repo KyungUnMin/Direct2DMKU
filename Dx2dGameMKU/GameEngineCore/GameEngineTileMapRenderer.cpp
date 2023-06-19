@@ -27,6 +27,9 @@ void GameEngineTileMapRenderer::Start()
 	ColorOptionValue.MulColor = float4::One;
 	ColorOptionValue.PlusColor = float4::Null;
 
+	Clip.x = 1.0f;
+	Clip.y = 1.0f;
+
 	GetShaderResHelper().SetConstantBufferLink("AtlasData", AtlasData);
 	GetShaderResHelper().SetConstantBufferLink("ColorOption", ColorOptionValue);
 	GetShaderResHelper().SetConstantBufferLink("ClipData", Clip);

@@ -386,8 +386,11 @@ void GameEngineCore::CoreResourceInit()
 		//합칠땐 더하기 연산
 		Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
 
-		//SrcBlend = D3D11_BLEND_SRC_ALPHA : Src(덮어쓸 색상)에 자신의 알파값을 곱한다
-		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		//SrcBlend = D3D11_BLEND_ONE : 머지의 경우엔 덮어쓰일 색상에 알파값이 아닌 1이 곱해져야 한다.
+		//(알파가 1이 아닌 값이 머지될 경우 Dest쪽의 알파가 머지될 때마다 색상이 깎여나간다)
+		Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+
+
 		//DestBlend = D3D11_BLEND_INV_SRC_ALPHA : Dest(덮어질 색상)에 [1 - Src의 알파값]을 곱한다
 		Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 
