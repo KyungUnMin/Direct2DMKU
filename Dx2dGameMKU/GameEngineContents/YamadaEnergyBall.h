@@ -1,10 +1,10 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
+#include "FieldActorBase.h"
 
 class GameEngineSpriteRenderer;
 class GameEngineCollision;
 
-class YamadaEnergyBall : public GameEngineActor
+class YamadaEnergyBall : public FieldActorBase
 {
 public:
 	YamadaEnergyBall();
@@ -35,9 +35,7 @@ private:
 	static const int Damage;
 
 	std::shared_ptr<GameEngineSpriteRenderer> AirRender = nullptr;
-	std::shared_ptr<GameEngineSpriteRenderer> BallRender = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> RingRender = nullptr;
-	std::shared_ptr<GameEngineCollision> Collider = nullptr;
 
 
 	enum class State
@@ -62,6 +60,7 @@ private:
 	void Update_Create(float _DeltaTime);
 	void Update_Rot(float _DeltaTime);
 	void Update_CheckCol();
+	void Update_Shadow();
 	void Update_Destory(float _DeltaTime);
 };
 

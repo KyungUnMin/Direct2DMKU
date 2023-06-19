@@ -37,12 +37,14 @@ YamadaWormchiObj::~YamadaWormchiObj()
 
 void YamadaWormchiObj::Start()
 {
-	GameEngineActor::Start();
+	FieldActorBase::Start();
 
 	LoadImages();
 	CreateRenders();
 	CreateCollider();
 	MapScale = FieldLevelBase::GetPtr()->GetBackGround()->GetMapScale();
+
+	SetShadowScale(0.5f);
 }
 
 
@@ -71,7 +73,7 @@ void YamadaWormchiObj::LoadImages()
 
 void YamadaWormchiObj::CreateRenders()
 {
-	ObjRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = GetRenderer();
 	ObjRender->GetTransform()->SetLocalScale(ObjScale);
 
 	Light = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
@@ -85,7 +87,8 @@ void YamadaWormchiObj::CreateRenders()
 
 void YamadaWormchiObj::CreateCollider()
 {
-	Collider = CreateComponent<GameEngineCollision>(CollisionOrder::EnemyAttack);
+	CreateColliders(CollisionOrder::EnemyAttack);
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	Collider->GetTransform()->SetLocalScale(float4::One * 50.f);
 }
 
@@ -95,6 +98,7 @@ void YamadaWormchiObj::Init(WormchiObjType _Type)
 	int Index = static_cast<int>(_Type);
 	std::string AniName = Ani_FileName.data() + GameEngineString::ToString(Index);
 
+	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = GetRenderer();
 	ObjRender->CreateAnimation
 	({
 		.AnimationName = AniName,
@@ -109,7 +113,7 @@ void YamadaWormchiObj::Init(WormchiObjType _Type)
 
 void YamadaWormchiObj::Update(float _DeltaTime)
 {
-	GameEngineActor::Update(_DeltaTime);
+	FieldActorBase::Update(_DeltaTime);
 
 	switch (CurState)
 	{
@@ -121,10 +125,24 @@ void YamadaWormchiObj::Update(float _DeltaTime)
 		break;
 	case YamadaWormchiObj::State::Move:
 		Update_Move(_DeltaTime);
+		Update_Shadow();
 		break;
 	case YamadaWormchiObj::State::Extinct:
 		Update_Extinct(_DeltaTime);
 		break;
+	}
+}
+
+void YamadaWormchiObj::Update_Shadow()
+{
+	float4 Pos  = GetTransform()->GetWorldPosition();
+	if (true == GetBackGround()->IsBlockPos(Pos))
+	{
+		GetShadowRender()->Off();
+	}
+	else
+	{
+		GetShadowRender()->On();
 	}
 }
 
@@ -137,6 +155,8 @@ void YamadaWormchiObj::Update_Up(float _DeltaTime)
 	float SinValue = sinf(GameEngineMath::PIE * 0.5f * ClampRatio);
 
 	float4 NowOffset = float4::Lerp(float4::Zero, float4::Up * HeightPivot, SinValue);
+
+	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = GetRenderer();
 	GameEngineTransform* ObjTrans = ObjRender->GetTransform();
 	ObjTrans->SetLocalPosition(NowOffset);
 	ObjRender->ColorOptionValue.MulColor.a = SinValue;
@@ -157,6 +177,7 @@ void YamadaWormchiObj::Update_Wait(float _DeltaTime)
 	float SinValue = sinf(GameEngineMath::PIE2 * LiveTime * CycleRatioForSec);
 	float NowHeight = HeightPivot + (SinValue * OffsetRange);
 
+	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = GetRenderer();
 	GameEngineTransform* ObjTrans = ObjRender->GetTransform();
 	ObjTrans->SetLocalPosition(float4::Up * NowHeight);
 }
@@ -191,6 +212,7 @@ void YamadaWormchiObj::Update_Move(float _DeltaTime)
 	ThisTrans->AddLocalPosition(Dir * Speed * _DeltaTime);
 
 	//Ãæµ¹
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	if(Collider->IsUpdate() && nullptr != Collider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D))
 	{
 		Attack();
@@ -207,6 +229,7 @@ void YamadaWormchiObj::Update_Move(float _DeltaTime)
 
 	std::shared_ptr<AfterImageEffect> Effect = nullptr;
 	Effect = GetLevel()->CreateActor<AfterImageEffect>(UpdateOrder::Effect);
+	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = GetRenderer();
 	Effect->Init(ObjRender);
 
 	float4 EffectPos = ObjRender->GetTransform()->GetWorldPosition();
@@ -256,8 +279,10 @@ void YamadaWormchiObj::Attack()
 void YamadaWormchiObj::Extinct()
 {
 	CurState = State::Extinct;
+	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = GetRenderer();
 	ObjRender->Off();
 	Light->On();
+	GetShadowRender()->Off();
 	
 	float4 ObjLocalPos = ObjRender->GetTransform()->GetLocalPosition();
 	Light->GetTransform()->SetLocalPosition(ObjLocalPos);

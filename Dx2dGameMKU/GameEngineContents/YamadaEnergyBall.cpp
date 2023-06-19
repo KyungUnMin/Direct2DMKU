@@ -14,6 +14,7 @@
 #include "LightEffect.h"
 #include "AfterImageEffect.h"
 #include "FieldPlayer.h"
+#include "BackGround.h"
 
 const std::string_view YamadaEnergyBall::Ball_FileName = "Yamada_EnergyBall.png";
 const std::string_view YamadaEnergyBall::Ring_FileName = "Yamada_EnergyRing.png";
@@ -34,7 +35,7 @@ YamadaEnergyBall::~YamadaEnergyBall()
 
 void YamadaEnergyBall::Start() 
 {
-	GameEngineActor::Start();
+	FieldActorBase::Start();
 
 	ImageLoad();
 	CreateRenders();
@@ -84,7 +85,7 @@ void YamadaEnergyBall::CreateRender_Air()
 
 void YamadaEnergyBall::CreateRender_Ball() 
 {
-	BallRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	std::shared_ptr<GameEngineSpriteRenderer> BallRender = GetRenderer();
 	BallRender->SetScaleToTexture(Ball_FileName);
 	BallRender->ColorOptionValue.MulColor = DarkPupple;
 
@@ -102,7 +103,9 @@ void YamadaEnergyBall::CreateRender_Ball()
 
 void YamadaEnergyBall::CreateCollider()
 {
-	Collider = CreateComponent<GameEngineCollision>(CollisionOrder::EnemyAttack);
+	FieldActorBase::CreateColliders(CollisionOrder::EnemyAttack);
+
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	GameEngineTransform* ColTrans = Collider->GetTransform();
 	ColTrans->SetLocalScale(float4::One * 100.f);
 	Collider->Off();
@@ -123,7 +126,7 @@ void YamadaEnergyBall::CreateLight()
 
 void YamadaEnergyBall::Update(float _DeltaTime)
 {
-	GameEngineActor::Update(_DeltaTime);
+	FieldActorBase::Update(_DeltaTime);
 
 
 
@@ -135,6 +138,7 @@ void YamadaEnergyBall::Update(float _DeltaTime)
 	case YamadaEnergyBall::State::Rot:
 		Update_Rot(_DeltaTime);
 		Update_CheckCol();
+		Update_Shadow();
 		break;
 	case YamadaEnergyBall::State::Destory:
 		Update_Destory(_DeltaTime);
@@ -146,6 +150,9 @@ void YamadaEnergyBall::Update_Create(float _DeltaTime)
 {
 	if (false == AirRender->IsAnimationEnd())
 		return;
+
+	std::shared_ptr<GameEngineSpriteRenderer> BallRender = GetRenderer();
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 
 	AirRender->Off();
 	BallRender->On();
@@ -168,6 +175,7 @@ void YamadaEnergyBall::Update_Rot(float _DeltaTime)
 	AfterImgTimer = 0.f;
 	std::shared_ptr<AfterImageEffect> AfterImg = nullptr;
 	AfterImg = GetLevel()->CreateActor<AfterImageEffect>(UpdateOrder::Effect);
+	std::shared_ptr<GameEngineSpriteRenderer> BallRender = GetRenderer();
 	AfterImg->Init(BallRender);
 	AfterImg->SetPlusColor(DarkPupple);
 }
@@ -181,6 +189,8 @@ void YamadaEnergyBall::Update_CheckCol()
 	LastAttackTime = LiveTime;
 
 	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
+
 	PlayerCol = Collider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
 	if (nullptr == PlayerCol)
 		return;
@@ -193,6 +203,21 @@ void YamadaEnergyBall::Update_CheckCol()
 	DataMgr::MinusPlayerHP(Damage);
 }
 
+void YamadaEnergyBall::Update_Shadow()
+{
+	float4 ThisPos = GetTransform()->GetWorldPosition();
+
+	if (true == GetBackGround()->IsBlockPos(ThisPos))
+	{
+		GetShadowRender()->Off();
+	}
+	else
+	{
+		GetShadowRender()->On();
+	}
+}
+
+
 void YamadaEnergyBall::DestroyBall()
 {
 	AirRender->On();
@@ -202,8 +227,12 @@ void YamadaEnergyBall::DestroyBall()
 		AirRender->ChangeAnimation(Air_FileName);
 	}
 
+	std::shared_ptr<GameEngineSpriteRenderer> BallRender = GetRenderer();
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
+
 	BallRender->Off();
 	Collider->Off();
+	GetShadowRender()->Off();
 	CurState = State::Destory;
 }
 

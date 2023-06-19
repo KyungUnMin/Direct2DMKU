@@ -40,7 +40,7 @@ YamadaMatterBlock::~YamadaMatterBlock()
 
 void YamadaMatterBlock::Start()
 {
-	GameEngineActor::Start();
+	FieldActorBase::Start();
 
 	ImageLoad();
 	CreateRenders();
@@ -81,7 +81,7 @@ void YamadaMatterBlock::CreateRenders()
 
 
 	//기둥
-	Block = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	std::shared_ptr<GameEngineSpriteRenderer> Block = GetRenderer();
 	Block->CreateAnimation
 	({
 		.AnimationName = BlockName,
@@ -116,6 +116,7 @@ void YamadaMatterBlock::CreateRenders()
 	GameEngineTransform* PivotTrans = Pivot->GetTransform();
 	BlockTrans->SetParent(PivotTrans);
 	DustTrans->SetParent(PivotTrans);
+	GetShadowRender()->GetTransform()->SetParent(PivotTrans);
 
 
 	//위치 조절
@@ -127,7 +128,8 @@ void YamadaMatterBlock::CreateCollider()
 {
 	const float4 ColScale = float4{ 50.f, 200.f, 50.f };
 
-	Collider = CreateComponent<GameEngineCollision>(CollisionOrder::EnemyAttack);
+	CreateColliders(CollisionOrder::EnemyAttack);
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	Collider->SetColType(ColType::AABBBOX3D);
 
 	GameEngineTransform* ColTrans = Collider->GetTransform();
@@ -152,7 +154,7 @@ void YamadaMatterBlock::CreateLight()
 
 void YamadaMatterBlock::Update(float _DeltaTime)
 {
-	GameEngineActor::Update(_DeltaTime);
+	FieldActorBase::Update(_DeltaTime);
 
 	switch (CurState)
 	{
@@ -215,6 +217,7 @@ void YamadaMatterBlock::Update_Approach(float _DeltaTime)
 	if (Ratio <= 1.f)
 		return;
 
+	std::shared_ptr<GameEngineSpriteRenderer> Block = GetRenderer();
 	Block->Off();
 	CurState = State::BlockDestroy;
 }
@@ -243,6 +246,7 @@ void YamadaMatterBlock::Update_BlockDestroy(float _DeltaTime)
 
 void YamadaMatterBlock::CheckColWithPlayer()
 {
+	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	if (nullptr == Collider->Collision(CollisionOrder::PlayerMain, ColType::AABBBOX3D, ColType::SPHERE3D))
 		return;
 

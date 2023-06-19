@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
+#include "FieldActorBase.h"
 
 enum class WormchiObjType
 {
@@ -15,7 +15,7 @@ enum class WormchiObjType
 
 class GameEngineSpriteRenderer;
 
-class YamadaWormchiObj : public GameEngineActor
+class YamadaWormchiObj : public FieldActorBase
 {
 public:
 	YamadaWormchiObj();
@@ -54,9 +54,7 @@ private:
 	static const float4 LightScale;
 
 
-	std::shared_ptr<GameEngineSpriteRenderer> ObjRender = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Light = nullptr;
-	std::shared_ptr<class GameEngineCollision> Collider = nullptr;
 
 	enum class State
 	{
@@ -81,6 +79,7 @@ private:
 	void Update_Up(float _DeltaTime);
 	void Update_Wait(float _DeltaTime);
 	void Update_Move(float _DeltaTime);
+	void Update_Shadow();
 	void Update_Extinct(float _DeltaTime);
 
 	bool CheckMapOut(const float4& _Pos);

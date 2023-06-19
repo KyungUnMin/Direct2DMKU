@@ -1,11 +1,11 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
+#include "FieldActorBase.h"
 
 class GameEngineSpriteRenderer;
 class GameEngineComponent;
 class GameEngineCollision;
 
-class YamadaMatterBlock : public GameEngineActor
+class YamadaMatterBlock : public FieldActorBase
 {
 public:
 	static const float BlockOffsetX;
@@ -31,11 +31,8 @@ private:
 	static const int Damage;
 
 
-	std::shared_ptr<GameEngineSpriteRenderer> Block = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Dust = nullptr;
 	std::shared_ptr<GameEngineComponent> Pivot = nullptr;
-
-	std::shared_ptr<GameEngineCollision> Collider = nullptr;
 
 
 	enum class State
