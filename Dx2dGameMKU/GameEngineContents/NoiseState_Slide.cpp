@@ -24,10 +24,6 @@ const std::vector<std::string_view> NoiseState_Slide::AniFileNames =
 
 const float NoiseState_Slide::AniInterTime = 0.08f;
 
-const std::vector<int> NoiseState_Slide::AxeAttackPercents =
-{
-	0, 50, 90
-};
 
 NoiseState_Slide::NoiseState_Slide()
 {
@@ -48,8 +44,6 @@ void NoiseState_Slide::Start()
 	CreateAnimation();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 	Collider = GetEnemy()->GetAttackCollider();
-
-	BossFsmPtr = GetConvertFSM<BossFSMBase>();
 }
 
 void NoiseState_Slide::LoadAnimation()
@@ -308,9 +302,10 @@ bool NoiseState_Slide::Update_LoopMove(float _DeltaTime)
 
 bool NoiseState_Slide::ChangeDir()
 {
+	static const int Percent = 50;
+
 	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 100);
-	size_t CurPhase = BossFsmPtr->GetCurPhase();
-	if (RandNum < AxeAttackPercents[CurPhase])
+	if (RandNum < Percent)
 		return true;
 
 

@@ -21,7 +21,6 @@ protected:
 private:
 	static const std::vector<std::string_view> AniFileNames;
 	static const float AniInterTime;
-	static const std::vector<int> AxeAttackPercents;
 
 	enum class State
 	{
@@ -34,7 +33,6 @@ private:
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	std::shared_ptr<class GameEngineCollision> Collider = nullptr;
-	class BossFSMBase* BossFsmPtr = nullptr;
 
 	const float MoveSpeed = 1200.f;
 	float4 MoveDir = float4::Zero;
