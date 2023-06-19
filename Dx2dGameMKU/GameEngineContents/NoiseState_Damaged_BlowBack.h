@@ -1,16 +1,16 @@
 #pragma once
 #include "EnemyState_DamagedBase.h"
 
-class MisuzuState_Damaged_BlowBack : public EnemyState_DamagedBase
+class NoiseState_Damaged_BlowBack : public EnemyState_DamagedBase
 {
 public:
-	MisuzuState_Damaged_BlowBack();
-	~MisuzuState_Damaged_BlowBack() override;
+	NoiseState_Damaged_BlowBack();
+	~NoiseState_Damaged_BlowBack() override;
 
-	MisuzuState_Damaged_BlowBack(const MisuzuState_Damaged_BlowBack& _Other) = delete;
-	MisuzuState_Damaged_BlowBack(MisuzuState_Damaged_BlowBack&& _Other) noexcept = delete;
-	MisuzuState_Damaged_BlowBack& operator=(const MisuzuState_Damaged_BlowBack& _Other) = delete;
-	MisuzuState_Damaged_BlowBack& operator=(const MisuzuState_Damaged_BlowBack&& _Other) noexcept = delete;
+	NoiseState_Damaged_BlowBack(const NoiseState_Damaged_BlowBack& _Other) = delete;
+	NoiseState_Damaged_BlowBack(NoiseState_Damaged_BlowBack&& _Other) noexcept = delete;
+	NoiseState_Damaged_BlowBack& operator=(const NoiseState_Damaged_BlowBack& _Other) = delete;
+	NoiseState_Damaged_BlowBack& operator=(const NoiseState_Damaged_BlowBack&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

@@ -346,6 +346,7 @@
     <ClInclude Include="FieldEnemy_Cop.h" />
     <ClInclude Include="FieldEnemy_Hooligan.h" />
     <ClInclude Include="FieldEnemy_Misuzu.h" />
+    <ClInclude Include="FieldEnemy_Noise.h" />
     <ClInclude Include="FieldEnemy_SchoolBoy.h">
       <SubType>
       </SubType>
@@ -440,6 +441,25 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="MisuzuState_Walk.h" />
+    <ClInclude Include="NoiseFSM.h" />
+    <ClInclude Include="NoiseState_Attack_Elbow.h" />
+    <ClInclude Include="NoiseState_Attack_GetUp.h" />
+    <ClInclude Include="NoiseState_Attack_Meteor.h" />
+    <ClInclude Include="NoiseState_Attack_Roar.h" />
+    <ClInclude Include="NoiseState_Attack_Slap.h" />
+    <ClInclude Include="NoiseState_Attack_Tackle.h" />
+    <ClInclude Include="NoiseState_Attack_WUPunch.h" />
+    <ClInclude Include="NoiseState_Damaged_BlowBack.h" />
+    <ClInclude Include="NoiseState_Damaged_Dizzy.h" />
+    <ClInclude Include="NoiseState_Damaged_GroundHit.h" />
+    <ClInclude Include="NoiseState_Damaged_KnockDown.h" />
+    <ClInclude Include="NoiseState_Defeat.h" />
+    <ClInclude Include="NoiseState_Idle.h" />
+    <ClInclude Include="NoiseState_NormalDamaged_Face.h" />
+    <ClInclude Include="NoiseState_NormalDamaged_Jaw.h" />
+    <ClInclude Include="NoiseState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="NoiseState_Taunt.h" />
+    <ClInclude Include="NoiseState_Walk.h" />
     <ClInclude Include="OpeningDiaEffect.h">
       <SubType>
       </SubType>
@@ -1067,6 +1087,7 @@
     <ClCompile Include="FieldEnemy_Cop.cpp" />
     <ClCompile Include="FieldEnemy_Hooligan.cpp" />
     <ClCompile Include="FieldEnemy_Misuzu.cpp" />
+    <ClCompile Include="FieldEnemy_Noise.cpp" />
     <ClCompile Include="FieldEnemy_SchoolBoy.cpp">
       <SubType>
       </SubType>
@@ -1161,6 +1182,25 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="MisuzuState_Walk.cpp" />
+    <ClCompile Include="NoiseFSM.cpp" />
+    <ClCompile Include="NoiseState_Attack_Elbow.cpp" />
+    <ClCompile Include="NoiseState_Attack_GetUp.cpp" />
+    <ClCompile Include="NoiseState_Attack_Meteor.cpp" />
+    <ClCompile Include="NoiseState_Attack_Roar.cpp" />
+    <ClCompile Include="NoiseState_Attack_Slap.cpp" />
+    <ClCompile Include="NoiseState_Attack_Tackle.cpp" />
+    <ClCompile Include="NoiseState_Attack_WUPunch.cpp" />
+    <ClCompile Include="NoiseState_Damaged_BlowBack.cpp" />
+    <ClCompile Include="NoiseState_Damaged_Dizzy.cpp" />
+    <ClCompile Include="NoiseState_Damaged_GroundHit.cpp" />
+    <ClCompile Include="NoiseState_Damaged_KnockDown.cpp" />
+    <ClCompile Include="NoiseState_Defeat.cpp" />
+    <ClCompile Include="NoiseState_Idle.cpp" />
+    <ClCompile Include="NoiseState_NormalDamaged_Face.cpp" />
+    <ClCompile Include="NoiseState_NormalDamaged_Jaw.cpp" />
+    <ClCompile Include="NoiseState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="NoiseState_Taunt.cpp" />
+    <ClCompile Include="NoiseState_Walk.cpp" />
     <ClCompile Include="OpeningDiaEffect.cpp">
       <SubType>
       </SubType>
