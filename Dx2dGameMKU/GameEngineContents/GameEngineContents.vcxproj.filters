@@ -1135,6 +1135,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash">
       <UniqueIdentifier>{260b9a00-8b43-45c3-a5af-0b8ace9702d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.AxeDash">
+      <UniqueIdentifier>{bcbe5461-dd04-4fb8-b876-f88b71c87a7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.GuitarSlashDash">
+      <UniqueIdentifier>{1a02549d-dc47-43ee-b034-9c6205407c96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2040,6 +2046,12 @@
     <ClCompile Include="NoiseState_Attack_GuitarSlash.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash</Filter>
     </ClCompile>
+    <ClCompile Include="NoiseState_Attack_AxeDash.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.AxeDash</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_Attack_GuitarSlashDash.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.GuitarSlashDash</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2932,6 +2944,12 @@
     </ClInclude>
     <ClInclude Include="NoiseState_Attack_GuitarSlash.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Attack_AxeDash.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.AxeDash</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Attack_GuitarSlashDash.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.GuitarSlashDash</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

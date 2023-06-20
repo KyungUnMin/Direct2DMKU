@@ -12,6 +12,7 @@ enum class NoiseStateType
 	//Attack
 	AxeGrind,
 	GuitarSlash,
+	GuitarSlashDash,
 	//WUPunch,
 	//Tackle,
 	//Slap,

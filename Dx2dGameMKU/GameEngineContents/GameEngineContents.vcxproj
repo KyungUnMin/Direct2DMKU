@@ -446,8 +446,16 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="NoiseFSM.h" />
+    <ClInclude Include="NoiseState_Attack_AxeDash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NoiseState_Attack_AxeGrind.h" />
     <ClInclude Include="NoiseState_Attack_GetUp.h" />
+    <ClInclude Include="NoiseState_Attack_GuitarSlashDash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NoiseState_Attack_Meteor.h" />
     <ClInclude Include="NoiseState_Attack_Roar.h" />
     <ClInclude Include="NoiseState_Attack_GuitarSlash.h" />
@@ -1191,8 +1199,16 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="NoiseFSM.cpp" />
+    <ClCompile Include="NoiseState_Attack_AxeDash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NoiseState_Attack_AxeGrind.cpp" />
     <ClCompile Include="NoiseState_Attack_GetUp.cpp" />
+    <ClCompile Include="NoiseState_Attack_GuitarSlashDash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NoiseState_Attack_Meteor.cpp" />
     <ClCompile Include="NoiseState_Attack_Roar.cpp" />
     <ClCompile Include="NoiseState_Attack_GuitarSlash.cpp" />
