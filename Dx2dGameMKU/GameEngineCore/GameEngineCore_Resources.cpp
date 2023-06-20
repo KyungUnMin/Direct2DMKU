@@ -592,4 +592,5 @@ void GameEngineCore::CoreResourceEnd()
 	GameEngineRenderTarget::ResourcesClear();
 	GameEngineBlend::ResourcesClear();
 	GameEngineDepthState::ResourcesClear();
+	GameEngineSound::ResourcesClear();
 }
