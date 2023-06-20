@@ -64,6 +64,8 @@ void FieldActorBase::CreateShadow()
 	ShadowTrans->AddLocalPosition(float4::Up * 10.f);
 }
 
+
+
 void FieldActorBase::SetShadowScale(const float4& _ShadowScale)
 {
 	GameEngineTransform* ShadowTrans = ShadowRender->GetTransform();
@@ -106,6 +108,18 @@ void FieldActorBase::CreateColliders(CollisionOrder _Order)
 	else
 	{
 		MsgAssert("Player, Enemy, NPC의 충돌체만 만들수 있습니다");
+	}
+}
+
+void FieldActorBase::CreateCollider(CollisionOrder _Order)
+{
+	if (CollisionOrder::EnemyAttack == _Order || CollisionOrder::PlayerAttack == _Order)
+	{
+		AttackCollider = CreateVisuableCollision(_Order);
+	}
+	else
+	{
+		MainCollider = CreateVisuableCollision(_Order);
 	}
 }
 

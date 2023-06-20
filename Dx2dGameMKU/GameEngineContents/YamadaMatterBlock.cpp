@@ -45,7 +45,7 @@ void YamadaMatterBlock::Start()
 
 	ImageLoad();
 	CreateRenders();
-	CreateCollider();
+	SettingCollider();
 	CreateLight();
 	CreateSparkEffect();
 	
@@ -127,11 +127,11 @@ void YamadaMatterBlock::CreateRenders()
 	Pivot->Off();
 }
 
-void YamadaMatterBlock::CreateCollider()
+void YamadaMatterBlock::SettingCollider()
 {
 	const float4 ColScale = float4{ 50.f, 200.f, 50.f };
 
-	CreateColliders(CollisionOrder::EnemyAttack);
+	CreateCollider(CollisionOrder::EnemyAttack);
 	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	Collider->SetColType(ColType::AABBBOX3D);
 

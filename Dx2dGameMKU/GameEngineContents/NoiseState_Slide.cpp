@@ -324,7 +324,7 @@ void NoiseState_Slide::Update_End(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::Idle);
+	GetFSM()->ChangeState(NoiseStateType::GuitarSlash);
 }
 
 

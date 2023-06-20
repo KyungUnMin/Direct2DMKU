@@ -1,30 +1,31 @@
 #include "PrecompileHeader.h"
-#include "NoiseState_Attack_Slap.h"
+#include "NoiseState_Attack_GuitarSlash.h"
 
 #include "DataMgr.h"
 
 #include "NoiseFSM.h"
 #include "FieldPlayer.h"
+#include "FieldEnemyBase.h"
 #include "FieldCamController.h"
 
-const std::string_view NoiseState_Attack_Slap::AniName = "Attack_Slap";
-const std::string_view NoiseState_Attack_Slap::AniFileName = "Noise_Slap.png";
-const std::pair<int, int> NoiseState_Attack_Slap::AniCutFrame = std::pair<int, int>(5, 3);
-const float NoiseState_Attack_Slap::AniInterTime = 0.08f;
-const int NoiseState_Attack_Slap::Damage = 5;
-const int NoiseState_Attack_Slap::AttackFrm = 8;
+const std::string_view NoiseState_Attack_GuitarSlash::AniName = "Attack_GuitarSlash";
+const std::string_view NoiseState_Attack_GuitarSlash::AniFileName = "Noise_GuitarSlash.png";
+const std::pair<int, int> NoiseState_Attack_GuitarSlash::AniCutFrame = std::pair<int, int>(5, 4);
+const float NoiseState_Attack_GuitarSlash::AniInterTime = 0.08f;
+const int NoiseState_Attack_GuitarSlash::Damage = 15;
+const int NoiseState_Attack_GuitarSlash::AttackFrm = 7;
 
-NoiseState_Attack_Slap::NoiseState_Attack_Slap()
+NoiseState_Attack_GuitarSlash::NoiseState_Attack_GuitarSlash()
 {
 
 }
 
-NoiseState_Attack_Slap::~NoiseState_Attack_Slap()
+NoiseState_Attack_GuitarSlash::~NoiseState_Attack_GuitarSlash()
 {
 
 }
 
-void NoiseState_Attack_Slap::Start()
+void NoiseState_Attack_GuitarSlash::Start()
 {
 	BossState_AttackBase::Start();
 
@@ -32,7 +33,7 @@ void NoiseState_Attack_Slap::Start()
 	CreateAnimation();
 }
 
-void NoiseState_Attack_Slap::LoadAnimation()
+void NoiseState_Attack_GuitarSlash::LoadAnimation()
 {
 	static bool IsLoad = false;
 	if (true == IsLoad)
@@ -48,7 +49,7 @@ void NoiseState_Attack_Slap::LoadAnimation()
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileName).GetFullPath(), AniCutFrame.first, AniCutFrame.second);
 }
 
-void NoiseState_Attack_Slap::CreateAnimation()
+void NoiseState_Attack_GuitarSlash::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	Render->CreateAnimation
@@ -56,10 +57,10 @@ void NoiseState_Attack_Slap::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 13,
+		.End = 15,
 		.FrameInter = AniInterTime,
 		.Loop = false,
-		});
+	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
 }
@@ -67,22 +68,25 @@ void NoiseState_Attack_Slap::CreateAnimation()
 
 
 
-void NoiseState_Attack_Slap::EnterState()
+void NoiseState_Attack_GuitarSlash::EnterState()
 {
 	BossState_AttackBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
-	EnemyState_AttackBase::SetAttackColValue(float4{50.f, 50.f}, float4::One * 150.f);
+	EnemyState_AttackBase::SetAttackColValue(float4::Right * 150.f, float4::One * 250.f);
 }
 
 
 
-void NoiseState_Attack_Slap::Update(float _DeltaTime)
+void NoiseState_Attack_GuitarSlash::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
 
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
+
+	GetFSM()->ChangeState(NoiseStateType::Idle);
+	return;
 
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())
@@ -105,9 +109,13 @@ void NoiseState_Attack_Slap::Update(float _DeltaTime)
 
 
 
-void NoiseState_Attack_Slap::Attack()
+void NoiseState_Attack_GuitarSlash::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
+	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
+	float4 LookPos = GetEnemy()->GetTransform()->GetWorldPosition();
+	Player->Look(LookPos);
+
+	bool Result = Player->OnDamage_BlowBack();
 	if (false == Result)
 		return;
 

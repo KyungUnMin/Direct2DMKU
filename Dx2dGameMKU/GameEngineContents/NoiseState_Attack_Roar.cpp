@@ -117,7 +117,7 @@ void NoiseState_Attack_Roar::Update(float _DeltaTime)
 	}
 
 	//일정 범위 안에 있다면 강 펀치 공격
-	GetFSM()->ChangeState(NoiseStateType::WUPunch);
+	//GetFSM()->ChangeState(NoiseStateType::WUPunch);
 }
 
 

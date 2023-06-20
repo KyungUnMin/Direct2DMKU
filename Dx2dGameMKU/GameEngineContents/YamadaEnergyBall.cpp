@@ -39,7 +39,7 @@ void YamadaEnergyBall::Start()
 
 	ImageLoad();
 	CreateRenders();
-	CreateCollider();
+	SettingCollider();
 	CreateLight();
 }
 
@@ -101,9 +101,9 @@ void YamadaEnergyBall::CreateRender_Ball()
 }
 
 
-void YamadaEnergyBall::CreateCollider()
+void YamadaEnergyBall::SettingCollider()
 {
-	FieldActorBase::CreateColliders(CollisionOrder::EnemyAttack);
+	FieldActorBase::CreateCollider(CollisionOrder::EnemyAttack);
 
 	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	GameEngineTransform* ColTrans = Collider->GetTransform();

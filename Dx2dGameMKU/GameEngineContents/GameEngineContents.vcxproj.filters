@@ -1132,6 +1132,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\01.AxeGrind">
       <UniqueIdentifier>{0347dc23-a573-48af-8548-01a63540128c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash">
+      <UniqueIdentifier>{260b9a00-8b43-45c3-a5af-0b8ace9702d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1989,9 +1992,6 @@
     <ClCompile Include="NoiseState_Attack_Roar.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
     </ClCompile>
-    <ClCompile Include="NoiseState_Attack_Slap.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
-    </ClCompile>
     <ClCompile Include="NoiseState_Attack_Tackle.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
     </ClCompile>
@@ -2036,6 +2036,9 @@
     </ClCompile>
     <ClCompile Include="NoiseState_Attack_AxeGrind.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\01.AxeGrind</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_Attack_GuitarSlash.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2882,9 +2885,6 @@
     <ClInclude Include="NoiseState_Attack_Roar.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseState_Attack_Slap.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
-    </ClInclude>
     <ClInclude Include="NoiseState_Attack_Tackle.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack</Filter>
     </ClInclude>
@@ -2929,6 +2929,9 @@
     </ClInclude>
     <ClInclude Include="NoiseState_Attack_AxeGrind.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\01.AxeGrind</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Attack_GuitarSlash.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -32,7 +32,7 @@ void NoiseAxe::Start()
 
 	ImageLoad();
 	SettingRender();
-	FieldActorBase::CreateColliders(CollisionOrder::EnemyAttack);
+	FieldActorBase::CreateCollider(CollisionOrder::EnemyAttack);
 	FieldActorBase::SetShadowScale(1.5f);
 
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
@@ -106,7 +106,7 @@ void NoiseAxe::Update(float _DeltaTime)
 	if (AttackTimer < 0.1f)
 		return;
 
-	if (nullptr == GetMainCollider()->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D))
+	if (nullptr == GetAttackCollider()->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D))
 		return;
 
 	AttackTimer = 0.f;

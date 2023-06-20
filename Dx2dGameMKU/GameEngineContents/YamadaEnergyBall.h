@@ -54,7 +54,7 @@ private:
 	void CreateRenders();
 	void CreateRender_Air();
 	void CreateRender_Ball();
-	void CreateCollider();
+	void SettingCollider();
 	void CreateLight();
 
 	void Update_Create(float _DeltaTime);

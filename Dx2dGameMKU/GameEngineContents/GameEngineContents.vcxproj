@@ -450,7 +450,7 @@
     <ClInclude Include="NoiseState_Attack_GetUp.h" />
     <ClInclude Include="NoiseState_Attack_Meteor.h" />
     <ClInclude Include="NoiseState_Attack_Roar.h" />
-    <ClInclude Include="NoiseState_Attack_Slap.h" />
+    <ClInclude Include="NoiseState_Attack_GuitarSlash.h" />
     <ClInclude Include="NoiseState_Attack_Tackle.h" />
     <ClInclude Include="NoiseState_Attack_WUPunch.h" />
     <ClInclude Include="NoiseState_Damaged_BlowBack.h" />
@@ -1195,7 +1195,7 @@
     <ClCompile Include="NoiseState_Attack_GetUp.cpp" />
     <ClCompile Include="NoiseState_Attack_Meteor.cpp" />
     <ClCompile Include="NoiseState_Attack_Roar.cpp" />
-    <ClCompile Include="NoiseState_Attack_Slap.cpp" />
+    <ClCompile Include="NoiseState_Attack_GuitarSlash.cpp" />
     <ClCompile Include="NoiseState_Attack_Tackle.cpp" />
     <ClCompile Include="NoiseState_Attack_WUPunch.cpp" />
     <ClCompile Include="NoiseState_Damaged_BlowBack.cpp" />

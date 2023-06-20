@@ -41,7 +41,7 @@ void YamadaWormchiObj::Start()
 
 	LoadImages();
 	CreateRenders();
-	CreateCollider();
+	SettingCollider();
 	MapScale = FieldLevelBase::GetPtr()->GetBackGround()->GetMapScale();
 
 	SetShadowScale(0.5f);
@@ -85,9 +85,9 @@ void YamadaWormchiObj::CreateRenders()
 	Light->Off();
 }
 
-void YamadaWormchiObj::CreateCollider()
+void YamadaWormchiObj::SettingCollider()
 {
-	CreateColliders(CollisionOrder::EnemyAttack);
+	CreateCollider(CollisionOrder::EnemyAttack);
 	std::shared_ptr<GameEngineCollision> Collider = GetAttackCollider();
 	Collider->GetTransform()->SetLocalScale(float4::One * 50.f);
 }

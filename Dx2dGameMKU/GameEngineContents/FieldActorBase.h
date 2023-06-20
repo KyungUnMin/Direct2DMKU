@@ -76,7 +76,7 @@ public:
 
 	inline std::shared_ptr<GameEngineCollision> GetAttackCollider() const
 	{
-		if (nullptr == MainCollider.ParentCollision)
+		if (nullptr == AttackCollider.ParentCollision)
 		{
 			MsgAssert("AttackCollider를 만들어 준 적이 없습니다.\n FieldActorBase::CreateColliders를 호출하세요");
 		}
@@ -99,6 +99,8 @@ protected:
 	}
 
 	void CreateColliders(CollisionOrder _Order);
+
+	void CreateCollider(CollisionOrder _Order);
 	
 
 	void SetShadowScale(const float4& _ShadowScale);

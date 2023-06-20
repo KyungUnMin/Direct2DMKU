@@ -74,7 +74,7 @@ private:
 
 	void LoadImages();
 	void CreateRenders();
-	void CreateCollider();
+	void SettingCollider();
 
 	void Update_Up(float _DeltaTime);
 	void Update_Wait(float _DeltaTime);

@@ -51,7 +51,7 @@ private:
 
 	void ImageLoad();
 	void CreateRenders();
-	void CreateCollider();
+	void SettingCollider();
 	void CreateLight();
 	void CreateSparkEffect();
 

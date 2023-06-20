@@ -11,12 +11,12 @@ enum class NoiseStateType
 
 	//Attack
 	AxeGrind,
-	Elbow,
-	WUPunch,
-	Tackle,
-	Slap,
-	Meteor,
-	Roar,
+	GuitarSlash,
+	//WUPunch,
+	//Tackle,
+	//Slap,
+	//Meteor,
+	//Roar,
 
 
 	//Damaged
