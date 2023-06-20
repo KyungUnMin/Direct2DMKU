@@ -187,65 +187,86 @@ bool GameEngineTransform::OBB2DToOBB2D(const CollisionData& _Left, const Collisi
 
 void TransformData::LocalCalculation()
 {
-	//크기행렬 만들기
-	ScaleMatrix.Scale(Scale);
-
-
-	//회전행렬 만들기
-	Rotation.w = 0.0f;
-	//로테이션 -> 쿼터니언
 	Quaternion = Rotation.EulerDegToQuaternion();
-	//쿼터니언 -> 로테이션 행렬
-	RotationMatrix = Quaternion.QuaternionToRotationMatrix();
-
-
-	//이동행렬 만들기
-	PositionMatrix.Pos(Position);
-
-
-	//크자이 순으로 로컬 행렬 계산
-	LocalWorldMatrix = ScaleMatrix * RotationMatrix * PositionMatrix;
+	LocalWorldMatrix.Compose(Scale, Quaternion, Position);
 }
 
 
-void TransformData::WorldCalculation(const float4x4& _Parent, bool AbsoluteScale, bool AbsoluteRotation, bool AbsolutePosition)
+void TransformData::WorldCalculation(const TransformData& _Parent, bool AbsoluteScale, bool AbsoluteRotation, bool AbsolutePosition)
 {
-	//부모의 월드 행렬을 각각 크자이로 분해한다
-	float4 PScale, PRotation, PPosition;
-	_Parent.Decompose(PScale, PRotation, PPosition);
+	//일단 부모의 월드 행렬을 통해 자신의 월드 행렬 계산함
+	const float4x4& ParentMatrix = _Parent.WorldMatrix;
+	WorldMatrix = WorldMatrix * ParentMatrix;
 
-
-	//근데 내가 월드 크기를 사용중이라면 부모의 크기는 무시
-	if (true == AbsoluteScale)
+	//하나라도 월드로 지정해준 경우
+	if (true == AbsoluteScale || true == AbsoluteRotation || true == AbsolutePosition)
 	{
-		PScale = float4::One;
+		float4 WScale, WRotation, WPosition;
+		float4 LScale = Scale;
+		float4 LRotation = Rotation;
+		float4 LPosition = Position;
+
+		//자신의 월드 행렬에서 크자이를 추출
+		WorldMatrix.Decompose(WScale, WRotation, WPosition);
+
+
+
+		//---------크기---------------
+
+		//크기를 월드로 지정해 준 경우
+		if (true == AbsoluteScale)
+		{
+			WScale = Scale;
+			//로컬은 부모의 월드 스케일을 곱한다(월드로 지정해주고 GetLocalScale을 물어볼 수 있기 때문에 여기서 연산)
+			LScale *= float4::GetSafeScaleReciprocal(_Parent.WorldScale, 0.00001f);
+		}
+		
+
+
+
+		//---------회전---------------
+
+		//회전벡터 -> 쿼터니언
+		Quaternion = Rotation.EulerDegToQuaternion();
+
+		//회전을 월드로 지정해준 경우
+		if (true == AbsoluteRotation)
+		{
+			//쿼터니온임(벡터 아님)
+			WRotation = Rotation.EulerDegToQuaternion();
+			//자신의 쿼터니언과 부모의 쿼터니언의 역을 곱해서 부모에 영향 받기 전 쿼터니언을 만든다
+			Quaternion = DirectX::XMQuaternionMultiply(Quaternion, DirectX::XMQuaternionInverse(_Parent.WorldQuaternion));
+		}
+
+
+
+		//---------이동---------------
+
+		LPosition = Position;
+
+		//이동을 월드로 지정한 경우
+		if (true == AbsolutePosition)
+		{
+			//월드 포지션을 지정한 포지션으로 설정
+			WPosition = Position;
+
+			//부모의 월드 역행렬과 지정한위치를 곱해서 로컬위치를 구한다
+			float4x4 InverseMat = _Parent.WorldMatrix.InverseReturn();
+			LPosition *= InverseMat;
+		}
+
+		// 월드 재계산
+		float4x4 MatScale, MatRot, MatPos;
+		WorldMatrix.Compose(WScale, WRotation, WPosition);
+
+		// 로컬 재계산
+		ScaleMatrix.Scale(LScale);
+		RotationMatrix = Quaternion.QuaternionToRotationMatrix();
+		PositionMatrix.Pos(LPosition);
+
+		LocalWorldMatrix.Compose(LScale, Quaternion, LPosition);
 	}
 
-	//근데 내가 월드 회전를 사용중이라면 부모의 회전은 무시
-	if (true == AbsoluteRotation)
-	{
-		// 부모의 회전 
-		PRotation = float4::Zero;
-		//xyz 0의 쿼터니언 생성
-		PRotation.EulerDegToQuaternion();
-	}
-
-	//근데 내가 월드 이동를 사용중이라면 부모의 이동은 무시
-	if (true == AbsolutePosition)
-	{
-		PPosition = float4::Zero;
-	}
-
-
-	//위에서 만든 값을 바탕으로 행렬 만들기
-	float4x4 MatScale, MatRot, MatPos;
-	MatScale.Scale(PScale);
-	MatRot = PRotation.QuaternionToRotationMatrix();
-	MatPos.Pos(PPosition);
-
-
-	//자신의 월드 행렬 = 자신의 로컬행렬에 부모의 월드 행렬 곱하기
-	WorldMatrix = LocalWorldMatrix * (MatScale * MatRot * MatPos);
 }
 
 void TransformData::SetViewAndProjection(const float4x4& _View, const float4x4& _Projection)
@@ -261,33 +282,6 @@ void TransformData::SetViewAndProjection(const float4x4& _View, const float4x4& 
 	WorldViewProjectionMatrix = WorldMatrix * View * Projection;
 }
 
-//실제 Transform을 변경하는 순간 행렬 계산이 된다
-//반대로 안 움직이면 계산 안된다
-void GameEngineTransform::TransformUpdate()
-{
-	//로컬 행렬 계산
-	TransData.LocalCalculation();
-
-
-	//부모가 없는 경우
-	if (nullptr == Parent)
-	{
-		TransData.WorldMatrix = TransData.LocalWorldMatrix;
-	}
-
-	//부모가 있는 경우
-	else
-	{
-		WorldCalculation();
-	}
-
-
-	//자신의 월드 행렬에서 월드 크자이 추출
-	WorldDecompose();
-
-	//자신의 로컬 행렬에서 로컬 크자이 추출
-	LocalDecompose();
-}
 
 
 //--------------------------Transform-------------------------
@@ -308,7 +302,7 @@ void GameEngineTransform::WorldCalculation()
 {
 	//부모의 행렬
 	float4x4 ParentWorldMatrix = Parent->GetWorldMatrixRef();
-	TransData.WorldCalculation(ParentWorldMatrix, AbsoluteScale, AbsoluteRotation, AbsolutePosition);
+	TransData.WorldCalculation(Parent->TransData, AbsoluteScale, AbsoluteRotation, AbsolutePosition);
 }
 
 
@@ -461,34 +455,9 @@ void GameEngineTransform::CalChild()
 	//자식들 순회
 	for (GameEngineTransform* ChildTrans : Child)
 	{
-		////자식의 크기가 나에게 종속적이라면
-		//if (false == ChildTrans->AbsoluteScale)
-		//{
-		//	//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
-		//	ChildTrans->SetLocalScale(ChildTrans->GetLocalScale());
-		//}
-		////자식의 회전이 나에게 종속적이라면
-		//if (false == ChildTrans->AbsoluteRotation)
-		//{
-		//	//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
-		//	ChildTrans->SetLocalRotation(ChildTrans->GetLocalRotation());
-		//}
-		////자식의 위치가 나에게 종속적이라면
-		//if (false == ChildTrans->AbsolutePosition)
-		//{
-		//	//자신(부모)이 바뀌였으니, 그에 따라 자식도 재 계산
-		//	ChildTrans->SetLocalPosition(ChildTrans->GetLocalPosition());
-		//}
-
-
-		//내 행렬을 바탕으로 자식들의 월드 행렬을 계산한다
-		ChildTrans->WorldCalculation();
-		//월드 크자이 추출
-		ChildTrans->WorldDecompose();
-		//재귀
+		ChildTrans->TransformUpdate();
 		ChildTrans->CalChild();
 	}
-
 }
 
 
@@ -643,4 +612,29 @@ bool GameEngineTransform::Collision(const CollisionParameter& Data)
 	}
 
 	return ArrColFunction[static_cast<int>(Data.ThisType)][static_cast<int>(Data.OtherType)](this->GetCollisionData(), Data._OtherTrans->GetCollisionData());
+}
+
+
+
+//실제 Transform을 변경하는 순간 행렬 계산이 된다
+//반대로 안 움직이면 계산 안된다
+void GameEngineTransform::TransformUpdate()
+{
+	//로컬 행렬 계산
+	TransData.LocalCalculation();
+	TransData.WorldMatrix = TransData.LocalWorldMatrix;
+
+
+	//부모가 있는 경우
+	if (nullptr != Parent)
+	{
+		WorldCalculation();
+	}
+
+
+	//자신의 월드 행렬에서 월드 크자이 추출
+	WorldDecompose();
+
+	//자신의 로컬 행렬에서 로컬 크자이 추출
+	LocalDecompose();
 }

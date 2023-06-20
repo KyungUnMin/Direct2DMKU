@@ -46,7 +46,40 @@ public:
 	static const float4 White;
 	static const float4 Black;
 
+	//실수 오차를 방지하기 위해 _Tolerance이하는 0으로 만드는 함수
+	static float4 GetSafeScaleReciprocal(const float4& _InScale, float _Tolerance)
+	{
+		float4 SafeReciprocalScale;
 
+		if (std::fabsf(_InScale.x) <= _Tolerance)
+		{
+			SafeReciprocalScale.x = 0.f;
+		}
+		else
+		{
+			SafeReciprocalScale.x = 1 / _InScale.x;
+		}
+
+		if (std::fabsf(_InScale.y) <= _Tolerance)
+		{
+			SafeReciprocalScale.y = 0.f;
+		}
+		else
+		{
+			SafeReciprocalScale.y = 1 / _InScale.y;
+		}
+
+		if (std::fabsf(_InScale.z) <= _Tolerance)
+		{
+			SafeReciprocalScale.z = 0.f;
+		}
+		else
+		{
+			SafeReciprocalScale.z = 1 / _InScale.z;
+		}
+
+		return SafeReciprocalScale;
+	}
 
 	//각도를 넣으면 0도 부터 그 각도만큼 회전한 벡터가 나온다.
 	static float4 AngleToDirection2DToDeg(float _Deg)
@@ -787,7 +820,13 @@ public:
 		Arr2D[3][3] = 1.f;
 	}
 
-
+	//크자이로 행렬을 만드는 함수(회전은 쿼터니언이 들어간다)
+	void Compose(const float4& _Scale, const float4& _RotQuaternion, const float4& _Pos)
+	{
+		float4 _Rot = _RotQuaternion;
+		_Rot.QuaternionToEulerDeg();
+		*this = DirectX::XMMatrixAffineTransformation(_Scale.DirectVector, _Rot.DirectVector, _RotQuaternion.DirectVector, _Pos.DirectVector);
+	}
 
 
 	//행렬에서 크자이를 추출, 대신 회전은 쿼터니언으로 나온다

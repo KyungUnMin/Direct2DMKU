@@ -103,7 +103,7 @@ struct TransformData
 
 
 	//월드 행렬 계산
-	void WorldCalculation(const float4x4& _Parent, bool AbsoluteScale, bool AbsoluteRotation, bool AbsolutePosition);
+	void WorldCalculation(const TransformData& _Parent, bool AbsoluteScale, bool AbsoluteRotation, bool AbsolutePosition);
 
 	//로컬 행렬 계산
 	void LocalCalculation();

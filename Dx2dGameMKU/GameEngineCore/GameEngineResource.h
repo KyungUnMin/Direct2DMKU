@@ -28,26 +28,11 @@ public:
 		return Path.c_str();
 	}
 
-	/*inline std::string_view GetName() const
-	{
-		return Name.c_str();
-	}*/
-
-
-	/*inline std::string GetNameToString() const
-	{
-		return Name;
-	}*/
 
 	inline void SetPath(const std::string_view& _Value)
 	{
 		Path = _Value;
 	}
-
-	/*inline void SetName(const std::string_view& _Value)
-	{
-		Name = _Value;
-	}*/
 
 	static std::shared_ptr<ResourceType> Find(const std::string_view& _Name)
 	{
@@ -99,7 +84,6 @@ protected:
 
 private:
 	std::string Path;
-	//std::string Name;
 
 	static std::map<std::string, std::shared_ptr<ResourceType>> NamedResources;
 	static std::list<std::shared_ptr<ResourceType>> UnNamedRes;
