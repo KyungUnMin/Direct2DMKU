@@ -5,7 +5,7 @@
 
 #include "FieldEnemyBase.h"
 
-const std::vector<int> NoiseState_Idle::FarAttackPercent = { 100, 20, 50 };
+const std::vector<int> NoiseState_Idle::FarAttackPercent = { 0, 20, 50 };
 const float NoiseState_Idle::SightRadius = 100.f;
 
 const std::string_view NoiseState_Idle::AniName = "Idle";

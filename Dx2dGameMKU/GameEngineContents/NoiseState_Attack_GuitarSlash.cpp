@@ -70,9 +70,12 @@ void NoiseState_Attack_GuitarSlash::EnterState()
 {
 	BossState_AttackBase::EnterState();
 
+
+	GetCamCtrl()->SetZoom(0.95f, 7.f * AniInterTime);
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue(float4::Right * 150.f, float4::One * 250.f);
 }
+
 
 
 
@@ -98,5 +101,17 @@ void NoiseState_Attack_GuitarSlash::Attack()
 	if (false == Result)
 		return;
 
+	FieldCamController* CamCtrl = GetCamCtrl();
+	CamCtrl->SetZoomFix();
+	CamCtrl->SetShakeState(0.1f, 20.f);
 	DataMgr::MinusPlayerHP(Damage);
+}
+
+
+void NoiseState_Attack_GuitarSlash::ExitState()
+{
+	BossState_AttackBase::ExitState();
+
+	FieldCamController* CamCtrl = GetCamCtrl();
+	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.2f);
 }

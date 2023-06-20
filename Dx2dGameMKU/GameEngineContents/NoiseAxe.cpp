@@ -124,6 +124,7 @@ void NoiseAxe::Update_Collision(float _DeltaTime)
 	if (false == FieldPlayer::GetPtr()->OnDamage_BlowBack())
 		return;
 
+	FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.1f);
 	DataMgr::MinusPlayerHP(Damage);
 }
 

@@ -117,5 +117,12 @@ void NoiseState_Attack_GuitarSlashDash::Attack()
 	if (false == Result)
 		return;
 
+	static const float Duration = 0.5f;
+	FieldCamController* CamCtrl = GetCamCtrl();
+	CamCtrl->SetRoll(3.f);
+	CamCtrl->SetZoom(0.95f);
+	CamCtrl->SetRoll(0.f, Duration);
+	CamCtrl->SetZoom(FieldCamController::ZoomOrigin, Duration);
+
 	DataMgr::MinusPlayerHP(Damage);
 }

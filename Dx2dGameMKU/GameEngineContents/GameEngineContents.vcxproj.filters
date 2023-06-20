@@ -2052,6 +2052,9 @@
     <ClCompile Include="NoiseState_Attack_AxeDash.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.AxeDash</Filter>
     </ClCompile>
+    <ClCompile Include="FieldCamController_Roll.cpp">
+      <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">

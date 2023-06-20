@@ -60,7 +60,7 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::FarAttackGroup =
 {
 	//1∆‰¿Ã¡Ó
 	{
-		NoiseStateType::AxeDash
+		NoiseStateType::GuitarSlashDash
 		//NoiseStateType::Tackle,
 	},
 

@@ -79,6 +79,9 @@ public:
 	//바로 줌 변경
 	void SetZoom(float _Per = ZoomOrigin);
 
+	//바로 줌을 변경(바로 위 함수를 잘못 만들고 잘못 사용했는데, 다 달라질까봐 다시 만듬)
+	void SetZoomFix(float _Per = ZoomOrigin);
+
 private:
 	float ZoomTimer = 0.f;
 	float ZoomMoveDuration = -1.f;
@@ -87,5 +90,29 @@ private:
 
 
 	void Update_Zoom(float _DeltaTime);
+
+
+
+	//--------Roll-----------------
+
+public:
+	static const float RollOrigin;
+
+	//부드럽게 회전 변경
+	void SetRoll(float _Degree, float _Duration);
+
+	//바로 회전 변경
+	void SetRoll(float _Degree = RollOrigin);
+
+private:
+
+	float RollTimer = 0.f;
+	float RollDuration = -1.f;
+	float DestRollAngle = 0.0f;
+	float PrevRollAngle = 0.0f;
+
+
+
+	void Update_Roll(float _DeltaTime);
 };
 

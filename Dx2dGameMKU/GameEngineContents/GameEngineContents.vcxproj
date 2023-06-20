@@ -1084,6 +1084,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FieldCamController_Roll.cpp" />
     <ClCompile Include="FieldCamController_StateUpdate.cpp" />
     <ClCompile Include="FieldCamController_ZoomUpdate.cpp" />
     <ClCompile Include="FieldDoor.cpp">

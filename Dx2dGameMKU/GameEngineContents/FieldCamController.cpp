@@ -80,6 +80,7 @@ void FieldCamController::Update(float _DeltaTime)
 	//카메라 상태에 따른 Update
 	Update_CamState(_DeltaTime);
 	Update_Zoom(_DeltaTime);
+	Update_Roll(_DeltaTime);
 }
 
 
