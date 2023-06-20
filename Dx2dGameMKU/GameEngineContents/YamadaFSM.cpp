@@ -56,19 +56,18 @@ const std::vector<std::vector<YamadaStateType>> YamadaFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		YamadaStateType::Wormchi,
 		YamadaStateType::MatterCrush,
+		YamadaStateType::ForceField,
 	},
 
 	//2페이즈
 	{
 		YamadaStateType::ForceField,
-		YamadaStateType::MatterCrush,
+		YamadaStateType::Wormchi,
 	},
 
 	//3페이즈
 	{
-		YamadaStateType::ForceField,
 		YamadaStateType::MatterCrush,
 		YamadaStateType::Wormchi,
 	},

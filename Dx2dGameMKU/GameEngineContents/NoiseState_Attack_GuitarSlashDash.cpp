@@ -118,11 +118,18 @@ void NoiseState_Attack_GuitarSlashDash::Attack()
 		return;
 
 	static const float Duration = 0.5f;
-	FieldCamController* CamCtrl = GetCamCtrl();
-	CamCtrl->SetRoll(3.f);
-	CamCtrl->SetZoom(0.95f);
-	CamCtrl->SetRoll(0.f, Duration);
-	CamCtrl->SetZoom(FieldCamController::ZoomOrigin, Duration);
+	static const float RotDegree = 2.f;
 
+	FieldCamController* CamCtrl = GetCamCtrl();
+	if(true == IsRightDir())
+	{
+		CamCtrl->SetRoll(-RotDegree);
+	}
+	else
+	{
+		CamCtrl->SetRoll(RotDegree);
+	}
+
+	CamCtrl->SetRoll(0.f, Duration);
 	DataMgr::MinusPlayerHP(Damage);
 }

@@ -109,7 +109,6 @@ void YamadaState_Attack_ForceField::CreateAnimation()
 void YamadaState_Attack_ForceField::EnterState()
 {
 	BossState_AttackBase::EnterState();
-
 	ChangeStateAndAni(State::Ready);
 }
 

@@ -169,7 +169,7 @@ void YamadaMatterBlock::CreateSparkEffect()
 	});
 
 	Spark->ChangeAnimation(SparkName);
-	Spark->ColorOptionValue.MulColor = float4::Blue;
+	Spark->ColorOptionValue.MulColor = float4{ 0.0f, 0.f, 0.5f, 0.5f };
 
 	GameEngineTransform* SparkTrans = Spark->GetTransform();
 	SparkTrans->SetParent(Pivot->GetTransform());
