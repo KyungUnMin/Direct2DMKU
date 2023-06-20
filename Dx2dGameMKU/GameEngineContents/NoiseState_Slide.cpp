@@ -23,7 +23,7 @@ const std::vector<std::string_view> NoiseState_Slide::AniFileNames =
 };
 
 const float NoiseState_Slide::AniInterTime = 0.08f;
-
+const float NoiseState_Slide::MoveDuration = 0.25f;
 
 NoiseState_Slide::NoiseState_Slide()
 {
@@ -43,7 +43,6 @@ void NoiseState_Slide::Start()
 	LoadAnimation();
 	CreateAnimation();
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
-	Collider = GetEnemy()->GetAttackCollider();
 }
 
 void NoiseState_Slide::LoadAnimation()
@@ -125,9 +124,6 @@ void NoiseState_Slide::EnterState()
 	SettingDir();
 
 	EnemyStateBase::OffMainCollider();
-
-	Collider->GetTransform()->SetLocalScale(float4::One * 50.f);
-	Collider->GetTransform()->SetLocalPosition(float4::Right * 50.f);
 }
 
 
@@ -140,45 +136,40 @@ void NoiseState_Slide::ChangeStateAndAni(State _Next)
 
 void NoiseState_Slide::SettingDir()
 {
+	static const float BackMoveOffset = 200.f;
+	static const float ToPlayerMoveOffset = 100.f;
+
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 1);
+
+
 	FieldEnemyBase* Enemy = GetEnemy();
-	
-	float4 EnemyPos = Enemy->GetTransform()->GetWorldPosition();
-	const float4 VecToPlayer = GetVecToPlayer(true);
-
-
-
-	//플레이어로 향하는 길이보다 벽쪽으로 향하는 길이가 더 짧은 경우 벽쪽으로 이동한다
-	//또는 플레이어와의 거리가 너무 짧은 경우에도 무조껀 벽쪽으로 간다
-	float4 ReversePosToPlayer = (EnemyPos - VecToPlayer);
-	if ((true == BGPtr->IsBlockPos(ReversePosToPlayer)) || (VecToPlayer.Size() < 10.f))
-	{
-		//오른쪽 영역에 있는 경우 오른쪽으로 이동한다
-		if (0.f < EnemyPos.x)
-		{
-			MoveDir = float4::Right;
-			Enemy->LookDir(false);
-		}
-
-		//왼쪽 영역에 있는 경우 왼쪽으로 이동한다
-		else
-		{
-			MoveDir = float4::Left;
-			Enemy->LookDir(true);
-		}
-
-		return;
-	}
+	GameEngineTransform* EnemyTrans = Enemy->GetTransform();
+	float4 EnemyPos = EnemyTrans->GetWorldPosition();
 
 
 	//플레이어 쪽으로 이동하는 경우
-	MoveDir = VecToPlayer.NormalizeReturn();
+	if (0 == RandNum % 2)
+	{
+		IsTargetPlayer = true;
+		float4 MoveDir = GetVecToPlayer();
+		float4 PlayerPos = EnemyPos + MoveDir;
+		MoveDir.Normalize();
 
-	//뒤로 이동하기 때문에 이동방향과 반대 방향을 바라 본다
-	bool IsDirRight = (MoveDir.x < 0.f) ? true : false;
-	Enemy->LookDir(IsDirRight);
+		StartPos = EnemyPos;
+		DestPos = PlayerPos + (MoveDir * ToPlayerMoveOffset);
 
-	//플레이어 쪽으로 이동하는 경우엔 벽 충돌과 상관없이 CollisionExit될때 이벤트 발생
-	ReflectionCount = 1;
+		//뒤로 이동하기 때문에 이동방향과 반대 방향을 바라 본다
+		bool IsDirRight = (MoveDir.x < 0.f) ? true : false;
+		Enemy->LookDir(IsDirRight);
+		return;
+	}
+
+	//백점프를 하는 경우
+	
+	//바라보고 있는 방향 뒤쪽으로 이동
+	float4 MoveDir = IsRightDir() ? float4::Left : float4::Right;
+	StartPos = EnemyPos;
+	DestPos = EnemyPos + (MoveDir * BackMoveOffset);
 }
 
 
@@ -208,34 +199,29 @@ void NoiseState_Slide::Update_Start(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
+	ResetLiveTime();
 	ChangeStateAndAni(State::Loop);
 }
 
 void NoiseState_Slide::Update_Loop(float _DeltaTime)
 {
+	float Ratio = GetLiveTime() / MoveDuration;
+
 	Update_LoopEffect(_DeltaTime);
-	if (true == Update_LoopMove(_DeltaTime))
-	{
-		GetFSM()->ChangeState(NoiseStateType::AxeGrind);
-		return;
-	}
+	Update_LoopMove(Ratio);
 
-
-	if (2 == ReflectionCount)
-	{
-		ChangeStateAndAni(State::End);
-		return;
-	}
-
-	if (false == Update_CheckPos())
+	if (Ratio < 1.f)
 		return;
 
 	ChangeStateAndAni(State::End);
 }
 
+
+
+
 void NoiseState_Slide::Update_LoopEffect(float _DeltaTime)
 {
-	static const float EffectTime = 0.1f;
+	static const float EffectTime = 0.01f;
 	static float Timer = 0.f;
 
 	Timer += _DeltaTime;
@@ -254,66 +240,21 @@ void NoiseState_Slide::Update_LoopEffect(float _DeltaTime)
 }
 
 
-
-bool NoiseState_Slide::Update_CheckPos()
+void NoiseState_Slide::Update_LoopMove(float _Ratio)
 {
-	if (0 == ReflectionCount)
-		return false;
-
-	if (nullptr == Collider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D))
-	{
-		//CollisionExit 되는 순간
-		if (true == PrevCollision)
-			return true;
-
-		return false;
-	}
-
-	//충돌중
-	PrevCollision = true;
-	return false;
-}
-
-
-
-bool NoiseState_Slide::Update_LoopMove(float _DeltaTime)
-{
-	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
-
-	float4 PrevPos = EnemyTrans->GetWorldPosition();
-	float4 NextPos = PrevPos + (MoveDir * MoveSpeed * _DeltaTime);
-
+	float4 NextPos = float4::LerpClamp(StartPos, DestPos, _Ratio);
+	
 	if (true == BGPtr->IsBlockPos(NextPos))
-	{
-		return ChangeDir();
-	}
+		return;
 
 	std::pair<int, int> NextGridPos = BGPtr->GetGridFromPos(NextPos);
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
-	{
-		return ChangeDir();
-	}
+		return;
 
+
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
 	NextPos.z = NextPos.y;
 	EnemyTrans->SetWorldPosition(NextPos);
-	return false;
-}
-
-
-bool NoiseState_Slide::ChangeDir()
-{
-	static const int Percent = 50;
-
-	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 100);
-	if (RandNum < Percent)
-		return true;
-
-
-	MoveDir.x = -MoveDir.x;
-	++ReflectionCount;
-
-	GetEnemy()->DirectionFlip();
-	return false;
 }
 
 
@@ -324,7 +265,14 @@ void NoiseState_Slide::Update_End(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::GuitarSlash);
+	if (true == IsTargetPlayer)
+	{
+		GetFSM()->ChangeState(NoiseStateType::GuitarSlash);
+	}
+	else
+	{
+		GetFSM()->ChangeState(NoiseStateType::AxeGrind);
+	}
 }
 
 
@@ -333,6 +281,5 @@ void NoiseState_Slide::ExitState()
 {
 	EnemyStateBase::ExitState();
 	EnemyStateBase::OnMainCollider();
-	ReflectionCount = 0;
-	PrevCollision = false;
+	IsTargetPlayer = false;
 }

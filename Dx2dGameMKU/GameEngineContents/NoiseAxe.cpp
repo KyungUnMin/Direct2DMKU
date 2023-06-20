@@ -120,20 +120,19 @@ void NoiseAxe::Update(float _DeltaTime)
 void NoiseAxe::Update_Launch(float _DeltaTime) 
 {
 	float Ratio = GetLiveTime() / MoveDuration;
-	float ClampRatio = std::clamp(Ratio, 0.f, 1.f);
-	float SinValue = sinf(GameEngineMath::PIE * 0.5f * ClampRatio);
+	if (1.f < Ratio)
+	{
+		ResetLiveTime();
+		CurState = State::Stay;
+		return;
+	}
 
+	float SinValue = sinf(GameEngineMath::PIE * 0.5f * Ratio);
 	float4 NextPos = float4::LerpClamp(StartPos, DestPos, SinValue);
 	if (true == BGPtr->IsBlockPos(NextPos))
 		return;
 
 	GetTransform()->SetWorldPosition(NextPos);
-
-	if (Ratio < 1.f)
-		return;
-
-	ResetLiveTime();
-	CurState = State::Stay;
 }
 
 void NoiseAxe::Update_Stay(float _DeltaTime)

@@ -22,6 +22,8 @@ private:
 	static const std::vector<std::string_view> AniFileNames;
 	static const float AniInterTime;
 
+	static const float MoveDuration;
+
 	enum class State
 	{
 		Start,
@@ -32,12 +34,9 @@ private:
 	State CurState = State::Start;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
-	std::shared_ptr<class GameEngineCollision> Collider = nullptr;
-
-	const float MoveSpeed = 1200.f;
-	float4 MoveDir = float4::Zero;
-	int ReflectionCount = 0;
-	bool PrevCollision = false;
+	float4 StartPos = float4::Zero;
+	float4 DestPos = float4::Zero;
+	bool IsTargetPlayer = false;
 
 	void LoadAnimation();
 	void CreateAnimation();
@@ -47,11 +46,9 @@ private:
 	void Update_Start(float _DeltaTime);
 
 	void Update_Loop(float _DeltaTime);
-	bool Update_LoopMove(float _DeltaTime);
+	void Update_LoopMove(float _Ratio);
 	void Update_LoopEffect(float _DeltaTime);
-	bool Update_CheckPos();
 
-	bool ChangeDir();
 
 	void Update_End(float _DeltaTime);
 };

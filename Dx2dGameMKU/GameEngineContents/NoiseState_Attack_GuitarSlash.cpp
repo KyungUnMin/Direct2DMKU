@@ -11,7 +11,7 @@
 const std::string_view NoiseState_Attack_GuitarSlash::AniName = "Attack_GuitarSlash";
 const std::string_view NoiseState_Attack_GuitarSlash::AniFileName = "Noise_GuitarSlash.png";
 const std::pair<int, int> NoiseState_Attack_GuitarSlash::AniCutFrame = std::pair<int, int>(5, 4);
-const float NoiseState_Attack_GuitarSlash::AniInterTime = 0.08f;
+const float NoiseState_Attack_GuitarSlash::AniInterTime = 0.06f;
 const int NoiseState_Attack_GuitarSlash::Damage = 15;
 const int NoiseState_Attack_GuitarSlash::AttackFrm = 7;
 
