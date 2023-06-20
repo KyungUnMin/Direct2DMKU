@@ -53,6 +53,8 @@ private:
 	void ImageLoad();
 	void SettingRender();
 
+	void Update_InitMove(float _DeltaTime);
+	void Update_Collision(float _DeltaTime);
 	void Update_Launch(float _DeltaTime);
 	void Update_Stay(float _DeltaTime);
 	void Update_ComeBack(float _DeltaTime);

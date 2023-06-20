@@ -17,26 +17,68 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 	void Attack() override {}
 
 private:
-	//static const std::vector<std::string_view> AniFileNames;
-	//static const float AniInterTime;
+	static const std::vector<std::string_view> AniFileNames;
+	static const float AniInterTime;
+	static const float4 ReflectArea;
+	static const size_t ReflectMaxCnt;
+	static const float StandardFollowRange;
+	static const float StandardFollowDuration;
+	static const float StartDashRotRange;
 
 	enum class State
 	{
-		Start,
-		Loop,
-		End,
+		DashStart,
+		DashLoop,
+		DashLand,
+
+		WaitIdle,
+		WaitCatch
 	};
 
-	State CurState = State::Start;
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	State CurState = State::DashStart;
+	std::shared_ptr<class NoiseAxe> Axe = nullptr;
+	
+	const float DashSpeed = 1500.f;
+	float4 DashDir = float4::Zero;
+	size_t ReflectCount = 1;
+	std::vector<float4> ReflectPositions;
+
+	size_t FollowIndex = 1;
+	float FollowTimer = 0.f;
+	float FollowDuration = 0.f;
 
 	void LoadAnimation();
 	void CreateAnimation();
-	void CreateAxe();
+	void ChangeStateAndAni(State _Next);
 
+	void Update_DashStart(float _DeltaTime);
+	void Update_DashLoop(float _DeltaTime);
+	void Update_DahsLoopEffect(float _DeltaTime);
+
+	enum class ReflectType
+	{
+		Left,
+		Right,
+		Up,
+		Down,
+		None,
+	};
+
+
+	void ReflectDirection(const float4 _PrevPos, ReflectType _Type);
+	void SetLookDir(ReflectType _Type);
+
+
+	void Update_DashLand(float _DeltaTime);
+	void Update_WaitIdle(float _DeltaTime);
+	void Update_WaitCatch(float _DeltaTime);
+
+	void CalcFollowDuration();
 };
+
 

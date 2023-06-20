@@ -4,6 +4,9 @@
 class NoiseState_Attack_AxeGrind : public BossState_AttackBase
 {
 public:
+	static const std::string_view Idle_AniFileName;
+	static const std::string_view Catch_AniFileName;
+
 	NoiseState_Attack_AxeGrind();
 	~NoiseState_Attack_AxeGrind() override;
 
@@ -21,8 +24,6 @@ protected:
 	void Attack() override{}
 
 private:
-	static const std::string_view Idle_AniFileName;
-	static const std::string_view Catch_AniFileName;
 	static const float AniInterTime;
 
 	static const float AxeMoveDuration;

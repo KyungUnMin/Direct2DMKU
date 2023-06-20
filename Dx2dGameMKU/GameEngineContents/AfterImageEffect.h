@@ -18,6 +18,11 @@ public:
 
 	void SetPlusColor(float4 _Color);
 
+	inline void SetDuration(float _Duration)
+	{
+		Duration = _Duration;
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 
@@ -26,6 +31,6 @@ private:
 	float4 AtlasData = float4::Zero;
 
 	const float AlphaRatio = 0.5f;
-	const float Duration = 0.2f;
+	float Duration = 0.2f;
 };
 

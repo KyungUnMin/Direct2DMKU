@@ -31,6 +31,7 @@ void NoiseState_Attack_GuitarSlashDash::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+	SetSight(300.f);
 }
 
 void NoiseState_Attack_GuitarSlashDash::LoadAnimation()
@@ -76,7 +77,17 @@ void NoiseState_Attack_GuitarSlashDash::EnterState()
 	//플레이어를 향해서
 	float4 VecToPlayer = GetVecToPlayer();
 	StartPos = GetEnemy()->GetTransform()->GetWorldPosition();
-	DestPos = StartPos + (VecToPlayer * 0.8f);
+
+	float Sight = GetSightRadius();
+	if (Sight < VecToPlayer.Size())
+	{
+		VecToPlayer.Normalize();
+		DestPos = StartPos + (VecToPlayer * Sight);
+	}
+	else
+	{
+		DestPos = StartPos + (VecToPlayer * 0.6f);
+	}
 }
 
 

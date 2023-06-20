@@ -85,10 +85,17 @@ void NoiseAxe::Update(float _DeltaTime)
 
 	if (0.f == MoveDuration && 0.f == StayDuration)
 	{
-		MsgAssert("Init 함수를 호출시켜주어야 합니다");
+		//Init을 호출시켜 주지 않은 경우 충돌 체크만 하고 제자리에서 정지한다
+		Update_Collision(_DeltaTime);
 		return;
 	}
+	
+	Update_InitMove(_DeltaTime);
+	Update_Collision(_DeltaTime);
+}
 
+void NoiseAxe::Update_InitMove(float _DeltaTime)
+{
 	switch (CurState)
 	{
 	case NoiseAxe::State::Launch:
@@ -101,7 +108,10 @@ void NoiseAxe::Update(float _DeltaTime)
 		Update_ComeBack(_DeltaTime);
 		break;
 	}
+}
 
+void NoiseAxe::Update_Collision(float _DeltaTime)
+{
 	AttackTimer += _DeltaTime;
 	if (AttackTimer < 0.1f)
 		return;
@@ -116,6 +126,8 @@ void NoiseAxe::Update(float _DeltaTime)
 
 	DataMgr::MinusPlayerHP(Damage);
 }
+
+
 
 void NoiseAxe::Update_Launch(float _DeltaTime) 
 {

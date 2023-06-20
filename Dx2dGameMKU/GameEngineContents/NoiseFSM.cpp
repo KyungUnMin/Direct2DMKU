@@ -13,6 +13,7 @@
 #include "NoiseState_Attack_AxeGrind.h"
 #include "NoiseState_Attack_GuitarSlash.h"
 #include "NoiseState_Attack_GuitarSlashDash.h"
+#include "NoiseState_Attack_AxeDash.h"
 //#include "NoiseState_Attack_WUPunch.h"
 //#include "NoiseState_Attack_Tackle.h"
 //#include "NoiseState_Attack_Slap.h"
@@ -59,7 +60,7 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::FarAttackGroup =
 {
 	//1∆‰¿Ã¡Ó
 	{
-		NoiseStateType::GuitarSlashDash
+		NoiseStateType::AxeDash
 		//NoiseStateType::Tackle,
 	},
 
@@ -127,7 +128,7 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<NoiseState_Attack_AxeGrind>(NoiseStateType::AxeGrind);
 	FSMBase::CreateState<NoiseState_Attack_GuitarSlash>(NoiseStateType::GuitarSlash);
 	FSMBase::CreateState<NoiseState_Attack_GuitarSlashDash>(NoiseStateType::GuitarSlashDash);
-	//FSMBase::CreateState<NoiseState_Attack_Tackle>(NoiseStateType::Tackle);
+	FSMBase::CreateState<NoiseState_Attack_AxeDash>(NoiseStateType::AxeDash);
 	//FSMBase::CreateState<NoiseState_Attack_Slap>(NoiseStateType::Slap);
 	//FSMBase::CreateState<NoiseState_Attack_Meteor>(NoiseStateType::Meteor);
 	//FSMBase::CreateState<NoiseState_Attack_Roar>(NoiseStateType::Roar);

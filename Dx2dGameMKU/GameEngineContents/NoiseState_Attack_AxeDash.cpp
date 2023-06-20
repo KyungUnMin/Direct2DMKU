@@ -1,24 +1,36 @@
 #include "PrecompileHeader.h"
 #include "NoiseState_Attack_AxeDash.h"
 
-#include "DataMgr.h"
+#include <GameEngineBase/GameEngineRandom.h>
 
 #include "NoiseFSM.h"
 #include "NoiseAxe.h"
 #include "FieldEnemyBase.h"
+#include "BackGround.h"
+#include "AfterImageEffect.h"
 
-//const std::vector<std::string_view> NoiseState_Attack_AxeDash::AniFileNames =
-//{
-//	"Noise_AxeDashStart.png",
-//	"Noise_AxeDashLoop.png",
-//	"Noise_AxeDashLand.png",
-//};
+#include "NoiseState_Attack_AxeGrind.h"
 
-//const float NoiseState_Attack_AxeDash::AniInterTime = 0.08f;
+const std::vector<std::string_view> NoiseState_Attack_AxeDash::AniFileNames =
+{
+	"Noise_AxeDashStart.png",
+	"Noise_AxeDashLoop.png",
+	"Noise_AxeDashLand.png"
+};
+
+const float NoiseState_Attack_AxeDash::AniInterTime = 0.08f;
+const float NoiseState_Attack_AxeDash::StartDashRotRange = 20.f;
+
+/*반사 영역 범위	Left, Right, Up, Down*/
+const float4 NoiseState_Attack_AxeDash::ReflectArea = { -503.f, 503.f, -60.f, -446.f };
+//반사 횟수
+const size_t NoiseState_Attack_AxeDash::ReflectMaxCnt = 5;
 
 
-//const float NoiseState_Attack_AxeDash::AxeMoveDuration = 0.25f;
-//const float NoiseState_Attack_AxeDash::AxeStayDuration = 0.5f;
+//도끼가 이동할때 StandardFollowRange 의 거리를 StandardFollowDuration 의 시간으로 이동
+const float NoiseState_Attack_AxeDash::StandardFollowRange = 1000.f;
+const float NoiseState_Attack_AxeDash::StandardFollowDuration = 0.5f;
+
 
 
 NoiseState_Attack_AxeDash::NoiseState_Attack_AxeDash()
@@ -38,6 +50,8 @@ void NoiseState_Attack_AxeDash::Start()
 	LoadAnimation();
 	CreateAnimation();
 	EnemyStateBase::SetUnbeatable();
+
+	ReflectPositions.resize(ReflectMaxCnt + 1);
 }
 
 void NoiseState_Attack_AxeDash::LoadAnimation()
@@ -53,65 +67,345 @@ void NoiseState_Attack_AxeDash::LoadAnimation()
 	Dir.Move("Enemy");
 	Dir.Move("Noise");
 	Dir.Move("Attack");
-	Dir.Move("AxeGrind");
-	//GameEngineSprite::LoadSheet(Dir.GetPlusFileName(Idle_AniFileName).GetFullPath(), 5, 1);
-	//GameEngineSprite::LoadSheet(Dir.GetPlusFileName(Catch_AniFileName).GetFullPath(), 5, 1);
+	Dir.Move("AxeDash");
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileNames[static_cast<size_t>(State::DashStart)]).GetFullPath(), 5, 1);
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileNames[static_cast<size_t>(State::DashLoop)]).GetFullPath(), 5, 1);
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(AniFileNames[static_cast<size_t>(State::DashLand)]).GetFullPath(), 5, 2);
 }
 
 void NoiseState_Attack_AxeDash::CreateAnimation()
 {
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	size_t Index = -1;
+	std::string_view AniName = "";
 
-	/*Render->CreateAnimation
-	({
-		.AnimationName = Idle_AniFileName,
-		.SpriteName = Idle_AniFileName,
-		.Start = 0,
-		.End = 3,
-		.FrameInter = AniInterTime,
-		.Loop = true,
-		});
 
+	Index = static_cast<size_t>(State::DashStart);
+	AniName = AniFileNames[Index];
 	Render->CreateAnimation
 	({
-		.AnimationName = Catch_AniFileName,
-		.SpriteName = Catch_AniFileName,
+		.AnimationName = AniName,
+		.SpriteName = AniName,
 		.Start = 0,
 		.End = 3,
 		.FrameInter = AniInterTime,
 		.Loop = false,
-		});*/
+	});
+
+
+	Index = static_cast<size_t>(State::DashLoop);
+	AniName = AniFileNames[Index];
+	Render->CreateAnimation
+	({
+		.AnimationName = AniName,
+		.SpriteName = AniName,
+		.FrameInter = AniInterTime,
+		.Loop = true,
+	});
+
+
+	Index = static_cast<size_t>(State::DashLand);
+	AniName = AniFileNames[Index];
+	Render->CreateAnimation
+	({
+		.AnimationName = AniName ,
+		.SpriteName = AniName,
+		.Start = 0,
+		.End = 5,
+		.FrameInter = AniInterTime,
+		.Loop = false,
+	});
 }
+
+
+
 
 
 void NoiseState_Attack_AxeDash::EnterState()
 {
 	BossState_AttackBase::EnterState();
 
-	/*CurState = State::Idle;
-	GetRenderer()->ChangeAnimation(Idle_AniFileName);*/
-
-	CreateAxe();
+	ChangeStateAndAni(State::DashStart);
+	OffMainCollider();
 }
 
-void NoiseState_Attack_AxeDash::CreateAxe()
+
+void NoiseState_Attack_AxeDash::ChangeStateAndAni(State _Next)
 {
-	static const float CreateOffset = 50.f;
-	static const float AxeMoveOffset = 300.f;
+	CurState = _Next;
 
-	float4 EnemyPos = GetEnemy()->GetTransform()->GetWorldPosition();
-	float4 ThrowDir = IsRightDir() ? float4::Right : float4::Left;
-
-	float4 CreatePos = EnemyPos + (ThrowDir * CreateOffset);
-	float4 AxeDest = CreatePos + (ThrowDir * AxeMoveOffset);
-
-	//CreateEffect<NoiseAxe>()->Init(EnemyPos, AxeDest, AxeMoveDuration, AxeStayDuration);
+	if (State::WaitIdle == CurState)
+	{
+		GetRenderer()->ChangeAnimation(NoiseState_Attack_AxeGrind::Idle_AniFileName);
+	}
+	else if (State::WaitCatch == CurState)
+	{
+		GetRenderer()->ChangeAnimation(NoiseState_Attack_AxeGrind::Catch_AniFileName);
+	}
+	else
+	{
+		size_t Index = static_cast<size_t>(CurState);
+		GetRenderer()->ChangeAnimation(AniFileNames[Index]);
+	}
 }
+
+
+
+
 
 
 void NoiseState_Attack_AxeDash::Update(float _DeltaTime)
 {
 	BossState_AttackBase::Update(_DeltaTime);
 
+	switch (CurState)
+	{
+	case NoiseState_Attack_AxeDash::State::DashStart:
+		Update_DashStart(_DeltaTime);
+		break;
+	case NoiseState_Attack_AxeDash::State::DashLoop:
+		Update_DahsLoopEffect(_DeltaTime);
+		Update_DashLoop(_DeltaTime);
+		break;
+	case NoiseState_Attack_AxeDash::State::DashLand:
+		Update_DashLand(_DeltaTime);
+		break;
+	case NoiseState_Attack_AxeDash::State::WaitIdle:
+		Update_WaitIdle(_DeltaTime);
+		break;
+	case NoiseState_Attack_AxeDash::State::WaitCatch:
+		Update_WaitCatch(_DeltaTime);
+		break;
+	}
+}
 
+void NoiseState_Attack_AxeDash::Update_DashStart(float _DeltaTime)
+{
+	if (false == GetRenderer()->IsAnimationEnd())
+		return;
+
+	FieldEnemyBase* Enemy = GetEnemy();
+	ReflectPositions.front() = Enemy->GetTransform()->GetWorldPosition();
+
+	float RotAngle = GameEngineRandom::MainRandom.RandomFloat(-StartDashRotRange, StartDashRotRange);
+	DashDir = GetVecToPlayer().NormalizeReturn();
+	DashDir.RotationZDeg(RotAngle);
+	DashDir.Normalize();
+
+	//왼쪽으로 이동해야 한다면 오른쪽을 바라본다(뒤로 이동하기 때문에 이동방향과 반대가 되어야 함)
+	Enemy->LookDir(DashDir.x < 0.f);
+
+	Axe = CreateEffect<NoiseAxe>();
+	ChangeStateAndAni(State::DashLoop);
+}
+
+
+
+
+
+void NoiseState_Attack_AxeDash::Update_DahsLoopEffect(float _DeltaTime)
+{
+	static const float EffectTime = 0.05f;
+	static float Timer = 0.f;
+
+	Timer += _DeltaTime;
+	if (Timer < EffectTime)
+		return;
+
+	std::shared_ptr<AfterImageEffect> Effect = nullptr;
+	Effect = FieldLevelBase::GetPtr()->CreateActor<AfterImageEffect>(UpdateOrder::Effect);
+	Effect->Init(GetRenderer());
+	Effect->SetDuration(0.5f);
+
+	GameEngineTransform* EffectTrans = Effect->GetTransform();
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+	EffectTrans->SetWorldPosition(EnemyTrans->GetWorldPosition());
+
+	Timer = 0.f;
+}
+
+
+void NoiseState_Attack_AxeDash::Update_DashLoop(float _DeltaTime)
+{
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+
+	float4 PrevPos = EnemyTrans->GetWorldPosition();
+	float4 NextPos = PrevPos + (DashDir * DashSpeed * _DeltaTime);
+
+	//다음에 이동할 위치가 영역 밖으로 나가는지 검사
+	ReflectType IsReflect = ReflectType::None;
+	if (NextPos.x < ReflectArea.Arr1D[static_cast<size_t>(ReflectType::Left)])
+	{
+		IsReflect = ReflectType::Left;
+	}
+	else if (ReflectArea.Arr1D[static_cast<size_t>(ReflectType::Right)] < NextPos.x)
+	{
+		IsReflect = ReflectType::Right;
+	}
+	else if (ReflectArea.Arr1D[static_cast<size_t>(ReflectType::Up)] < NextPos.y)
+	{
+		IsReflect = ReflectType::Up;
+	}
+	else if (NextPos.y < ReflectArea.Arr1D[static_cast<size_t>(ReflectType::Down)])
+	{
+		IsReflect = ReflectType::Down;
+	}
+
+	//영역 밖으로 나가지 않았다면 이동을 실행
+	if (ReflectType::None == IsReflect)
+	{
+		NextPos.z = NextPos.y;
+		EnemyTrans->SetWorldPosition(NextPos);
+		return;
+	}
+
+
+	//영역 밖으로 나갔다면 방향을 바꾸거나, 다음 State로 변경
+	ReflectDirection(PrevPos, IsReflect);
+
+	//시야 방향 전환
+	SetLookDir(IsReflect);
+}
+
+
+void NoiseState_Attack_AxeDash::ReflectDirection(const float4 _PrevPos, ReflectType _Type)
+{
+	ReflectPositions[ReflectCount] = _PrevPos;
+
+	++ReflectCount;
+	if (ReflectPositions.size() <= ReflectCount)
+	{
+		ChangeStateAndAni(State::DashLand);
+		return;
+	}
+
+
+	if (ReflectType::Left == _Type || ReflectType::Right == _Type)
+	{
+		DashDir.x = -DashDir.x;
+	}
+	else if (ReflectType::Up == _Type || ReflectType::Down == _Type)
+	{
+		DashDir.y = -DashDir.y;
+	}
+	else
+	{
+		MsgAssert("영역밖으로 나가지 않았는데, 방향을 바꾸려고 했습니다");
+		return;
+	}
+}
+
+
+void NoiseState_Attack_AxeDash::SetLookDir(ReflectType _Type)
+{
+	if (ReflectPositions.size() <= ReflectCount)
+		return;
+
+	GameEngineTransform* EnemyTrans = GetEnemy()->GetTransform();
+	float4 EnemyPos = EnemyTrans->GetWorldPosition();
+	
+
+	if (ReflectType::Left == _Type)
+	{
+		EnemyTrans->SetLocalNegativeScaleX();
+	}
+	else if (ReflectType::Right == _Type)
+	{
+		EnemyTrans->SetLocalPositiveScaleX();
+	}
+}
+
+
+
+
+
+
+void NoiseState_Attack_AxeDash::Update_DashLand(float _DeltaTime)
+{
+	if (false == GetRenderer()->IsAnimationEnd())
+		return;
+
+	CalcFollowDuration();
+	ChangeStateAndAni(State::WaitIdle);
+}
+
+
+
+
+
+void NoiseState_Attack_AxeDash::Update_WaitIdle(float _DeltaTime)
+{
+	GameEngineTransform* AxeTrans = Axe->GetTransform();
+
+	FollowTimer += _DeltaTime;
+	float Ratio = (FollowTimer / FollowDuration);
+	if (1.f <= Ratio)
+	{
+		AxeTrans->SetWorldPosition(ReflectPositions[FollowIndex]);
+		++FollowIndex;
+		FollowTimer = 0.f;
+
+		if (ReflectPositions.size() <= FollowIndex)
+		{
+			Axe->Death();
+			Axe = nullptr;
+			ChangeStateAndAni(State::WaitCatch);
+		}
+		else
+		{
+			CalcFollowDuration();
+		}
+
+		return;
+	}
+
+	float4 NowPos = float4::LerpClamp(ReflectPositions[FollowIndex - 1], ReflectPositions[FollowIndex], Ratio);
+	NowPos.z = NowPos.y;
+	AxeTrans->SetWorldPosition(NowPos);
+}
+
+
+
+
+void NoiseState_Attack_AxeDash::Update_WaitCatch(float _DeltaTime) 
+{
+	if (false == GetRenderer()->IsAnimationEnd())
+		return;
+
+	GetFSM()->ChangeState(NoiseStateType::Idle);
+}
+
+
+void NoiseState_Attack_AxeDash::CalcFollowDuration()
+{
+	const float4& StartPos = ReflectPositions[FollowIndex - 1];
+	const float4& DestPos = ReflectPositions[FollowIndex];
+
+	float MoveLength = (DestPos - StartPos).Size();
+
+	float Ratio = MoveLength / StandardFollowRange;
+	FollowDuration = StandardFollowDuration * Ratio;
+}
+
+
+
+
+
+
+void NoiseState_Attack_AxeDash::ExitState()
+{
+	BossState_AttackBase::ExitState();
+	OnMainCollider();
+
+	//임시
+	if (nullptr != Axe)
+	{
+		Axe->Death();
+		Axe = nullptr;
+	}
+	
+
+	ReflectCount = 1;
+	FollowIndex = 1;
+	FollowTimer = 0.f;
 }

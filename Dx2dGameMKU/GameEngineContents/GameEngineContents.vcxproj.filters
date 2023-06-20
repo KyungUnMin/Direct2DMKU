@@ -1099,12 +1099,6 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\02.Slide">
       <UniqueIdentifier>{bfaaf15f-9052-438b-97a3-d2be983e83bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\03.Defeat">
-      <UniqueIdentifier>{5bb4a320-6058-4ad8-b14b-835da8614583}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\04.Taunt">
-      <UniqueIdentifier>{b91d2243-7679-4746-a411-091c8be4cf27}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\05.Damaged\01.NormalDamaged">
       <UniqueIdentifier>{bcf4ebce-a039-44a9-ac6d-80498040e763}</UniqueIdentifier>
     </Filter>
@@ -1135,11 +1129,17 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash">
       <UniqueIdentifier>{260b9a00-8b43-45c3-a5af-0b8ace9702d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.AxeDash">
-      <UniqueIdentifier>{bcbe5461-dd04-4fb8-b876-f88b71c87a7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.GuitarSlashDash">
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.GuitarSlashDash">
       <UniqueIdentifier>{1a02549d-dc47-43ee-b034-9c6205407c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\03.Defeat">
+      <UniqueIdentifier>{5bb4a320-6058-4ad8-b14b-835da8614583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\04.Taunt">
+      <UniqueIdentifier>{b91d2243-7679-4746-a411-091c8be4cf27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.AxeDash">
+      <UniqueIdentifier>{2fd82c25-c6af-4fe0-bf74-ddeae05d1861}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2046,11 +2046,11 @@
     <ClCompile Include="NoiseState_Attack_GuitarSlash.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash</Filter>
     </ClCompile>
-    <ClCompile Include="NoiseState_Attack_AxeDash.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.AxeDash</Filter>
-    </ClCompile>
     <ClCompile Include="NoiseState_Attack_GuitarSlashDash.cpp">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.GuitarSlashDash</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.GuitarSlashDash</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_Attack_AxeDash.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.AxeDash</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2945,11 +2945,11 @@
     <ClInclude Include="NoiseState_Attack_GuitarSlash.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\02.GuitarSlash</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseState_Attack_AxeDash.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.AxeDash</Filter>
-    </ClInclude>
     <ClInclude Include="NoiseState_Attack_GuitarSlashDash.h">
-      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.GuitarSlashDash</Filter>
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\03.GuitarSlashDash</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Attack_AxeDash.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.AxeDash</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
