@@ -26,6 +26,7 @@ private:
 	static const std::string_view BlockName;
 	static const std::string_view DustName;
 	static const std::string_view FragmentName;
+	static const std::string_view SparkName;
 
 	static const float Duration;
 	static const int Damage;
@@ -33,6 +34,7 @@ private:
 
 	std::shared_ptr<GameEngineSpriteRenderer> Dust = nullptr;
 	std::shared_ptr<GameEngineComponent> Pivot = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> Spark = nullptr;
 
 
 	enum class State
@@ -51,6 +53,7 @@ private:
 	void CreateRenders();
 	void CreateCollider();
 	void CreateLight();
+	void CreateSparkEffect();
 
 	void Update_Light(float _DeltaTime);
 	void Update_BlockCreate(float _DeltaTime);

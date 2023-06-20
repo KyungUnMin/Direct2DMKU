@@ -22,6 +22,7 @@ const float YamadaMatterBlock::BlockOffsetX = 200.f;
 
 const std::string_view YamadaMatterBlock::BlockName = "Yamada_MatterCrush_Block.png";
 const std::string_view YamadaMatterBlock::DustName = "Yamada_MatterCrush_Dust.png";
+const std::string_view YamadaMatterBlock::SparkName = "MatterCruchSpark.png";
 
 const float YamadaMatterBlock::Duration = 0.5f;
 const int YamadaMatterBlock::Damage = 2;
@@ -46,6 +47,7 @@ void YamadaMatterBlock::Start()
 	CreateRenders();
 	CreateCollider();
 	CreateLight();
+	CreateSparkEffect();
 	
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 }
@@ -71,6 +73,7 @@ void YamadaMatterBlock::ImageLoad()
 
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(BlockName).GetFullPath(), 5, 1);
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(DustName).GetFullPath(), 4, 4);
+	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(SparkName).GetFullPath(), 2, 2);
 }
 
 void YamadaMatterBlock::CreateRenders()
@@ -151,6 +154,30 @@ void YamadaMatterBlock::CreateLight()
 }
 
 
+void YamadaMatterBlock::CreateSparkEffect()
+{
+	const float4 SparkScale = float4{ 128.f, 256.f };
+	
+	Spark = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	
+	Spark->CreateAnimation
+	({
+		.AnimationName = SparkName,
+		.SpriteName = SparkName,
+		.FrameInter = 0.08f,
+		.Loop = true,
+	});
+
+	Spark->ChangeAnimation(SparkName);
+	Spark->ColorOptionValue.MulColor = float4::Blue;
+
+	GameEngineTransform* SparkTrans = Spark->GetTransform();
+	SparkTrans->SetParent(Pivot->GetTransform());
+
+	SparkTrans->SetLocalScale(SparkScale);
+	SparkTrans->SetLocalPosition(float4::Up * SparkScale.hy());
+}
+
 
 void YamadaMatterBlock::Update(float _DeltaTime)
 {
@@ -191,6 +218,7 @@ void YamadaMatterBlock::Update_BlockCreate(float _DeltaTime)
 	if (false == Dust->IsAnimationEnd())
 		return;
 
+	Spark->Off();
 	Dust->Off();
 	ResetLiveTime();
 	PrevBlockPos = Pivot->GetTransform()->GetWorldPosition();
