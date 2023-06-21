@@ -1,7 +1,6 @@
 #include "PrecompileHeader.h"
 #include "GameEngineFontRenderer.h"
 
-#include "GameEngineFont.h"
 
 GameEngineFontRenderer::GameEngineFontRenderer()
 {
@@ -48,7 +47,7 @@ void GameEngineFontRenderer::Render(float _DeltaTime)
 	Pos *= Camera->GetProjection();
 	Pos *= Camera->GetViewPort();
 
-	Font->FontDraw(Text, Pos, FontScale, FontColor);
+	Font->FontDraw(Text, Pos, FontScale, FontColor, FwTextFlag);
 
 
 	//파이프라인은 다른 누군가가 빼주지 않으면 계속 박혀있는다

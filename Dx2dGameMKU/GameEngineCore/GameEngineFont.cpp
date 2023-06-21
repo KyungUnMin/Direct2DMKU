@@ -70,9 +70,9 @@ void GameEngineFont::LoadFont(const std::string_view& _Path)
 }
 
 
-void GameEngineFont::FontDraw(const std::string_view& _Text, const float4& _Pos, float _FontScale, const float4& _Color)
+void GameEngineFont::FontDraw(const std::string_view& _Text, const float4& _Pos, float _FontScale, const float4& _Color, FW1_TEXT_FLAG _FwTextPlag)
 {
 	std::wstring Text = GameEngineString::AnsiToUniCode(_Text);
-	Font->DrawString(GameEngineDevice::GetContext(), Text.c_str(), _FontScale, _Pos.x, _Pos.y, _Color.ColorToUint(), FW1_TOP);
+	Font->DrawString(GameEngineDevice::GetContext(), Text.c_str(), _FontScale, _Pos.x, _Pos.y, _Color.ColorToUint(), _FwTextPlag);
 }
 

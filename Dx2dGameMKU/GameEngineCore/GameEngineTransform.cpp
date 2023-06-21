@@ -202,9 +202,7 @@ void TransformData::WorldCalculation(const TransformData& _Parent, bool Absolute
 	if (true == AbsoluteScale || true == AbsoluteRotation || true == AbsolutePosition)
 	{
 		float4 WScale, WRotation, WPosition;
-		float4 LScale = Scale;
-		float4 LRotation = Rotation;
-		float4 LPosition = Position;
+		float4 LScale, LRotation, LPosition;
 
 		//자신의 월드 행렬에서 크자이를 추출
 		WorldMatrix.Decompose(WScale, WRotation, WPosition);
@@ -212,6 +210,8 @@ void TransformData::WorldCalculation(const TransformData& _Parent, bool Absolute
 
 
 		//---------크기---------------
+
+		LScale = Scale;
 
 		//크기를 월드로 지정해 준 경우
 		if (true == AbsoluteScale)

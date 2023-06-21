@@ -105,7 +105,9 @@ GameEngineSoundPlayer GameEngineSound::Play(const std::string_view& _Name)
 		return nullptr;
 	}
 
-	return Finditer->second->SoundPlay();
+	FMOD::Channel* Channel = Finditer->second->SoundPlay();
+	Channel->setLoopCount(0);
+	return Channel;
 }
 
 void GameEngineSound::SoundLoad(const std::string_view& _Path)
