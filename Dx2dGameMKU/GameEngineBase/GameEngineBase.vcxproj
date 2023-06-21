@@ -190,6 +190,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameEngineString.cpp" />
+    <ClCompile Include="GameEngineThread.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GameEngineThreadJopQueue.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GameEngineTime.cpp">
       <SubType>
       </SubType>
@@ -231,6 +239,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GameEngineString.h" />
+    <ClInclude Include="GameEngineThread.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GameEngineThreadJopQueue.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GameEngineTime.h">
       <SubType>
       </SubType>

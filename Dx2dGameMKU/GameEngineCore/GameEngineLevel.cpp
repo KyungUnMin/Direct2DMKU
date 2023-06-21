@@ -165,7 +165,10 @@ void GameEngineLevel::ActorRender(float _DeltaTime)
 		std::shared_ptr<GameEngineCamera> Cam = Pair.second;
 
 		if (false == Cam->IsUpdate())
+		{
+			Cam->CamTarget->Clear();
 			continue;
+		}
 
 		Cam->Setting();
 		Cam->CameraTransformUpdate();

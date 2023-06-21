@@ -127,7 +127,10 @@ void GameEngineSpriteRenderer::Start()
 void GameEngineSpriteRenderer::SetTexture(const std::string_view& _Name)
 {
 	GetShaderResHelper().SetTexture("DiffuseTex", _Name);
+
+	//이미 Animation을 동작중일때 텍스처를 세팅하기 위한 코드입니다
 	CurAnimation = nullptr;
+	AtlasData = float4{ 0.0f, 0.0f, 1.0f, 1.0f };
 
 	/*std::shared_ptr<GameEngineTexture> FindTex = GameEngineTexture::Find(_Name);
 	if (nullptr == FindTex)
