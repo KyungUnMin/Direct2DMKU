@@ -32,7 +32,7 @@ const size_t NoiseState_Attack_AxeDash::ReflectMaxCnt = 5;
 const float NoiseState_Attack_AxeDash::StandardFollowRange = 1000.f;
 const float NoiseState_Attack_AxeDash::StandardFollowDuration = 0.5f;
 
-const float4 NoiseState_Attack_AxeDash::FanSpawnPos = { -510.f,  -100.f,  -100.f };
+const float4 NoiseState_Attack_AxeDash::FanSpawnPos = { 510.f,  -100.f,  -100.f };
 
 NoiseState_Attack_AxeDash::NoiseState_Attack_AxeDash()
 {
@@ -157,13 +157,13 @@ void NoiseState_Attack_AxeDash::ChangeStateAndAni(State _Next)
 void NoiseState_Attack_AxeDash::CreateFan()
 {
 	EnemySpawner& FanSpawner = FieldLevelBase::GetPtr()->GetEnemySpawner();
-	std::shared_ptr<FieldEnemyBase> FanPtr = nullptr;
 
-	FanPtr = FanSpawner.CreateEnemy(EnemyType::NoiseFan, FanSpawnPos);
-	Fans.push_back(FanPtr);
+	//2명 이상일 땐 더이상 팬을 생성하지 않음
+	if (2 <= NoiseFan::GetCurFanCount())
+		return;
 
-	FanPtr = FanSpawner.CreateEnemy(EnemyType::NoiseFan, FanSpawnPos * float4{ -1.f, 1.f, 1.f });
-	Fans.push_back(FanPtr);
+	FanSpawner.CreateEnemy(EnemyType::NoiseFan, FanSpawnPos)->LookDir(false);
+	FanSpawner.CreateEnemy(EnemyType::NoiseFan, FanSpawnPos * float4{ -1.f, 1.f, 1.f });
 }
 
 
@@ -421,17 +421,4 @@ void NoiseState_Attack_AxeDash::ExitState()
 	ReflectCount = 1;
 	FollowIndex = 1;
 	FollowTimer = 0.f;
-
-
-	for (std::shared_ptr<class FieldEnemyBase> Fan : Fans)
-	{
-		if (true == Fan->IsDeath())
-			continue;
-
-		std::shared_ptr<NoiseFan> FanPtr = nullptr;
-		FanPtr = std::dynamic_pointer_cast<NoiseFan>(Fan);
-		FanPtr->OnDamage_BlowBack(1);
-	}
-
-	Fans.clear();
 }

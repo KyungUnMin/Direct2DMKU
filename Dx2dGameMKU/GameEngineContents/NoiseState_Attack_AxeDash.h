@@ -43,7 +43,6 @@ private:
 
 	State CurState = State::DashStart;
 	std::shared_ptr<class NoiseAxe> Axe = nullptr;
-	std::vector<std::shared_ptr<class FieldEnemyBase>> Fans;
 
 	const float DashSpeed = 1500.f;
 	float4 DashDir = float4::Zero;

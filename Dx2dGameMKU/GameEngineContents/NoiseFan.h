@@ -4,6 +4,12 @@
 class NoiseFan : public FieldEnemyBase
 {
 public:
+	static size_t GetCurFanCount()
+	{
+		return FanCount;
+	}
+
+
 	NoiseFan();
 	~NoiseFan() override;
 
@@ -43,6 +49,7 @@ private:
 	static const std::string_view BoyHurt_FileName;
 	static const std::string_view GirlHurt_FileName;
 	static const std::vector<std::string_view> EnumToString;
+	static size_t FanCount;
 
 	enum class State
 	{
@@ -54,7 +61,6 @@ private:
 
 	State CurState = State::Climb;
 	bool IsZenderGirl = true;
-	std::shared_ptr<class GameEngineSpriteRenderer> HurtRender = nullptr;
 
 
 	void ImageLoad();

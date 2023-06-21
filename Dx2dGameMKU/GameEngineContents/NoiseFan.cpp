@@ -22,17 +22,20 @@ const std::vector<std::string_view> NoiseFan::EnumToString =
 	"Fall"
 };
 
+size_t NoiseFan::FanCount = 0;
 
 NoiseFan::NoiseFan()
 {
 	static bool Girl = true;
 	IsZenderGirl = Girl;
 	Girl = !Girl;
+
+	++FanCount;
 }
 
 NoiseFan::~NoiseFan()
 {
-
+	--FanCount;
 }
 
 
@@ -52,7 +55,6 @@ void NoiseFan::Start()
 	AttackCollider->GetTransform()->SetLocalScale(float4::One * 50.f);
 	MainCollider->Off();
 	AttackCollider->Off();
-	HurtRender->Off();
 
 	ChangeState(State::Climb);
 }
@@ -104,12 +106,6 @@ void NoiseFan::CreateAnimation()
 		.Loop = true,
 	});
 
-
-
-	HurtRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
-	const std::string_view& HurtTexName = IsZenderGirl ? GirlHurt_FileName : BoyHurt_FileName;
-	HurtRender->SetTexture(HurtTexName);
-	HurtRender->GetTransform()->SetLocalScale({ 600.f, 600.f });
 }
 
 void NoiseFan::ChangeState(State _Next)
@@ -120,15 +116,10 @@ void NoiseFan::ChangeState(State _Next)
 	if (State::Fall == CurState)
 		return;
 
-	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
-
 	if (State::FlyAway == CurState)
-	{
-		Render->Off();
-		HurtRender->On();
 		return;
-	}
-	
+
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	size_t NextAniIndex = static_cast<size_t>(_Next);
 	Render->ChangeAnimation(EnumToString[NextAniIndex]);
 }
@@ -173,4 +164,8 @@ void NoiseFan::ChangeFlyState()
 	GetAttackCollider()->Off();
 
 	ChangeState(State::FlyAway);
+
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	const std::string_view& HurtImgPath = IsZenderGirl ? GirlHurt_FileName : BoyHurt_FileName;
+	Render->SetTexture(HurtImgPath);
 }

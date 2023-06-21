@@ -65,6 +65,10 @@ void NoiseFan::Update_Trace(float _DeltaTime)
 	}
 
 
+	//바라보는 방향 설정
+	LookDir(0.f < TraceVec.x);
+
+
 	//충돌 처리
 	float LiveTime = GetLiveTime();
 	if (LiveTime < (LastAttackTime + 1.0f))
@@ -84,7 +88,7 @@ void NoiseFan::Update_Trace(float _DeltaTime)
 
 void NoiseFan::Update_FlyAway(float _DeltaTime)
 {
-	static const float Duration = 0.5f;
+	static const float Duration = 1.0f;
 	static const float MaxHeight = 1000.f;
 	static const float PosXRange = 500.f;
 
@@ -101,8 +105,9 @@ void NoiseFan::Update_FlyAway(float _DeltaTime)
 	Shadow->ColorOptionValue.MulColor.a = (1.f - SinValue);
 
 	//회전시키기
-	GameEngineTransform* HurtRenderTrans = HurtRender->GetTransform();
-	HurtRenderTrans->AddLocalRotation(float4::Forward * 720.f * _DeltaTime);
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	GameEngineTransform* RenderTrans = Render->GetTransform();
+	RenderTrans->AddLocalRotation(float4::Forward * 720.f * _DeltaTime);
 	
 
 	if (Ratio < 1.f)
@@ -113,8 +118,8 @@ void NoiseFan::Update_FlyAway(float _DeltaTime)
 
 	float RandX = GameEngineRandom::MainRandom.RandomFloat(-PosXRange, PosXRange);
 	ThisTrans->SetLocalPosition(float4{ RandX , -800.f, -400.f });
-	HurtRenderTrans->SetLocalScale(float4{ 800.f, 800.f, 1.f });
-	HurtRender->ColorOptionValue.MulColor = float4{0.f, 0.f, 0.5f, 1.f};
+	RenderTrans->SetLocalScale(float4{ 800.f, 800.f, 1.f });
+	Render->ColorOptionValue.MulColor = float4{0.f, 0.f, 0.5f, 1.f};
 
 	ChangeState(State::Fall);
 }
@@ -133,8 +138,9 @@ void NoiseFan::Update_Fall(float _DeltaTime)
 	SetHeight(NowHeight);
 
 	//회전시키기
-	GameEngineTransform* HurtRenderTrans = HurtRender->GetTransform();
-	HurtRenderTrans->AddLocalRotation(float4::Forward * 720.f * _DeltaTime);
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	GameEngineTransform* RenderTrans = Render->GetTransform();
+	RenderTrans->AddLocalRotation(float4::Forward * 720.f * _DeltaTime);
 
 	if (Ratio < 1.f)
 		return;
