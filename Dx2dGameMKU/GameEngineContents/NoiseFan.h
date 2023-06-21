@@ -40,6 +40,8 @@ protected:
 private:
 	static const std::string_view Boy_FileName;
 	static const std::string_view Girl_FileName;
+	static const std::string_view BoyHurt_FileName;
+	static const std::string_view GirlHurt_FileName;
 	static const std::vector<std::string_view> EnumToString;
 
 	enum class State
@@ -52,6 +54,7 @@ private:
 
 	State CurState = State::Climb;
 	bool IsZenderGirl = true;
+	std::shared_ptr<class GameEngineSpriteRenderer> HurtRender = nullptr;
 
 
 	void ImageLoad();

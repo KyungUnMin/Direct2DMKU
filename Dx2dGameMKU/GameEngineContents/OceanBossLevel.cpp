@@ -60,8 +60,7 @@ void OceanBossLevel::Start()
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -149.f, -223.f });
 	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
-	//GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
-	GetEnemySpawner().CreateEnemy(EnemyType::NoiseFan, float4{0.f, -200.f, -200.f});
+	GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }

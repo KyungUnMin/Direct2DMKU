@@ -29,6 +29,7 @@ private:
 	static const float StandardFollowRange;
 	static const float StandardFollowDuration;
 	static const float StartDashRotRange;
+	static const float4 FanSpawnPos;
 
 	enum class State
 	{
@@ -42,7 +43,8 @@ private:
 
 	State CurState = State::DashStart;
 	std::shared_ptr<class NoiseAxe> Axe = nullptr;
-	
+	std::vector<std::shared_ptr<class FieldEnemyBase>> Fans;
+
 	const float DashSpeed = 1500.f;
 	float4 DashDir = float4::Zero;
 	size_t ReflectCount = 1;
@@ -55,6 +57,7 @@ private:
 	void LoadAnimation();
 	void CreateAnimation();
 	void ChangeStateAndAni(State _Next);
+	void CreateFan();
 
 	void Update_DashStart(float _DeltaTime);
 	void Update_DashLoop(float _DeltaTime);

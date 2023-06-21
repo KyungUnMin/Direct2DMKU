@@ -127,6 +127,7 @@ void GameEngineSpriteRenderer::Start()
 void GameEngineSpriteRenderer::SetTexture(const std::string_view& _Name)
 {
 	GetShaderResHelper().SetTexture("DiffuseTex", _Name);
+	CurAnimation = nullptr;
 
 	/*std::shared_ptr<GameEngineTexture> FindTex = GameEngineTexture::Find(_Name);
 	if (nullptr == FindTex)

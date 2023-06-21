@@ -4,11 +4,16 @@
 #include <GameEngineCore/GameEngineSprite.h>
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineTexture.h>
 
 #include "RCGDefine.h"
+#include "RCGEnums.h"
 
 const std::string_view NoiseFan::Boy_FileName = "NoiseFanBoy.png";
 const std::string_view NoiseFan::Girl_FileName = "NoiseFanGirl.png";
+const std::string_view NoiseFan::BoyHurt_FileName = "NoiseFanBoy_Hurt.png";
+const std::string_view NoiseFan::GirlHurt_FileName = "NoiseFanGirl_Hurt.png";
+
 const std::vector<std::string_view> NoiseFan::EnumToString =
 {
 	"Climb",
@@ -47,6 +52,7 @@ void NoiseFan::Start()
 	AttackCollider->GetTransform()->SetLocalScale(float4::One * 50.f);
 	MainCollider->Off();
 	AttackCollider->Off();
+	HurtRender->Off();
 
 	ChangeState(State::Climb);
 }
@@ -67,6 +73,9 @@ void NoiseFan::ImageLoad()
 	const std::pair<int, int> CutFrm = { 5, 3 };
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(Boy_FileName).GetFullPath(), CutFrm.first, CutFrm.second);
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(Girl_FileName).GetFullPath(), CutFrm.first, CutFrm.second);
+
+	GameEngineTexture::Load(Dir.GetPlusFileName(BoyHurt_FileName).GetFullPath());
+	GameEngineTexture::Load(Dir.GetPlusFileName(GirlHurt_FileName).GetFullPath());
 }
 
 void NoiseFan::CreateAnimation()
@@ -95,25 +104,31 @@ void NoiseFan::CreateAnimation()
 		.Loop = true,
 	});
 
-	Render->CreateAnimation
-	({
-		.AnimationName = EnumToString[static_cast<size_t>(State::FlyAway)],
-		.SpriteName = FileName,
-		.Start = 0,
-		.End = 3,
-		.FrameInter = FLT_MAX,
-		.Loop = true,
-	});
+
+
+	HurtRender = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	const std::string_view& HurtTexName = IsZenderGirl ? GirlHurt_FileName : BoyHurt_FileName;
+	HurtRender->SetTexture(HurtTexName);
+	HurtRender->GetTransform()->SetLocalScale({ 600.f, 600.f });
 }
 
 void NoiseFan::ChangeState(State _Next)
 {
 	CurState = _Next;
+	ResetLiveTime();
 
 	if (State::Fall == CurState)
 		return;
-	
+
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+
+	if (State::FlyAway == CurState)
+	{
+		Render->Off();
+		HurtRender->On();
+		return;
+	}
+	
 	size_t NextAniIndex = static_cast<size_t>(_Next);
 	Render->ChangeAnimation(EnumToString[NextAniIndex]);
 }
@@ -149,8 +164,10 @@ void NoiseFan::Update(float _DeltaTime)
 
 void NoiseFan::ChangeFlyState()
 {
+	if (State::Trace != CurState)
+		return;
+
 	OnDamage(1);
-	ResetLiveTime();
 
 	GetMainCollider()->Off();
 	GetAttackCollider()->Off();
