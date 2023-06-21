@@ -1141,6 +1141,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.AxeDash">
       <UniqueIdentifier>{2fd82c25-c6af-4fe0-bf74-ddeae05d1861}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan">
+      <UniqueIdentifier>{8722cb8b-141f-4024-93b8-e3a85b63f7de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2055,6 +2058,12 @@
     <ClCompile Include="FieldCamController_Roll.cpp">
       <Filter>01.Core\03.Manager/Controller\02.FieldCam</Filter>
     </ClCompile>
+    <ClCompile Include="NoiseFan.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseFan_FSM.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2953,6 +2962,9 @@
     </ClInclude>
     <ClInclude Include="NoiseState_Attack_AxeDash.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\04.Attack\04.AxeDash</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseFan.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

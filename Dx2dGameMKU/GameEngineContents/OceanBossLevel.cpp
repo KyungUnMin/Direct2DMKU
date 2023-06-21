@@ -20,8 +20,8 @@
 const std::vector<std::pair<std::string_view, float4>> OceanBossLevel::BGInfoes =
 {
 	{"OceanBossBG.png", float4{0.f, 0.f, 500.f}},
-	{"OceanConcert_Sky.png", float4{0.f, 223.f, 505.f}},
-	{"OceanConcert_StageForeground.png", float4{0.f, 223.f, 499.f}},
+	{"OceanConcert_Sky.png", float4{0.f, 223.f, 500.5f}},
+	{"OceanConcert_StageForeground.png", float4{0.f, 223.f, 499.9f}},
 	{"OceanConcert_FenceLeft.png", float4{-632.f, -171.f, -171.f}},
 	{"OceanConcert_FenceRIght.png", float4{632.f, -171.f, -171.f}},
 };
@@ -56,11 +56,12 @@ void OceanBossLevel::Start()
 	FieldLevelBase::Start();
 	LoadImgRes();
 
-
 	CreateBackGrounds();
+
 	FieldLevelBase::SetPlayerStartPosition(float4{ -149.f, -223.f });
 	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
-	GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
+	//GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
+	GetEnemySpawner().CreateEnemy(EnemyType::NoiseFan, float4{0.f, -200.f, -200.f});
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }

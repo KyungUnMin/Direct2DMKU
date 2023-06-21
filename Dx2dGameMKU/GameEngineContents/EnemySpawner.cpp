@@ -23,6 +23,7 @@
 #include "FieldEnemy_Misuzu.h"
 #include "FieldEnemy_Yamada.h"
 #include "FieldEnemy_Noise.h"
+#include "NoiseFan.h"
 
 EnemySpawner::EnemySpawner(FieldLevelBase* _Level)
 {
@@ -90,6 +91,9 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 		break;
 	case EnemyType::Noise:
 		EnemyPtr = Level->CreateActor<FieldEnemy_Noise>(UpdateOrder::Enemy);
+		break;
+	case EnemyType::NoiseFan:
+		EnemyPtr = Level->CreateActor<NoiseFan>(UpdateOrder::Enemy);
 		break;
 	}
 

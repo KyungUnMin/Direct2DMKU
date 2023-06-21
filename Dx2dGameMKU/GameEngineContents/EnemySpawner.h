@@ -20,6 +20,7 @@ enum class EnemyType
 	Misuzu,
 	Yamada,
 	Noise,
+	NoiseFan,
 };
 
 struct EnemyCreateParameter
