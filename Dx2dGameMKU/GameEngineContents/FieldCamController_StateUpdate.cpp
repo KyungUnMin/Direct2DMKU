@@ -81,8 +81,6 @@ void FieldCamController::Update_Trace(float _DeltaTime)
 
 void FieldCamController::Update_MoveToFixed(float _DeltaTime)
 {
-	const float FixMoveDuration = 1.5f;
-
 	Timer += _DeltaTime;
 	float Ratio = (Timer / FixMoveDuration);
 

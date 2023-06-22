@@ -471,9 +471,17 @@
     <ClInclude Include="NoiseState_Damaged_KnockDown.h" />
     <ClInclude Include="NoiseState_Defeat.h" />
     <ClInclude Include="NoiseState_Idle.h" />
+    <ClInclude Include="NoiseState_JumpToStage.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NoiseState_NormalDamaged_Face.h" />
     <ClInclude Include="NoiseState_NormalDamaged_Jaw.h" />
     <ClInclude Include="NoiseState_NormalDamaged_Stomach.h" />
+    <ClInclude Include="NoiseState_Sing.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NoiseState_Taunt.h" />
     <ClInclude Include="NoiseState_Slide.h" />
     <ClInclude Include="OpeningDiaEffect.h">
@@ -1230,9 +1238,17 @@
     <ClCompile Include="NoiseState_Damaged_KnockDown.cpp" />
     <ClCompile Include="NoiseState_Defeat.cpp" />
     <ClCompile Include="NoiseState_Idle.cpp" />
+    <ClCompile Include="NoiseState_JumpToStage.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NoiseState_NormalDamaged_Face.cpp" />
     <ClCompile Include="NoiseState_NormalDamaged_Jaw.cpp" />
     <ClCompile Include="NoiseState_NormalDamaged_Stomach.cpp" />
+    <ClCompile Include="NoiseState_Sing.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NoiseState_Taunt.cpp" />
     <ClCompile Include="NoiseState_Slide.cpp" />
     <ClCompile Include="OpeningDiaEffect.cpp">

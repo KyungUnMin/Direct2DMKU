@@ -34,9 +34,11 @@ void FieldCamController::Init(std::shared_ptr<GameEngineCamera> _Cam, const floa
 
 
 
-void FieldCamController::SetFixedState(const float4& _DestPos)
+void FieldCamController::SetFixedState(const float4& _DestPos, float _Duration /*= 0.5f*/)
 {
-	PrevPos = Cam->GetTransform()->GetLocalForwardVector();
+	FixMoveDuration = _Duration;
+
+	PrevPos = Cam->GetTransform()->GetLocalPosition();
 	DestPos = _DestPos;
 	DestPos.z = PrevPos.z;
 	Timer = 0.f;

@@ -28,7 +28,7 @@ public:
 		CurState = CameraCtrlState::PlayerTrace;
 	}
 
-	void SetFixedState(const float4& _DestPos);
+	void SetFixedState(const float4& _DestPos, float _Duration = 0.5f);
 	
 	void SetShakeState(float _ShakeDuration, float _ShakeRange = 5.f);
 
@@ -47,8 +47,9 @@ private:
 	float4 MapScale = float4::Zero;
 	const float TraceYOffset = 80.f;
 
-	//MoveToFixedSDA
+	//MoveToFixed
 	float4 DestPos = float4::Zero;
+	float FixMoveDuration = 0.f;
 
 	//Shake
 	float ShakeRange = 5.f;

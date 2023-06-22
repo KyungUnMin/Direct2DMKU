@@ -8,6 +8,8 @@
 #include "NoiseState_Slide.h"
 #include "NoiseState_Defeat.h"
 #include "NoiseState_Taunt.h"
+#include "NoiseState_JumpToStage.h"
+#include "NoiseState_Sing.h"
 
 //Attack
 #include "NoiseState_Attack_AxeGrind.h"
@@ -60,7 +62,7 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::FarAttackGroup =
 {
 	//1∆‰¿Ã¡Ó
 	{
-		NoiseStateType::AxeDash
+		NoiseStateType::JumpToStage
 		//NoiseStateType::Tackle,
 	},
 
@@ -122,6 +124,8 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<NoiseState_Slide>(NoiseStateType::Slide);
 	//FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
 	//FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
+	FSMBase::CreateState<NoiseState_JumpToStage>(NoiseStateType::JumpToStage);
+	FSMBase::CreateState<NoiseState_Sing>(NoiseStateType::Sing);
 
 
 	//Attack

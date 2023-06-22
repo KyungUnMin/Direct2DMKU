@@ -1144,6 +1144,12 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan">
       <UniqueIdentifier>{8722cb8b-141f-4024-93b8-e3a85b63f7de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\05.JumpToStage">
+      <UniqueIdentifier>{be31731b-c2eb-4cda-a277-b162e8f26fd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\06.Sing">
+      <UniqueIdentifier>{a6ff390e-6b77-451c-8c6a-f8ba3fcf3a5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2064,6 +2070,12 @@
     <ClCompile Include="NoiseFan_FSM.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan</Filter>
     </ClCompile>
+    <ClCompile Include="NoiseState_JumpToStage.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\05.JumpToStage</Filter>
+    </ClCompile>
+    <ClCompile Include="NoiseState_Sing.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\06.Sing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2965,6 +2977,12 @@
     </ClInclude>
     <ClInclude Include="NoiseFan.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\02.Enemy\09.NoiseFan</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_JumpToStage.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\05.JumpToStage</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_Sing.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\06.Sing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

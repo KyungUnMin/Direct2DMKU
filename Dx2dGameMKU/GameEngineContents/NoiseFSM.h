@@ -8,6 +8,8 @@ enum class NoiseStateType
 	Slide,
 	Defeat,
 	Taunt,
+	JumpToStage,
+	Sing,
 
 	//Attack
 	AxeGrind,
