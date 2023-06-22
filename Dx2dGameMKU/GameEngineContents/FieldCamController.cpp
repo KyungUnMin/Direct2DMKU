@@ -38,6 +38,7 @@ void FieldCamController::SetFixedState(const float4& _DestPos)
 {
 	PrevPos = Cam->GetTransform()->GetLocalForwardVector();
 	DestPos = _DestPos;
+	DestPos.z = PrevPos.z;
 	Timer = 0.f;
 
 	CurState = CameraCtrlState::MoveToFixed;

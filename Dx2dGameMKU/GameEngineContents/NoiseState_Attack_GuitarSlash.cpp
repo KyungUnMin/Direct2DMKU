@@ -70,8 +70,9 @@ void NoiseState_Attack_GuitarSlash::EnterState()
 {
 	BossState_AttackBase::EnterState();
 
-
-	GetCamCtrl()->SetZoom(0.95f, 7.f * AniInterTime);
+	FieldCamController* CamCtrl = GetCamCtrl();
+	float ZoomOffset = (CamCtrl->ZoomOrigin - 0.05f);
+	CamCtrl->SetZoom(ZoomOffset, 7.f * AniInterTime);
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue(float4::Right * 150.f, float4::One * 250.f);
 }

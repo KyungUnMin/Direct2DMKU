@@ -3,7 +3,7 @@
 
 #include <GameEngineCore/GameEngineCamera.h>
 
-const float FieldCamController::ZoomOrigin = 1.0f;
+float FieldCamController::ZoomOrigin = 1.0f;
 
 void FieldCamController::SetZoom(float _Per, float _Duration /*= 0.5f*/)
 {

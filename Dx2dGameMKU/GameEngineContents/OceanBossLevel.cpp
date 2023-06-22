@@ -62,6 +62,10 @@ void OceanBossLevel::Start()
 	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
 	GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
 
+	/*GetCameraController().SetFixedState(float4{ 0.f, -100.f, 0.f });
+	FieldCamController::ZoomOrigin = 1.2f;
+	GetCameraController().SetZoom(FieldCamController::ZoomOrigin, 1.f);*/
+
 	//FieldLevelBase::OnTransView_ForDebug();
 }
 

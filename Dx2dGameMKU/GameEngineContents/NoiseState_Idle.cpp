@@ -5,7 +5,7 @@
 
 #include "FieldEnemyBase.h"
 
-const std::vector<int> NoiseState_Idle::FarAttackPercent = { 0, 20, 50 };
+const std::vector<int> NoiseState_Idle::FarAttackPercent = { -1, 20, 50 };
 const float NoiseState_Idle::SightRadius = 100.f;
 
 const std::string_view NoiseState_Idle::AniName = "Idle";
@@ -76,9 +76,9 @@ void NoiseState_Idle::Update(float _DeltaTime)
 
 	
 	//인자로 들어간 확률에 맞춰 원거리 공격 시도
-	size_t CurPhase = GetBossFsm()->GetCurPhase();
+	/*size_t CurPhase = GetBossFsm()->GetCurPhase();
 	if (true == EnemyStateBase::FarAttackExcute(FarAttackPercent[CurPhase]))
-		return;
+		return;*/
 
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
 	//if (true == EnemyState_IdleBase::ChangeAttackState())

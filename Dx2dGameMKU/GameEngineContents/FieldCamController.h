@@ -71,7 +71,7 @@ private:
 	//--------ZOOM-----------------
 
 public:
-	static const float ZoomOrigin;
+	static float ZoomOrigin;
 
 	//부드럽게 줌 변경
 	void SetZoom(float _Per, float _Duration);
