@@ -223,7 +223,7 @@ void NoiseFloor::Attack()
 	GetAttackCollider()->Off();
 	GetShadowRender()->Off();
 
-	if (true == FieldPlayer::GetPtr()->OnDamage_Jaw())
+	if (true == FieldPlayer::GetPtr()->OnDamage_Jaw(true))
 	{
 		DataMgr::MinusPlayerHP(Damage);
 		CurState = State::Hit;

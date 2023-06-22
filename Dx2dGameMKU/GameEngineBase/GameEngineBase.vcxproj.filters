@@ -37,7 +37,7 @@
     <ClCompile Include="GameEngineThread.cpp">
       <Filter>06.Thread</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineThreadJopQueue.cpp">
+    <ClCompile Include="GameEngineThreadJobQueue.cpp">
       <Filter>06.Thread</Filter>
     </ClCompile>
   </ItemGroup>
@@ -78,7 +78,7 @@
     <ClInclude Include="GameEngineThread.h">
       <Filter>06.Thread</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineThreadJopQueue.h">
+    <ClInclude Include="GameEngineThreadJobQueue.h">
       <Filter>06.Thread</Filter>
     </ClInclude>
   </ItemGroup>

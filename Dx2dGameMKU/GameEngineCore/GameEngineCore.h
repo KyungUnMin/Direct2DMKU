@@ -10,6 +10,7 @@
 #pragma comment(lib, "GameEngineBase.lib")
 #pragma comment(lib, "GameEnginePlatform.lib")
 
+#include <GameEngineBase/GameEngineThreadJobQueue.h>
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineLevel.h"
@@ -67,6 +68,8 @@ public:
 	{
 		return MainLevel;
 	}
+
+	static GameEngineThreadJobQueue JobQueue;
 
 protected:
 

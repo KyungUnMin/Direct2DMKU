@@ -9,6 +9,8 @@
 #include "GameEngineVideo.h"
 #include "GameEngineGUI.h"
 
+GameEngineThreadJobQueue GameEngineCore::JobQueue;
+
 std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::LevelMap;
 std::shared_ptr<GameEngineLevel> GameEngineCore::MainLevel = nullptr;
 std::shared_ptr<GameEngineLevel> GameEngineCore::NextLevel = nullptr;
@@ -36,6 +38,9 @@ void GameEngineCore::EngineStart(std::function<void()> _ContentsStart)
 	{
 		GameEngineInput::CreateKey("GUISwitch", VK_F8);
 	}
+
+	//스레드 풀 생성
+	JobQueue.Initialize("EngineJobQueue");
 
 	//디바이스 초기화
 	GameEngineDevice::Initialize();
