@@ -156,6 +156,11 @@ void FieldLevelBase::Update(float _DeltaTime)
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
 	EnemySpawnerCtrl.Update(_DeltaTime);
 	Update_DoorOpen_ForDebug();
+
+	if (true == KeyMgr::IsDown(KeyNames::DebugF1))
+	{
+		IsDebugSwitch();
+	}
 }
 
 

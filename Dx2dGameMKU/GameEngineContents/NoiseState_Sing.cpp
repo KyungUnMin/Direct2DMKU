@@ -1,12 +1,19 @@
 #include "PrecompileHeader.h"
 #include "NoiseState_Sing.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
 
 #include "NoiseFSM.h"
 #include "FieldEnemyBase.h"
+#include "NoiseFloor.h"
+#include "FieldLevelBase.h"
+#include "FieldPlayer.h"
+
+
 
 const std::string_view NoiseState_Sing::GuitarPlay_FileName = "Noise_GuitarPlay.png";
 const std::string_view NoiseState_Sing::GuitarSing_FileName = "Noise_GuitarSing.png";
@@ -15,7 +22,7 @@ const std::string_view NoiseState_Sing::FloorLine_FileName = "OceanConcert_Rails
 const float NoiseState_Sing::AniInterTime = 0.08f;
 
 const std::vector<float> NoiseState_Sing::Durations = { FLT_MAX, FLT_MAX ,FLT_MAX };
-
+const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 4, 3 };
 
 NoiseState_Sing::NoiseState_Sing()
 {
@@ -34,7 +41,7 @@ void NoiseState_Sing::Start()
 	LoadAnimation();
 	CreateAnimation();
 
-	FsmPtr = GetConvertFSM<BossFSMBase>();
+	
 	CreateFloorLine();
 }
 
@@ -105,16 +112,39 @@ void NoiseState_Sing::EnterState()
 {
 	EnemyStateBase::EnterState();
 
+	BossFSMBase* FsmPtr = GetConvertFSM<BossFSMBase>();
 	if (false == FsmPtr->IsLastPhase())
-	{
-		GetRenderer()->ChangeAnimation(GuitarPlay_FileName);
-	}
-	else
 	{
 		GetRenderer()->ChangeAnimation(GuitarSing_FileName);
 	}
+	else
+	{
+		GetRenderer()->ChangeAnimation(GuitarPlay_FileName);
+	}
 
+	CurPhase = FsmPtr->GetCurPhase();
 	FloorLines->On();
+	ChangePlayerColTrans();
+}
+
+
+
+void NoiseState_Sing::ChangePlayerColTrans()
+{
+	static const float4 PlayerColScale = float4{ 80.f, 20.f, 20.f };
+
+	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
+	std::shared_ptr<GameEngineCollision> PlayerMainCollider = nullptr;
+	GameEngineTransform* PlayerColTrans = nullptr;
+
+	PlayerMainCollider = Player->GetMainCollider();
+	PlayerColTrans = PlayerMainCollider->GetTransform();
+
+	PlayerOriginColScale = PlayerColTrans->GetLocalScale();
+	PlayerColTrans->SetLocalScale(PlayerColScale);
+	PlayerMainCollider->SetColType(ColType::AABBBOX3D);
+
+	Player->GetAttackCollider()->SetColType(ColType::MAX);
 }
 
 
@@ -126,10 +156,15 @@ void NoiseState_Sing::Update(float _DeltaTime)
 
 	if (true == GetRenderer()->IsAnimationEnd())
 	{
-		//TODO 생성
+		static size_t Count = 0;
+		++Count;
+		if (0 == (Count % SpawnTimeCount[CurPhase]))
+		{
+			CreateFloor();
+			Count = 0;
+		}
 	}
 
-	size_t CurPhase = FsmPtr->GetCurPhase();
 	if (GetLiveTime() < Durations[CurPhase])
 		return;
 
@@ -144,7 +179,6 @@ void NoiseState_Sing::Update_Rail()
 	float LiveTime = GetLiveTime();
 
 	//현재 페이즈의 노래 시간
-	size_t CurPhase = FsmPtr->GetCurPhase();
 	const float CurSingDuration = Durations[CurPhase];
 
 	//레일이 회수되는 시간
@@ -166,4 +200,42 @@ void NoiseState_Sing::Update_Rail()
 	}
 
 	FloorLines->ImageClippingY(Ratio, ClipYDir::Top);
+}
+
+
+void NoiseState_Sing::CreateFloor()
+{
+	static const int FloorMaxCount = 6;
+	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
+
+	//6개의 레일 중에서 어떤 레일에 발판을 생성할 것인지 비트연산자로 표현
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(1, (1 << FloorMaxCount) - 1);
+	for (int i = 0; i < FloorMaxCount; ++i)
+	{
+		//i번째 레일에 발판을 생성하는 경우에만
+		if (0 == (RandNum & (1 << i)))
+			continue;
+
+		std::shared_ptr<NoiseFloor> Floor = nullptr;
+		Floor = Level->CreateActor<NoiseFloor>(UpdateOrder::Effect);
+		Floor->Init(static_cast<NoiseFloorType>(i), CurPhase);
+	}
+}
+
+
+void NoiseState_Sing::ExitState()
+{
+	EnemyStateBase::ExitState();
+
+	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
+	std::shared_ptr<GameEngineCollision> PlayerMainCollider = nullptr;
+	GameEngineTransform* PlayerColTrans = nullptr;
+
+	PlayerMainCollider = Player->GetMainCollider();
+	PlayerColTrans = PlayerMainCollider->GetTransform();
+
+	PlayerColTrans->SetLocalScale(PlayerOriginColScale);
+	PlayerMainCollider->SetColType(ColType::SPHERE3D);
+
+	Player->GetAttackCollider()->SetColType(ColType::SPHERE3D);
 }

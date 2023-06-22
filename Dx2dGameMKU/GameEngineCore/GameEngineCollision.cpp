@@ -116,7 +116,7 @@ bool GameEngineCollision::CollisionAll(int _TargetGroup, std::vector<std::shared
 	}
 
 	//함수 호출시 자신의 충돌 타입을 지정하지 않았다면 자신의 ColType으로
-	if (Type == ColType::MAX)
+	if (_ThisColType == ColType::MAX)
 	{
 		_ThisColType = Type;
 	}

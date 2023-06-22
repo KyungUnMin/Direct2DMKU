@@ -16,7 +16,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
-	
+	void ExitState() override;
 
 private:
 	static const std::string_view GuitarPlay_FileName;
@@ -26,15 +26,20 @@ private:
 
 	static const float AniInterTime;
 	static const std::vector<float> Durations;
+	static const std::vector<size_t> SpawnTimeCount;
 
-	class BossFSMBase* FsmPtr = nullptr;
+
 	std::shared_ptr<class GameEngineSpriteRenderer> FloorLines = nullptr;
 
+	float4 PlayerOriginColScale = float4::Zero;
+	size_t CurPhase = -1;
 
 	void LoadAnimation();
 	void CreateAnimation();
 	void CreateFloorLine();
+	void ChangePlayerColTrans();
 
 	void Update_Rail();
+	void CreateFloor();
 };
 

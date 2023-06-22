@@ -148,8 +148,8 @@ void PlayerState_Avoid::Update_Move(float _DeltaTime, float _Ratio)
 void PlayerState_Avoid::Update_Jump(float _Ratio)
 {
 	//위로 이동할땐 점프X
-	if (float4::Up == MoveDir)
-		return;
+	/*if (float4::Up == MoveDir)
+		return;*/
 
 	float SinValue = sinf(GameEngineMath::PIE * _Ratio);
 	float NowHeight = (SinValue * MaxHeight);
