@@ -340,6 +340,14 @@ void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, si
 	{
 		CurAnimation->CurFrame = _Frame;
 	}
+
+	// 시작할때 Start 이벤트 체크 업데이트
+	size_t CurFrameIndex = CurAnimation->FrameIndex[CurAnimation->CurFrame];
+
+	if (CurAnimation->StartEventFunction.end() != CurAnimation->StartEventFunction.find(CurFrameIndex))
+	{
+		CurAnimation->StartEventFunction[CurFrameIndex]();
+	}
 }
 
 

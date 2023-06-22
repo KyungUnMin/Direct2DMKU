@@ -39,6 +39,12 @@ public:
 	void CreateState(const StateParameter& _StateFunction);
 	void ChangeState(const std::string_view& _Name);
 
+	void ChangeFunction(
+		const std::string_view& _Name, 
+		std::function<void()> _Start,
+		std::function<void(float _Delta)> _Update,
+		std::function<void()> _End);
+
 	void Update(float _DeltaTime);
 
 protected:
