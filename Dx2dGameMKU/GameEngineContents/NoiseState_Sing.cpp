@@ -113,7 +113,8 @@ void NoiseState_Sing::EnterState()
 	EnemyStateBase::EnterState();
 
 	BossFSMBase* FsmPtr = GetConvertFSM<BossFSMBase>();
-	if (false == FsmPtr->IsLastPhase())
+	CurPhase = FsmPtr->GetCurPhase();
+	if (CurPhase % 2)
 	{
 		GetRenderer()->ChangeAnimation(GuitarSing_FileName);
 	}
@@ -122,7 +123,6 @@ void NoiseState_Sing::EnterState()
 		GetRenderer()->ChangeAnimation(GuitarPlay_FileName);
 	}
 
-	CurPhase = FsmPtr->GetCurPhase();
 	FloorLines->On();
 	ChangePlayerColTrans();
 }

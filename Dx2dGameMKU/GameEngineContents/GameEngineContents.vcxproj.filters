@@ -1153,6 +1153,9 @@
     <Filter Include="03.Actor\06.Effect\09.NoiseEffects\02.NoiseFloor">
       <UniqueIdentifier>{6af2aab7-05ac-4a39-93db-62a06e7a622e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\07.JumpToField">
+      <UniqueIdentifier>{0fe560e5-3966-4847-9ead-37840a2ba41c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2082,6 +2085,9 @@
     <ClCompile Include="NoiseFloor.cpp">
       <Filter>03.Actor\06.Effect\09.NoiseEffects\02.NoiseFloor</Filter>
     </ClCompile>
+    <ClCompile Include="NoiseState_JumpToField.cpp">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\07.JumpToField</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2992,6 +2998,9 @@
     </ClInclude>
     <ClInclude Include="NoiseFloor.h">
       <Filter>03.Actor\06.Effect\09.NoiseEffects\02.NoiseFloor</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseState_JumpToField.h">
+      <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\07.JumpToField</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

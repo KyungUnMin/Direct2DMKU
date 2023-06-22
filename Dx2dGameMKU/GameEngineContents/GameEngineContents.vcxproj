@@ -475,6 +475,10 @@
     <ClInclude Include="NoiseState_Damaged_KnockDown.h" />
     <ClInclude Include="NoiseState_Defeat.h" />
     <ClInclude Include="NoiseState_Idle.h" />
+    <ClInclude Include="NoiseState_JumpToField.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NoiseState_JumpToStage.h">
       <SubType>
       </SubType>
@@ -1246,6 +1250,10 @@
     <ClCompile Include="NoiseState_Damaged_KnockDown.cpp" />
     <ClCompile Include="NoiseState_Defeat.cpp" />
     <ClCompile Include="NoiseState_Idle.cpp" />
+    <ClCompile Include="NoiseState_JumpToField.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NoiseState_JumpToStage.cpp">
       <SubType>
       </SubType>

@@ -109,7 +109,7 @@ void PlayerState_Walk::Update(float _DeltaTime)
 
 
 	//대시, 회피처리
-	if (NowTime < (LastTime + 0.5f) && (PressArrow == LastArrow))
+	if (NowTime < (LastTime + 0.1f) && (PressArrow == LastArrow))
 	{
 		//좌우이동을 빠르게 누른 경우
 		if ((KeyNames::RightArrow == PressArrow) || (KeyNames::LeftArrow == PressArrow))
