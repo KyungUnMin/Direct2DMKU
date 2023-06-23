@@ -12,7 +12,7 @@
 #include "NoiseFloor.h"
 #include "FieldLevelBase.h"
 #include "FieldPlayer.h"
-
+#include "LightEffect.h"
 
 
 const std::string_view NoiseState_Sing::GuitarPlay_FileName = "Noise_GuitarPlay.png";
@@ -23,6 +23,7 @@ const float NoiseState_Sing::AniInterTime = 0.08f;
 
 const std::vector<float> NoiseState_Sing::Durations = { FLT_MAX, FLT_MAX ,FLT_MAX };
 const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 4, 3 };
+const float NoiseState_Sing::SpeakerDelayTime = 0.1f;
 
 NoiseState_Sing::NoiseState_Sing()
 {
@@ -31,7 +32,7 @@ NoiseState_Sing::NoiseState_Sing()
 
 NoiseState_Sing::~NoiseState_Sing()
 {
-
+	Lights.clear();
 }
 
 void NoiseState_Sing::Start()
@@ -41,8 +42,8 @@ void NoiseState_Sing::Start()
 	LoadAnimation();
 	CreateAnimation();
 
-	
 	CreateFloorLine();
+	CreateLights();
 }
 
 void NoiseState_Sing::LoadAnimation()
@@ -104,7 +105,23 @@ void NoiseState_Sing::CreateFloorLine()
 }
 
 
+void NoiseState_Sing::CreateLights()
+{
+	const std::vector<float> PositionsX =
+	{
+		-405.f, -245.f, -82.f, 82.f, 245.f, 405.f
+	};
+	const float PositionY = 0.f;
 
+	Lights.resize(6);
+	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
+	for (size_t i = 0; i < Lights.size(); ++i)
+	{
+		Lights[i] = Level->CreateActor<LightEffect>(UpdateOrder::Effect);
+		GameEngineTransform* LightTrans = Lights[i]->GetTransform();
+		LightTrans->SetWorldPosition(float4{ PositionsX[i], PositionY , PositionY });
+	}
+}
 
 
 
@@ -146,6 +163,8 @@ void NoiseState_Sing::ChangePlayerColTrans()
 
 	Player->GetAttackCollider()->SetColType(ColType::MAX);
 }
+
+
 
 
 void NoiseState_Sing::Update(float _DeltaTime)
@@ -205,6 +224,16 @@ void NoiseState_Sing::Update_Rail()
 
 void NoiseState_Sing::CreateFloor()
 {
+	static const std::vector<float4> LightColor =
+	{
+		float4::Red,
+		float4{1.f, 0.8f, 0.f, 1.f},
+		float4::Blue,
+		float4{0.2f, 0.0f, 1.f, 1.f},
+		float4::Green,
+		float4{0.9f, 0.0f, 1.f, 1.f},
+	};
+
 	static const int FloorMaxCount = 6;
 	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
 
@@ -219,6 +248,8 @@ void NoiseState_Sing::CreateFloor()
 		std::shared_ptr<NoiseFloor> Floor = nullptr;
 		Floor = Level->CreateActor<NoiseFloor>(UpdateOrder::Effect);
 		Floor->Init(static_cast<NoiseFloorType>(i), CurPhase);
+
+		Lights[i]->Flicker(LightColor[i]);
 	}
 }
 

@@ -27,9 +27,10 @@ private:
 	static const float AniInterTime;
 	static const std::vector<float> Durations;
 	static const std::vector<size_t> SpawnTimeCount;
-
+	static const float SpeakerDelayTime;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> FloorLines = nullptr;
+	std::vector<std::shared_ptr<class LightEffect>> Lights;
 
 	float4 PlayerOriginColScale = float4::Zero;
 	size_t CurPhase = -1;
@@ -37,7 +38,9 @@ private:
 	void LoadAnimation();
 	void CreateAnimation();
 	void CreateFloorLine();
+	void CreateLights();
 	void ChangePlayerColTrans();
+	
 
 	void Update_Rail();
 	void CreateFloor();
