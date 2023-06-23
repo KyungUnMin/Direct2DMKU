@@ -16,11 +16,12 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 private:
 	static const std::vector<std::string_view> AniFileNames;
 	static const float AniInterTime;
-
+	static const size_t HandsUpLoopCount;
 
 	enum class State
 	{
@@ -34,15 +35,21 @@ private:
 
 	State CurState = State::Ready;
 	std::shared_ptr<class GameEngineSpriteRenderer> Shadow = nullptr;
+	std::shared_ptr<class GlichSideAttack> AttackEffect = nullptr;
+	float4 OriginPlayerColScale = float4::Zero;
+
 
 	void LoadAnimation();
 	void CreateAnimations();
 	void CreateAnimation(State _StateaAni, size_t _EndFrm, bool _Loop);
+	void CreateAnimation(State _StateaAni, const std::vector<size_t>& _AniFrms, bool _Loop);
 
 	void Update_Ready(float _DeltaTime);
 	void Update_Jump(float _DeltaTime);
 	void Update_Fall(float _DeltaTime);
 	void Update_Land(float _DeltaTime);
+	void Update_Struct(float _DeltaTime);
+	void Update_UnStruct(float _DeltaTime);
 
 	void ChangeStateAndAni(State _Next);
 };

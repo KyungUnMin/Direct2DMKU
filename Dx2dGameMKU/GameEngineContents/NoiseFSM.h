@@ -10,6 +10,7 @@ enum class NoiseStateType
 	Taunt,
 	JumpToStage,
 	Sing,
+	JumpToField,
 
 	//Attack
 	AxeGrind,

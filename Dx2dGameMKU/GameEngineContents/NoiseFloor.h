@@ -16,6 +16,11 @@ class GameEngineSpriteRenderer;
 class NoiseFloor : public FieldActorBase
 {
 public:
+	static size_t IsAllClear()
+	{
+		return (0 == RunCount);
+	}
+
 	NoiseFloor();
 	~NoiseFloor() override;
 
@@ -31,9 +36,12 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	static size_t RunCount;
+
 	static const std::vector<std::string_view> FileNames;
 	static const std::vector<std::pair<float4, float4>> MovePath;
 	static const int Damage;
+
 
 	enum class State
 	{

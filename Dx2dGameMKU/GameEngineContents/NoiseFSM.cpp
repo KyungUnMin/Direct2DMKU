@@ -10,6 +10,7 @@
 #include "NoiseState_Taunt.h"
 #include "NoiseState_JumpToStage.h"
 #include "NoiseState_Sing.h"
+#include "NoiseState_JumpToField.h"
 
 //Attack
 #include "NoiseState_Attack_AxeGrind.h"
@@ -126,6 +127,7 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	//FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
 	FSMBase::CreateState<NoiseState_JumpToStage>(NoiseStateType::JumpToStage);
 	FSMBase::CreateState<NoiseState_Sing>(NoiseStateType::Sing);
+	FSMBase::CreateState<NoiseState_JumpToField>(NoiseStateType::JumpToField);
 
 
 	//Attack

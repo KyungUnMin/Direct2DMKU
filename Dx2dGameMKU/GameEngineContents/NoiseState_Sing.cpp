@@ -21,9 +21,8 @@ const std::string_view NoiseState_Sing::FloorLine_FileName = "OceanConcert_Rails
 
 const float NoiseState_Sing::AniInterTime = 0.08f;
 
-const std::vector<float> NoiseState_Sing::Durations = { FLT_MAX, FLT_MAX ,FLT_MAX };
+const std::vector<float> NoiseState_Sing::Durations = { 5.f, FLT_MAX ,FLT_MAX };
 const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 4, 3 };
-const float NoiseState_Sing::SpeakerDelayTime = 0.1f;
 
 NoiseState_Sing::NoiseState_Sing()
 {
@@ -172,22 +171,12 @@ void NoiseState_Sing::Update(float _DeltaTime)
 	EnemyStateBase::Update(_DeltaTime);
 
 	Update_Rail();
-
-	if (true == GetRenderer()->IsAnimationEnd())
-	{
-		static size_t Count = 0;
-		++Count;
-		if (0 == (Count % SpawnTimeCount[CurPhase]))
-		{
-			CreateFloor();
-			Count = 0;
-		}
-	}
-
+	Update_Floor();
+	
 	if (GetLiveTime() < Durations[CurPhase])
 		return;
 
-	//GetFSM()->ChangeState(NoiseStateType::Idle);
+	GetFSM()->ChangeState(NoiseStateType::JumpToField);
 }
 
 
@@ -219,6 +208,29 @@ void NoiseState_Sing::Update_Rail()
 	}
 
 	FloorLines->ImageClippingY(Ratio, ClipYDir::Top);
+}
+
+void NoiseState_Sing::Update_Floor()
+{
+	static const float StateWaitTime = 3.f;
+	const float CurPhaseSingTime = Durations[CurPhase];
+
+	//이번 페이즈의 노래시간이 끝나기 StateWaitTime초 전부터 레일을 생성하지 않음
+	if (CurPhaseSingTime - StateWaitTime < GetLiveTime())
+		return;
+
+
+	if (false == GetRenderer()->IsAnimationEnd())
+		return;
+	
+
+	static size_t Count = 0;
+	++Count;
+	if (0 != (Count % SpawnTimeCount[CurPhase]))
+		return;
+	
+	CreateFloor();
+	Count = 0;
 }
 
 

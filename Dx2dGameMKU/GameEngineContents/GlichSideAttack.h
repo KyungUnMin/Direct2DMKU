@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineCollision;
+
 class GlichSideAttack : public GameEngineActor
 {
 public:
@@ -12,6 +14,8 @@ public:
 	GlichSideAttack& operator=(const GlichSideAttack& _Other) = delete;
 	GlichSideAttack& operator=(const GlichSideAttack&& _Other) noexcept = delete;
 
+	void Init(const float4& _Pos);
+
 	inline void WaveOff(float _DecreseDuration = 1.f)
 	{
 		WaveOffValue = true;
@@ -19,10 +23,13 @@ public:
 	}
 
 protected:
-	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
+	static const float4 RenderScale;
+	static const float4 CollisionScale;
+	static const int Damage;
+
 	struct GlichData
 	{
 		float Timer = 0.f;
@@ -41,5 +48,15 @@ private:
 	bool WaveOffValue = false;
 	float DecreseDuration = 0.f;
 	float DecreaseTimer = 0.f;
+
+	std::shared_ptr<GameEngineCollision> AttackCollider = nullptr;
+	float LastAttackTime = -100.f;
+
+	void CreateRenders(float _YRatio);
+	void CreateCollider();
+
+	void Update_Collider();
+	void Update_WaveOff(float _DeltaTime);
+
 };
 

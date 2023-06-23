@@ -14,6 +14,9 @@
 #include "FieldLevelBase.h"
 #include "FieldCamController.h"
 
+
+size_t NoiseFloor::RunCount = 0;
+
 const std::vector<std::string_view> NoiseFloor::FileNames =
 {
 	"Noise_Floor_Red.png",
@@ -41,14 +44,15 @@ const std::vector<std::pair<float4, float4>> NoiseFloor::MovePath =
 
 const int NoiseFloor::Damage = 3;
 
+
 NoiseFloor::NoiseFloor()
 {
-
+	++RunCount;
 }
 
 NoiseFloor::~NoiseFloor()
 {
-
+	--RunCount;
 }
 
 

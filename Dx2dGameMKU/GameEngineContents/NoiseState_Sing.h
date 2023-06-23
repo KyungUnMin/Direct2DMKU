@@ -27,7 +27,6 @@ private:
 	static const float AniInterTime;
 	static const std::vector<float> Durations;
 	static const std::vector<size_t> SpawnTimeCount;
-	static const float SpeakerDelayTime;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> FloorLines = nullptr;
 	std::vector<std::shared_ptr<class LightEffect>> Lights;
@@ -43,6 +42,7 @@ private:
 	
 
 	void Update_Rail();
+	void Update_Floor();
 	void CreateFloor();
 };
 
