@@ -8,8 +8,10 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "FieldCamController.h"
 
 #include "FieldPlayer.h"
+#include "FieldLevelBase.h"
 
 
 const float4 GlichSideAttack::RenderScale = float4{ 550.f, 180.f, 1.f };
@@ -43,6 +45,11 @@ void GlichSideAttack::Init(const float4& _Pos)
 
 	CreateRenders(YRatio);
 	CreateCollider();
+
+	CamCtrl = &(FieldLevelBase::GetPtr()->GetCameraController());
+	CamCtrl->SetZoom(CamCtrl->ZoomOrigin - 0.15f);
+	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.5f);
+	CamCtrl->SetShakeState(0.5f);
 }
 
 
@@ -124,6 +131,8 @@ void GlichSideAttack::Update_Collider()
 	LastAttackTime = LiveTime;
 	if (false == Player->OnDamage_BlowBack())
 		return;
+
+	CamCtrl->SetShakeState(0.5f);
 
 	LastAttackTime = (LiveTime + 2.5f);
 	Player->Look(float4::Zero);

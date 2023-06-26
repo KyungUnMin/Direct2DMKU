@@ -51,6 +51,8 @@ private:
 
 	std::shared_ptr<GameEngineCollision> AttackCollider = nullptr;
 	float LastAttackTime = -100.f;
+	class FieldCamController* CamCtrl = nullptr;
+
 
 	void CreateRenders(float _YRatio);
 	void CreateCollider();
