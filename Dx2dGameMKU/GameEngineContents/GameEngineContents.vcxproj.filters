@@ -1156,6 +1156,9 @@
     <Filter Include="03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\07.JumpToField">
       <UniqueIdentifier>{0fe560e5-3966-4847-9ead-37840a2ba41c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\07.SoundMgr">
+      <UniqueIdentifier>{2421e2b6-895f-4ea6-b611-ea6ef5539791}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2067,6 +2070,9 @@
     <ClCompile Include="NoiseState_JumpToField.cpp">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\07.JumpToField</Filter>
     </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\07.SoundMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2959,6 +2965,9 @@
     </ClInclude>
     <ClInclude Include="NoiseState_JumpToField.h">
       <Filter>03.Actor\03.FieldCharacter\03.FieldEnemy\03.Boss\06.Noise\03.Movement\07.JumpToField</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>01.Core\03.Manager/Controller\07.SoundMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

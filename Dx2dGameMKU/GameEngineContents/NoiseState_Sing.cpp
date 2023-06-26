@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 #include "FieldEnemyBase.h"
@@ -141,6 +142,8 @@ void NoiseState_Sing::EnterState()
 
 	FloorLines->On();
 	ChangePlayerColTrans();
+
+	SoundMgr::ChangeBGM("OceanBossLevel.mp3");
 }
 
 

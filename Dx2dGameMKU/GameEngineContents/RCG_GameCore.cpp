@@ -4,6 +4,7 @@
 
 #include "KeyMgr.h"
 #include "LevelMgr.h"
+#include "SoundMgr.h"
 #include "GUIManager.h"
 
 #include "TestLevel.h"
@@ -29,6 +30,7 @@ void RCG_GameCore::GameStart()
 	ContentsResourceInit();
 
 	KeyMgr::CreateKey();
+	SoundMgr::Init();
 	LevelMgr::CreateLevel(LevelNames::OceanBossLevel);
 }
 
