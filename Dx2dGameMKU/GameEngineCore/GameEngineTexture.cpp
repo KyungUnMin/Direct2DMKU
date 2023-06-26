@@ -107,11 +107,17 @@ void GameEngineTexture::ResLoad(const std::string_view& _Path)
 
 	if (Ext == ".TGA")
 	{
-		MsgAssert("아직 로드할 수 없는 포맷입니다." + std::string(_Path.data()));
+		if (S_OK != DirectX::LoadFromTGAFile(Path.c_str(), DirectX::TGA_FLAGS_NONE, &Data, Image))
+		{
+			MsgAssert("TGA 포맷 로드 실패." + std::string(_Path.data()));
+		}
 	}
 	else if (Ext == ".DDS")
 	{
-		MsgAssert("아직 로드할 수 없는 포맷입니다." + std::string(_Path.data()));
+		if (S_OK != DirectX::LoadFromDDSFile(Path.c_str(), DirectX::DDS_FLAGS_NONE, &Data, Image))
+		{
+			MsgAssert("DDS 포맷 로드 실패." + std::string(_Path.data()));
+		}
 	}
 
 	//리소스 로드

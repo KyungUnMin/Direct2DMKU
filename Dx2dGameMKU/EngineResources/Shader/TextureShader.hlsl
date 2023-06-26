@@ -104,7 +104,7 @@ Texture2D DiffuseTex : register(t0);
 
 //텍스처를 메쉬에 어떻게 매핑할까 라는 규칙을 샘플러라고 한다(색상 결정하는 공식, 옵션)
 //UVW 는 각각 XYZ를 의미한다
-SamplerState CLAMPSAMPLER : register(s0);
+SamplerState SAMPLER : register(s0);
 
 
 struct OutColor
@@ -120,7 +120,7 @@ struct OutColor
 float4 Texture_PS(Output _Value) : SV_Target0
 {
     //샘플러 설정(0~1사이의 UV값)
-    float4 Color = DiffuseTex.Sample(CLAMPSAMPLER, _Value.UV.xy);
+    float4 Color = DiffuseTex.Sample(SAMPLER, _Value.UV.xy);
 
     
     if (Clip.z == 0)

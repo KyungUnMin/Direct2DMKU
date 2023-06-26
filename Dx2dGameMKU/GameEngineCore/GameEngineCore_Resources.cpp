@@ -50,7 +50,29 @@ void GameEngineCore::CoreResourceInit()
 	//이때 쉐이더 파일에서 시맨틱 문법의 순서와 LayOut에 넣어주는 자료형 이름의 순서는 동일해야 한다
 
 
-	//구조상 샘플러는 쉐이더 로드하기 전에 만들어야 함(엔진에서 지원해주는 기본 샘플러)
+
+
+	//구조상 샘플러는 쉐이더 로드하기 전에 만들어야 함
+	{
+		//엔진에서 지원해주는 기본 샘플러(클램프 샘플러)
+		D3D11_SAMPLER_DESC SamplerData = {};
+
+		//SamplerData.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+		SamplerData.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
+		SamplerData.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
+		SamplerData.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
+
+		// 텍스처가 멀리있을때 뭉갤꺼냐 -> 안뭉갠다.
+		SamplerData.MipLODBias = 0.0f;
+		SamplerData.MaxAnisotropy = 1;
+		SamplerData.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+		SamplerData.MinLOD = -FLT_MAX;
+		SamplerData.MaxLOD = FLT_MAX;
+
+		GameEngineSampler::Create("ENGINEBASE", SamplerData);
+	}
+
+
 	{
 		//클램프 샘플러
 		D3D11_SAMPLER_DESC SamplerData = {};
@@ -70,6 +92,7 @@ void GameEngineCore::CoreResourceInit()
 		GameEngineSampler::Create("CLAMPSAMPLER", SamplerData);
 	}
 
+	
 	{
 		//랩 샘플러
 		D3D11_SAMPLER_DESC SamplerData = {};

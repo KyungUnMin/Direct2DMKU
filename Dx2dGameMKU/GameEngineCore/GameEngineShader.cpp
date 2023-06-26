@@ -117,6 +117,12 @@ void GameEngineShader::ShaderResCheck()
 		{
 			//엔진에서 지원하는 기본 샘플러
 			std::shared_ptr<GameEngineSampler> Res = GameEngineSampler::Find(UpperName);
+			if (nullptr == Res)
+			{
+				Res = GameEngineSampler::Find("ENGINEBASE");
+				// MsgAssert("다음의 샘플러가 존재하지 않아서 쉐이더에 세팅해줄수가 없습니다. : " + UpperName);
+			}
+
 
 			GameEngineSamplerSetter Setter;
 			Setter.ParentShader = this;
