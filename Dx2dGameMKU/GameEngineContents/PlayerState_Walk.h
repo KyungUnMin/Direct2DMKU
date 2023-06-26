@@ -31,6 +31,7 @@ private:
 	KeyNames PressArrow = KeyNames::COUNT;
 	KeyNames LastArrow = KeyNames::COUNT;
 	float LastTime = 0.f;
+	bool IsNextDash = false;
 
 	void LoadAnimation();
 	void CreateAnimation();

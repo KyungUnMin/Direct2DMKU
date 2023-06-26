@@ -114,6 +114,7 @@ void PlayerState_Walk::Update(float _DeltaTime)
 		//좌우이동을 빠르게 누른 경우
 		if ((KeyNames::RightArrow == PressArrow) || (KeyNames::LeftArrow == PressArrow))
 		{
+			IsNextDash = true;
 			GetFSM()->ChangeState(PlayerStateType::Movement_Dash);
 			return;
 		}
@@ -200,6 +201,15 @@ void PlayerState_Walk::ExitState()
 	PlayerState_MovementBase::ExitState();
 
 	LastArrow = PressArrow;
-	LastTime = GetFSM()->GetFsmTime();
+			
+	if(true == IsNextDash)
+	{
+		IsNextDash = false;
+		LastTime = GetFSM()->GetFsmTime() + 0.5f;
+	}
+	else
+	{
+		LastTime = GetFSM()->GetFsmTime();
+	}
 }
 
