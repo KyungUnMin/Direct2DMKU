@@ -54,6 +54,19 @@ void GameEngineButton::Update(float _Delta)
 	//충돌 체크
 	if (true == GameEngineTransform::AABB2DToSpehre2D(Render->GetTransform()->GetCollisionData(), MouseData))
 	{
+		if (HoverImage != "")
+		{
+			Render->SetTexture(HoverImage);
+		}
+
+		if (true == GameEngineInput::IsPress("EngineMouseLeft"))
+		{
+			if (PressImage != "")
+			{
+				Render->SetTexture(PressImage);
+			}
+		}
+
 		//마우스버튼이 눌린  순간
 		if (true == GameEngineInput::IsUp("EngineMouseLeft"))
 		{
@@ -64,7 +77,13 @@ void GameEngineButton::Update(float _Delta)
 			}
 		}
 	}
-
+	else
+	{
+		if (ReleaseImage != "")
+		{
+			Render->SetTexture(ReleaseImage);
+		}
+	}
 }
 
 
