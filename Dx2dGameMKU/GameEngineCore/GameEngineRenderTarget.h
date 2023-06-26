@@ -72,8 +72,6 @@ public:
 	void Merge(std::shared_ptr<GameEngineRenderTarget> _Other, size_t _Index = 0);
 
 
-	//GameEnginePostProcess Start 호출
-	void EffectInit(std::shared_ptr<GameEnginePostProcess> _PostProcess);
 
 	//이 렌더타겟에 포스트 프로세싱 이펙트 만들기
 	template<typename EffectType>
@@ -135,6 +133,7 @@ private:
 
 	void ResCreate(DXGI_FORMAT _Format, float4 _Scale, float4 _Color);
 
-
+	//GameEnginePostProcess Start 호출
+	void EffectInit(std::shared_ptr<GameEnginePostProcess> _PostProcess);
 };
 
