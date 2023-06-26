@@ -138,14 +138,19 @@ void NoiseState_Slide::SettingDir()
 {
 	static const float BackMoveOffset = 200.f;
 	static const float ToPlayerMoveOffset = 100.f;
-
-	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 1);
-
+	static const float InnerMovePivot = 335.f;
 
 	FieldEnemyBase* Enemy = GetEnemy();
 	GameEngineTransform* EnemyTrans = Enemy->GetTransform();
 	float4 EnemyPos = EnemyTrans->GetWorldPosition();
 
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 1);
+
+	//Enemy의 이동위치가 측면에 존재하는 경우엔 항상 플레이어 쪽으로 이동
+	if (InnerMovePivot < fabs(EnemyPos.hx()))
+	{
+		RandNum = 0;
+	}
 
 	//플레이어 쪽으로 이동하는 경우
 	if (0 == RandNum % 2)

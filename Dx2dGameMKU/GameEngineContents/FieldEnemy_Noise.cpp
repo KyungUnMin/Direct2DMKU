@@ -180,6 +180,16 @@ FieldEnemy_Noise::ExceptionType FieldEnemy_Noise::OnDamageException()
 		return ExceptionType::DamageOk_StateChanged;
 	}
 
+	//방금 공격으로 Phase가 변경된 경우
+	else if (PrevPhase != Fsm.GetCurPhase())
+	{
+		PrevPhase = Fsm.GetCurPhase();
+
+		//KnockDown상태로 변경
+		Fsm.ChangeState(NoiseStateType::JumpToStage);
+		return ExceptionType::DamageOk_StateChanged;
+	}
+
 	//스턴 상태인 경우
 	else if (NoiseStateType::Damaged_Dizzy == CurState)
 	{

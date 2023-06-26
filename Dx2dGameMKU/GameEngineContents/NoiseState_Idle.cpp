@@ -81,24 +81,16 @@ void NoiseState_Idle::Update(float _DeltaTime)
 		return;
 
 	//공격 상태로 바꾸거나 Idle을 유지하는 경우
-	//if (true == EnemyState_IdleBase::ChangeAttackState())
-	//	return;
-
-	//if (false == GetRenderer()->IsAnimationEnd())
-	//	return;
-
-	////0번 Phase일땐  원거리 공격 없음
-	//if(0 != CurPhase)
-	//{
-	
-	//}
+	if (true == EnemyState_IdleBase::ChangeAttackState())
+		return;
 
 
-	////Idle 대기시간이 끝났을때만 이동상태로 변경
-	//if (false == EnemyState_IdleBase::IsWaitFinished())
-	//	return;
+
+	//Idle 대기시간이 끝났을때만 이동상태로 변경
+	if (false == EnemyState_IdleBase::IsWaitFinished())
+		return;
 
 
-	//GetFSM()->ChangeState(NoiseStateType::Walk);
+	GetFSM()->ChangeState(NoiseStateType::Taunt);
 }
 

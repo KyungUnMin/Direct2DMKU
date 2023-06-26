@@ -17,11 +17,6 @@
 #include "NoiseState_Attack_GuitarSlash.h"
 #include "NoiseState_Attack_GuitarSlashDash.h"
 #include "NoiseState_Attack_AxeDash.h"
-//#include "NoiseState_Attack_WUPunch.h"
-//#include "NoiseState_Attack_Tackle.h"
-//#include "NoiseState_Attack_Slap.h"
-//#include "NoiseState_Attack_Meteor.h"
-//#include "NoiseState_Attack_Roar.h"
 
 //Damaged
 #include "NoiseState_NormalDamaged_Face.h"
@@ -29,8 +24,7 @@
 #include "NoiseState_NormalDamaged_Jaw.h"
 #include "NoiseState_Damaged_BlowBack.h"
 #include "NoiseState_Damaged_KnockDown.h"
-#include "NoiseState_Damaged_Dizzy.h"
-#include "NoiseState_Damaged_GroundHit.h"
+
 
 
 const  std::string_view NoiseFSM::NormalDamaged_FileName = "Noise_GetHit.png";
@@ -40,21 +34,18 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::NearAttackGroup =
 {
 	//1페이즈
 	{
-		//NoiseStateType::Elbow,
-		//NoiseStateType::WUPunch,
+		NoiseStateType::Slide,
 		//NoiseStateType::Slap,
 	},
 
 	//2페이즈
 	{
-		//NoiseStateType::WUPunch,
-		//NoiseStateType::Slap,
+		NoiseStateType::GuitarSlash,
 	},
 
 	//3페이즈
 	{
-		//NoiseStateType::WUPunch,
-		//NoiseStateType::Roar,
+		NoiseStateType::AxeGrind,
 	},
 };
 
@@ -63,20 +54,20 @@ const std::vector<std::vector<NoiseStateType>> NoiseFSM::FarAttackGroup =
 {
 	//1페이즈
 	{
-		NoiseStateType::JumpToStage
-		//NoiseStateType::Tackle,
+		NoiseStateType::Slide,
+		NoiseStateType::GuitarSlashDash,
 	},
 
 	//2페이즈
 	{
-		//NoiseStateType::Tackle,
-
+		NoiseStateType::Slide,
+		NoiseStateType::GuitarSlashDash,
 	},
 
 	//3페이즈
 	{
-		//NoiseStateType::Tackle,
-		//NoiseStateType::Meteor,
+		NoiseStateType::AxeDash,
+		NoiseStateType::GuitarSlashDash,
 	},
 };
 
@@ -123,7 +114,7 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	//Movement
 	FSMBase::CreateState<NoiseState_Idle>(NoiseStateType::Idle);
 	FSMBase::CreateState<NoiseState_Slide>(NoiseStateType::Slide);
-	//FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
+	FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
 	//FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
 	FSMBase::CreateState<NoiseState_JumpToStage>(NoiseStateType::JumpToStage);
 	FSMBase::CreateState<NoiseState_Sing>(NoiseStateType::Sing);
@@ -135,9 +126,6 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<NoiseState_Attack_GuitarSlash>(NoiseStateType::GuitarSlash);
 	FSMBase::CreateState<NoiseState_Attack_GuitarSlashDash>(NoiseStateType::GuitarSlashDash);
 	FSMBase::CreateState<NoiseState_Attack_AxeDash>(NoiseStateType::AxeDash);
-	//FSMBase::CreateState<NoiseState_Attack_Slap>(NoiseStateType::Slap);
-	//FSMBase::CreateState<NoiseState_Attack_Meteor>(NoiseStateType::Meteor);
-	//FSMBase::CreateState<NoiseState_Attack_Roar>(NoiseStateType::Roar);
 
 
 	//Damaged
@@ -146,10 +134,6 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<NoiseState_NormalDamaged_Jaw>(NoiseStateType::NormalDamaged_Jaw);
 	FSMBase::CreateState<NoiseState_Damaged_BlowBack>(NoiseStateType::Damaged_BlowBack);
 	FSMBase::CreateState<NoiseState_Damaged_KnockDown>(NoiseStateType::Damaged_KnockDown);
-	//FSMBase::CreateState<NoiseState_Damaged_Dizzy>(NoiseStateType::Damaged_Dizzy);
-	//FSMBase::CreateState<NoiseState_Damaged_GroundHit>(NoiseStateType::Damaged_GroundHit);
-
-
 
 
 	FSMBase::ChangeState(NoiseStateType::Idle);

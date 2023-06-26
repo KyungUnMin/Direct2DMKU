@@ -35,6 +35,7 @@ private:
 
 	NoiseFSM Fsm;
 
+	size_t PrevPhase = 2;
 
 	//체력이 일정 부분 이하로 떨어지면 이미지가 붉게 물드는 효과
 	void RageRender(float _DeltaTime);

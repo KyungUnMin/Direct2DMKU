@@ -8,7 +8,7 @@
 
 const std::string_view NoiseState_Taunt::AniName = "Taunt";
 const std::string_view NoiseState_Taunt::AniFileName = "Noise_Taunt.png";
-const std::pair<int, int> NoiseState_Taunt::AniCutFrame = std::pair<int, int>(5, 5);
+const std::pair<int, int> NoiseState_Taunt::AniCutFrame = std::pair<int, int>(5, 4);
 const float NoiseState_Taunt::AniInterTime = 0.08f;
 
 NoiseState_Taunt::NoiseState_Taunt()
@@ -52,7 +52,7 @@ void NoiseState_Taunt::CreateAnimation()
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.Start = 0,
-		.End = 22,
+		.End = 19,
 		.FrameInter = AniInterTime,
 		.Loop = false,
 	});

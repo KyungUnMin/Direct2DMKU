@@ -83,6 +83,6 @@ void NoiseState_Damaged_KnockDown::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	//GetFSM()->ChangeState(NoiseStateType::Defeat);
+	GetFSM()->ChangeState(NoiseStateType::Defeat);
 }
 

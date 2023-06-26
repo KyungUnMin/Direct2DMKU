@@ -18,10 +18,8 @@ protected:
 	void EnterState() override;
 
 private:
-	static const std::string_view Sink_AniName;
-	static const std::string_view Cry_AniName;
+	static const std::string_view AniName;
 	static const std::string_view AniFileName;
-	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 
 	bool IsCrying = false;
