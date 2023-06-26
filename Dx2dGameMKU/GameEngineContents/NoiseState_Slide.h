@@ -33,7 +33,6 @@ private:
 
 	State CurState = State::Start;
 
-	std::shared_ptr<class BackGround> BGPtr = nullptr;
 	float4 StartPos = float4::Zero;
 	float4 DestPos = float4::Zero;
 	bool IsTargetPlayer = false;

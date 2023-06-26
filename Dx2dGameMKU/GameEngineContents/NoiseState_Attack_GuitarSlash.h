@@ -28,6 +28,7 @@ private:
 	static const int Damage;
 	static const int AttackFrm;
 
+	bool IsAttack = false;
 
 	void LoadAnimation();
 	void CreateAnimation();

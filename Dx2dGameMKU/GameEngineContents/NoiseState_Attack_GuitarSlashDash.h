@@ -30,6 +30,7 @@ private:
 
 	float4 StartPos = float4::Zero;
 	float4 DestPos = float4::Zero;
+	bool IsAttack = false;
 
 	void LoadAnimation();
 	void CreateAnimation();

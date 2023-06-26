@@ -42,7 +42,6 @@ void NoiseState_Slide::Start()
 
 	LoadAnimation();
 	CreateAnimation();
-	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
 }
 
 void NoiseState_Slide::LoadAnimation()
@@ -138,43 +137,38 @@ void NoiseState_Slide::SettingDir()
 {
 	static const float BackMoveOffset = 200.f;
 	static const float ToPlayerMoveOffset = 100.f;
-	static const float InnerMovePivot = 335.f;
 
 	FieldEnemyBase* Enemy = GetEnemy();
 	GameEngineTransform* EnemyTrans = Enemy->GetTransform();
 	float4 EnemyPos = EnemyTrans->GetWorldPosition();
 
-	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 1);
+	float4 EnemyDir = IsRightDir() ? float4::Left : float4::Right;
+	float4 BackJumpPos = EnemyPos + (EnemyDir * BackMoveOffset);
 
-	//Enemy의 이동위치가 측면에 존재하는 경우엔 항상 플레이어 쪽으로 이동
-	if (InnerMovePivot < fabs(EnemyPos.hx()))
+
+	//뒤로 점프할 공간이 있는지 확인
+	std::shared_ptr<BackGround> BGPtr = GetBackGround();
+	if (false == BGPtr->IsBlockPos(BackJumpPos))
 	{
-		RandNum = 0;
-	}
-
-	//플레이어 쪽으로 이동하는 경우
-	if (0 == RandNum % 2)
-	{
-		IsTargetPlayer = true;
-		float4 MoveDir = GetVecToPlayer();
-		float4 PlayerPos = EnemyPos + MoveDir;
-		MoveDir.Normalize();
-
+		//플레이어 쪽으로 이동하는 경우
 		StartPos = EnemyPos;
-		DestPos = PlayerPos + (MoveDir * ToPlayerMoveOffset);
-
-		//뒤로 이동하기 때문에 이동방향과 반대 방향을 바라 본다
-		bool IsDirRight = (MoveDir.x < 0.f) ? true : false;
-		Enemy->LookDir(IsDirRight);
+		DestPos = BackJumpPos;
 		return;
 	}
+	
 
 	//백점프를 하는 경우
-	
-	//바라보고 있는 방향 뒤쪽으로 이동
-	float4 MoveDir = IsRightDir() ? float4::Left : float4::Right;
+	IsTargetPlayer = true;
+	float4 MoveDir = GetVecToPlayer();
+	float4 PlayerPos = EnemyPos + MoveDir;
+	MoveDir.Normalize();
+
 	StartPos = EnemyPos;
-	DestPos = EnemyPos + (MoveDir * BackMoveOffset);
+	DestPos = PlayerPos + (MoveDir * ToPlayerMoveOffset);
+
+	//뒤로 이동하기 때문에 이동방향과 반대 방향을 바라 본다
+	bool IsDirRight = (MoveDir.x < 0.f) ? true : false;
+	Enemy->LookDir(IsDirRight);
 }
 
 
@@ -249,6 +243,7 @@ void NoiseState_Slide::Update_LoopMove(float _Ratio)
 {
 	float4 NextPos = float4::LerpClamp(StartPos, DestPos, _Ratio);
 	
+	std::shared_ptr<class BackGround> BGPtr = GetBackGround();
 	if (true == BGPtr->IsBlockPos(NextPos))
 		return;
 

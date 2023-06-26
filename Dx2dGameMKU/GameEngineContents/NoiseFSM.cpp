@@ -115,7 +115,7 @@ void NoiseFSM::Init(FieldEnemyBase* _Enemy)
 	FSMBase::CreateState<NoiseState_Idle>(NoiseStateType::Idle);
 	FSMBase::CreateState<NoiseState_Slide>(NoiseStateType::Slide);
 	FSMBase::CreateState<NoiseState_Defeat>(NoiseStateType::Defeat);
-	//FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
+	FSMBase::CreateState<NoiseState_Taunt>(NoiseStateType::Taunt);
 	FSMBase::CreateState<NoiseState_JumpToStage>(NoiseStateType::JumpToStage);
 	FSMBase::CreateState<NoiseState_Sing>(NoiseStateType::Sing);
 	FSMBase::CreateState<NoiseState_JumpToField>(NoiseStateType::JumpToField);

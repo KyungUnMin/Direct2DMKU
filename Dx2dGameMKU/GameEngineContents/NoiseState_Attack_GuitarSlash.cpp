@@ -87,7 +87,14 @@ void NoiseState_Attack_GuitarSlash::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::Idle);
+	if (true == IsAttack)
+	{
+		GetFSM()->ChangeState(NoiseStateType::Taunt);
+	}
+	else
+	{
+		GetFSM()->ChangeState(NoiseStateType::Idle);
+	}
 }
 
 
@@ -106,6 +113,7 @@ void NoiseState_Attack_GuitarSlash::Attack()
 	CamCtrl->SetZoomFix();
 	CamCtrl->SetShakeState(0.1f, 20.f);
 	DataMgr::MinusPlayerHP(Damage);
+	IsAttack = true;
 }
 
 
@@ -115,4 +123,5 @@ void NoiseState_Attack_GuitarSlash::ExitState()
 
 	FieldCamController* CamCtrl = GetCamCtrl();
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.2f);
+	IsAttack = false;
 }

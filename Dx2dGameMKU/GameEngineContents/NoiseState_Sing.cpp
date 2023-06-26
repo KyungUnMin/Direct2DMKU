@@ -21,7 +21,7 @@ const std::string_view NoiseState_Sing::FloorLine_FileName = "OceanConcert_Rails
 
 const float NoiseState_Sing::AniInterTime = 0.08f;
 
-const std::vector<float> NoiseState_Sing::Durations = { 5.f, FLT_MAX ,FLT_MAX };
+const std::vector<float> NoiseState_Sing::Durations = { 20.f, 20.f,20.f };
 const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 4, 3 };
 
 NoiseState_Sing::NoiseState_Sing()

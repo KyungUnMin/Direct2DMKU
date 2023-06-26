@@ -25,7 +25,7 @@ const std::vector<std::string_view> NoiseState_JumpToField::AniFileNames =
 };
 
 const float NoiseState_JumpToField::AniInterTime = 0.08f;
-const size_t NoiseState_JumpToField::HandsUpLoopCount = 10;
+const size_t NoiseState_JumpToField::HandsUpLoopCount = 5;
 
 NoiseState_JumpToField::NoiseState_JumpToField()
 {
@@ -278,7 +278,7 @@ void NoiseState_JumpToField::Update_UnStruct(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::Idle);
+	GetFSM()->ChangeState(NoiseStateType::Taunt);
 }
 
 

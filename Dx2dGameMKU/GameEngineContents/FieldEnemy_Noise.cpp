@@ -7,7 +7,7 @@
 #include "RCG_GameCore.h"
 #include "RCGDefine.h"
 
-const int FieldEnemy_Noise::MaxHp = 450;
+const int FieldEnemy_Noise::MaxHp = 330;
 
 FieldEnemy_Noise::FieldEnemy_Noise()
 {

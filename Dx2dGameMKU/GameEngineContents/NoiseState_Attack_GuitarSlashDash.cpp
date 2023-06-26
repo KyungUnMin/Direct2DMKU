@@ -88,6 +88,8 @@ void NoiseState_Attack_GuitarSlashDash::EnterState()
 	{
 		DestPos = StartPos + (VecToPlayer * 0.6f);
 	}
+
+	IsAttack = false;
 }
 
 
@@ -102,7 +104,14 @@ void NoiseState_Attack_GuitarSlashDash::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
-	GetFSM()->ChangeState(NoiseStateType::Idle);
+	if (true == IsAttack)
+	{
+		GetFSM()->ChangeState(NoiseStateType::Taunt);
+	}
+	else
+	{
+		GetFSM()->ChangeState(NoiseStateType::Idle);
+	}
 }
 
 
@@ -132,4 +141,5 @@ void NoiseState_Attack_GuitarSlashDash::Attack()
 
 	CamCtrl->SetRoll(0.f, Duration);
 	DataMgr::MinusPlayerHP(Damage);
+	IsAttack = true;
 }
