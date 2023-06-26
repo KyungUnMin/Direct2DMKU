@@ -103,8 +103,9 @@ public:
 		ScaleRatio = _Ratio;
 	}
 
-
+	//Transform과는 다르게 UV로 좌우반전 시킨다
 	void SetFlipX();
+	//Transform과는 다르게 UV로 상하반전 시킨다
 	void SetFlipY();
 
 
@@ -181,6 +182,7 @@ protected:
 
 	float4 AtlasData = { 0.f, 0.f, 1.f, 1.f };
 	float4 Clip = float4::One;
+	float4 Flip = float4::Zero;
 
 private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;

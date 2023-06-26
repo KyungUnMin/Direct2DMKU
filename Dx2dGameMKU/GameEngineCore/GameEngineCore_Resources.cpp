@@ -570,6 +570,19 @@ void GameEngineCore::CoreResourceInit()
 		Pipe->SetDepthState("EngineDepth");
 	}
 
+	//타일맵렌더러용 파이프
+	{
+		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("TileMap");
+
+		//Pipe->SetVertexBuffer("Rect");
+		//Pipe->SetIndexBuffer("Rect");
+		Pipe->SetVertexShader("TileMapShader.hlsl");
+		Pipe->SetRasterizer("Engine2DBase");
+		Pipe->SetPixelShader("TileMapShader.hlsl");
+		Pipe->SetBlendState("AlphaBlend");
+		Pipe->SetDepthState("EngineDepth");
+	}
+
 	//머지용(카메라 용) 렌더링 파이프 라인 만들고 세팅하기
 	{
 		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("Merge");

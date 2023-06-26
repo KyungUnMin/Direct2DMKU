@@ -68,6 +68,11 @@ cbuffer ClipData : register(b2)
     float4 Clip;
 }
 
+cbuffer FlipData : register(b3)
+{
+    float4 Flip;
+}
+
 Output Texture_VS(Input _Value)
 {
     Output OutputValue = (Output) 0;
@@ -77,9 +82,24 @@ Output Texture_VS(Input _Value)
     OutputValue.Pos = mul(_Value.Pos, WorldViewProjectionMatrix);
     
     
+    float4 VtxUV = _Value.UV;
+    
+    // x플립 시킨 경우
+    if (Flip.x != 0)
+    {
+        VtxUV.x = 1.0f - VtxUV.x;
+    }
+    
+    //y플립 시킨 경우
+    if (Flip.y != 0)
+    {
+        VtxUV.y = 1.0f - VtxUV.y;
+    }
+    
     //아틀라스 이미지인 경우 AtlasData상수버퍼를 통해 쪼개져서 그려진다
-    OutputValue.UV.x = (_Value.UV.x * FrameScale.x) + FramePos.x;
-    OutputValue.UV.y = (_Value.UV.y * FrameScale.y) + FramePos.y;
+    OutputValue.UV.x = (VtxUV.x * FrameScale.x) + FramePos.x;
+    OutputValue.UV.y = (VtxUV.y * FrameScale.y) + FramePos.y;
+    
 
     //클립을 위해 메시 자체의 UV값 전달(0~1), Sprite가 적용되지 않은 온전한 UV값
     OutputValue.ClipUV = _Value.UV;
