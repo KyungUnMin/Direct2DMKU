@@ -89,6 +89,6 @@ void NoiseState_Idle::Update(float _DeltaTime)
 		return;
 
 
-	GetFSM()->ChangeState(NoiseStateType::Taunt);
+	//GetFSM()->ChangeState(NoiseStateType::);
 }
 

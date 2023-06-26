@@ -200,6 +200,7 @@ void BossVersus::Update(float _DeltaTime)
 
 
 
+
 void BossVersus::Update_PortShader(float _DeltaTime)
 {
 	const float Duration = 2.0f;
@@ -219,8 +220,15 @@ void BossVersus::Update_PortShader(float _DeltaTime)
 	CBufferData.NoiseFilterValue = SinValue;
 }
 
-void BossVersus::Death()
+
+
+void BossVersus::Destroy()
 {
-	UIBase::Death();
 	RCG_GameCore::SetCurGameState(GameState::OnField);
+
+	if (nullptr != DestroyCallBack)
+	{
+		DestroyCallBack();
+		DestroyCallBack = nullptr;
+	}
 }

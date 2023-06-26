@@ -45,26 +45,6 @@ void FieldEnemy_Noise::Update(float _DeltaTime)
 	FieldBossBase::Update(_DeltaTime);
 
 	Fsm.Update(_DeltaTime);
-
-	RageRender(_DeltaTime);
-}
-
-void FieldEnemy_Noise::RageRender(float _DeltaTime)
-{
-	if (false == Fsm.IsLastPhase())
-		return;
-
-	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
-
-	if (0 == GetHp())
-	{
-		Render->ColorOptionValue.PlusColor = float4::Null;
-		return;
-	}
-
-	float LiveTime = GetLiveTime();
-	float RedValue = abs(sinf(LiveTime)) * 0.25f;
-	Render->ColorOptionValue.PlusColor = float4{ RedValue, 0.f, 0.f, 0.f };
 }
 
 
@@ -162,6 +142,11 @@ bool FieldEnemy_Noise::OnDamage_BlowBack(int _Damage)
 	return true;
 }
 
+void FieldEnemy_Noise::JumpForSing()
+{
+	Fsm.ChangeState(NoiseStateType::JumpToStage);
+}
+
 
 
 FieldEnemy_Noise::ExceptionType FieldEnemy_Noise::OnDamageException()
@@ -190,45 +175,14 @@ FieldEnemy_Noise::ExceptionType FieldEnemy_Noise::OnDamageException()
 		return ExceptionType::DamageOk_StateChanged;
 	}
 
-	//스턴 상태인 경우
-	else if (NoiseStateType::Damaged_Dizzy == CurState)
-	{
-		Fsm.ChangeState(NoiseStateType::Damaged_GroundHit);
-		return ExceptionType::DamageOk_StateChanged;
-	}
-
 	//현재 상태가 슈퍼아머 상태인 경우 FSM은 변화시키지 않고 데미지만 처리
 	else if (true == Fsm.IsUnbeatableState())
 		return ExceptionType::DamageOk_StateKeep;
 
-	//마지막 페이즈인 경우 FSM은 변화시키지 않고 데미지만 처리
-	else if (true == Fsm.IsLastPhase())
-		return ExceptionType::DamageOk_StateKeep;
-
-
 	return ExceptionType::NoException;
 }
 
-/*
-if (true == IsKO())
-	{
-		if (NoiseStateType::Damaged_KnockDown == Fsm.GetNowState<NoiseStateType>())
-			return false;
 
-		Fsm.ChangeState(NoiseStateType::Damaged_KnockDown);
-		return true;
-	}
-	else if (NoiseStateType::Damaged_Dizzy == Fsm.GetNowState<NoiseStateType>())
-	{
-		Fsm.ChangeState(NoiseStateType::Damaged_GroundHit);
-		return true;
-	}
-	else if (true == Fsm.IsLastPhase())
-	{
-		Fsm.ChangeState(NoiseStateType::NormalDamaged_Stomach);
-		return true;
-	}
-*/
 
 
 void FieldEnemy_Noise::LevelChangeEnd()

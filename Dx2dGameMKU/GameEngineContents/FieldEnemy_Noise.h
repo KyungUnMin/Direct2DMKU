@@ -19,6 +19,8 @@ public:
 	bool OnDamage_Jaw(int _Damage) override;
 	bool OnDamage_BlowBack(int _Damage) override;
 
+	void JumpForSing();
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -35,10 +37,9 @@ private:
 
 	NoiseFSM Fsm;
 
-	size_t PrevPhase = 2;
+	size_t PrevPhase = 0;
 
-	//체력이 일정 부분 이하로 떨어지면 이미지가 붉게 물드는 효과
-	void RageRender(float _DeltaTime);
+	
 
 
 	enum class ExceptionType

@@ -45,12 +45,15 @@ public:
 
 	std::shared_ptr<SelfRenderer> CreataEngineUIRender(const std::string_view& _TexFileName, BossVersusUIRenderOrder _RenderOrder);
 
-	void Death() override;
-
+	inline void SetCallBack(std::function<void()> _DestroyCallBack)
+	{
+		DestroyCallBack = _DestroyCallBack;
+	}
 
 protected:
 	void Update(float _DeltaTime) override;
 
+	void Destroy() override;
 
 private:
 	static BossVersus* GPtr;
@@ -85,6 +88,7 @@ private:
 	std::shared_ptr<SelfRenderer> BossNameRender = nullptr;
 
 	BossVersusUIFSM Fsm;
+	std::function<void()> DestroyCallBack = nullptr;
 
 	void LoadImages();
 	void CreatePortraits(BossType _Boss);

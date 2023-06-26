@@ -26,8 +26,6 @@ enum class NoiseStateType
 	NormalDamaged_Jaw,
 	Damaged_BlowBack,
 	Damaged_KnockDown,
-	Damaged_Dizzy,
-	Damaged_GroundHit,
 
 
 	COUNT

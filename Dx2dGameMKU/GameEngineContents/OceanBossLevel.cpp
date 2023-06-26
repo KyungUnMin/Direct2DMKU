@@ -15,6 +15,7 @@
 #include "Fader.h"
 #include "BossVersus.h"
 #include "BossIntroMovie.h"
+#include "FieldEnemy_Noise.h"
 
 
 const std::vector<std::pair<std::string_view, float4>> OceanBossLevel::BGInfoes =
@@ -60,7 +61,16 @@ void OceanBossLevel::Start()
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -149.f, -223.f });
 	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
-	GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
+
+	std::shared_ptr<FieldEnemyBase> Boss = nullptr;
+	Boss = GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
+	Boss_Noise = std::dynamic_pointer_cast<FieldEnemy_Noise>(Boss);
+	if (nullptr == Boss_Noise)
+	{
+		MsgAssert("보스Enemy를 Noise로 캐스팅하는데 실패하였습니다");
+		return;
+	}
+
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -151,14 +161,19 @@ void OceanBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
 	
-	//CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
-	//{
-	//	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
-	//
-	//	//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
-	//	this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
-	//	{
-	//		this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Noise);
-	//	});
-	//});
+	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
+	{
+		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+	
+		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+		{
+			std::shared_ptr<BossVersus> VsUI = nullptr;
+			VsUI = this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI));
+			VsUI->Init(BossType::Noise);
+			VsUI->SetCallBack([this]()
+			{
+				Boss_Noise->JumpForSing();
+			});
+		});
+	});
 }

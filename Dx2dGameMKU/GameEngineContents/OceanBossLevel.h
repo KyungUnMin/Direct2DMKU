@@ -24,6 +24,9 @@ private:
 	static const std::string_view CollisionImageName;
 	static const float4 PlayerStartPos;
 
+	std::shared_ptr<class FieldEnemy_Noise> Boss_Noise = nullptr;
+
+
 	void LoadImgRes();
 	void CreateBackGrounds();
 	void CreateAnimation(
