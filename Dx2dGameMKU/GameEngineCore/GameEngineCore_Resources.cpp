@@ -72,6 +72,22 @@ void GameEngineCore::CoreResourceInit()
 		GameEngineSampler::Create("ENGINEBASE", SamplerData);
 	}
 
+	//포인트 샘플러
+	{
+		D3D11_SAMPLER_DESC SamperData = {};
+		SamperData.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+		SamperData.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
+		SamperData.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
+		SamperData.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
+		
+		SamperData.MipLODBias = 0.0f;
+		SamperData.MaxAnisotropy = 1;
+		SamperData.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+		SamperData.MinLOD = -FLT_MAX;
+		SamperData.MaxLOD = FLT_MAX;
+
+		GameEngineSampler::Create("POINTSAMPLER", SamperData);
+	}
 
 	{
 		//클램프 샘플러
@@ -608,6 +624,17 @@ void GameEngineCore::CoreResourceInit()
 		Pipe->SetPixelShader("DebugMeshRender.hlsl");
 		Pipe->SetBlendState("AlphaBlend");
 		Pipe->SetDepthState("AlwayDepth");
+	}
+
+	//블러용 파이프라인
+	{
+		std::shared_ptr<GameEngineRenderingPipeLine> Pipe = GameEngineRenderingPipeLine::Create("Blur");
+
+		Pipe->SetVertexShader("BlurShader.hlsl");
+		Pipe->SetRasterizer("Engine2DBase");
+		Pipe->SetPixelShader("BlurShader.hlsl");
+		Pipe->SetBlendState("AlphaBlend");
+		Pipe->SetDepthState("EngineDepth");
 	}
 }
 

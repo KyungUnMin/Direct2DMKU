@@ -77,7 +77,7 @@ protected:
 		std::string UpperName = GameEngineString::ToUpper(_Name);
 
 
-		if (nullptr == Find(UpperName))
+		if (nullptr != Find(UpperName))
 		{
 			MsgAssert("이미 존재하는 이름의 리소스를 또 만들려고 했습니다");
 			return nullptr;

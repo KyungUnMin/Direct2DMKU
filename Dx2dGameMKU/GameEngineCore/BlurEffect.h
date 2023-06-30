@@ -20,6 +20,6 @@ protected:
 	void Effect(GameEngineRenderTarget* _Target, float _DeltaTime) override;
 
 private:
-
+	std::shared_ptr<GameEngineRenderUnit> BlurUnit;
 };
 
