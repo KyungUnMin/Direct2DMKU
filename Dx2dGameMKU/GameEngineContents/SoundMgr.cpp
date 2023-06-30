@@ -4,6 +4,8 @@
 #include "RCGDefine.h"
 
 GameEngineSoundPlayer SoundMgr::BGM;
+float SoundMgr::BGMLoopStartSec = 0.f;
+float SoundMgr::BGMLoopEndSec = 0.f;
 
 void SoundMgr::Init()
 {
@@ -25,6 +27,8 @@ void SoundMgr::ChangeBGM(const std::string_view& _BgmName)
 
 	BGM = GameEngineSound::Play(_BgmName);
 	BGM.SetLoop();
+	BGMLoopStartSec = 0.f;
+	BGMLoopEndSec = 0.f;
 }
 
 void SoundMgr::PlaySFX(const std::string_view& _BgmName)
@@ -35,6 +39,18 @@ void SoundMgr::PlaySFX(const std::string_view& _BgmName)
 void SoundMgr::BgmStop()
 {
 	BGM.Stop();
+}
+
+void SoundMgr::Update_LoopArea()
+{
+	//영역 루프를 설정하지 않은 경우
+	if ((0.f == BGMLoopStartSec) && (0.f == BGMLoopEndSec))
+		return;
+
+	if (BGM.getPosition() < BGMLoopEndSec)
+		return;
+
+	BGM.SetPosition(BGMLoopStartSec);
 }
 
 

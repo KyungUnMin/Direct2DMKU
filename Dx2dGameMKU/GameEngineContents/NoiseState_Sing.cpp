@@ -142,8 +142,7 @@ void NoiseState_Sing::EnterState()
 
 	FloorLines->On();
 	ChangePlayerColTrans();
-
-	SoundMgr::ChangeBGM("OceanBossLevel.mp3");
+	//SoundMgr::ChangeBGM("OceanBossLevel.mp3");
 }
 
 

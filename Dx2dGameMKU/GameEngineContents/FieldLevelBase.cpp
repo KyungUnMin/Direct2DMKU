@@ -10,6 +10,7 @@
 #include "KeyMgr.h"
 #include "GUIManager.h"
 #include "GameEngineActorGUI.h"
+#include "SoundMgr.h"
 
 #include "DebugActor.h"
 #include "FieldNPCBase.h"
@@ -152,6 +153,8 @@ void FieldLevelBase::LevelChangeStart()
 void FieldLevelBase::Update(float _DeltaTime)
 {
 	FieldActorBase::Update_CheckDebugKey();
+	SoundMgr::Update_LoopArea();
+
 	CamCtrl.Update(_DeltaTime);
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
 	EnemySpawnerCtrl.Update(_DeltaTime);

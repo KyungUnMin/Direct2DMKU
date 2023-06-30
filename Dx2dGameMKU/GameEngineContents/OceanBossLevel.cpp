@@ -161,19 +161,22 @@ void OceanBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
 	
-	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
-	{
-		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
-	
-		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
-		{
-			std::shared_ptr<BossVersus> VsUI = nullptr;
-			VsUI = this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI));
-			VsUI->Init(BossType::Noise);
-			VsUI->SetCallBack([this]()
-			{
-				Boss_Noise->JumpForSing();
-			});
-		});
-	});
+	//CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
+	//{
+	//	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+	//
+	//	this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+	//	{
+	//		std::shared_ptr<BossVersus> VsUI = nullptr;
+	//		VsUI = this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI));
+	//		VsUI->Init(BossType::Noise);
+	//		VsUI->SetCallBack([this]()
+	//		{
+	//			Boss_Noise->JumpForSing();
+	//		});
+	//	});
+	//});
+
+	//юс╫ц
+	Boss_Noise->JumpForSing();
 }

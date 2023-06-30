@@ -26,6 +26,8 @@ void NoiseState_Defeat::Start()
 
 	LoadAnimation();
 	CreateAnimation();
+
+	EnemyStateBase::DontLookPlayer();
 }
 
 
