@@ -48,6 +48,15 @@ public:
 	void Render(float _DeltaTime);
 };
 
+//쉐이더에서 편하게 하용하기 위한 값들
+class RenderBaseValue
+{
+public:
+	float4 Time;
+	float4 ScreenScale;
+	float4 Mouse;
+};
+
 class GameEngineCamera;
 
 class GameEngineRenderer : public GameEngineComponent
@@ -110,6 +119,9 @@ private:
 	GameEngineCamera* RenderCamera = nullptr;
 
 	std::vector<std::shared_ptr<GameEngineRenderUnit>> Units;
+
+	//쉐이더에서 편하게 사용하기 위한 값들
+	RenderBaseValue BaseValue;
 
 	//등록된 카메라를 바탕으로 행렬을 계산한다
 	void RenderTransformUpdate(GameEngineCamera* _Camera);

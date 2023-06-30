@@ -95,7 +95,7 @@ public:
 
 
 	//멀티맵안에 인자로 받은 이름의 상수버퍼가 있는지 확인하는 함수
-	bool IsConstantBufferSetter(const std::string_view& _Name)
+	bool IsConstantBuffer(const std::string_view& _Name)
 	{
 		std::string UpperName = GameEngineString::ToUpper(_Name);
 		std::multimap<std::string, GameEngineConstantBufferSetter>::iterator FindIter = ConstantBufferSetters.find(UpperName);

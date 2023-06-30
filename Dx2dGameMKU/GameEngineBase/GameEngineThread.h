@@ -2,6 +2,7 @@
 #include <string>
 #include <functional>
 #include <atomic>
+#include <thread>
 
 class GameEngineThread
 {

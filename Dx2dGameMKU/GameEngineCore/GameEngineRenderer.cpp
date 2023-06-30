@@ -102,7 +102,7 @@ void GameEngineRenderUnit::Render(float _DeltaTime)
 
 GameEngineRenderer::GameEngineRenderer()
 {
-
+	BaseValue.ScreenScale = GameEngineWindow::GetScreenSize();
 }
 
 GameEngineRenderer::~GameEngineRenderer()
@@ -134,6 +134,11 @@ void GameEngineRenderer::RenderTransformUpdate(GameEngineCamera* _Camera)
 
 void GameEngineRenderer::Render(float _DeltaTime)
 {
+	//누적시간
+	BaseValue.Time.x += _DeltaTime;
+	//이번 프레임의 DeltaTime
+	BaseValue.Time.y = _DeltaTime;
+
 	for (size_t i = 0; i < Units.size(); ++i)
 	{
 		Units[i]->Render(_DeltaTime);
@@ -230,12 +235,17 @@ void GameEngineRenderer::SetPipeLine(const std::string_view& _Name, int _index /
 
 
 	//트랜스폼 정보 자동으로 넣어주기(쉐이더 파일에 TransformData와 같은 상수버퍼가 있어야만 함)
-	if (true == Unit->ShaderResHelper.IsConstantBufferSetter("TransformData"))
+	if (true == Unit->ShaderResHelper.IsConstantBuffer("TransformData"))
 	{
 		const TransformData& Data= GetTransform()->GetTransDataRef();
 		Unit->ShaderResHelper.SetConstantBufferLink("TransformData", Data);
 	}
 	
+	//쉐이더에 RenderBaseValue를 사용한다면 상수버퍼 연결
+	if (true == Unit->ShaderResHelper.IsConstantBuffer("RenderBaseValue"))
+	{
+		Unit->ShaderResHelper.SetConstantBufferLink("RenderBaseValue", BaseValue);
+	}
 }
 
 
