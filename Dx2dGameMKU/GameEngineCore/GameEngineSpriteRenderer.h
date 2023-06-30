@@ -3,6 +3,16 @@
 #include "GameEngineSprite.h"
 #include "EngineContentRenderingStruct.h"
 
+//애니메이션 이벤트 시작 이벤트에 대한 유무
+class AnimationStartEvent
+{
+public:
+	//이벤트 발동 여부
+	bool IsEvent = false;
+	//콜백함수
+	std::function<void()> Function;
+};
+
 
 /*
 	애니메이션 1개에 대한 정보
@@ -48,7 +58,7 @@ public:
 	//해당 프레임일때 처리할 콜백이벤트
 	std::map<size_t, std::function<void()>> UpdateEventFunction;
 	//해당 프레임에 진입할 때 처리할 콜백이벤트
-	std::map<size_t, std::function<void()>> StartEventFunction;
+	std::map<size_t, AnimationStartEvent> StartEventFunction;
 
 	bool IsEnd();
 };

@@ -25,6 +25,12 @@ void AnimationInfo::Reset()
 	CurTime = FrameTime[0];
 	IsEndValue = false;
 	IsPauseValue = false;
+
+	//시작 이벤트 전부 사용가능으로 초기화
+	for (std::pair<const size_t, AnimationStartEvent>& Pair : StartEventFunction)
+	{
+		Pair.second.IsEvent = false;
+	}
 }
 
 
@@ -44,6 +50,24 @@ void AnimationInfo::Update(float _DeltaTime)
 
 	//스프라이트 상의 현재 프레임
 	size_t CurFrameIndex = FrameIndex[CurFrame];
+
+	//해당 프레임에 시작 이벤트가 존재하는 경우
+	if (StartEventFunction.end() != StartEventFunction.find(CurFrameIndex))
+	{
+		//이벤트가 아직 발동되지 않았으면서, 콜백함수가 존재하는 경우
+		//(이 프레임을 맞이하는 2번째 이상의 프레임에서는 IsEvent가 true가 되어있을 것임)
+		if (false == StartEventFunction[CurFrameIndex].IsEvent
+			&& nullptr != StartEventFunction[CurFrameIndex].Function)
+		{
+			//콜백호출 및 다음번엔 Start이벤트 호출 방지
+			StartEventFunction[CurFrameIndex].Function();
+			StartEventFunction[CurFrameIndex].IsEvent = true;
+		}
+	}
+
+
+
+
 
 	//Update콜백이 있으면 호출
 	if (UpdateEventFunction.end() != UpdateEventFunction.find(CurFrameIndex))
@@ -69,6 +93,12 @@ void AnimationInfo::Update(float _DeltaTime)
 			if (true == Loop)
 			{
 				CurFrame = 0;
+
+				//시작 이벤트 초기화
+				for (std::pair<const size_t, AnimationStartEvent>& Pair : StartEventFunction)
+				{
+					Pair.second.IsEvent = false;
+				}
 			}
 			//반복재생이 아닌 경우
 			else
@@ -80,18 +110,6 @@ void AnimationInfo::Update(float _DeltaTime)
 		}
 
 
-		else
-		{
-			CurFrameIndex = FrameIndex[CurFrame];
-
-			//Start콜백이 있으면 호출
-			if (StartEventFunction.end() != StartEventFunction.find(CurFrameIndex))
-			{
-				StartEventFunction[CurFrameIndex]();
-			}
-		}
-
-		
 
 		CurTime += FrameTime[CurFrame];
 	}
@@ -337,14 +355,6 @@ void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, si
 	{
 		CurAnimation->CurFrame = _Frame;
 	}
-
-	// 시작할때 Start 이벤트 체크 업데이트
-	size_t CurFrameIndex = CurAnimation->FrameIndex[CurAnimation->CurFrame];
-
-	if (CurAnimation->StartEventFunction.end() != CurAnimation->StartEventFunction.find(CurFrameIndex))
-	{
-		CurAnimation->StartEventFunction[CurFrameIndex]();
-	}
 }
 
 
@@ -417,7 +427,8 @@ void GameEngineSpriteRenderer::SetAnimationStartEvent(const std::string_view& _A
 		MsgAssert("존재하지 않는 애니메이션에 이벤트 세팅을 하려고 했습니다.");
 	}
 
-	Info->StartEventFunction[_Frame] = _Event;
+	Info->StartEventFunction[_Frame].IsEvent = false;
+	Info->StartEventFunction[_Frame].Function= _Event;
 }
 
 std::string GameEngineSpriteRenderer::GetTexName()
