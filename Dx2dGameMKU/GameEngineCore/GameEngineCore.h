@@ -75,7 +75,7 @@ protected:
 
 private:
 	//레벨이 Start되는 순간만 포인터에 값이 존재한다
-	static class GameEngineLevel* CurLoadLevel;
+	static std::shared_ptr<class GameEngineLevel> CurLoadLevel;
 
 	static void CoreResourceInit();
 	static void CoreResourceEnd();

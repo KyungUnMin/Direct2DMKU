@@ -40,13 +40,11 @@ public:
 		std::string UpperName = GameEngineString::ToUpper(_Name);
 
 		//Find하는 사이에 다른 스레드에서 NamedResources에 노드가 추가될 수도 있기 때문에 Lock처리한다
-		NameLock.lock();
+		std::lock_guard<std::mutex> Lock(NameLock);
 		if (NamedResources.end() == NamedResources.find(UpperName))
 		{
-			NameLock.unlock();
 			return nullptr;
 		}
-		NameLock.unlock();
 
 		return NamedResources[UpperName];
 	}
@@ -68,9 +66,8 @@ protected:
 		std::shared_ptr<ResourceType> NewRes = std::make_shared<ResourceType>();
 
 		//공유메모리 수정 문제 보호
-		UnNamedLock.lock();
+		std::lock_guard<std::mutex> Lock(UnNamedLock);
 		UnNamedRes.push_back(NewRes);
-		UnNamedLock.unlock();
 
 		return NewRes;
 	}
@@ -80,24 +77,19 @@ protected:
 		std::string UpperName = GameEngineString::ToUpper(_Name);
 
 
-		//Find하는 사이에 다른 스레드에서 NamedResources에 노드가 추가될 수도 있기 때문에 Lock처리한다
-		NameLock.lock();
-		if (NamedResources.end() != NamedResources.find(UpperName))
+		if (nullptr == Find(UpperName))
 		{
 			MsgAssert("이미 존재하는 이름의 리소스를 또 만들려고 했습니다");
-			NameLock.unlock();
 			return nullptr;
 		}
-		NameLock.unlock();
 
 
 		std::shared_ptr<ResourceType> NewRes = std::make_shared<ResourceType>();
 		NewRes->SetName(UpperName);
 
 		//공유메모리 수정 문제 보호
-		NameLock.lock();
+		std::lock_guard<std::mutex> Lock(NameLock);
 		NamedResources.insert(std::map<std::string, std::shared_ptr<ResourceType>>::value_type(UpperName, NewRes));
-		NameLock.unlock();
 
 		return NewRes;
 	}
