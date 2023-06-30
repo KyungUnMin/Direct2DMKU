@@ -24,6 +24,11 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	static const std::string_view OpeningBgmName;
+	static const std::string_view TextSFX;
+	
+	
+
 	std::shared_ptr<GameEngineSpriteRenderer> Kyoko = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Misako = nullptr;
 							   
@@ -32,7 +37,7 @@ private:
 	std::shared_ptr<GameEngineSpriteRenderer> Text_Girls = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Text_Full = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> BrightBack = nullptr;
-	//GameEngineSound BgmPlayer;
+	
 
 	enum class State
 	{

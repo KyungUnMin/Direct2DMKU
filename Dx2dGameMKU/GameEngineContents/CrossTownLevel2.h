@@ -14,6 +14,7 @@ public:
 
 protected:
 	void Start() override;
+	void LevelChangeStart() override;
 
 private:
 	//<텍스처 이름, 오프셋>

@@ -8,6 +8,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "RCG_GameCore.h"
+#include "SoundMgr.h"
 
 #include "BackGround.h"
 #include "FieldDoor.h"
@@ -97,6 +98,7 @@ void TownBossLevel::LevelChangeStart()
 	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Town, [this]()
 	{
 		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+		SoundMgr::ChangeBGM("TownBossLevel.mp3");
 
 		//BossIntroMovie 끝나고 페이드 까지는 맞는데, BossVersus UI 띄우는건 임시
 		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()

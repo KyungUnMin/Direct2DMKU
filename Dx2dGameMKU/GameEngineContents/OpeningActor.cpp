@@ -9,9 +9,15 @@
 #include "KeyMgr.h"
 #include "LevelMgr.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "Fader.h"
 #include "OpeningDiaEffect.h"
+
+const std::string_view OpeningActor::OpeningBgmName = "OpeningBgm.mp3";
+const std::string_view OpeningActor::TextSFX = "Opening_TextDrop.wav";
+
+
 
 OpeningActor::OpeningActor()
 {
@@ -168,6 +174,7 @@ void OpeningActor::VideoOff()
 	//만약 사운드가 재생중이지 않았다면 재생시키기
 	//TODO
 	CurState = State::Bright;
+	SoundMgr::ChangeBGM(OpeningBgmName);
 }
 
 
@@ -207,6 +214,7 @@ void OpeningActor::Update_Bright(float _DeltaTime)
 
 	std::shared_ptr<OpeningDiaEffect> TileEffect2 = GetLevel()->CreateActor<OpeningDiaEffect>();
 	TileEffect2->GetTransform()->SetLocalPosition(EffectPos);
+
 }
 
 
@@ -238,6 +246,7 @@ void OpeningActor::Update_Text(float _DeltaTime)
 	Misako->On();
 
 	CurState = OpeningActor::State::Char;
+	SoundMgr::PlaySFX(TextSFX);
 }
 
 

@@ -48,6 +48,8 @@ public:
 	
 
 protected:
+	const float BgmFadeDuration = 3.f;
+
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	

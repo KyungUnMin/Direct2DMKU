@@ -5,6 +5,8 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
+
 #include "BackGround.h"
 #include "FieldDoor.h"
 
@@ -114,4 +116,23 @@ void CrossTownLevel3::CreateEnemies()
 		EnemyType::Cop,
 		EnemyType::TigerMan,
 		}, EnemySpawnPoses);
+}
+
+
+void CrossTownLevel3::LevelChangeStart()
+{
+	FieldLevelBase::LevelChangeStart();
+
+	const std::string_view BgmName = "CrossTownLevel.mp3";
+	if (BgmName == SoundMgr::GetCurBgmName())
+		return;
+
+	SoundMgr::ChangeBGM(BgmName);
+}
+
+void CrossTownLevel3::LevelChangeEnd()
+{
+	FieldLevelBase::LevelChangeEnd();
+
+	SoundMgr::BgmFadeOut(BgmFadeDuration);
 }

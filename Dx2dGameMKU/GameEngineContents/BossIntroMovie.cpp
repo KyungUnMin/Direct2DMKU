@@ -9,6 +9,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "KeyMgr.h"
+#include "SoundMgr.h"
 
 #include "SelfRenderer.h"
 
@@ -44,6 +45,25 @@ void BossIntroMovie::Init(MovieType _MovieType, std::function<void()> _EndCallba
 	GameEngineLevel* Level = GetLevel();
 	Level->GetCamera(static_cast<int>(RCG_CamNumType::Main))->Off();
 	Level->GetCamera(static_cast<int>(RCG_CamNumType::UI))->Off();
+
+	std::string_view SfxName = "";
+
+	switch (_MovieType)
+	{
+	case MovieType::School:
+		SfxName = "Bossintros_Misuzu.mp3";
+		break;
+	case MovieType::Town:
+		SfxName = "Bossintros_Yamada.mp3";
+		break;
+	case MovieType::Ocean:
+		SfxName = "Bossintros_Noize.mp3";
+		break;
+	}
+
+	SoundMgr::BgmStop();
+	Sfx = SoundMgr::PlaySFX(SfxName);
+	Sfx.SetPause(false);
 }
 
 
@@ -92,6 +112,7 @@ void BossIntroMovie::CreateAnimation(const std::string_view& _MovieName)
 void BossIntroMovie::Update(float _DelatTime)
 {
 	UIBase::Update(_DelatTime);
+	
 
 	if (false == IsInit)
 	{
@@ -103,6 +124,13 @@ void BossIntroMovie::Update(float _DelatTime)
 	{
 		DeleteThis();
 		return;
+	}
+
+	bool IsPlaySFX = false;
+	Sfx.isPlaying(&IsPlaySFX);
+	if (false == IsPlaySFX)
+	{
+		Sfx.SetPause(true);
 	}
 
 	if (false == Render->IsAnimationEnd())
@@ -136,6 +164,7 @@ void BossIntroMovie::DeleteThis()
 		GameEngineTexture::UnLoad(TexName);
 	}
 
+	Sfx.Stop();
 	TexNames.clear();
 	this->Death();
 }

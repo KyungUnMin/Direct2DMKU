@@ -9,6 +9,7 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "FieldNPCBase.h"
+#include "SoundMgr.h"
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
@@ -168,4 +169,18 @@ void SchoolEntryLevel::CreateNPC()
 	NpcTrans->SetLocalPosition(NpcPos);
 }
 
+
+void SchoolEntryLevel::LevelChangeStart()
+{
+	FieldLevelBase::LevelChangeStart();
+
+	SoundMgr::ChangeBGM("SchoolEntryLevel.mp3");
+}
+
+void SchoolEntryLevel::LevelChangeEnd()
+{
+	FieldLevelBase::LevelChangeEnd();
+
+	SoundMgr::BgmFadeOut(BgmFadeDuration);
+}
 

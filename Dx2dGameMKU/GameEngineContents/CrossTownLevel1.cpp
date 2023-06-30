@@ -5,10 +5,12 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "ResourceHelper.h"
+
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::BGInfoes =
 {
@@ -71,6 +73,8 @@ void CrossTownLevel1::Start()
 }
 
 
+
+
 void CrossTownLevel1::LoadImgRes()
 {
 	GameEngineDirectory Dir;
@@ -131,3 +135,13 @@ void CrossTownLevel1::CreateEnemies()
 }
 
 
+void CrossTownLevel1::LevelChangeStart()
+{
+	FieldLevelBase::LevelChangeStart();
+
+	const std::string_view BgmName = "CrossTownLevel.mp3";
+	if (BgmName == SoundMgr::GetCurBgmName())
+		return;
+
+	SoundMgr::ChangeBGM(BgmName);
+}

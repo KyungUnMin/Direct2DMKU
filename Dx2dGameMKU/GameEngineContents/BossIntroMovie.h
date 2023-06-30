@@ -1,4 +1,5 @@
 #pragma once
+#include <GameEnginePlatform/GameEngineSound.h>
 #include "UIBase.h"
 
 enum class MovieType
@@ -31,6 +32,7 @@ private:
 	std::vector<std::string> TexNames;
 	std::function<void()> EndCallback = nullptr;
 	bool IsInit = false;
+	GameEngineSoundPlayer Sfx;
 
 	void LoadSprite(const std::string_view& _MovieName);
 	void CreateAnimation(const std::string_view& _MovieName);

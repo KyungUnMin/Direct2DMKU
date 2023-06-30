@@ -108,6 +108,13 @@ void MisuzuState_Attack_Roar::Update(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
+	//공격을 적중 시켰다면
+	if (true == IsAttackOk)
+	{
+		GetFSM()->ChangeState(MisuzuStateType::WUPunch);
+		return;
+	}
+
 
 	//일정 범위 밖에 있다면 idle
 	if (GetSightRadius() < GetVecToPlayer().Size())

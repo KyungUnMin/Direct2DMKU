@@ -7,6 +7,8 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
+
 #include "BackGround.h"
 #include "FieldDoor.h"
 
@@ -70,6 +72,8 @@ void OceanLevel::Start()
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
+
+
 
 void OceanLevel::LoadImgRes()
 {
@@ -154,4 +158,19 @@ void OceanLevel::CreateWaveRender()
 	GameEngineTransform* WaveTrans = Render->GetTransform();
 	WaveTrans->SetLocalScale(TexScale * RCGDefine::ResourceScaleConvertor);
 	WaveTrans->SetLocalPosition(float4::Forward * 501.f);
+}
+
+
+void OceanLevel::LevelChangeStart()
+{
+	FieldLevelBase::LevelChangeStart();
+
+	SoundMgr::ChangeBGM("OceanLevel.mp3");
+}
+
+void OceanLevel::LevelChangeEnd()
+{
+	FieldLevelBase::LevelChangeEnd();
+
+	SoundMgr::BgmFadeOut(BgmFadeDuration);
 }
