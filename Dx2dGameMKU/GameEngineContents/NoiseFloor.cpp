@@ -9,6 +9,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "FieldLevelBase.h"
@@ -43,6 +44,14 @@ const std::vector<std::pair<float4, float4>> NoiseFloor::MovePath =
 };
 
 const int NoiseFloor::Damage = 3;
+
+const std::vector<std::string_view> NoiseFloor::HitSfx_FileNames =
+{
+	"NoiseFloor_Effect1.wav",
+	"NoiseFloor_Effect2.wav",
+	"NoiseFloor_Effect3.wav",
+	"NoiseFloor_Effect4.wav"
+};
 
 
 NoiseFloor::NoiseFloor()
@@ -234,6 +243,10 @@ void NoiseFloor::Attack()
 		HitEffect->On();
 
 		FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.2f);
+
+		static size_t Index = 0;
+		SoundMgr::PlaySFX(HitSfx_FileNames[Index]);
+		Index = (Index + 1) % HitSfx_FileNames.size();
 	}
 	else
 	{

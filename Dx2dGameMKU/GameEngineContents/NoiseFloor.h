@@ -41,7 +41,7 @@ private:
 	static const std::vector<std::string_view> FileNames;
 	static const std::vector<std::pair<float4, float4>> MovePath;
 	static const int Damage;
-
+	static const std::vector<std::string_view> HitSfx_FileNames;
 
 	enum class State
 	{
