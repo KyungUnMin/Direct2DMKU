@@ -22,6 +22,9 @@ private:
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	static const std::vector<std::string_view> LaughSounds;
+
+	size_t SoundIndex = 0;
 
 	void LoadAnimation();
 	void CreateAnimation();

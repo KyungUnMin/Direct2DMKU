@@ -3,6 +3,7 @@
 
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldEnemyBase.h"
@@ -78,9 +79,11 @@ void MisuzuState_Attack_GetUp::CreateAnimation()
 
 		//카메라 쉐이킹
 		FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.4f);
+		//사운드
+		SoundMgr::PlaySFX("Misuzu_GetUp_Voice.wav");
 	});
-
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 6);
+	
+	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 6, false, "Misuzu_GetUp_Effect.mp3", 3.f);
 }
 
 

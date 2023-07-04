@@ -49,17 +49,20 @@ void EnemyState_AttackBase::OnAttackSound()
 
 
 
-void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName, size_t _Index, bool _IsUpdateCallBack /*= false*/)
+void EnemyState_AttackBase::SetAttackCheckFrame(
+	const std::string_view& _AniName, 
+	size_t _Index, bool _IsUpdateCallBack /*= false*/,
+	const std::string_view& _SfxName /*= ""*/,
+	float _SfxVolume /*= 1.f*/)
 {
 	std::shared_ptr<GameEngineSpriteRenderer> EnemyRender = GetRenderer();
-
 
 	//Start 애니메이션 콜백
 	if (false == _IsUpdateCallBack)
 	{
 		//n번째 프레임에 처리할 콜백 등록
 		EnemyRender->SetAnimationStartEvent(_AniName, _Index,
-			std::bind(&EnemyState_AttackBase::AttackCheck, this));
+			std::bind(&EnemyState_AttackBase::AttackCheck, this, _SfxName, _SfxVolume));
 	}
 
 	//Update 애니메이션 콜백
@@ -67,7 +70,7 @@ void EnemyState_AttackBase::SetAttackCheckFrame(const std::string_view& _AniName
 	{
 		//n번째 프레임에 처리할 콜백 등록
 		EnemyRender->SetAnimationUpdateEvent(_AniName, _Index,
-			std::bind(&EnemyState_AttackBase::AttackCheck, this));
+			std::bind(&EnemyState_AttackBase::AttackCheck, this, _SfxName, _SfxVolume));
 	}
 	
 }
@@ -88,8 +91,13 @@ void EnemyState_AttackBase::SetAttackColValue(const float4& _Offset, const float
 }
 
 
-bool EnemyState_AttackBase::AttackCheck()
+bool EnemyState_AttackBase::AttackCheck(std::string_view _SfxName /*= ""*/, float _SfxVolume /*= 1.f*/)
 {
+	if (false == _SfxName.empty())
+	{
+		SoundMgr::PlaySFX(_SfxName).SetVolume(_SfxVolume);
+	}
+
 	std::shared_ptr<GameEngineCollision> PlayerCol = nullptr;
 	PlayerCol = AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::SPHERE3D, ColType::SPHERE3D);
 

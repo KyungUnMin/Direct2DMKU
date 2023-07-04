@@ -28,6 +28,8 @@ protected:
 
 	bool Update_LerpMove(float _Ratio, const float4& _StartPos, const float4& _DestPos);
 
+	void OnAttackSound() override{}
+
 private:
 
 };

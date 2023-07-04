@@ -1,15 +1,24 @@
 #include "PrecompileHeader.h"
 #include "MisuzuState_Taunt.h"
 
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
-
 #include "FieldEnemyBase.h"
 
 const std::string_view MisuzuState_Taunt::AniName = "Taunt";
 const std::string_view MisuzuState_Taunt::AniFileName = "Misuzu_Taunt.png";
 const std::pair<int, int> MisuzuState_Taunt::AniCutFrame = std::pair<int, int>(5, 5);
 const float MisuzuState_Taunt::AniInterTime = 0.08f;
+
+const std::vector<std::string_view> MisuzuState_Taunt::LaughSounds =
+{
+	"Misuzu_Taunt (1).wav",
+	"Misuzu_Taunt (2).wav",
+	"Misuzu_Taunt (3).wav",
+	"Misuzu_Taunt (4).wav",
+	"Misuzu_Taunt (5).wav",
+};
 
 MisuzuState_Taunt::MisuzuState_Taunt()
 {
@@ -64,6 +73,9 @@ void MisuzuState_Taunt::EnterState()
 	EnemyStateBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
+	SoundMgr::PlaySFX(LaughSounds[SoundIndex]);
+	SoundIndex = (SoundIndex + 1) % LaughSounds.size();
 }
 
 
