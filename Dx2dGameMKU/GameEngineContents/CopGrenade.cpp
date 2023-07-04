@@ -8,6 +8,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "FieldLevelBase.h"
@@ -49,6 +50,8 @@ void CopGrenade::Start()
 
 	ImageLoad();
 	CreateAnimation();
+
+	SoundMgr::PlaySFX("CopGrenade_Launch.wav").SetVolume(3.f);
 }
 
 void CopGrenade::ImageLoad()
@@ -195,6 +198,7 @@ void CopGrenade::Update_Land()
 	if (false == Render->IsAnimationEnd())
 		return;
 
+	SoundMgr::PlaySFX("CopGrenade_Explo.wav");
 	ChangeState(State::Explosion);
 	GameEngineTransform* RenderTrans = Render->GetTransform();
 	RenderTrans->SetLocalScale(ExploRenderScale);
