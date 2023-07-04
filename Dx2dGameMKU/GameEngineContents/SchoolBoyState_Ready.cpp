@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_Ready.h"
 
+#include "SoundMgr.h"
+
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
 
@@ -107,6 +109,7 @@ void SchoolBoyState_Ready::Update_Wait()
 	if (GetSightRadius() < Distance)
 		return;
 
+	SoundMgr::PlaySFX("School_ReadyExit.wav");
 	GetRenderer()->ChangeAnimation(GetUpAniName);
 	CurState = State::GetUp;
 }

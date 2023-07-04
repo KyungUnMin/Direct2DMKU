@@ -61,6 +61,7 @@ void SchoolGirlState_NormalDamaged_Jaw::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("FemaleEnemy_JawDamaged.wav");
 }
 
 void SchoolGirlState_NormalDamaged_Jaw::Update(float _DeltaTime)

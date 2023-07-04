@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_NormalDamaged_Face.h"
 
+
 #include "SchoolBoyFSM.h"
 
 const std::string_view SchoolBoyState_NormalDamaged_Face::AniName = "NormalDamaged_Face";
@@ -61,6 +62,7 @@ void SchoolBoyState_NormalDamaged_Face::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("MaleEnemy_FaceDamaged.wav");
 }
 
 void SchoolBoyState_NormalDamaged_Face::Update(float _DeltaTime) 

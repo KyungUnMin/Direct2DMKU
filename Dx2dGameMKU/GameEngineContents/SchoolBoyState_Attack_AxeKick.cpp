@@ -1,10 +1,12 @@
 #include "PrecompileHeader.h"
 #include "SchoolBoyState_Attack_AxeKick.h"
 
+#include "DataMgr.h"
+#include "SoundMgr.h"
+
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
-#include "DataMgr.h"
 
 const std::string_view SchoolBoyState_Attack_AxeKick::AniName = "Attack_AxeKick";
 const std::string_view SchoolBoyState_Attack_AxeKick::AniFileName = "SchoolBoy_Axe_Kick.png";
@@ -72,6 +74,8 @@ void SchoolBoyState_Attack_AxeKick::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue();
+
+	//SoundMgr::PlaySFX("SchoolBoy_AxeKick_Effect.wav");
 }
 
 

@@ -74,6 +74,8 @@ protected:
 		return CamCtrl;
 	}
 
+	virtual void OnAttackSound();
+
 private:
 	//지금 공격을 하고 있는 Enemy(모든 Enemy들 중에 한명만 공격시키기 위함)
 	static FieldEnemyBase* AttackEnemy;

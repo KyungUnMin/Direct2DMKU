@@ -71,6 +71,8 @@ void SchoolBoyState_Damaged_KnockDown::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("MaleEnemy_KnockDown.wav");
 }
 
 

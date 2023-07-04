@@ -20,6 +20,8 @@ protected:
 
 	void Attack() override;
 
+	void OnAttackSound() override;
+
 private:
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;

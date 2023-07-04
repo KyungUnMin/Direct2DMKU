@@ -71,6 +71,8 @@ void SchoolGirlState_Damaged_KnockDown::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("FemaleEnemy_KnockDown.wav");
 }
 
 

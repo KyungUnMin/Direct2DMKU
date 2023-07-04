@@ -70,6 +70,8 @@ void SchoolGirlState_Damaged_WallOut::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SetReflectDirection();
+
+	SoundMgr::PlaySFX("FemaleEnemy_WallOut.wav");
 }
 
 void SchoolGirlState_Damaged_WallOut::SetReflectDirection()

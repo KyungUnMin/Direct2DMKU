@@ -1,5 +1,6 @@
 #pragma once
 #include "EnemyStateBase.h"
+#include "SoundMgr.h"
 
 class EnemyState_DamagedBase : public EnemyStateBase
 {

@@ -70,6 +70,7 @@ void SchoolBoyState_Damaged_BlowBack::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("MaleEnemy_BlowDamaged.wav");
 }
 
 

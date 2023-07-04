@@ -61,6 +61,7 @@ void SchoolGirlState_NormalDamaged_Face::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("FemaleEnemy_FaceDamaged.wav");
 }
 
 void SchoolGirlState_NormalDamaged_Face::Update(float _DeltaTime) 

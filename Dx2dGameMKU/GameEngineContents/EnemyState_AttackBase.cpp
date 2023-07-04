@@ -3,6 +3,7 @@
 
 #include <GameEngineCore/GameEngineCollision.h>
 
+#include "SoundMgr.h"
 
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
@@ -31,15 +32,20 @@ void EnemyState_AttackBase::Start()
 
 
 
-
 void EnemyState_AttackBase::EnterState()
 {
 	EnemyStateBase::EnterState();
 	EnemyDir = EnemyStateBase::IsRightDir();
 
 	AttackEnemy = GetEnemy();
+
+	OnAttackSound();
 }
 
+void EnemyState_AttackBase::OnAttackSound()
+{
+	SoundMgr::PlaySFX("Enemy_CommonAttack.wav");
+}
 
 
 
@@ -132,6 +138,7 @@ void EnemyState_AttackBase::SetMoveEvent(
 		this->MoveOn();
 	});
 }
+
 
 
 void EnemyState_AttackBase::Update(float _DeltaTime)

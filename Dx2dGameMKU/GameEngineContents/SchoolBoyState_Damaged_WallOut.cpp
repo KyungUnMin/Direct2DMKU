@@ -69,6 +69,8 @@ void SchoolBoyState_Damaged_WallOut::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SetReflectDirection();
+
+	SoundMgr::PlaySFX("MaleEnemy_WallOut.wav");
 }
 
 void SchoolBoyState_Damaged_WallOut::SetReflectDirection()

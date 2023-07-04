@@ -1,10 +1,12 @@
 #include "PrecompileHeader.h"
 #include "SchoolGirlState_Attack_CrescentKick.h"
 
+#include "DataMgr.h"
+#include "SoundMgr.h"
+
 #include "SchoolGirlFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
-#include "DataMgr.h"
 
 const std::string_view SchoolGirlState_Attack_CrescentKick::AniName = "Attack_CrescentKick";
 const std::string_view SchoolGirlState_Attack_CrescentKick::AniFileName = "SchoolGirl_CrescentKick.png";
@@ -139,6 +141,11 @@ void SchoolGirlState_Attack_CrescentKick::Attack()
 		++AttackCount;
 	}
 
+}
+
+void SchoolGirlState_Attack_CrescentKick::OnAttackSound()
+{
+	SoundMgr::PlaySFX("SchoolGirl_CrescentKick_Effect.wav");
 }
 
 

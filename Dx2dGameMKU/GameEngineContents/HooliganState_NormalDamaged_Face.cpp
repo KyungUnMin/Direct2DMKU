@@ -61,6 +61,7 @@ void HooliganState_NormalDamaged_Face::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("MaleEnemy_FaceDamaged.wav");
 }
 
 void HooliganState_NormalDamaged_Face::Update(float _DeltaTime) 

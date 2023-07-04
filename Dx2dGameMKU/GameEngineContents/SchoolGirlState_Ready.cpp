@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "SchoolGirlState_Ready.h"
 
+#include "SoundMgr.h"
+
 #include "SchoolGirlFSM.h"
 #include "FieldEnemyBase.h"
 
@@ -106,6 +108,7 @@ void SchoolGirlState_Ready::Update_Wait()
 	if (GetSightRadius() < Distance)
 		return;
 
+	SoundMgr::PlaySFX("School_ReadyExit.wav");
 	GetRenderer()->ChangeAnimation(GetUpAniName);
 	CurState = State::GetUp;
 }
