@@ -61,6 +61,7 @@ void CheerleaderState_NormalDamaged_Face::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("CheerLeader_FaceDamaged.wav");
 }
 
 void CheerleaderState_NormalDamaged_Face::Update(float _DeltaTime) 

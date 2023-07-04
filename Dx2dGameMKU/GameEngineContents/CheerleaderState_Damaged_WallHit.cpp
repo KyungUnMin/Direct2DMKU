@@ -66,6 +66,7 @@ void CheerleaderState_Damaged_WallHit::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("Enemy_WallHit.mp3");
 }
 
 

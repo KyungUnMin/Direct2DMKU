@@ -61,6 +61,7 @@ void CheerleaderState_NormalDamaged_Stomach::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("CheerLeader_StomachDamaged.wav");
 }
 
 void CheerleaderState_NormalDamaged_Stomach::Update(float _DeltaTime)

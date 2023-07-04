@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "CheerleaderFSM.h"
 #include "AfterImageEffect.h"
@@ -84,6 +85,8 @@ void CheerleaderState_CartWheel::EnterState()
 	EffectTimer = 0.f;
 
 	EnemyMainCollider->Off();
+
+	SoundMgr::PlaySFX("Enemy_CommonAttack.wav");
 }
 
 
