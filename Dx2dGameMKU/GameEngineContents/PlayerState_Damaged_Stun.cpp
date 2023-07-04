@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_Damaged_Stun.h"
 
+#include "SoundMgr.h"
+
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_Damaged_Stun::AniFileName = "Player_Stun.png";
@@ -74,6 +76,7 @@ void PlayerState_Damaged_Stun::EnterState()
 	PlayerState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(EnterAniName);
+	SoundMgr::PlaySFX("Player_Stun_Effect.wav").SetVolume(0.5f);
 }
 
 void PlayerState_Damaged_Stun::Update(float _DeltaTime)

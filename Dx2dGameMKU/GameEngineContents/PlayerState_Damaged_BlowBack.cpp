@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_Damaged_BlowBack.h"
 
+#include "SoundMgr.h"
+
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
 #include "FieldLevelBase.h"
@@ -68,6 +70,9 @@ void PlayerState_Damaged_BlowBack::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	FieldPlayer::GetPtr()->SetHeight(0.f);
+
+	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
+	SoundMgr::PlaySFX("Player_BlowDamaged_Voice.wav");
 }
 
 

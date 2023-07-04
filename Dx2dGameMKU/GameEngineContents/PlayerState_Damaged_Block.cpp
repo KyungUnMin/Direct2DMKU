@@ -5,6 +5,7 @@
 
 #include "RCGEnums.h"
 #include "KeyMgr.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
@@ -80,6 +81,8 @@ void PlayerState_Damaged_Block::EnterState()
 	CurState = State::Block;
 	size_t Index = static_cast<size_t>(CurState);
 	GetRenderer()->ChangeAnimation(AniInfoes[Index].AniName);
+
+	SoundMgr::PlaySFX("Player_Block_Effect.wav");
 }
 
 void PlayerState_Damaged_Block::Update(float _DeltaTime)
@@ -129,6 +132,7 @@ void PlayerState_Damaged_Block::OnDamage()
 	size_t Index = static_cast<size_t>(CurState);
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	Render->ChangeAnimation(AniInfoes[Index].AniName);
+	SoundMgr::PlaySFX("Player_Block_Hit.wav");
 	
 
 	//방어 이펙트를 생성하고

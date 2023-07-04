@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_NormalDamaged_Jaw.h"
 
+#include "SoundMgr.h"
+
 #include "PlayerFSM.h"
 
 const std::string_view PlayerState_NormalDamaged_Jaw::AniName = "NormalDamaged_Jaw";
@@ -45,6 +47,8 @@ void PlayerState_NormalDamaged_Jaw::EnterState()
 	PlayerState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
+	SoundMgr::PlaySFX("Player_JawDamaged_Voice.wav");
 }
 
 void PlayerState_NormalDamaged_Jaw::Update(float _DeltaTime)
