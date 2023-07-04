@@ -399,6 +399,11 @@ void GameEngineSpriteRenderer::Update(float _Delta)
 void GameEngineSpriteRenderer::Render(float _DeltaTime)
 {
 	GameEngineRenderer::Render(_DeltaTime);
+
+	if (nullptr != RenderEndCallBack)
+	{
+		RenderEndCallBack(this);
+	}
 }
 
 

@@ -3,6 +3,8 @@
 
 #include <algorithm>
 
+#include "SoundMgr.h"
+
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "PlayerState_Dash.h"
@@ -70,6 +72,7 @@ void PlayerState_Jump::EnterState()
 	PlayerState_MovementBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("player_jump.wav");
 }
 
 

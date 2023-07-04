@@ -6,6 +6,7 @@
 #include "KeyMgr.h"
 #include "RCGEnums.h"
 #include "RCGDefine.h"
+#include "SoundMgr.h"
 
 #include "BackGround.h"
 #include "PlayerFSM.h"
@@ -84,6 +85,8 @@ void PlayerState_Avoid::EnterState()
 	CreateEffect();
 	GetRenderer()->ChangeAnimation(AniName);
 	//FieldPlayer::GetPtr()->GetMainCollider()->Off();
+
+	SoundMgr::PlaySFX("player_footsteps_run_03.wav");
 }
 
 void PlayerState_Avoid::CreateEffect()

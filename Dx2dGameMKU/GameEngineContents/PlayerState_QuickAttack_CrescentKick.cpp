@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -69,6 +70,9 @@ void PlayerState_QuickAttack_CrescentKick::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_CrescentKick_Effect.wav");
+	SoundMgr::PlaySFX("Player_CrescentKick_Voice.wav");
 }
 
 
@@ -112,6 +116,7 @@ void PlayerState_QuickAttack_CrescentKick::Attack(FieldEnemyBase* _Enemy)
 	bool Result = _Enemy->OnDamage_Stomach(TotalDamage);
 	if (true == Result)
 	{
+		SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 		PlayerState_AttackBase::CreateHitEffect_Face();
 	}
 }

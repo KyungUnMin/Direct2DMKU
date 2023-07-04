@@ -15,7 +15,7 @@
 #include "OpeningDiaEffect.h"
 
 const std::string_view OpeningActor::OpeningBgmName = "OpeningBgm.mp3";
-const std::string_view OpeningActor::TextSFX = "Opening_TextDrop.wav";
+const std::string_view OpeningActor::TextSFX = "Opening_TextDrop.mp3";
 
 
 

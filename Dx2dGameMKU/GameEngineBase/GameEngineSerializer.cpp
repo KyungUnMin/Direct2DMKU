@@ -73,7 +73,7 @@ void GameEngineSerializer::Read(std::string& _Value)
 
 void GameEngineSerializer::Read(void* _Ptr, size_t _Size)
 {
-	if (Datas.size() <= Offset + _Size)
+	if (Datas.size() < Offset + _Size)
 	{
 		MsgAssert("데이터를 한도 이상으로 읽으려고 했습니다");
 	}

@@ -183,6 +183,11 @@ public:
 
 	std::string GetTexName();
 
+	void SetRenderEndCallBack(std::function<void(GameEngineRenderer*)> _CallBack)
+	{
+		RenderEndCallBack = _CallBack;
+	}
+
 protected:
 	void SpriteRenderInit();
 
@@ -193,6 +198,8 @@ protected:
 	float4 AtlasData = { 0.f, 0.f, 1.f, 1.f };
 	float4 Clip = float4::One;
 	float4 Flip = float4::Zero;
+
+	std::function<void(GameEngineRenderer*)> RenderEndCallBack = nullptr;
 
 private:
 	std::map<std::string, std::shared_ptr<AnimationInfo>> Animations;

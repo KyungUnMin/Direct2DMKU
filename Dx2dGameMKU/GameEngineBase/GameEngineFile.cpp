@@ -95,6 +95,8 @@ void GameEngineFile::LoadBin(GameEngineSerializer& _Data)
 	//파일의 크기 알아오기
 	size_t FileSize = std::filesystem::file_size(Path.Path);
 
+	_Data.BufferResize(FileSize);
+
 	fread_s(_Data.GetData(), _Data.GetBufferSize(), FileSize, 1, FilePtr);
 
 	if (nullptr != FilePtr)

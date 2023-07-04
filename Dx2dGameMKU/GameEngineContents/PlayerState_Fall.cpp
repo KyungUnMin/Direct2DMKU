@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_Fall.h"
 
+#include "SoundMgr.h"
+
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "PlayerState_Dash.h"
@@ -93,6 +95,8 @@ void PlayerState_Fall::Update(float _DeltaTime)
 	PlayerStateType PrevMoveStyle = static_cast<PlayerStateType>(PrevMoveState);
 	if (1.f < Ratio)
 	{
+		SoundMgr::PlaySFX("player_land.wav");
+
 		//이전에 Dash였으면 대시로 상태 변경
 		if (PlayerStateType::Movement_Dash == PrevMoveStyle)
 		{
@@ -106,6 +110,7 @@ void PlayerState_Fall::Update(float _DeltaTime)
 
 		return;
 	}
+
 
 	//이전에 Dash였으면 대시 속도로 이동
 	if (PlayerStateType::Movement_Dash == PrevMoveStyle)

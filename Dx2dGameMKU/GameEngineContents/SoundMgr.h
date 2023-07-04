@@ -50,4 +50,3 @@ private:
 	SoundMgr();
 	virtual ~SoundMgr() = 0;
 };
-

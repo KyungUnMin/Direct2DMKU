@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -67,6 +68,9 @@ void PlayerState_QuickAttack_BackKick::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_BackKick_Voice.wav");
+	SoundMgr::PlaySFX("Player_BackKick_Effect.wav");
 }
 
 
@@ -107,9 +111,12 @@ void PlayerState_QuickAttack_BackKick::ExitState()
 void PlayerState_QuickAttack_BackKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
+	
+
 	bool Result = _Enemy->OnDamage_Jaw(TotalDamage);
 	if (true == Result)
 	{
+		SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 		PlayerState_AttackBase::CreateHitEffect_Jaw();
 	}
 }

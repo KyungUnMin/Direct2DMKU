@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -70,6 +71,9 @@ void PlayerState_QuickAttack_SnapKick::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_SnapKick_Voice.wav");
+	SoundMgr::PlaySFX("Player_SnapKick_Effect.wav");
 }
 
 
@@ -110,9 +114,11 @@ void PlayerState_QuickAttack_SnapKick::ExitState()
 void PlayerState_QuickAttack_SnapKick::Attack(FieldEnemyBase* _Enemy)
 {
 	DataMgr::PlusPlayerMP(Damage);
+
 	bool Result = _Enemy->OnDamage_Stomach(TotalDamage);
 	if (true == Result)
 	{
+		SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 		PlayerState_AttackBase::CreateHitEffect_Stomach();
 	}
 }

@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -67,6 +68,9 @@ void PlayerState_QickAttack_Chop::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_Chop_Voice.wav");
+	SoundMgr::PlaySFX("Player_Chop_Effect.wav");
 }
 
 
@@ -114,6 +118,7 @@ void PlayerState_QickAttack_Chop::Attack(FieldEnemyBase* _Enemy)
 	bool Result = _Enemy->OnDamage_Face(TotalDamage);
 	if(true == Result)
 	{
+		SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 		PlayerState_AttackBase::CreateHitEffect_Face();
 	}
 }

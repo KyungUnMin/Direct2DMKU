@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
@@ -53,12 +54,25 @@ void PlayerState_Dash::LoadAnimation()
 
 void PlayerState_Dash::CreateAnimation() 
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime
 	});
+
+	Render->SetAnimationStartEvent(AniName, 0, []()
+	{
+		SoundMgr::PlaySFX("player_footsteps_run_01.wav");
+	});
+
+	Render->SetAnimationStartEvent(AniName, 7, []()
+	{
+		SoundMgr::PlaySFX("player_footsteps_run_02.wav");
+	});
+
 }
 
 
