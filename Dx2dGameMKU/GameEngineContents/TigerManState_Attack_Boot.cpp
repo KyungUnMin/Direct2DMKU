@@ -1,10 +1,13 @@
 #include "PrecompileHeader.h"
 #include "TigerManState_Attack_Boot.h"
 
+#include "DataMgr.h"
+#include "SoundMgr.h"
+
 #include "TigerManFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
-#include "DataMgr.h"
+
 
 const std::string_view TigerManState_Attack_Boot::AniName = "Attack_Boot";
 const std::string_view TigerManState_Attack_Boot::AniFileName = "TigerMan_Boot.png";
@@ -112,4 +115,9 @@ void TigerManState_Attack_Boot::Attack()
 		return;
 
 	DataMgr::MinusPlayerHP(Damage);
+}
+
+void TigerManState_Attack_Boot::OnAttackSound()
+{
+	SoundMgr::PlaySFX("TigerMan_Boot.wav");
 }

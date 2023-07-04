@@ -70,6 +70,8 @@ void TigerManState_Damaged_WallOut::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SetReflectDirection();
+
+	SoundMgr::PlaySFX("TigerMan_WallOut.wav");
 }
 
 void TigerManState_Damaged_WallOut::SetReflectDirection()

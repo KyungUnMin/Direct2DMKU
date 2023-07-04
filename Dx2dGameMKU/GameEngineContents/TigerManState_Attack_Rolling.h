@@ -20,6 +20,8 @@ protected:
 
 	void Attack() override;
 
+	void OnAttackSound() override{}
+
 private:
 	static const std::vector<std::string_view> AniNames;
 	static const std::vector<std::string_view> AniFileNames;
@@ -62,6 +64,6 @@ private:
 
 	void Update_RollEnd();
 
-	
+	void Update_Sfx(float _DeltaTime);
 };
 

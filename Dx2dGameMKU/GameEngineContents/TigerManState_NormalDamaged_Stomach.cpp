@@ -61,6 +61,7 @@ void TigerManState_NormalDamaged_Stomach::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("TigerMan_StomachDamaged.wav");
 }
 
 void TigerManState_NormalDamaged_Stomach::Update(float _DeltaTime)

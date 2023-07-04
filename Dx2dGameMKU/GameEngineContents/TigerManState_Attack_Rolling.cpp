@@ -5,6 +5,7 @@
 
 #include "DataMgr.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "TigerManFSM.h"
 #include "FieldPlayer.h"
@@ -111,6 +112,8 @@ void TigerManState_Attack_Rolling::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniNames[static_cast<size_t>(CurState)]);
 	EnemyState_AttackBase::SetAttackColValue(float4::Zero);
+
+	SoundMgr::PlaySFX("TigerMan_RollingEnter.wav");
 }
 
 
@@ -157,6 +160,8 @@ void TigerManState_Attack_Rolling::Update_RollStart()
 
 void TigerManState_Attack_Rolling::Update_Rolling(float _DeltaTime)
 {
+	Update_Sfx(_DeltaTime);
+
 	//Rolling이 시작되고 나서 흐른 시간
 	float Time = GetLiveTime() - RollInTime;
 	
@@ -177,8 +182,20 @@ void TigerManState_Attack_Rolling::Update_Rolling(float _DeltaTime)
 	//Rolling이 끝났을때
 	CurState = State::RoolEnd;
 	Render->ChangeAnimation(AniNames[static_cast<size_t>(CurState)]);
+	SoundMgr::PlaySFX("TigerMan_RollingEnter.wav");
 }
 
+
+void TigerManState_Attack_Rolling::Update_Sfx(float _DeltaTime)
+{
+	static float Timer = 0.f;
+	Timer += _DeltaTime;
+	if (Timer < 0.3f)
+		return;
+
+	Timer = 0.f;
+	SoundMgr::PlaySFX("TigerMan_Rolling.wav");
+}
 
 
 void TigerManState_Attack_Rolling::TracePlayer(float _DeltaTime)
@@ -302,6 +319,8 @@ void TigerManState_Attack_Rolling::Update_RollEnd()
 
 	GetFSM()->ChangeState(TigerManStateType::Idle);
 }
+
+
 
 
 

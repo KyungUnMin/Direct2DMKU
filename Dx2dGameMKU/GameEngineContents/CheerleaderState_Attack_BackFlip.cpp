@@ -1,11 +1,12 @@
 #include "PrecompileHeader.h"
 #include "CheerleaderState_Attack_BackFlip.h"
 
+#include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "CheerleaderFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldPlayer.h"
-#include "DataMgr.h"
 
 const std::string_view CheerleaderState_Attack_BackFlip::AniName = "Attack_BackFlip";
 const std::string_view CheerleaderState_Attack_BackFlip::AniFileName = "Cheerleader_BackFlip.png";
@@ -67,6 +68,11 @@ void CheerleaderState_Attack_BackFlip::CreateAnimation()
 	EnemyRender->SetAnimationStartEvent(AniName, 12, [this]()
 	{
 		this->Jump();
+	});
+
+	EnemyRender->SetAnimationStartEvent(AniName, 14, []()
+	{
+		SoundMgr::PlaySFX("CheerLeader_BackFlip.wav");
 	});
 }
 

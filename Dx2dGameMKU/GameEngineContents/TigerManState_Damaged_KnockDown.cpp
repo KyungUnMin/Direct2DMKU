@@ -77,6 +77,8 @@ void TigerManState_Damaged_KnockDown::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("TigerMan_KnockDown.wav");
 }
 
 

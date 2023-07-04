@@ -61,6 +61,7 @@ void TigerManState_NormalDamaged_Jaw::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("TigerMan_JawDamaged.wav");
 }
 
 void TigerManState_NormalDamaged_Jaw::Update(float _DeltaTime)
