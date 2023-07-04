@@ -70,6 +70,7 @@ void WaverState_Damaged_BlowBack::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("CheerLeader_BlowDamaged.wav");
 }
 
 

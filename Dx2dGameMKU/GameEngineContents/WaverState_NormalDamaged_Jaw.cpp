@@ -61,6 +61,7 @@ void WaverState_NormalDamaged_Jaw::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("CheerLeader_JawDamaged.wav");
 }
 
 void WaverState_NormalDamaged_Jaw::Update(float _DeltaTime)

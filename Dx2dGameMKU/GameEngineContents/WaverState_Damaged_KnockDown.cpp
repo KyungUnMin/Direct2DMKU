@@ -71,6 +71,8 @@ void WaverState_Damaged_KnockDown::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("CheerLeader_KnockDown.wav");
 }
 
 

@@ -70,6 +70,8 @@ void WaverState_Damaged_WallOut::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SetReflectDirection();
+
+	SoundMgr::PlaySFX("CheerLeader_WallOut.wav");
 }
 
 void WaverState_Damaged_WallOut::SetReflectDirection()
