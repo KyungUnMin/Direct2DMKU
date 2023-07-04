@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "HooliganState_Attack_DodgeKick.h"
 
+#include "SoundMgr.h"
 #include "DataMgr.h"
 
 #include "HooliganFSM.h"
@@ -50,7 +51,8 @@ void HooliganState_Attack_DodgeKick::LoadAnimation()
 
 void HooliganState_Attack_DodgeKick::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -62,6 +64,11 @@ void HooliganState_Attack_DodgeKick::CreateAnimation()
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 11);
 	EnemyState_AttackBase::SetMoveEvent(AniName, 9);
+
+	Render->SetAnimationStartEvent(AniName, 10, []()
+	{
+		SoundMgr::PlaySFX("Hooligan_DodgeKick_Effect.wav");
+	});
 }
 
 

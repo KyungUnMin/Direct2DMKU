@@ -61,6 +61,7 @@ void CopState_NormalDamaged_Stomach::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("MaleEnemy_StomachDamaged.wav");
 }
 
 void CopState_NormalDamaged_Stomach::Update(float _DeltaTime)

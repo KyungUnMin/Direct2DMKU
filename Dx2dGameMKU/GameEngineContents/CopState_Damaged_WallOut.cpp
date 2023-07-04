@@ -70,6 +70,8 @@ void CopState_Damaged_WallOut::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SetReflectDirection();
+
+	SoundMgr::PlaySFX("MaleEnemy_WallOut.wav");
 }
 
 void CopState_Damaged_WallOut::SetReflectDirection()

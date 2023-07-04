@@ -14,6 +14,11 @@ enum class DoorType
 class FieldDoor : public GameEngineActor
 {
 public:
+	static LevelNames GetRegistNextLevel()
+	{
+		return RegistNextLevel;
+	}
+
 	FieldDoor();
 	~FieldDoor() override;
 

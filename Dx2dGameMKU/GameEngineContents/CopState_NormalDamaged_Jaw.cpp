@@ -61,6 +61,7 @@ void CopState_NormalDamaged_Jaw::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("MaleEnemy_JawDamaged.wav");
 }
 
 void CopState_NormalDamaged_Jaw::Update(float _DeltaTime)

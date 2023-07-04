@@ -134,5 +134,8 @@ void CrossTownLevel3::LevelChangeEnd()
 {
 	FieldLevelBase::LevelChangeEnd();
 
-	SoundMgr::BgmFadeOut(BgmFadeDuration);
+	if (LevelNames::TownBossLevel == FieldDoor::GetRegistNextLevel())
+	{
+		SoundMgr::BgmFadeOut(BgmFadeDuration);
+	}
 }
