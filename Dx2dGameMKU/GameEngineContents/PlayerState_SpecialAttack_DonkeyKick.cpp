@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_SpecialAttack_DonkeyKick.h"
 
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
@@ -70,6 +71,9 @@ void PlayerState_SpecialAttack_DonkeyKick::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue(float4::Left * 100.f);
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_DonkeyKick_Effect.wav");
+	SoundMgr::PlaySFX("Player_DonkeyKick_Voice.wav");
 }
 
 
@@ -95,6 +99,7 @@ void PlayerState_SpecialAttack_DonkeyKick::Attack(FieldEnemyBase* _Enemy)
 	bool Result = _Enemy->OnDamage_Jaw(TotalDamage);
 	if (true == Result)
 	{
+		SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 		PlayerState_AttackBase::CreateHitEffect(Offset);
 	}
 }

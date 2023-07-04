@@ -153,7 +153,7 @@ void FieldLevelBase::LevelChangeStart()
 void FieldLevelBase::Update(float _DeltaTime)
 {
 	FieldActorBase::Update_CheckDebugKey();
-	SoundMgr::Update_LoopArea();
+	SoundMgr::Update(_DeltaTime);
 
 	CamCtrl.Update(_DeltaTime);
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
@@ -192,4 +192,6 @@ void FieldLevelBase::LevelChangeEnd()
 
 	//디버그 키 리셋
 	FieldActorBase::Reset_CheckDebugKey();
+
+	SoundMgr::LevelChangeEnd();
 }

@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
@@ -71,6 +72,11 @@ void PlayerState_SpecialAttack_DAP::CreateAnimation()
 	});
 
 	PlayerState_AttackBase::SetAttackCheckFrame(AniName, 4);
+
+	Render->SetAnimationStartEvent(AniName, 5, []()
+	{
+		SoundMgr::PlaySFX("Player_Dap_Effect.wav");
+	});
 }
 
 void PlayerState_SpecialAttack_DAP::CreateEffect()
@@ -141,6 +147,7 @@ void PlayerState_SpecialAttack_DAP::Attack(FieldEnemyBase* _Enemy)
 	
 	//¿Ã∆Â∆Æ ª˝º∫
 	PlayerState_AttackBase::CreateHitEffect_Blow();
+	SoundMgr::PlaySFX("Player_Dap_Hit.mp3").SetVolume(3.f);
 
 	//»≠∏È π›¬¶¿” ¿Ã∆Â∆Æ
 	/*if (true == EffectOnValue)

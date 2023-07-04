@@ -8,6 +8,7 @@ float SoundMgr::BGMLoopStartSec = 0.f;
 float SoundMgr::BGMLoopEndSec = 0.f;
 std::string SoundMgr::CurBgmName = "";
 
+std::list<GameEngineSoundPlayer> SoundMgr::AllSfx;
 
 void SoundMgr::Init()
 {
@@ -19,6 +20,8 @@ void SoundMgr::Init()
 		GameEngineSound::Load(File.GetFullPath());
 	}
 }
+
+
 
 void SoundMgr::ChangeBGM(const std::string_view& _BgmName)
 {
@@ -37,7 +40,23 @@ void SoundMgr::ChangeBGM(const std::string_view& _BgmName)
 
 GameEngineSoundPlayer SoundMgr::PlaySFX(const std::string_view& _BgmName)
 {
-	return GameEngineSound::Play(_BgmName);
+	//효과음 최대 갯수를 넘었을 경우 SFX를 출력하지 않음
+	if (10 < AllSfx.size())
+	{
+		GameEngineSoundPlayer OldSoundPlayer = AllSfx.back();
+		AllSfx.pop_back();
+
+		bool IsPlay = false;
+		OldSoundPlayer.isPlaying(&IsPlay);
+		if (true == IsPlay)
+		{
+			OldSoundPlayer.Stop();
+		}
+	}
+
+	GameEngineSoundPlayer SoundPlayer = GameEngineSound::Play(_BgmName);
+	AllSfx.push_back(SoundPlayer);
+	return SoundPlayer;
 }
 
 void SoundMgr::BgmStop()
@@ -51,7 +70,16 @@ void SoundMgr::BgmFadeOut(const float _Duration)
 }
 
 
-void SoundMgr::Update_LoopArea()
+
+void SoundMgr::Update(float _DeltaTime)
+{
+	Update_BgmLoopArea();
+	Update_RemoveOldSfx();
+}
+
+
+
+void SoundMgr::Update_BgmLoopArea()
 {
 	//영역 루프를 설정하지 않은 경우
 	if ((0.f == BGMLoopStartSec) && (0.f == BGMLoopEndSec))
@@ -63,6 +91,45 @@ void SoundMgr::Update_LoopArea()
 	BGM.SetPosition(BGMLoopStartSec);
 }
 
+void SoundMgr::Update_RemoveOldSfx()
+{
+	std::list<GameEngineSoundPlayer>::iterator StartIter = AllSfx.begin();
+	std::list<GameEngineSoundPlayer>::iterator EndIter = AllSfx.end();
+
+	while (StartIter != EndIter)
+	{
+		bool IsPlay = false;
+		StartIter->isPlaying(&IsPlay);
+		if (true == IsPlay)
+		{
+			++StartIter;
+		}
+		else
+		{
+			StartIter = AllSfx.erase(StartIter);
+		}
+	}
+}
+
+
+void SoundMgr::LevelChangeEnd()
+{
+	while (false == AllSfx.empty())
+	{
+		GameEngineSoundPlayer& SoundPlayer = AllSfx.front();
+		
+		bool IsPlay = false;
+		SoundPlayer.isPlaying(&IsPlay);
+		if (true == IsPlay)
+		{
+			SoundPlayer.Stop();
+		}
+
+		AllSfx.pop_front();
+	}
+
+	AllSfx.clear();
+}
 
 
 

@@ -3,6 +3,7 @@
 
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 #include "FieldCamController.h"
 
 #include "PlayerFSM.h"
@@ -147,6 +148,18 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	DataMgr::MinusPlayerMP(NeedMp);
 	PlayerState_AttackBase::SetAttackColValue();
+
+	static size_t Index = 0;
+	if ((Index++) % 2)
+	{
+		SoundMgr::PlaySFX("Player_DragonFeet_Voice1.wav");
+	}
+	else
+	{
+		SoundMgr::PlaySFX("Player_DragonFeet_Voice2.wav");
+	}
+
+	SoundMgr::PlaySFX("Player_DragonFeet_Effect.wav");
 }
 
 
@@ -188,6 +201,7 @@ void PlayerState_UniqueAttack_DragonFeet::Attack(FieldEnemyBase* _Enemy)
 		return;
 	}
 
+	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 	FindIter->second(_Enemy);
 }
 

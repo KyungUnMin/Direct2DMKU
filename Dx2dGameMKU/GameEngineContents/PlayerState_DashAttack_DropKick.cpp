@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_DashAttack_DropKick.h"
 
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
@@ -76,6 +77,9 @@ void PlayerState_DashAttack_DropKick::EnterState()
 	PlayerState_AttackBase::SetAttackColValue(AttackColPos, AttackColScale);
 
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_DropKick_Effect.wav");
+	SoundMgr::PlaySFX("Player_DropKick_Voice.wav");
 }
 
 
@@ -111,5 +115,6 @@ void PlayerState_DashAttack_DropKick::Attack(FieldEnemyBase* _Enemy)
 		return;
 
 	PlayerState_AttackBase::CreateHitEffect_Blow();
+	SoundMgr::PlaySFX("Player_Dash_Hit.wav").SetVolume(2.f);
 }
 

@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "PlayerState_SpecialAttack_AxeKick.h"
 
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -68,6 +69,9 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_AxeKick_Effect.wav");
+	SoundMgr::PlaySFX("Player_AxeKick_Voice.wav");
 }
 
 
@@ -94,6 +98,7 @@ void PlayerState_SpecialAttack_AxeKick::Attack(FieldEnemyBase* _Enemy)
 	bool Result = _Enemy->OnDamage_Stomach(TotalDamage);
 	if (true == Result)
 	{
+		SoundMgr::PlaySFX("Player_AxeKick_Hit.wav");
 		PlayerState_AttackBase::CreateHitEffect_Face();
 	}
 }

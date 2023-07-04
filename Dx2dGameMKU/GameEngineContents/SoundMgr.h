@@ -4,6 +4,7 @@
 class SoundMgr
 {
 	friend class RCG_GameCore;
+	friend class FieldLevelBase;
 
 public:
 
@@ -13,7 +14,6 @@ public:
 
 	static void BgmStop();
 
-	static void Update_LoopArea();
 
 
 	inline static void SetBGMLoop(float _Start, float _End)
@@ -38,7 +38,8 @@ public:
 
 protected:
 	static void Init();
-
+	static void Update(float _DeltaTime);
+	static void LevelChangeEnd();
 
 private:
 	static GameEngineSoundPlayer BGM;
@@ -46,6 +47,12 @@ private:
 	static float BGMLoopEndSec;
 
 	static std::string CurBgmName;
+	static std::list<GameEngineSoundPlayer> AllSfx;
+
+
+	static void Update_BgmLoopArea();
+	static void Update_RemoveOldSfx();
+
 
 	SoundMgr();
 	virtual ~SoundMgr() = 0;

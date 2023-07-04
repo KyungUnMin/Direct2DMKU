@@ -2,6 +2,8 @@
 #include "PlayerState_DashAttack_BackElbow.h"
 
 
+#include "SoundMgr.h"
+
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -75,6 +77,9 @@ void PlayerState_DashAttack_BackElbow::EnterState()
 	PlayerState_AttackBase::SetAttackColValue(AttackColPos, AttackColScale);
 
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_BackElbow_Effect.wav");
+	SoundMgr::PlaySFX("Player_BackElbow_Voice.wav");
 }
 
 
@@ -98,6 +103,7 @@ void PlayerState_DashAttack_BackElbow::Attack(FieldEnemyBase* _Enemy)
 	bool Result = _Enemy->OnDamage_Jaw(TotalDamage);
 	if (true == Result)
 	{
+		SoundMgr::PlaySFX("Player_Dash_Hit.wav").SetVolume(2.f);
 		PlayerState_AttackBase::CreateHitEffect_Stomach();
 	}
 }

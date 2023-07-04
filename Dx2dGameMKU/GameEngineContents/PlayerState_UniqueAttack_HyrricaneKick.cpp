@@ -4,6 +4,7 @@
 #include <GameEngineBase/GameEngineRandom.h>
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 #include "FieldCamController.h"
 
 #include "PlayerFSM.h"
@@ -82,6 +83,9 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 	DataMgr::MinusPlayerMP(NeedMp);
 	PlayerState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 200.f);
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+
+	SoundMgr::PlaySFX("Player_HyrricaneKick_Effect.wav");
+	SoundMgr::PlaySFX("Player_HyrricaneKick_Voice.wav");
 }
 
 
@@ -136,6 +140,7 @@ void PlayerState_UniqueAttack_HyrricaneKick::Attack(FieldEnemyBase* _Enemy)
 	EffectOffset.x = GameEngineRandom::MainRandom.RandomFloat(-EffectRange, EffectRange);
 	EffectOffset.y = GameEngineRandom::MainRandom.RandomFloat(0.f, EffectRange * 0.5f);
 
+	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 	PlayerState_AttackBase::CreateHitEffect(EffectPivot + EffectOffset);
 }
 
