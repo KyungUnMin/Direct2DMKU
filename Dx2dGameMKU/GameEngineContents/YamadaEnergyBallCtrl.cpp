@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "YamadaEnergyBall.h"
 
@@ -39,6 +40,8 @@ void YamadaEnergyBallCtrl::Start()
 
 		BallTrans->SetLocalPosition(Pos);
 	}
+
+	SoundMgr::PlaySFX("Yamada_ForceField_BallCreate_Effect.wav").SetVolume(1.5f);
 }
 
 
@@ -59,6 +62,12 @@ void YamadaEnergyBallCtrl::Update(float _DeltaTime)
 	{
 		Update_Rotation(_DeltaTime);
 		Update_RadiusRange(_DeltaTime);
+
+		if (false == EnergyBallSfx.IsValid())
+		{
+			EnergyBallSfx = SoundMgr::PlaySFX("Yamada_ForceField_BallMove_Effect.wav", true);
+		}
+
 		return;
 	}
 
@@ -74,6 +83,8 @@ void YamadaEnergyBallCtrl::Clear()
 	}
 
 	Balls.clear();
+	EnergyBallSfx.Stop();
+	SoundMgr::PlaySFX("Yamada_ForceField_BallRelease_Effect.wav").SetVolume(2.f);
 
 	Death();
 }

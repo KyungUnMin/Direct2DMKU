@@ -1,6 +1,8 @@
 #pragma once
 #include "BossState_AttackBase.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
+
 class YamadaState_Attack_Wormchi : public BossState_AttackBase
 {
 public:
@@ -45,6 +47,7 @@ private:
 	int ThrowIndex = 0;
 	float ThrowTimer = 0.f;
 
+	GameEngineSoundPlayer VoiceSfx;
 
 	void LoadAnimation();
 	void CreateAnimation();

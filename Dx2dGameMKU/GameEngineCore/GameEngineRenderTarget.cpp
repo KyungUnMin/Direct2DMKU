@@ -173,6 +173,21 @@ void GameEngineRenderTarget::Merge(std::shared_ptr<GameEngineRenderTarget> _Othe
 }
 
 
+void GameEngineRenderTarget::ReleaseEffect(std::shared_ptr<GameEnginePostProcess> _Effect)
+{
+	std::vector<std::shared_ptr<GameEnginePostProcess>>::iterator LoopIter = Effects.begin();
+	std::vector<std::shared_ptr<GameEnginePostProcess>>::iterator EndIter = Effects.end();
+
+	for (; LoopIter != EndIter; ++LoopIter)
+	{
+		if ((*LoopIter) == _Effect)
+		{
+			LoopIter = Effects.erase(LoopIter);
+			break;
+		}
+	}
+}
+
 void GameEngineRenderTarget::Effect(float _DeltaTime)
 {
 	for (size_t i = 0; i < Effects.size(); i++)

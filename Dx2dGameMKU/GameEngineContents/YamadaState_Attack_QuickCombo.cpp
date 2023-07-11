@@ -3,6 +3,7 @@
 
 #include "DataMgr.h"
 #include "FieldCamController.h"
+#include "SoundMgr.h"
 
 #include "YamadaFSM.h"
 #include "FieldPlayer.h"
@@ -25,7 +26,7 @@ YamadaState_Attack_QuickCombo::YamadaState_Attack_QuickCombo()
 
 YamadaState_Attack_QuickCombo::~YamadaState_Attack_QuickCombo()
 {
-
+	
 }
 
 void YamadaState_Attack_QuickCombo::Start()
@@ -67,10 +68,23 @@ void YamadaState_Attack_QuickCombo::CreateAnimation()
 		.Loop = false,
 	});
 
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 4);
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 9);
-	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 18);
-	
+	const std::vector<size_t> SfxFrm = { 3, 8, 17 };
+	const std::vector<size_t> AttackFrm = { 4, 9, 18 };
+
+
+	for (size_t i = 0; i < SfxFrm.size(); ++i)
+	{
+		Render->SetAnimationStartEvent(AniName, SfxFrm[i], []()
+		{
+			SoundMgr::PlaySFX("Enemy_CommonAttack.wav");
+		});
+	}
+
+	for (size_t i = 0; i < AttackFrm.size(); ++i)
+	{
+		EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm[i]);
+	}
+
 	Render->SetAnimationStartEvent(AniName, 19, [this]()
 	{
 		Effect->On();

@@ -10,6 +10,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "LightEffect.h"
@@ -209,6 +210,8 @@ void YamadaMatterBlock::Update_Light(float _DeltaTime)
 
 	CurState = State::BlockCreate;
 	Pivot->On();
+
+	SoundMgr::PlaySFX("Yamada_MatterCrush_Create_Effect.wav").SetVolume(3.f);
 }
 
 void YamadaMatterBlock::Update_BlockCreate(float _DeltaTime)
@@ -223,6 +226,8 @@ void YamadaMatterBlock::Update_BlockCreate(float _DeltaTime)
 	ResetLiveTime();
 	PrevBlockPos = Pivot->GetTransform()->GetWorldPosition();
 	CurState = State::Approach;
+
+	SoundMgr::PlaySFX("Yamada_MatterCrush_Come_Effect.wav").SetVolume(3.f);
 }
 
 void YamadaMatterBlock::Update_Approach(float _DeltaTime)
@@ -248,6 +253,8 @@ void YamadaMatterBlock::Update_Approach(float _DeltaTime)
 	std::shared_ptr<GameEngineSpriteRenderer> Block = GetRenderer();
 	Block->Off();
 	CurState = State::BlockDestroy;
+
+	SoundMgr::PlaySFX("Yamada_MatterCrush_Break_Effect.mp3").SetVolume(3.f);
 }
 
 void YamadaMatterBlock::Update_BlockDestroy(float _DeltaTime) 

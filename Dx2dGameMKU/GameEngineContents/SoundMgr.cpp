@@ -38,8 +38,15 @@ void SoundMgr::ChangeBGM(const std::string_view& _BgmName)
 	BGMLoopEndSec = 0.f;
 }
 
-GameEngineSoundPlayer SoundMgr::PlaySFX(const std::string_view& _BgmName)
+GameEngineSoundPlayer SoundMgr::PlaySFX(const std::string_view& _BgmName, bool _IsLoop /*= false*/)
 {
+	if (true == _IsLoop)
+	{
+		GameEngineSoundPlayer SoundPlayer = GameEngineSound::Play(_BgmName);
+		SoundPlayer.SetLoop(-1);
+		return SoundPlayer;
+	}
+
 	//효과음 최대 갯수를 넘었을 경우 SFX를 출력하지 않음
 	if (10 < AllSfx.size())
 	{

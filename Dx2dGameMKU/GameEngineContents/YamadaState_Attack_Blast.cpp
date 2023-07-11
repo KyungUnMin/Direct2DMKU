@@ -4,6 +4,7 @@
 #include <GameEngineBase/GameEngineRandom.h>
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "YamadaFSM.h"
 #include "FieldPlayer.h"
@@ -21,6 +22,13 @@ const float4 YamadaState_Attack_Blast::ColOffset = float4{ 100.f, 0.f, 0.f };
 const float4 YamadaState_Attack_Blast::ColScale = float4{ 150.f, 150.f, 150.f };
 
 const std::string_view YamadaState_Attack_Blast::BlastName = "Yamada_Blast_Effect.png";
+
+const std::vector<std::string_view> YamadaState_Attack_Blast::SfxVoiceNames =
+{
+	"Yamada_Blast_Voice0.wav",
+	"Yamada_Blast_Voice1.wav",
+	"Yamada_Blast_Voice2.wav",
+};
 
 YamadaState_Attack_Blast::YamadaState_Attack_Blast()
 {
@@ -76,6 +84,7 @@ void YamadaState_Attack_Blast::CreateAnimation()
 	Render->SetAnimationStartEvent(AniName, 7, [this]()
 	{
 		EffectHandler->On();
+		SoundMgr::PlaySFX("Yamada_Blast_Effect.wav");
 	});
 
 
@@ -144,6 +153,9 @@ void YamadaState_Attack_Blast::EnterState()
 	{
 		EffectRender->ColorOptionValue.MulColor = float4{ 0.6f, 0.f, 0.f, 0.6f };
 	}
+
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(SfxVoiceNames.size() - 1));
+	SoundMgr::PlaySFX(SfxVoiceNames[static_cast<size_t>(RandNum)]);
 }
 
 

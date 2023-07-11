@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Attack_MatterCrush.h"
 
+#include "SoundMgr.h"
 
 #include "YamadaFSM.h"
 #include "YamadaMatterBlock.h"
@@ -73,6 +74,8 @@ void YamadaState_Attack_MatterCrush::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	CreateBlocks();
+
+	SoundMgr::PlaySFX("Yamada_MatterCrush_Voice.wav");
 }
 
 void YamadaState_Attack_MatterCrush::CreateBlocks()

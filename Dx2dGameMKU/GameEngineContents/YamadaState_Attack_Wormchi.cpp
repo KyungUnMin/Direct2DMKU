@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Attack_Wormchi.h"
 
+#include "SoundMgr.h"
 
 #include "YamadaFSM.h"
 #include "AfterImageEffect.h"
@@ -120,6 +121,8 @@ void YamadaState_Attack_Wormchi::CreateThrowObjs()
 
 		ThrowObjs.push_back(Missile);
 	}
+
+	SoundMgr::PlaySFX("Yamada_Wormchi_Create_Effect.wav");
 }
 
 
@@ -131,6 +134,8 @@ void YamadaState_Attack_Wormchi::EnterState()
 {
 	BossState_AttackBase::EnterState();
 	ChangeStateAndAni(State::SitDown);
+
+	VoiceSfx = SoundMgr::PlaySFX("Yamada_Wormchi_Voice.wav");
 }
 
 
@@ -192,6 +197,8 @@ void YamadaState_Attack_Wormchi::Update_Sit(float _DeltaTime)
 	{
 		ThrowObjs[ThrowIndex++]->MoveOn();
 		ThrowTimer = 0.f;
+
+		SoundMgr::PlaySFX("Yamada_Wormchi_Throw_Effect.wav");
 	}
 
 	float Time = GetLiveTime() - SitTime;
@@ -229,4 +236,6 @@ void YamadaState_Attack_Wormchi::ExitState()
 	}
 
 	ThrowObjs.clear();
+
+	VoiceSfx.Stop();
 }

@@ -81,7 +81,7 @@ void YamadaState_TeleportAppear::EnterState()
 	GetRenderer()->GetTransform()->SetLocalScale(float4::Zero);
 	ShadowRender->GetTransform()->SetLocalScale(float4::Zero);
 
-	SoundMgr::PlaySFX("Yamada_TeleportAppear_Effect.wav").SetVolume(3.f);
+	SoundMgr::PlaySFX("Yamada_TeleportAppear_Effect.wav");
 }
 
 

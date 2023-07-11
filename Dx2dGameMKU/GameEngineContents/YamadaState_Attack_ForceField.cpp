@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Attack_ForceField.h"
 
+#include "SoundMgr.h"
 #include "RCGEnums.h"
 
 #include "YamadaFSM.h"
@@ -110,6 +111,8 @@ void YamadaState_Attack_ForceField::EnterState()
 {
 	BossState_AttackBase::EnterState();
 	ChangeStateAndAni(State::Ready);
+
+	SoundMgr::PlaySFX("Yamada_ForceField_Voice.wav");
 }
 
 

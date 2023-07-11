@@ -10,7 +10,7 @@ public:
 
 	static void ChangeBGM(const std::string_view& _BgmName);
 
-	static GameEngineSoundPlayer PlaySFX(const std::string_view& _BgmName);
+	static GameEngineSoundPlayer PlaySFX(const std::string_view& _BgmName, bool _IsLoop = false);
 
 	static void BgmStop();
 

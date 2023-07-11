@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+#include <GameEnginePlatform/GameEngineSound.h>
+
 class YamadaEnergyBall;
 
 class YamadaEnergyBallCtrl : public GameEngineActor
@@ -40,6 +42,8 @@ private:
 	float XRadius = 200.f;
 	float YRadius = 100.f;
 	float RadiusTimer = 0.f;
+
+	GameEngineSoundPlayer EnergyBallSfx;
 
 	void Update_Rotation(float _DeltaTime);
 	void Update_RadiusRange(float _DeltaTime);

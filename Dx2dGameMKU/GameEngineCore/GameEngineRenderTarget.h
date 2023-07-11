@@ -83,6 +83,9 @@ public:
 		return Effect;
 	}
 
+	//포스트 프로세싱 제거
+	void ReleaseEffect(std::shared_ptr<GameEnginePostProcess> _Effect);
+
 	//포스트 프로세싱 실행
 	void Effect(float _DeltaTime);
 

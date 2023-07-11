@@ -34,6 +34,7 @@ private:
 	static const float4 ColScale;
 
 	static const std::string_view BlastName;
+	static const std::vector<std::string_view> SfxVoiceNames;
 	
 	float AfterEffectTimer = 0.f;
 	bool FirstHit = false;

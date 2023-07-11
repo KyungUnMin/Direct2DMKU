@@ -86,6 +86,7 @@ void YamadaState_TeleportDisappear::EnterState()
 
 	EffectSfx = SoundMgr::PlaySFX("Yamada_TeleportDistappear_Effect.wav");
 	EffectSfx.SetPitch(1.5f);
+	EffectSfx.SetVolume(0.5f);
 }
 
 
