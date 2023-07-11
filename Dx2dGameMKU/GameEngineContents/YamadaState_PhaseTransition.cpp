@@ -3,6 +3,7 @@
 
 
 #include "YamadaFSM.h"
+#include "SoundMgr.h"
 
 #include "FieldEnemyBase.h"
 #include "FieldLevelBase.h"
@@ -82,6 +83,9 @@ void YamadaState_PhaseTransition::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	Night->On();
 	Night->ColorOptionValue.MulColor.a = 0.f;
+
+	SoundMgr::PlaySFX("Yamada_PhaseTransition_Voice.wav").SetVolume(3.f);
+	SoundMgr::PlaySFX("Yamada_PhaseTransition_Effect.wav").SetVolume(2.f);
 }
 
 

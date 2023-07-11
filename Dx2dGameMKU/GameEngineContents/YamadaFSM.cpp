@@ -29,6 +29,7 @@
 
 const  std::string_view YamadaFSM::NormalDamaged_FileName = "Yamada_GetHit.png";
 
+
 //±Ù°Å¸®
 const std::vector<std::vector<YamadaStateType>> YamadaFSM::NearAttackGroup =
 {

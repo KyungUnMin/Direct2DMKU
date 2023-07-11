@@ -2,6 +2,7 @@
 #include "YamadaState_TeleportAppear.h"
 
 
+#include "SoundMgr.h"
 #include "YamadaFSM.h"
 
 #include "FieldEnemyBase.h"
@@ -66,7 +67,7 @@ void YamadaState_TeleportAppear::CreateAnimation()
 		.SpriteName = AniFileName,
 		.FrameInter = AniInterTime,
 		.Loop = false,
-		});
+	});
 }
 
 
@@ -79,6 +80,8 @@ void YamadaState_TeleportAppear::EnterState()
 
 	GetRenderer()->GetTransform()->SetLocalScale(float4::Zero);
 	ShadowRender->GetTransform()->SetLocalScale(float4::Zero);
+
+	SoundMgr::PlaySFX("Yamada_TeleportAppear_Effect.wav").SetVolume(3.f);
 }
 
 

@@ -26,5 +26,6 @@ private:
 
 	void LoadAnimation();
 	void CreateAnimation();
+	void PlayLaughSFX();
 };
 

@@ -3,6 +3,7 @@
 
 #include <GameEngineBase/GameEngineRandom.h>
 
+#include "SoundMgr.h"
 #include "YamadaFSM.h"
 
 #include "FieldEnemyBase.h"
@@ -65,6 +66,18 @@ void YamadaState_Taunt::EnterState()
 	EnemyStateBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	PlayLaughSFX();
+}
+
+void YamadaState_Taunt::PlayLaughSFX()
+{
+	std::string SfxName = "Yamada_Laugh";
+
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, 5);
+	SfxName += GameEngineString::ToString(RandNum);
+	SfxName += ".wav";
+
+	SoundMgr::PlaySFX(SfxName);
 }
 
 

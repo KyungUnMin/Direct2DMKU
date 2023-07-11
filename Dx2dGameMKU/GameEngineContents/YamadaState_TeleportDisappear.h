@@ -1,5 +1,6 @@
 #pragma once
 #include "EnemyStateBase.h"
+#include "SoundMgr.h"
 
 class YamadaState_TeleportDisappear : public EnemyStateBase
 {
@@ -24,8 +25,12 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 
+	static const std::vector<std::string_view> LaughSfx;
+
 	std::shared_ptr<class GameEngineSpriteRenderer> ShadowRender = nullptr;
 	const float ShadowDuration = AniInterTime * 10.f;
+
+	GameEngineSoundPlayer EffectSfx;
 
 	void LoadAnimation();
 	void CreateAnimation();

@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_Defeat.h"
 
-
+#include "SoundMgr.h"
 #include "YamadaFSM.h"
 
 #include "FieldEnemyBase.h"
@@ -93,6 +93,8 @@ void YamadaState_Defeat::EnterState()
 
 	GetRenderer()->ChangeAnimation(Sink_AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Yamada_Defeat_Voice.wav");
 }
 
 

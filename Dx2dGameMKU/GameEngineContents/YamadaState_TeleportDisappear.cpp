@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_TeleportDisappear.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
+
 
 #include "YamadaFSM.h"
 
@@ -10,6 +12,13 @@ const std::string_view YamadaState_TeleportDisappear::AniName = "TeleportDisappe
 const std::string_view YamadaState_TeleportDisappear::AniFileName = "Yamada_TeleportDisappear.png";
 const std::pair<int, int> YamadaState_TeleportDisappear::AniCutFrame = std::pair<int, int>(5, 2);
 const float YamadaState_TeleportDisappear::AniInterTime = 0.08f;
+
+const std::vector<std::string_view> YamadaState_TeleportDisappear::LaughSfx =
+{
+	"Yamada_Laugh0.wav",
+	"Yamada_Laugh2.wav",
+	"Yamada_Laugh3.wav",
+};
 
 YamadaState_TeleportDisappear::YamadaState_TeleportDisappear()
 {
@@ -61,6 +70,10 @@ void YamadaState_TeleportDisappear::CreateAnimation()
 	Render->SetAnimationStartEvent(AniName, 3, [this]()
 	{
 		EnemyStateBase::OffMainCollider();
+
+		int RandNum = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(LaughSfx.size() - 1));
+		const std::string_view& SfxName = LaughSfx[static_cast<size_t>(RandNum)];
+		SoundMgr::PlaySFX(SfxName).SetVolume(3.f);
 	});
 }
 
@@ -70,6 +83,9 @@ void YamadaState_TeleportDisappear::EnterState()
 	EnemyStateBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
+	EffectSfx = SoundMgr::PlaySFX("Yamada_TeleportDistappear_Effect.wav");
+	EffectSfx.SetPitch(1.5f);
 }
 
 
@@ -100,4 +116,6 @@ void YamadaState_TeleportDisappear::ExitState()
 	EnemyStateBase::ExitState();
 	EnemyStateBase::OnMainCollider();
 	ShadowRender->ColorOptionValue.MulColor = float4::One;
+	
+	EffectSfx.Stop();
 }
