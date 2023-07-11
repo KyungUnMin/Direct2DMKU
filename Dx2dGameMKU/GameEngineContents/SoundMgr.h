@@ -14,6 +14,8 @@ public:
 
 	static void BgmStop();
 
+	static void BgmPauseOn();
+	static void BgmPauseOff();
 
 
 	inline static void SetBGMLoop(float _Start, float _End)
@@ -28,6 +30,7 @@ public:
 	}
 
 	static void BgmFadeOut(const float _Duration);
+	static void BgmFadeIn(const float _Duration);
 
 
 	SoundMgr(const SoundMgr& _Other) = delete;

@@ -74,6 +74,7 @@ void MisuzuState_Damaged_GroundHit::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("Misuzu_GroundHit.wav");
 }
 
 

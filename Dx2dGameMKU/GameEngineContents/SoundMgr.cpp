@@ -64,9 +64,24 @@ void SoundMgr::BgmStop()
 	BGM.Stop();
 }
 
+void SoundMgr::BgmPauseOn()
+{
+	BGM.SetPause(true);
+}
+
+void SoundMgr::BgmPauseOff() 
+{
+	BGM.SetPause(false);
+}
+
 void SoundMgr::BgmFadeOut(const float _Duration)
 {
 	BGM.SoundFadeOut(_Duration);
+}
+
+void SoundMgr::BgmFadeIn(const float _Duration)
+{
+	BGM.SoundFadeIn(_Duration);
 }
 
 

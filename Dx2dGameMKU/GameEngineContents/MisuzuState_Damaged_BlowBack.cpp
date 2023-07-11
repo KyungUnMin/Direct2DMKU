@@ -72,6 +72,8 @@ void MisuzuState_Damaged_BlowBack::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Misuzu_BlowDamaged.wav");
 }
 
 

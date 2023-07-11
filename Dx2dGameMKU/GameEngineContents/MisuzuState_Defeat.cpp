@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "MisuzuState_Defeat.h"
 
-
+#include "SoundMgr.h"
 #include "MisuzuFSM.h"
 
 #include "FieldEnemyBase.h"
@@ -77,6 +77,8 @@ void MisuzuState_Defeat::EnterState()
 
 	GetRenderer()->ChangeAnimation(Sink_AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Misuzu_Defeat.wav");
 }
 
 

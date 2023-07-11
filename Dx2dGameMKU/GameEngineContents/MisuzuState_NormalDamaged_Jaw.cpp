@@ -61,6 +61,7 @@ void MisuzuState_NormalDamaged_Jaw::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("Misuzu_JawDamaged.wav");
 }
 
 void MisuzuState_NormalDamaged_Jaw::Update(float _DeltaTime)

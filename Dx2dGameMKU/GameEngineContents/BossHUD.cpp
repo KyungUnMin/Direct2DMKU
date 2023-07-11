@@ -10,6 +10,7 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "ShaderUIRenderer.h"
 #include "Fader.h"
@@ -195,11 +196,15 @@ void BossHUD::KoExcute()
 		{
 			//페이드 아웃이 끝나면 Ko 렌더러 On
 			KoRender->On();
+			SoundMgr::BgmPauseOn();
+			SoundMgr::PlaySFX("Boss_KO.wav");
 
 			//KoRenderOffTimet시간이 흐른 이후에 Ko렌더러 Off
 			GetLevel()->TimeEvent.AddEvent(KoRenderOffTime, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 			{
 				this->KoRender->Off();
+				SoundMgr::BgmPauseOff();
+				SoundMgr::BgmFadeIn(1.f);
 			});
 		});
 	});
