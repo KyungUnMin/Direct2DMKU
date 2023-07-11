@@ -91,6 +91,10 @@ void YamadaState_Damaged_BlowBack::CreateAnimation()
 	Render->SetAnimationStartEvent(AniName, GarbageFrmIdx + 1, [this]()
 	{
 		this->ShadowTime = GetLiveTime();
+
+		GameEngineSoundPlayer GetUpSfx = SoundMgr::PlaySFX("Yamada_TeleportDistappear_Effect.wav");
+		GetUpSfx.SetVolume(0.5f);
+		GetUpSfx.SetPitch(1.5f);
 	});
 }
 
@@ -104,6 +108,8 @@ void YamadaState_Damaged_BlowBack::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Yamada_BlowDamaged.wav");
 }
 
 

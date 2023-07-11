@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "YamadaState_NormalDamaged_Face.h"
 
+
 #include "YamadaFSM.h"
 
 const std::string_view YamadaState_NormalDamaged_Face::AniName = "NormalDamaged_Face";
@@ -61,6 +62,8 @@ void YamadaState_NormalDamaged_Face::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
+	SoundMgr::PlaySFX("Yamada_FaceDamaged.wav");
 }
 
 void YamadaState_NormalDamaged_Face::Update(float _DeltaTime) 

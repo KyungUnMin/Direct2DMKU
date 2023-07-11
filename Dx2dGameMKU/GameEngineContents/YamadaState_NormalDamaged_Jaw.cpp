@@ -61,6 +61,8 @@ void YamadaState_NormalDamaged_Jaw::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+
+	SoundMgr::PlaySFX("Yamada_JawDamaged.wav");
 }
 
 void YamadaState_NormalDamaged_Jaw::Update(float _DeltaTime)
