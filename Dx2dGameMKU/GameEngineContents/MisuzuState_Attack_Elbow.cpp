@@ -2,6 +2,7 @@
 #include "MisuzuState_Attack_Elbow.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
@@ -14,7 +15,7 @@ const int MisuzuState_Attack_Elbow::Damage = 5;
 
 MisuzuState_Attack_Elbow::MisuzuState_Attack_Elbow()
 {
-
+	
 }
 
 MisuzuState_Attack_Elbow::~MisuzuState_Attack_Elbow()
@@ -48,7 +49,9 @@ void MisuzuState_Attack_Elbow::LoadAnimation()
 
 void MisuzuState_Attack_Elbow::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -56,6 +59,11 @@ void MisuzuState_Attack_Elbow::CreateAnimation()
 		.End = 10,
 		.FrameInter = AniInterTime,
 		.Loop = false,
+	});
+
+	Render->SetAnimationStartEvent(AniName, 4, []()
+	{
+		SoundMgr::PlaySFX("Enemy_CommonAttack.wav");
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 5);

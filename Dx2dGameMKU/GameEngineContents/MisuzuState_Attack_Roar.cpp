@@ -3,6 +3,7 @@
 
 #include "DataMgr.h"
 #include "FieldCamController.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
@@ -67,6 +68,7 @@ void MisuzuState_Attack_Roar::CreateAnimation()
 	Render->SetAnimationStartEvent(AniName, 5, [this]()
 	{
 		GetCamCtrl()->SetShakeState(0.5f, 10.f);
+		SoundMgr::PlaySFX("Misuzu_Roar_Effect.wav").SetVolume(3.f);
 	});
 
 	//6번째~9번째 프레임에서 이펙트
@@ -95,6 +97,8 @@ void MisuzuState_Attack_Roar::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 
 	EnemyState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 200.f);
+
+	SoundMgr::PlaySFX("Misuzu_Roar_Voice.wav").SetVolume(3.f);
 }
 
 

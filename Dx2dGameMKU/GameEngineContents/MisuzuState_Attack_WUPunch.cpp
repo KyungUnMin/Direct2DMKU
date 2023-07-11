@@ -5,6 +5,7 @@
 #include "RCGEnums.h"
 #include "DataMgr.h"
 #include "FieldCamController.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
@@ -102,6 +103,9 @@ void MisuzuState_Attack_WUPunch::EnterState()
 	
 	GetCamCtrl()->SetZoom(0.95f, AniInterTime * static_cast<float>(AttackFrm));
 	OutLineRender->On();
+
+	//SoundMgr::PlaySFX("Misuzu_WUPunch_Effect.wav").SetPitch(0.9f);
+	SoundMgr::PlaySFX("Misuzu_WUPunch_Voice.wav").SetPitch(0.9f);
 }
 
 

@@ -2,6 +2,7 @@
 #include "MisuzuState_Attack_Slap.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
@@ -61,6 +62,11 @@ void MisuzuState_Attack_Slap::CreateAnimation()
 		.Loop = false,
 		});
 
+	Render->SetAnimationStartEvent(AniName, 7, []()
+	{
+		SoundMgr::PlaySFX("Misuzu_Slap_Effect.wav");
+	});
+
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
 }
 
@@ -73,6 +79,8 @@ void MisuzuState_Attack_Slap::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue(float4{50.f, 50.f}, float4::One * 150.f);
+
+	SoundMgr::PlaySFX("Misuzu_Slap_Voice.wav");
 }
 
 
@@ -107,6 +115,8 @@ void MisuzuState_Attack_Slap::Update(float _DeltaTime)
 
 void MisuzuState_Attack_Slap::Attack()
 {
+	SoundMgr::PlaySFX("Misuzu_SlapImpact_Effect.wav");
+
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
 	if (false == Result)
 		return;

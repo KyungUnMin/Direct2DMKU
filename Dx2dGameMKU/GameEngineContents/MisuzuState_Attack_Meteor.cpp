@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
@@ -170,6 +171,8 @@ void MisuzuState_Attack_Meteor::Update_JumpUp(float _DeltaTime)
 
 	EnemyStateBase::OffMainCollider();
 	ChangeStateWithAni(State::Jumping);
+	SoundMgr::PlaySFX("Misuzu_MeteorJump_Effect.wav").SetVolume(3.f);
+	SoundMgr::PlaySFX("Misuzu_MeteorJump_Voice.wav").SetVolume(3.f);
 }
 
 
@@ -183,6 +186,7 @@ void MisuzuState_Attack_Meteor::Update_Jumping(float _DeltaTime)
 		return;
 
 	ChangeStateWithAni(State::Fall);
+	SoundMgr::PlaySFX("Misuzu_MeteorWarning_Effect.wav");
 }
 
 
@@ -203,15 +207,19 @@ void MisuzuState_Attack_Meteor::Update_Fall(float _DeltaTime)
 	if (Timer < Duration)
 		return;
 
+	SoundMgr::PlaySFX("Misuzu_MeteorImpact_Effect.mp3").SetVolume(3.f);
+
 	//플레이어에게 공격한 경우
 	if (true == AttackCheck())
 	{
+		SoundMgr::PlaySFX("Misuzu_MeteorLand_Voice.wav").SetVolume(3.f);
 		ChangeStateWithAni(State::Land);
 	}
 
 	//이상한 곳을 공격한 경우
 	else
 	{
+		SoundMgr::PlaySFX("Misuzu_MeteorMiss_Voice.wav");
 		ChangeStateWithAni(State::Miss);
 	}
 

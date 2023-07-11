@@ -2,6 +2,7 @@
 #include "MisuzuState_Attack_Tackle.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "MisuzuFSM.h"
 #include "FieldPlayer.h"
@@ -71,6 +72,16 @@ void MisuzuState_Attack_Tackle::CreateAnimation()
 		.FrameInter = AniInterTime,
 		.Loop = true,
 	});
+
+	Render->SetAnimationStartEvent(TackleLoop_AniFileName, 2, []()
+	{
+		SoundMgr::PlaySFX("Misuzu_TackleStep_Effect.wav");
+	});
+
+	Render->SetAnimationStartEvent(TackleLoop_AniFileName, 6, []()
+	{
+		SoundMgr::PlaySFX("Misuzu_TackleStep_Effect.wav");
+	});
 }
 
 
@@ -80,6 +91,8 @@ void MisuzuState_Attack_Tackle::EnterState()
 
 	GetRenderer()->ChangeAnimation(TackleStart_AniFileName);
 	EnemyState_AttackBase::SetAttackColValue(float4::Zero, float4::One * 150.f);
+
+	SoundMgr::PlaySFX("Misuzu_TackleBegin_Effect.wav");
 }
 
 
@@ -151,6 +164,7 @@ bool MisuzuState_Attack_Tackle::TackleMove(float _DeltaTime)
 	if (true == BGPtr->IsBlockPos(NextPos))
 	{
 		CreateCollEffect();
+		SoundMgr::PlaySFX("Misuzu_TackleImpact_Effect.wav");
 		return false;
 	}
 
@@ -159,6 +173,7 @@ bool MisuzuState_Attack_Tackle::TackleMove(float _DeltaTime)
 	if (true == BGPtr->IsBlockGrid(NextGridPos.first, NextGridPos.second))
 	{
 		CreateCollEffect();
+		SoundMgr::PlaySFX("Misuzu_TackleImpact_Effect.wav");
 		return false;
 	}
 
@@ -191,6 +206,8 @@ void MisuzuState_Attack_Tackle::CreateCollEffect()
 
 void MisuzuState_Attack_Tackle::Attack()
 {
+	SoundMgr::PlaySFX("Misuzu_TackleImpact_Effect.wav");
+
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
 	if (false == Result)
 		return;

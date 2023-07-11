@@ -99,6 +99,7 @@ void SchoolBossLevel::LevelChangeStart()
 	//	});
 	//});
 
+	SoundMgr::ChangeBGM("SchoolBossLevel.mp3");
 }
 
 
