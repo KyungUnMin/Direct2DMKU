@@ -73,6 +73,8 @@ void NoiseState_Damaged_BlowBack::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Noise_BlowDamaged.wav");
 }
 
 

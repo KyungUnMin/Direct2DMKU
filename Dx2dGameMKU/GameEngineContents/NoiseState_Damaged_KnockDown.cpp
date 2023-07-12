@@ -70,6 +70,10 @@ void NoiseState_Damaged_KnockDown::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::BgmPauseOn();
+	SoundMgr::PlaySFX("Noise_KnockDown.wav").SetPitch(0.5f);
+	SoundMgr::PlaySFX("Boss_KnockDown.wav");
 }
 
 

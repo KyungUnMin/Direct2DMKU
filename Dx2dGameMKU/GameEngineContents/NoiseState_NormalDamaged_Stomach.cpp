@@ -61,6 +61,7 @@ void NoiseState_NormalDamaged_Stomach::EnterState()
 	EnemyState_DamagedBase::EnterState();
 
 	GetRenderer()->ChangeAnimation(AniName);
+	SoundMgr::PlaySFX("Noise_StomachDamaged.wav");
 }
 
 void NoiseState_NormalDamaged_Stomach::Update(float _DeltaTime)
