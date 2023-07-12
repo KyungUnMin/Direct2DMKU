@@ -1,5 +1,6 @@
 #pragma once
 #include "FSMBase.h"
+#include "RCGEnums.h"
 
 enum class BossVersusStateType
 {
@@ -23,11 +24,16 @@ public:
 	BossVersusUIFSM& operator=(const BossVersusUIFSM& _Other) = delete;
 	BossVersusUIFSM& operator=(const BossVersusUIFSM&& _Other) noexcept = delete;
 
-	void Init(class BossVersus* _UI);
+	void Init(class BossVersus* _UI, BossType _Boss);
+
+	inline bool IsNoiseUI() const
+	{
+		return (Boss == BossType::Noise);
+	}
 
 protected:
 
 private:
-
+	BossType Boss;
 };
 

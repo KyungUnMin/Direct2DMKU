@@ -43,6 +43,13 @@ void BossVersusState_Wait::Start()
 	}
 
 	PostEffect = VersusCamTarget->CreateEffect<BossVersus_PostProcessing>();
+
+	UIFsmPtr = GetConvertFSM<BossVersusUIFSM>();
+	if (nullptr == UIFsmPtr)
+	{
+		MsgAssert("현재 State가 BossVersusUIFSM에 속해있지 않습니다");
+		return;
+	}
 }
 
 
@@ -66,7 +73,10 @@ void BossVersusState_Wait::EnterState()
 		this->PostEffect = nullptr;
 	});
 
-	SoundMgr::BgmFadeOut(Duration);
+	if (true == UIFsmPtr->IsNoiseUI())
+	{
+		SoundMgr::BgmFadeOut(Duration);
+	}
 }
 
 //void BossVersusState_Wait::Update(float _DeltaTime)

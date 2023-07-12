@@ -20,8 +20,9 @@ BossVersusUIFSM::~BossVersusUIFSM()
 
 
 
-void BossVersusUIFSM::Init(BossVersus* _UI)
+void BossVersusUIFSM::Init(BossVersus* _UI, BossType _Boss)
 {
+	Boss = _Boss;
 	FSMBase::ResizeStates(BossVersusStateType::COUNT);
 
 	FSMBase::CreateState<BossVersusState_PortraitMatch>(BossVersusStateType::PortraitMatch);

@@ -20,5 +20,7 @@ protected:
 
 private:
 	std::shared_ptr<BossVersus_PostProcessing> PostEffect = nullptr;
+
+	class BossVersusUIFSM* UIFsmPtr = nullptr;
 };
 

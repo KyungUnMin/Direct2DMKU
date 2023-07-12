@@ -66,7 +66,7 @@ void BossVersus::Init(BossType _Boss)
 	CreatePortraits(_Boss);
 	CreateNameRenders(_Boss);
 
-	Fsm.Init(this);
+	Fsm.Init(this, _Boss);
 	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
 }
 
