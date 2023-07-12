@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 
@@ -27,6 +28,22 @@ const std::vector<std::string_view> NoiseState_JumpToField::AniFileNames =
 const float NoiseState_JumpToField::AniInterTime = 0.08f;
 const size_t NoiseState_JumpToField::HandsUpLoopCount = 5;
 
+const std::vector<std::string_view> NoiseState_JumpToField::CrowdSfx =
+{
+	"Noise_JumpToField_Crowd_Voice0.wav",
+	"Noise_JumpToField_Crowd_Voice1.wav",
+	"Noise_JumpToField_Crowd_Voice2.wav",
+};
+
+const std::vector<std::string_view> NoiseState_JumpToField::PhaseBGM =
+{
+	"OceanBossLevel_Loop0.mp3",
+	"OceanBossLevel_Loop1.mp3",
+	"OceanBossLevel_Loop2.mp3",
+};
+
+
+
 NoiseState_JumpToField::NoiseState_JumpToField()
 {
 
@@ -46,6 +63,12 @@ void NoiseState_JumpToField::Start()
 	EnemyStateBase::SetUnbeatable();
 
 	Shadow = GetEnemy()->GetShadowRender();
+	BossFsmPtr = GetConvertFSM<BossFSMBase>();
+	if (nullptr == BossFsmPtr)
+	{
+		MsgAssert("현재 State가 보스FSM에 속해있지 않습니다");
+		return;
+	}
 }
 
 void NoiseState_JumpToField::LoadAnimation()
@@ -140,6 +163,9 @@ void NoiseState_JumpToField::EnterState()
 	OriginPlayerColScale = PlayerColTrans->GetLocalScale();
 	PlayerColTrans->SetLocalScale(float4::One * 10.f);
 	Player->GetAttackCollider()->SetColType(ColType::MAX);
+
+	CurPhase = BossFsmPtr->GetCurPhase();
+	PlayCrowdSfx();
 }
 
 
@@ -155,6 +181,18 @@ void NoiseState_JumpToField::ChangeStateAndAni(State _Next)
 }
 
 
+void NoiseState_JumpToField::PlayCrowdSfx()
+{
+	if (CrowdSfx.size() <= CurPhase)
+	{
+		MsgAssert("Phase 계산이 잘못되었습니다");
+		return;
+	}
+
+	SoundMgr::BgmStop();
+	SoundMgr::PlaySFX("Noise_JumpToField_Jump_Effect.wav").SetVolume(0.5f);
+	SoundMgr::PlaySFX(CrowdSfx[CurPhase]);
+}
 
 
 void NoiseState_JumpToField::Update(float _DeltaTime)
@@ -195,6 +233,7 @@ void NoiseState_JumpToField::Update_Ready(float _DeltaTime)
 	if (false == NoiseFloor::IsAllClear())
 		return;
 
+	SoundMgr::PlaySFX("Noise_JumpToField_Jump_Voice.wav");
 	ChangeStateAndAni(State::Jump);
 }
 
@@ -250,7 +289,22 @@ void NoiseState_JumpToField::Update_Fall(float _DeltaTime)
 	AttackEffect = FieldLevelBase::GetPtr()->CreateActor<GlichSideAttack>(UpdateOrder::Effect);
 	AttackEffect->Init(EnemyPos + float4::Forward);
 
+	SoundMgr::PlaySFX("Noise_JumpToField_Land_Effect.wav");
+	SoundMgr::PlaySFX("Noise_JumpToField_Land_Voice.wav");
+	ChangeBGM();
+
 	ChangeStateAndAni(State::Land);
+}
+
+void NoiseState_JumpToField::ChangeBGM()
+{
+	if (PhaseBGM.size() <= CurPhase)
+	{
+		MsgAssert("Phase 계산이 잘못되었습니다");
+		return;
+	}
+
+	SoundMgr::ChangeBGM(PhaseBGM[CurPhase]);
 }
 
 

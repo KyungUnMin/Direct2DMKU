@@ -95,16 +95,16 @@ void TownBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
 
-	//CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Town, [this]()
-	//{
-	//	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
-	//	SoundMgr::ChangeBGM("TownBossLevel.mp3");
-	//
-	//	this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
-	//	{
-	//		this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Yamada);
-	//	});
-	//});
+	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Town, [this]()
+	{
+		RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
+		SoundMgr::ChangeBGM("TownBossLevel.mp3");
+	
+		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
+		{
+			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Yamada);
+		});
+	});
 
-	SoundMgr::ChangeBGM("TownBossLevel.mp3");
+	//SoundMgr::ChangeBGM("TownBossLevel.mp3");
 }

@@ -28,6 +28,8 @@ private:
 	static const std::vector<float> Durations;
 	static const std::vector<size_t> SpawnTimeCount;
 
+	static const std::vector<std::string_view> BgmSongNames;
+
 	std::shared_ptr<class GameEngineSpriteRenderer> FloorLines = nullptr;
 	std::vector<std::shared_ptr<class LightEffect>> Lights;
 

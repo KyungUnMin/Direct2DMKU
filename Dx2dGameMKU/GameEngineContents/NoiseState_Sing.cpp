@@ -22,8 +22,15 @@ const std::string_view NoiseState_Sing::FloorLine_FileName = "OceanConcert_Rails
 
 const float NoiseState_Sing::AniInterTime = 0.08f;
 
-const std::vector<float> NoiseState_Sing::Durations = { 20.f, 20.f,20.f };
+const std::vector<float> NoiseState_Sing::Durations = { 30.f, 37.f,40.f };
 const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 4, 3 };
+
+const std::vector<std::string_view> NoiseState_Sing::BgmSongNames =
+{
+	"OceanBossLevel_Sing0.mp3",
+	"OceanBossLevel_Sing1.mp3",
+	"OceanBossLevel_Sing2.mp3",
+};
 
 NoiseState_Sing::NoiseState_Sing()
 {
@@ -142,7 +149,7 @@ void NoiseState_Sing::EnterState()
 
 	FloorLines->On();
 	ChangePlayerColTrans();
-	//SoundMgr::ChangeBGM("OceanBossLevel.mp3");
+	SoundMgr::ChangeBGM(BgmSongNames[CurPhase]);
 }
 
 
@@ -265,6 +272,8 @@ void NoiseState_Sing::CreateFloor()
 
 		Lights[i]->Flicker(LightColor[i]);
 	}
+
+	SoundMgr::PlaySFX("Noise_SingFloorCreate.wav").SetVolume(0.2f);
 }
 
 

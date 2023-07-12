@@ -23,6 +23,10 @@ private:
 	static const float AniInterTime;
 	static const size_t HandsUpLoopCount;
 
+	static const std::vector<std::string_view> CrowdSfx;
+	static const std::vector<std::string_view> PhaseBGM;
+
+
 	enum class State
 	{
 		Ready,
@@ -37,12 +41,17 @@ private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Shadow = nullptr;
 	std::shared_ptr<class GlichSideAttack> AttackEffect = nullptr;
 	float4 OriginPlayerColScale = float4::Zero;
-
+	class BossFSMBase* BossFsmPtr = nullptr;
+	size_t CurPhase = -1;
 
 	void LoadAnimation();
 	void CreateAnimations();
 	void CreateAnimation(State _StateaAni, size_t _EndFrm, bool _Loop);
 	void CreateAnimation(State _StateaAni, const std::vector<size_t>& _AniFrms, bool _Loop);
+
+	void PlayCrowdSfx();
+	void ChangeBGM();
+
 
 	void Update_Ready(float _DeltaTime);
 	void Update_Jump(float _DeltaTime);

@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "NoiseState_JumpToStage.h"
 
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 
@@ -17,6 +18,13 @@ const std::vector<std::string_view> NoiseState_JumpToStage::AniFileNames =
 };
 
 const float NoiseState_JumpToStage::AniInterTime = 0.08f;
+
+const std::vector<std::string_view> NoiseState_JumpToStage::SfxVoice =
+{
+	"Noise_JumpToStage_Voice0.wav",
+	"Noise_JumpToStage_Voice1.wav",
+	"Noise_JumpToStage_Voice2.wav",
+};
 
 NoiseState_JumpToStage::NoiseState_JumpToStage()
 {
@@ -37,6 +45,12 @@ void NoiseState_JumpToStage::Start()
 	EnemyStateBase::SetUnbeatable();
 
 	Shadow = GetEnemy()->GetShadowRender();
+	BossFsmPtr = GetConvertFSM<BossFSMBase>();
+	if (nullptr == BossFsmPtr)
+	{
+		MsgAssert("현재 State가 보스의 FSM에 속해있지 않습니다");
+		return;
+	}
 }
 
 void NoiseState_JumpToStage::LoadAnimation()
@@ -114,12 +128,17 @@ void NoiseState_JumpToStage::CreateAnimation()
 
 
 
+
+
 void NoiseState_JumpToStage::EnterState()
 {
 	EnemyStateBase::EnterState();
 
 	ChangeStateAndAni(State::Ready);
+	PlaySfx();
 }
+
+
 
 void NoiseState_JumpToStage::ChangeStateAndAni(State _Next)
 {
@@ -132,6 +151,18 @@ void NoiseState_JumpToStage::ChangeStateAndAni(State _Next)
 }
 
 
+void NoiseState_JumpToStage::PlaySfx()
+{
+	SoundMgr::BgmStop();
+	size_t CurPhase = BossFsmPtr->GetCurPhase();
+	if (SfxVoice.size() <= CurPhase)
+	{
+		MsgAssert("페이즈 계산이 잘못되었습니다\n현재 페이즈 : " + GameEngineString::ToString(CurPhase));
+		return;
+	}
+
+	SfxPlayer = SoundMgr::PlaySFX(SfxVoice[CurPhase]);
+}
 
 
 void NoiseState_JumpToStage::Update(float _DeltaTime)
@@ -223,4 +254,17 @@ void NoiseState_JumpToStage::Update_Land(float _DeltaTime)
 		return;
 
 	GetFSM()->ChangeState(NoiseStateType::Sing);
+}
+
+
+void NoiseState_JumpToStage::ExitState()
+{
+	EnemyStateBase::ExitState();
+
+	bool IsSfxPlay = true;
+	SfxPlayer.isPlaying(&IsSfxPlay);
+	if (true == IsSfxPlay)
+	{
+		SfxPlayer.SoundFadeOut(1.f, 0.f, true);
+	}
 }
