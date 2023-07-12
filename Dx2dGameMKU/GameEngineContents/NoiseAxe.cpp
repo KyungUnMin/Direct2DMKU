@@ -8,6 +8,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "FieldLevelBase.h"
@@ -36,6 +37,8 @@ void NoiseAxe::Start()
 	FieldActorBase::SetShadowScale(1.5f);
 
 	BGPtr = FieldLevelBase::GetPtr()->GetBackGround();
+
+	SoundMgr::PlaySFX("NoiseAxe_Launch.wav");
 }
 
 
@@ -124,6 +127,7 @@ void NoiseAxe::Update_Collision(float _DeltaTime)
 	if (false == FieldPlayer::GetPtr()->OnDamage_BlowBack())
 		return;
 
+	SoundMgr::PlaySFX("NoiseAxe_Hit.wav");
 	FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.1f);
 	DataMgr::MinusPlayerHP(Damage);
 }
@@ -137,6 +141,7 @@ void NoiseAxe::Update_Launch(float _DeltaTime)
 	{
 		ResetLiveTime();
 		CurState = State::Stay;
+		SfxLoopPlayer = SoundMgr::PlaySFX("NoiseAxe_Loop.wav", true);
 		return;
 	}
 
@@ -155,6 +160,9 @@ void NoiseAxe::Update_Stay(float _DeltaTime)
 
 	ResetLiveTime();
 	CurState = State::ComeBack;
+
+	SfxLoopPlayer.Stop();
+	SoundMgr::PlaySFX("NoiseAxe_Return.wav");
 }
 
 void NoiseAxe::Update_ComeBack(float _DeltaTime)

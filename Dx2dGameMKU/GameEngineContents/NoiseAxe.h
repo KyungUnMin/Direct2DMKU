@@ -1,6 +1,8 @@
 #pragma once
 #include "FieldActorBase.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
+
 class NoiseAxe : public FieldActorBase
 {
 public:
@@ -48,7 +50,7 @@ private:
 	float AttackTimer = 10.f;
 
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
-
+	GameEngineSoundPlayer SfxLoopPlayer;
 
 	void ImageLoad();
 	void SettingRender();

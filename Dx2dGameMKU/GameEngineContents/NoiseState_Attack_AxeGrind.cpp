@@ -2,6 +2,7 @@
 #include "NoiseState_Attack_AxeGrind.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 #include "NoiseAxe.h"
@@ -87,6 +88,7 @@ void NoiseState_Attack_AxeGrind::EnterState()
 	GetRenderer()->ChangeAnimation(Idle_AniFileName);
 
 	CreateAxe();
+	SoundMgr::PlaySFX("Noise_AxeGrind_Voice.wav");
 }
 
 void NoiseState_Attack_AxeGrind::CreateAxe()

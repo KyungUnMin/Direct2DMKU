@@ -315,6 +315,8 @@ void NoiseState_JumpToField::Update_Land(float _DeltaTime)
 
 	AttackEffect->WaveOff();
 	AttackEffect = nullptr;
+
+	SoundMgr::PlaySFX("Noise_JumpToField_Struct_Voice.wav");
 	ChangeStateAndAni(State::Struct);
 }
 
@@ -324,6 +326,7 @@ void NoiseState_JumpToField::Update_Struct(float _DeltaTime)
 	if (false == GetRenderer()->IsAnimationEnd())
 		return;
 
+	SoundMgr::PlaySFX("Noise_JumpToField_Unstruct_Voice.wav");
 	ChangeStateAndAni(State::UnStruct);
 }
 

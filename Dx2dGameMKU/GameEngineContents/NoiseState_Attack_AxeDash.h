@@ -1,6 +1,8 @@
 #pragma once
 #include "BossState_AttackBase.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
+
 class NoiseState_Attack_AxeDash : public BossState_AttackBase
 {
 public:
@@ -52,6 +54,8 @@ private:
 	size_t FollowIndex = 1;
 	float FollowTimer = 0.f;
 	float FollowDuration = 0.f;
+
+	GameEngineSoundPlayer AxeLoopSFX;
 
 	void LoadAnimation();
 	void CreateAnimation();

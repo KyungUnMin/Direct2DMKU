@@ -2,6 +2,7 @@
 #include "NoiseState_Attack_GuitarSlash.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 #include "FieldPlayer.h"
@@ -60,6 +61,11 @@ void NoiseState_Attack_GuitarSlash::CreateAnimation()
 		.Loop = false,
 	});
 
+	Render->SetAnimationStartEvent(AniName, AttackFrm - 1, []()
+	{
+		SoundMgr::PlaySFX("Noise_GuitarSlash_Effect.wav");
+	});
+
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
 }
 
@@ -75,6 +81,8 @@ void NoiseState_Attack_GuitarSlash::EnterState()
 	CamCtrl->SetZoom(ZoomOffset, 7.f * AniInterTime);
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyState_AttackBase::SetAttackColValue(float4::Right * 150.f, float4::One * 250.f);
+
+	SoundMgr::PlaySFX("Noise_GuitarSlash_Voice.wav");
 }
 
 

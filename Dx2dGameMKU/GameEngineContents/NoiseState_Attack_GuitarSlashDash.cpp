@@ -2,6 +2,7 @@
 #include "NoiseState_Attack_GuitarSlashDash.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 #include "FieldPlayer.h"
@@ -61,6 +62,11 @@ void NoiseState_Attack_GuitarSlashDash::CreateAnimation()
 		.Loop = false,
 	});
 
+	Render->SetAnimationStartEvent(AniName, AttackFrm - 1, []()
+	{
+		SoundMgr::PlaySFX("Noise_GuitarSlashDash_Effect.wav");
+	});
+
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, AttackFrm);
 }
 
@@ -90,7 +96,11 @@ void NoiseState_Attack_GuitarSlashDash::EnterState()
 	}
 
 	IsAttack = false;
+
+	SoundMgr::PlaySFX("Noise_GuitarSlashDash_Voice.wav");
 }
+
+
 
 
 
@@ -143,3 +153,4 @@ void NoiseState_Attack_GuitarSlashDash::Attack()
 	DataMgr::MinusPlayerHP(Damage);
 	IsAttack = true;
 }
+

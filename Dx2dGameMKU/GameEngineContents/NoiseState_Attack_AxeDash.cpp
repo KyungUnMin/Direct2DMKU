@@ -3,6 +3,8 @@
 
 #include <GameEngineBase/GameEngineRandom.h>
 
+#include "SoundMgr.h"
+
 #include "NoiseFSM.h"
 #include "NoiseAxe.h"
 #include "FieldEnemyBase.h"
@@ -209,7 +211,11 @@ void NoiseState_Attack_AxeDash::Update_DashStart(float _DeltaTime)
 	Enemy->LookDir(DashDir.x < 0.f);
 
 	Axe = CreateEffect<NoiseAxe>();
+	AxeLoopSFX = SoundMgr::PlaySFX("NoiseAxe_Loop.wav", true);
 	ChangeStateAndAni(State::DashLoop);
+
+	SoundMgr::PlaySFX("Noise_AxeDash_Launch_Voice.wav");
+	SoundMgr::PlaySFX("Noise_AxeDash_Launch_Effect.wav");
 }
 
 
@@ -278,6 +284,8 @@ void NoiseState_Attack_AxeDash::Update_DashLoop(float _DeltaTime)
 
 	//시야 방향 전환
 	SetLookDir(IsReflect);
+
+	SoundMgr::PlaySFX("Noise_AxeDash_Reflect_Effect.wav");
 }
 
 
@@ -340,6 +348,9 @@ void NoiseState_Attack_AxeDash::Update_DashLand(float _DeltaTime)
 
 	CalcFollowDuration();
 	ChangeStateAndAni(State::WaitIdle);
+
+	SoundMgr::PlaySFX("NoiseAxe_Return.wav");
+	SoundMgr::PlaySFX("Noise_AxeDash_Reflect_Voice.wav");
 }
 
 
@@ -362,6 +373,8 @@ void NoiseState_Attack_AxeDash::Update_WaitIdle(float _DeltaTime)
 		{
 			Axe->Death();
 			Axe = nullptr;
+
+			AxeLoopSFX.Stop();
 			ChangeStateAndAni(State::WaitCatch);
 		}
 		else
@@ -421,4 +434,11 @@ void NoiseState_Attack_AxeDash::ExitState()
 	ReflectCount = 1;
 	FollowIndex = 1;
 	FollowTimer = 0.f;
+
+	bool IsPlay = false;
+	AxeLoopSFX.isPlaying(&IsPlay);
+	if (true == IsPlay)
+	{
+		AxeLoopSFX.Stop();
+	}
 }
