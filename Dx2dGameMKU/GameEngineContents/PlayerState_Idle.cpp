@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "PlayerFSM.h"
 #include "PlayerState_UniqueAttack_DragonFeet.h"
@@ -150,6 +151,10 @@ void PlayerState_Idle::Update(float _DeltaTime)
 		{
 			GetFSM()->ChangeState(PlayerStateType::UniqueAttack_DragonFeet);
 			return;
+		}
+		else
+		{
+			SoundMgr::PlaySFX("Player_CantSkill.wav");
 		}
 	}
 

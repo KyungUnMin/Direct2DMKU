@@ -2,6 +2,7 @@
 #include "PlayerState_Walk.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
@@ -149,6 +150,7 @@ void PlayerState_Walk::Update(float _DeltaTime)
 		GetFSM()->ChangeState(PlayerStateType::SpecialAttack_DAP);
 		return;
 	}
+	
 
 
 	//Æ¯¼ö ½ºÅ³
@@ -164,6 +166,10 @@ void PlayerState_Walk::Update(float _DeltaTime)
 				GetFSM()->ChangeState(PlayerStateType::UniqueAttack_HyrricaneKick);
 				return;
 			}
+			else
+			{
+				SoundMgr::PlaySFX("Player_CantSkill.wav");
+			}
 		}
 
 		//µå·¡°ï Å±
@@ -173,6 +179,10 @@ void PlayerState_Walk::Update(float _DeltaTime)
 			{
 				GetFSM()->ChangeState(PlayerStateType::UniqueAttack_DragonFeet);
 				return;
+			}
+			else
+			{
+				SoundMgr::PlaySFX("Player_CantSkill.wav");
 			}
 		}
 
