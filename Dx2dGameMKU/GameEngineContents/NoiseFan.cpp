@@ -1,6 +1,7 @@
 #include "PrecompileHeader.h"
 #include "NoiseFan.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineSprite.h>
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -8,6 +9,7 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 const std::string_view NoiseFan::Boy_FileName = "NoiseFanBoy.png";
 const std::string_view NoiseFan::Girl_FileName = "NoiseFanGirl.png";
@@ -23,6 +25,22 @@ const std::vector<std::string_view> NoiseFan::EnumToString =
 };
 
 size_t NoiseFan::FanCount = 0;
+
+const std::vector<std::string_view> NoiseFan::FemaleFanSfx =
+{
+	"NoiseFan_Female_Appear0.wav",
+	"NoiseFan_Female_Appear1.wav",
+	"NoiseFan_Female_Appear2.wav",
+};
+
+const std::vector<std::string_view> NoiseFan::MaleFanSfx =
+{
+	"NoiseFan_Male_Appear0.wav",
+	"NoiseFan_Male_Appear1.wav",
+	"NoiseFan_Male_Appear2.wav",
+};
+
+
 
 NoiseFan::NoiseFan()
 {
@@ -51,12 +69,13 @@ void NoiseFan::Start()
 	std::shared_ptr<GameEngineCollision> MainCollider = GetMainCollider();
 	std::shared_ptr<GameEngineCollision> AttackCollider = GetAttackCollider();
 
-	MainCollider->GetTransform()->SetLocalScale(float4::One * 100.f);
+	MainCollider->GetTransform()->SetLocalScale(float4::One * 200.f);
 	AttackCollider->GetTransform()->SetLocalScale(float4::One * 50.f);
 	MainCollider->Off();
 	AttackCollider->Off();
 
 	ChangeState(State::Climb);
+	PlayAppearSFX();
 }
 
 void NoiseFan::ImageLoad() 
@@ -124,7 +143,12 @@ void NoiseFan::ChangeState(State _Next)
 	Render->ChangeAnimation(EnumToString[NextAniIndex]);
 }
 
-
+void NoiseFan::PlayAppearSFX()
+{
+	size_t RandNum = static_cast<size_t>(GameEngineRandom::MainRandom.RandomInt(0, 2));
+	const std::string_view& SfxName = (true == IsZenderGirl) ? FemaleFanSfx[RandNum] : MaleFanSfx[RandNum];
+	SoundMgr::PlaySFX(SfxName);
+}
 
 
 void NoiseFan::Update(float _DeltaTime)
@@ -168,4 +192,6 @@ void NoiseFan::ChangeFlyState()
 	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
 	const std::string_view& HurtImgPath = IsZenderGirl ? GirlHurt_FileName : BoyHurt_FileName;
 	Render->SetTexture(HurtImgPath);
+
+	SoundMgr::PlaySFX("NoiseFan_GetHit.wav").SetVolume(3.f);
 }

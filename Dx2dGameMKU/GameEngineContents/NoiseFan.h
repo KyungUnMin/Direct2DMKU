@@ -51,6 +51,9 @@ private:
 	static const std::vector<std::string_view> EnumToString;
 	static size_t FanCount;
 
+	static const std::vector<std::string_view> FemaleFanSfx;
+	static const std::vector<std::string_view> MaleFanSfx;
+	
 	enum class State
 	{
 		Climb,
@@ -67,6 +70,7 @@ private:
 	void CreateAnimation();
 	void ChangeState(State _Next);
 	void ChangeFlyState();
+	void PlayAppearSFX();
 
 	void Update_Climb(float _DeltaTime);
 	void Update_Trace(float _DeltaTime);
