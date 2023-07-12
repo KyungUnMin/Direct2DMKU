@@ -185,5 +185,5 @@ void OceanBossLevel::LevelChangeStart()
 
 	//юс╫ц
 	SoundMgr::ChangeBGM("SchoolBossLevel.mp3");
-	Boss_Noise->JumpForSing();
+	//Boss_Noise->JumpForSing();
 }

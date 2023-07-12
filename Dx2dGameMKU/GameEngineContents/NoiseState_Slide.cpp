@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "NoiseFSM.h"
 #include "FieldLevelBase.h"
@@ -123,6 +124,9 @@ void NoiseState_Slide::EnterState()
 	SettingDir();
 
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Noise_Slide_Voice.wav");
+	SoundMgr::PlaySFX("Noise_Slide_Effect.wav");
 }
 
 

@@ -1,7 +1,7 @@
 #include "PrecompileHeader.h"
 #include "NoiseState_Defeat.h"
 
-
+#include "SoundMgr.h"
 #include "NoiseFSM.h"
 
 #include "FieldEnemyBase.h"
@@ -70,6 +70,8 @@ void NoiseState_Defeat::EnterState()
 
 	GetRenderer()->ChangeAnimation(AniName);
 	EnemyStateBase::OffMainCollider();
+
+	SoundMgr::PlaySFX("Noise_Defeat.wav");
 }
 
 

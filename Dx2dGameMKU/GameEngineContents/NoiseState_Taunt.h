@@ -22,8 +22,10 @@ private:
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
+	static const std::vector<std::string_view> LaughSfx;
 
 	void LoadAnimation();
 	void CreateAnimation();
+
 };
 
