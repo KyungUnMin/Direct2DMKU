@@ -4,6 +4,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 
 #include "RCGDefine.h"
+#include "SoundMgr.h"
 
 #include "BossVersus.h"
 #include "SelfRenderer.h"
@@ -77,6 +78,7 @@ void BossVersusState_Spark::EnterState()
 	StateBase::EnterState();
 
 	Spark1->On();
+	SoundMgr::PlaySFX("BossVersus_Approach.wav").SetVolume(3.f);
 }
 
 void BossVersusState_Spark::Update(float _DeltaTime) 

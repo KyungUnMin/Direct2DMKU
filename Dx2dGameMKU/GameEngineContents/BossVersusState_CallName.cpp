@@ -3,6 +3,8 @@
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 
+#include "SoundMgr.h"
+
 #include "BossVersus.h"
 #include "SelfRenderer.h"
 
@@ -105,6 +107,8 @@ void BossVersusState_CallName::EnterState()
 	BossName->On();
 	PlayerNameTag->On();
 	BossNameTag->On();
+
+	SoundMgr::PlaySFX("BossVersus_CallName.wav");
 }
 
 void BossVersusState_CallName::Update(float _DelatTime)

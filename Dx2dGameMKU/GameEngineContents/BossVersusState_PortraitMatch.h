@@ -18,6 +18,7 @@ public:
 
 protected:
 	void Start() override;
+	void EnterState() override;
 	void Update(float _DeltaTime) override;
 
 private:

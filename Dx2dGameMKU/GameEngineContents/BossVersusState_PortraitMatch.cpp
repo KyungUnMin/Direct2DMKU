@@ -6,6 +6,8 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
+
 
 #include "BossVersus.h"
 #include "BossVersusUIFSM.h"
@@ -33,6 +35,9 @@ void BossVersusState_PortraitMatch::Start()
 	CreateRenderers();
 	SettingValue();
 }
+
+
+
 
 void BossVersusState_PortraitMatch::CreateRenderers()
 {
@@ -64,6 +69,11 @@ void BossVersusState_PortraitMatch::SettingValue()
 	PortraitEndPos = PortraitStartPos + (float4::Left * 300.f);
 }
 
+void BossVersusState_PortraitMatch::EnterState()
+{
+	StateBase::EnterState();
+	//SoundMgr::PlaySFX("BossVersus_Explo.mp3");
+}
 
 
 void BossVersusState_PortraitMatch::Update(float _DeltaTime)

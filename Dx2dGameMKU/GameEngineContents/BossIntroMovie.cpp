@@ -141,6 +141,8 @@ void BossIntroMovie::Update(float _DelatTime)
 
 void BossIntroMovie::DeleteThis()
 {
+	SoundMgr::PlaySFX("Bossintros_End.mp3").SetVolume(0.5f);
+
 	RCG_GameCore::SetCurGameState(GameState::OnField);
 	GameEngineLevel* Level = GetLevel();
 	Level->GetCamera(static_cast<int>(RCG_CamNumType::Main))->On();

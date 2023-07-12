@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineRenderTarget.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 #include "BossVersus.h"
 #include "FieldLevelBase.h"
@@ -49,7 +50,8 @@ void BossVersusState_Wait::EnterState()
 {
 	StateBase::EnterState();
 
-	PostEffect->On(3.f, [this]()
+	const float Duration = 3.f;
+	PostEffect->On(Duration, [this]()
 	{
 		BossVersus* VersusUI = BossVersus::GetPtr();
 		if (nullptr == VersusUI)
@@ -63,6 +65,8 @@ void BossVersusState_Wait::EnterState()
 		VersusUI->Death();
 		this->PostEffect = nullptr;
 	});
+
+	SoundMgr::BgmFadeOut(Duration);
 }
 
 //void BossVersusState_Wait::Update(float _DeltaTime)

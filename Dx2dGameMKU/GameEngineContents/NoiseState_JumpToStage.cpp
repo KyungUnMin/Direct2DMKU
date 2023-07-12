@@ -161,7 +161,11 @@ void NoiseState_JumpToStage::PlaySfx()
 		return;
 	}
 
-	SfxPlayer = SoundMgr::PlaySFX(SfxVoice[CurPhase]);
+	GameEngineSoundPlayer SoundPlayer = SoundMgr::PlaySFX(SfxVoice[CurPhase]);
+	if (0 == CurPhase)
+		return;
+	
+	SfxPlayer = SoundPlayer;
 }
 
 
@@ -260,6 +264,9 @@ void NoiseState_JumpToStage::Update_Land(float _DeltaTime)
 void NoiseState_JumpToStage::ExitState()
 {
 	EnemyStateBase::ExitState();
+
+	if (false == SfxPlayer.IsValid())
+		return;
 
 	bool IsSfxPlay = true;
 	SfxPlayer.isPlaying(&IsSfxPlay);
