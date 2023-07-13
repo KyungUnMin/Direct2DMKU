@@ -11,12 +11,14 @@
 #include "GUIManager.h"
 #include "GameEngineActorGUI.h"
 #include "SoundMgr.h"
+#include "LevelMgr.h"
 
 #include "BackGround.h"
 #include "Fader.h"
 #include "BossVersus.h"
 #include "BossIntroMovie.h"
 #include "FieldEnemy_Noise.h"
+#include "LevelChangeHeart.h"
 
 
 const std::vector<std::pair<std::string_view, float4>> OceanBossLevel::BGInfoes =
@@ -65,6 +67,11 @@ void OceanBossLevel::Start()
 
 	std::shared_ptr<FieldEnemyBase> Boss = nullptr;
 	Boss = GetEnemySpawner().CreateEnemy(EnemyType::Noise, EnemyStartPos);
+	GetEnemySpawner().SetAllKillCallback([this]()
+	{
+		CreateActor<LevelChangeHeart>(UpdateOrder::UI)->Init(LevelNames::EndingLevel_Win);
+	});
+
 	Boss_Noise = std::dynamic_pointer_cast<FieldEnemy_Noise>(Boss);
 	if (nullptr == Boss_Noise)
 	{

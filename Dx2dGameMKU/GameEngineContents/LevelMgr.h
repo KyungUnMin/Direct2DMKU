@@ -3,6 +3,9 @@
 enum class LevelNames
 {
 	OpeningLevel,
+	EndingLevel_Win,
+	EndingLevel_Lose,
+
 	SchoolEntryLevel,
 	SchoolBossLevel,
 	CrossTownLevel1,

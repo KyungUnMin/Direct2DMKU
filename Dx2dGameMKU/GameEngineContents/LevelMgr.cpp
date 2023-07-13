@@ -4,6 +4,8 @@
 #include <GameEngineCore/GameEngineCore.h>
 
 #include "OpeningLevel.h"
+#include "EndingLevel_Win.h"
+#include "EndingLevel_Lose.h"
 #include "SchoolEntryLevel.h"
 #include "SchoolBossLevel.h"
 #include "CrossTownLevel1.h"
@@ -21,6 +23,9 @@
 const std::vector<std::string_view> LevelMgr::IndexToString =
 {
 	"OpeningLevel",
+	"EndingLevel_Win",
+	"EndingLevel_Lose",
+
 	"SchoolEntryLevel",
 	"SchoolBossLevel",
 	"CrossTownLevel1",
@@ -40,6 +45,9 @@ LevelNames LevelMgr::NowLevel = LevelNames::OpeningLevel;
 void LevelMgr::CreateLevel(LevelNames _StartLevel)
 {
 	GameEngineCore::CreateLevel<OpeningLevel>();
+	GameEngineCore::CreateLevel<EndingLevel_Win>();
+	GameEngineCore::CreateLevel<EndingLevel_Lose>();
+
 	GameEngineCore::CreateLevel<SchoolEntryLevel>();
 	GameEngineCore::CreateLevel<SchoolBossLevel>();
 	GameEngineCore::CreateLevel<CrossTownLevel1>();

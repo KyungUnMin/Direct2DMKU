@@ -175,6 +175,7 @@ void OpeningActor::VideoOff()
 	//TODO
 	CurState = State::Bright;
 	SoundMgr::ChangeBGM(OpeningBgmName);
+	SoundMgr::PlaySFX("Opening_LightBreak.mp3");
 }
 
 
@@ -214,7 +215,6 @@ void OpeningActor::Update_Bright(float _DeltaTime)
 
 	std::shared_ptr<OpeningDiaEffect> TileEffect2 = GetLevel()->CreateActor<OpeningDiaEffect>();
 	TileEffect2->GetTransform()->SetLocalPosition(EffectPos);
-
 }
 
 

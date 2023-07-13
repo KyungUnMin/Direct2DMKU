@@ -301,6 +301,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EndingLevel_Lose.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingLevel_Win.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EnemyFSMBase.h" />
     <ClInclude Include="EnemySpawner.h">
       <SubType>
@@ -818,10 +826,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="RCGEnums.h" />
-    <ClInclude Include="EndingLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="OpeningLevel.h">
       <SubType>
       </SubType>
@@ -1068,6 +1072,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DebugActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingLevel_Lose.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingLevel_Win.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1592,10 +1604,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="EndingLevel.cpp">
-      <SubType>
-      </SubType>
     </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
       <SubType>

@@ -1173,9 +1173,6 @@
     <ClCompile Include="OpeningLevel.cpp">
       <Filter>02.Level\01.Cinematic\01.Opening</Filter>
     </ClCompile>
-    <ClCompile Include="EndingLevel.cpp">
-      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
-    </ClCompile>
     <ClCompile Include="FieldLevelBase.cpp">
       <Filter>02.Level\02.Field\01.FieldBase</Filter>
     </ClCompile>
@@ -2082,6 +2079,12 @@
     <ClCompile Include="LevelChangeHeart.cpp">
       <Filter>03.Actor\04.UI\09.LevelChangeHeart</Filter>
     </ClCompile>
+    <ClCompile Include="EndingLevel_Win.cpp">
+      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingLevel_Lose.cpp">
+      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2089,9 +2092,6 @@
     </ClInclude>
     <ClInclude Include="OpeningLevel.h">
       <Filter>02.Level\01.Cinematic\01.Opening</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingLevel.h">
-      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
     </ClInclude>
     <ClInclude Include="FieldLevelBase.h">
       <Filter>02.Level\02.Field\01.FieldBase</Filter>
@@ -2980,6 +2980,12 @@
     </ClInclude>
     <ClInclude Include="LevelChangeHeart.h">
       <Filter>03.Actor\04.UI\09.LevelChangeHeart</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLevel_Win.h">
+      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLevel_Lose.h">
+      <Filter>02.Level\01.Cinematic\02.Ending</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
