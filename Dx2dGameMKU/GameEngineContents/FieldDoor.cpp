@@ -7,6 +7,8 @@
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
+#include "SoundMgr.h"
+
 #include "FieldPlayer.h"
 #include "Fader.h"
 
@@ -207,6 +209,7 @@ void FieldDoor::Unlock(LevelNames _NextLevel)
 		return;
 	}
 
+	SoundMgr::PlaySFX("FieldDoorOpen.wav").SetVolume(3.f);
 	UnlockRender->On();
 	DoorLockValue = false;
 }

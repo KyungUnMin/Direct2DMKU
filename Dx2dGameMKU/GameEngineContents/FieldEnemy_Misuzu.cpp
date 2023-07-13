@@ -7,7 +7,8 @@
 #include "RCG_GameCore.h"
 #include "RCGDefine.h"
 
-const int FieldEnemy_Misuzu::MaxHp = 450;
+//const int FieldEnemy_Misuzu::MaxHp = 450;
+const int FieldEnemy_Misuzu::MaxHp = 60;
 
 FieldEnemy_Misuzu::FieldEnemy_Misuzu()
 {

@@ -74,7 +74,6 @@ SchoolEntryLevel::~SchoolEntryLevel()
 }
 
 
-
 void SchoolEntryLevel::Start()
 {
 	FieldLevelBase::Start();
@@ -168,7 +167,6 @@ void SchoolEntryLevel::CreateNPC()
 	GameEngineTransform* NpcTrans = Teacher->GetTransform();
 	NpcTrans->SetLocalPosition(NpcPos);
 }
-
 
 void SchoolEntryLevel::LevelChangeStart()
 {

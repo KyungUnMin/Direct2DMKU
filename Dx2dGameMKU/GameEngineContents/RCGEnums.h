@@ -49,6 +49,7 @@ enum class FieldUIRenderOrder
 	Conversation_Portrait,
 
 	Fade,
+	LevelChangeHeart,
 	BossIntro,	//Boss 등장 무비
 };
 

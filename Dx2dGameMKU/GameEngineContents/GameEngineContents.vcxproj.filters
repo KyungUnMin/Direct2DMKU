@@ -1159,6 +1159,12 @@
     <Filter Include="01.Core\03.Manager/Controller\07.SoundMgr">
       <UniqueIdentifier>{2421e2b6-895f-4ea6-b611-ea6ef5539791}</UniqueIdentifier>
     </Filter>
+    <Filter Include="07.PostProcessing\01.BossVersus">
+      <UniqueIdentifier>{6fa03198-a19d-483a-940d-8e9e741407e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\09.LevelChangeHeart">
+      <UniqueIdentifier>{359d7a1e-e35d-4862-886f-44eab5479d3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -1830,9 +1836,6 @@
     <ClCompile Include="BossVersusState_Wait.cpp">
       <Filter>03.Actor\04.UI\06.BossVersus\07.Wait</Filter>
     </ClCompile>
-    <ClCompile Include="BossVersus_PostProcessing.cpp">
-      <Filter>07.PostProcessing</Filter>
-    </ClCompile>
     <ClCompile Include="DashSmokeEffect.cpp">
       <Filter>03.Actor\06.Effect\06.DashSmoke</Filter>
     </ClCompile>
@@ -2072,6 +2075,12 @@
     </ClCompile>
     <ClCompile Include="SoundMgr.cpp">
       <Filter>01.Core\03.Manager/Controller\07.SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVersus_PostProcessing.cpp">
+      <Filter>07.PostProcessing\01.BossVersus</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelChangeHeart.cpp">
+      <Filter>03.Actor\04.UI\09.LevelChangeHeart</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2732,9 +2741,6 @@
     <ClInclude Include="BossVersusState_Wait.h">
       <Filter>03.Actor\04.UI\06.BossVersus\07.Wait</Filter>
     </ClInclude>
-    <ClInclude Include="BossVersus_PostProcessing.h">
-      <Filter>07.PostProcessing</Filter>
-    </ClInclude>
     <ClInclude Include="DashSmokeEffect.h">
       <Filter>03.Actor\06.Effect\06.DashSmoke</Filter>
     </ClInclude>
@@ -2968,6 +2974,12 @@
     </ClInclude>
     <ClInclude Include="SoundMgr.h">
       <Filter>01.Core\03.Manager/Controller\07.SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVersus_PostProcessing.h">
+      <Filter>07.PostProcessing\01.BossVersus</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelChangeHeart.h">
+      <Filter>03.Actor\04.UI\09.LevelChangeHeart</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

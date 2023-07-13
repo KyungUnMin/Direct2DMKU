@@ -21,6 +21,7 @@ const std::vector<std::string_view> RCGDefine::PipeEnumToString =
 	"GlichStair",
 	"MpBar",
 	"Tile",
+	"LevelChangeHeart",
 };
 
 

@@ -15,6 +15,7 @@
 #include "BossIntroMovie.h"
 #include "Fader.h"
 #include "BossVersus.h"
+#include "LevelChangeHeart.h"
 
 
 const std::vector<std::pair<std::string_view, float4>> TownBossLevel::BGInfoes =
@@ -45,11 +46,15 @@ void TownBossLevel::Start()
 	LoadImgRes();
 
 	CreateBackGrounds();
-	CreateDoors();
+	FieldLevelBase::SetDoorOpenFunc(std::bind(&TownBossLevel::CreateDoors, this));
 
 	FieldLevelBase::SetPlayerStartPosition(PlayerStartPos);
 	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
 	GetEnemySpawner().CreateEnemy(EnemyType::Yamada, EnemyStartPos);
+	GetEnemySpawner().SetAllKillCallback([this]()
+	{
+		CreateActor<LevelChangeHeart>(UpdateOrder::UI)->Init(LevelNames::OceanLevel);
+	});
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }

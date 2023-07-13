@@ -176,6 +176,7 @@ void FieldLevelBase::Update_DoorOpen_ForDebug()
 		return;
 
 	DoorOpenFunc();
+	DoorOpenFunc = nullptr;
 }
 
 

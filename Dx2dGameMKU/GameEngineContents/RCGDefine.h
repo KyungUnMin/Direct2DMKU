@@ -16,6 +16,7 @@ enum class PipeType
 	GlichStair,
 	MpBar,
 	Tile,
+	LevelChangeHeart,
 };
 
 

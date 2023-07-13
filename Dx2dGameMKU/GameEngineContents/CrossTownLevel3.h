@@ -24,6 +24,8 @@ private:
 	static const std::vector<float4> EnemySpawnPoses;
 	static const std::vector<class NpcCreateInfo> NpcInfoes;
 
+	std::shared_ptr<class FieldDoor> TownBossDoor = nullptr;
+
 	void LoadImgRes();
 	void CreateBackGrounds();
 	void CreateDoors();

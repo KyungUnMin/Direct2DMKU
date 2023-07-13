@@ -64,7 +64,7 @@ void OceanLevel::Start()
 
 	CreateBackGrounds();
 	CreateWaveRender();
-	CreateDoors();
+	FieldLevelBase::SetDoorOpenFunc(std::bind(&OceanLevel::CreateDoors, this));
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 

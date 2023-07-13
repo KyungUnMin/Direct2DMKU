@@ -157,7 +157,7 @@ void NoiseState_JumpToStage::PlaySfx()
 	size_t CurPhase = BossFsmPtr->GetCurPhase();
 	if (SfxVoice.size() <= CurPhase)
 	{
-		MsgAssert("페이즈 계산이 잘못되었습니다\n현재 페이즈 : " + GameEngineString::ToString(CurPhase));
+		MsgAssert("페이즈 계산이 잘못되었습니다\n현재 페이즈 : " + GameEngineString::ToString(static_cast<int>(CurPhase)));
 		return;
 	}
 

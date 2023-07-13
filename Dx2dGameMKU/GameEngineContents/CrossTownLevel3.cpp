@@ -85,13 +85,15 @@ void CrossTownLevel3::CreateBackGrounds()
 
 void CrossTownLevel3::CreateDoors()
 {
+	TownBossDoor = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	TownBossDoor->Init(DoorType::Normal);
+	FieldLevelBase::SetDoorOpenFunc([this]()
+	{
+		TownBossDoor->Unlock(LevelNames::TownBossLevel);
+	});
+	TownBossDoor->GetTransform()->SetLocalPosition(float4{1900.f, -300.f, -300.f});
+
 	std::shared_ptr<FieldDoor> DoorPtr = nullptr;
-
-	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
-	DoorPtr->Init(DoorType::Normal);
-	DoorPtr->Unlock(LevelNames::TownBossLevel);
-	DoorPtr->GetTransform()->SetLocalPosition(float4{1900.f, -300.f, -300.f});
-
 	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal);
 	DoorPtr->Unlock(LevelNames::CrossTownLevel2);

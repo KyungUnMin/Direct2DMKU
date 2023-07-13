@@ -34,7 +34,7 @@ void RCG_GameCore::LoadShaders()
 
 void RCG_GameCore::CreateBlends()
 {
-	
+
 }
 
 void RCG_GameCore::CreateRenderingPipeLine()
@@ -48,6 +48,8 @@ void RCG_GameCore::CreateRenderingPipeLine()
 	//ClonePipeLineForShader("ColorWave", "ColorWave.hlsl");
 
 	ClonePipeLineForShader("Burn", "Burn.hlsl");
+
+	ClonePipeLineForShader("LevelChangeHeart", "LevelChangeHeart.hlsl");
 }
 
 void RCG_GameCore::ClonePipeLineForShader(const std::string_view& _PipeName, const std::string_view& _ShaderName)

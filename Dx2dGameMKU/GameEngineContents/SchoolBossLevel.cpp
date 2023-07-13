@@ -14,6 +14,7 @@
 #include "BossVersus.h"
 #include "Fader.h"
 #include "EnemySpawner.h"
+#include "LevelChangeHeart.h"
 
 
 //<텍스처 이름, 오프셋>
@@ -43,11 +44,16 @@ void SchoolBossLevel::Start()
 	LoadImgRes();
 
 	CreatBackGrounds();
-	CreateDoors();
+	FieldLevelBase::SetDoorOpenFunc(std::bind(&SchoolBossLevel::CreateDoors, this));
 
 	FieldLevelBase::SetPlayerStartPosition(PlayerStartPos);
 	float4 EnemyStartPos = { -PlayerStartPos.x,  PlayerStartPos.y, PlayerStartPos.y };
+
 	GetEnemySpawner().CreateEnemy(EnemyType::Misuzu, EnemyStartPos);
+	GetEnemySpawner().SetAllKillCallback([this]()
+	{
+		CreateActor<LevelChangeHeart>(UpdateOrder::UI)->Init(LevelNames::CrossTownLevel1);
+	});
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
