@@ -22,5 +22,5 @@ void EndingLevel_Win::Update(float _DeltaTime)
 {
 	GameEngineLevel::Update(_DeltaTime);
 
-	MessageBox("快客 并促!");
+	MsgTextBox("快客 玻促!");
 }
