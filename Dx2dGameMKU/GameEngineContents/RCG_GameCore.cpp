@@ -31,7 +31,7 @@ void RCG_GameCore::GameStart()
 
 	KeyMgr::CreateKey();
 	SoundMgr::Init();
-	LevelMgr::CreateLevel(LevelNames::OpeningLevel);
+	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
 }
 
 

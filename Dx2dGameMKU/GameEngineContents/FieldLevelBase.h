@@ -89,6 +89,7 @@ private:
 	std::function<void()> DoorOpenFunc = nullptr;
 
 	void Update_DoorOpen_ForDebug();
+	void Update_CreateMoeny_ForDebug();
 };
 
 class NpcCreateInfo

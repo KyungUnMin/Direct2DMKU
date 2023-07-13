@@ -1165,6 +1165,9 @@
     <Filter Include="03.Actor\04.UI\09.LevelChangeHeart">
       <UniqueIdentifier>{359d7a1e-e35d-4862-886f-44eab5479d3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\08.FieldMoney">
+      <UniqueIdentifier>{086f1c16-826c-4193-8250-57b247a44e80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2085,6 +2088,9 @@
     <ClCompile Include="EndingLevel_Lose.cpp">
       <Filter>02.Level\01.Cinematic\02.Ending</Filter>
     </ClCompile>
+    <ClCompile Include="FieldMoney.cpp">
+      <Filter>03.Actor\08.FieldMoney</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2986,6 +2992,9 @@
     </ClInclude>
     <ClInclude Include="EndingLevel_Lose.h">
       <Filter>02.Level\01.Cinematic\02.Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldMoney.h">
+      <Filter>03.Actor\08.FieldMoney</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,6 +22,7 @@ enum class CollisionOrder
 	EnemyMain,
 	EnemyAttack,
 	NPC,
+	FieldItem,
 };
 
 enum class RCG_CamNumType

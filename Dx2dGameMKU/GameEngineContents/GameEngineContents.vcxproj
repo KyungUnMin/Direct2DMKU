@@ -363,6 +363,10 @@
     <ClInclude Include="FieldEnemy_TigerMan.h" />
     <ClInclude Include="FieldEnemy_Waver.h" />
     <ClInclude Include="FieldEnemy_Yamada.h" />
+    <ClInclude Include="FieldMoney.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldNPCBase.h">
       <SubType>
       </SubType>
@@ -1142,6 +1146,10 @@
     <ClCompile Include="FieldEnemy_TigerMan.cpp" />
     <ClCompile Include="FieldEnemy_Waver.cpp" />
     <ClCompile Include="FieldEnemy_Yamada.cpp" />
+    <ClCompile Include="FieldMoney.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldNPCBase.cpp">
       <SubType>
       </SubType>

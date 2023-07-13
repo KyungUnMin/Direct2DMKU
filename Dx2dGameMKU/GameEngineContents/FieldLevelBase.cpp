@@ -18,6 +18,8 @@
 #include "FieldPlayer.h"
 #include "Fader.h"
 #include "HUD.h"
+#include "FieldMoney.h"
+
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
 
@@ -149,7 +151,6 @@ void FieldLevelBase::LevelChangeStart()
 
 		
 
-
 void FieldLevelBase::Update(float _DeltaTime)
 {
 	FieldActorBase::Update_CheckDebugKey();
@@ -159,12 +160,17 @@ void FieldLevelBase::Update(float _DeltaTime)
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
 	EnemySpawnerCtrl.Update(_DeltaTime);
 	Update_DoorOpen_ForDebug();
+	Update_CreateMoeny_ForDebug();
 
 	if (true == KeyMgr::IsDown(KeyNames::DebugF1))
 	{
 		IsDebugSwitch();
 	}
+
+	
 }
+
+
 
 
 void FieldLevelBase::Update_DoorOpen_ForDebug()
@@ -178,6 +184,23 @@ void FieldLevelBase::Update_DoorOpen_ForDebug()
 	DoorOpenFunc();
 	DoorOpenFunc = nullptr;
 }
+
+void FieldLevelBase::Update_CreateMoeny_ForDebug()
+{
+	if (false == KeyMgr::IsDown(KeyNames::DebugF6))
+		return;
+
+	static size_t SpawnIndex = 0;
+
+	std::shared_ptr<FieldMoney> MoneyPtr = CreateActor<FieldMoney>(UpdateOrder::Defalut);
+	float4 PlayerPos = PlayerPtr->GetTransform()->GetWorldPosition();
+
+	MoneyPtr->Init(static_cast<MoneyType>(SpawnIndex));
+	MoneyPtr->GetTransform()->SetWorldPosition(PlayerPos);
+
+	SpawnIndex = (SpawnIndex + 1) % static_cast<size_t>(MoneyType::UNKNOWN);
+}
+
 
 
 
