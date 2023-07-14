@@ -116,9 +116,8 @@ void CrossTownLevel3::CreateEnemies()
 	Spawner.SetCycleMax(8);
 	Spawner.OnCycleSpawn({
 		EnemyType::Cheerleader,
-		EnemyType::Cheerleader,
+		EnemyType::Hooligan,
 		EnemyType::Cop,
-		//EnemyType::TigerMan,
 		}, EnemySpawnPoses);
 }
 

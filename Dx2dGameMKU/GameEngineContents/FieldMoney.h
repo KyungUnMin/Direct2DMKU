@@ -48,16 +48,20 @@ private:
 	MoneyType Type = MoneyType::UNKNOWN;
 	std::shared_ptr<GameEngineCollision> Collider = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Render = nullptr;
+	std::shared_ptr<GameEngineSpriteRenderer> OutLine = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Shadow = nullptr;
 	bool IsLand = false;
+	float4 OutLineAtlas = float4::Zero;
 
 	void LoadImageRes();
 	void CreateCollision();
 	void CreateRender();
+	void CreateOutLine();
 	void CreateShadow();
 
 	void Update_Collision();
 	void Update_Coin(float _DeltaTime);
 	void Update_Bill(float _DeltaTime);
+	void Update_OutLine(float _DeltaTime);
 };
 

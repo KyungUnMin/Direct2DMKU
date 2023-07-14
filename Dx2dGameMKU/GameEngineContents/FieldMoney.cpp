@@ -114,6 +114,7 @@ void FieldMoney::Init(MoneyType _Type)
 	}
 
 	CreateRender();
+	CreateOutLine();
 }
 
 
@@ -152,6 +153,21 @@ void FieldMoney::CreateRender()
 }
 
 
+
+void FieldMoney::CreateOutLine()
+{
+	OutLine = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	OutLine->GetShaderResHelper().SetConstantBufferLink("AtlasData", OutLineAtlas);
+
+	const float4 LocalScale = { 1.08f, 1.08f, 1.f };
+
+	GameEngineTransform* OutLineTrans = OutLine->GetTransform();
+	OutLineTrans->SetParent(Render->GetTransform(), false);
+	OutLineTrans->SetLocalScale(LocalScale);
+	OutLineTrans->SetLocalPosition(float4::Forward);
+	
+	OutLine->Off();
+}
 
 
 
@@ -195,6 +211,7 @@ void FieldMoney::Update(float _DeltaTime)
 		}
 
 		Update_Collision();
+		Update_OutLine(_DeltaTime);
 	}
 }
 
@@ -232,6 +249,25 @@ void FieldMoney::Update_Bill(float _DeltaTime)
 		return;
 
 	IsLand = true;
+}
+
+void FieldMoney::Update_OutLine(float _DeltaTime)
+{
+	OutLine->On();
+	OutLine->SetTexture(Render->GetTexName());
+	OutLineAtlas = Render->GetAtlasData();
+	
+	float LiveTime = GetLiveTime();
+	float SinValue = abs(sinf(LiveTime));
+	float CosValue = abs(cosf(LiveTime));
+
+	float4 Color = float4::Null;
+	Color.r = SinValue;
+	Color.g = SinValue;
+	Color.b = CosValue;
+
+	OutLine->ColorOptionValue.MulColor = float4{ 0.f, 0.f, 0.f, 1.0f };
+	OutLine->ColorOptionValue.PlusColor = Color;
 }
 
 void FieldMoney::Update_Collision()
