@@ -24,6 +24,8 @@ HUD::~HUD()
 
 }
 
+
+
 void HUD::Start()
 {
 	UIBase::Start();
@@ -31,6 +33,8 @@ void HUD::Start()
 
 	LoadImageRes();
 	CreateBackGround();
+	CreateShopBackGround();
+
 	CreateHpBar();
 	CreateMpBar();
 	CreateMoneyText();
@@ -52,13 +56,28 @@ void HUD::LoadImageRes()
 
 void HUD::CreateBackGround()
 {
-	std::shared_ptr<GameEngineUIRenderer> Sprite = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
-	Sprite->SetTexture("HUD_BG.png");
+	FieldBackGround = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
+	FieldBackGround->SetTexture("HUD_BG.png");
 
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
-	Sprite->GetTransform()->SetLocalScale(ScreenSize);
+	FieldBackGround->GetTransform()->SetLocalScale(ScreenSize);
 }
 
+void HUD::CreateShopBackGround()
+{
+	ShopBackGround = CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::HUD);
+	ShopBackGround->SetTexture("HUD_ShopBG.png");
+
+	float4 ScreenSize = GameEngineWindow::GetScreenSize();
+	ShopBackGround->GetTransform()->SetLocalScale(ScreenSize);
+	ShopBackGround->Off();
+}
+
+void HUD::UseShopMode()
+{
+	FieldBackGround->Off();
+	ShopBackGround->On();
+}
 
 
 void HUD::CreateHpBar()

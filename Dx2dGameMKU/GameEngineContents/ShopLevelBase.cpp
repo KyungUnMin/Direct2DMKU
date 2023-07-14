@@ -41,7 +41,7 @@ void ShopLevelBase::Start()
 	Cursor = CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
 	SlotCtrl = CreateActor<ShopSlotController>(static_cast<int>(UpdateOrder::UI));
 
-	//CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
+	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI))->UseShopMode();
 	CreateActor<ShopInfo>(static_cast<int>(UpdateOrder::UI));
 }
 

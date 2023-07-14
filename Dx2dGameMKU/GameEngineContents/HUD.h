@@ -1,6 +1,8 @@
 #pragma once
 #include "UIBase.h"
 
+class GameEngineUIRenderer;
+
 class HUD : public UIBase
 {
 public:
@@ -11,6 +13,8 @@ public:
 	HUD(HUD&& _Other) noexcept = delete;
 	HUD& operator=(const HUD& _Other) = delete;
 	HUD& operator=(const HUD&& _Other) noexcept = delete;
+
+	void UseShopMode();
 
 protected:
 	void Start() override;
@@ -27,12 +31,16 @@ private:
 
 	static MpDatas MpData;
 
-	std::vector<std::shared_ptr<class GameEngineUIRenderer>> HealthBlocks;
+	std::vector<std::shared_ptr<GameEngineUIRenderer>> HealthBlocks;
 	float Timer = 0.f;
 	std::shared_ptr <class  UIFontRenderer> MoneyText = nullptr;
 
+	std::shared_ptr<GameEngineUIRenderer> FieldBackGround = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> ShopBackGround = nullptr;
+
 	void LoadImageRes();
 	void CreateBackGround();
+	void CreateShopBackGround();
 	void CreateHpBar();
 	void CreateMpBar();
 	void CreateMoneyText();
