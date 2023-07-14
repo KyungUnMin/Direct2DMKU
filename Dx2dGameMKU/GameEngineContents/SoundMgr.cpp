@@ -4,8 +4,6 @@
 #include "RCGDefine.h"
 
 GameEngineSoundPlayer SoundMgr::BGM;
-float SoundMgr::BGMLoopStartSec = 0.f;
-float SoundMgr::BGMLoopEndSec = 0.f;
 std::string SoundMgr::CurBgmName = "";
 
 std::list<GameEngineSoundPlayer> SoundMgr::AllSfx;
@@ -33,9 +31,6 @@ void SoundMgr::ChangeBGM(const std::string_view& _BgmName)
 	CurBgmName = _BgmName;
 	BGM = GameEngineSound::Play(_BgmName);
 	BGM.SetLoop();
-
-	BGMLoopStartSec = 0.f;
-	BGMLoopEndSec = 0.f;
 }
 
 GameEngineSoundPlayer SoundMgr::PlaySFX(const std::string_view& _BgmName, bool _IsLoop /*= false*/)
@@ -81,6 +76,20 @@ void SoundMgr::BgmPauseOff()
 	BGM.SetPause(false);
 }
 
+UINT SoundMgr::GetBgmPos()
+{
+	if (false == BGM.IsValid())
+		return 0;
+
+	return BGM.getPosition();
+}
+
+void SoundMgr::SetBgmPos(UINT _Pos)
+{
+	BGM.setPosition(_Pos);
+}
+
+
 void SoundMgr::BgmFadeOut(const float _Duration)
 {
 	BGM.SoundFadeOut(_Duration);
@@ -95,23 +104,11 @@ void SoundMgr::BgmFadeIn(const float _Duration)
 
 void SoundMgr::Update(float _DeltaTime)
 {
-	Update_BgmLoopArea();
 	Update_RemoveOldSfx();
 }
 
 
 
-void SoundMgr::Update_BgmLoopArea()
-{
-	//영역 루프를 설정하지 않은 경우
-	if ((0.f == BGMLoopStartSec) && (0.f == BGMLoopEndSec))
-		return;
-
-	if (BGM.getPosition() < BGMLoopEndSec)
-		return;
-
-	BGM.SetPosition(BGMLoopStartSec);
-}
 
 void SoundMgr::Update_RemoveOldSfx()
 {
@@ -152,7 +149,6 @@ void SoundMgr::LevelChangeEnd()
 
 	AllSfx.clear();
 }
-
 
 
 

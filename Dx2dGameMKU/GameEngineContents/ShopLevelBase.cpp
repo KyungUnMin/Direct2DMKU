@@ -9,6 +9,7 @@
 #include "RCGEnums.h"
 #include "KeyMgr.h"
 #include "LevelMgr.h"
+#include "SoundMgr.h"
 
 #include "Fader.h"
 #include "BackGround.h"
@@ -18,7 +19,9 @@
 #include "ShopItem_CursorBar.h"
 #include "ShopSlotController.h"
 
-LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
+LevelNames ShopLevelBase::PrevLevel = LevelNames::EndingLevel_Lose;
+std::string ShopLevelBase::PrevLevelBgmName;
+std::shared_ptr<class Fader> ShopLevelBase::LevelExitFade = nullptr;
 
 ShopLevelBase::ShopLevelBase()
 {
@@ -38,7 +41,7 @@ void ShopLevelBase::Start()
 	Cursor = CreateActor<ShopItem_CursorBar>(static_cast<int>(UpdateOrder::UI));
 	SlotCtrl = CreateActor<ShopSlotController>(static_cast<int>(UpdateOrder::UI));
 
-	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
+	//CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
 	CreateActor<ShopInfo>(static_cast<int>(UpdateOrder::UI));
 }
 
@@ -78,7 +81,18 @@ void ShopLevelBase::LevelChangeStart()
 {
 	GameEngineLevel::LevelChangeStart();
 
+	if (nullptr != LevelExitFade)
+	{
+		LevelExitFade->Death();
+		LevelExitFade = nullptr;
+	}
+
 	CreateActor<Fader>(static_cast<int>(UpdateOrder::UI))->Init(float4{0.f, 0.f, 0.f, 1.0f});
+
+	PrevLevelBgmName = SoundMgr::GetCurBgmName();
+	PrevLevelBgmPos = SoundMgr::GetBgmPos();
+	SoundMgr::ChangeBGM("ShopBGM.mp3");
+	SoundMgr::SetBgmPos(ThisBgmPos);
 }
 
 void ShopLevelBase::LevelChangeEnd()
@@ -88,6 +102,13 @@ void ShopLevelBase::LevelChangeEnd()
 	Cursor->Reset();
 	SlotCtrl->Reset();
 	LevelTimer = 0.f;
+
+	ThisBgmPos = SoundMgr::GetBgmPos();
+	if (false == PrevLevelBgmName.empty())
+	{
+		SoundMgr::ChangeBGM(PrevLevelBgmName);
+		SoundMgr::SetBgmPos(PrevLevelBgmPos);
+	}
 }
 
 
@@ -99,7 +120,19 @@ void ShopLevelBase::Update(float _DeltaTime)
 	if (false == KeyMgr::IsDown(KeyNames::Esc) || (LevelTimer < 1.f))
 		return;
 
-	LevelMgr::ChangeLevel(PrevLevel);
+	if (nullptr != LevelExitFade)
+		return;
+
+	static const float FadeTime = 0.5f;
+
+	LevelTimer = 0.f;
+	SoundMgr::BgmFadeOut(FadeTime);
+	LevelExitFade = CreateActor<Fader>(static_cast<int>(UpdateOrder::UI));
+	LevelExitFade->Init(float4{ 0.f, 0.f, 0.f, 0.0f }, FadeTime, []()
+	{
+		LevelMgr::ChangeLevel(PrevLevel);
+	});
+	LevelExitFade->DontDestory();
 }
 
 

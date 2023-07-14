@@ -21,7 +21,7 @@ public:
 		Duration = _Duration;
 		Callback = _FinishCallback;
 
-		IsFadeIn = (FadeColor.w < 0.5f) ? true : false;
+		IsFadeIn = (FadeColor.w < 0.5f);
 	}
 
 	void ClearOthers();

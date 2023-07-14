@@ -147,5 +147,6 @@ void ShopItem_CursorBar::Reset()
 
 	ConfirmTime = FLT_MAX;
 	IsConfirmation = false;
+	GetTransform()->SetLocalPosition(BarFirstPos);
 	ConfirmBoxTrans->SetLocalPosition(ConfirmInnerOffset);
 }

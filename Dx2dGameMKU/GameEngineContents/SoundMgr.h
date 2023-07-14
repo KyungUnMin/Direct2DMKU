@@ -18,16 +18,14 @@ public:
 	static void BgmPauseOff();
 
 
-	inline static void SetBGMLoop(float _Start, float _End)
-	{
-		BGMLoopStartSec = _Start;
-		BGMLoopEndSec = _End;
-	}
 
 	static const std::string& GetCurBgmName()
 	{
 		return CurBgmName;
 	}
+
+	static UINT GetBgmPos();
+	static void SetBgmPos(UINT _Pos);
 
 	static void BgmFadeOut(const float _Duration);
 	static void BgmFadeIn(const float _Duration);
@@ -46,14 +44,12 @@ protected:
 
 private:
 	static GameEngineSoundPlayer BGM;
-	static float BGMLoopStartSec;
-	static float BGMLoopEndSec;
+	
 
 	static std::string CurBgmName;
 	static std::list<GameEngineSoundPlayer> AllSfx;
 
 
-	static void Update_BgmLoopArea();
 	static void Update_RemoveOldSfx();
 
 

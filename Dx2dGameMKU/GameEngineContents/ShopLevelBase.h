@@ -16,6 +16,12 @@ public:
 	ShopLevelBase& operator=(const ShopLevelBase& _Other) = delete;
 	ShopLevelBase& operator=(const ShopLevelBase&& _Other) noexcept = delete;
 
+	//레벨이 전환되고 있는 중인지 확인
+	static bool IsLevelExiting()
+	{
+		return (nullptr != LevelExitFade);
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -27,10 +33,18 @@ protected:
 
 private:
 	static LevelNames PrevLevel;
+	static std::string PrevLevelBgmName;
+	static std::shared_ptr<class Fader> LevelExitFade;
+
 
 	std::shared_ptr<class ShopItem_CursorBar> Cursor = nullptr;
 	std::shared_ptr<class ShopSlotController> SlotCtrl = nullptr;
 	float LevelTimer = 0.f;
+
+	UINT ThisBgmPos = 0;
+	UINT PrevLevelBgmPos = 0;
+	
+
 
 	void ImageResLoad();
 };
