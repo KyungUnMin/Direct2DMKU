@@ -2091,6 +2091,9 @@
     <ClCompile Include="FieldMoney.cpp">
       <Filter>03.Actor\08.FieldMoney</Filter>
     </ClCompile>
+    <ClCompile Include="UIFontRenderer.cpp">
+      <Filter>04.Component\03.Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -2995,6 +2998,9 @@
     </ClInclude>
     <ClInclude Include="FieldMoney.h">
       <Filter>03.Actor\08.FieldMoney</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFontRenderer.h">
+      <Filter>04.Component\03.Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

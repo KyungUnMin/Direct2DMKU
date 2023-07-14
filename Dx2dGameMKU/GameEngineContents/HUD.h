@@ -29,14 +29,16 @@ private:
 
 	std::vector<std::shared_ptr<class GameEngineUIRenderer>> HealthBlocks;
 	float Timer = 0.f;
+	std::shared_ptr <class  UIFontRenderer> MoneyText = nullptr;
 
 	void LoadImageRes();
 	void CreateBackGround();
 	void CreateHpBar();
 	void CreateMpBar();
-	
+	void CreateMoneyText();
 
 	void Update_Hp();
 	void Update_Mp(float _DeltaTime);
+	void Update_Money();
 };
 

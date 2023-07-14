@@ -3,12 +3,14 @@
 
 //#include <GameEngineCore/GameEngineUIRenderer.h>
 #include <GameEngineCore/GameEngineTexture.h>
+#include <GameEngineCore/GameEngineFont.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
 
 #include "ShaderUIRenderer.h"
+#include "UIFontRenderer.h"
 
 HUD::MpDatas HUD::MpData;
 
@@ -31,6 +33,7 @@ void HUD::Start()
 	CreateBackGround();
 	CreateHpBar();
 	CreateMpBar();
+	CreateMoneyText();
 }
 
 
@@ -94,12 +97,38 @@ void HUD::CreateMpBar()
 	MpTrans->SetLocalPosition(Offset);
 }
 
+
+void HUD::CreateMoneyText()
+{
+	const float4 TextPos = float4{ -220.f, 280.f };
+	const std::string_view FontName = "»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ";
+
+
+	if (nullptr == GameEngineFont::Find(FontName))
+	{
+		GameEngineFont::Load(FontName);
+	}
+
+	MoneyText = CreateComponent<UIFontRenderer>(FieldUIRenderOrder::HUD);
+	MoneyText->SetFont(FontName);
+	MoneyText->SetScale(20.f);
+	MoneyText->SetText("0");
+	MoneyText->SetColor(float4::White);
+	MoneyText->SetFontFlag(FW1_TEXT_FLAG::FW1_RIGHT);
+
+	MoneyText->GetTransform()->SetLocalPosition(TextPos);
+}
+
+
+
+
 void HUD::Update(float _DeltaTime)
 {
 	UIBase::Update(_DeltaTime);
 
 	Update_Hp();
 	Update_Mp(_DeltaTime);
+	Update_Money();
 }
 
 void HUD::Update_Hp()
@@ -138,4 +167,11 @@ void HUD::Update_Mp(float _DeltaTime)
 	TimeRatio = std::clamp(TimeRatio, 0.f, 1.f);
 
 	MpData.NowMpRatio = (MpData.PrevMpRatio * (1.f - TimeRatio)) + (MpData.DestMpRatio * TimeRatio);
+}
+
+
+void HUD::Update_Money()
+{
+	int Money = DataMgr::GetPlayerMoney();
+	MoneyText->SetText(GameEngineString::ToString(Money));
 }
