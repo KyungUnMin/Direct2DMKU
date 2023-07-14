@@ -43,6 +43,7 @@ private:
 	static const float ShadowOffsetRange;
 	static const std::vector<float> BillShadowOffsetX;
 	static const float ShadowOffetY;
+	static const float MaxLiveTime;
 
 	MoneyType Type = MoneyType::UNKNOWN;
 	std::shared_ptr<GameEngineCollision> Collider = nullptr;

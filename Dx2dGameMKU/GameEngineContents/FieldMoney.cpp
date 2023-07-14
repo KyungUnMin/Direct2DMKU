@@ -29,6 +29,8 @@ const std::vector<float> FieldMoney::BillShadowOffsetX =
 
 const float FieldMoney::ShadowOffetY = -10.f;
 
+const float FieldMoney::MaxLiveTime = 10.f;
+
 FieldMoney::FieldMoney()
 {
 	
@@ -162,6 +164,13 @@ void FieldMoney::Update(float _DeltaTime)
 		MsgAssert("FieldMoney의 Init함수를 호출시켜주지 않았습니다");
 		return;
 	}
+
+	if (MaxLiveTime < GetLiveTime())
+	{
+		Death();
+		return;
+	}
+
 
 	if (false == IsLand)
 	{

@@ -218,4 +218,15 @@ void FieldLevelBase::LevelChangeEnd()
 	FieldActorBase::Reset_CheckDebugKey();
 
 	SoundMgr::LevelChangeEnd();
+
+	MoneyClear();
+}
+
+void FieldLevelBase::MoneyClear()
+{
+	const std::list<std::shared_ptr<GameEngineActor>>& AllMoney = GetActorGroup(UpdateOrder::Money);
+	for (std::shared_ptr<GameEngineActor> Money : AllMoney)
+	{
+		Money->Death();
+	}
 }
