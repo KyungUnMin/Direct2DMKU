@@ -3,6 +3,7 @@
 
 #include "CopFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldMoney.h"
 
 const std::string_view CopState_Damaged_KnockDown::AniFileName = "Cop_KnockDown.png";
 
@@ -73,6 +74,7 @@ void CopState_Damaged_KnockDown::EnterState()
 	EnemyStateBase::OffMainCollider();
 
 	SoundMgr::PlaySFX("MaleEnemy_KnockDown.wav");
+	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Blue);
 }
 
 

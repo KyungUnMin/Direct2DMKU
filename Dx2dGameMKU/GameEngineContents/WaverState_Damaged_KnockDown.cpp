@@ -3,6 +3,7 @@
 
 #include "WaverFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldMoney.h"
 
 const std::string_view WaverState_Damaged_KnockDown::AniFileName = "Waver_KnockDown.png";
 
@@ -73,6 +74,7 @@ void WaverState_Damaged_KnockDown::EnterState()
 	EnemyStateBase::OffMainCollider();
 
 	SoundMgr::PlaySFX("CheerLeader_KnockDown.wav");
+	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Green);
 }
 
 

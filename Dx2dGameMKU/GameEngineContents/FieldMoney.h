@@ -48,6 +48,7 @@ private:
 	std::shared_ptr<GameEngineCollision> Collider = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Render = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> Shadow = nullptr;
+	bool IsLand = false;
 
 	void LoadImageRes();
 	void CreateCollision();

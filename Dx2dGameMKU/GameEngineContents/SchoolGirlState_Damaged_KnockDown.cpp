@@ -3,6 +3,7 @@
 
 #include "SchoolGirlFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldMoney.h"
 
 const std::string_view SchoolGirlState_Damaged_KnockDown::AniFileName = "SchoolGirl_KnockDown.png";
 
@@ -73,6 +74,7 @@ void SchoolGirlState_Damaged_KnockDown::EnterState()
 	EnemyStateBase::OffMainCollider();
 
 	SoundMgr::PlaySFX("FemaleEnemy_KnockDown.wav");
+	EnemyState_DamagedBase::CreateMoney(MoneyType::Coin);
 }
 
 

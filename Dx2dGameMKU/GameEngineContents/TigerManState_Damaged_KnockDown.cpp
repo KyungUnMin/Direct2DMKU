@@ -3,6 +3,7 @@
 
 #include "TigerManFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldMoney.h"
 
 const std::string_view TigerManState_Damaged_KnockDown::AniFileName = "TigerMan_KnockDown.png";
 
@@ -79,6 +80,7 @@ void TigerManState_Damaged_KnockDown::EnterState()
 	EnemyStateBase::OffMainCollider();
 
 	SoundMgr::PlaySFX("TigerMan_KnockDown.wav");
+	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Pupple);
 }
 
 

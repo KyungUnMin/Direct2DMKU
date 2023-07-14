@@ -3,6 +3,7 @@
 
 #include "CheerleaderFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldMoney.h"
 
 const std::string_view CheerleaderState_Damaged_KnockDown::AniFileName = "Cheerleader_KnockDown.png";
 
@@ -73,6 +74,7 @@ void CheerleaderState_Damaged_KnockDown::EnterState()
 	EnemyStateBase::OffMainCollider();
 
 	SoundMgr::PlaySFX("CheerLeader_KnockDown.wav");
+	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Blue);
 }
 
 

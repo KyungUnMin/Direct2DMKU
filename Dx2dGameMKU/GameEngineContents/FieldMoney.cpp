@@ -162,34 +162,50 @@ void FieldMoney::Update(float _DeltaTime)
 		MsgAssert("FieldMoney의 Init함수를 호출시켜주지 않았습니다");
 		return;
 	}
-	else if (MoneyType::Coin == Type)
+
+	if (false == IsLand)
 	{
-		Update_Coin(_DeltaTime);
+		if (MoneyType::Coin == Type)
+		{
+			Update_Coin(_DeltaTime);
+		}
+		else
+		{
+			Update_Bill(_DeltaTime);
+		}
 	}
 	else
 	{
-		Update_Bill(_DeltaTime);
+		if (MoneyType::Coin != Type)
+		{
+			size_t CurFrm = Render->GetCurrentFrame();
+			if (0 == CurFrm || 6 == CurFrm)
+			{
+				Render->SetAnimPauseOn();
+			}
+		}
+
+		Update_Collision();
 	}
-
-	static const float ColWaitTime = 0.5f;
-	if (GetLiveTime() < ColWaitTime)
-		return;
-
-	Update_Collision();
 }
 
 
 
 void FieldMoney::Update_Coin(float _DeltaTime)
 {
-	static const float MaxHeight = 100.f;
+	static const float MaxHeight = 150.f;
 	static const float Duration = 0.5f;
 
 	float Ratio = GetLiveTime() / Duration;
-	Ratio = std::clamp(Ratio, 0.f, 1.f);
-	float SinValue = sinf(GameEngineMath::PIE * Ratio);
+	float ClampRatio = std::clamp(Ratio, 0.f, 1.f);
+	float SinValue = sinf(GameEngineMath::PIE * ClampRatio);
 
 	Render->GetTransform()->SetLocalPosition(float4::Up * SinValue * MaxHeight);
+
+	if (Ratio < 1.f)
+		return;
+
+	IsLand = true;
 }
 
 void FieldMoney::Update_Bill(float _DeltaTime) 
@@ -206,11 +222,7 @@ void FieldMoney::Update_Bill(float _DeltaTime)
 	if (Ratio < 1.f)
 		return;
 
-	size_t CurFrm = Render->GetCurrentFrame();
-	if (0 == CurFrm || 6 == CurFrm)
-	{
-		Render->SetAnimPauseOn();
-	}
+	IsLand = true;
 }
 
 void FieldMoney::Update_Collision()

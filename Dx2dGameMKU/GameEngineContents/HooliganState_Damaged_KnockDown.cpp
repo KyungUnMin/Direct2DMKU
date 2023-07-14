@@ -3,6 +3,7 @@
 
 #include "HooliganFSM.h"
 #include "FieldEnemyBase.h"
+#include "FieldMoney.h"
 
 const std::string_view HooliganState_Damaged_KnockDown::AniFileName = "Hooligan_KnockDown.png";
 
@@ -73,6 +74,7 @@ void HooliganState_Damaged_KnockDown::EnterState()
 	EnemyStateBase::OffMainCollider();
 
 	SoundMgr::PlaySFX("MaleEnemy_KnockDown.wav");
+	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Green);
 }
 
 

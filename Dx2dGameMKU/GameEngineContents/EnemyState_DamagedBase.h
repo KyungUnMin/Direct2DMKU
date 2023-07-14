@@ -2,6 +2,8 @@
 #include "EnemyStateBase.h"
 #include "SoundMgr.h"
 
+enum class MoneyType;
+
 class EnemyState_DamagedBase : public EnemyStateBase
 {
 public:
@@ -42,6 +44,14 @@ protected:
 		EnemyDir = !_IsRight;
 	}
 
+	//Enemy의 위치에 _Money타입 Money를 생성
+	void CreateMoney(MoneyType _Money);
+
+	//Enemy의 위치에 랜덤타입 Money를 생성
+	void CreateMoney();
+
+	//_Duration간격으로 Enemy의 위치에 랜덤타입 Money를 생성한다
+	void Update_Money(float _DeltaTime, float _Duration = 0.5f);
 
 private:
 	float StartAcc = 2000.f;
@@ -52,6 +62,7 @@ private:
 
 
 	bool EnemyDir = true;
+	float MoneyTimer = 0.f;
 
 	void Update_BlowVertical(float _Ratio);
 	bool Update_BlowHorizon(float _Ratio, float _DeltaTime);

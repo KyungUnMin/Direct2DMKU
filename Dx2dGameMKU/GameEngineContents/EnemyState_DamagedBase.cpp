@@ -1,16 +1,19 @@
 #include "PrecompileHeader.h"
 #include "EnemyState_DamagedBase.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
+
 #include "RCGEnums.h"
 
 #include "FieldEnemyBase.h"
 #include "FieldLevelBase.h"
 #include "BackGround.h"
 #include "HitEffect.h"
+#include "FieldMoney.h"
 
 EnemyState_DamagedBase::EnemyState_DamagedBase()
 {
-
+	
 }
 
 EnemyState_DamagedBase::~EnemyState_DamagedBase()
@@ -129,3 +132,31 @@ void EnemyState_DamagedBase::ExitState()
 	GetEnemy()->SetHeight(0.f);
 	IsWallHit = false;
 }
+
+
+void EnemyState_DamagedBase::CreateMoney(MoneyType _Money)
+{
+	std::shared_ptr<FieldMoney> MoneyPtr = nullptr;
+	MoneyPtr = FieldLevelBase::GetPtr()->CreateActor<FieldMoney>(UpdateOrder::Money);
+
+	MoneyPtr->Init(_Money);
+	float4 EnemyPos = GetEnemy()->GetTransform()->GetWorldPosition();
+	MoneyPtr->GetTransform()->SetWorldPosition(EnemyPos);
+}
+
+void EnemyState_DamagedBase::CreateMoney()
+{
+	int RandNum = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MoneyType::UNKNOWN) - 1);
+	CreateMoney(static_cast<MoneyType>(RandNum));
+}
+
+void EnemyState_DamagedBase::Update_Money(float _DeltaTime, float _Duration)
+{
+	MoneyTimer += _DeltaTime;
+	if (MoneyTimer < _Duration)
+		return;
+
+	MoneyTimer = 0.f;
+	CreateMoney();
+}
+

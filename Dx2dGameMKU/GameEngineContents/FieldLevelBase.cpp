@@ -192,7 +192,7 @@ void FieldLevelBase::Update_CreateMoeny_ForDebug()
 
 	static size_t SpawnIndex = 0;
 
-	std::shared_ptr<FieldMoney> MoneyPtr = CreateActor<FieldMoney>(UpdateOrder::Defalut);
+	std::shared_ptr<FieldMoney> MoneyPtr = CreateActor<FieldMoney>(UpdateOrder::Money);
 	float4 PlayerPos = PlayerPtr->GetTransform()->GetWorldPosition();
 
 	MoneyPtr->Init(static_cast<MoneyType>(SpawnIndex));
