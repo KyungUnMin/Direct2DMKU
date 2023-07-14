@@ -19,6 +19,7 @@ protected:
 	void EnterState() override;
 
 	void Attack() override;
+	void OnAttackSound() override;
 
 private:
 	static const std::string_view AniName;

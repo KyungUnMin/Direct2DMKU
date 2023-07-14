@@ -2,6 +2,7 @@
 #include "TigerManState_Attack_Chop.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "TigerManFSM.h"
 #include "FieldPlayer.h"
@@ -109,4 +110,10 @@ void TigerManState_Attack_Chop::Attack()
 		return;
 
 	DataMgr::MinusPlayerHP(Damage);
+}
+
+void TigerManState_Attack_Chop::OnAttackSound()
+{
+	EnemyState_AttackBase::OnAttackSound();
+	SoundMgr::PlaySFX("TigerMan_Chop_Voice.wav");
 }

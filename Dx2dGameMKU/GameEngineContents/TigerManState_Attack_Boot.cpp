@@ -119,5 +119,6 @@ void TigerManState_Attack_Boot::Attack()
 
 void TigerManState_Attack_Boot::OnAttackSound()
 {
-	SoundMgr::PlaySFX("TigerMan_Boot.wav");
+	SoundMgr::PlaySFX("TigerMan_Boot_Effect.wav");
+	SoundMgr::PlaySFX("TigerMan_Boot_Voice.wav");
 }

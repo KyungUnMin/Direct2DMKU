@@ -8,7 +8,6 @@
 #include "RCGDefine.h"
 
 
-
 FieldEnemy_TigerMan::FieldEnemy_TigerMan()
 {
 

@@ -114,6 +114,7 @@ void TigerManState_Attack_Rolling::EnterState()
 	EnemyState_AttackBase::SetAttackColValue(float4::Zero);
 
 	SoundMgr::PlaySFX("TigerMan_RollingEnter.wav");
+	SoundMgr::PlaySFX("TigerMan_Rolling_Voice.wav");
 }
 
 
