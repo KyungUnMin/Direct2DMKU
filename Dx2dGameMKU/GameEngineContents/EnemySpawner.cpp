@@ -119,6 +119,7 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 
 
 
+
 bool EnemySpawner::CheckValidIndex(std::shared_ptr<FieldEnemyBase> _Enemy)
 {
 	if (nullptr == _Enemy)
@@ -164,16 +165,21 @@ void EnemySpawner::KillEnemy(std::shared_ptr<FieldEnemyBase> _Enemy)
 	Data.IsDeath = true;
 	++KillCount;
 
+	if (nullptr != KillCallback)
+	{
+		KillCallback();
+	}
+
 	//모든 Enemy를 다 죽인 경우에만
 	if (KillCount != Enemies.size())
 		return;
 
-	if (nullptr == Callback)
+	if (nullptr == AllKillCallback)
 		return;
 
 	//콜백 호출
-	Callback();
-	Callback = nullptr;
+	AllKillCallback();
+	AllKillCallback = nullptr;
 }
 
 void EnemySpawner::MarkGridPos(std::shared_ptr<FieldEnemyBase> _Enemy, const std::pair<int, int>& _Pos)
@@ -250,7 +256,7 @@ bool EnemySpawner::IsOtherStay(
 
 void EnemySpawner::OnCycleSpawn(const std::vector<EnemyType>& _SpawnTypes, const std::vector<float4>& _SpawnPoses)
 {
-	if (nullptr != Callback)
+	if (nullptr != AllKillCallback)
 	{
 		MsgAssert("몬스터를 주기적으로 생성하는 EnemySpawner는 AllKill콜백함수를 등록할 수 없습니다");
 		return;

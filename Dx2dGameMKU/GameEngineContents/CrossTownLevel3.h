@@ -12,6 +12,7 @@ public:
 	CrossTownLevel3& operator=(const CrossTownLevel3& _Other) = delete;
 	CrossTownLevel3& operator=(const CrossTownLevel3&& _Other) noexcept = delete;
 
+
 protected:
 	void Start() override;
 	void LevelChangeStart() override;
@@ -30,5 +31,6 @@ private:
 	void CreateBackGrounds();
 	void CreateDoors();
 	void CreateEnemies();
+	void CreateScreenLock();
 };
 

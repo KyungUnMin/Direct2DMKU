@@ -1168,6 +1168,9 @@
     <Filter Include="03.Actor\08.FieldMoney">
       <UniqueIdentifier>{086f1c16-826c-4193-8250-57b247a44e80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\09.ScreenChainLock">
+      <UniqueIdentifier>{bbd8fec0-4845-4497-939c-1b9159692fc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2094,6 +2097,9 @@
     <ClCompile Include="UIFontRenderer.cpp">
       <Filter>04.Component\03.Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenChainLock.cpp">
+      <Filter>03.Actor\09.ScreenChainLock</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3001,6 +3007,9 @@
     </ClInclude>
     <ClInclude Include="UIFontRenderer.h">
       <Filter>04.Component\03.Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenChainLock.h">
+      <Filter>03.Actor\09.ScreenChainLock</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

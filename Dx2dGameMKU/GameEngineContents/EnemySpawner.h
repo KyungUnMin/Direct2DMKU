@@ -46,6 +46,8 @@ public:
 	std::shared_ptr<FieldEnemyBase> CreateEnemy(EnemyType _Type,const float4& _CreatePos);
 
 
+
+	//Enemy를 모두 처치할때 호출되는 콜백(일회성)
 	inline void SetAllKillCallback(std::function<void()> _Callback)
 	{
 		if (false == CycleSpawnTypes.empty())
@@ -54,7 +56,13 @@ public:
 			return;
 		}
 		
-		Callback = _Callback;
+		AllKillCallback = _Callback;
+	}
+
+	//Enemy를 처치할때마다 호출되는 콜백(일회성이 아니기 때문에 사용하지 않는다면 반드시 nullptr로 만들것)
+	inline void SetKillCallBack(std::function<void()> _KillCallback)
+	{
+		KillCallback = _KillCallback;
 	}
 
 	//Enemy 죽이기
@@ -78,6 +86,9 @@ public:
 
 
 	void Update(float _DeltaTime);
+
+	
+
 
 	inline void SetCycleDuration(float _MinDuration, float _MaxDuration)
 	{
@@ -109,7 +120,8 @@ private:
 
 	
 	size_t KillCount = 0;
-	std::function<void()> Callback = nullptr;
+	std::function<void()> AllKillCallback = nullptr;
+	std::function<void()> KillCallback = nullptr;
 
 	float Timer = 0.f;
 	float Duration = 0.f;

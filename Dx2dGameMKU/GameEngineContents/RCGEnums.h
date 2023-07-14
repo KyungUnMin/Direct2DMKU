@@ -10,6 +10,7 @@ enum class UpdateOrder
 	Enemy,
 	NPC,
 	Effect,
+	ScreenLock,
 	Money,
 
 	UI,
@@ -24,6 +25,7 @@ enum class CollisionOrder
 	EnemyAttack,
 	NPC,
 	FieldItem,
+	ScreenLock,
 };
 
 enum class RCG_CamNumType
@@ -45,6 +47,7 @@ enum class FieldRenderOrder
 enum class FieldUIRenderOrder
 {
 	Default = 0,
+	ScreenChainLock,
 	HUD,
 	BossHUD,
 	Conversation_BackImg,

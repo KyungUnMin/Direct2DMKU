@@ -75,6 +75,7 @@ SchoolEntryLevel::~SchoolEntryLevel()
 
 
 
+
 void SchoolEntryLevel::Start()
 {
 	FieldLevelBase::Start();
@@ -90,6 +91,7 @@ void SchoolEntryLevel::Start()
 
 	//디버깅용 DoorOpen함수 등록
 	FieldLevelBase::SetDoorOpenFunc(std::bind(&SchoolEntryLevel::DoorOpen, this));
+
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -125,6 +127,7 @@ void SchoolEntryLevel::CreateDoors()
 	DoorPtr->GetTransform()->SetLocalPosition(float4{ 360.f, -25.f, -25.f });
 	GetEnemySpawner().SetAllKillCallback(std::bind(&SchoolEntryLevel::DoorOpen, this));
 }
+
 
 void SchoolEntryLevel::DoorOpen()
 {

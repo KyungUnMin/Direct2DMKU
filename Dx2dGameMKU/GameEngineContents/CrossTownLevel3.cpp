@@ -9,6 +9,7 @@
 
 #include "BackGround.h"
 #include "FieldDoor.h"
+#include "ScreenChainLock.h"
 
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel3::BGInfoes =
@@ -58,6 +59,7 @@ void CrossTownLevel3::Start()
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1813.f, -245.f });
+	CreateScreenLock();
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -116,9 +118,27 @@ void CrossTownLevel3::CreateEnemies()
 		EnemyType::Cheerleader,
 		EnemyType::Cheerleader,
 		EnemyType::Cop,
-		EnemyType::TigerMan,
+		//EnemyType::TigerMan,
 		}, EnemySpawnPoses);
 }
+
+void CrossTownLevel3::CreateScreenLock()
+{
+	const float4 TriggerColPos = float4{ 0.f, -100.f };
+	const float4 TriggerColScale = float4{ 100.f, 1000.f };
+	const float4 EnemySpawnPos = float4{ -1900.f, -300.f, -300.f };
+
+	std::shared_ptr<ScreenChainLock> ScreenLock = nullptr;
+	ScreenLock = CreateActor<ScreenChainLock>(UpdateOrder::ScreenLock);
+
+	ScreenLock->SetTriggerColArea(TriggerColPos, TriggerColScale);
+	ScreenLock->SetTriggerCollBack([this, EnemySpawnPos]()
+	{
+		FieldLevelBase::GetEnemySpawner().CreateEnemy(EnemyType::TigerMan, EnemySpawnPos);
+	});
+}
+
+
 
 
 void CrossTownLevel3::LevelChangeStart()

@@ -223,6 +223,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ScreenChainLock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CheerleaderFSM.h" />
     <ClInclude Include="CheerleaderState_Attack_BackFlip.h">
       <SubType>
@@ -1001,6 +1005,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BossVersus_PostProcessing.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ScreenChainLock.cpp">
       <SubType>
       </SubType>
     </ClCompile>
