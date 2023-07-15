@@ -19,7 +19,7 @@
 #include "ShopItem_CursorBar.h"
 #include "ShopSlotController.h"
 
-LevelNames ShopLevelBase::PrevLevel = LevelNames::EndingLevel_Lose;
+LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
 std::string ShopLevelBase::PrevLevelBgmName;
 std::shared_ptr<class Fader> ShopLevelBase::LevelExitFade = nullptr;
 

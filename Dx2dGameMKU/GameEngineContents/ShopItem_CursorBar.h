@@ -48,7 +48,7 @@ private:
 	float4 BarLastPos = ShopBarLastPos;
 
 	bool IsConfirmation = false;
-	float ConfirmTime = FLT_MAX;
+	float ConfirmTime = -1.f;
 
 	inline void SetBarPos(const float4& _FirstPos, const float4& _LastPos)
 	{
@@ -58,5 +58,6 @@ private:
 
 	void Update_CursorMove();
 	void Update_ComfirmMove(float _DeltaTime);
+	bool InteractConfilm();
 };
 
