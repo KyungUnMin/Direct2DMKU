@@ -14,13 +14,13 @@ public:
 
 	void Init(
 		const std::string_view& _CursorTexName,
-		int _Cost, std::function<void()> _CallBack,
-		int _UnlockLevel)
+		int _Cost, int _UnlockLevel, int _Index,
+		std::function<void()> _CallBack)
 	{
 		static const std::string_view IconTexName = "GymCheckIcon.png";
 
 		UnlockLevel = _UnlockLevel;
-		ShopItemBlockBase::Init(_CursorTexName, IconTexName, _Cost, _CallBack);
+		ShopItemBlockBase::Init(_CursorTexName, IconTexName, _Cost, _Index, _CallBack);
 	}
 
 	void HoverIn() override;

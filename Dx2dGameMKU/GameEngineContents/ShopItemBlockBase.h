@@ -18,11 +18,22 @@ public:
 	virtual void HoverOut(){}
 	virtual void Buy() = 0;
 
+	inline const std::string& GetInfoTexName() const
+	{
+		return InfoTexName;
+	}
+
+	inline int GetIndex() const
+	{
+		return Index;
+	}
+
+
 protected:
 	void Init(
 		const std::string_view& _CursorTexName,
 		const std::string_view& _IconTexName,
-		int _Cost, std::function<void()> _CallBack);
+		int _Cost, int _Index, std::function<void()> _CallBack);
 
 
 	inline std::shared_ptr<GameEngineUIRenderer> GetIcon() const
@@ -42,7 +53,10 @@ protected:
 private:
 	std::shared_ptr<GameEngineUIRenderer> IconRender = nullptr;
 	std::string CursorTexName;
+	std::string InfoTexName;
 
+
+	int Index = -1;
 	int Cost = INT32_MAX;
 	std::function<void()> CallBack = nullptr;
 

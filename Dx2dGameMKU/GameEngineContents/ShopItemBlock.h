@@ -15,9 +15,9 @@ public:
 	void Init(
 		const std::string_view& _CursorTexName,
 		const std::string_view& _IconTexName, 
-		int _Cost, std::function<void()> _CallBack)
+		int _Cost, int _Index, std::function<void()> _CallBack)
 	{
-		ShopItemBlockBase::Init(_CursorTexName, _IconTexName, _Cost, _CallBack);
+		ShopItemBlockBase::Init(_CursorTexName, _IconTexName, _Cost, _Index, _CallBack);
 	}
 
 	void HoverIn() override;

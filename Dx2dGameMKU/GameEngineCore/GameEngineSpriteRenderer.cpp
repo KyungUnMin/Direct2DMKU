@@ -443,6 +443,7 @@ std::string GameEngineSpriteRenderer::GetTexName()
 	return Name;
 }
 
+
 void GameEngineSpriteRenderer::SpriteRenderInit()
 {
 	SetMesh("Rect");

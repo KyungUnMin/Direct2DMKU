@@ -10,6 +10,7 @@
 
 #include "Shop_GymLevel.h"
 #include "ShopSlotController.h"
+#include "ShopItemBlockBase.h"
 
 std::weak_ptr<GameEngineUIRenderer> ShopItem_CursorBar::CursorBar;
 
@@ -69,11 +70,60 @@ void ShopItem_CursorBar::Start()
 }
 
 
+void ShopItem_CursorBar::CreateItemDescRender()
+{
+	std::list<std::shared_ptr<GameEngineActor>> AllItemData;
+	AllItemData = GetLevel()->GetActorGroup(UpdateOrder::ShopItemData);
+
+	if (AllItemData.size() != (ShopSlotController::MaxSlot + 1))
+	{
+		MsgAssert("슬롯의 갯수가 잘못되었습니다");
+		return;
+	}
+
+	AllItemDesc.resize(AllItemData.size());
+	for (std::shared_ptr<GameEngineActor> ItemDataActor : AllItemData)
+	{
+		std::shared_ptr<ShopItemBlockBase> ItemData = nullptr;
+		ItemData = std::dynamic_pointer_cast<ShopItemBlockBase>(ItemDataActor);
+		if (nullptr == ItemData)
+		{
+			MsgAssert("UpdateOrder::ShopItemData그룹에 ShopItemBlockBase가 아닌 다른 객체가 존재합니다");
+			return;
+		}
+
+
+
+		int Index = ItemData->GetIndex();
+		const float Ratio = static_cast<float>(Index) / static_cast<float>(MaxCursor);
+		float4 DescWorldPos = float4::LerpClamp(BarFirstPos, BarLastPos, Ratio);
+
+		std::shared_ptr<GameEngineUIRenderer> DescRender = nullptr;
+		DescRender = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Desc);
+		
+		GameEngineTransform* DescTrans = DescRender->GetTransform();
+		DescTrans->SetLocalScale(BarRenderScale);
+		DescTrans->SetWorldPosition(DescWorldPos);
+
+		DescRender->SetTexture(ItemData->GetInfoTexName());
+		if (0 == Index)
+		{
+			DescRender->Off();
+		}
+
+		AllItemDesc[static_cast<size_t>(Index)] = DescRender;
+	}
+}
+
+
 void ShopItem_CursorBar::LevelChangeStart()
 {
 	GameEngineActor::LevelChangeStart();
 	CursorBar = BarRender;
 }
+
+
+
 
 void ShopItem_CursorBar::ChangeCursorTex(const std::string_view& _CursorTex)
 {
@@ -153,12 +203,33 @@ void ShopItem_CursorBar::Update_CursorMove()
 	if (false == IsPosChanged)
 		return;
 
+	//현재 커서에 따라 아이템 정보렌더 On/Off
+	PerceiveCursorMove();
+
 	//효과음 및 위치 변경
 	SoundMgr::PlaySFX("Shop_Cursor_Move.wav").SetVolume(0.3f);
 	const float Ratio = static_cast<float>(CurrentIndex) / static_cast<float>(MaxCursor);
 	float4 NextPos = float4::LerpClamp(BarFirstPos, BarLastPos, Ratio);
 	GetTransform()->SetLocalPosition(NextPos);
 }
+
+void ShopItem_CursorBar::PerceiveCursorMove()
+{
+	for (size_t i = 0; i < AllItemDesc.size(); ++i)
+	{
+		if (i == CurrentIndex)
+		{
+			AllItemDesc[i]->Off();
+		}
+		else
+		{
+			AllItemDesc[i]->On();
+		}
+	}
+}
+
+
+
 
 void ShopItem_CursorBar::Update_ComfirmMove(float _DeltaTime)
 {
@@ -247,3 +318,4 @@ void ShopItem_CursorBar::Reset()
 	GetTransform()->SetLocalPosition(BarFirstPos);
 	ConfirmBoxTrans->SetLocalPosition(ConfirmInnerOffset);
 }
+

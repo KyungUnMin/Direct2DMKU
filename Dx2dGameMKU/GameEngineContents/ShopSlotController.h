@@ -37,11 +37,11 @@ private:
 	std::shared_ptr<ShopItemBlockBase> CreateItemBlock(
 		const std::string_view& _CursorTexName,
 		const std::string_view& _IconTexName,
-		int _Cost, std::function<void()> _CallBack);
+		int _Cost, int _Index, std::function<void()> _CallBack);
 
 	std::shared_ptr<ShopItemBlockBase> CreateSkillBlock(
 		const std::string_view& _CursorTexName,
-		int _Cost, int _UnlockLevel,
+		int _Cost, int _Index, int _UnlockLevel,
 		std::function<void()> _CallBack);
 
 

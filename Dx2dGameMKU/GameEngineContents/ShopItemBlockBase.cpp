@@ -22,9 +22,12 @@ ShopItemBlockBase::~ShopItemBlockBase()
 void ShopItemBlockBase::Init(
 	const std::string_view& _CursorTexName,
 	const std::string_view& _IconTexName,
-	int _Cost, std::function<void()> _CallBack)
+	int _Cost, int _Index, std::function<void()> _CallBack)
 {
+	Index = _Index;
 	CursorTexName = _CursorTexName;
+	InfoTexName = CursorTexName;
+	InfoTexName = InfoTexName.replace(0, 10, "ShopInfo");
 
 	IconRender = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Item);
 	IconRender->SetScaleToTexture(_IconTexName);

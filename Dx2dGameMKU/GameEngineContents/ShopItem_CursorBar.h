@@ -34,6 +34,9 @@ public:
 	{
 		return CurrentIndex;
 	}
+
+	//레벨에서 ShopSlotController를 생성한 뒤에 반드시 호출시켜줘야 함
+	void CreateItemDescRender();
 	
 	void Reset();
 
@@ -49,6 +52,7 @@ private:
 
 	size_t MaxCursor = 39467;
 
+	std::vector<std::shared_ptr<GameEngineUIRenderer>> AllItemDesc;
 	std::shared_ptr<GameEngineUIRenderer> BarRender = nullptr;
 	GameEngineTransform* ConfirmBoxTrans = nullptr;
 
@@ -67,5 +71,7 @@ private:
 	void Update_CursorMove();
 	void Update_ComfirmMove(float _DeltaTime);
 	bool InteractConfilm();
+
+	void PerceiveCursorMove();
 };
 

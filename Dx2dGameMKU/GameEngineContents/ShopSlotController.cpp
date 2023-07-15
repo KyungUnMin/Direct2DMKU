@@ -70,39 +70,47 @@ void ShopSlotController::Start()
 
 void ShopSlotController::Init_Burger()
 {
+	int Index = -1;
 	ItemBlocks.resize(MaxSlot + 1, nullptr);
 
-	ItemBlocks[0] = CreateItemBlock
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_SingleTeckBurger.png",
-		"ShopUI_SingleBurger.png", 9999,
+		"ShopUI_SingleBurger.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(30);
 	});
 
-	ItemBlocks[1] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_DoubleBurger.png",
-		"ShopUI_DoubleBurger.png", 9999,
+		"ShopUI_DoubleBurger.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(60);
 	});
 
-	ItemBlocks[2] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_TeckFried.png",
-		"ShopUI_FriedPotato.png", 9999,
+		"ShopUI_FriedPotato.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(10);
 	});
 
-	ItemBlocks[3] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_TeckShake.png",
-		"ShopUI_Shake.png", 9999,
+		"ShopUI_Shake.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(20);
@@ -111,39 +119,48 @@ void ShopSlotController::Init_Burger()
 
 void ShopSlotController::Init_Gym()
 {
+	int Index = -1;
 	ItemBlocks.resize(MaxSlot + 1, nullptr);
 
-	ItemBlocks[0] = CreateSkillBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopUI_SelectionBar.png",
-		9999,9999,
+		"ShopCursor_TeckShake.png",
+		9999, Index, 9999,
 		[]()
 	{
 		//TODO
 	});
 
-	ItemBlocks[1] = CreateSkillBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopUI_SelectionBar.png",
-		9999, 9999,
+		"ShopCursor_TeckShake.png",
+		9999, Index, 9999,
 		[]()
 	{
 		//TODO
 	});
 
-	ItemBlocks[2] = CreateSkillBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopUI_SelectionBar.png",
-		9999, 9999,
+		"ShopCursor_TeckShake.png",
+		9999, Index, 9999,
 		[]()
 	{
 		//TODO
 	});
 
-	ItemBlocks[3] = CreateSkillBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopUI_SelectionBar.png",
-		9999, 9999,
+		"ShopCursor_TeckShake.png",
+		9999, Index, 9999,
 		[]()
 	{
 		//TODO
@@ -154,39 +171,48 @@ void ShopSlotController::Init_Gym()
 
 void ShopSlotController::Init_Store()
 {
+	int Index = -1;
 	ItemBlocks.resize(MaxSlot + 1, nullptr);
 
-	ItemBlocks[0] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_Candy.png",
-		"ShopUI_Candy.png", 9999,
+		"ShopUI_Candy.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(30);
 	});
 
-	ItemBlocks[1] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_CottonCandy.png",
-		"ShopUI_CottonCandy.png", 9999,
+		"ShopUI_CottonCandy.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(60);
 	});
 
-	ItemBlocks[2] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_GummyYummi.png",
-		"ShopUI_GummyYummi.png", 9999,
+		"ShopUI_GummyYummi.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(10);
 	});
 
-	ItemBlocks[3] = CreateItemBlock
+
+	++Index;
+	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_MelonMint.png",
-		"ShopUI_MelonMint.png", 9999,
+		"ShopUI_MelonMint.png", 9999, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(20);
@@ -199,10 +225,10 @@ void ShopSlotController::Init_Store()
 std::shared_ptr<ShopItemBlockBase> ShopSlotController::CreateItemBlock(
 	const std::string_view& _CursorTexName,
 	const std::string_view& _IconTexName,
-	int _Cost, std::function<void()> _CallBack)
+	int _Cost, int _Index, std::function<void()> _CallBack)
 {
-	std::shared_ptr<ShopItemBlock> Block = GetLevel()->CreateActor<ShopItemBlock>(static_cast<int>(UpdateOrder::UI));
-	Block->Init(_CursorTexName, _IconTexName, _Cost, _CallBack);
+	std::shared_ptr<ShopItemBlock> Block = GetLevel()->CreateActor<ShopItemBlock>(static_cast<int>(UpdateOrder::ShopItemData));
+	Block->Init(_CursorTexName, _IconTexName, _Cost, _Index, _CallBack);
 	return Block;
 }
 
@@ -210,11 +236,11 @@ std::shared_ptr<ShopItemBlockBase> ShopSlotController::CreateItemBlock(
 
 std::shared_ptr<ShopItemBlockBase> ShopSlotController::CreateSkillBlock(
 	const std::string_view& _CursorTexName,
-	int _Cost, int _UnlockLevel,
+	int _Cost, int _Index, int _UnlockLevel,
 	std::function<void()> _CallBack)
 {
-	std::shared_ptr<ShopSkillBlock> Block = GetLevel()->CreateActor<ShopSkillBlock>(static_cast<int>(UpdateOrder::UI));
-	Block->Init(_CursorTexName, _Cost, _CallBack, _UnlockLevel);
+	std::shared_ptr<ShopSkillBlock> Block = GetLevel()->CreateActor<ShopSkillBlock>(static_cast<int>(UpdateOrder::ShopItemData));
+	Block->Init(_CursorTexName, _Cost, _UnlockLevel, _Index, _CallBack);
 	return Block;
 }
 
