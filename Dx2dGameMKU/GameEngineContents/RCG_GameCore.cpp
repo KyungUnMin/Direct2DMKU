@@ -31,7 +31,7 @@ void RCG_GameCore::GameStart()
 
 	KeyMgr::CreateKey();
 	SoundMgr::Init();
-	LevelMgr::CreateLevel(LevelNames::CrossTownLevel2);
+	LevelMgr::CreateLevel(LevelNames::CrossTownLevel1);
 }
 
 
