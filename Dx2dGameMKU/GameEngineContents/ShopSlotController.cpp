@@ -77,7 +77,7 @@ void ShopSlotController::Init_Burger()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_SingleTeckBurger.png",
-		"ShopUI_SingleBurger.png", 9999, Index,
+		"ShopUI_SingleBurger.png", 50, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(30);
@@ -88,7 +88,7 @@ void ShopSlotController::Init_Burger()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_DoubleBurger.png",
-		"ShopUI_DoubleBurger.png", 9999, Index,
+		"ShopUI_DoubleBurger.png", 30, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(60);
@@ -99,7 +99,7 @@ void ShopSlotController::Init_Burger()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_TeckFried.png",
-		"ShopUI_FriedPotato.png", 9999, Index,
+		"ShopUI_FriedPotato.png", 12, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(10);
@@ -110,7 +110,7 @@ void ShopSlotController::Init_Burger()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_TeckShake.png",
-		"ShopUI_Shake.png", 9999, Index,
+		"ShopUI_Shake.png", 20, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(20);
@@ -127,7 +127,7 @@ void ShopSlotController::Init_Gym()
 	ItemBlocks[Index] = CreateSkillBlock
 	(
 		"ShopCursor_DAP.png",
-		9999, Index, 9999,
+		50, Index, 0,
 		[]()
 	{
 		//TODO
@@ -138,7 +138,7 @@ void ShopSlotController::Init_Gym()
 	ItemBlocks[Index] = CreateSkillBlock
 	(
 		"ShopCursor_DropKick.png",
-		9999, Index, 9999,
+		70, Index, 3,
 		[]()
 	{
 		//TODO
@@ -149,7 +149,7 @@ void ShopSlotController::Init_Gym()
 	ItemBlocks[Index] = CreateSkillBlock
 	(
 		"ShopCursor_DragonKick.png",
-		9999, Index, 9999,
+		120, Index, 3,
 		[]()
 	{
 		//TODO
@@ -160,7 +160,7 @@ void ShopSlotController::Init_Gym()
 	ItemBlocks[Index] = CreateSkillBlock
 	(
 		"ShopCursor_HyrricaneKick.png",
-		9999, Index, 9999,
+		400, Index, 5,
 		[]()
 	{
 		//TODO
@@ -179,7 +179,7 @@ void ShopSlotController::Init_Store()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_Candy.png",
-		"ShopUI_Candy.png", 9999, Index,
+		"ShopUI_Candy.png", 15, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(30);
@@ -190,7 +190,7 @@ void ShopSlotController::Init_Store()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_CottonCandy.png",
-		"ShopUI_CottonCandy.png", 9999, Index,
+		"ShopUI_CottonCandy.png", 35, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(60);
@@ -201,7 +201,7 @@ void ShopSlotController::Init_Store()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_GummyYummi.png",
-		"ShopUI_GummyYummi.png", 9999, Index,
+		"ShopUI_GummyYummi.png", 500, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(10);
@@ -212,7 +212,7 @@ void ShopSlotController::Init_Store()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_MelonMint.png",
-		"ShopUI_MelonMint.png", 9999, Index,
+		"ShopUI_MelonMint.png", 500, Index,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(20);
