@@ -12,16 +12,18 @@ public:
 	ShopSkillBlock& operator=(const ShopSkillBlock& _Other) = delete;
 	ShopSkillBlock& operator=(const ShopSkillBlock&& _Other) noexcept = delete;
 
-	void Init(const std::string_view& _Name, int _UnlockLevel,
-		int _Cost, std::function<void()> _CallBack)
+	void Init(
+		const std::string_view& _CursorTexName,
+		int _Cost, std::function<void()> _CallBack,
+		int _UnlockLevel)
 	{
-		UnlockLevel = _UnlockLevel;
+		static const std::string_view IconTexName = "GymCheckIcon.png";
 
-		std::string Description = "언락 레벨 " + std::to_string(UnlockLevel);
-		ShopItemBlockBase::Init(_Name, Description, "GymCheckIcon.png", _Cost, _CallBack);
+		UnlockLevel = _UnlockLevel;
+		ShopItemBlockBase::Init(_CursorTexName, IconTexName, _Cost, _CallBack);
 	}
 
-
+	void HoverIn() override;
 	void Buy() override;
 
 protected:

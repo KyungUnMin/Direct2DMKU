@@ -74,9 +74,8 @@ void ShopSlotController::Init_Burger()
 
 	ItemBlocks[0] = CreateItemBlock
 	(
-		"텍 버거",
-		"체력을 30% 회복시킨다",
-		"ShopUI_SingleBurger.png", 2100,
+		"ShopCursor_SingleTeckBurger.png",
+		"ShopUI_SingleBurger.png", 9999,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(30);
@@ -84,9 +83,8 @@ void ShopSlotController::Init_Burger()
 
 	ItemBlocks[1] = CreateItemBlock
 	(
-		"더블 텍 버거",
-		"체력을 60% 회복시킨다",
-		"ShopUI_DoubleBurger.png", 2400,
+		"ShopCursor_DoubleBurger.png",
+		"ShopUI_DoubleBurger.png", 9999,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(60);
@@ -94,9 +92,8 @@ void ShopSlotController::Init_Burger()
 
 	ItemBlocks[2] = CreateItemBlock
 	(
-		"텍 감자튀김",
-		"체력을 10% 회복시킨다",
-		"ShopUI_FriedPotato.png", 1500,
+		"ShopCursor_TeckFried.png",
+		"ShopUI_FriedPotato.png", 9999,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(10);
@@ -104,9 +101,8 @@ void ShopSlotController::Init_Burger()
 
 	ItemBlocks[3] = CreateItemBlock
 	(
-		"텍 쉐이크",
-		"체력을 20% 회복시킨다",
-		"ShopUI_Shake.png", 1800,
+		"ShopCursor_TeckShake.png",
+		"ShopUI_Shake.png", 9999,
 		[]()
 	{
 		DataMgr::PlusPlayerHP(20);
@@ -119,7 +115,8 @@ void ShopSlotController::Init_Gym()
 
 	ItemBlocks[0] = CreateSkillBlock
 	(
-		"마하 킥",0, 15000,
+		"ShopUI_SelectionBar.png",
+		9999,9999,
 		[]()
 	{
 		//TODO
@@ -127,7 +124,8 @@ void ShopSlotController::Init_Gym()
 
 	ItemBlocks[1] = CreateSkillBlock
 	(
-		"마하 킥", 0, 15000,
+		"ShopUI_SelectionBar.png",
+		9999, 9999,
 		[]()
 	{
 		//TODO
@@ -135,7 +133,8 @@ void ShopSlotController::Init_Gym()
 
 	ItemBlocks[2] = CreateSkillBlock
 	(
-		"마하 킥", 0, 15000,
+		"ShopUI_SelectionBar.png",
+		9999, 9999,
 		[]()
 	{
 		//TODO
@@ -143,7 +142,8 @@ void ShopSlotController::Init_Gym()
 
 	ItemBlocks[3] = CreateSkillBlock
 	(
-		"마하 킥", 0, 15000,
+		"ShopUI_SelectionBar.png",
+		9999, 9999,
 		[]()
 	{
 		//TODO
@@ -154,31 +154,67 @@ void ShopSlotController::Init_Gym()
 
 void ShopSlotController::Init_Store()
 {
+	ItemBlocks.resize(MaxSlot + 1, nullptr);
 
+	ItemBlocks[0] = CreateItemBlock
+	(
+		"ShopCursor_Candy.png",
+		"ShopUI_Candy.png", 9999,
+		[]()
+	{
+		DataMgr::PlusPlayerHP(30);
+	});
+
+	ItemBlocks[1] = CreateItemBlock
+	(
+		"ShopCursor_CottonCandy.png",
+		"ShopUI_CottonCandy.png", 9999,
+		[]()
+	{
+		DataMgr::PlusPlayerHP(60);
+	});
+
+	ItemBlocks[2] = CreateItemBlock
+	(
+		"ShopCursor_GummyYummi.png",
+		"ShopUI_GummyYummi.png", 9999,
+		[]()
+	{
+		DataMgr::PlusPlayerHP(10);
+	});
+
+	ItemBlocks[3] = CreateItemBlock
+	(
+		"ShopCursor_MelonMint.png",
+		"ShopUI_MelonMint.png", 9999,
+		[]()
+	{
+		DataMgr::PlusPlayerHP(20);
+	});
 }
 
 
 
 
 std::shared_ptr<ShopItemBlockBase> ShopSlotController::CreateItemBlock(
-	const std::string_view& _Name,
-	const std::string_view& _Description,
-	const std::string_view& _TextureName,
+	const std::string_view& _CursorTexName,
+	const std::string_view& _IconTexName,
 	int _Cost, std::function<void()> _CallBack)
 {
 	std::shared_ptr<ShopItemBlock> Block = GetLevel()->CreateActor<ShopItemBlock>(static_cast<int>(UpdateOrder::UI));
-	Block->Init(_Name, _Description, _TextureName, _Cost, _CallBack);
+	Block->Init(_CursorTexName, _IconTexName, _Cost, _CallBack);
 	return Block;
 }
 
 
 
 std::shared_ptr<ShopItemBlockBase> ShopSlotController::CreateSkillBlock(
-	const std::string_view& _Name, int _UnlockLevel,
-	int _Cost, std::function<void()> _CallBack)
+	const std::string_view& _CursorTexName,
+	int _Cost, int _UnlockLevel,
+	std::function<void()> _CallBack)
 {
 	std::shared_ptr<ShopSkillBlock> Block = GetLevel()->CreateActor<ShopSkillBlock>(static_cast<int>(UpdateOrder::UI));
-	Block->Init(_Name,_UnlockLevel,_Cost, _CallBack);
+	Block->Init(_CursorTexName, _Cost, _CallBack, _UnlockLevel);
 	return Block;
 }
 

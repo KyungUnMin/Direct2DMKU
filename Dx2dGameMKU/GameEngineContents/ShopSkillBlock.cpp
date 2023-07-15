@@ -3,6 +3,8 @@
 
 #include <GameEngineCore/GameEngineUIRenderer.h>
 
+#include "ShopItem_CursorBar.h"
+
 ShopSkillBlock::ShopSkillBlock()
 {
 
@@ -12,6 +14,14 @@ ShopSkillBlock::~ShopSkillBlock()
 {
 
 }
+
+
+
+void ShopSkillBlock::HoverIn()
+{
+	ShopItem_CursorBar::ChangeCursorTex(GetCursorTexName());
+}
+
 
 
 
@@ -33,7 +43,7 @@ void ShopSkillBlock::Buy()
 	//MsgAssert("인벤토리 공간이 없는데 아이템을 구매하려고 했습니다");
 
 	//구매 확인 렌더러 On
-	GetTexture()->On();
+	GetIcon()->On();
 
 	PrevAquired = true;
 

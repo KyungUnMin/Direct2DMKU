@@ -6,6 +6,7 @@
 #include "DataMgr.h"
 #include "RCGEnums.h"
 
+
 ShopItemBlockBase::ShopItemBlockBase()
 {
 
@@ -17,22 +18,19 @@ ShopItemBlockBase::~ShopItemBlockBase()
 }
 
 
+
 void ShopItemBlockBase::Init(
-	const std::string_view& _Name, 
-	const std::string_view& _Description, 
-	const std::string_view& _TextureName, 
+	const std::string_view& _CursorTexName,
+	const std::string_view& _IconTexName,
 	int _Cost, std::function<void()> _CallBack)
 {
-	Name = _Name;
-	Description = _Description;
+	CursorTexName = _CursorTexName;
 
-	Texture = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Item);
-	/*Texture->SetTexture(_TextureName);
-	Texture->GetTransform()->SetLocalScale(float4::One * 70.f);*/
-	Texture->SetScaleToTexture(_TextureName);
-	Texture->Off();
+	IconRender = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Item);
+	IconRender->SetScaleToTexture(_IconTexName);
+	IconRender->Off();
 
-	Texture->GetTransform()->SetLocalPosition(float4::Left * 220.f);
+	IconRender->GetTransform()->SetLocalPosition(float4::Left * 220.f);
 	GetTransform()->SetLocalRotation(float4::Forward * -10.f);
 
 	Cost = _Cost;
@@ -41,13 +39,12 @@ void ShopItemBlockBase::Init(
 
 
 
-void ShopItemBlockBase::ChangeDescription(const std::string_view& _Desc)
+
+bool ShopItemBlockBase::MoneyCheck()
 {
-	Description = _Desc;
-
-	//TODO, 시각적 텍스트를 바꾸는 기능
+	int PlayerMoney = DataMgr::GetPlayerMoney();
+	return (Cost <= PlayerMoney);
 }
-
 
 
 void ShopItemBlockBase::CallBackExcute()
@@ -59,12 +56,4 @@ void ShopItemBlockBase::CallBackExcute()
 	}
 
 	CallBack();
-}
-
-
-
-bool ShopItemBlockBase::MoneyCheck()
-{
-	int PlayerMoney = DataMgr::GetPlayerMoney();
-	return (Cost <= PlayerMoney);
 }

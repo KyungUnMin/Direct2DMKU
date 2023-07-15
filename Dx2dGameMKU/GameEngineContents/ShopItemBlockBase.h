@@ -20,26 +20,31 @@ public:
 
 protected:
 	void Init(
-		const std::string_view& _Name, const std::string_view& _Description,
-		const std::string_view& _TextureName, int _Cost, std::function<void()> _CallBack);
+		const std::string_view& _CursorTexName,
+		const std::string_view& _IconTexName,
+		int _Cost, std::function<void()> _CallBack);
 
-	void ChangeDescription(const std::string_view& _Desc);
 
-	void CallBackExcute();
-
-	inline std::shared_ptr<GameEngineUIRenderer> GetTexture() const
+	inline std::shared_ptr<GameEngineUIRenderer> GetIcon() const
 	{
-		return Texture;
+		return IconRender;
+	}
+
+	inline const std::string& GetCursorTexName() const
+	{
+		return CursorTexName;
 	}
 
 	bool MoneyCheck();
 
+	void CallBackExcute();
+
 private:
-	std::string_view Name = "UNKNOWN";
-	std::string Description = "";
-	std::shared_ptr<GameEngineUIRenderer> Texture = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> IconRender = nullptr;
+	std::string CursorTexName;
 
 	int Cost = INT32_MAX;
 	std::function<void()> CallBack = nullptr;
+
 };
 

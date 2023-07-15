@@ -65,6 +65,7 @@ enum class ShopUIRenderOrder
 	Info,
 	Cursor,
 	Item,
+	Text,
 };
 
 enum class BossVersusUIRenderOrder

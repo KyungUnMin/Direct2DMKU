@@ -11,7 +11,8 @@
 #include "Shop_GymLevel.h"
 #include "ShopSlotController.h"
 
-const std::string_view ShopItem_CursorBar::BarRenderName = "ShopUI_SelectionBar.png";
+std::weak_ptr<GameEngineUIRenderer> ShopItem_CursorBar::CursorBar;
+
 const std::string_view ShopItem_CursorBar::ConfirmRenderName = "ShopUI_ConfirmBox.png";
 
 const float4 ShopItem_CursorBar::ConfirmRenderScale = float4{ 200.f, 140.f } *0.7f;
@@ -27,6 +28,8 @@ const float4 ShopItem_CursorBar::ConfirmInnerOffset = { -100.f, 25.f, 0.f };
 const float4 ShopItem_CursorBar::ConfirmOutOffset = { -280.f, 50.f, 0.f };
 
 size_t ShopItem_CursorBar::CurrentIndex = 0;
+
+
 
 
 ShopItem_CursorBar::ShopItem_CursorBar()
@@ -50,8 +53,7 @@ void ShopItem_CursorBar::Start()
 	ConfirmBoxTrans->SetLocalPosition(ConfirmInnerOffset);
 
 	//아이템을 선택할 수 있는 박스
-	std::shared_ptr<GameEngineUIRenderer> BarRender = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Cursor);
-	BarRender->SetTexture(BarRenderName);
+	BarRender = CreateComponent<GameEngineUIRenderer>(ShopUIRenderOrder::Cursor);
 	BarRender->GetTransform()->SetLocalScale(BarRenderScale);
 
 	//현제 레벨이 체육관인 경우
@@ -67,12 +69,32 @@ void ShopItem_CursorBar::Start()
 }
 
 
+void ShopItem_CursorBar::LevelChangeStart()
+{
+	GameEngineActor::LevelChangeStart();
+	CursorBar = BarRender;
+}
+
+void ShopItem_CursorBar::ChangeCursorTex(const std::string_view& _CursorTex)
+{
+	if (true == CursorBar.expired())
+	{
+		MsgAssert("CursorBar가 nullptr이여서 커서의 텍스처를 변경할 수 없습니다");
+		return;
+	}
+
+	std::shared_ptr<GameEngineUIRenderer> BarRender = CursorBar.lock();
+	BarRender->SetTexture(_CursorTex);
+}
+
+
 
 void ShopItem_CursorBar::Update(float _DeltaTime)
 {
 	Update_CursorMove();
 	Update_ComfirmMove(_DeltaTime);
 }
+
 
 
 

@@ -35,14 +35,14 @@ private:
 	void Init_Store();
 
 	std::shared_ptr<ShopItemBlockBase> CreateItemBlock(
-		const std::string_view& _Name,
-		const std::string_view& _Description,
-		const std::string_view& _TextureName,
+		const std::string_view& _CursorTexName,
+		const std::string_view& _IconTexName,
 		int _Cost, std::function<void()> _CallBack);
 
 	std::shared_ptr<ShopItemBlockBase> CreateSkillBlock(
-		const std::string_view& _Name, int _UnlockLevel,
-		int _Cost, std::function<void()> _CallBack);
+		const std::string_view& _CursorTexName,
+		int _Cost, int _UnlockLevel,
+		std::function<void()> _CallBack);
 
 
 	void Update_Select();

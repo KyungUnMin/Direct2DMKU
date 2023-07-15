@@ -12,11 +12,12 @@ public:
 	ShopItemBlock& operator=(const ShopItemBlock& _Other) = delete;
 	ShopItemBlock& operator=(const ShopItemBlock&& _Other) noexcept = delete;
 
-	void Init(const std::string_view& _Name, const std::string_view& _Description,
-		const std::string_view& _TextureName, int _Cost, std::function<void()> _CallBack)
+	void Init(
+		const std::string_view& _CursorTexName,
+		const std::string_view& _IconTexName, 
+		int _Cost, std::function<void()> _CallBack)
 	{
-		Description = _Description;
-		ShopItemBlockBase::Init(_Name, "???", _TextureName, _Cost, _CallBack);
+		ShopItemBlockBase::Init(_CursorTexName, _IconTexName, _Cost, _CallBack);
 	}
 
 	void HoverIn() override;

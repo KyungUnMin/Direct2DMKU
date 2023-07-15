@@ -1,10 +1,11 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineUIRenderer;
+
 class ShopItem_CursorBar : public GameEngineActor
 {
 public:
-	static const std::string_view BarRenderName;
 	static const std::string_view ConfirmRenderName;
 
 	static const float4 BarRenderScale;
@@ -17,6 +18,9 @@ public:
 
 	static const float4 ConfirmInnerOffset;
 	static const float4 ConfirmOutOffset;
+
+	static void ChangeCursorTex(const std::string_view& _CursorTex);
+
 
 	ShopItem_CursorBar();
 	~ShopItem_CursorBar() override;
@@ -37,11 +41,15 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
+	void LevelChangeStart() override;
 
 private:
 	static size_t CurrentIndex;
+	static std::weak_ptr<GameEngineUIRenderer> CursorBar;
+
 	size_t MaxCursor = 39467;
 
+	std::shared_ptr<GameEngineUIRenderer> BarRender = nullptr;
 	GameEngineTransform* ConfirmBoxTrans = nullptr;
 
 	float4 BarFirstPos = ShopBarFirstPos;
