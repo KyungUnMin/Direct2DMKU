@@ -126,7 +126,7 @@ void ShopSlotController::Init_Gym()
 	++Index;
 	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopCursor_TeckShake.png",
+		"ShopCursor_DAP.png",
 		9999, Index, 9999,
 		[]()
 	{
@@ -137,7 +137,7 @@ void ShopSlotController::Init_Gym()
 	++Index;
 	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopCursor_TeckShake.png",
+		"ShopCursor_DropKick.png",
 		9999, Index, 9999,
 		[]()
 	{
@@ -148,7 +148,7 @@ void ShopSlotController::Init_Gym()
 	++Index;
 	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopCursor_TeckShake.png",
+		"ShopCursor_DragonKick.png",
 		9999, Index, 9999,
 		[]()
 	{
@@ -159,7 +159,7 @@ void ShopSlotController::Init_Gym()
 	++Index;
 	ItemBlocks[Index] = CreateSkillBlock
 	(
-		"ShopCursor_TeckShake.png",
+		"ShopCursor_HyrricaneKick.png",
 		9999, Index, 9999,
 		[]()
 	{
