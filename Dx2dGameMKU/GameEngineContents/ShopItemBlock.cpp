@@ -7,6 +7,7 @@
 #include "DataMgr.h"
 
 #include "ShopItem_CursorBar.h"
+#include "ShopUI_ResultText.h"
 
 ShopItemBlock::ShopItemBlock()
 {
@@ -29,6 +30,13 @@ void ShopItemBlock::HoverOut()
 	GetIcon()->Off();
 }
 
+
+ShopResultType ShopItemBlock::IsAvailable()
+{
+
+
+	return ShopResultType::BuyOk;
+}
 
 void ShopItemBlock::Buy()
 {

@@ -11,6 +11,7 @@
 #include "Shop_GymLevel.h"
 #include "ShopSlotController.h"
 #include "ShopItemBlockBase.h"
+#include "ShopUI_ResultText.h"
 
 std::weak_ptr<GameEngineUIRenderer> ShopItem_CursorBar::CursorBar;
 
@@ -40,7 +41,7 @@ ShopItem_CursorBar::ShopItem_CursorBar()
 
 ShopItem_CursorBar::~ShopItem_CursorBar()
 {
-
+	
 }
 
 
@@ -272,6 +273,7 @@ bool ShopItem_CursorBar::InteractConfilm()
 	//Ok버튼이나 Back버튼을 모두 누르지 않은 경우
 	if (false == IsPushOk && false == IsPushBack)
 		return false;
+	
 
 	//확인 팝업이 뜨지 않았는데, 백 버튼을 누른 경우
 	if (false == IsConfirmation && true == IsPushBack)
@@ -289,9 +291,9 @@ bool ShopItem_CursorBar::InteractConfilm()
 	//확인 팝업이 떠있는데, OK버튼을 누른 경우
 	else if (true == IsConfirmation && true == IsPushOk)
 	{
-		//사운드 임시
-		SoundMgr::PlaySFX("Shop_Cursur_Ok.wav").SetVolume(0.2f);
-		//콜백 호출
+		//사운드 임시(구매 사운드 따로 찾아서 넣자)
+		//SoundMgr::PlaySFX("Shop_Cursur_Ok.wav").SetVolume(0.2f);
+		BuyItem();
 	}
 
 	//확인 팝업이 떠있는데, Back버튼을 누른 경우
@@ -306,6 +308,50 @@ bool ShopItem_CursorBar::InteractConfilm()
 	return true;
 }
 
+void ShopItem_CursorBar::BuyItem()
+{
+	int SelectIndex = static_cast<int>(CurrentIndex);
+
+	std::list<std::shared_ptr<GameEngineActor>> AllItemData;
+	AllItemData = GetLevel()->GetActorGroup(UpdateOrder::ShopItemData);
+	for (std::shared_ptr<GameEngineActor> ItemDataActor : AllItemData)
+	{
+		std::shared_ptr<ShopItemBlockBase> ItemData = nullptr;
+		ItemData = std::dynamic_pointer_cast<ShopItemBlockBase>(ItemDataActor);
+		if (nullptr == ItemData)
+		{
+			MsgAssert("UpdateOrder::ShopItemData그룹에 ShopItemBlockBase가 아닌 다른 객체가 존재합니다");
+			return;
+		}
+
+		int ItemIndex = ItemData->GetIndex();
+		if (SelectIndex != ItemIndex)
+			continue;
+
+		ShopResultType Result = ItemData->IsAvailable();
+		SetResultText(Result);
+
+		if (ShopResultType::BuyOk == Result)
+		{
+			SoundMgr::PlaySFX("Shop_Buy.wav");
+			ItemData->Buy();
+		}
+		else
+		{
+			SoundMgr::PlaySFX("Shop_CantBuy.mp3");
+		}
+		return;
+	}
+}
+
+void ShopItem_CursorBar::SetResultText(ShopResultType _Result)
+{
+	ShopUI_ResultText* ResultText = ShopUI_ResultText::GetGPtr();
+	float4 ThisWorldPos = GetTransform()->GetWorldPosition();
+
+	ResultText->TextOn(_Result);
+	ResultText->GetTransform()->SetWorldPosition(ThisWorldPos);
+}
 
 
 
@@ -319,4 +365,6 @@ void ShopItem_CursorBar::Reset()
 	GetTransform()->SetLocalPosition(BarFirstPos);
 	ConfirmBoxTrans->SetLocalPosition(ConfirmInnerOffset);
 }
+
+
 

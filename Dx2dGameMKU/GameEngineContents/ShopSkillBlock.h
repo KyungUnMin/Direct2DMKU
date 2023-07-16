@@ -24,7 +24,11 @@ public:
 	}
 
 	void HoverIn() override;
+
+	ShopResultType IsAvailable() override;
 	void Buy() override;
+
+	void Reset() override;
 
 protected:
 

@@ -126,10 +126,6 @@ public:
 		return PlayerAtt;
 	}
 
-	static inline void PlayerLevelUp()
-	{
-		PlayerAtt *= 2;
-	}
 
 	//------------------Speed---------------------------------
 
@@ -149,6 +145,20 @@ public:
 		PlayerSpeedPer = _Per;
 	}
 
+	//------------------Level & EXP---------------------------------
+
+	static inline void PlayerLevelUp()
+	{
+		++PlayerAtt;
+		++PlayerLevel;
+		PlayerExp = 0;
+	}
+
+	static inline int GetPlayerLevel()
+	{
+		return PlayerLevel;
+	}
+
 protected:
 
 private:
@@ -158,6 +168,10 @@ private:
 
 	static float PlayerSpeedPer;
 	static int PlayerAtt;
+
+	static int PlayerLevel;
+	static int PlayerExp;
+	static const int PlayerMaxExp;
 
 
 	//static std::vector<ItemType> Inventory;

@@ -3,6 +3,7 @@
 
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "SkillMgr.h"
 
 #include "Shop_BurgerLevel.h"
 #include "Shop_GymLevel.h"
@@ -11,6 +12,7 @@
 #include "ShopItemBlock.h"
 #include "ShopSkillBlock.h"
 #include "ShopItem_CursorBar.h"
+#include "PlayerFSM.h"
 
 const size_t ShopSlotController::MaxSlot = 3;
 
@@ -132,7 +134,7 @@ void ShopSlotController::Init_Gym()
 		50, Index, 0,
 		[]()
 	{
-		//TODO
+		SkillMgr::AcquireSkill(PlayerStateType::SpecialAttack_DAP);
 	});
 
 
@@ -143,7 +145,7 @@ void ShopSlotController::Init_Gym()
 		70, Index, 3,
 		[]()
 	{
-		//TODO
+		SkillMgr::AcquireSkill(PlayerStateType::SpecialAttack_DonkeyKick);
 	});
 
 
@@ -154,7 +156,7 @@ void ShopSlotController::Init_Gym()
 		120, Index, 3,
 		[]()
 	{
-		//TODO
+		SkillMgr::AcquireSkill(PlayerStateType::UniqueAttack_DragonFeet);
 	});
 
 
@@ -165,7 +167,7 @@ void ShopSlotController::Init_Gym()
 		400, Index, 5,
 		[]()
 	{
-		//TODO
+		SkillMgr::AcquireSkill(PlayerStateType::UniqueAttack_HyrricaneKick);
 	});
 
 

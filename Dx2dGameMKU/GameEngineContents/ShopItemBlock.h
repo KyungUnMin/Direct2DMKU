@@ -22,6 +22,8 @@ public:
 
 	void HoverIn() override;
 	void HoverOut() override;
+
+	ShopResultType IsAvailable() override;
 	void Buy() override;
 	void Reset() override;
 

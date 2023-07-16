@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineUIRenderer;
+enum class ShopResultType;
 
 class ShopItemBlockBase : public GameEngineActor
 {
@@ -16,6 +17,8 @@ public:
 
 	virtual void HoverIn(){}
 	virtual void HoverOut(){}
+
+	virtual ShopResultType IsAvailable() = 0;
 	virtual void Buy() = 0;
 	virtual void Reset() {};
 
@@ -51,6 +54,11 @@ protected:
 	bool MoneyCheck();
 
 	void CallBackExcute();
+
+	inline int GetCost() const
+	{
+		return Cost;
+	}
 
 private:
 	std::shared_ptr<GameEngineUIRenderer> IconRender = nullptr;

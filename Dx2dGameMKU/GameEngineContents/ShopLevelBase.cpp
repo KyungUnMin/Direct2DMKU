@@ -18,6 +18,7 @@
 #include "ShopInfo.h"
 #include "ShopItem_CursorBar.h"
 #include "ShopSlotController.h"
+#include "ShopUI_ResultText.h"
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
 std::string ShopLevelBase::PrevLevelBgmName;
@@ -42,8 +43,9 @@ void ShopLevelBase::Start()
 	SlotCtrl = CreateActor<ShopSlotController>(static_cast<int>(UpdateOrder::UI));
 	Cursor->CreateItemDescRender();
 
-	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI))->UseShopMode();
-	CreateActor<ShopInfo>(static_cast<int>(UpdateOrder::UI));
+	CreateActor<HUD>(UpdateOrder::UI)->UseShopMode();
+	CreateActor<ShopInfo>(UpdateOrder::UI);
+	ResultText = CreateActor<ShopUI_ResultText>(UpdateOrder::UI);
 }
 
 

@@ -68,6 +68,7 @@ enum class ShopUIRenderOrder
 	Cursor,
 	Item,
 	Desc,
+	BuyResult,
 };
 
 enum class BossVersusUIRenderOrder

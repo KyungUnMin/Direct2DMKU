@@ -3,7 +3,10 @@
 
 #include <GameEngineCore/GameEngineUIRenderer.h>
 
+#include "DataMgr.h"
+
 #include "ShopItem_CursorBar.h"
+#include "ShopUI_ResultText.h"
 
 ShopSkillBlock::ShopSkillBlock()
 {
@@ -25,6 +28,24 @@ void ShopSkillBlock::HoverIn()
 
 
 
+ShopResultType ShopSkillBlock::IsAvailable()
+{
+	//플레이어 레벨 체크
+	if (DataMgr::GetPlayerLevel() < UnlockLevel)
+		return ShopResultType::LevelLack;
+
+	//잔액 체크
+	if (false == MoneyCheck())
+		return ShopResultType::MoneyLack;
+	
+	//이미 구매함
+	if (true == PrevAquired)
+		return ShopResultType::SoldOut;
+
+	return ShopResultType::BuyOk;
+}
+
+
 void ShopSkillBlock::Buy()
 {
 	if (false == MoneyCheck())
@@ -39,14 +60,25 @@ void ShopSkillBlock::Buy()
 		return;
 	}
 
-	//인벤토리가 꽉 찼는지 확인
-	//MsgAssert("인벤토리 공간이 없는데 아이템을 구매하려고 했습니다");
-
 	//구매 확인 렌더러 On
 	GetIcon()->On();
 
 	PrevAquired = true;
+	DataMgr::MinusPlayerMoney(GetCost());
 
 	//구매후 콜백 호출
 	CallBackExcute();
+}
+
+void ShopSkillBlock::Reset()
+{
+	ShopItemBlockBase::Reset();
+
+	const size_t NowCursorIndex = ShopItem_CursorBar::GetCurrentIndex();
+	const int ThisIndex = GetIndex();
+
+	if (ThisIndex != NowCursorIndex)
+		return;
+	
+	ShopItem_CursorBar::ChangeCursorTex(GetCursorTexName());
 }

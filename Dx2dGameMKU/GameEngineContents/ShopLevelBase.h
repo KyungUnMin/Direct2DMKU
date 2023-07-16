@@ -22,6 +22,8 @@ public:
 		return (nullptr != LevelExitFade);
 	}
 
+
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -29,7 +31,6 @@ protected:
 	void LevelChangeEnd() override;
 
 	void CreateBackImage(const std::string_view& _BackImageName);
-
 
 private:
 	static LevelNames PrevLevel;
@@ -43,7 +44,8 @@ private:
 
 	UINT ThisBgmPos = 0;
 	UINT PrevLevelBgmPos = 0;
-	
+	std::shared_ptr<class ShopUI_ResultText> ResultText = nullptr;
+
 
 
 	void ImageResLoad();

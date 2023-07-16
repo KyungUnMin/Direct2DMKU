@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineUIRenderer;
+enum class ShopResultType;
 
 class ShopItem_CursorBar : public GameEngineActor
 {
@@ -73,5 +74,7 @@ private:
 	bool InteractConfilm();
 
 	void PerceiveCursorMove();
+	void BuyItem();
+	void SetResultText(ShopResultType _Result);
 };
 
