@@ -3,6 +3,7 @@
 
 #include "DataMgr.h"
 #include "SoundMgr.h"
+#include "SkillMgr.h"
 
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
@@ -147,7 +148,14 @@ void PlayerState_Walk::Update(float _DeltaTime)
 	//∆Øºˆ ∞¯∞›
 	if (true == KeyMgr::IsPress(KeyNames::X))
 	{
-		GetFSM()->ChangeState(PlayerStateType::SpecialAttack_DAP);
+		if(SkillMgr::HasSkill(PlayerStateType::SpecialAttack_DAP))
+		{
+			GetFSM()->ChangeState(PlayerStateType::SpecialAttack_DAP);
+		}
+		else
+		{
+			GetFSM()->ChangeState(PlayerStateType::SpecialAttack_AxeKick);
+		}
 		return;
 	}
 	
@@ -159,7 +167,7 @@ void PlayerState_Walk::Update(float _DeltaTime)
 		int CurMp = DataMgr::GetPlayerMP();
 
 		//«„∏Æƒ…¿Œ ≈±
-		if (true == KeyMgr::IsPress(KeyNames::DownArrow))
+		if (true == KeyMgr::IsPress(KeyNames::DownArrow) && SkillMgr::HasSkill(PlayerStateType::UniqueAttack_HyrricaneKick))
 		{
 			if (PlayerState_UniqueAttack_HyrricaneKick::NeedMp <= CurMp)
 			{
@@ -173,7 +181,7 @@ void PlayerState_Walk::Update(float _DeltaTime)
 		}
 
 		//µÂ∑°∞Ô ≈±
-		else
+		else if(SkillMgr::HasSkill(PlayerStateType::UniqueAttack_DragonFeet))
 		{
 			if (PlayerState_UniqueAttack_DragonFeet::NeedMp <= CurMp)
 			{

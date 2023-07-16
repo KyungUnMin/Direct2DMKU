@@ -6,6 +6,7 @@
 #include "RCGEnums.h"
 #include "KeyMgr.h"
 #include "SoundMgr.h"
+#include "SkillMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
@@ -107,7 +108,7 @@ void PlayerState_Damaged_Block::Update(float _DeltaTime)
 void PlayerState_Damaged_Block::Update_Block()
 {
 	//특수 공격(동키킥)
-	if (true == KeyMgr::IsPress(KeyNames::X))
+	if (true == KeyMgr::IsPress(KeyNames::X) && SkillMgr::HasSkill(PlayerStateType::SpecialAttack_DonkeyKick))
 	{
 		GetFSM()->ChangeState(PlayerStateType::SpecialAttack_DonkeyKick);
 		return;

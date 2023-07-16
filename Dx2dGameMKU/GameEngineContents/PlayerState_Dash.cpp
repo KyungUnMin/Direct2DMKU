@@ -4,6 +4,7 @@
 #include "KeyMgr.h"
 #include "RCGEnums.h"
 #include "SoundMgr.h"
+#include "SkillMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldPlayer.h"
@@ -120,7 +121,14 @@ void PlayerState_Dash::Update(float _DeltaTime)
 
 	if (true == KeyMgr::IsPress(KeyNames::X) || true == KeyMgr::IsPress(KeyNames::C))
 	{
-		GetFSM()->ChangeState(PlayerStateType::DashAttack_DropKick);
+		if (SkillMgr::HasSkill(PlayerStateType::DashAttack_DropKick))
+		{
+			GetFSM()->ChangeState(PlayerStateType::DashAttack_DropKick);
+		}
+		else
+		{
+			GetFSM()->ChangeState(PlayerStateType::DashAttack_BackElbow);
+		}
 		return;
 	}
 

@@ -4,6 +4,8 @@
 #include "KeyMgr.h"
 #include "DataMgr.h"
 #include "SoundMgr.h"
+#include "SkillMgr.h"
+
 
 #include "PlayerFSM.h"
 #include "PlayerState_UniqueAttack_DragonFeet.h"
@@ -147,7 +149,7 @@ void PlayerState_Idle::Update(float _DeltaTime)
 
 
 	//특수 스킬
-	if (true == KeyMgr::IsPress(KeyNames::C))
+	if (true == KeyMgr::IsPress(KeyNames::C) && SkillMgr::HasSkill(PlayerStateType::UniqueAttack_DragonFeet))
 	{
 		int CurMp = DataMgr::GetPlayerMP();
 		if (PlayerState_UniqueAttack_DragonFeet::NeedMp <= CurMp)
