@@ -63,6 +63,7 @@ enum class ShopUIRenderOrder
 {
 	Default = 0,
 
+	SkillViewer,
 	Info,
 	Cursor,
 	Item,

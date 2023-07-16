@@ -61,6 +61,11 @@ protected:
 
 	void LevelChangeEnd() override;
 
+	inline PlayerFSM& GetFsm()
+	{
+		return Fsm;
+	}
+
 private:
 	//레벨쪽에서 매 프레임마다 실행중인 플레이어를 설정해준다
 	static FieldPlayer* GPtr;

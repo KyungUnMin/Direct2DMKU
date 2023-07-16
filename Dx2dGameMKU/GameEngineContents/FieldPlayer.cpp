@@ -132,19 +132,6 @@ bool FieldPlayer::IsDashing() const
 
 
 
-
-
-
-//TODO List
-	//방어하고 있는 상태일때,
-	//이미 공격받고 있는 상태일때,
-	//패링중일때
-	//디버그용 뭐시기 등등
-	//공중에 떠 있을때는 멀리 나가는 Damaged
-
-
-
-
 bool FieldPlayer::OnDamage_Face(bool _IsDefenceBreak/* = false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))

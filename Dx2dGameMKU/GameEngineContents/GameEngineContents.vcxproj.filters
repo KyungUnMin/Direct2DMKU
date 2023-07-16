@@ -1171,6 +1171,9 @@
     <Filter Include="03.Actor\09.ScreenChainLock">
       <UniqueIdentifier>{bbd8fec0-4845-4497-939c-1b9159692fc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\04.Shop\04.SkillPreviewer">
+      <UniqueIdentifier>{3c44e13c-bfdc-44d1-9d29-43d061b2bcc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2100,6 +2103,9 @@
     <ClCompile Include="ScreenChainLock.cpp">
       <Filter>03.Actor\09.ScreenChainLock</Filter>
     </ClCompile>
+    <ClCompile Include="SkillPreviewer.cpp">
+      <Filter>03.Actor\04.UI\04.Shop\04.SkillPreviewer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3010,6 +3016,9 @@
     </ClInclude>
     <ClInclude Include="ScreenChainLock.h">
       <Filter>03.Actor\09.ScreenChainLock</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillPreviewer.h">
+      <Filter>03.Actor\04.UI\04.Shop\04.SkillPreviewer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
