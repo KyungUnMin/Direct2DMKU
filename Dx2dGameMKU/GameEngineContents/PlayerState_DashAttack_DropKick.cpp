@@ -7,6 +7,7 @@
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
 
+#include "PlayerState_Idle.h"
 
 const std::string_view PlayerState_DashAttack_DropKick::AniName = "DashAttack_DropKick";
 const std::string_view PlayerState_DashAttack_DropKick::AniFileName = "Player_DashAttack_DropKick.png";
@@ -80,6 +81,8 @@ void PlayerState_DashAttack_DropKick::EnterState()
 
 	SoundMgr::PlaySFX("Player_DropKick_Effect.wav");
 	SoundMgr::PlaySFX("Player_DropKick_Voice.wav");
+
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

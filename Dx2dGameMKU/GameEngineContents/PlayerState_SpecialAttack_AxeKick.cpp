@@ -5,6 +5,7 @@
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
+#include "PlayerState_Idle.h"
 
 const std::string_view PlayerState_SpecialAttack_AxeKick::AniName = "SpecialAttack_AxeKick";
 const std::string_view PlayerState_SpecialAttack_AxeKick::AniFileName = "Player_SpecialAttack_AxeKick.png";
@@ -72,6 +73,7 @@ void PlayerState_SpecialAttack_AxeKick::EnterState()
 
 	SoundMgr::PlaySFX("Player_AxeKick_Effect.wav");
 	SoundMgr::PlaySFX("Player_AxeKick_Voice.wav");
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

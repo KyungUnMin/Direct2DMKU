@@ -1174,6 +1174,9 @@
     <Filter Include="03.Actor\04.UI\04.Shop\04.SkillPreviewer">
       <UniqueIdentifier>{3c44e13c-bfdc-44d1-9d29-43d061b2bcc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\08.SkillMgr">
+      <UniqueIdentifier>{32532768-9a12-48be-9f66-802501796b0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2106,6 +2109,9 @@
     <ClCompile Include="SkillPreviewer.cpp">
       <Filter>03.Actor\04.UI\04.Shop\04.SkillPreviewer</Filter>
     </ClCompile>
+    <ClCompile Include="SkillMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\08.SkillMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3019,6 +3025,9 @@
     </ClInclude>
     <ClInclude Include="SkillPreviewer.h">
       <Filter>03.Actor\04.UI\04.Shop\04.SkillPreviewer</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMgr.h">
+      <Filter>01.Core\03.Manager/Controller\08.SkillMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

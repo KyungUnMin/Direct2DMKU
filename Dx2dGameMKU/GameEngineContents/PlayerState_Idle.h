@@ -6,6 +6,11 @@ enum class KeyNames;
 class PlayerState_Idle : public PlayerState_MovementBase
 {
 public:
+	static void AttackCycleEnd()
+	{
+		IsAttackCycleEnd = true;
+	}
+
 	PlayerState_Idle();
 	~PlayerState_Idle() override;
 
@@ -20,6 +25,7 @@ protected:
 	void EnterState() override;
 
 private:
+	static bool IsAttackCycleEnd;
 	static const std::string_view AniName;
 	static const std::string_view AniFileName;
 	static const std::pair<int, int> AniCutFrame;

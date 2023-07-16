@@ -8,6 +8,7 @@
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
+#include "PlayerState_Idle.h"
 
 const std::string_view PlayerState_QuickAttack_HookKick::AniName = "QuickAttack_HookKick";
 const std::string_view PlayerState_QuickAttack_HookKick::AniFileName = "Player_QuickAttack_HookKick_04.png";
@@ -74,6 +75,8 @@ void PlayerState_QuickAttack_HookKick::EnterState()
 
 	SoundMgr::PlaySFX("Player_HookKick_Voice.wav");
 	SoundMgr::PlaySFX("Player_HookKick_Effect.wav");
+
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

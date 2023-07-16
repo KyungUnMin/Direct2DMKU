@@ -4,6 +4,7 @@
 #include "KeyMgr.h"
 #include "DataMgr.h"
 #include "SoundMgr.h"
+#include "SkillMgr.h"
 
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
@@ -97,10 +98,21 @@ void PlayerState_QuickAttack_SnapKick::Update(float _DeltaTime)
 		return;
 	}
 
-	GetFSM()->ChangeState(PlayerStateType::QuickAttack_BackKick);
-	return;
+	PlayerStateType NextAttack = PlayerStateType::COUNT;
+	if (true == SkillMgr::HasSkill(PlayerStateType::QuickAttack_BackKick))
+	{
+		NextAttack = PlayerStateType::QuickAttack_BackKick;
+	}
+	else if (true == SkillMgr::HasSkill(PlayerStateType::QuickAttack_CrescentKick))
+	{
+		NextAttack = PlayerStateType::QuickAttack_CrescentKick;
+	}
+	else
+	{
+		NextAttack = PlayerStateType::QuickAttack_HookKick;
+	}
 
-	//TODO
+	GetFSM()->ChangeState(NextAttack);
 }
 
 

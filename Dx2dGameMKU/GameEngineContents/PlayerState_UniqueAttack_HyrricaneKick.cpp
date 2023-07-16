@@ -11,6 +11,8 @@
 #include "FieldLevelBase.h"
 #include "FieldEnemyBase.h"
 
+#include "PlayerState_Idle.h"
+
 const int PlayerState_UniqueAttack_HyrricaneKick::NeedMp = 30;
 
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniName = "UniqueAttack_HyrricaneKick";
@@ -86,6 +88,8 @@ void PlayerState_UniqueAttack_HyrricaneKick::EnterState()
 
 	SoundMgr::PlaySFX("Player_HyrricaneKick_Effect.wav");
 	SoundMgr::PlaySFX("Player_HyrricaneKick_Voice.wav");
+
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

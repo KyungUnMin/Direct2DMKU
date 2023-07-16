@@ -6,6 +6,7 @@
 #include "LevelMgr.h"
 #include "SoundMgr.h"
 #include "GUIManager.h"
+#include "SkillMgr.h"
 
 #include "TestLevel.h"
 
@@ -31,6 +32,8 @@ void RCG_GameCore::GameStart()
 
 	KeyMgr::CreateKey();
 	SoundMgr::Init();
+	SkillMgr::Init();
+
 	LevelMgr::CreateLevel(LevelNames::CrossTownLevel1);
 }
 

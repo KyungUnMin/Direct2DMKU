@@ -9,6 +9,7 @@
 #include "PlayerFSM.h"
 #include "FieldLevelBase.h"
 #include "FieldEnemyBase.h"
+#include "PlayerState_Idle.h"
 
 const int PlayerState_UniqueAttack_DragonFeet::NeedMp = 20;
 
@@ -160,6 +161,7 @@ void PlayerState_UniqueAttack_DragonFeet::EnterState()
 	}
 
 	SoundMgr::PlaySFX("Player_DragonFeet_Effect.wav");
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

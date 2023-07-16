@@ -8,6 +8,7 @@
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
 
+#include "PlayerState_Idle.h"
 
 const std::string_view PlayerState_DashAttack_BackElbow::AniName = "DashAttack_BackElbow";
 const std::string_view PlayerState_DashAttack_BackElbow::AniFileName = "Player_DashAttack_BackElbow.png";
@@ -80,6 +81,8 @@ void PlayerState_DashAttack_BackElbow::EnterState()
 
 	SoundMgr::PlaySFX("Player_BackElbow_Effect.wav");
 	SoundMgr::PlaySFX("Player_BackElbow_Voice.wav");
+
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

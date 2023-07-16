@@ -9,6 +9,8 @@
 #include "PlayerState_UniqueAttack_DragonFeet.h"
 
 
+bool PlayerState_Idle::IsAttackCycleEnd = false;
+
 const std::string_view PlayerState_Idle::AniName = "Idle";
 const std::string_view PlayerState_Idle::AniFileName = "Player_Idle.png";
 const std::pair<int, int> PlayerState_Idle::AniCutFrame = std::pair<int, int>(4, 3);
@@ -118,7 +120,7 @@ void PlayerState_Idle::Update(float _DeltaTime)
 		float FsmLiveTime = GetFSM()->GetFsmTime();
 
 		//이전에 공격하던 연속공격을 이어서 공격
-		if (FsmLiveTime < LastQuickAttackTime + 1.5f)
+		if ((FsmLiveTime < LastQuickAttackTime + 1.5f) && (false == IsAttackCycleEnd))
 		{
 			GetFSM()->ChangeState(NextQuickAttackType);
 		}
@@ -126,6 +128,7 @@ void PlayerState_Idle::Update(float _DeltaTime)
 		//처음 공격부터 다시 시작
 		else
 		{
+			IsAttackCycleEnd = false;
 			NextQuickAttackType = static_cast<size_t>(PlayerStateType::QuickAttack_Chop);
 			GetFSM()->ChangeState(PlayerStateType::QuickAttack_Chop);
 		}

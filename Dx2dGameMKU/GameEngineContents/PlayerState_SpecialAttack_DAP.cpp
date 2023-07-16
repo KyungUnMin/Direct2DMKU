@@ -12,6 +12,7 @@
 #include "FieldEnemyBase.h"
 #include "FieldLevelBase.h"
 #include "Fader.h"
+#include "PlayerState_Idle.h"
 
 
 const std::string_view PlayerState_SpecialAttack_DAP::AniName = "SpecialAttack_DAP";
@@ -100,6 +101,7 @@ void PlayerState_SpecialAttack_DAP::EnterState()
 	GetRenderer()->ChangeAnimation(AniName);
 	PlayerState_AttackBase::SetAttackColValue();
 	TotalDamage = Damage + DataMgr::GetPlayerAtt();
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 

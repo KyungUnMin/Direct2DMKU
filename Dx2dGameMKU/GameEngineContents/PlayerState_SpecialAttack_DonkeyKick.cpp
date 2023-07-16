@@ -6,6 +6,7 @@
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "FieldEnemyBase.h"
+#include "PlayerState_Idle.h"
 
 
 const std::string_view PlayerState_SpecialAttack_DonkeyKick::AniName = "SpecialAttack_DonkeyKick";
@@ -74,6 +75,7 @@ void PlayerState_SpecialAttack_DonkeyKick::EnterState()
 
 	SoundMgr::PlaySFX("Player_DonkeyKick_Effect.wav");
 	SoundMgr::PlaySFX("Player_DonkeyKick_Voice.wav");
+	PlayerState_Idle::AttackCycleEnd();
 }
 
 
