@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "WaverState_Damaged_KnockDown.h"
 
+#include "DataMgr.h"
+
 #include "WaverFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldMoney.h"
@@ -75,6 +77,7 @@ void WaverState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("CheerLeader_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Green);
+	DataMgr::AddPlayerExp(20);
 }
 
 

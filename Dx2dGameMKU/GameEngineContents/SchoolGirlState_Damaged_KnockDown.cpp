@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "SchoolGirlState_Damaged_KnockDown.h"
 
+#include "DataMgr.h"
+
 #include "SchoolGirlFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldMoney.h"
@@ -75,6 +77,7 @@ void SchoolGirlState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("FemaleEnemy_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Coin);
+	DataMgr::AddPlayerExp(20);
 }
 
 

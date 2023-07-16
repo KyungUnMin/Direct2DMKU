@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "TigerManState_Damaged_KnockDown.h"
 
+#include "DataMgr.h"
+
 #include "TigerManFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldMoney.h"
@@ -81,6 +83,7 @@ void TigerManState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("TigerMan_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Pupple);
+	DataMgr::AddPlayerExp(20);
 }
 
 

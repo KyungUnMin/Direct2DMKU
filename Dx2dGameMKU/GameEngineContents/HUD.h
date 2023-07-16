@@ -2,6 +2,7 @@
 #include "UIBase.h"
 
 class GameEngineUIRenderer;
+class UIFontRenderer;
 
 class HUD : public UIBase
 {
@@ -30,10 +31,13 @@ private:
 	};
 
 	static MpDatas MpData;
+	static MpDatas ExpData;
 
 	std::vector<std::shared_ptr<GameEngineUIRenderer>> HealthBlocks;
-	float Timer = 0.f;
-	std::shared_ptr <class  UIFontRenderer> MoneyText = nullptr;
+	float MpTimer = 0.f;
+	float ExpTimer = 0.f;
+	std::shared_ptr <UIFontRenderer> MoneyText = nullptr;
+	std::shared_ptr <UIFontRenderer> LevelText = nullptr;
 
 	std::shared_ptr<GameEngineUIRenderer> FieldBackGround = nullptr;
 	std::shared_ptr<GameEngineUIRenderer> ShopBackGround = nullptr;
@@ -43,10 +47,14 @@ private:
 	void CreateShopBackGround();
 	void CreateHpBar();
 	void CreateMpBar();
+	void CreateExpBar();
 	void CreateMoneyText();
+	void CreateLevelText();
+
 
 	void Update_Hp();
 	void Update_Mp(float _DeltaTime);
+	void Update_Exp(float _DeltaTime);
 	void Update_Money();
 };
 

@@ -147,17 +147,37 @@ public:
 
 	//------------------Level & EXP---------------------------------
 
-	static inline void PlayerLevelUp()
+private:
+	static void PlayerLevelUp();
+
+public:
+	static void AddPlayerExp(int _Exp)
 	{
-		++PlayerAtt;
-		++PlayerLevel;
-		PlayerExp = 0;
+		PlayerExp += _Exp;
+		if (PlayerExp < PlayerFullPoint)
+			return;
+
+		PlayerLevelUp();
+		PlayerExp %= PlayerFullPoint;
 	}
 
 	static inline int GetPlayerLevel()
 	{
 		return PlayerLevel;
 	}
+
+	static inline int GetPlayerExp()
+	{
+		return PlayerExp;
+	}
+
+	//콜백의 return값은 레벨업 이벤트 에서 삭제할 지에 대한 유무(true를 리턴하면 이벤트가 한번만 실행)
+	static inline void PushLevelUpCallBack(std::function<bool(void)> _CallBack)
+	{
+		LevelUpCallBacks.emplace_back() = _CallBack;
+	}
+
+	
 
 protected:
 
@@ -171,8 +191,7 @@ private:
 
 	static int PlayerLevel;
 	static int PlayerExp;
-	static const int PlayerMaxExp;
-
+	static std::list<std::function<bool(void)>> LevelUpCallBacks;
 
 	//static std::vector<ItemType> Inventory;
 

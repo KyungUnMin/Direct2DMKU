@@ -13,6 +13,7 @@
 #include "UIFontRenderer.h"
 
 HUD::MpDatas HUD::MpData;
+HUD::MpDatas HUD::ExpData;
 
 HUD::HUD()
 {
@@ -37,7 +38,9 @@ void HUD::Start()
 
 	CreateHpBar();
 	CreateMpBar();
+	CreateExpBar();
 	CreateMoneyText();
+	CreateLevelText();
 }
 
 
@@ -117,6 +120,24 @@ void HUD::CreateMpBar()
 }
 
 
+
+void HUD::CreateExpBar()
+{
+	const float4 BarScale = float4{ 360.f, 18.f };
+	const float4 Offset = float4{ 325.f, 294.f , -1.f };
+
+	std::shared_ptr<ShaderUIRenderer> ExpBar = CreateComponent<ShaderUIRenderer>(FieldUIRenderOrder::HUD);
+	ExpBar->SetMesh("Rect");
+	ExpBar->SetPipeLine(RCGDefine::GetPipeName(PipeType::MpBar));
+	ExpBar->GetShaderResHelper().SetTexture(RCGDefine::EngineTexName, "HUD_ExpBar.png");
+	ExpBar->GetShaderResHelper().SetConstantBufferLink("MpRatio", HUD::ExpData);
+
+	GameEngineTransform* ExpTrans = ExpBar->GetTransform();
+	ExpTrans->SetLocalScale(BarScale);
+	ExpTrans->SetLocalPosition(Offset);
+}
+
+
 void HUD::CreateMoneyText()
 {
 	const float4 TextPos = float4{ -220.f, 280.f };
@@ -139,6 +160,28 @@ void HUD::CreateMoneyText()
 }
 
 
+void HUD::CreateLevelText()
+{
+	const float4 TextPos = float4{ 190.f, 326.f };
+	const std::string_view FontName = "휴먼둥근헤드라인";
+
+	LevelText = CreateComponent<UIFontRenderer>(FieldUIRenderOrder::HUD);
+	LevelText->SetFont(FontName);
+	LevelText->SetScale(15.f);
+	LevelText->SetText("1");
+	LevelText->SetColor(float4::White);
+	LevelText->SetFontFlag(FW1_TEXT_FLAG::FW1_LEFT);
+
+	LevelText->GetTransform()->SetLocalPosition(TextPos);
+
+	DataMgr::PushLevelUpCallBack([this]() -> bool
+	{
+		int CurPlayerLevel = DataMgr::GetPlayerLevel();
+		LevelText->SetText(GameEngineString::ToString(CurPlayerLevel));
+		return false;
+	});
+}
+
 
 
 void HUD::Update(float _DeltaTime)
@@ -147,6 +190,7 @@ void HUD::Update(float _DeltaTime)
 
 	Update_Hp();
 	Update_Mp(_DeltaTime);
+	Update_Exp(_DeltaTime);
 	Update_Money();
 }
 
@@ -167,7 +211,6 @@ void HUD::Update_Hp()
 }
 
 
-//이거 맘에 안들면 속도에 따라 감속하는 방식으로 바꾸자
 void HUD::Update_Mp(float _DeltaTime)
 {
 	const float Duration = 0.25f;
@@ -178,14 +221,35 @@ void HUD::Update_Mp(float _DeltaTime)
 		MpData.PrevMpRatio = MpData.NowMpRatio;
 		MpData.DestMpRatio = static_cast<float>(NowMp) / DataMgr::PlayerFullPoint;
 		MpData.DestMp = NowMp;
-		Timer = 0.f;
+		MpTimer = 0.f;
 	}
 
-	Timer += _DeltaTime;
-	float TimeRatio = (Timer / Duration);
+	MpTimer += _DeltaTime;
+	float TimeRatio = (MpTimer / Duration);
 	TimeRatio = std::clamp(TimeRatio, 0.f, 1.f);
 
 	MpData.NowMpRatio = (MpData.PrevMpRatio * (1.f - TimeRatio)) + (MpData.DestMpRatio * TimeRatio);
+}
+
+
+void HUD::Update_Exp(float _DeltaTime)
+{
+	const float Duration = 0.25f;
+
+	int NowExp = DataMgr::GetPlayerExp();
+	if (NowExp != ExpData.DestMp)
+	{
+		ExpData.PrevMpRatio = ExpData.NowMpRatio;
+		ExpData.DestMpRatio = static_cast<float>(NowExp) / DataMgr::PlayerFullPoint;
+		ExpData.DestMp = NowExp;
+		ExpTimer = 0.f;
+	}
+
+	ExpTimer += _DeltaTime;
+	float TimeRatio = (ExpTimer / Duration);
+	TimeRatio = std::clamp(TimeRatio, 0.f, 1.f);
+
+	ExpData.NowMpRatio = (ExpData.PrevMpRatio * (1.f - TimeRatio)) + (ExpData.DestMpRatio * TimeRatio);
 }
 
 

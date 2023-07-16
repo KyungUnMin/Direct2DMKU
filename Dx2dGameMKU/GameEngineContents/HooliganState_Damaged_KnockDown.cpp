@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "HooliganState_Damaged_KnockDown.h"
 
+#include "DataMgr.h"
+
 #include "HooliganFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldMoney.h"
@@ -75,6 +77,7 @@ void HooliganState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("MaleEnemy_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Green);
+	DataMgr::AddPlayerExp(20);
 }
 
 
