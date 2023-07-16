@@ -333,7 +333,7 @@ void ShopItem_CursorBar::BuyItem()
 
 		if (ShopResultType::BuyOk == Result)
 		{
-			SoundMgr::PlaySFX("Shop_Buy.wav");
+			SoundMgr::PlaySFX("Shop_Buy.wav").SetVolume(3.f);
 			ItemData->Buy();
 		}
 		else

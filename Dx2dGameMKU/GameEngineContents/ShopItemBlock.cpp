@@ -33,6 +33,10 @@ void ShopItemBlock::HoverOut()
 
 ShopResultType ShopItemBlock::IsAvailable()
 {
+	if (false == MoneyCheck())
+		return ShopResultType::MoneyLack;
+
+	//인벤토리 공간 체크
 
 
 	return ShopResultType::BuyOk;
@@ -72,4 +76,9 @@ void ShopItemBlock::Reset()
 	{
 		GetIcon()->Off();
 	}
+
+	if (ThisIndex != NowCursorIndex)
+		return;
+
+	ShopItem_CursorBar::ChangeCursorTex(GetCursorTexName());
 }

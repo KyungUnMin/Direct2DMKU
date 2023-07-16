@@ -133,7 +133,10 @@ void SkillPreviewer::Update(float _DeltaTime)
 	if (false == Render->IsAnimationEnd())
 		return;
 
-	ChangeState(CurState);
+	if (PlayerStateType::Movement_Idle == GetFsm().GetNowState<PlayerStateType>())
+		return;
+	
+	GetFsm().ChangeState(static_cast<size_t>(PlayerStateType::Movement_Idle));
 }
 
 
