@@ -23,6 +23,7 @@ public:
 	void HoverIn() override;
 	void HoverOut() override;
 	void Buy() override;
+	void Reset() override;
 
 protected:
 

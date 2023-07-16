@@ -16,10 +16,7 @@ public:
 	ShopSlotController& operator=(const ShopSlotController& _Other) = delete;
 	ShopSlotController& operator=(const ShopSlotController&& _Other) noexcept = delete;
 
-	inline void Reset()
-	{
-		PrevCursorIndex = 0;
-	}
+	void Reset();
 
 protected:
 	void Start() override;

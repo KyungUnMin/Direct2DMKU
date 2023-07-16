@@ -17,6 +17,7 @@ public:
 	virtual void HoverIn(){}
 	virtual void HoverOut(){}
 	virtual void Buy() = 0;
+	virtual void Reset() {};
 
 	inline const std::string& GetInfoTexName() const
 	{
@@ -28,6 +29,7 @@ public:
 		return Index;
 	}
 
+	
 
 protected:
 	void Init(

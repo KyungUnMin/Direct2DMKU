@@ -312,6 +312,7 @@ bool ShopItem_CursorBar::InteractConfilm()
 void ShopItem_CursorBar::Reset()
 {
 	CurrentIndex = 0;
+	PerceiveCursorMove();
 
 	ConfirmTime = -1.f;
 	IsConfirmation = false;

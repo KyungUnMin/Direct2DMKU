@@ -24,6 +24,8 @@ ShopSlotController::~ShopSlotController()
 
 }
 
+
+
 void ShopSlotController::Start()
 {
 	GameEngineLevel* Level = GetLevel();
@@ -281,3 +283,12 @@ void ShopSlotController::Update_Select()
 	PrevCursorIndex = NowCursorIdx;
 }
 
+void ShopSlotController::Reset()
+{
+	PrevCursorIndex = 0;
+
+	for (size_t i = 0; i < ItemBlocks.size(); ++i)
+	{
+		ItemBlocks[i]->Reset();
+	}
+}

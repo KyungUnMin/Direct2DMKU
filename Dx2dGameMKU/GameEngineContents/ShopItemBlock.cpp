@@ -46,3 +46,22 @@ void ShopItemBlock::Buy()
 	//구매후 콜백 호출
 	CallBackExcute();
 }
+
+
+
+void ShopItemBlock::Reset()
+{
+	ShopItemBlockBase::Reset();
+
+	const size_t NowCursorIndex = ShopItem_CursorBar::GetCurrentIndex();
+	const int ThisIndex = GetIndex();
+
+	if (ThisIndex == NowCursorIndex)
+	{
+		GetIcon()->On();
+	}
+	else
+	{
+		GetIcon()->Off();
+	}
+}
