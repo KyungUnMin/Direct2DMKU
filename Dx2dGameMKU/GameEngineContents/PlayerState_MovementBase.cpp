@@ -2,6 +2,7 @@
 #include "PlayerState_MovementBase.h"
 
 #include "KeyMgr.h"
+#include "DataMgr.h"
 
 #include "FieldPlayer.h"
 #include "FieldLevelBase.h"
@@ -79,8 +80,9 @@ void PlayerState_MovementBase::Update_Move(float _DeltaTime, const float4& _Spee
 		return;
 
 	MoveDir.Normalize();
-	MoveDir.x *= _Speed.x;
-	MoveDir.y *= _Speed.y;
+	float4 Speed = _Speed * DataMgr::GetPlayerSpeedPer();
+	MoveDir.x *= Speed.x;
+	MoveDir.y *= Speed.y;
 	MoveDir.z = MoveDir.y;
 
 	float4 NextPos = PlayerTrans->GetLocalPosition() + (MoveDir * _DeltaTime);

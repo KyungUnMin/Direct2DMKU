@@ -12,10 +12,10 @@
 
 const std::vector<FieldMoney::MoneyInfo> FieldMoney::MoneyInfoes =
 {
-	MoneyInfo{"FieldMoney_Coin.png",		1,			13	},
-	MoneyInfo{"FieldMoney_Blue.png",		10,		11	},
-	MoneyInfo{"FieldMoney_Green.png",	100,		11	},
-	MoneyInfo{"FieldMoney_Pupple.png",	1000,	11	},
+	MoneyInfo{"FieldMoney_Coin.png",		1,		13	},
+	MoneyInfo{"FieldMoney_Blue.png",		10,	11	},
+	MoneyInfo{"FieldMoney_Green.png",	100,	11	},
+	MoneyInfo{"FieldMoney_Pupple.png",	500,	11	},
 };
 
 const float FieldMoney::ShadowOffsetRange = 15.f;

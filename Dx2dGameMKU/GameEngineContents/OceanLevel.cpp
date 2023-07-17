@@ -64,7 +64,8 @@ void OceanLevel::Start()
 
 	CreateBackGrounds();
 	CreateWaveRender();
-	FieldLevelBase::SetDoorOpenFunc(std::bind(&OceanLevel::CreateDoors, this));
+	FieldLevelBase::SetDoorOpenFunc(std::bind(&OceanLevel::CreateDoor_ForDebug, this));
+	CreateDoor();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 
@@ -72,6 +73,10 @@ void OceanLevel::Start()
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
+
+
+
+
 
 
 
@@ -111,11 +116,20 @@ void OceanLevel::CreateBackGrounds()
 
 }
 
-void OceanLevel::CreateDoors()
+void OceanLevel::CreateDoor_ForDebug()
 {
 	std::shared_ptr<FieldDoor> DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
 	DoorPtr->Init(DoorType::Normal);
 	DoorPtr->Unlock(LevelNames::OceanBossLevel);
+}
+
+void OceanLevel::CreateDoor()
+{
+	std::shared_ptr<FieldDoor> DoorPtr = nullptr;
+	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Shop, float4{ 0.f, 50.f, 50.f });
+	DoorPtr->Unlock(LevelNames::Shop_StoreLevel);
+	DoorPtr->GetTransform()->SetLocalPosition(float4{-430.f, 280.f, 280.f});
 }
 
 

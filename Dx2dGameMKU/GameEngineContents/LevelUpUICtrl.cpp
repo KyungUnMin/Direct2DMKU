@@ -11,6 +11,7 @@
 #include "RCGEnums.h"
 #include "DataMgr.h"
 #include "SkillMgr.h"
+#include "SoundMgr.h"
 
 #include "FieldLevelBase.h"
 #include "PlayerFSM.h"
@@ -163,6 +164,7 @@ bool LevelUpUICtrl::LevelUpCallBack()
 	On();
 	ResetLiveTime();
 
+	SoundMgr::PlaySFX("PlayerLevelUp.wav");
 	int CurPlayerLevel = DataMgr::GetPlayerLevel();
 	GrowthBox->On();
 	LevelText->SetText(GameEngineString::ToString(CurPlayerLevel));

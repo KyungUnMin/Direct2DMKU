@@ -26,7 +26,8 @@ private:
 
 	void LoadImgRes();
 	void CreateBackGrounds();
-	void CreateDoors();
+	void CreateDoor_ForDebug();
+	void CreateDoor();
 	void CreateEnemies();
 	void CreateWaveRender();
 };

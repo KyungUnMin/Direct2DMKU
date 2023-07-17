@@ -96,6 +96,8 @@ void CrossTownLevel2::CreateBackGrounds()
 	FieldLevelBase::CreateCollisionImage(CollisionImageName);
 }
 
+
+
 void CrossTownLevel2::CreateDoors()
 {
 	std::shared_ptr<FieldDoor> DoorPtr = nullptr;
@@ -114,6 +116,11 @@ void CrossTownLevel2::CreateDoors()
 	DoorPtr->Init(DoorType::Shop, float4{ 0.f, 50.f, 50.f });
 	DoorPtr->Unlock(LevelNames::Shop_StoreLevel);
 	DoorPtr->GetTransform()->SetLocalPosition(float4{-1000.f, -50.f, -50.f});
+
+	DoorPtr = CreateActor<FieldDoor>(static_cast<int>(UpdateOrder::FieldDoor));
+	DoorPtr->Init(DoorType::Gym, float4{ 0.f, 50.f, 50.f });
+	DoorPtr->Unlock(LevelNames::Shop_GymLevel);
+	DoorPtr->GetTransform()->SetLocalPosition(float4{ 1300.f, 75.f, 75.f });
 }
 
 

@@ -76,6 +76,8 @@ protected:
 
 	void OnTransView_ForDebug();
 
+	void Update_AddExp_ForDebug();
+
 private:
 	static FieldLevelBase* GPtr;
 

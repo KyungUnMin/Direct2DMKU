@@ -11,6 +11,7 @@
 #include "GUIManager.h"
 #include "GameEngineActorGUI.h"
 #include "SoundMgr.h"
+#include "DataMgr.h"
 
 #include "DebugActor.h"
 #include "FieldNPCBase.h"
@@ -164,12 +165,12 @@ void FieldLevelBase::Update(float _DeltaTime)
 	EnemySpawnerCtrl.Update(_DeltaTime);
 	Update_DoorOpen_ForDebug();
 	Update_CreateMoeny_ForDebug();
+	Update_AddExp_ForDebug();
 
 	if (true == KeyMgr::IsDown(KeyNames::DebugF1))
 	{
 		IsDebugSwitch();
 	}
-
 	
 }
 
@@ -204,6 +205,21 @@ void FieldLevelBase::Update_CreateMoeny_ForDebug()
 	SpawnIndex = (SpawnIndex + 1) % static_cast<size_t>(MoneyType::UNKNOWN);
 }
 
+void FieldLevelBase::Update_AddExp_ForDebug()
+{
+	static float LastTime = 0.f;
+
+	float LiveTime = GetLiveTime();
+	if (LiveTime < (LastTime + 1.f))
+		return;
+
+	if (true == KeyMgr::IsDown(KeyNames::DebugF7))
+	{
+		DataMgr::AddPlayerExp(50);
+		SoundMgr::PlaySFX("AddEXP_CHEET.wav");
+		LastTime = LiveTime;
+	}
+}
 
 
 
