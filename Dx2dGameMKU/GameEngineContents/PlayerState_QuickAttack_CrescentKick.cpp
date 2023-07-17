@@ -112,7 +112,7 @@ void PlayerState_QuickAttack_CrescentKick::ExitState()
 
 void PlayerState_QuickAttack_CrescentKick::Attack(FieldEnemyBase* _Enemy)
 {
-	DataMgr::PlusPlayerMP(Damage);
+	DataMgr::PlusPlayerMP(2);
 	bool Result = _Enemy->OnDamage_Stomach(TotalDamage);
 	if (true == Result)
 	{

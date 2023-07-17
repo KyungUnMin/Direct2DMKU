@@ -11,7 +11,7 @@
 #include "FieldEnemyBase.h"
 #include "PlayerState_Idle.h"
 
-const int PlayerState_UniqueAttack_DragonFeet::NeedMp = 20;
+const int PlayerState_UniqueAttack_DragonFeet::NeedMp = 50;
 
 const std::string_view PlayerState_UniqueAttack_DragonFeet::AniName = "UniqueAttack_DragonFeet";
 const std::string_view PlayerState_UniqueAttack_DragonFeet::AniFileName = "Player_UniqueAttack_DragonFeet.png";

@@ -116,7 +116,7 @@ void PlayerState_QuickAttack_HookKick::ExitState()
 
 void PlayerState_QuickAttack_HookKick::Attack(FieldEnemyBase* _Enemy)
 {
-	DataMgr::PlusPlayerMP(Damage);
+	DataMgr::PlusPlayerMP(5);
 	bool Result = _Enemy->OnDamage_BlowBack(TotalDamage);
 	if (true == Result)
 	{

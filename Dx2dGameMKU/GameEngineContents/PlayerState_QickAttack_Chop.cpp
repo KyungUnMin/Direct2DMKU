@@ -113,7 +113,7 @@ void PlayerState_QickAttack_Chop::ExitState()
 
 void PlayerState_QickAttack_Chop::Attack(FieldEnemyBase* _Enemy)
 {
-	DataMgr::PlusPlayerMP(Damage);
+	DataMgr::PlusPlayerMP(1);
 
 	bool Result = _Enemy->OnDamage_Face(TotalDamage);
 	if(true == Result)

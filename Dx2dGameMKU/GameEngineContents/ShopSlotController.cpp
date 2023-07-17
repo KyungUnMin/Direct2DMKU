@@ -194,7 +194,7 @@ void ShopSlotController::Init_Store()
 	ItemBlocks[Index] = CreateItemBlock
 	(
 		"ShopCursor_CottonCandy.png",
-		"ShopUI_CottonCandy.png", 35, Index,
+		"ShopUI_CottonCandy.png", 90, Index,
 		[]()
 	{
 		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");

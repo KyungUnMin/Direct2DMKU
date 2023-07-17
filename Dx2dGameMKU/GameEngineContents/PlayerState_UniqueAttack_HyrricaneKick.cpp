@@ -13,7 +13,7 @@
 
 #include "PlayerState_Idle.h"
 
-const int PlayerState_UniqueAttack_HyrricaneKick::NeedMp = 30;
+const int PlayerState_UniqueAttack_HyrricaneKick::NeedMp = 60;
 
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniName = "UniqueAttack_HyrricaneKick";
 const std::string_view PlayerState_UniqueAttack_HyrricaneKick::AniFileName = "Player_UniqueAttack_HyrricaneKick.png";
