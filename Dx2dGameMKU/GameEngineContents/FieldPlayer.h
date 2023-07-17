@@ -69,6 +69,7 @@ protected:
 private:
 	//레벨쪽에서 매 프레임마다 실행중인 플레이어를 설정해준다
 	static FieldPlayer* GPtr;
+	static const std::string_view LevelUpText_FileName;
 
 
 	PlayerFSM Fsm;
@@ -82,7 +83,7 @@ private:
 
 
 	std::shared_ptr<class GameEngineCollision> AttackCollider = nullptr;
-
+	std::shared_ptr<class GameEngineSpriteRenderer> LevelUpText = nullptr;
 	
 	const float4 DamageEffect_FaceOffset = float4{ 50.f, 150.f, -100.f };
 	const float4 DamageEffect_StomachOffset = float4{ 0.f, 100.f, -100.f };
@@ -91,6 +92,8 @@ private:
 
 
 	float4 PrevPos = float4::Zero;
+
+	void CreateLevelUpRender();
 
 	void CheckDirection();
 

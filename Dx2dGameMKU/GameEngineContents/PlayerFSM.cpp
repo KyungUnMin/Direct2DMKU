@@ -1,6 +1,8 @@
 #include "PrecompileHeader.h"
 #include "PlayerFSM.h"
 
+#include "SkillMgr.h"
+
 //Movement
 #include "PlayerState_Idle.h"
 #include "PlayerState_Walk.h"
@@ -46,6 +48,16 @@ size_t PlayerFSM::GetNextQuickAttack(size_t _PrevAttack)
 	if (PlayerStateType::SpecialAttack_AxeKick <= static_cast<PlayerStateType>(_PrevAttack))
 	{
 		_PrevAttack = static_cast<size_t>(PlayerStateType::QuickAttack_Chop);
+	}
+
+	if (static_cast<PlayerStateType>(_PrevAttack) == PlayerStateType::QuickAttack_BackKick && false == SkillMgr::HasSkill(PlayerStateType::QuickAttack_BackKick))
+	{
+		++_PrevAttack;
+	}
+
+	if (static_cast<PlayerStateType>(_PrevAttack) == PlayerStateType::QuickAttack_CrescentKick && false == SkillMgr::HasSkill(PlayerStateType::QuickAttack_CrescentKick))
+	{
+		++_PrevAttack;
 	}
 
 	return _PrevAttack;

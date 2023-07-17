@@ -1,10 +1,18 @@
 #include "PrecompileHeader.h"
 #include "SkillMgr.h"
 
+#include "DataMgr.h"
+
 #include "PlayerFSM.h"
 
 std::vector<bool>  SkillMgr::SkillSlot;
 
+std::vector<std::pair<int, PlayerStateType>> SkillMgr::LevelUpSkills =
+{
+	{2, PlayerStateType::SpecialAttack_DonkeyKick},
+	{3, PlayerStateType::QuickAttack_BackKick},
+	{4, PlayerStateType::QuickAttack_CrescentKick},
+};
 
 
 void SkillMgr::Init()
@@ -19,6 +27,26 @@ void SkillMgr::Init()
 	SkillSlot[static_cast<size_t>(PlayerStateType::DashAttack_DropKick)] = false;
 	SkillSlot[static_cast<size_t>(PlayerStateType::UniqueAttack_DragonFeet)] = false;
 	SkillSlot[static_cast<size_t>(PlayerStateType::UniqueAttack_HyrricaneKick)] = false;
+
+
+	//for (size_t i = 0; i < LevelUpSkills.size(); ++i)
+	//{
+	//	DataMgr::PushLevelUpCallBack([]()->bool
+	//	{
+	//		int CurPlayerLevel = DataMgr::GetPlayerLevel();
+	//		if (2 == CurPlayerLevel)
+	//		{
+	//
+	//		}
+	//		return false;
+	//	});
+	//}
+
+	/*
+	데이터 매니저랑 스킬 매니저 연결시켜야 함
+				레벨업 할때 옵저버패턴으로 콜백시키게끔
+				그리고 이때 필드레벨에다가 연출용 엑터 생성시킼는 기능도 넣어야 함
+	*/
 }
 
 bool SkillMgr::HasSkill(PlayerStateType _CheckSkill)

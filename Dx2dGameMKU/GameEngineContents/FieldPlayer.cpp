@@ -2,17 +2,24 @@
 #include "FieldPlayer.h"
 
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineSprite.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
+
+
 #include "RCG_GameCore.h"
 #include "RCGEnums.h"
+#include "RCGDefine.h"
 #include "KeyMgr.h"
+#include "DataMgr.h"
 
 #include "HitEffect.h"
+#include "FieldLevelBase.h"
 
 
 FieldPlayer* FieldPlayer::GPtr = nullptr;
+const std::string_view FieldPlayer::LevelUpText_FileName = "PlayerLevelUpHeadUI.png";
 
 FieldPlayer::FieldPlayer()
 {
@@ -38,6 +45,53 @@ void FieldPlayer::Start()
 
 	FieldActorBase::CreateColliders(CollisionOrder::PlayerMain);
 	Fsm.Init();
+	CreateLevelUpRender();
+}
+
+void FieldPlayer::CreateLevelUpRender()
+{
+	if (nullptr == GameEngineSprite::Find(LevelUpText_FileName))
+	{
+		GameEngineDirectory Dir;
+		RCGDefine::MoveContentPath(Dir, ResType::Image);
+		Dir.Move("Character");
+		Dir.Move("Player");
+		GameEnginePath Path = Dir.GetPlusFileName(LevelUpText_FileName);
+		GameEngineSprite::LoadSheet(Path.GetFullPath(), 5, 1);
+	}
+
+	LevelUpText = CreateComponent<GameEngineSpriteRenderer>(FieldRenderOrder::ZOrder);
+	LevelUpText->CreateAnimation
+	({
+		.AnimationName = LevelUpText_FileName,
+		.SpriteName = LevelUpText_FileName,
+		.Loop = false,
+		.FrameTime = {0.1f, 0.1f,0.1f,1.f,0.1f},
+	});
+
+	LevelUpText->Off();
+	LevelUpText->SetAnimationStartEvent(LevelUpText_FileName, 4, [this]()
+	{
+		LevelUpText->Off();
+	});
+
+	
+	const float4 RenderOffset = { 0.f, 250.f };
+	const float4 RenderScale = float4{ 256.f, 256.f, 1.f };
+
+	GameEngineTransform* RenderTrans = LevelUpText->GetTransform();
+	RenderTrans->SetLocalPosition(RenderOffset);
+	RenderTrans->SetWorldScale(RenderScale);
+
+	DataMgr::PushLevelUpCallBack([this]() ->bool
+	{
+		if (GetLevel() != FieldLevelBase::GetPtr().get())
+			return false;
+
+		LevelUpText->On();
+		LevelUpText->ChangeAnimation(LevelUpText_FileName);
+		return false;
+	});
 }
 
 
