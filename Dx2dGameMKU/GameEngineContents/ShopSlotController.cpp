@@ -145,7 +145,7 @@ void ShopSlotController::Init_Gym()
 		70, Index, 3,
 		[]()
 	{
-		SkillMgr::AcquireSkill(PlayerStateType::SpecialAttack_DonkeyKick);
+		SkillMgr::AcquireSkill(PlayerStateType::DashAttack_DropKick);
 	});
 
 

@@ -21,9 +21,6 @@ protected:
 private:
 	static std::vector<bool>  SkillSlot;
 
-	//È¹µæ ·¹º§, È¹µæ  ½ºÅ³
-	static std::vector<std::pair<int, PlayerStateType>> LevelUpSkills;
-
 
 	SkillMgr();
 	virtual ~SkillMgr() = 0;

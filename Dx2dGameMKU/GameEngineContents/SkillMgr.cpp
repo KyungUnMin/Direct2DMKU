@@ -7,12 +7,6 @@
 
 std::vector<bool>  SkillMgr::SkillSlot;
 
-std::vector<std::pair<int, PlayerStateType>> SkillMgr::LevelUpSkills =
-{
-	{2, PlayerStateType::SpecialAttack_DonkeyKick},
-	{3, PlayerStateType::QuickAttack_BackKick},
-	{4, PlayerStateType::QuickAttack_CrescentKick},
-};
 
 
 void SkillMgr::Init()

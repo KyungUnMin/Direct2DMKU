@@ -1180,6 +1180,9 @@
     <Filter Include="03.Actor\04.UI\04.Shop\05.ResultText">
       <UniqueIdentifier>{7240b507-ef9d-4d11-85eb-30a1eb0e9ed1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\10.LevelUpUICtrl">
+      <UniqueIdentifier>{71ece82a-030d-4cd1-b165-435e12b40996}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2118,6 +2121,9 @@
     <ClCompile Include="ShopUI_ResultText.cpp">
       <Filter>03.Actor\04.UI\04.Shop\05.ResultText</Filter>
     </ClCompile>
+    <ClCompile Include="LevelUpUICtrl.cpp">
+      <Filter>03.Actor\04.UI\10.LevelUpUICtrl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3037,6 +3043,9 @@
     </ClInclude>
     <ClInclude Include="ShopUI_ResultText.h">
       <Filter>03.Actor\04.UI\04.Shop\05.ResultText</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpUICtrl.h">
+      <Filter>03.Actor\04.UI\10.LevelUpUICtrl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

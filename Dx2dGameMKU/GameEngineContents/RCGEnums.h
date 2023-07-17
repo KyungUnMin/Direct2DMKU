@@ -50,6 +50,7 @@ enum class FieldUIRenderOrder
 	Default = 0,
 	ScreenChainLock,
 	HUD,
+	EventInfo,
 	BossHUD,
 	Conversation_BackImg,
 	Conversation_Portrait,

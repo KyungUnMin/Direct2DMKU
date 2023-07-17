@@ -19,6 +19,7 @@
 #include "Fader.h"
 #include "HUD.h"
 #include "FieldMoney.h"
+#include "LevelUpUICtrl.h"
 
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
@@ -58,6 +59,8 @@ void FieldLevelBase::Init(const float4& _Scale, const TileInfoData& _TileData)
 	PlayerPtr = CreateActor<FieldPlayer>(static_cast<int>(UpdateOrder::Player));
 	CreateActor<HUD>(static_cast<int>(UpdateOrder::UI));
 	FreeCamDebugMoveCtrl.Init(GetMainCamera());
+
+	CreateActor<LevelUpUICtrl>(UpdateOrder::UI);
 }
 
 

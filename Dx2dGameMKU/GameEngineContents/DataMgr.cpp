@@ -30,6 +30,10 @@ void DataMgr::PlayerLevelUp()
 {
 	++PlayerAtt;
 	++PlayerLevel;
+	PlayerSpeedPer += 0.01f;
+
+	PlayerHp = PlayerFullPoint;
+	PlayerMp = PlayerFullPoint;
 
 	std::list<std::function<bool(void)>>::iterator StartIter = LevelUpCallBacks.begin();
 	std::list<std::function<bool(void)>>::iterator EndiIter = LevelUpCallBacks.end();
