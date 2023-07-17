@@ -207,17 +207,10 @@ void FieldLevelBase::Update_CreateMoeny_ForDebug()
 
 void FieldLevelBase::Update_AddExp_ForDebug()
 {
-	static float LastTime = 0.f;
-
-	float LiveTime = GetLiveTime();
-	if (LiveTime < (LastTime + 1.f))
-		return;
-
 	if (true == KeyMgr::IsDown(KeyNames::DebugF7))
 	{
 		DataMgr::AddPlayerExp(50);
 		SoundMgr::PlaySFX("AddEXP_CHEET.wav");
-		LastTime = LiveTime;
 	}
 }
 

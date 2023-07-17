@@ -84,7 +84,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_SingleBurger.png", 50, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(30);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 
 
@@ -95,7 +95,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_DoubleBurger.png", 30, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(60);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 
 
@@ -106,7 +106,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_FriedPotato.png", 12, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(10);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 
 
@@ -117,7 +117,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_Shake.png", 20, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(20);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 }
 
@@ -186,7 +186,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_Candy.png", 15, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(30);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 
 
@@ -197,7 +197,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_CottonCandy.png", 35, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(60);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 
 
@@ -208,7 +208,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_GummyYummi.png", 500, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(10);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 
 
@@ -219,7 +219,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_MelonMint.png", 500, Index,
 		[]()
 	{
-		DataMgr::PlusPlayerHP(20);
+		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
 	});
 }
 

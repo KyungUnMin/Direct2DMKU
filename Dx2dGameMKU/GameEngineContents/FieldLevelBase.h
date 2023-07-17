@@ -76,7 +76,6 @@ protected:
 
 	void OnTransView_ForDebug();
 
-	void Update_AddExp_ForDebug();
 
 private:
 	static FieldLevelBase* GPtr;
@@ -92,6 +91,7 @@ private:
 
 	void Update_DoorOpen_ForDebug();
 	void Update_CreateMoeny_ForDebug();
+	void Update_AddExp_ForDebug();
 
 	void MoneyClear();
 };
