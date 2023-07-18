@@ -54,6 +54,7 @@ enum class FieldUIRenderOrder
 	BossHUD,
 	Conversation_BackImg,
 	Conversation_Portrait,
+	Phone,
 
 	Fade,
 	LevelChangeHeart,

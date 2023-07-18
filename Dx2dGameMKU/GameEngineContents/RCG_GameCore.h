@@ -6,7 +6,7 @@ enum class GameState
 	OnField,
 	IntroMovie,
 	OnlyFieldUI,
-
+	HandPhoneUI,
 };
 
 class RCG_GameCore

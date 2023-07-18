@@ -88,7 +88,9 @@ private:
 
 
 	std::function<void()> DoorOpenFunc = nullptr;
+	std::shared_ptr<class HandPhoneUI> HandPhone = nullptr;
 
+	void Update_OpenPhone();
 	void Update_DoorOpen_ForDebug();
 	void Update_CreateMoeny_ForDebug();
 	void Update_AddExp_ForDebug();

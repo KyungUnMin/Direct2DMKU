@@ -223,7 +223,39 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="HandPhoneUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="LevelUpUICtrl.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Inventory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Open.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Close.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Skill.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Weapon.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1024,7 +1056,39 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="HandPhoneUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="LevelUpUICtrl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneStateBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Inventory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Open.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Close.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Skill.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Weapon.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -21,6 +21,7 @@
 #include "HUD.h"
 #include "FieldMoney.h"
 #include "LevelUpUICtrl.h"
+#include "HandPhoneUI.h"
 
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
@@ -62,6 +63,7 @@ void FieldLevelBase::Init(const float4& _Scale, const TileInfoData& _TileData)
 	FreeCamDebugMoveCtrl.Init(GetMainCamera());
 
 	CreateActor<LevelUpUICtrl>(UpdateOrder::UI);
+	HandPhone = CreateActor<HandPhoneUI>(UpdateOrder::UI);
 }
 
 
@@ -163,6 +165,10 @@ void FieldLevelBase::Update(float _DeltaTime)
 	CamCtrl.Update(_DeltaTime);
 	FreeCamDebugMoveCtrl.Update(_DeltaTime);
 	EnemySpawnerCtrl.Update(_DeltaTime);
+
+	Update_OpenPhone();
+
+
 	Update_DoorOpen_ForDebug();
 	Update_CreateMoeny_ForDebug();
 	Update_AddExp_ForDebug();
@@ -175,6 +181,21 @@ void FieldLevelBase::Update(float _DeltaTime)
 }
 
 
+void FieldLevelBase::Update_OpenPhone()
+{
+	//이미 핸드폰이 켜져있는 상태
+	if (true == HandPhone->IsUpdate())
+		return;
+
+	//ESC를 누를때만
+	if (false == KeyMgr::IsPress(KeyNames::Esc))
+		return;
+
+	//게임 상황에 따라 예외처리
+	//TODO
+
+	HandPhone->Open();
+}
 
 
 void FieldLevelBase::Update_DoorOpen_ForDebug()

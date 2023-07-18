@@ -1183,6 +1183,36 @@
     <Filter Include="03.Actor\04.UI\10.LevelUpUICtrl">
       <UniqueIdentifier>{71ece82a-030d-4cd1-b165-435e12b40996}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone">
+      <UniqueIdentifier>{9b9885f4-7a13-4cf9-a674-ee8c37593598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\01.HandPhone">
+      <UniqueIdentifier>{d72cefa1-593d-4264-be35-432b68e18836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM">
+      <UniqueIdentifier>{ed412fa3-a0da-456d-b524-8b8fcc6e7787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\01.FSM">
+      <UniqueIdentifier>{e04baa57-6acf-4227-b8d5-61803a27a436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\02.StateBase">
+      <UniqueIdentifier>{616010fd-0270-42b6-bb0e-ebadcf5f8f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\04.Weapon">
+      <UniqueIdentifier>{f8baf215-e4a4-474d-9741-558dba3eac3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\05.Skill">
+      <UniqueIdentifier>{3a0bae61-ccb5-4a38-aa3b-1f523fd3425e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\06.Inventory">
+      <UniqueIdentifier>{7c8b3f74-5553-4317-9b1a-095b28a674e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\03.Open">
+      <UniqueIdentifier>{f213a054-f8e2-4982-983a-c5c34185b5d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\07.Close">
+      <UniqueIdentifier>{5e61372a-a39d-45c2-94c6-c6307a0d034d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2124,6 +2154,30 @@
     <ClCompile Include="LevelUpUICtrl.cpp">
       <Filter>03.Actor\04.UI\10.LevelUpUICtrl</Filter>
     </ClCompile>
+    <ClCompile Include="HandPhoneUI.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\01.HandPhone</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneFSM.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\01.FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneStateBase.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\02.StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Weapon.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\04.Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Skill.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\05.Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Inventory.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\06.Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Open.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\03.Open</Filter>
+    </ClCompile>
+    <ClCompile Include="PhoneState_Close.cpp">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\07.Close</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3046,6 +3100,30 @@
     </ClInclude>
     <ClInclude Include="LevelUpUICtrl.h">
       <Filter>03.Actor\04.UI\10.LevelUpUICtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="HandPhoneUI.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\01.HandPhone</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneFSM.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\01.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneStateBase.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\02.StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Weapon.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\04.Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Skill.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\05.Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Inventory.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\06.Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Open.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\03.Open</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneState_Close.h">
+      <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\07.Close</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
