@@ -38,7 +38,6 @@ private:
 	std::shared_ptr<GameEngineUIRenderer> Equip_All = nullptr;
 	std::shared_ptr<GameEngineUIRenderer> Equip_Nothing = nullptr;
 
-	std::shared_ptr<GameEngineUIRenderer> CreateRender(const std::string_view& _TexName);
 
 
 	void SelectEquipRender();

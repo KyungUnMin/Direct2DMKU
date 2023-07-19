@@ -1,9 +1,12 @@
 #pragma once
 #include "StateBase.h"
 
+
+
 class HandPhoneUI;
 class PhoneFSM;
 enum class PhoneStateType;
+class GameEngineUIRenderer;
 
 class PhoneStateBase : public StateBase
 {
@@ -28,6 +31,8 @@ protected:
 	{
 		return PhonePtr;
 	}
+
+	std::shared_ptr<GameEngineUIRenderer> CreateRender(const std::string_view& _TexName = "");
 
 
 	bool IsUserState(PhoneStateType _State);

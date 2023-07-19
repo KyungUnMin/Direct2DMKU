@@ -16,6 +16,7 @@ public:
 	SkillMgr& operator=(const SkillMgr& _Other) = delete;
 	SkillMgr& operator=(const SkillMgr&& _Other) noexcept = delete;
 
+
 protected:
 
 private:

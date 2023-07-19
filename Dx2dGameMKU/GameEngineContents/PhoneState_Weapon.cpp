@@ -37,28 +37,18 @@ void PhoneState_Weapon::Start()
 {
 	PhoneStateBase::Start();
 
-	Cursor = CreateRender("HandPhone_Weapone_Cursor.png");
+	Cursor = PhoneStateBase::CreateRender("HandPhone_Weapone_Cursor.png");
 
-	Info_Knuckle = CreateRender("HandPhone_Weapon_KnuckleInfo.png");
-	Info_Watch = CreateRender("HandPhone_Weapon_WatchInfo.png");
+	Info_Knuckle = PhoneStateBase::CreateRender("HandPhone_Weapon_KnuckleInfo.png");
+	Info_Watch = PhoneStateBase::CreateRender("HandPhone_Weapon_WatchInfo.png");
 
-	Equip_Knuckle = CreateRender("HandPhone_Weapon_SelectKnuckle.png");
-	Equip_Watch = CreateRender("HandPhone_Weapon_SelectWatch.png");
+	Equip_Knuckle = PhoneStateBase::CreateRender("HandPhone_Weapon_SelectKnuckle.png");
+	Equip_Watch = PhoneStateBase::CreateRender("HandPhone_Weapon_SelectWatch.png");
 
-	Equip_All = CreateRender("HandPhone_Weapon_SelectAll.png");
-	Equip_Nothing = CreateRender("HandPhone_Weapon_SelectNon.png");
+	Equip_All = PhoneStateBase::CreateRender("HandPhone_Weapon_SelectAll.png");
+	Equip_Nothing = PhoneStateBase::CreateRender("HandPhone_Weapon_SelectNon.png");
 }
 
-std::shared_ptr<GameEngineUIRenderer> PhoneState_Weapon::CreateRender(const std::string_view& _TexName)
-{
-	std::shared_ptr<GameEngineUIRenderer> Render = nullptr;
-
-	Render = GetPhone()->CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::Phone);
-	Render->SetScaleToTexture(_TexName);
-	Render->Off();
-
-	return Render;
-}
 
 void PhoneState_Weapon::EnterState() 
 {
@@ -66,7 +56,7 @@ void PhoneState_Weapon::EnterState()
 
 	GetPhone()->ChangePhoneTexture("HandPhone_Weapon_BackGround.png");
 
-	NowCursorIndex = 0;
+	//NowCursorIndex = 0;
 	PhoneStateType LastUserState = GetPhoneFSM()->GetLastUserState();
 	if (PhoneStateType::Skill == LastUserState)
 	{
@@ -214,7 +204,8 @@ void PhoneState_Weapon::Update_MoveCursor()
 		//커서가 가장 오른쪽에 있던 경우
 		if (3 == NowCursorIndex || 7 == NowCursorIndex)
 		{
-			//GetPhoneFSM()->ChangeState(PhoneStateType::);
+			SoundMgr::PlaySFX("Phone_ChangeUserState.wav");
+			GetPhoneFSM()->ChangeState(PhoneStateType::Skill);
 			return;
 		}
 
@@ -228,7 +219,8 @@ void PhoneState_Weapon::Update_MoveCursor()
 		//커서가 가장 왼쪽에 있던 경우
 		if (0 == NowCursorIndex || 4 == NowCursorIndex)
 		{
-			//FSM 소지품쪽으로 변경
+			SoundMgr::PlaySFX("Phone_ChangeUserState.wav");
+			GetPhoneFSM()->ChangeState(PhoneStateType::Inventory);
 			return;
 		}
 

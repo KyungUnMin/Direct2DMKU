@@ -1,6 +1,10 @@
 #include "PrecompileHeader.h"
 #include "PhoneStateBase.h"
 
+#include <GameEngineCore/GameEngineUIRenderer.h>
+
+#include "RCGEnums.h"
+
 #include "PhoneFSM.h"
 #include "HandPhoneUI.h"
 
@@ -29,6 +33,23 @@ void PhoneStateBase::Start()
 	PhonePtr = PhoneFsmPtr->GetPhone();
 }
 
+std::shared_ptr<GameEngineUIRenderer> PhoneStateBase::CreateRender(const std::string_view& _TexName /*= ""*/)
+{
+	std::shared_ptr<GameEngineUIRenderer> Render = nullptr;
+
+	Render = PhonePtr->CreateComponent<GameEngineUIRenderer>(FieldUIRenderOrder::Phone);
+
+	if (false == _TexName.empty())
+	{
+		Render->SetScaleToTexture(_TexName);
+	}
+
+	Render->Off();
+
+	return Render;
+}
+
+
 
 bool PhoneStateBase::IsUserState(PhoneStateType _State)
 {
@@ -43,3 +64,4 @@ bool PhoneStateBase::IsUserState(PhoneStateType _State)
 
 	return false;
 }
+
