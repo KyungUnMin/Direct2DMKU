@@ -4,15 +4,22 @@
 std::list<InvenItemType> InventoryMgr::Inven;
 const size_t InventoryMgr::MaxCount = 10;
 
+bool InventoryMgr::IsFull()
+{
+	return MaxCount <= Inven.size();
+}
 
-bool InventoryMgr::PushItem(InvenItemType _Item)
+
+void InventoryMgr::PushItem(InvenItemType _Item)
 {
 	//인벤토리 공간 부족
-	if (MaxCount <= Inven.size())
-		return false;
+	if (true == IsFull())
+	{
+		MsgAssert("인벤토리에 여유 공간이 없는데, 아이템을 넣으려고 했습니다");
+		return;
+	}
 
 	Inven.push_back(_Item);
-	return true;
 }
 
 std::vector<InvenItemType> InventoryMgr::GetItems()

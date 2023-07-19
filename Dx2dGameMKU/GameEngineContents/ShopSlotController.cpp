@@ -4,6 +4,7 @@
 #include "RCGEnums.h"
 #include "DataMgr.h"
 #include "SkillMgr.h"
+#include "InventoryMgr.h"
 
 #include "Shop_BurgerLevel.h"
 #include "Shop_GymLevel.h"
@@ -84,7 +85,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_SingleBurger.png", 50, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::SingleBurger);
 	});
 
 
@@ -95,7 +96,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_DoubleBurger.png", 30, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::DoubleBurger);
 	});
 
 
@@ -106,7 +107,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_FriedPotato.png", 12, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::TeckFried);
 	});
 
 
@@ -117,7 +118,7 @@ void ShopSlotController::Init_Burger()
 		"ShopUI_Shake.png", 20, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::TeckShake);
 	});
 }
 
@@ -186,7 +187,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_Candy.png", 15, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::Candy);
 	});
 
 
@@ -197,7 +198,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_CottonCandy.png", 90, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::CottonCandy);
 	});
 
 
@@ -208,7 +209,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_GummyYummi.png", 500, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::GummyYummi);
 	});
 
 
@@ -219,7 +220,7 @@ void ShopSlotController::Init_Store()
 		"ShopUI_MelonMint.png", 500, Index,
 		[]()
 	{
-		MsgTextBox("아직 인벤토리 기능을 구현하지 않음");
+		InventoryMgr::PushItem(InvenItemType::MelonMint);
 	});
 }
 

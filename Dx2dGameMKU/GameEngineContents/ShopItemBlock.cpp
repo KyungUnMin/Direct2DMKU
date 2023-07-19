@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineFontRenderer.h>
 
 #include "DataMgr.h"
+#include "InventoryMgr.h"
 
 #include "ShopItem_CursorBar.h"
 #include "ShopUI_ResultText.h"
@@ -37,7 +38,8 @@ ShopResultType ShopItemBlock::IsAvailable()
 		return ShopResultType::MoneyLack;
 
 	//인벤토리 공간 체크
-
+	if(true == InventoryMgr::IsFull())
+		return ShopResultType::InvenLack;
 
 	return ShopResultType::BuyOk;
 }

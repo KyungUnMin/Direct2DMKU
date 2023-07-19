@@ -8,7 +8,7 @@ enum class InvenItemType
 	MelonMint,
 
 	DoubleBurger,
-	SingleTeckBurger,
+	SingleBurger,
 	TeckFried,
 	TeckShake
 };
@@ -18,7 +18,8 @@ enum class InvenItemType
 class InventoryMgr
 {
 public:
-	static bool PushItem(InvenItemType _Item);
+	static bool IsFull();
+	static void PushItem(InvenItemType _Item);
 	static std::vector<InvenItemType> GetItems();
 	static void Erase(InvenItemType _Item);
 

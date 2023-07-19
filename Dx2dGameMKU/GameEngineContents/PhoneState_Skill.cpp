@@ -64,14 +64,7 @@ PhoneState_Skill::~PhoneState_Skill()
 }
 
 
-//#include "GUIManager.h"
-//#include "GameEngineActorGUI.h"
-//#include "CrossTownLevel1.h"
-//#include "FieldLevelBase.h"
-//if (nullptr == std::dynamic_pointer_cast<CrossTownLevel1>(FieldLevelBase::GetPtr()))
-	//	return;
-	//
-	//GUIManager::CreateGui<GameEngineActorGUI>()->SetTarget(CursorRender->GetTransform());
+
 
 void PhoneState_Skill::Start() 
 {
