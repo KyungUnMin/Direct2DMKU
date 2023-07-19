@@ -126,6 +126,25 @@ public:
 		return PlayerAtt;
 	}
 
+	static inline void PlusPlayerAtt(int _Value)
+	{
+		_Value = abs(_Value);
+		PlayerAtt += _Value;
+	}
+
+	static inline void MinusPlayerAtt(int _Value)
+	{
+		_Value = abs(_Value);
+		PlayerAtt -= _Value;
+		if (PlayerAtt < 0)
+		{
+			PlayerAtt = 0;
+		}
+	}
+
+	//------------------Unbeatable(무적 여부)---------------------------------
+
+	static bool IsUnbeatable;
 
 	//------------------Speed---------------------------------
 
@@ -177,7 +196,11 @@ public:
 		LevelUpCallBacks.emplace_back() = _CallBack;
 	}
 
+	//------------------Inventory---------------------------------
+
 	
+
+
 
 protected:
 

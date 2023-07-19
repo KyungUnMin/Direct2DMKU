@@ -1,6 +1,8 @@
 #pragma once
 #include "PhoneStateBase.h"
 
+class GameEngineUIRenderer;
+
 class PhoneState_Weapon : public PhoneStateBase
 {
 public:
@@ -19,12 +21,31 @@ protected:
 	void ExitState() override;
 
 private:
-	size_t NowCursorIndex = 0;
 	static const std::vector<float4> CursorPoses;
+	static bool IsEquipKnuckle;
+	static bool IsEquipWatch;
+	static int KnuckleDamage;
 
-	std::shared_ptr<class GameEngineUIRenderer> Cursor = nullptr;
+	size_t NowCursorIndex = 0;
+
+	std::shared_ptr<GameEngineUIRenderer> Cursor = nullptr;
+
+	std::shared_ptr<GameEngineUIRenderer> Info_Knuckle = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> Info_Watch = nullptr;
+
+	std::shared_ptr<GameEngineUIRenderer> Equip_Knuckle = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> Equip_Watch = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> Equip_All = nullptr;
+	std::shared_ptr<GameEngineUIRenderer> Equip_Nothing = nullptr;
+
+	std::shared_ptr<GameEngineUIRenderer> CreateRender(const std::string_view& _TexName);
 
 
+	void SelectEquipRender();
 	void MoveCursorRender();
+
+
+	bool Update_Equip();
+	void Update_MoveCursor();
 };
 

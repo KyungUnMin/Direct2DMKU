@@ -268,6 +268,10 @@ bool FieldPlayer::OnDamage_Stun(bool _IsDefenceBreak /*= false*/, bool _IsIgnore
 
 bool FieldPlayer::CanPlayerDamage(bool _IsBreakDefence /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
+	//무적 모드인 경우
+	if (true == DataMgr::IsUnbeatable)
+		return false;
+
 	//방어 무시가 아니면서, 플레이어가 방어중일때
 	if (false == _IsBreakDefence)
 	{

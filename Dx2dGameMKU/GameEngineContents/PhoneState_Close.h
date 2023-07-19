@@ -13,8 +13,11 @@ public:
 	PhoneState_Close& operator=(const PhoneState_Close&& _Other) noexcept = delete;
 
 protected:
+	void EnterState() override;
+	void Update(float _DeltaTime) override;
 
 private:
+	const float Duration = 0.5f;
 
 };
 

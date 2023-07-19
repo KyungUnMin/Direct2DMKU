@@ -8,6 +8,7 @@ int DataMgr::PlayerMoney = 0;
 
 float DataMgr::PlayerSpeedPer = 1.f;
 int DataMgr::PlayerAtt = 1;
+bool DataMgr::IsUnbeatable = false;
 
 
 int DataMgr::PlayerLevel = 1;

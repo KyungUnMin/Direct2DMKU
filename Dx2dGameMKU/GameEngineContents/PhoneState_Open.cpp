@@ -4,9 +4,13 @@
 #include <GameEngineCore/GameEngineUIRenderer.h>
 
 #include "RCG_GameCore.h"
+#include "SoundMgr.h"
 
 #include "PhoneFSM.h"
 #include "HandPhoneUI.h"
+
+const float4 PhoneState_Open::StartOffset = float4{ -300.f, -800.f };
+const float4 PhoneState_Open::DestOffset = float4{ -300.f, 0.f };
 
 PhoneState_Open::PhoneState_Open()
 {
@@ -19,6 +23,14 @@ PhoneState_Open::~PhoneState_Open()
 }
 
 
+
+void PhoneState_Open::EnterState()
+{
+	PhoneStateBase::EnterState();
+
+	SoundMgr::PlaySFX("Phone_Open.wav").SetVolume(3.f);
+	SoundMgr::BgmPauseOn();
+}
 
 void PhoneState_Open::Update(float _DeltaTime)
 {
