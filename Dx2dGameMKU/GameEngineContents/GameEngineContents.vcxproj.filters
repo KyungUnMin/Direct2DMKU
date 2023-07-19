@@ -1213,6 +1213,9 @@
     <Filter Include="03.Actor\04.UI\11.HandPhone\02.FSM\07.Close">
       <UniqueIdentifier>{5e61372a-a39d-45c2-94c6-c6307a0d034d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\09.InventoryMgr">
+      <UniqueIdentifier>{276dd711-7103-4221-92af-1f4d60b11fb9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2178,6 +2181,9 @@
     <ClCompile Include="PhoneState_Close.cpp">
       <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\07.Close</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\09.InventoryMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3124,6 +3130,9 @@
     </ClInclude>
     <ClInclude Include="PhoneState_Close.h">
       <Filter>03.Actor\04.UI\11.HandPhone\02.FSM\07.Close</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryMgr.h">
+      <Filter>01.Core\03.Manager/Controller\09.InventoryMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

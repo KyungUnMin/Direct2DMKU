@@ -196,10 +196,6 @@ public:
 		LevelUpCallBacks.emplace_back() = _CallBack;
 	}
 
-	//------------------Inventory---------------------------------
-
-	
-
 
 
 protected:
