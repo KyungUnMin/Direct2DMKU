@@ -164,6 +164,12 @@ public:
 		PlayerSpeedPer = _Per;
 	}
 
+	static inline void PlusPlayerSpeed(float _Value)
+	{
+		_Value = fabs(_Value);
+		PlayerSpeedPer += _Value;
+	}
+
 	//------------------Level & EXP---------------------------------
 
 private:

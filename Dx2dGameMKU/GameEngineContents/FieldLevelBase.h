@@ -7,6 +7,7 @@
 
 class FieldPlayer;
 class BackGround;
+enum class LevelNames;
 
 class FieldLevelBase : public GameEngineLevel
 {
@@ -44,6 +45,16 @@ public:
 	inline EnemySpawner& GetEnemySpawner()
 	{
 		return EnemySpawnerCtrl;
+	}
+
+
+	template<typename LevelType>
+	void BindTransControllerGUI(GameEngineTransform* _Target)
+	{
+		if (nullptr == dynamic_cast<LevelType*>(this))
+			return;
+
+		CreateTransControllerGUI(_Target);
 	}
 	
 
@@ -96,6 +107,8 @@ private:
 	void Update_AddExp_ForDebug();
 
 	void MoneyClear();
+
+	static void CreateTransControllerGUI(GameEngineTransform* _Target);
 };
 
 class NpcCreateInfo

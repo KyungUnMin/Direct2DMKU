@@ -43,6 +43,11 @@ public:
 
 	static void ChangeLevel(LevelNames _Level);
 
+	static LevelNames GetCurrentLevel()
+	{
+		return NowLevel;
+	}
+
 protected:
 
 private:

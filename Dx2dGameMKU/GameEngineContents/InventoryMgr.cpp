@@ -35,6 +35,8 @@ std::vector<InvenItemType> InventoryMgr::GetItems()
 	return AllItem;
 }
 
+
+
 void InventoryMgr::Erase(InvenItemType _Item)
 {
 	std::list<InvenItemType>::iterator FindIter = std::find(Inven.begin(), Inven.end(), _Item);

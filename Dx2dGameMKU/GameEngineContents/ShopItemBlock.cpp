@@ -53,9 +53,14 @@ void ShopItemBlock::Buy()
 	}
 
 	//인벤토리가 꽉 찼는지 확인
-	//MsgAssert("인벤토리 공간이 없는데 아이템을 구매하려고 했습니다");
+	if (true == InventoryMgr::IsFull())
+	{
+		MsgAssert("인벤토리 공간이 없는데 아이템을 구매하려고 했습니다");
+		return;
+	}
 
-
+	//비용 지불
+	DataMgr::MinusPlayerMoney(GetCost());
 
 	//구매후 콜백 호출
 	CallBackExcute();

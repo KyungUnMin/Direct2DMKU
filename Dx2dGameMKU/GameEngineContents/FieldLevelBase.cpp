@@ -12,6 +12,7 @@
 #include "GameEngineActorGUI.h"
 #include "SoundMgr.h"
 #include "DataMgr.h"
+#include "LevelMgr.h"
 
 #include "DebugActor.h"
 #include "FieldNPCBase.h"
@@ -22,6 +23,7 @@
 #include "FieldMoney.h"
 #include "LevelUpUICtrl.h"
 #include "HandPhoneUI.h"
+
 
 
 FieldLevelBase* FieldLevelBase::GPtr = nullptr;
@@ -262,4 +264,11 @@ void FieldLevelBase::MoneyClear()
 	{
 		Money->Death();
 	}
+}
+
+
+void FieldLevelBase::CreateTransControllerGUI(GameEngineTransform* _Target)
+{
+	MsgTextBox("TransControllerGUI를 실행합니다");
+	GUIManager::CreateGui<GameEngineActorGUI>()->SetTarget(_Target);
 }

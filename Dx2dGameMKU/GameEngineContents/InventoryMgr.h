@@ -20,7 +20,9 @@ class InventoryMgr
 public:
 	static bool IsFull();
 	static void PushItem(InvenItemType _Item);
+
 	static std::vector<InvenItemType> GetItems();
+
 	static void Erase(InvenItemType _Item);
 
 	InventoryMgr(const InventoryMgr& _Other) = delete;
@@ -34,6 +36,7 @@ private:
 	static std::list<InvenItemType> Inven;
 	static const size_t MaxCount;
 
+	
 
 	InventoryMgr();
 	virtual ~InventoryMgr() = 0;
