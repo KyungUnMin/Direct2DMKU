@@ -91,6 +91,8 @@ protected:
 
 	void CreateNpcs(const std::vector<class NpcCreateInfo>& _NpcInfoes);
 
+	void CreateTalkNPC(const std::string_view& _AniFileName, const float4& _Pos, bool _IsGuiTarget = false);
+
 	void OnTransView_ForDebug();
 
 

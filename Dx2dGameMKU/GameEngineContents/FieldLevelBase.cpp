@@ -24,6 +24,7 @@
 #include "FieldMoney.h"
 #include "LevelUpUICtrl.h"
 #include "HandPhoneUI.h"
+#include "FieldTalkNPC.h"
 
 
 
@@ -133,6 +134,26 @@ void FieldLevelBase::CreateNpcs(const std::vector<class NpcCreateInfo>& _NpcInfo
 			Npc->GetTransform()->SetLocalNegativeScaleX();
 		}
 	}
+}
+
+
+void FieldLevelBase::CreateTalkNPC(const std::string_view& _AniFileName, const float4& _Pos, bool _IsGuiTarget /*= false*/)
+{
+	std::shared_ptr<FieldTalkNPC> Npc = nullptr;
+	Npc = CreateActor<FieldTalkNPC>(UpdateOrder::NPC);
+	Npc->AnimationCreate(_AniFileName);
+
+	GameEngineTransform* NpcTrans = Npc->GetTransform();
+	float4 Pos = _Pos;
+	Pos.z = Pos.y;
+	NpcTrans->SetLocalPosition(Pos);
+	NpcTrans->SetLocalNegativeScaleX();
+
+	if (false == _IsGuiTarget)
+		return;
+
+	MsgTextBox("TalkNPC를 위한 TransGUI을 실행합니다");
+	GUIManager::CreateGui<GameEngineActorGUI>()->SetTarget(NpcTrans);
 }
 
 

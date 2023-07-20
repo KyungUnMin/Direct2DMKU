@@ -1216,6 +1216,9 @@
     <Filter Include="01.Core\03.Manager/Controller\09.InventoryMgr">
       <UniqueIdentifier>{276dd711-7103-4221-92af-1f4d60b11fb9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\04.FieldNPC\02.TalkNpc">
+      <UniqueIdentifier>{f45b7b25-4f31-4d3f-a6a7-ac753bdff808}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2184,6 +2187,9 @@
     <ClCompile Include="InventoryMgr.cpp">
       <Filter>01.Core\03.Manager/Controller\09.InventoryMgr</Filter>
     </ClCompile>
+    <ClCompile Include="FieldTalkNPC.cpp">
+      <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\02.TalkNpc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3133,6 +3139,9 @@
     </ClInclude>
     <ClInclude Include="InventoryMgr.h">
       <Filter>01.Core\03.Manager/Controller\09.InventoryMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldTalkNPC.h">
+      <Filter>03.Actor\03.FieldCharacter\04.FieldNPC\02.TalkNpc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

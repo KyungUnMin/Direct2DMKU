@@ -22,7 +22,7 @@ public:
 	virtual void React();
 
 	//Idle애니메이션과 React애니메이션을 생성
-	void AnimationCreate(const std::string_view& _NpcFolderName);
+	virtual void AnimationCreate(const std::string_view& _NpcFolderName);
 
 	inline void DonLookAtReact()
 	{

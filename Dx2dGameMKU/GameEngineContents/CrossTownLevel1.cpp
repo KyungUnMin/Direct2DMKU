@@ -66,6 +66,8 @@ void CrossTownLevel1::Start()
 	CreateDoors();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
+	FieldLevelBase::CreateTalkNPC("Godai", float4{ -1500.f, -50.f });
+
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -2214.f, -171.f });
 

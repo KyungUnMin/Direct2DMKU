@@ -68,6 +68,7 @@ void OceanLevel::Start()
 	CreateDoor();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
+	FieldLevelBase::CreateTalkNPC("Burnov", float4{ 567.f, 80.f });
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1106.f, -187.f });
 
