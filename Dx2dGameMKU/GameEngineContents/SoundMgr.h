@@ -30,6 +30,9 @@ public:
 	static void BgmFadeOut(const float _Duration);
 	static void BgmFadeIn(const float _Duration);
 
+	static void PauseAllSfx();
+	static void ResumeAllSfx();
+
 
 	SoundMgr(const SoundMgr& _Other) = delete;
 	SoundMgr(SoundMgr&& _Other) noexcept = delete;
@@ -48,6 +51,7 @@ private:
 
 	static std::string CurBgmName;
 	static std::list<GameEngineSoundPlayer> AllSfx;
+	static std::list<GameEngineSoundPlayer> LoopSfxes;
 
 
 	static void Update_RemoveOldSfx();

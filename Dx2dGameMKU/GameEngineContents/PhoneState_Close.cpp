@@ -3,6 +3,7 @@
 
 #include "SoundMgr.h"
 #include "RCG_GameCore.h"
+#include "SoundMgr.h"
 
 #include "PhoneState_Open.h"
 #include "HandPhoneUI.h"
@@ -29,6 +30,8 @@ void PhoneState_Close::EnterState()
 
 	//유저 입력 허용
 	RCG_GameCore::SetCurGameState(GameState::OnField);
+
+	SoundMgr::ResumeAllSfx();
 }
 
 void PhoneState_Close::Update(float _DeltaTime) 

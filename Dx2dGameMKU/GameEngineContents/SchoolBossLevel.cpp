@@ -91,7 +91,7 @@ void SchoolBossLevel::CreateDoors()
 void SchoolBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
-	
+	OffPhone();
 
 	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::School, [this]()
 	{
@@ -100,7 +100,12 @@ void SchoolBossLevel::LevelChangeStart()
 	
 		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
 		{
-			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Misuzu);
+			std::shared_ptr<BossVersus> VersusUI = CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI));
+			VersusUI->Init(BossType::Misuzu);
+			VersusUI->SetCallBack([this]()
+			{
+				OffPhone();
+			});
 		});
 	});
 

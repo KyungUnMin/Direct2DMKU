@@ -65,3 +65,8 @@ bool PhoneStateBase::IsUserState(PhoneStateType _State)
 	return false;
 }
 
+PhoneStateType PhoneStateBase::GetPrevUserState()
+{
+	return PhoneFsmPtr->GetLastUserState();
+}
+

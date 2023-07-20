@@ -7,6 +7,7 @@ GameEngineSoundPlayer SoundMgr::BGM;
 std::string SoundMgr::CurBgmName = "";
 
 std::list<GameEngineSoundPlayer> SoundMgr::AllSfx;
+std::list<GameEngineSoundPlayer> SoundMgr::LoopSfxes;
 
 void SoundMgr::Init()
 {
@@ -39,6 +40,7 @@ GameEngineSoundPlayer SoundMgr::PlaySFX(const std::string_view& _BgmName, bool _
 	{
 		GameEngineSoundPlayer SoundPlayer = GameEngineSound::Play(_BgmName);
 		SoundPlayer.SetLoop(-1);
+		LoopSfxes.push_back(SoundPlayer);
 		return SoundPlayer;
 	}
 
@@ -112,20 +114,42 @@ void SoundMgr::Update(float _DeltaTime)
 
 void SoundMgr::Update_RemoveOldSfx()
 {
-	std::list<GameEngineSoundPlayer>::iterator StartIter = AllSfx.begin();
-	std::list<GameEngineSoundPlayer>::iterator EndIter = AllSfx.end();
-
-	while (StartIter != EndIter)
 	{
-		bool IsPlay = false;
-		StartIter->isPlaying(&IsPlay);
-		if (true == IsPlay)
+		std::list<GameEngineSoundPlayer>::iterator StartIter = AllSfx.begin();
+		std::list<GameEngineSoundPlayer>::iterator EndIter = AllSfx.end();
+
+		while (StartIter != EndIter)
 		{
-			++StartIter;
+			bool IsPlay = false;
+			StartIter->isPlaying(&IsPlay);
+			if (true == IsPlay)
+			{
+				++StartIter;
+			}
+			else
+			{
+				StartIter = AllSfx.erase(StartIter);
+			}
 		}
-		else
+	}
+
+
+	{
+		std::list<GameEngineSoundPlayer>::iterator StartIter = LoopSfxes.begin();
+		std::list<GameEngineSoundPlayer>::iterator EndIter = LoopSfxes.end();
+
+		while (StartIter != EndIter)
 		{
-			StartIter = AllSfx.erase(StartIter);
+			bool IsPlay = false;
+			StartIter->isPlaying(&IsPlay);
+			if (true == IsPlay)
+			{
+				++StartIter;
+			}
+			else
+			{
+				StartIter = LoopSfxes.erase(StartIter);
+			}
 		}
 	}
 }
@@ -149,6 +173,35 @@ void SoundMgr::LevelChangeEnd()
 
 	AllSfx.clear();
 }
+
+
+void SoundMgr::PauseAllSfx() 
+{
+	for (GameEngineSoundPlayer Sfx : AllSfx)
+	{
+		Sfx.SetPause(true);
+	}
+
+	for (GameEngineSoundPlayer Sfx : LoopSfxes)
+	{
+		Sfx.SetPause(true);
+	}
+}
+
+void SoundMgr::ResumeAllSfx()
+{
+	for (GameEngineSoundPlayer Sfx : AllSfx)
+	{
+		Sfx.SetPause(false);
+	}
+
+	for (GameEngineSoundPlayer Sfx : LoopSfxes)
+	{
+		Sfx.SetPause(false);
+	}
+}
+
+
 
 
 

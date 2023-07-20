@@ -13,6 +13,7 @@
 #include "SoundMgr.h"
 #include "DataMgr.h"
 #include "LevelMgr.h"
+#include "RCG_GameCore.h"
 
 #include "DebugActor.h"
 #include "FieldNPCBase.h"
@@ -185,8 +186,17 @@ void FieldLevelBase::Update(float _DeltaTime)
 
 void FieldLevelBase::Update_OpenPhone()
 {
+	if (false == IsPhoneOpenable)
+		return;
+
+	//플레이어가 죽었을때도 OffPhone을 통해 예외처리 해야함
+
 	//이미 핸드폰이 켜져있는 상태
 	if (true == HandPhone->IsUpdate())
+		return;
+
+	//게임 상태일 때만
+	if (GameState::OnField != RCG_GameCore::GetCurGameState())
 		return;
 
 	//ESC를 누를때만
@@ -271,4 +281,18 @@ void FieldLevelBase::CreateTransControllerGUI(GameEngineTransform* _Target)
 {
 	MsgTextBox("TransControllerGUI를 실행합니다");
 	GUIManager::CreateGui<GameEngineActorGUI>()->SetTarget(_Target);
+}
+
+void FieldLevelBase::OnPhone(float _Delay /*= 3.f*/)
+{
+	if (0.f == _Delay)
+	{
+		IsPhoneOpenable = true;
+		return;
+	}
+
+	TimeEvent.AddEvent(_Delay, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		IsPhoneOpenable = true;
+	});
 }

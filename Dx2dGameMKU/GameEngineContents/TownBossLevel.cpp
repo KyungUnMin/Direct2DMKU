@@ -99,6 +99,7 @@ void TownBossLevel::CreateDoors()
 void TownBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
+	OffPhone();
 
 	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Town, [this]()
 	{
@@ -107,7 +108,12 @@ void TownBossLevel::LevelChangeStart()
 	
 		this->CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Zero, 0.5f, [this]()
 		{
-			this->CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI))->Init(BossType::Yamada);
+			std::shared_ptr<BossVersus> VersusUI = CreateActor<BossVersus>(static_cast<int>(UpdateOrder::UI));
+			VersusUI->Init(BossType::Yamada);
+			VersusUI->SetCallBack([this]()
+			{
+				OnPhone();
+			});
 		});
 	});
 

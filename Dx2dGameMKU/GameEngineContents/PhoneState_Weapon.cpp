@@ -55,6 +55,17 @@ void PhoneState_Weapon::EnterState()
 	PhoneStateBase::EnterState();
 
 	GetPhone()->ChangePhoneTexture("HandPhone_Weapon_BackGround.png");
+	
+	PhoneStateType PrevUserState = GetPrevUserState();
+	if (PhoneStateType::Inventory == PrevUserState)
+	{
+		NowCursorIndex = 0;
+	}
+	else if (PhoneStateType::Skill == PrevUserState)
+	{
+		NowCursorIndex = 3;
+	}
+
 
 	//NowCursorIndex = 0;
 	PhoneStateType LastUserState = GetPhoneFSM()->GetLastUserState();

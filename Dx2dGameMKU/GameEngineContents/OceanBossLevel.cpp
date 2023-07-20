@@ -168,7 +168,8 @@ void OceanBossLevel::CreateAnimation(const std::string_view& _AniPath, const flo
 void OceanBossLevel::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
-	
+	OffPhone();
+
 	//º¸½º Movie
 	CreateActor<BossIntroMovie>(UpdateOrder::UI)->Init(MovieType::Ocean, [this]()
 	{
@@ -186,6 +187,7 @@ void OceanBossLevel::LevelChangeStart()
 			VsUI->SetCallBack([this]()
 			{
 				Boss_Noise->JumpForSing();
+				OnPhone();
 			});
 		});
 	});

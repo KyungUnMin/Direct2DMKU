@@ -122,6 +122,16 @@ void PhoneState_Inventory::EnterState()
 
 	GetPhone()->ChangePhoneTexture("HandPhone_Inven_BackGround.png");
 
+	PhoneStateType PrevUserState = GetPrevUserState();
+	if (PhoneStateType::Weapon == PrevUserState)
+	{
+		NowCursorIndex = 4;
+	}
+	else if (PhoneStateType::Skill == PrevUserState)
+	{
+		NowCursorIndex = 0;
+	}
+
 	Cursor->On();
 	CursorRenderMove();
 	SettingItemUI();

@@ -30,6 +30,8 @@ void PhoneState_Open::EnterState()
 
 	SoundMgr::PlaySFX("Phone_Open.wav").SetVolume(3.f);
 	SoundMgr::BgmPauseOn();
+
+	SoundMgr::PauseAllSfx();
 }
 
 void PhoneState_Open::Update(float _DeltaTime)

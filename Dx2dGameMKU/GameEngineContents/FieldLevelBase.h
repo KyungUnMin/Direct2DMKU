@@ -57,6 +57,12 @@ public:
 		CreateTransControllerGUI(_Target);
 	}
 	
+	inline void OffPhone()
+	{
+		IsPhoneOpenable = false;
+	}
+
+	void OnPhone(float _Delay = 3.f);
 
 protected:
 	const float BgmFadeDuration = 3.f;
@@ -88,6 +94,8 @@ protected:
 	void OnTransView_ForDebug();
 
 
+
+
 private:
 	static FieldLevelBase* GPtr;
 
@@ -100,6 +108,8 @@ private:
 
 	std::function<void()> DoorOpenFunc = nullptr;
 	std::shared_ptr<class HandPhoneUI> HandPhone = nullptr;
+	bool IsPhoneOpenable = true;
+
 
 	void Update_OpenPhone();
 	void Update_DoorOpen_ForDebug();

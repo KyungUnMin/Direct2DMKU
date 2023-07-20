@@ -132,7 +132,7 @@ void CrossTownLevel3::CreateScreenLock()
 	ScreenLock->SetTriggerColArea(TriggerColPos, TriggerColScale);
 	ScreenLock->SetTriggerCollBack([this]()
 	{
-		const float4 EnemySpawnPos = float4{ -1900.f, -300.f, -300.f };
+		const float4 EnemySpawnPos = float4{ -1700.f, -300.f, -300.f };
 		FieldLevelBase::GetEnemySpawner().CreateEnemy(EnemyType::TigerMan, EnemySpawnPos);
 	});
 }

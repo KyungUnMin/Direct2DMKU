@@ -37,6 +37,8 @@ protected:
 
 	bool IsUserState(PhoneStateType _State);
 
+	PhoneStateType GetPrevUserState();
+
 private:
 	PhoneFSM* PhoneFsmPtr = nullptr;
 	HandPhoneUI* PhonePtr = nullptr;
