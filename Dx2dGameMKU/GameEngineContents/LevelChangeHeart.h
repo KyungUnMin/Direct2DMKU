@@ -14,7 +14,7 @@ public:
 	LevelChangeHeart& operator=(const LevelChangeHeart& _Other) = delete;
 	LevelChangeHeart& operator=(const LevelChangeHeart&& _Other) noexcept = delete;
 
-	void Init(LevelNames _NextLevel);
+	void Init(LevelNames _NextLevel, float _WaitTime = 6.f);
 
 protected:
 	void Start() override;
@@ -26,7 +26,7 @@ private:
 	float4 TextureUV = float4{0.f,0.f, 1.f, 1.f};
 	size_t NextLevel = -1;
 
-	const float WaitTime = 6.f;
+	//const float WaitTime = 6.f;
 	const float Duration = 3.f;
 	const float MaxScaleRatio = 5.f;
 	

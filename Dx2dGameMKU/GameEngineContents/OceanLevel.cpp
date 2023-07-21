@@ -11,6 +11,8 @@
 
 #include "BackGround.h"
 #include "FieldDoor.h"
+#include "TalkUI.h"
+#include "LevelChangeHeart.h"
 
 const std::vector<std::pair<std::string_view, float4>> OceanLevel::BGInfoes =
 {
@@ -68,7 +70,8 @@ void OceanLevel::Start()
 	CreateDoor();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
-	FieldLevelBase::CreateTalkNPC("Burnov", float4{ 567.f, 80.f });
+	CreateBrunovNPC();
+	
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1106.f, -187.f });
 
@@ -173,6 +176,25 @@ void OceanLevel::CreateWaveRender()
 	GameEngineTransform* WaveTrans = Render->GetTransform();
 	WaveTrans->SetLocalScale(TexScale * RCGDefine::ResourceScaleConvertor);
 	WaveTrans->SetLocalPosition(float4::Forward * 501.f);
+}
+
+void OceanLevel::CreateBrunovNPC()
+{
+	FieldLevelBase::CreateTalkNPC("Burnov", float4{ 567.f, 80.f }, [this]() -> bool
+	{
+		std::shared_ptr<TalkUI> Talk = nullptr;
+		Talk = CreateActor<TalkUI>(UpdateOrder::UI);
+
+		Talk->Init(TalkType::Brunov);
+		Talk->Excute();
+
+		Talk->SetDestroyCallBack([this]()
+		{
+			CreateActor<LevelChangeHeart>(UpdateOrder::UI)->Init(LevelNames::OceanBossLevel, 0.f);
+		});
+
+		return true;
+	});
 }
 
 

@@ -18,7 +18,10 @@ public:
 
 	void AnimationCreate(const std::string_view& _NpcFolderName) override;
 
-	
+	inline void SetTalkCallBack(std::function<bool()> _TalkCallback)
+	{
+		TalkCallback = _TalkCallback;
+	}
 
 protected:
 	void Start() override;
@@ -30,11 +33,12 @@ private:
 
 	const float TalkWaitDuration = 1.0f;
 	float TalkWaitTime = 0.f;
-	bool IsTalking = false;	//∆„º≈≥Œ∑Œ ¥Î√º
+
+	std::function<bool()> TalkCallback = nullptr;
 
 	std::shared_ptr<GameEngineSpriteRenderer> CreateIconRender();
 	void Update_Collision(float _DeltaTime);
 
-
+	void TalkExcute();
 };
 

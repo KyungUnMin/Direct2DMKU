@@ -57,7 +57,7 @@ void TalkUI::ImageLoad()
 
 
 
-void TalkUI::Init(TalkType _Type, const float4& _ColOffset, const float4& _ColScale /*= float4{ 100.f, 2000.f }*/)
+void TalkUI::Init(TalkType _Type, const float4& _ColOffset /*= float4::Zero*/, const float4& _ColScale /*= float4{ 100.f, 2000.f }*/)
 {
 	TalkScript = AllTalkScript[static_cast<size_t>(_Type)];
 	Fsm.Init(_Type, this);
@@ -148,4 +148,23 @@ const TextUI_ScripteInfo& TalkUI::PopScript()
 	}
 
 	return TalkScript[ScriptCursor++];
+}
+
+
+void TalkUI::Destroy()
+{
+	UIBase::Destroy();
+
+	if (nullptr == DestroyCallBack)
+		return;
+
+	DestroyCallBack();
+	DestroyCallBack = nullptr;
+}
+
+
+void TalkUI::Excute()
+{
+	Collider->Off();
+	Fsm.ChangeState(TalkUIState::FadeIn);
 }

@@ -137,11 +137,16 @@ void FieldLevelBase::CreateNpcs(const std::vector<class NpcCreateInfo>& _NpcInfo
 }
 
 
-void FieldLevelBase::CreateTalkNPC(const std::string_view& _AniFileName, const float4& _Pos, bool _IsGuiTarget /*= false*/)
+void FieldLevelBase::CreateTalkNPC(
+	const std::string_view& _AniFileName, 
+	const float4& _Pos, 
+	std::function<bool()> _TalkCallback, 
+	bool _IsGuiTarget /*= false*/)
 {
 	std::shared_ptr<FieldTalkNPC> Npc = nullptr;
 	Npc = CreateActor<FieldTalkNPC>(UpdateOrder::NPC);
 	Npc->AnimationCreate(_AniFileName);
+	Npc->SetTalkCallBack(_TalkCallback);
 
 	GameEngineTransform* NpcTrans = Npc->GetTransform();
 	float4 Pos = _Pos;

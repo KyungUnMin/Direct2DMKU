@@ -8,6 +8,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "KeyMgr.h"
+#include "InventoryMgr.h"
 
 FieldTalkNPC::FieldTalkNPC()
 {
@@ -98,7 +99,7 @@ void FieldTalkNPC::Update(float _DeltaTime)
 
 void FieldTalkNPC::Update_Collision(float _DeltaTime)
 {
-	if (true == IsTalking)
+	if (nullptr == TalkCallback)
 		return;
 
 	if (false == KeyMgr::IsPress(KeyNames::Z))
@@ -123,8 +124,24 @@ void FieldTalkNPC::Update_Collision(float _DeltaTime)
 	if (Ratio < 1.f)
 		return;
 
-	//TODO
-	//대화 UI창 띄우기
-	IsTalking = true;
+	TalkExcute();
+}
 
+void FieldTalkNPC::TalkExcute()
+{
+	if (nullptr == TalkCallback)
+	{
+		MsgAssert("NPC의 대화 조건을 세팅해주지 않았습니다");
+		return;
+	}
+
+	if (true == TalkCallback())
+	{
+		TalkCallback = nullptr;
+		GetMainCollider()->Off();
+		IconBackRender->Off();
+		IconFrontRender->Off();
+	}
+
+	TalkWaitTime = 0.f;
 }

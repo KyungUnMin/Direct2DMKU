@@ -1249,6 +1249,9 @@
     <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\06.NpcTalk">
       <UniqueIdentifier>{b6815516-5a86-41ae-938d-108973b31071}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03.Manager/Controller\11.QuestMgr">
+      <UniqueIdentifier>{20e851f6-6a06-4b90-92ee-9556219ade1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2247,6 +2250,9 @@
     <ClCompile Include="TalkUI_Script.cpp">
       <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\01.Actor</Filter>
     </ClCompile>
+    <ClCompile Include="QuestMgr.cpp">
+      <Filter>01.Core\03.Manager/Controller\11.QuestMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3223,6 +3229,9 @@
     </ClInclude>
     <ClInclude Include="TalkUIState_FadeOut.h">
       <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\07.FadeOut</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestMgr.h">
+      <Filter>01.Core\03.Manager/Controller\11.QuestMgr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

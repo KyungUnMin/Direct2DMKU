@@ -16,6 +16,7 @@ enum class TalkType
 {
 	Godai1,
 	Godai2,
+	Godai3,
 	Brunov,
 
 	UNKNOWN

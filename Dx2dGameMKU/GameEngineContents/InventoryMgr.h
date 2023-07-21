@@ -25,6 +25,8 @@ public:
 
 	static void Erase(InvenItemType _Item);
 
+	static bool IsContain(InvenItemType _Item);
+
 	InventoryMgr(const InventoryMgr& _Other) = delete;
 	InventoryMgr(InventoryMgr&& _Other) noexcept = delete;
 	InventoryMgr& operator=(const InventoryMgr& _Other) = delete;

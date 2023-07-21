@@ -50,6 +50,16 @@ void InventoryMgr::Erase(InvenItemType _Item)
 }
 
 
+bool InventoryMgr::IsContain(InvenItemType _Item)
+{
+	for (const InvenItemType& Item : Inven)
+	{
+		if (Item == _Item)
+			return true;
+	}
+
+	return false;
+}
 
 
 InventoryMgr::InventoryMgr()

@@ -6,6 +6,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "SoundMgr.h"
+#include "InventoryMgr.h"
 
 #include "BackGround.h"
 #include "FieldDoor.h"
@@ -68,10 +69,9 @@ void CrossTownLevel1::Start()
 	CreateDoors();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
-	FieldLevelBase::CreateTalkNPC("Godai", float4{ -1500.f, -50.f });
+	CreateGodaiNPC();
 
 	CreateActor<TalkUI>(UpdateOrder::UI)->Init(TalkType::Godai1, { -1800.f, -200.f });
-
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -2214.f, -171.f });
 
@@ -140,6 +140,30 @@ void CrossTownLevel1::CreateEnemies()
 
 }
 
+
+void CrossTownLevel1::CreateGodaiNPC()
+{ 
+	const float4 NpcPos = float4{ -1500.f, -50.f };
+
+	FieldLevelBase::CreateTalkNPC("Godai", NpcPos, [this]() -> bool
+	{
+		std::shared_ptr<TalkUI> Talk = nullptr;
+		Talk = CreateActor<TalkUI>(UpdateOrder::UI);
+
+		if (true == InventoryMgr::IsContain(InvenItemType::DoubleBurger))
+		{
+			InventoryMgr::Erase(InvenItemType::DoubleBurger);
+			Talk->Init(TalkType::Godai2);
+			Talk->Excute();
+			//Talk->SetDestroyCallBack()
+			return true;
+		}
+
+		Talk->Init(TalkType::Godai3);
+		Talk->Excute();
+		return false;
+	});
+}
 
 void CrossTownLevel1::LevelChangeStart()
 {

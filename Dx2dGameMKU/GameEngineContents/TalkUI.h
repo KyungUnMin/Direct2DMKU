@@ -25,7 +25,7 @@ public:
 	TalkUI& operator=(const TalkUI& _Other) = delete;
 	TalkUI& operator=(const TalkUI&& _Other) noexcept = delete;
 
-	void Init(TalkType _Type, const float4& _ColOffset, const float4& _ColScale = float4{ 100.f, 2000.f });
+	void Init(TalkType _Type, const float4& _ColOffset = float4::Zero, const float4& _ColScale = float4{ 100.f, 2000.f });
 
 	inline std::shared_ptr<GameEngineUIRenderer> GetBackRender() const
 	{
@@ -61,9 +61,18 @@ public:
 		return Collider;
 	}
 
+	inline void SetDestroyCallBack(std::function<void()> _DestroyCallBack)
+	{
+		DestroyCallBack = _DestroyCallBack;
+	}
+
+	//바로 대화 UI를 띄운다
+	void Excute();
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void Destroy() override;
 
 private:
 	static const std::vector<std::vector<TextUI_ScripteInfo>> AllTalkScript;
@@ -77,6 +86,8 @@ private:
 	std::shared_ptr<UIFontRenderer> TextRender = nullptr;
 	std::shared_ptr<GameEngineCollision> Collider = nullptr;
 	float4 BackImgColor = float4::Null;
+
+	std::function<void()> DestroyCallBack = nullptr;
 
 	void ImageLoad();
 	void CreateRenders();

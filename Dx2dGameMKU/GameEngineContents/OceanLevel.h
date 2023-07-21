@@ -30,5 +30,6 @@ private:
 	void CreateDoor();
 	void CreateEnemies();
 	void CreateWaveRender();
+	void CreateBrunovNPC();
 };
 

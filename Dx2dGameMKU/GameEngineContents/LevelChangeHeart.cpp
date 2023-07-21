@@ -65,18 +65,18 @@ void LevelChangeHeart::CreateRender()
 }
 
 
-void LevelChangeHeart::Init(LevelNames _NextLevel)
+void LevelChangeHeart::Init(LevelNames _NextLevel, float _WaitTime /*= 6.f*/)
 {
 	GameEngineLevel* Level = GetLevel();
 
-	Level->TimeEvent.AddEvent(WaitTime, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	Level->TimeEvent.AddEvent(_WaitTime, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 	{
 		On();
 		ResetLiveTime();
 		SoundMgr::BgmFadeOut(Duration);
 	});
 
-	Level->TimeEvent.AddEvent(WaitTime + Duration - 1.f, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	Level->TimeEvent.AddEvent(_WaitTime + Duration - 1.f, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 	{
 		SoundMgr::PlaySFX("LevelChangeHeart.wav");
 	});
