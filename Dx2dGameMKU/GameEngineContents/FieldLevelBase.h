@@ -36,7 +36,6 @@ public:
 		return CamCtrl;
 	}
 
-	//bool IsBlockPos(const float4& _Pos);
 	inline std::shared_ptr<BackGround> GetBackGround() const
 	{
 		return BGPtr;

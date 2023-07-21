@@ -18,7 +18,6 @@ public:
 	RCG_GameCore& operator=(const RCG_GameCore&& _Other) noexcept = delete;
 
 	static void GameStart();
-	static void ContentsResourceInit();
 	static void GameEnd();
 
 	static GameState GetCurGameState()
@@ -35,7 +34,10 @@ protected:
 
 private:
 	static GameState CurState;
+	static std::vector<GameEngineFile> FontFiles;
 
+
+	static void ContentsResourceInit();
 	static void LoadShaders();
 	static void CreateBlends();
 	static void CreateRenderingPipeLine();

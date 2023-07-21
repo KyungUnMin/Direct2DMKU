@@ -227,6 +227,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FontMgr.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HandPhoneUI.h">
       <SubType>
       </SubType>
@@ -323,7 +327,35 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ConversationUI.h">
+    <ClInclude Include="TalkUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIState_FadeIn.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIState_FadeOut.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIState_NpcTalk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIState_PlayerTalk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkUIState_Wait.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1068,6 +1100,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FontMgr.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HandPhoneUI.cpp">
       <SubType>
       </SubType>
@@ -1165,10 +1201,39 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore_Resource.cpp" />
-    <ClCompile Include="ConversationUI.cpp">
+    <ClCompile Include="TalkUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TalkUIFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUIStateBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUIState_FadeIn.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUIState_FadeOut.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUIState_NpcTalk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUIState_PlayerTalk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUIState_Wait.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkUI_Script.cpp" />
     <ClCompile Include="CopFSM.cpp" />
     <ClCompile Include="CopGrenade.cpp">
       <SubType>

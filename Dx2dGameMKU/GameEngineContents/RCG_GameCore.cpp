@@ -1,16 +1,15 @@
 #include "PrecompileHeader.h"
 #include "RCG_GameCore.h"
-#include <GameEngineCore/GameEngineCore.h>
 
 #include "KeyMgr.h"
 #include "LevelMgr.h"
 #include "SoundMgr.h"
 #include "GUIManager.h"
 #include "SkillMgr.h"
-
-#include "TestLevel.h"
+#include "FontMgr.h"
 
 GameState RCG_GameCore::CurState = GameState::OnField;
+std::vector<GameEngineFile> RCG_GameCore::FontFiles;
 
 RCG_GameCore::RCG_GameCore()
 {
@@ -28,6 +27,7 @@ void RCG_GameCore::GameStart()
 	bool* DEBUGLEAK = new bool;
 #endif
 
+	FontMgr::Init();
 	ContentsResourceInit();
 
 	KeyMgr::CreateKey();
@@ -38,7 +38,9 @@ void RCG_GameCore::GameStart()
 }
 
 
+
+
 void RCG_GameCore::GameEnd()
 {
-
+	FontMgr::Clear();
 }

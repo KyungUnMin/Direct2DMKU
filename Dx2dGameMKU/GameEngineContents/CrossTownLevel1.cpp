@@ -10,6 +10,8 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "ResourceHelper.h"
+#include "TalkUI.h"
+
 
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel1::BGInfoes =
@@ -67,6 +69,8 @@ void CrossTownLevel1::Start()
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 	FieldLevelBase::CreateTalkNPC("Godai", float4{ -1500.f, -50.f });
+
+	CreateActor<TalkUI>(UpdateOrder::UI)->Init(TalkType::Godai1, { -1800.f, -200.f });
 
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -2214.f, -171.f });

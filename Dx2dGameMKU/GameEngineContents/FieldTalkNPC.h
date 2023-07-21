@@ -28,7 +28,7 @@ private:
 	std::shared_ptr<GameEngineSpriteRenderer> IconBackRender = nullptr;
 	std::shared_ptr<GameEngineSpriteRenderer> IconFrontRender = nullptr;
 
-	const float TalkWaitDuration = 1.5f;
+	const float TalkWaitDuration = 1.0f;
 	float TalkWaitTime = 0.f;
 	bool IsTalking = false;	//∆„º≈≥Œ∑Œ ¥Î√º
 

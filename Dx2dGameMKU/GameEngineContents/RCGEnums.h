@@ -27,6 +27,7 @@ enum class CollisionOrder
 	NPC,
 	FieldItem,
 	ScreenLock,
+	NPCTalk,
 };
 
 enum class RCG_CamNumType
@@ -49,11 +50,11 @@ enum class FieldUIRenderOrder
 {
 	Default = 0,
 	ScreenChainLock,
+	Conversation,
 	HUD,
+	ConversationText,
 	EventInfo,
 	BossHUD,
-	Conversation_BackImg,
-	Conversation_Portrait,
 	Phone,
 
 	Fade,
