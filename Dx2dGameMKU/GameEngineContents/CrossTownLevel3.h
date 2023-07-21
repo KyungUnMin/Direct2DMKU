@@ -4,6 +4,11 @@
 class CrossTownLevel3 : public FieldLevelBase
 {
 public:
+	inline static void OpenTownBossDoor()
+	{
+		IsTownBossDoorOpen = true;
+	}
+
 	CrossTownLevel3();
 	~CrossTownLevel3() override;
 
@@ -24,13 +29,16 @@ private:
 	static const std::string_view CollisionImageName;
 	static const std::vector<float4> EnemySpawnPoses;
 	static const std::vector<class NpcCreateInfo> NpcInfoes;
+	static bool IsTownBossDoorOpen;
 
 	std::shared_ptr<class FieldDoor> TownBossDoor = nullptr;
+	std::shared_ptr<class EventArea> EventPtr = nullptr;
 
 	void LoadImgRes();
 	void CreateBackGrounds();
 	void CreateDoors();
 	void CreateEnemies();
 	void CreateScreenLock();
+	void CreateTutorialArea();
 };
 

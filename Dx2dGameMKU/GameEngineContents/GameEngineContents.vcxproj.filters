@@ -1219,38 +1219,41 @@
     <Filter Include="01.Core\03.Manager/Controller\10.FontMgr">
       <UniqueIdentifier>{179780bb-bcbb-48f8-9081-8c6b3653e91c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC">
+    <Filter Include="03.Actor\04.UI\12.TutorialUI">
+      <UniqueIdentifier>{780d7567-35ff-451e-9a99-75d7be728016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\10.EventArea">
+      <UniqueIdentifier>{2d99feca-97b0-4ae0-9821-42c604386859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\07.TalkUI">
       <UniqueIdentifier>{fd9598ff-8329-48c3-bc21-cfc14cc7e769}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\01.Actor">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\01.Actor">
       <UniqueIdentifier>{52b9a621-1520-4a1f-8f0a-520c2ec76a23}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM">
       <UniqueIdentifier>{a6824c18-67de-4aed-9821-052da0faa721}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\01.FSM">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\01.FSM">
       <UniqueIdentifier>{dfc6f886-9393-43a1-b635-b795352a36bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\02.StateBase">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\02.StateBase">
       <UniqueIdentifier>{0c7f341e-f1c1-48e8-bc77-abd4d42aec89}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\03.Wait">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\03.Wait">
       <UniqueIdentifier>{27b17688-c149-4559-a334-337133ee6c59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\04.FadeIn">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\04.FadeIn">
       <UniqueIdentifier>{4559f32f-f0b9-4877-991f-ebf0977c725f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\05.PlayerTalk">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\05.PlayerTalk">
       <UniqueIdentifier>{ca8e17c6-2656-47c5-ae71-c2bc1a3ad380}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\07.FadeOut">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\07.FadeOut">
       <UniqueIdentifier>{b182e1e9-2851-45bf-917d-e4c2690e44c7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\06.NpcTalk">
+    <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\06.NpcTalk">
       <UniqueIdentifier>{b6815516-5a86-41ae-938d-108973b31071}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01.Core\03.Manager/Controller\11.QuestMgr">
-      <UniqueIdentifier>{20e851f6-6a06-4b90-92ee-9556219ade1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2224,34 +2227,40 @@
       <Filter>01.Core\03.Manager/Controller\10.FontMgr</Filter>
     </ClCompile>
     <ClCompile Include="TalkUI.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\01.Actor</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\01.Actor</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIFSM.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\01.FSM</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\01.FSM</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIStateBase.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\02.StateBase</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\02.StateBase</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIState_Wait.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\03.Wait</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\03.Wait</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIState_FadeIn.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\04.FadeIn</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\04.FadeIn</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIState_PlayerTalk.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\05.PlayerTalk</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\05.PlayerTalk</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIState_NpcTalk.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\06.NpcTalk</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\06.NpcTalk</Filter>
     </ClCompile>
     <ClCompile Include="TalkUIState_FadeOut.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\07.FadeOut</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\07.FadeOut</Filter>
     </ClCompile>
     <ClCompile Include="TalkUI_Script.cpp">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\01.Actor</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\01.Actor</Filter>
     </ClCompile>
-    <ClCompile Include="QuestMgr.cpp">
-      <Filter>01.Core\03.Manager/Controller\11.QuestMgr</Filter>
+    <ClCompile Include="TutorialUI.cpp">
+      <Filter>03.Actor\04.UI\12.TutorialUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialUI_StaticFunc.cpp">
+      <Filter>03.Actor\04.UI\12.TutorialUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EventArea.cpp">
+      <Filter>03.Actor\10.EventArea</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3207,31 +3216,34 @@
       <Filter>01.Core\03.Manager/Controller\10.FontMgr</Filter>
     </ClInclude>
     <ClInclude Include="TalkUI.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\01.Actor</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\01.Actor</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIFSM.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\01.FSM</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\01.FSM</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIStateBase.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\02.StateBase</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\02.StateBase</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIState_Wait.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\03.Wait</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\03.Wait</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIState_FadeIn.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\04.FadeIn</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\04.FadeIn</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIState_PlayerTalk.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\05.PlayerTalk</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\05.PlayerTalk</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIState_NpcTalk.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\06.NpcTalk</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\06.NpcTalk</Filter>
     </ClInclude>
     <ClInclude Include="TalkUIState_FadeOut.h">
-      <Filter>03.Actor\04.UI\07.TalkUI_WithNPC\02.FSM\07.FadeOut</Filter>
+      <Filter>03.Actor\04.UI\07.TalkUI\02.FSM\07.FadeOut</Filter>
     </ClInclude>
-    <ClInclude Include="QuestMgr.h">
-      <Filter>01.Core\03.Manager/Controller\11.QuestMgr</Filter>
+    <ClInclude Include="TutorialUI.h">
+      <Filter>03.Actor\04.UI\12.TutorialUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EventArea.h">
+      <Filter>03.Actor\10.EventArea</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

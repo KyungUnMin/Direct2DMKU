@@ -7,6 +7,7 @@ enum class GameState
 	IntroMovie,
 	OnlyFieldUI,
 	HandPhoneUI,
+	Tutorial,
 };
 
 class RCG_GameCore

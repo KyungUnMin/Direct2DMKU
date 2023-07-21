@@ -223,6 +223,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EventArea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldTalkNPC.h">
       <SubType>
       </SubType>
@@ -268,10 +272,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PhoneState_Weapon.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="QuestMgr.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -959,6 +959,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="StateBase.h" />
+    <ClInclude Include="TutorialUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="UIBase.h">
       <SubType>
       </SubType>
@@ -1100,6 +1104,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EventArea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldTalkNPC.cpp">
       <SubType>
       </SubType>
@@ -1145,10 +1153,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PhoneState_Weapon.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="QuestMgr.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1847,6 +1851,11 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="StateBase.cpp" />
+    <ClCompile Include="TutorialUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TutorialUI_StaticFunc.cpp" />
     <ClCompile Include="UIBase.cpp">
       <SubType>
       </SubType>

@@ -12,6 +12,7 @@ enum class UpdateOrder
 	Effect,
 	ScreenLock,
 	Money,
+	EventArea,
 
 	UI,
 	ShopItemData,
@@ -28,6 +29,7 @@ enum class CollisionOrder
 	FieldItem,
 	ScreenLock,
 	NPCTalk,
+	Event,
 };
 
 enum class RCG_CamNumType
@@ -56,6 +58,7 @@ enum class FieldUIRenderOrder
 	EventInfo,
 	BossHUD,
 	Phone,
+	Tutorial,
 
 	Fade,
 	LevelChangeHeart,

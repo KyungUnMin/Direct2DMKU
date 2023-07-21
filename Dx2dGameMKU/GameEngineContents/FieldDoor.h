@@ -30,6 +30,11 @@ public:
 	void Init(DoorType _Type, const float4& _RenderOffset = float4::Zero);
 	void Unlock(LevelNames _NextLevel);
 
+	inline bool IsOpened() const
+	{
+		return (LevelNames::OpeningLevel != NextLevel);
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 

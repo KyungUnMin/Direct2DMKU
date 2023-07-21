@@ -104,7 +104,7 @@ void SchoolBossLevel::LevelChangeStart()
 			VersusUI->Init(BossType::Misuzu);
 			VersusUI->SetCallBack([this]()
 			{
-				OffPhone();
+				OnPhone();
 			});
 		});
 	});

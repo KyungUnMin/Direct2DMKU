@@ -10,6 +10,7 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "EnemySpawner.h"
+#include "EventArea.h"
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel2::BGInfoes =
 {
@@ -69,6 +70,7 @@ void CrossTownLevel2::Start()
 	CreateDoors();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
+	CreateTutorialArea();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -2125.f, -261.f });
 
@@ -135,6 +137,32 @@ void CrossTownLevel2::CreateEnemies()
 		EnemyType::Hooligan, 
 		EnemyType::Cop 
 		}, EnemySpawnPoses);
+}
+
+void CrossTownLevel2::CreateTutorialArea()
+{
+	const float4 ItemTutoPos = float4{ -1300.f, 0.f };
+	const float4 ItemTutoScale = float4{ 100.f, -1300.f };
+
+	const float4 SkillTutoPos = float4{ 1200.f, 0.f };
+	const float4 SkillTutoScale = float4{ 100.f, 1200.f };
+
+	std::shared_ptr<EventArea> Event = nullptr;
+	GameEngineTransform* EventTrans = nullptr;
+
+	Event = CreateActor<EventArea>(UpdateOrder::EventArea);
+	Event->Init_Tutorial("아이템을 구매해보자!", "상점에는 다양한 물건들을 살 수 있다");
+	EventTrans = Event->GetTransform();
+	EventTrans->SetLocalPosition(ItemTutoPos);
+	EventTrans->SetLocalScale(ItemTutoScale);
+
+	Event = CreateActor<EventArea>(UpdateOrder::EventArea);
+	Event->Init_Tutorial("스킬을 구매해보자!", "체육관에선 돈으로 스킬을 배울수 있다");
+	EventTrans = Event->GetTransform();
+	EventTrans->SetLocalPosition(SkillTutoPos);
+	EventTrans->SetLocalScale(SkillTutoScale);
+
+	//BindTransControllerGUI<CrossTownLevel2>(EventTrans);
 }
 
 

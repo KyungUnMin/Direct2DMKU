@@ -176,6 +176,8 @@ void SchoolEntryLevel::LevelChangeStart()
 	FieldLevelBase::LevelChangeStart();
 
 	SoundMgr::ChangeBGM("SchoolEntryLevel.mp3");
+	OffPhone();
+	OnPhone();
 }
 
 void SchoolEntryLevel::LevelChangeEnd()
@@ -184,4 +186,5 @@ void SchoolEntryLevel::LevelChangeEnd()
 
 	SoundMgr::BgmFadeOut(BgmFadeDuration);
 }
+
 

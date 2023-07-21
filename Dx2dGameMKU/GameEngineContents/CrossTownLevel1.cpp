@@ -12,6 +12,8 @@
 #include "FieldDoor.h"
 #include "ResourceHelper.h"
 #include "TalkUI.h"
+#include "TutorialUI.h"
+#include "CrossTownLevel3.h"
 
 
 
@@ -60,6 +62,7 @@ CrossTownLevel1::~CrossTownLevel1()
 
 }
 
+
 void CrossTownLevel1::Start()
 {
 	FieldLevelBase::Start();
@@ -70,10 +73,18 @@ void CrossTownLevel1::Start()
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
 	CreateGodaiNPC();
+	CreateTalkArea();
 
-	CreateActor<TalkUI>(UpdateOrder::UI)->Init(TalkType::Godai1, { -1800.f, -200.f });
-
+	
 	FieldLevelBase::SetPlayerStartPosition(float4{ -2214.f, -171.f });
+
+	/*FieldLevelBase::SetDoorOpenFunc([]()
+	{
+		TutorialUI::BindTurorial("이동을 해보자!", "키보드의 방향키로 이동할 수 있다", []()
+		{
+			return true;
+		});
+	});*/
 
 	//FieldLevelBase::OnTransView_ForDebug();
 }
@@ -155,7 +166,15 @@ void CrossTownLevel1::CreateGodaiNPC()
 			InventoryMgr::Erase(InvenItemType::DoubleBurger);
 			Talk->Init(TalkType::Godai2);
 			Talk->Excute();
-			//Talk->SetDestroyCallBack()
+
+			Talk->SetDestroyCallBack([]()
+			{
+				TutorialUI::BindTurorial("야마다를 만나자!", "햄버거 집 뒤쪽에 길이 보인다!", []()
+				{
+					CrossTownLevel3::OpenTownBossDoor();
+					return true;
+				});
+			});
 			return true;
 		}
 
@@ -164,6 +183,23 @@ void CrossTownLevel1::CreateGodaiNPC()
 		return false;
 	});
 }
+
+void CrossTownLevel1::CreateTalkArea()
+{
+	std::shared_ptr<TalkUI> TalkPtr = nullptr;
+	TalkPtr = CreateActor<TalkUI>(UpdateOrder::UI);
+	TalkPtr->Init(TalkType::Godai1, { -1800.f, -200.f });
+
+	TalkPtr->SetDestroyCallBack([this]()
+	{
+		TutorialUI::BindTurorial("더블 텍 버거를 사오자!", "고다이가 더블 텍 버거를 원한다", []()
+		{
+			return true;
+		});
+	});
+
+}
+
 
 void CrossTownLevel1::LevelChangeStart()
 {

@@ -10,6 +10,7 @@
 #include "BackGround.h"
 #include "FieldDoor.h"
 #include "ScreenChainLock.h"
+#include "EventArea.h"
 
 
 const std::vector<std::pair<std::string_view, float4>> CrossTownLevel3::BGInfoes =
@@ -37,6 +38,8 @@ const std::vector<NpcCreateInfo> CrossTownLevel3::NpcInfoes =
 	{"WorkingMaleC", float4{1605.f, -210.f, -210.f}, true, false},
 };
 
+bool CrossTownLevel3::IsTownBossDoorOpen = false;
+
 
 CrossTownLevel3::CrossTownLevel3()
 {
@@ -57,6 +60,7 @@ void CrossTownLevel3::Start()
 	CreateDoors();
 	CreateEnemies();
 	FieldLevelBase::CreateNpcs(NpcInfoes);
+	CreateTutorialArea();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -1813.f, -245.f });
 	CreateScreenLock();
@@ -137,12 +141,35 @@ void CrossTownLevel3::CreateScreenLock()
 	});
 }
 
+void CrossTownLevel3::CreateTutorialArea()
+{
+	const float4 TutoPos = float4{ 1900.f, 0.f };
+	const float4 TutoScale = float4{ 200.f, 1200.f };
 
+	EventPtr = CreateActor<EventArea>(UpdateOrder::EventArea);
+	EventPtr->Init_Tutorial("갈 수 없다!", "고다이에게 더블 텍 버거를 사주자");
+
+	GameEngineTransform* EventTrans = EventPtr->GetTransform();
+	EventTrans->SetLocalPosition(TutoPos);
+	EventTrans->SetLocalScale(TutoScale);
+
+	//BindTransControllerGUI<CrossTownLevel3>(EventTrans);
+}
 
 
 void CrossTownLevel3::LevelChangeStart()
 {
 	FieldLevelBase::LevelChangeStart();
+
+	if ((true == IsTownBossDoorOpen) && (false == TownBossDoor->IsOpened()))
+	{
+		TownBossDoor->Unlock(LevelNames::TownBossLevel);
+		if ((nullptr != EventPtr) && (false == EventPtr->IsDeath()))
+		{
+			EventPtr->Death();
+		}
+		EventPtr = nullptr;
+	}
 
 	const std::string_view BgmName = "CrossTownLevel.mp3";
 	if (BgmName == SoundMgr::GetCurBgmName())

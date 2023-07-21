@@ -28,5 +28,6 @@ private:
 	void CreateDoors();
 	void CreateEnemies();
 	void CreateGodaiNPC();
+	void CreateTalkArea();
 };
 

@@ -25,6 +25,7 @@
 #include "LevelUpUICtrl.h"
 #include "HandPhoneUI.h"
 #include "FieldTalkNPC.h"
+#include "TutorialUI.h"
 
 
 
@@ -197,7 +198,6 @@ void FieldLevelBase::Update(float _DeltaTime)
 
 	Update_OpenPhone();
 
-
 	Update_DoorOpen_ForDebug();
 	Update_CreateMoeny_ForDebug();
 	Update_AddExp_ForDebug();
@@ -207,6 +207,7 @@ void FieldLevelBase::Update(float _DeltaTime)
 		IsDebugSwitch();
 	}
 	
+	TutorialUI::Update_CheckCallBack(this);
 }
 
 
