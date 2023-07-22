@@ -16,14 +16,8 @@ TutorialUI* TutorialUI::TutorialPtr = nullptr;
 void TutorialUI::BindTurorial(
 	const std::string_view& _Title,
 	const std::string_view& _Desc,
-	std::function<bool()> _CheckFunc)
+	std::function<bool()> _CheckFunc /*= nullptr*/)
 {
-	if (nullptr == _CheckFunc)
-	{
-		MsgAssert("nullptr인 콜백함수를 등록할 수는 없습니다");
-		return;
-	}
-
 	TutorialData& Data = AllCallBack.emplace_back();
 	Data.CheckFunc = _CheckFunc;
 	Data.TutoTitle = _Title;
@@ -44,18 +38,14 @@ void TutorialUI::Update_CheckCallBack(GameEngineLevel* _Level)
 	{
 		const TutorialData& Data = *StartIter;
 		std::function<bool()> CheckCallBack = Data.CheckFunc;
-		if (nullptr == CheckCallBack)
-		{
-			MsgAssert("nullptr인 콜백함수를 실행할 수는 없습니다");
-			return;
-		}
 
-		if (false == CheckCallBack())
+		if (nullptr != CheckCallBack && false == CheckCallBack())
 		{
 			++StartIter;
 			continue;
 		}
 
+		//nullptr인 경우엔 무조건 true인 펑셔널로 취급
 		JopQueue.push(Data);
 		StartIter = AllCallBack.erase(StartIter);
 	}

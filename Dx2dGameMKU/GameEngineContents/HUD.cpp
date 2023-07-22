@@ -8,6 +8,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "DataMgr.h"
+#include "FontMgr.h"
 
 #include "ShaderUIRenderer.h"
 #include "UIFontRenderer.h"
@@ -140,17 +141,10 @@ void HUD::CreateExpBar()
 
 void HUD::CreateMoneyText()
 {
-	const float4 TextPos = float4{ -220.f, 280.f };
-	const std::string_view FontName = "»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ";
-
-
-	if (nullptr == GameEngineFont::Find(FontName))
-	{
-		GameEngineFont::Load(FontName);
-	}
-
+	const float4 TextPos = float4{ -220.f, 279.f };
+	
 	MoneyText = CreateComponent<UIFontRenderer>(FieldUIRenderOrder::HUD);
-	MoneyText->SetFont(FontName);
+	MoneyText->SetFont(FontMgr::GetFontName(FontType::Binggrae));
 	MoneyText->SetScale(20.f);
 	MoneyText->SetText("0");
 	MoneyText->SetColor(float4::White);
@@ -162,11 +156,10 @@ void HUD::CreateMoneyText()
 
 void HUD::CreateLevelText()
 {
-	const float4 TextPos = float4{ 190.f, 326.f };
-	const std::string_view FontName = "»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ";
+	const float4 TextPos = float4{ 190.f, 327.f };
 
 	LevelText = CreateComponent<UIFontRenderer>(FieldUIRenderOrder::HUD);
-	LevelText->SetFont(FontName);
+	LevelText->SetFont(FontMgr::GetFontName(FontType::Binggrae));
 	LevelText->SetScale(15.f);
 	LevelText->SetText("1");
 	LevelText->SetColor(float4::White);

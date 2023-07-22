@@ -13,6 +13,7 @@
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
+#include "TutorialUI.h"
 
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
@@ -178,6 +179,31 @@ void SchoolEntryLevel::LevelChangeStart()
 	SoundMgr::ChangeBGM("SchoolEntryLevel.mp3");
 	OffPhone();
 	OnPhone();
+
+	//CreateTutorials();
+}
+
+void SchoolEntryLevel::CreateTutorials()
+{
+	TimeEvent.AddEvent(1.5f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		TutorialUI::BindTurorial("적들을 물리치자!", "적에 가까이 가면 공격해온다!");
+	});
+
+	TimeEvent.AddEvent(3.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		TutorialUI::BindTurorial("공격을 해보자!", "Z, X 로 공격할 수 있다");
+	});
+
+	TimeEvent.AddEvent(4.5f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		TutorialUI::BindTurorial("방어를 해보자!", "왼쪽 쉬프트로 방어할 수 있다");
+	});
+
+	TimeEvent.AddEvent(6.0f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		TutorialUI::BindTurorial("탈출하자!", "모든 적을 물리치면 밖으로 나갈 수 있다");
+	});
 }
 
 void SchoolEntryLevel::LevelChangeEnd()

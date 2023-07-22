@@ -12,6 +12,7 @@
 #include "DataMgr.h"
 #include "SkillMgr.h"
 #include "SoundMgr.h"
+#include "FontMgr.h"
 
 #include "FieldLevelBase.h"
 #include "PlayerFSM.h"
@@ -124,24 +125,20 @@ void LevelUpUICtrl::CreateNewSkillBoardRender()
 	//NewSkillBox->ColorOptionValue.MulColor.a = 0.5f;
 }
 
+
 void LevelUpUICtrl::CreateLevelText()
 {
-	const float4 Offset = float4{ -0.2f, 0.07f };
-	const std::string_view FontName = "»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ";
-	if (nullptr == GameEngineFont::Find(FontName))
-	{
-		GameEngineFont::Load(FontName);
-	}
-
+	const float4 Offset = float4{ 0.f, 0.075f };
+	
 	LevelText = CreateComponent<UIFontRenderer>(FieldUIRenderOrder::EventInfo);
-	LevelText->SetFont(FontName);
-	LevelText->SetScale(20.f);
+	LevelText->SetFont(FontMgr::GetFontName(FontType::Binggrae));
+	LevelText->SetScale(25.f);
 	LevelText->SetText("You Suck");
 	LevelText->SetColor(float4::White);
-	LevelText->SetFontFlag(FW1_TEXT_FLAG::FW1_LEFT);
+	LevelText->SetFontFlag(FW1_TEXT_FLAG::FW1_RIGHT);
 
 	GameEngineTransform* LevelTrans = LevelText->GetTransform();
-	LevelTrans->SetParent(GrowthBox->GetTransform(), false);
+	LevelTrans->SetParent(GrowthBox->GetTransform());
 	LevelTrans->SetLocalPosition(Offset);
 }
 

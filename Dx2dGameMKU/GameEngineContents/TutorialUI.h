@@ -14,7 +14,7 @@ public:
 	static void BindTurorial(
 	const std::string_view& _Title,
 	const std::string_view& _Desc, 
-	std::function<bool()> _CheckFunc);
+	std::function<bool()> _CheckFunc = nullptr);
 
 private:
 	struct TutorialData

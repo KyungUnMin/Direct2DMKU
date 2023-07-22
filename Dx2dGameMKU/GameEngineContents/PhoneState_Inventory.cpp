@@ -9,6 +9,7 @@
 #include "SoundMgr.h"
 #include "DataMgr.h"
 #include "InventoryMgr.h"
+#include "FontMgr.h"
 
 #include "HandPhoneUI.h"
 #include "UIFontRenderer.h"
@@ -84,12 +85,6 @@ void PhoneState_Inventory::CreateTextRender(
 	const float4& _Color /*= float4::White*/,
 	float _Scale /*= 20.f*/)
 {
-	const std::string_view FontName = "»ﬁ∏’µ’±Ÿ«ÏµÂ∂Û¿Œ";
-	if (nullptr == GameEngineFont::Find(FontName))
-	{
-		GameEngineFont::Load(FontName);
-	}
-
 	size_t Index = static_cast<size_t>(_Type);
 	if (nullptr != PlayerDataTexts[Index])
 	{
@@ -99,7 +94,7 @@ void PhoneState_Inventory::CreateTextRender(
 
 	std::shared_ptr<UIFontRenderer> Render = nullptr;
 	Render = GetPhone()->CreateComponent<UIFontRenderer>(FieldUIRenderOrder::Phone);
-	Render->SetFont(FontName);
+	Render->SetFont(FontMgr::GetFontName(FontType::Binggrae));
 	Render->SetScale(_Scale);
 	Render->SetText("0");
 	Render->SetColor(_Color);
