@@ -79,11 +79,10 @@ void NoiseFan::Update_Trace(float _DeltaTime)
 
 	LastAttackTime = LiveTime;
 
-	if (false == Player->OnDamage_Jaw())
+	if (false == Player->OnDamage_Jaw(1))
 		return;
 
 	ChangeFlyState();
-	DataMgr::MinusPlayerHP(1);
 }
 
 void NoiseFan::Update_FlyAway(float _DeltaTime)

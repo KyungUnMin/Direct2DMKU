@@ -102,9 +102,6 @@ void HooliganState_Attack_SnapKick::Update(float _DeltaTime)
 
 void HooliganState_Attack_SnapKick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach(Damage);
+	
 }

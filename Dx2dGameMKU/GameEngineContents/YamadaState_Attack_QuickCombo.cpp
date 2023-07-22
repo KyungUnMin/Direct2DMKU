@@ -154,26 +154,21 @@ void YamadaState_Attack_QuickCombo::Attack()
 
 	if (4 == CurFrm)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
+		Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 	}
 	else if (9 == CurFrm)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Face();
+		Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	}
 	else if (18 == CurFrm)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Stun();
+		Result = FieldPlayer::GetPtr()->OnDamage_Stun(Damage);
 	}
 	else
 	{
 		MsgAssert("해당 프레임에서는 공격하지 않습니다");
 		return;
 	}
-	
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 

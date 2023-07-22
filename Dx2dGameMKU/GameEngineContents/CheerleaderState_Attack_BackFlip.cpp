@@ -127,11 +127,7 @@ void CheerleaderState_Attack_BackFlip::Update(float _DeltaTime)
 
 void CheerleaderState_Attack_BackFlip::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 }
 
 

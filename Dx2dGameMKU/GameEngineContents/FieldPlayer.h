@@ -42,11 +42,11 @@ public:
 
 	bool IsStuned() const;
 
-	bool OnDamage_Face(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
-	bool OnDamage_Stomach(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
-	bool OnDamage_Jaw(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
-	bool OnDamage_BlowBack(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
-	bool OnDamage_Stun(bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Face(int _Damage, bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Stomach(int _Damage, bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Jaw(int _Damage, bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_BlowBack(int _Damage, bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
+	bool OnDamage_Stun(int _Damage, bool _IsDefenceBreak = false, bool _IsIgnoreBlow = false);
 
 	//외부에서 강제로 방향을 설정(true면 오른쪽을 바라본다)
 	void SetDirection(bool IsRight);

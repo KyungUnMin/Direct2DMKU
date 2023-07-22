@@ -194,10 +194,18 @@ bool FieldPlayer::IsDashing() const
 
 
 
-bool FieldPlayer::OnDamage_Face(bool _IsDefenceBreak/* = false*/, bool _IsIgnoreBlow /*= false*/)
+bool FieldPlayer::OnDamage_Face(int _Damage, bool _IsDefenceBreak/* = false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
+
+
+	DataMgr::MinusPlayerHP(_Damage);
+	if (DataMgr::GetPlayerHP() <= 0)
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_KnockDown));
+		return true;
+	}
 
 	CreateDamageEffect(DamageEffect_FaceOffset);
 
@@ -213,10 +221,18 @@ bool FieldPlayer::OnDamage_Face(bool _IsDefenceBreak/* = false*/, bool _IsIgnore
 	return true;
 }
 
-bool FieldPlayer::OnDamage_Stomach(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
+bool FieldPlayer::OnDamage_Stomach(int _Damage, bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
+
+
+	DataMgr::MinusPlayerHP(_Damage);
+	if (DataMgr::GetPlayerHP() <= 0)
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_KnockDown));
+		return true;
+	}
 
 	CreateDamageEffect(DamageEffect_StomachOffset);
 
@@ -232,10 +248,18 @@ bool FieldPlayer::OnDamage_Stomach(bool _IsDefenceBreak /*= false*/, bool _IsIgn
 	return true;
 }
 
-bool FieldPlayer::OnDamage_Jaw(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
+bool FieldPlayer::OnDamage_Jaw(int _Damage, bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
+
+
+	DataMgr::MinusPlayerHP(_Damage);
+	if (DataMgr::GetPlayerHP() <= 0)
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_KnockDown));
+		return true;
+	}
 
 	CreateDamageEffect(DamageEffect_JawOffset);
 
@@ -251,10 +275,17 @@ bool FieldPlayer::OnDamage_Jaw(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreB
 	return true;
 }
 
-bool FieldPlayer::OnDamage_BlowBack(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
+bool FieldPlayer::OnDamage_BlowBack(int _Damage, bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
+
+	DataMgr::MinusPlayerHP(_Damage);
+	if (DataMgr::GetPlayerHP() <= 0)
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_KnockDown));
+		return true;
+	}
 
 	CreateDamageEffect(DamageEffect_BlowBackOffset);
 
@@ -262,10 +293,17 @@ bool FieldPlayer::OnDamage_BlowBack(bool _IsDefenceBreak /*= false*/, bool _IsIg
 	return true;
 }
 
-bool FieldPlayer::OnDamage_Stun(bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
+bool FieldPlayer::OnDamage_Stun(int _Damage, bool _IsDefenceBreak /*= false*/, bool _IsIgnoreBlow /*= false*/)
 {
 	if (false == CanPlayerDamage(_IsDefenceBreak, _IsIgnoreBlow))
 		return false;
+
+	DataMgr::MinusPlayerHP(_Damage);
+	if (DataMgr::GetPlayerHP() <= 0)
+	{
+		Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Damaged_KnockDown));
+		return true;
+	}
 
 	CreateDamageEffect(DamageEffect_FaceOffset);
 

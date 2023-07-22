@@ -113,14 +113,13 @@ void NoiseState_Attack_GuitarSlash::Attack()
 	float4 LookPos = GetEnemy()->GetTransform()->GetWorldPosition();
 	Player->Look(LookPos);
 
-	bool Result = Player->OnDamage_BlowBack();
+	bool Result = Player->OnDamage_BlowBack(Damage);
 	if (false == Result)
 		return;
 
 	FieldCamController* CamCtrl = GetCamCtrl();
 	CamCtrl->SetZoomFix();
 	CamCtrl->SetShakeState(0.1f, 20.f);
-	DataMgr::MinusPlayerHP(Damage);
 	IsAttack = true;
 }
 

@@ -12,6 +12,7 @@
 #include "FontMgr.h"
 #include "KeyMgr.h"
 #include "LevelMgr.h"
+#include "SoundMgr.h"
 
 #include "UIFontRenderer.h"
 #include "Fader.h"
@@ -69,6 +70,8 @@ void ContinueBox::Start()
 	NewTime.Reset();
 
 	RCG_GameCore::SetCurGameState(GameState::PlayerKO);
+	SoundMgr::BgmPauseOn();
+	SoundMgr::PlaySFX("Continue.wav");
 }
 
 void ContinueBox::LoadResImage()
@@ -251,6 +254,7 @@ void ContinueBox::Update_Sink()
 
 	GameEngineTime::GlobalTime.SetGlobalTimeScale(1.f);
 	RCG_GameCore::SetCurGameState(GameState::OnField);
+	SoundMgr::BgmPauseOff();
 	Death();
 }
 

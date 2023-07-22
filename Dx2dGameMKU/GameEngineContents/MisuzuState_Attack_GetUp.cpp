@@ -133,9 +133,6 @@ void MisuzuState_Attack_GetUp::Update(float _DeltaTime)
 
 void MisuzuState_Attack_GetUp::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
+	
 }

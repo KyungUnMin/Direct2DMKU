@@ -107,9 +107,6 @@ void WaverState_Attack_DiceSpike::Update(float _DeltaTime)
 
 void WaverState_Attack_DiceSpike::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
+	
 }

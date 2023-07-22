@@ -131,19 +131,19 @@ void WaverState_Attack_Frog::Attack()
 
 	if (2 == CurFrame)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
+		Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 	}
 	else if (3 == CurFrame)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Face();
+		Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	}
 	else if (4 == CurFrame)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
+		Result = FieldPlayer::GetPtr()->OnDamage_Stomach(Damage);
 	}
 	else if (5 == CurFrame)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
+		Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	}
 	else
 	{
@@ -151,10 +151,6 @@ void WaverState_Attack_Frog::Attack()
 		return;
 	}
 
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 void WaverState_Attack_Frog::ExitState()

@@ -102,9 +102,6 @@ void WaverState_Attack_WindSlash::Update(float _DeltaTime)
 
 void WaverState_Attack_WindSlash::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
+	
 }

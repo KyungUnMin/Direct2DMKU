@@ -196,11 +196,8 @@ void YamadaEnergyBall::Update_CheckCol()
 		return;
 
 	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
-	bool Result = Player->OnDamage_BlowBack();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = Player->OnDamage_BlowBack(Damage);
+	
 }
 
 void YamadaEnergyBall::Update_Shadow()

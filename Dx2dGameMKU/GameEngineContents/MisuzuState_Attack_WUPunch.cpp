@@ -166,11 +166,10 @@ void MisuzuState_Attack_WUPunch::Attack()
 	if (true == IsAttackHited)
 		return;
 	
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(true);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage, true);
 	if (false == Result)
 		return;
 
-	DataMgr::MinusPlayerHP(Damage);
 	IsAttackHited = true;
 }
 

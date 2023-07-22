@@ -102,9 +102,6 @@ void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_Punch::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
+	
 }

@@ -267,10 +267,10 @@ void YamadaWormchiObj::Attack()
 	float4 ThisPos = GetTransform()->GetWorldPosition();
 	Player->Look(ThisPos);
 
-	if (false == Player->OnDamage_BlowBack())
+	if (false == Player->OnDamage_BlowBack(Damage))
 		return;
 	
-	DataMgr::MinusPlayerHP(Damage);
+	
 }
 
 

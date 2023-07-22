@@ -107,9 +107,6 @@ void CheerleaderState_Attack_Jab::Update(float _DeltaTime)
 
 void CheerleaderState_Attack_Jab::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
+	
 }

@@ -314,15 +314,15 @@ void YamadaMatterBlock::Attack_FixedBlock()
 	bool AttackResult = false;
 	if (true == Player->IsBlowing())
 	{
-		AttackResult = Player->OnDamage_Stun(false, true);
+		AttackResult = Player->OnDamage_Stun(Damage, false, true);
 		return;
 	}
 
-	AttackResult = Player->OnDamage_BlowBack(true);
+	AttackResult = Player->OnDamage_BlowBack(Damage, true);
 	if (false == AttackResult)
 		return;
 
-	DataMgr::MinusPlayerHP(Damage);
+	
 }
 
 

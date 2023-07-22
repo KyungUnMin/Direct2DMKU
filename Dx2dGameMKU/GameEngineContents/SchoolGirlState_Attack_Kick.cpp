@@ -108,9 +108,6 @@ void SchoolGirlState_Attack_Kick::Update(float _DeltaTime)
 
 void SchoolGirlState_Attack_Kick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
-	if (false == Result)
-		return;
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 
-	DataMgr::MinusPlayerHP(Damage);
 }

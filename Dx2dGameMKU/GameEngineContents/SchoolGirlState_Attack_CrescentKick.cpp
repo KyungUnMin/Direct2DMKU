@@ -122,9 +122,9 @@ void SchoolGirlState_Attack_CrescentKick::Attack()
 	//첫번째 공격일때
 	if (0 == AttackCount)
 	{
-		if (true == FieldPlayer::GetPtr()->OnDamage_Stomach())
+		if (true == FieldPlayer::GetPtr()->OnDamage_Stomach(Damage))
 		{
-			DataMgr::MinusPlayerHP(Damage);
+			
 		}
 
 		++AttackCount;
@@ -133,9 +133,9 @@ void SchoolGirlState_Attack_CrescentKick::Attack()
 	//두번째 공격일때
 	else
 	{
-		if (true == FieldPlayer::GetPtr()->OnDamage_BlowBack())
+		if (true == FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage * 2))
 		{
-			DataMgr::MinusPlayerHP(Damage * 2);
+			
 		}
 
 		++AttackCount;

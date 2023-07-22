@@ -304,11 +304,8 @@ void TigerManState_Attack_Rolling::Attack()
 		return;
 
 	LastAttack = LiveTime;
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
+	
 }
 
 

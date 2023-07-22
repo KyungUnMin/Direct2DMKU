@@ -110,9 +110,5 @@ void CheerleaderState_Attack_DoublePom::Update(float _DeltaTime)
 
 void CheerleaderState_Attack_DoublePom::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 }

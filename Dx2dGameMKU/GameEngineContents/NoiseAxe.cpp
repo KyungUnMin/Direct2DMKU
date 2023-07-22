@@ -124,12 +124,11 @@ void NoiseAxe::Update_Collision(float _DeltaTime)
 
 	AttackTimer = 0.f;
 
-	if (false == FieldPlayer::GetPtr()->OnDamage_BlowBack())
+	if (false == FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage))
 		return;
 
 	SoundMgr::PlaySFX("NoiseAxe_Hit.wav");
 	FieldLevelBase::GetPtr()->GetCameraController().SetShakeState(0.1f);
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 

@@ -100,9 +100,6 @@ void WaverState_Attack_Kick::Update(float _DeltaTime)
 
 void WaverState_Attack_Kick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach(Damage);
+	
 }

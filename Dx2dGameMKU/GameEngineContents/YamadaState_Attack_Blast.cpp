@@ -204,17 +204,17 @@ void YamadaState_Attack_Blast::Attack()
 	//마지막 공격은 날라가기(방어 불가능)
 	if (13 == CurFrm)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(true);
+		Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage, true);
 	}
 	//짝수 프레임은 얼굴 공격
 	else if(0 == CurFrm % 2)
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Face(true);
+		Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage, true);
 	}
 	//홀수 프레임은 턱 공격
 	else
 	{
-		Result = FieldPlayer::GetPtr()->OnDamage_Jaw(true);
+		Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage, true);
 	}
 
 	//공격이 정상적으로 먹혔다면
@@ -227,9 +227,6 @@ void YamadaState_Attack_Blast::Attack()
 		FirstHit = true;
 	}
 	
-
-	//플레이어 데미지 감소
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 void YamadaState_Attack_Blast::ExitState()

@@ -110,9 +110,6 @@ void SchoolGirlState_Attack_JumpKneeKick::Update(float _DeltaTime)
 
 void SchoolGirlState_Attack_JumpKneeKick::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
+	
 }

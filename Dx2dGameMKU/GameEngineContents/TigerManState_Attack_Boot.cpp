@@ -110,11 +110,8 @@ void TigerManState_Attack_Boot::Update(float _DeltaTime)
 
 void TigerManState_Attack_Boot::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
+	
 }
 
 void TigerManState_Attack_Boot::OnAttackSound()

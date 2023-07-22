@@ -105,11 +105,8 @@ void TigerManState_Attack_Chop::Update(float _DeltaTime)
 
 void TigerManState_Attack_Chop::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
+	
 }
 
 void TigerManState_Attack_Chop::OnAttackSound()

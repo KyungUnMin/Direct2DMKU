@@ -108,9 +108,6 @@ void SchoolGirlState_Attack_Jab::Update(float _DeltaTime)
 
 void SchoolGirlState_Attack_Jab::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Face();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
+	
 }

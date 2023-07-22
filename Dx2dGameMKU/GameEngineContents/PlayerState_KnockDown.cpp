@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 
 #include "RCGEnums.h"
+#include "SoundMgr.h"
 
 
 #include "FieldPlayer.h"
@@ -65,6 +66,17 @@ void PlayerState_KnockDown::CreateAnimation()
 		.FrameInter = 0.08f,
 		.Loop = false,
 	});
+
+	Render->SetAnimationStartEvent(AniFileName, 28, []()
+	{
+		SoundMgr::PlaySFX("Player_Defeat_Effect.wav");
+		SoundMgr::PlaySFX("Player_Defeat_Voice.wav");
+	});
+
+	Render->SetAnimationStartEvent(AniFileName, 60, []()
+	{
+		SoundMgr::PlaySFX("Player_Defeat_Effect2.wav");
+	});
 }
 
 
@@ -80,6 +92,9 @@ void PlayerState_KnockDown::EnterState()
 	//플레이어가 바라보고 있는 방향 반대로 날라감
 	bool IsPlayerRightLook = FieldPlayer::GetPtr()->IsRightDir();
 	BlowDir = IsPlayerRightLook ? float4::Left : float4::Right;
+
+	SoundMgr::PlaySFX("Player_Knockdown_Effect.wav");
+	SoundMgr::PlaySFX("Player_Knockdown_Voice.wav");
 }
 
 void PlayerState_KnockDown::Update(float _DeltaTime) 
@@ -127,4 +142,5 @@ void PlayerState_KnockDown::ExitState()
 {
 	PlayerState_DamagedBase::ExitState();
 	PlayerMainCollider->On();
+	BoxUI = nullptr;
 }

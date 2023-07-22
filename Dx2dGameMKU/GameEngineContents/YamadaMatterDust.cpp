@@ -144,14 +144,13 @@ void YamadaMatterDust::CheckColWithPlayer()
 
 void YamadaMatterDust::Attack()
 {
-	bool AttackResult = FieldPlayer::GetPtr()->OnDamage_Stun(true, true);
+	bool AttackResult = FieldPlayer::GetPtr()->OnDamage_Stun(Damage, true, true);
 	if (false == AttackResult)
 		return;
 
 	CamCtrl->SetZoom(0.95f);
 	CamCtrl->SetZoom(CamCtrl->ZoomOrigin, 0.5f);
 	CircleEffect->On();
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 

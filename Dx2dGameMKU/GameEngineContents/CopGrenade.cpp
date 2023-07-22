@@ -216,11 +216,10 @@ void CopGrenade::Update_Land()
 		return;
 	}
 
-	bool Result = PlayerPtr->OnDamage_Stun(true);
+	bool Result = PlayerPtr->OnDamage_Stun(Damage, true);
 	if (false == Result)
 		return;
 
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 void CopGrenade::Update_Explosion() 

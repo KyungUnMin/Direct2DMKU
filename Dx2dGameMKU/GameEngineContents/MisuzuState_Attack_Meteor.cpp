@@ -239,11 +239,8 @@ void MisuzuState_Attack_Meteor::Update_FallMove(float _DeltaTime)
 
 void MisuzuState_Attack_Meteor::Attack()
 {
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
+	
 }
 
 

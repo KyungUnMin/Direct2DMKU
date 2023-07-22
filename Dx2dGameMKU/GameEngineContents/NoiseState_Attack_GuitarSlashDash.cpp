@@ -132,7 +132,7 @@ void NoiseState_Attack_GuitarSlashDash::Attack()
 	float4 LookPos = GetEnemy()->GetTransform()->GetWorldPosition();
 	Player->Look(LookPos);
 
-	bool Result = Player->OnDamage_BlowBack();
+	bool Result = Player->OnDamage_BlowBack(Damage);
 	if (false == Result)
 		return;
 
@@ -150,7 +150,6 @@ void NoiseState_Attack_GuitarSlashDash::Attack()
 	}
 
 	CamCtrl->SetRoll(0.f, Duration);
-	DataMgr::MinusPlayerHP(Damage);
 	IsAttack = true;
 }
 

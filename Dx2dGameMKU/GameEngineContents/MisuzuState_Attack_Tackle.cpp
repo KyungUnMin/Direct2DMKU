@@ -208,11 +208,8 @@ void MisuzuState_Attack_Tackle::Attack()
 {
 	SoundMgr::PlaySFX("Misuzu_TackleImpact_Effect.wav");
 
-	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack();
-	if (false == Result)
-		return;
-
-	DataMgr::MinusPlayerHP(Damage);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
+	
 }
 
 

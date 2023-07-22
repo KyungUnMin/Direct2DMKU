@@ -129,14 +129,13 @@ void GlichSideAttack::Update_Collider()
 
 
 	LastAttackTime = LiveTime;
-	if (false == Player->OnDamage_BlowBack())
+	if (false == Player->OnDamage_BlowBack(Damage))
 		return;
 
 	CamCtrl->SetShakeState(0.5f);
 
 	LastAttackTime = (LiveTime + 2.5f);
 	Player->Look(float4::Zero);
-	DataMgr::MinusPlayerHP(Damage);
 }
 
 void GlichSideAttack::Update_WaveOff(float _DeltaTime) 
