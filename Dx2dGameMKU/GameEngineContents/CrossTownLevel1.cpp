@@ -62,7 +62,6 @@ CrossTownLevel1::~CrossTownLevel1()
 
 }
 
-
 void CrossTownLevel1::Start()
 {
 	FieldLevelBase::Start();
@@ -78,11 +77,11 @@ void CrossTownLevel1::Start()
 	
 	FieldLevelBase::SetPlayerStartPosition(float4{ -2214.f, -171.f });
 
-	/*FieldLevelBase::SetDoorOpenFunc([]()
+	/*FieldLevelBase::SetDoorOpenFunc([this]()
 	{
-		TutorialUI::BindTurorial("이동을 해보자!", "키보드의 방향키로 이동할 수 있다", []()
+		CreateActor<ContinueBox>(UpdateOrder::UI)->Init([]()
 		{
-			return true;
+			int a = 0;
 		});
 	});*/
 

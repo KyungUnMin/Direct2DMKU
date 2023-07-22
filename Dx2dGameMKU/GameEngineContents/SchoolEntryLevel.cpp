@@ -14,6 +14,7 @@
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
 #include "TutorialUI.h"
+#include "FieldPlayer.h"
 
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
@@ -86,6 +87,7 @@ void SchoolEntryLevel::Start()
 	CreateDoors();
 
 	FieldLevelBase::SetPlayerStartPosition(float4{ -612.f, -152.f });
+	GetPlayer()->StateChange_BattleStart();
 	CreateEnemies();
 
 	CreateNPC();

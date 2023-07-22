@@ -45,6 +45,8 @@ void PlayerState_NormalDamaged_Jaw::CreateAnimation()
 void PlayerState_NormalDamaged_Jaw::EnterState()
 {
 	PlayerState_DamagedBase::EnterState();
+	if (true == PlayerState_DamagedBase::CheckKnockDown())
+		return;
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);

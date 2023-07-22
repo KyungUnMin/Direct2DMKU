@@ -4,6 +4,7 @@
 #include "SkillMgr.h"
 
 //Movement
+#include "PlayerState_BattleStart.h"
 #include "PlayerState_Idle.h"
 #include "PlayerState_Walk.h"
 #include "PlayerState_Jump.h"
@@ -40,6 +41,7 @@
 #include "PlayerState_Damaged_BlowBack.h"
 #include "PlayerState_Damaged_Block.h"
 #include "PlayerState_Damaged_Stun.h"
+#include "PlayerState_KnockDown.h"
 
 
 size_t PlayerFSM::GetNextQuickAttack(size_t _PrevAttack)
@@ -80,6 +82,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	FSMBase::ResizeStates(PlayerStateType::COUNT);
 	
 	//Movement
+	FSMBase::CreateState<PlayerState_BattleStart>(PlayerStateType::Movement_BattleStart);
 	FSMBase::CreateState<PlayerState_Idle>(PlayerStateType::Movement_Idle);
 	FSMBase::CreateState<PlayerState_Walk>(PlayerStateType::Movement_Walk);
 	FSMBase::CreateState<PlayerState_Jump>(PlayerStateType::Movement_Jump);
@@ -116,6 +119,7 @@ void PlayerFSM::Init(PlayerStateType _StartState /*= PlayerStateType::Idle*/)
 	FSMBase::CreateState<PlayerState_Damaged_BlowBack>(PlayerStateType::Damaged_BlowBack);
 	FSMBase::CreateState<PlayerState_Damaged_Block>(PlayerStateType::Damaged_Block);
 	FSMBase::CreateState<PlayerState_Damaged_Stun>(PlayerStateType::Damaged_Stun);
+	FSMBase::CreateState<PlayerState_KnockDown>(PlayerStateType::Damaged_KnockDown);
 
 
 

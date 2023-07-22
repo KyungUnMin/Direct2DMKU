@@ -59,6 +59,7 @@ enum class FieldUIRenderOrder
 	BossHUD,
 	Phone,
 	Tutorial,
+	Continue,
 
 	Fade,
 	LevelChangeHeart,

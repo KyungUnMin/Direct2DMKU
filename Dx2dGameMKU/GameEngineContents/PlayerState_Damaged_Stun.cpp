@@ -23,6 +23,8 @@ PlayerState_Damaged_Stun::~PlayerState_Damaged_Stun()
 void PlayerState_Damaged_Stun::Start()
 {
 	PlayerState_DamagedBase::Start();
+	if (true == PlayerState_DamagedBase::CheckKnockDown())
+		return;
 
 	LoadAnimation();
 	CreateAnimation();

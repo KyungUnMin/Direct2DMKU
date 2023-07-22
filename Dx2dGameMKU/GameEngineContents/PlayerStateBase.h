@@ -37,6 +37,7 @@ protected:
 		DirChangeSwitch = true;
 	}*/
 
+	//해당 스테이트가 진행중일때 플레이어의 방향전환을 무시함
 	inline void DirChangeOff()
 	{
 		DirChangeSwitch = false;

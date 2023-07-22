@@ -1255,6 +1255,15 @@
     <Filter Include="03.Actor\04.UI\07.TalkUI\02.FSM\06.NpcTalk">
       <UniqueIdentifier>{b6815516-5a86-41ae-938d-108973b31071}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\08.BattleStart">
+      <UniqueIdentifier>{1a0eee90-1833-4185-9d86-bd68837029e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\06.KnockDown">
+      <UniqueIdentifier>{b916f325-12e5-4097-bfc5-44ce21b5e533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Actor\04.UI\13.ContinueBox">
+      <UniqueIdentifier>{efcdccad-fe87-4ead-884f-57b9b283abd5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2262,6 +2271,15 @@
     <ClCompile Include="EventArea.cpp">
       <Filter>03.Actor\10.EventArea</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState_BattleStart.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\08.BattleStart</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState_KnockDown.cpp">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\06.KnockDown</Filter>
+    </ClCompile>
+    <ClCompile Include="ContinueBox.cpp">
+      <Filter>03.Actor\04.UI\13.ContinueBox</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3244,6 +3262,15 @@
     </ClInclude>
     <ClInclude Include="EventArea.h">
       <Filter>03.Actor\10.EventArea</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_BattleStart.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\03.Movement\08.BattleStart</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState_KnockDown.h">
+      <Filter>03.Actor\03.FieldCharacter\02.FieldPlayer\02.FSM\05.Damaged\06.KnockDown</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinueBox.h">
+      <Filter>03.Actor\04.UI\13.ContinueBox</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -45,6 +45,8 @@ void PlayerState_NormalDamaged_Stomach::CreateAnimation()
 void PlayerState_NormalDamaged_Stomach::EnterState()
 {
 	PlayerState_DamagedBase::EnterState();
+	if (true == PlayerState_DamagedBase::CheckKnockDown())
+		return;
 
 	GetRenderer()->ChangeAnimation(AniName);
 	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);

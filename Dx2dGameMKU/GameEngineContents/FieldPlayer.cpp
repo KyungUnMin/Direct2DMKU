@@ -338,3 +338,9 @@ void FieldPlayer::Look(const float4& _LookPos)
 	//true일때 오른쪽을 바라본다
 	RenderDir = (0.f < GetTransform()->GetLocalScale().x);
 }
+
+
+void FieldPlayer::StateChange_BattleStart()
+{
+	Fsm.ChangeState(static_cast<size_t>(PlayerStateType::Movement_BattleStart));
+}

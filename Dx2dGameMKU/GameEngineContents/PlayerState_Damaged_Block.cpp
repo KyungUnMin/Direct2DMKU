@@ -78,6 +78,9 @@ void PlayerState_Damaged_Block::CreateAnimation()
 void PlayerState_Damaged_Block::EnterState()
 {
 	PlayerState_DamagedBase::EnterState();
+	if (true == PlayerState_DamagedBase::CheckKnockDown())
+		return;
+
 
 	CurState = State::Block;
 	size_t Index = static_cast<size_t>(CurState);

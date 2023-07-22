@@ -17,6 +17,8 @@ public:
 protected:
 	void Start() override;
 
+	bool CheckKnockDown();
+
 private:
 	void LoadNormalDamagedImage();
 };

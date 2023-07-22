@@ -99,7 +99,10 @@ protected:
 	void OnTransView_ForDebug();
 
 
-
+	inline std::shared_ptr<FieldPlayer> GetPlayer() const
+	{
+		return PlayerPtr;
+	}
 
 private:
 	static FieldLevelBase* GPtr;

@@ -8,6 +8,7 @@ enum class GameState
 	OnlyFieldUI,
 	HandPhoneUI,
 	Tutorial,
+	PlayerKO,
 };
 
 class RCG_GameCore

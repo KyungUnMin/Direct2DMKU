@@ -4,6 +4,7 @@
 enum class PlayerStateType
 {
 	//Movement
+	Movement_BattleStart,
 	Movement_Idle,
 	Movement_Walk,
 	Movement_Jump,
@@ -41,7 +42,7 @@ enum class PlayerStateType
 	Damaged_BlowBack,
 	Damaged_Block,
 	Damaged_Stun,
-
+	Damaged_KnockDown,
 
 
 	COUNT

@@ -54,6 +54,9 @@ public:
 	//플레이어의 이동방향을 담은 벡터 반환
 	float4 GetMoveDirVec();
 
+	void StateChange_BattleStart();
+
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

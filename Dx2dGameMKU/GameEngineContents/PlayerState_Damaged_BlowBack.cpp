@@ -67,6 +67,8 @@ void PlayerState_Damaged_BlowBack::CreateAnimation()
 void PlayerState_Damaged_BlowBack::EnterState()
 {
 	PlayerState_DamagedBase::EnterState();
+	if (true == PlayerState_DamagedBase::CheckKnockDown())
+		return;
 
 	GetRenderer()->ChangeAnimation(AniName);
 	FieldPlayer::GetPtr()->SetHeight(0.f);

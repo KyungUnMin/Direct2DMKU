@@ -5,7 +5,9 @@
 
 
 #include "RCGDefine.h"
+#include "DataMgr.h"
 
+#include "PlayerFSM.h"
 
 const std::string_view PlayerState_DamagedBase::NormalDamage_FileName = "Player_GetHit.png";
 
@@ -40,4 +42,14 @@ void PlayerState_DamagedBase::LoadNormalDamagedImage()
 	Dir.Move("Player");
 	Dir.Move("Damaged");
 	GameEngineSprite::LoadSheet(Dir.GetPlusFileName(NormalDamage_FileName).GetFullPath(), 5, 3);
+}
+
+bool PlayerState_DamagedBase::CheckKnockDown()
+{
+	int PlayerHp = DataMgr::GetPlayerHP();
+	if (0 < PlayerHp)
+		return false;
+
+	GetFSM()->ChangeState(PlayerStateType::Damaged_KnockDown);
+	return true;
 }
