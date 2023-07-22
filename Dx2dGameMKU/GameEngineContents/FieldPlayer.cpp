@@ -16,6 +16,7 @@
 
 #include "HitEffect.h"
 #include "FieldLevelBase.h"
+#include "TutorialUI.h"
 
 
 FieldPlayer* FieldPlayer::GPtr = nullptr;
@@ -101,6 +102,11 @@ void FieldPlayer::Update(float _DeltaTime)
 	if (GameState::OnField != RCG_GameCore::GetCurGameState())
 		return;
 
+	TutorialUI::BindOnceTutorial("공격을 해보자!", "Z, X 로 공격할 수 있다", [this]() ->bool
+	{
+		return (nullptr != GetAttackCollider()->Collision(CollisionOrder::EnemyMain));
+	});
+
 	//FSM을 이용해 움직이기 전 위치값 저장(이전 프레임의 위치값)
 	PrevPos = GetTransform()->GetWorldPosition();
 
@@ -108,6 +114,8 @@ void FieldPlayer::Update(float _DeltaTime)
 	CheckDirection();
 	Fsm.Update(_DeltaTime);
 }
+
+
 
 
 void FieldPlayer::CheckDirection()

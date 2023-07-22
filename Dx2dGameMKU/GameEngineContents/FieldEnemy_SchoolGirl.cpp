@@ -24,6 +24,7 @@ FieldEnemy_SchoolGirl::~FieldEnemy_SchoolGirl()
 void FieldEnemy_SchoolGirl::Start()
 {
 	FieldEnemyBase::Start();
+	SetStartHp(20);
 	Fsm.Init(this);
 }
 

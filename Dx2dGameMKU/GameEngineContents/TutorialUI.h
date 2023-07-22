@@ -1,6 +1,7 @@
 #pragma once
 #include "UIBase.h"
 #include <queue>
+#include <set>
 
 class GameEngineLevel;
 class UIFontRenderer;
@@ -11,6 +12,13 @@ class TutorialUI : public UIBase
 public:
 	static void Update_CheckCallBack(GameEngineLevel* _Level);
 
+	//조건에 맞는 경우 튜토리얼 UI를 한번만 생성합니다. 함수포인터가 nullptr인 경우 무조건 튜토리얼 UI를 생성시킵니다.
+	static void BindOnceTutorial(
+		const std::string_view& _Title,
+		const std::string_view& _Desc,
+		std::function<bool()> _CheckFunc = nullptr);
+
+	//조건에 맞는 경우 튜토리얼 UI를 생성합니다. 함수포인터가 nullptr인 경우 무조건 튜토리얼 UI를 생성시킵니다.
 	static void BindTurorial(
 	const std::string_view& _Title,
 	const std::string_view& _Desc, 
@@ -27,6 +35,7 @@ private:
 	static std::list<TutorialData> AllCallBack;
 	static std::queue<TutorialData> JopQueue;
 	static TutorialUI* TutorialPtr;
+	static std::set<std::string> OnceTutorialDict;
 
 	//-------------------STATIC---------------
 

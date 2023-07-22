@@ -16,6 +16,8 @@ public:
 
 protected:
 	void Start() override;
+	void EnterState() override;
+
 
 	bool CheckKnockDown();
 

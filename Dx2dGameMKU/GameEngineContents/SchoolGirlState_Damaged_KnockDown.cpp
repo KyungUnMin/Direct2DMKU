@@ -6,6 +6,7 @@
 #include "SchoolGirlFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldMoney.h"
+#include "TutorialUI.h"
 
 const std::string_view SchoolGirlState_Damaged_KnockDown::AniFileName = "SchoolGirl_KnockDown.png";
 
@@ -78,6 +79,8 @@ void SchoolGirlState_Damaged_KnockDown::EnterState()
 	SoundMgr::PlaySFX("FemaleEnemy_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Coin);
 	DataMgr::AddPlayerExp(20);
+
+	TutorialUI::BindOnceTutorial("탈출하자!", "모든 적을 물리치면 밖으로 나갈 수 있다");
 }
 
 

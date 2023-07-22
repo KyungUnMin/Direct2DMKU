@@ -7,10 +7,11 @@
 #include "RCGEnums.h"
 
 std::list<TutorialUI::TutorialData> TutorialUI::AllCallBack;
+std::set<std::string> TutorialUI::OnceTutorialDict;
+
 std::queue<TutorialUI::TutorialData> TutorialUI::JopQueue;
 
 TutorialUI* TutorialUI::TutorialPtr = nullptr;
-
 
 
 void TutorialUI::BindTurorial(
@@ -67,3 +68,15 @@ void TutorialUI::Update_CheckCallBack(GameEngineLevel* _Level)
 
 
 
+void TutorialUI::BindOnceTutorial(
+	const std::string_view& _Title,
+	const std::string_view& _Desc,
+	std::function<bool()> _CheckFunc /*= nullptr*/)
+{
+	std::string Title = _Title.data();
+	if (true == OnceTutorialDict.contains(Title))
+		return;
+
+	OnceTutorialDict.insert(Title);
+	BindTurorial(_Title, _Desc, _CheckFunc);
+}

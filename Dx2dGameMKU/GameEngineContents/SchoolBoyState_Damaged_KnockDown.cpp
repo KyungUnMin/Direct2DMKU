@@ -6,6 +6,9 @@
 #include "SchoolBoyFSM.h"
 #include "FieldEnemyBase.h"
 #include "FieldMoney.h"
+#include "TutorialUI.h"
+#include "FieldLevelBase.h"
+#include "SchoolEntryLevel.h"
 
 const std::string_view SchoolBoyState_Damaged_KnockDown::AniFileName = "SchoolBoy_KnockDown.png";
 
@@ -78,6 +81,8 @@ void SchoolBoyState_Damaged_KnockDown::EnterState()
 	SoundMgr::PlaySFX("MaleEnemy_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Coin);
 	DataMgr::AddPlayerExp(20);
+
+	TutorialUI::BindOnceTutorial("탈출하자!", "모든 적을 물리치면 밖으로 나갈 수 있다");
 }
 
 

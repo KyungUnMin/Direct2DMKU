@@ -3,6 +3,7 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCG_GameCore.h"
 #include "RCGEnums.h"
@@ -10,6 +11,7 @@
 #include "HitEffect.h"
 #include "FieldLevelBase.h"
 #include "EnemySpawner.h"
+#include "TutorialUI.h"
 
 FieldEnemyBase::FieldEnemyBase()
 {
@@ -59,6 +61,7 @@ void FieldEnemyBase::Update(float _DeltaTime)
 
 	MsgAssert("Enemy는 반드시 EnemySpawner를 통해 생성되어야 합니다");
 }
+
 
 void FieldEnemyBase::OnDamage(int _Damage)
 {

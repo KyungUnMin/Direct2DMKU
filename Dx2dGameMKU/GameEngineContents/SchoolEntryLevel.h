@@ -33,6 +33,5 @@ private:
 	void DoorOpen();
 	void CreateEnemies();
 	void CreateNPC();
-	void CreateTutorials();
 };
 

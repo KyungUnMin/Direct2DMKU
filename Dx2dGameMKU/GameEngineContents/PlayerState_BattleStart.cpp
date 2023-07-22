@@ -11,6 +11,8 @@
 #include "PlayerFSM.h"
 #include "DataMgr.h"
 
+#include "TutorialUI.h"
+
 
 const std::string_view PlayerState_BattleStart::AniFileName = "Player_BattleStart.png";
 const std::string_view PlayerState_BattleStart::AniName_Fall = "BattleStart_Fall";
@@ -141,4 +143,6 @@ void PlayerState_BattleStart::ExitState()
 	PlayerState_MovementBase::ExitState();
 	CurState = State::Fall;
 	PlayerMainCollider->On();
+
+	TutorialUI::BindOnceTutorial("적들을 물리치자!", "적에 가까이 가면 공격해온다!");
 }
