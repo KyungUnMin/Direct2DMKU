@@ -104,7 +104,7 @@ void FieldPlayer::Update(float _DeltaTime)
 
 	TutorialUI::BindOnceTutorial("공격을 해보자!", "Z, X 로 공격할 수 있다", [this]() ->bool
 	{
-		return (nullptr != GetAttackCollider()->Collision(CollisionOrder::EnemyMain));
+		return (nullptr != GetAttackCollider()->Collision(CollisionOrder::EnemyMain, ColType::SPHERE3D, ColType::SPHERE3D));
 	});
 
 	//FSM을 이용해 움직이기 전 위치값 저장(이전 프레임의 위치값)
