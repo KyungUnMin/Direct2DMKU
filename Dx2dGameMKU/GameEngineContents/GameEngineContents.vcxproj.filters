@@ -2298,6 +2298,9 @@
     <ClCompile Include="EndingWinActor.cpp">
       <Filter>03.Actor\02.CinematicActors\02.Ending_Win</Filter>
     </ClCompile>
+    <ClCompile Include="EndingLoseActor.cpp">
+      <Filter>03.Actor\02.CinematicActors\03.Ending_Lose</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3295,6 +3298,9 @@
     </ClInclude>
     <ClInclude Include="EndingWinActor.h">
       <Filter>03.Actor\02.CinematicActors\02.Ending_Win</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLoseActor.h">
+      <Filter>03.Actor\02.CinematicActors\03.Ending_Lose</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

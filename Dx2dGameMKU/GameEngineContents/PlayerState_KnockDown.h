@@ -4,6 +4,8 @@
 class PlayerState_KnockDown : public PlayerState_DamagedBase
 {
 public:
+	static const std::string_view AniFileName;
+
 	PlayerState_KnockDown();
 	~PlayerState_KnockDown() override;
 
@@ -20,8 +22,6 @@ protected:
 	void ExitState() override;
 
 private:
-	static const std::string_view AniFileName;
-
 	std::shared_ptr<class GameEngineCollision> PlayerMainCollider = nullptr;
 
 	const float StartAcc = 1500.f;

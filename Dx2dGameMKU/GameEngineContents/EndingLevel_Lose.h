@@ -14,9 +14,13 @@ public:
 
 protected:
 	void Start() override;
+	void LevelChangeStart() override;
 	//void Update(float _DeltaTime) override;
 
 private:
+
+
+
 
 };
 
