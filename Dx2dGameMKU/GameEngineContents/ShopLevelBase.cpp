@@ -10,6 +10,7 @@
 #include "KeyMgr.h"
 #include "LevelMgr.h"
 #include "SoundMgr.h"
+#include "InventoryMgr.h"
 
 #include "Fader.h"
 #include "BackGround.h"
@@ -19,10 +20,15 @@
 #include "ShopItem_CursorBar.h"
 #include "ShopSlotController.h"
 #include "ShopUI_ResultText.h"
+#include "FieldLevelBase.h"
+#include "TutorialUI.h"
+
 
 LevelNames ShopLevelBase::PrevLevel = LevelNames::OpeningLevel;
 std::string ShopLevelBase::PrevLevelBgmName;
 std::shared_ptr<class Fader> ShopLevelBase::LevelExitFade = nullptr;
+size_t ShopLevelBase::PrevInvenCount = 0;
+size_t ShopLevelBase::NowInvenCount = 0;
 
 ShopLevelBase::ShopLevelBase()
 {
@@ -84,6 +90,12 @@ void ShopLevelBase::LevelChangeStart()
 {
 	GameEngineLevel::LevelChangeStart();
 
+	if ((-1 != PrevInvenCount) && (-1 != NowInvenCount))
+	{
+		PrevInvenCount = InventoryMgr::GetCount();
+	}
+
+
 	if (nullptr != LevelExitFade)
 	{
 		LevelExitFade->Death();
@@ -126,6 +138,20 @@ void ShopLevelBase::Update(float _DeltaTime)
 {
 	GameEngineLevel::Update(_DeltaTime);
 	LevelTimer += _DeltaTime;
+
+	if ((-1 != PrevInvenCount) && (-1 != NowInvenCount))
+	{
+		NowInvenCount = InventoryMgr::GetCount();
+		if (NowInvenCount != PrevInvenCount)
+		{
+			NowInvenCount = -1;
+			PrevInvenCount = -1;
+			FieldLevelBase::GetPtr()->TimeEvent.AddEvent(2.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+			{
+				TutorialUI::BindOnceTutorial("새로운 아이템 발견!", "ESC를 눌러 새 아이템을 확인하자");
+			});
+		}
+	}
 
 	if (false == KeyMgr::IsDown(KeyNames::Esc) || (LevelTimer < 1.f))
 		return;

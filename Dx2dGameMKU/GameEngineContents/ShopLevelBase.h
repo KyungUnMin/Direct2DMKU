@@ -41,7 +41,8 @@ private:
 	static LevelNames PrevLevel;
 	static std::string PrevLevelBgmName;
 	static std::shared_ptr<class Fader> LevelExitFade;
-
+	static size_t PrevInvenCount;
+	static size_t NowInvenCount;
 
 	std::shared_ptr<class ShopItem_CursorBar> Cursor = nullptr;
 	std::shared_ptr<class ShopSlotController> SlotCtrl = nullptr;
@@ -51,7 +52,7 @@ private:
 	UINT PrevLevelBgmPos = 0;
 	std::shared_ptr<class ShopUI_ResultText> ResultText = nullptr;
 	std::string BgmName;
-
+	
 
 	void ImageResLoad();
 };

@@ -80,7 +80,7 @@ void Shop_GymLevel::LevelChangeEnd()
 	{
 		FieldLevelBase::GetPtr()->TimeEvent.AddEvent(2.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 		{
-			TutorialUI::BindTurorial("새로운 스킬 획득!", "ESC를 눌러 새 스킬을 확인하자");
+			TutorialUI::BindOnceTutorial("새로운 스킬 획득!", "ESC를 눌러 새 스킬을 확인하자");
 		});
 	}
 

@@ -27,6 +27,11 @@ public:
 
 	static bool IsContain(InvenItemType _Item);
 
+	static size_t GetCount()
+	{
+		return Inven.size();
+	}
+
 	InventoryMgr(const InventoryMgr& _Other) = delete;
 	InventoryMgr(InventoryMgr&& _Other) noexcept = delete;
 	InventoryMgr& operator=(const InventoryMgr& _Other) = delete;
