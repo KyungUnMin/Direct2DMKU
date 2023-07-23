@@ -7,6 +7,7 @@
 
 #include "RCGEnums.h"
 #include "SoundMgr.h"
+#include "KeyMgr.h"
 
 #include "NoiseFSM.h"
 #include "FieldEnemyBase.h"
@@ -23,7 +24,8 @@ const std::string_view NoiseState_Sing::FloorLine_FileName = "OceanConcert_Rails
 const float NoiseState_Sing::AniInterTime = 0.08f;
 
 const std::vector<float> NoiseState_Sing::Durations = { 30.f, 37.f,40.f };
-const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 4, 3 };
+//const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 5, 3, 2 };
+const std::vector<size_t> NoiseState_Sing::SpawnTimeCount = { 3, 2, 2 };
 
 const std::vector<std::string_view> NoiseState_Sing::BgmSongNames =
 {
@@ -181,6 +183,7 @@ void NoiseState_Sing::Update(float _DeltaTime)
 
 	Update_Rail();
 	Update_Floor();
+	Update_Shortcut_FORDEBUG();
 	
 	if (GetLiveTime() < Durations[CurPhase])
 		return;
@@ -274,6 +277,22 @@ void NoiseState_Sing::CreateFloor()
 	}
 
 	SoundMgr::PlaySFX("Noise_SingFloorCreate.wav").SetVolume(0.2f);
+}
+
+
+void NoiseState_Sing::Update_Shortcut_FORDEBUG()
+{
+	if (true == KeyMgr::IsDown(KeyNames::DebugF9))
+	{
+		float NowPhaseDuration = Durations[CurPhase];
+		if (NowPhaseDuration <= GetLiveTime())
+			return;
+
+		float MoveToTime = (NowPhaseDuration - 1);
+
+		StateBase::SetLiveTime(MoveToTime);
+		SoundMgr::SetBgmPos(static_cast<UINT>(MoveToTime));
+	}
 }
 
 

@@ -296,6 +296,7 @@ void NoiseState_Attack_AxeDash::ReflectDirection(const float4 _PrevPos, ReflectT
 	++ReflectCount;
 	if (ReflectPositions.size() <= ReflectCount)
 	{
+		OnMainCollider();
 		ChangeStateAndAni(State::DashLand);
 		return;
 	}

@@ -34,7 +34,7 @@ void RCG_GameCore::GameStart()
 	SoundMgr::Init();
 	SkillMgr::Init();
 
-	LevelMgr::CreateLevel(LevelNames::EndingLevel_Lose);
+	LevelMgr::CreateLevel(LevelNames::OceanLevel);
 }
 
 

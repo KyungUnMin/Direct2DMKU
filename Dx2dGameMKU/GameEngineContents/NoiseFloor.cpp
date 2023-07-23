@@ -193,7 +193,8 @@ void NoiseFloor::Update(float _DeltaTime)
 
 void NoiseFloor::Update_Move(float _DeltaTime)
 {
-	static const std::vector<float> PhaseSpeed = { 100.f, 200.f, 300.f };
+	//static const std::vector<float> PhaseSpeed = { 100.f, 200.f, 300.f };
+	static const std::vector<float> PhaseSpeed = { 300.f, 400.f, 500.f };
 	float Speed = PhaseSpeed[CurPhase];
 
 	GameEngineTransform* ThisTrans = GetTransform();

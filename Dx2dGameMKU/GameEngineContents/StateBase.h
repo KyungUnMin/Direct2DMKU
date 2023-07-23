@@ -46,6 +46,10 @@ protected:
 		Timer = 0.f;
 	}
 
+	inline void SetLiveTime(float _LiveTime)
+	{
+		Timer = _LiveTime;
+	}
 
 	
 	inline size_t GetFsmIndex() const

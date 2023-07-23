@@ -46,5 +46,6 @@ private:
 	void Update_Rail();
 	void Update_Floor();
 	void CreateFloor();
+	void Update_Shortcut_FORDEBUG();
 };
 
