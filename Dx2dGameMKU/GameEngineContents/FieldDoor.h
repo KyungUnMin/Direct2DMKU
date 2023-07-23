@@ -35,6 +35,11 @@ public:
 		return (LevelNames::OpeningLevel != NextLevel);
 	}
 
+	inline bool IsNearWithPlayer() const
+	{
+		return IsNearPlayer;
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 

@@ -132,6 +132,8 @@ void FieldNPCBase::React()
 	if (State::React == CurState)
 		return;
 
+	Damaged = true;
+
 	//상태 및 애니메이션 변경
 	CurState = State::React;
 	GetRenderer()->ChangeAnimation(ReactAniName);

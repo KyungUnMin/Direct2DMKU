@@ -15,6 +15,7 @@
 #include "FieldEnemy_SchoolGirl.h"
 #include "TutorialUI.h"
 #include "FieldPlayer.h"
+#include "EventArea.h"
 
 //<텍스처 이름, 오프셋>
 const std::vector<std::pair<std::string_view, float4>> SchoolEntryLevel::BGInfoes =
@@ -91,6 +92,11 @@ void SchoolEntryLevel::Start()
 	CreateEnemies();
 
 	CreateNPC();
+
+	TutorialUI::BindOnceTutorial("꾹 누르자!", "Z키를 꾹 눌러서 문 밖으로 나갈수 있다", [this]() ->bool
+	{
+		return DoorPtr->IsNearWithPlayer();
+	});
 
 	//디버깅용 DoorOpen함수 등록
 	FieldLevelBase::SetDoorOpenFunc(std::bind(&SchoolEntryLevel::DoorOpen, this));
@@ -172,6 +178,11 @@ void SchoolEntryLevel::CreateNPC()
 
 	GameEngineTransform* NpcTrans = Teacher->GetTransform();
 	NpcTrans->SetLocalPosition(NpcPos);
+
+	TutorialUI::BindOnceTutorial("폭력은 나쁘다!", "선생님은 때리면 안된다", [Teacher]()->bool
+	{
+		return Teacher->IsDamaged();
+	});
 }
 
 void SchoolEntryLevel::LevelChangeStart()

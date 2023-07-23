@@ -29,6 +29,11 @@ public:
 		IsLookPlayer = false;
 	}
 
+	inline bool IsDamaged() const
+	{
+		return Damaged;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -47,6 +52,7 @@ private:
 	};
 
 	State CurState = State::Idle;
+	bool Damaged = false;
 
 	//플레이어에게 공격 받았을 때 플레이어를 바라보는지 여부
 	bool IsLookPlayer = true;

@@ -1,6 +1,8 @@
 #pragma once
 #include "ShopLevelBase.h"
 
+enum class PlayerStateType;
+
 class Shop_GymLevel : public ShopLevelBase
 {
 public:
@@ -14,8 +16,14 @@ public:
 
 protected:
 	void Start() override;
+	void LevelChangeStart() override;
+	void LevelChangeEnd() override;
 
 private:
+	static const std::vector<PlayerStateType> UnlockSkills;
+
+	int PrevSkillBit = -1;
+	int NowSkillBit = -1;
 
 };
 
