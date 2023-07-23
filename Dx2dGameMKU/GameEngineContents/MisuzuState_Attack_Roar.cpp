@@ -139,11 +139,10 @@ void MisuzuState_Attack_Roar::Attack()
 	if (true == IsAttackOk)
 		return;
 
-	bool Result = FieldPlayer::GetPtr()->OnDamage_Stun(true);
+	bool Result = FieldPlayer::GetPtr()->OnDamage_Stun(Damage, true);
 	if (false == Result)
 		return;
 
-	DataMgr::MinusPlayerHP(Damage);
 	IsAttackOk = true;
 }
 

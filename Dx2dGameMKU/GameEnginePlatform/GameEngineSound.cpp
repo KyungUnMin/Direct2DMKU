@@ -9,6 +9,8 @@
 #endif
 
 
+bool GameEngineSoundPlayer::CanVolumeChange = true;
+
 //////////////////////////// GameEngineSoundPlayer ////////////////////////////
 
 void GameEngineSoundPlayer::SoundFadeIn(double _Time, float _Volume)

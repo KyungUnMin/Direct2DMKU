@@ -8,6 +8,9 @@ private:
 	FMOD::Channel* Channel = nullptr;
 
 public:
+	//특정 컴퓨터에서만 소리가 이상한 문제 해결을 위해 어쩔수 없음
+	static bool CanVolumeChange;
+
 	GameEngineSoundPlayer()
 	{
 
@@ -49,6 +52,9 @@ public:
 
 	void SetVolume(float _Volume)
 	{
+		if (false == CanVolumeChange)
+			return;
+
 		Channel->setVolume(_Volume);
 	}
 

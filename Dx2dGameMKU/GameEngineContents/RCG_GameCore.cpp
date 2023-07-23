@@ -34,7 +34,8 @@ void RCG_GameCore::GameStart()
 	SoundMgr::Init();
 	SkillMgr::Init();
 
-	LevelMgr::CreateLevel(LevelNames::CrossTownLevel2);
+	LevelMgr::CreateLevel(LevelNames::OpeningLevel);
+	GameEngineSoundPlayer::CanVolumeChange = false;
 }
 
 
