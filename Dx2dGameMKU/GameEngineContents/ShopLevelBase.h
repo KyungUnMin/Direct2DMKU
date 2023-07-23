@@ -32,6 +32,11 @@ protected:
 
 	void CreateBackImage(const std::string_view& _BackImageName);
 
+	inline void SetBgmName(const std::string_view& _BgmName)
+	{
+		BgmName = _BgmName;
+	}
+
 private:
 	static LevelNames PrevLevel;
 	static std::string PrevLevelBgmName;
@@ -45,7 +50,7 @@ private:
 	UINT ThisBgmPos = 0;
 	UINT PrevLevelBgmPos = 0;
 	std::shared_ptr<class ShopUI_ResultText> ResultText = nullptr;
-
+	std::string BgmName;
 
 
 	void ImageResLoad();

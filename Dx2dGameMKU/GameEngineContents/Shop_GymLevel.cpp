@@ -20,6 +20,7 @@ Shop_GymLevel::~Shop_GymLevel()
 void Shop_GymLevel::Start()
 {
 	ShopLevelBase::Start();
+	ShopLevelBase::SetBgmName("ShopBGM_Gym.mp3");
 	CreateBackImage("GymBG.png");
 
 	GameEngineTransform* Trans = nullptr;

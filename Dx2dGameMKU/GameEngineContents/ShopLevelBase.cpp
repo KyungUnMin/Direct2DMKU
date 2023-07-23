@@ -94,7 +94,14 @@ void ShopLevelBase::LevelChangeStart()
 
 	PrevLevelBgmName = SoundMgr::GetCurBgmName();
 	PrevLevelBgmPos = SoundMgr::GetBgmPos();
-	SoundMgr::ChangeBGM("ShopBGM.mp3");
+
+	if (true == BgmName.empty())
+	{
+		MsgAssert("상점의 BGM을 등록해주지 않았습니다");
+		return;
+	}
+
+	SoundMgr::ChangeBGM(BgmName);
 	SoundMgr::SetBgmPos(ThisBgmPos);
 }
 

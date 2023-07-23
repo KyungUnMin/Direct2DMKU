@@ -34,7 +34,7 @@ void RCG_GameCore::GameStart()
 	SoundMgr::Init();
 	SkillMgr::Init();
 
-	LevelMgr::CreateLevel(LevelNames::OpeningLevel);
+	LevelMgr::CreateLevel(LevelNames::EndingLevel_Win);
 }
 
 

@@ -11,6 +11,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 #include "FontMgr.h"
+#include "SoundMgr.h"
 
 #include "GUIManager.h"
 #include "GameEngineActorGUI.h"
@@ -288,9 +289,10 @@ void EndingWinActor::Update_Scream(float _DeltaTime)
 	ResetLiveTime();
 	CurState = State::GameEnd;
 
+	static const float FadeTime = 2.f;
 	std::shared_ptr<Fader> Fade = nullptr;
 	Fade = GetLevel()->CreateActor<Fader>(UpdateOrder::UI);
-	Fade->Init(float4::Null, 2.0f, []()
+	Fade->Init(float4::Null, FadeTime, []()
 	{
 		GameEngineWindow::AppOff();
 	});
@@ -298,6 +300,7 @@ void EndingWinActor::Update_Scream(float _DeltaTime)
 
 	KyokoTrans->SetLocalPosition(KyokoOriginPos);
 	MisakoTrans->SetLocalPosition(MisakoOriginPos);
+	SoundMgr::BgmFadeOut(FadeTime);
 }
 
 

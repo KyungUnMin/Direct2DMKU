@@ -5,6 +5,7 @@
 
 #include "EndingWinActor.h"
 #include "Fader.h"
+#include "SoundMgr.h"
 
 EndingLevel_Win::EndingLevel_Win()
 {
@@ -29,6 +30,7 @@ void EndingLevel_Win::LevelChangeStart()
 	GameEngineLevel::LevelChangeStart();
 	CreateActor<Fader>(UpdateOrder::UI)->Init(float4::Black);
 	CreateActor<EndingWinActor>(UpdateOrder::Defalut);
+	SoundMgr::ChangeBGM("OpeningBgm.mp3");
 }
 
 
