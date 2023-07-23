@@ -1264,6 +1264,9 @@
     <Filter Include="03.Actor\04.UI\13.ContinueBox">
       <UniqueIdentifier>{efcdccad-fe87-4ead-884f-57b9b283abd5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\14.BattleStart">
+      <UniqueIdentifier>{dfe5db51-8f05-4ca2-9e50-9123b69ba3bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2280,6 +2283,9 @@
     <ClCompile Include="ContinueBox.cpp">
       <Filter>03.Actor\04.UI\13.ContinueBox</Filter>
     </ClCompile>
+    <ClCompile Include="BattleIntro.cpp">
+      <Filter>03.Actor\04.UI\14.BattleStart</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3271,6 +3277,9 @@
     </ClInclude>
     <ClInclude Include="ContinueBox.h">
       <Filter>03.Actor\04.UI\13.ContinueBox</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleIntro.h">
+      <Filter>03.Actor\04.UI\14.BattleStart</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

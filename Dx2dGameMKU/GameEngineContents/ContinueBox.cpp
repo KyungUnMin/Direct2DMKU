@@ -71,7 +71,7 @@ void ContinueBox::Start()
 
 	RCG_GameCore::SetCurGameState(GameState::PlayerKO);
 	SoundMgr::BgmPauseOn();
-	SoundMgr::PlaySFX("Continue.wav");
+	SoundMgr::PlaySFX("ContinueOpen.wav");
 }
 
 void ContinueBox::LoadResImage()
@@ -209,6 +209,7 @@ void ContinueBox::Update_Wait()
 			RightSelectRender->SetColor(float4::White);
 		}
 
+		SoundMgr::PlaySFX("Continue_CursorMove.wav");
 		return;
 	}
 	
@@ -222,6 +223,15 @@ void ContinueBox::Update_Wait()
 
 	CurState = State::Sink;
 	NewLiveTime = 0.f;
+
+	if (0 == CursorIndex)
+	{
+		SoundMgr::PlaySFX("Continue_Retry.wav");
+	}
+	else
+	{
+		SoundMgr::PlaySFX("Continue_Stop.wav");
+	}
 }
 
 void ContinueBox::Update_Sink()

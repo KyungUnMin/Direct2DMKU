@@ -5,13 +5,17 @@
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
-#include "RCGDefine.h"
-
 #include "FieldPlayer.h"
 #include "PlayerFSM.h"
 #include "DataMgr.h"
+#include "SoundMgr.h"
+
+#include "RCGEnums.h"
+#include "RCGDefine.h"
 
 #include "TutorialUI.h"
+#include "FieldLevelBase.h"
+#include "BattleIntro.h"
 
 
 const std::string_view PlayerState_BattleStart::AniFileName = "Player_BattleStart.png";
@@ -79,6 +83,11 @@ void PlayerState_BattleStart::CreateAnimation()
 		.FrameInter = 0.08f,
 		.Loop = false,
 	});
+
+	Render->SetAnimationStartEvent(AniName_Ready, 14,[]()
+	{
+		SoundMgr::PlaySFX("Player_BattleStart_Awake.wav");
+	});
 }
 
 
@@ -93,6 +102,10 @@ void PlayerState_BattleStart::EnterState()
 	DataMgr::SetPlayerHP(DataMgr::PlayerFullPoint);
 	DataMgr::SetPlayerMP(0);
 	DataMgr::SetPlayerMoney(0);
+
+	SoundMgr::PlaySFX("Player_BattleStart_Fall.wav");
+
+	FieldLevelBase::GetPtr()->CreateActor<BattleIntro>(UpdateOrder::UI);
 }
 
 
