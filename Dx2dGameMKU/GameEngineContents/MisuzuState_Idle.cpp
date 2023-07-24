@@ -5,7 +5,7 @@
 
 #include "FieldEnemyBase.h"
 
-const std::vector<int> MisuzuState_Idle::FarAttackPercent = { 100, 20, 50 };
+const std::vector<int> MisuzuState_Idle::FarAttackPercent = { 0, 80, 90 };
 const float MisuzuState_Idle::SightRadius = 100.f;
 
 const std::string_view MisuzuState_Idle::AniName = "Idle";

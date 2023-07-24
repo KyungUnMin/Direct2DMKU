@@ -34,7 +34,7 @@ void RCG_GameCore::GameStart()
 	SoundMgr::Init();
 	SkillMgr::Init();
 
-	LevelMgr::CreateLevel(LevelNames::CrossTownLevel2);
+	LevelMgr::CreateLevel(LevelNames::SchoolEntryLevel);
 
 	//시연회 용
 	GameEngineSoundPlayer::CanVolumeChange = false;

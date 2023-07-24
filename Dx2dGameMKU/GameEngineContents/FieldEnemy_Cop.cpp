@@ -24,6 +24,7 @@ FieldEnemy_Cop::~FieldEnemy_Cop()
 void FieldEnemy_Cop::Start()
 {
 	FieldEnemyBase::Start();
+	SetStartHp(80);
 	Fsm.Init(this);
 }
 

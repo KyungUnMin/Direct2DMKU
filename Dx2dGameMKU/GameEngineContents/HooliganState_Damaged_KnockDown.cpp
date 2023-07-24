@@ -77,7 +77,7 @@ void HooliganState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("MaleEnemy_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Green);
-	DataMgr::AddPlayerExp(20);
+	DataMgr::AddPlayerExp(15);
 }
 
 

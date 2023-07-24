@@ -83,7 +83,7 @@ void TigerManState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("TigerMan_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Pupple);
-	DataMgr::AddPlayerExp(20);
+	DataMgr::AddPlayerExp(50);
 }
 
 

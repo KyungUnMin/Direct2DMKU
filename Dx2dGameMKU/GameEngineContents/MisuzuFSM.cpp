@@ -38,6 +38,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::NearAttackGroup =
 		MisuzuStateType::Elbow,
 		MisuzuStateType::WUPunch,
 		MisuzuStateType::Slap,
+		MisuzuStateType::Meteor,
 	},
 
 	//2페이즈
@@ -50,6 +51,7 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::NearAttackGroup =
 	{
 		MisuzuStateType::WUPunch,
 		MisuzuStateType::Roar,
+		MisuzuStateType::Meteor,
 	},
 };
 
@@ -66,7 +68,6 @@ const std::vector<std::vector<MisuzuStateType>> MisuzuFSM::FarAttackGroup =
 	//2페이즈
 	{
 		MisuzuStateType::Tackle,
-
 	},
 
 	//3페이즈

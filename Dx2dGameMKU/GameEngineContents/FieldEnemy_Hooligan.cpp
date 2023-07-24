@@ -24,6 +24,7 @@ FieldEnemy_Hooligan::~FieldEnemy_Hooligan()
 void FieldEnemy_Hooligan::Start()
 {
 	FieldEnemyBase::Start();
+	SetStartHp(70);
 	Fsm.Init(this);
 }
 

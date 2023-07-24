@@ -24,6 +24,7 @@ FieldEnemy_Waver::~FieldEnemy_Waver()
 void FieldEnemy_Waver::Start()
 {
 	FieldEnemyBase::Start();
+	SetStartHp(80);
 	Fsm.Init(this);
 }
 

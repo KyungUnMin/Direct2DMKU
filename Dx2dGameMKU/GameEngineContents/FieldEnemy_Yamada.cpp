@@ -9,7 +9,7 @@
 #include "RCGDefine.h"
 #include "RCGEnums.h"
 
-const int FieldEnemy_Yamada::MaxHp = 240;
+const int FieldEnemy_Yamada::MaxHp = 420;
 
 FieldEnemy_Yamada::FieldEnemy_Yamada()
 {
@@ -27,8 +27,8 @@ void FieldEnemy_Yamada::Start()
 {
 	FieldBossBase::Start();
 
-	Fsm.Init(this);
 	SetStartHp(MaxHp);
+	Fsm.Init(this);
 	CreateRageRender();
 }
 

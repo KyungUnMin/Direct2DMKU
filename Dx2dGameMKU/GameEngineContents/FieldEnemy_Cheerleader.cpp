@@ -24,6 +24,7 @@ FieldEnemy_Cheerleader::~FieldEnemy_Cheerleader()
 void FieldEnemy_Cheerleader::Start()
 {
 	FieldEnemyBase::Start();
+	SetStartHp(20);
 	Fsm.Init(this);
 }
 

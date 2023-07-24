@@ -77,7 +77,7 @@ void CheerleaderState_Damaged_KnockDown::EnterState()
 
 	SoundMgr::PlaySFX("CheerLeader_KnockDown.wav");
 	EnemyState_DamagedBase::CreateMoney(MoneyType::Bill_Blue);
-	DataMgr::AddPlayerExp(20);
+	DataMgr::AddPlayerExp(10);
 }
 
 
