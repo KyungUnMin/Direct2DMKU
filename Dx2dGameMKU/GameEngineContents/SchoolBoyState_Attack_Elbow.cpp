@@ -104,6 +104,7 @@ void SchoolBoyState_Attack_Elbow::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_Elbow::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 
 }

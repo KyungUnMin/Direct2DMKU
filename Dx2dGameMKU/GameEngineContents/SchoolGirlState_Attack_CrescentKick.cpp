@@ -119,6 +119,8 @@ void SchoolGirlState_Attack_CrescentKick::Update(float _DeltaTime)
 
 void SchoolGirlState_Attack_CrescentKick::Attack()
 {
+	EnemyState_AttackBase::Attack();
+
 	//첫번째 공격일때
 	if (0 == AttackCount)
 	{

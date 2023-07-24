@@ -139,6 +139,7 @@ void MisuzuState_Attack_Roar::Attack()
 	if (true == IsAttackOk)
 		return;
 
+	BossState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Stun(Damage, true);
 	if (false == Result)
 		return;

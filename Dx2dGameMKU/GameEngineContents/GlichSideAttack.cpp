@@ -127,7 +127,7 @@ void GlichSideAttack::Update_Collider()
 	if (nullptr == AttackCollider->Collision(CollisionOrder::PlayerMain, ColType::AABBBOX3D, ColType::SPHERE3D))
 		return;
 
-
+	Player->Look(GetTransform()->GetWorldPosition());
 	LastAttackTime = LiveTime;
 	if (false == Player->OnDamage_BlowBack(Damage))
 		return;

@@ -107,6 +107,7 @@ void CopState_Attack_BatonSmash::Update(float _DeltaTime)
 
 void CopState_Attack_BatonSmash::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach(Damage);
 	
 }

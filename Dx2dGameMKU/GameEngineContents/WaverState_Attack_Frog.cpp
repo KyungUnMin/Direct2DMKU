@@ -125,6 +125,7 @@ void WaverState_Attack_Frog::Attack()
 	if (LiveTime < LastAttackTime + AniInterTime)
 		return;
 
+	EnemyState_AttackBase::Attack();
 	LastAttackTime = LiveTime;
 	bool Result = false;
 	size_t CurFrame = GetRenderer()->GetCurrentFrame();

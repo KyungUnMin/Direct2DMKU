@@ -114,6 +114,7 @@ void WaverState_Attack_DoubleSlash::Update(float _DeltaTime)
 
 void WaverState_Attack_DoubleSlash::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 	
 

@@ -208,3 +208,16 @@ void EnemyState_AttackBase::EffectInit(std::shared_ptr<GameEngineActor> _Effect,
 	EffectTrans->SetLocalPosition(EnemyPos + _Offset);
 	EffectTrans->SetLocalScale(_Scale);
 }
+
+
+void EnemyState_AttackBase::Attack()
+{
+	bool IsEnemyDirRight = false;
+	if (0.f < GetEnemy()->GetTransform()->GetLocalScale().x)
+	{
+		IsEnemyDirRight = true;
+	}
+
+	bool PlayerDir = !IsEnemyDirRight;
+	FieldPlayer::GetPtr()->LookFixDir(PlayerDir);
+}

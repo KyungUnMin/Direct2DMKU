@@ -110,6 +110,7 @@ void SchoolGirlState_Attack_JumpKneeKick::Update(float _DeltaTime)
 
 void SchoolGirlState_Attack_JumpKneeKick::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 	
 }

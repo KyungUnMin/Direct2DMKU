@@ -102,6 +102,7 @@ void WaverState_Attack_WindSlash::Update(float _DeltaTime)
 
 void WaverState_Attack_WindSlash::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	
 }

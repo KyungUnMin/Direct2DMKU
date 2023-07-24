@@ -100,6 +100,7 @@ void WaverState_Attack_Slash::Update(float _DeltaTime)
 
 void WaverState_Attack_Slash::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

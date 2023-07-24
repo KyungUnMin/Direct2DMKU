@@ -200,6 +200,7 @@ void YamadaState_Attack_Blast::Attack()
 {
 	size_t CurFrm = GetRenderer()->GetCurrentFrame();
 	bool Result = false;
+	BossState_AttackBase::Attack();
 
 	//마지막 공격은 날라가기(방어 불가능)
 	if (13 == CurFrm)

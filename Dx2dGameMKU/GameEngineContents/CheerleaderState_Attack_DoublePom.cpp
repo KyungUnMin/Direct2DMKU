@@ -110,5 +110,6 @@ void CheerleaderState_Attack_DoublePom::Update(float _DeltaTime)
 
 void CheerleaderState_Attack_DoublePom::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 }

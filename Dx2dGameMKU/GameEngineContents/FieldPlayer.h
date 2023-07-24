@@ -36,6 +36,9 @@ public:
 		return RenderDir;
 	}
 
+	//Enemy Attack쪽에서 호출해주는 플레이어 방향 설정 함수
+	void LookFixDir(bool _IsRight);
+
 	void Look(const float4& _LookPos) override;
 
 	bool IsBlowing() const;

@@ -111,6 +111,7 @@ void SchoolBoyState_Attack_AxeKick::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_AxeKick::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Stomach(Damage);
 
 }

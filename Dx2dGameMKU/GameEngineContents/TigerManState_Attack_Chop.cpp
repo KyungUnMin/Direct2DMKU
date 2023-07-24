@@ -105,6 +105,7 @@ void TigerManState_Attack_Chop::Update(float _DeltaTime)
 
 void TigerManState_Attack_Chop::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Jaw(Damage);
 	
 }

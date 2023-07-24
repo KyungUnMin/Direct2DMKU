@@ -151,6 +151,7 @@ void YamadaState_Attack_QuickCombo::Attack()
 {
 	size_t CurFrm = GetRenderer()->GetCurrentFrame();
 	bool Result = false;
+	BossState_AttackBase::Attack();
 
 	if (4 == CurFrm)
 	{

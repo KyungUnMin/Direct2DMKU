@@ -107,6 +107,7 @@ void WaverState_Attack_DiceSpike::Update(float _DeltaTime)
 
 void WaverState_Attack_DiceSpike::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

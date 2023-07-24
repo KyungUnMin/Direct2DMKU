@@ -129,6 +129,7 @@ void HooliganState_Attack_DodgeKick::Update_BackMove(float _DeltaTime)
 
 void HooliganState_Attack_DodgeKick::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 
 }

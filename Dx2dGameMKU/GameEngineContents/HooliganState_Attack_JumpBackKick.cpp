@@ -104,6 +104,7 @@ void HooliganState_Attack_JumpBackKick::Update(float _DeltaTime)
 
 void HooliganState_Attack_JumpBackKick::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	
 }

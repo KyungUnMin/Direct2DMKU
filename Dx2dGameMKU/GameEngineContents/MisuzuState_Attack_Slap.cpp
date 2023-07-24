@@ -117,6 +117,7 @@ void MisuzuState_Attack_Slap::Attack()
 {
 	SoundMgr::PlaySFX("Misuzu_SlapImpact_Effect.wav");
 
+	BossState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

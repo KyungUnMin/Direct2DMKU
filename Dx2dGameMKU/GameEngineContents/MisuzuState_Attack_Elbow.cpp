@@ -112,6 +112,7 @@ void MisuzuState_Attack_Elbow::Update(float _DeltaTime)
 
 void MisuzuState_Attack_Elbow::Attack()
 {
+	BossState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

@@ -102,6 +102,7 @@ void SchoolBoyState_Attack_Punch::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_Punch::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

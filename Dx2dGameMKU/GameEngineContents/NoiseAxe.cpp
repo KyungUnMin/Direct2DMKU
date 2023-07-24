@@ -124,7 +124,9 @@ void NoiseAxe::Update_Collision(float _DeltaTime)
 
 	AttackTimer = 0.f;
 
-	if (false == FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage))
+	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
+	Player->Look(GetTransform()->GetWorldPosition());
+	if (false == Player->OnDamage_BlowBack(Damage))
 		return;
 
 	SoundMgr::PlaySFX("NoiseAxe_Hit.wav");

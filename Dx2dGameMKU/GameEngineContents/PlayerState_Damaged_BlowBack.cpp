@@ -71,7 +71,12 @@ void PlayerState_Damaged_BlowBack::EnterState()
 		return;
 
 	GetRenderer()->ChangeAnimation(AniName);
-	FieldPlayer::GetPtr()->SetHeight(0.f);
+
+	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
+	Player->SetHeight(0.f);
+
+	//바라보는 방향 반대로 날라간다
+	BlowDir = Player->IsRightDir() ? float4::Left : float4::Right;
 
 	SoundMgr::PlaySFX("HitEffective.wav").SetVolume(2.5f);
 	SoundMgr::PlaySFX("Player_BlowDamaged_Voice.wav");
@@ -116,20 +121,7 @@ bool PlayerState_Damaged_BlowBack::Update_BlowHorizon(float _Ratio, float _Delta
 	float NowAcc = StartAcc * (1.f - _Ratio);
 
 	float4 NextPos = PlayerTrans->GetLocalPosition();
-
-
-	//오른쪽을 바라보고 있을때
-	if (0.f <  PlayerTrans->GetLocalScale().x)
-	{
-		//바라보는 방향 반대로 날라간다
-		NextPos += (float4::Left * NowAcc * _DeltaTime);
-	}
-	//왼쪽을 바라보고 있을때
-	else
-	{
-		//바라보는 방향 반대로 날라간다
-		NextPos += (float4::Right * NowAcc * _DeltaTime);
-	}
+	NextPos += (BlowDir * NowAcc * _DeltaTime);
 
 	//벽에 막혔을때
 	if (true == BGPtr->IsBlockPos(NextPos))

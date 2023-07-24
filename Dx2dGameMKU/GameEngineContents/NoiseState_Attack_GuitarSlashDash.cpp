@@ -128,11 +128,8 @@ void NoiseState_Attack_GuitarSlashDash::Update(float _DeltaTime)
 
 void NoiseState_Attack_GuitarSlashDash::Attack()
 {
-	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
-	float4 LookPos = GetEnemy()->GetTransform()->GetWorldPosition();
-	Player->Look(LookPos);
-
-	bool Result = Player->OnDamage_BlowBack(Damage);
+	BossState_AttackBase::Attack();
+	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	if (false == Result)
 		return;
 

@@ -108,6 +108,7 @@ void HooliganState_Attack_CrossPunch::Update(float _DeltaTime)
 
 void HooliganState_Attack_CrossPunch::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

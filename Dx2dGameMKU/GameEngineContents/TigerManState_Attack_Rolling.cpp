@@ -303,6 +303,7 @@ void TigerManState_Attack_Rolling::Attack()
 	if (LiveTime < (LastAttack + AttackWaitTime))
 		return;
 
+	EnemyState_AttackBase::Attack();
 	LastAttack = LiveTime;
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	

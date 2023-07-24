@@ -107,6 +107,7 @@ void CheerleaderState_Attack_SpinPom::Update(float _DeltaTime)
 
 void CheerleaderState_Attack_SpinPom::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	
 }

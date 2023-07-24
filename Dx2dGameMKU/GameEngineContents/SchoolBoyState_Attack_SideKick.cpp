@@ -102,6 +102,7 @@ void SchoolBoyState_Attack_SideKick::Update(float _DeltaTime)
 
 void SchoolBoyState_Attack_SideKick::Attack()
 {
+	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	
 }

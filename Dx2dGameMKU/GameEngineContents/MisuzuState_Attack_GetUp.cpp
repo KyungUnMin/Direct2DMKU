@@ -133,6 +133,7 @@ void MisuzuState_Attack_GetUp::Update(float _DeltaTime)
 
 void MisuzuState_Attack_GetUp::Attack()
 {
+	BossState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_Face(Damage);
 	
 }

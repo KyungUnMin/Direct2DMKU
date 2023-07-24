@@ -166,6 +166,7 @@ void MisuzuState_Attack_WUPunch::Attack()
 	if (true == IsAttackHited)
 		return;
 	
+	BossState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage, true);
 	if (false == Result)
 		return;

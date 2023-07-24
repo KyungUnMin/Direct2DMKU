@@ -377,6 +377,8 @@ bool FieldPlayer::IsStuned() const
 	return PlayerStateType::Damaged_Stun == Fsm.GetNowState<PlayerStateType>();
 }
 
+
+
 void FieldPlayer::Look(const float4& _LookPos)
 {
 	FieldActorBase::Look(_LookPos);
@@ -385,6 +387,13 @@ void FieldPlayer::Look(const float4& _LookPos)
 	RenderDir = (0.f < GetTransform()->GetLocalScale().x);
 }
 
+
+void FieldPlayer::LookFixDir(bool _IsRight)
+{
+	FieldActorBase::LookDir(_IsRight);
+	RenderDir = _IsRight;
+	IsFixedDirection = true;
+}
 
 void FieldPlayer::StateChange_BattleStart()
 {

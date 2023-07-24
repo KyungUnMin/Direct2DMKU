@@ -27,6 +27,7 @@ private:
 	const float Duration = 0.5f;
 	GameEngineTransform* PlayerTrans = nullptr;
 	std::shared_ptr<class BackGround> BGPtr = nullptr;
+	float4 BlowDir = float4::Zero;
 
 	void LoadAnimation();
 	void CreateAnimation();
