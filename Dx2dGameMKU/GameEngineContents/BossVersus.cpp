@@ -11,6 +11,7 @@
 #include "KeyMgr.h"
 
 #include "SelfRenderer.h"
+#include "FieldLevelBase.h"
 
 
 BossVersus* BossVersus::GPtr = nullptr;
@@ -45,6 +46,7 @@ const std::string_view BossVersus::PortraitCBufferName = "NoiseFilter";
 BossVersus::BossVersus()
 {
 	GPtr = this;
+	FieldLevelBase::GetPtr()->OffPhone();
 }
 
 BossVersus::~BossVersus()
@@ -53,6 +55,7 @@ BossVersus::~BossVersus()
 	{
 		GPtr = nullptr;
 	}
+	FieldLevelBase::GetPtr()->OnPhone();
 }
 
 
