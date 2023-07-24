@@ -58,7 +58,6 @@ const std::vector<std::vector<std::string_view>> DyingMessage::MsgScript =
 		"흥!",
 		"그대로 난 예쁘니까.",
 		"왕싸가지",
-		"이 대사 보는사람 있어?",
 		"한심한 머저리!",
 		"한심해",
 	},
@@ -110,6 +109,7 @@ const std::vector<std::vector<std::string_view>> DyingMessage::MsgScript =
 		"억울해!",
 		"아빠!",
 		"실망이야",
+		"이 대사 보는사람 있어?",
 	},
 
 	//Misuzu

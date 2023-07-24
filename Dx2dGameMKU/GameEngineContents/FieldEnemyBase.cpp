@@ -63,13 +63,21 @@ void FieldEnemyBase::Update(float _DeltaTime)
 	MsgAssert("Enemy는 반드시 EnemySpawner를 통해 생성되어야 합니다");
 }
 
+//여기에 인자 추가해서 동키킥 버그 수정하자
 
 void FieldEnemyBase::OnDamage(int _Damage)
 {
 	//플레이어의 반대 방향 바라보기
-	bool IsPlayerLookRight = FieldPlayer::GetPtr()->IsRightDir();
+	std::shared_ptr<FieldPlayer> Player = FieldPlayer::GetPtr();
+	PlayerStateType NowPlayerState = Player->GetCurState();
+	bool IsPlayerLookRight = Player->IsRightDir();
 	bool EnemyLookDir = !IsPlayerLookRight;
+	if (PlayerStateType::SpecialAttack_DonkeyKick == NowPlayerState)
+	{
+		EnemyLookDir = IsPlayerLookRight;
+	}
 	LookDir(EnemyLookDir);
+	
 
 	Hp -= abs(_Damage);
 	if (0 < Hp)

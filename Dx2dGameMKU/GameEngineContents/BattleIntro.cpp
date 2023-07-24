@@ -8,17 +8,19 @@
 #include "RCGEnums.h"
 #include "SoundMgr.h"
 
+#include "FieldLevelBase.h"
+
 
 const std::string_view BattleIntro::Ani_FileName = "BattleIntro";
 
 BattleIntro::BattleIntro()
 {
-
+	FieldLevelBase::GetPtr()->OffPhone();
 }
 
 BattleIntro::~BattleIntro()
 {
-
+	FieldLevelBase::GetPtr()->OnPhone();
 }
 
 void BattleIntro::Start() 

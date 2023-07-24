@@ -14,6 +14,7 @@
 
 #include "ShaderUIRenderer.h"
 #include "Fader.h"
+#include "FieldLevelBase.h"
 
 const std::string_view BossHUD::KoFileName = "BossKO";
 
@@ -183,6 +184,8 @@ void BossHUD::SetHp(int _CurHp)
 
 void BossHUD::KoExcute()
 {
+	FieldLevelBase::GetPtr()->OffPhone();
+
 	//시간스케일 느리게
 	GameEngineTime::GlobalTime.SetGlobalTimeScale(SlowTimeRatio);
 
@@ -202,6 +205,7 @@ void BossHUD::KoExcute()
 			//KoRenderOffTimet시간이 흐른 이후에 Ko렌더러 Off
 			GetLevel()->TimeEvent.AddEvent(KoRenderOffTime, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 			{
+				FieldLevelBase::GetPtr()->OnPhone(0.f);
 				this->KoRender->Off();
 				SoundMgr::BgmPauseOff();
 				SoundMgr::BgmFadeIn(1.f);

@@ -59,6 +59,10 @@ public:
 
 	void StateChange_BattleStart();
 
+	inline PlayerStateType GetCurState() const
+	{
+		return Fsm.GetNowState<PlayerStateType>();
+	}
 
 protected:
 	void Start() override;

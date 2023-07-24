@@ -16,6 +16,7 @@
 
 #include "UIFontRenderer.h"
 #include "Fader.h"
+#include "FieldLevelBase.h"
 
 const std::vector<std::string_view> ContinueBox::Box_Textures =
 {
@@ -49,12 +50,12 @@ const float ContinueBox::MoveDuration = 0.5f;
 
 ContinueBox::ContinueBox()
 {
-
+	FieldLevelBase::GetPtr()->OffPhone();
 }
 
 ContinueBox::~ContinueBox()
 {
-
+	FieldLevelBase::GetPtr()->OnPhone();
 }
 
 

@@ -14,6 +14,8 @@
 
 
 #include "ShaderUIRenderer.h"
+#include "FieldLevelBase.h"
+
 
 const std::string_view LevelChangeHeart::TexName = "LevelChangeHeart.png";
 
@@ -67,13 +69,14 @@ void LevelChangeHeart::CreateRender()
 
 void LevelChangeHeart::Init(LevelNames _NextLevel, float _WaitTime /*= 6.f*/)
 {
-	GameEngineLevel* Level = GetLevel();
+	std::shared_ptr<FieldLevelBase> Level = FieldLevelBase::GetPtr();
 
-	Level->TimeEvent.AddEvent(_WaitTime, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	Level->TimeEvent.AddEvent(_WaitTime, [this, Level](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 	{
 		On();
 		ResetLiveTime();
 		SoundMgr::BgmFadeOut(Duration);
+		Level->OffPhone();
 	});
 
 	Level->TimeEvent.AddEvent(_WaitTime + Duration - 1.f, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
@@ -109,6 +112,7 @@ void LevelChangeHeart::Update(float _DeltaTime)
 	if (Ratio < 1.f)
 		return;
 
+	FieldLevelBase::GetPtr()->OnPhone(0.f);
 	SoundMgr::BgmStop();
 	LevelMgr::ChangeLevel(static_cast<LevelNames>(NextLevel));
 }
