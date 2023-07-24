@@ -185,9 +185,16 @@ bool LevelUpUICtrl::LevelUpCallBack()
 }
 
 
+void LevelUpUICtrl::On()
+{
+	UIBase::On();
+	FieldLevelBase::GetPtr()->OffPhone();
+}
+
 void LevelUpUICtrl::Off()
 {
 	UIBase::Off();
+	FieldLevelBase::GetPtr()->OnPhone(0.f);
 
 	GrowthBox->Off();
 	NewSkillBox->Off();

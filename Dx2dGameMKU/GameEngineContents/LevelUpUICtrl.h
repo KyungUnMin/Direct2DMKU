@@ -15,6 +15,7 @@ public:
 	LevelUpUICtrl& operator=(const LevelUpUICtrl& _Other) = delete;
 	LevelUpUICtrl& operator=(const LevelUpUICtrl&& _Other) noexcept = delete;
 
+	void On() override;
 	void Off() override;
 
 protected:
