@@ -131,6 +131,20 @@ void ShopLevelBase::LevelChangeEnd()
 		SoundMgr::ChangeBGM(PrevLevelBgmName);
 		SoundMgr::SetBgmPos(PrevLevelBgmPos);
 	}
+
+	if ((-1 == PrevInvenCount) || (-1 == NowInvenCount))
+		return;
+
+	NowInvenCount = InventoryMgr::GetCount();
+	if (NowInvenCount != PrevInvenCount)
+	{
+		NowInvenCount = -1;
+		PrevInvenCount = -1;
+		FieldLevelBase::GetPtr()->TimeEvent.AddEvent(1.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+		{
+			TutorialUI::BindOnceTutorial("새로운 아이템 발견!", "ESC를 눌러 새 아이템을 확인하자");
+		});
+	}
 }
 
 
@@ -138,20 +152,6 @@ void ShopLevelBase::Update(float _DeltaTime)
 {
 	GameEngineLevel::Update(_DeltaTime);
 	LevelTimer += _DeltaTime;
-
-	if ((-1 != PrevInvenCount) && (-1 != NowInvenCount))
-	{
-		NowInvenCount = InventoryMgr::GetCount();
-		if (NowInvenCount != PrevInvenCount)
-		{
-			NowInvenCount = -1;
-			PrevInvenCount = -1;
-			FieldLevelBase::GetPtr()->TimeEvent.AddEvent(2.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
-			{
-				TutorialUI::BindOnceTutorial("새로운 아이템 발견!", "ESC를 눌러 새 아이템을 확인하자");
-			});
-		}
-	}
 
 	if (false == KeyMgr::IsDown(KeyNames::Esc) || (LevelTimer < 1.f))
 		return;

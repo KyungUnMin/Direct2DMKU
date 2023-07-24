@@ -22,8 +22,8 @@ protected:
 private:
 	static const std::vector<PlayerStateType> UnlockSkills;
 
-	int PrevSkillBit = -1;
-	int NowSkillBit = -1;
+	int PrevSkillBit = 0;
+	int NowSkillBit = 0;
 
 };
 

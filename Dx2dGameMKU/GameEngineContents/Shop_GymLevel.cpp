@@ -44,10 +44,6 @@ void Shop_GymLevel::LevelChangeStart()
 {
 	ShopLevelBase::LevelChangeStart();
 
-	if ((0 == PrevSkillBit) && (0 == NowSkillBit))
-		return;
-
-	PrevSkillBit = 0;
 	for (PlayerStateType Skill : UnlockSkills)
 	{
 		if (false == SkillMgr::HasSkill(Skill))
@@ -63,10 +59,6 @@ void Shop_GymLevel::LevelChangeEnd()
 {
 	ShopLevelBase::LevelChangeEnd();
 
-	if ((0 == PrevSkillBit) && (0 == NowSkillBit))
-		return;
-
-	NowSkillBit = 0;
 	for (PlayerStateType Skill : UnlockSkills)
 	{
 		if (false == SkillMgr::HasSkill(Skill))
@@ -78,9 +70,9 @@ void Shop_GymLevel::LevelChangeEnd()
 
 	if (PrevSkillBit != NowSkillBit)
 	{
-		FieldLevelBase::GetPtr()->TimeEvent.AddEvent(2.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+		FieldLevelBase::GetPtr()->TimeEvent.AddEvent(1.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 		{
-			TutorialUI::BindOnceTutorial("새로운 스킬 획득!", "ESC를 눌러 새 스킬을 확인하자");
+			TutorialUI::BindTurorial("새로운 스킬 획득!", "ESC를 눌러 새 스킬을 확인하자");
 		});
 	}
 
