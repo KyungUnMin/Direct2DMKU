@@ -12,6 +12,7 @@
 #include "FieldLevelBase.h"
 #include "EnemySpawner.h"
 #include "TutorialUI.h"
+#include "FieldPlayer.h"
 
 FieldEnemyBase::FieldEnemyBase()
 {
@@ -65,6 +66,11 @@ void FieldEnemyBase::Update(float _DeltaTime)
 
 void FieldEnemyBase::OnDamage(int _Damage)
 {
+	//플레이어의 반대 방향 바라보기
+	bool IsPlayerLookRight = FieldPlayer::GetPtr()->IsRightDir();
+	bool EnemyLookDir = !IsPlayerLookRight;
+	LookDir(EnemyLookDir);
+
 	Hp -= abs(_Damage);
 	if (0 < Hp)
 		return;
@@ -80,6 +86,7 @@ void FieldEnemyBase::OnDamage(int _Damage)
 	IsKOValue = true;
 }
 
+
 void FieldEnemyBase::CreateHitEffect(const float4& _Offset)
 {
 	std::shared_ptr<HitEffect> Effect = GetLevel()->CreateActor<HitEffect>(UpdateOrder::Effect);
@@ -87,5 +94,3 @@ void FieldEnemyBase::CreateHitEffect(const float4& _Offset)
 	float4 EffectPos = GetTransform()->GetWorldPosition() + _Offset;
 	EffectTrans->SetLocalPosition(EffectPos);
 }
-
-
