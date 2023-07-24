@@ -2,6 +2,7 @@
 #include "WaverState_Attack_Frog.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "WaverFSM.h"
 #include "FieldPlayer.h"
@@ -52,7 +53,8 @@ void WaverState_Attack_Frog::CreateAnimation()
 	std::vector<float> AniInters(AniFrmCnt, AniInterTime);
 	AniInters[1] = 0.5f;
 
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -60,6 +62,11 @@ void WaverState_Attack_Frog::CreateAnimation()
 		.End = 23,
 		.Loop = false,
 		.FrameTime = AniInters
+		});
+
+	Render->SetAnimationStartEvent(AniName, 1, []()
+	{
+		SoundMgr::PlaySFX("Waver_Flog.wav");
 	});
 
 	//2번 프레임부터 이동

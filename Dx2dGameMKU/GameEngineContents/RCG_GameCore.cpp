@@ -34,7 +34,7 @@ void RCG_GameCore::GameStart()
 	SoundMgr::Init();
 	SkillMgr::Init();
 
-	LevelMgr::CreateLevel(LevelNames::OceanBossLevel);
+	LevelMgr::CreateLevel(LevelNames::OceanLevel);
 
 	//시연회 용
 	GameEngineSoundPlayer::CanVolumeChange = false;

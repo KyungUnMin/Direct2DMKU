@@ -2,6 +2,7 @@
 #include "WaverState_Attack_WindSlash.h"
 
 #include "DataMgr.h"
+#include "SoundMgr.h"
 
 #include "WaverFSM.h"
 #include "FieldPlayer.h"
@@ -48,7 +49,8 @@ void WaverState_Attack_WindSlash::LoadAnimation()
 
 void WaverState_Attack_WindSlash::CreateAnimation()
 {
-	GetRenderer()->CreateAnimation
+	std::shared_ptr<GameEngineSpriteRenderer> Render = GetRenderer();
+	Render->CreateAnimation
 	({
 		.AnimationName = AniName,
 		.SpriteName = AniFileName,
@@ -56,6 +58,20 @@ void WaverState_Attack_WindSlash::CreateAnimation()
 		.End = 23,
 		.FrameInter = AniInterTime,
 		.Loop = false,
+	});
+
+	Render->SetAnimationStartEvent(AniName, 8, [this]()
+	{
+		SfxPlayer = SoundMgr::PlaySFX("Waver_WindSlash_Wind.wav", true);
+	});
+
+	Render->SetAnimationStartEvent(AniName, 16, [this]()
+	{
+		if (true == SfxPlayer.IsValid())
+		{
+			SfxPlayer.Stop();
+		}
+		SoundMgr::PlaySFX("Waver_WindSlash_Attack.wav");
 	});
 
 	EnemyState_AttackBase::SetAttackCheckFrame(AniName, 17);
@@ -105,4 +121,15 @@ void WaverState_Attack_WindSlash::Attack()
 	EnemyState_AttackBase::Attack();
 	bool Result = FieldPlayer::GetPtr()->OnDamage_BlowBack(Damage);
 	
+}
+
+
+void WaverState_Attack_WindSlash::ExitState()
+{
+	EnemyState_AttackBase::ExitState();
+
+	if (true == SfxPlayer.IsValid())
+	{
+		SfxPlayer.Stop();
+	}
 }

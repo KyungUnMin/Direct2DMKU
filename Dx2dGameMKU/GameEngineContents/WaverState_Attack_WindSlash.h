@@ -1,5 +1,6 @@
 #pragma once
 #include "EnemyState_AttackBase.h"
+#include <GameEnginePlatform/GameEngineSound.h>
 
 class WaverState_Attack_WindSlash : public EnemyState_AttackBase
 {
@@ -16,8 +17,11 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void EnterState() override;
+	void ExitState() override;
 
 	void Attack() override;
+
+	void OnAttackSound() {}
 
 private:
 	static const std::string_view AniName;
@@ -25,6 +29,8 @@ private:
 	static const std::pair<int, int> AniCutFrame;
 	static const float AniInterTime;
 	static const int Damage;
+
+	GameEngineSoundPlayer SfxPlayer;
 
 	void LoadAnimation();
 	void CreateAnimation();
