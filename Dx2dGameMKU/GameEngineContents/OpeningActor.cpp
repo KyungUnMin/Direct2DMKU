@@ -136,13 +136,14 @@ void OpeningActor::CraeteBrightImages()
 }
 
 
+
 void OpeningActor::CraeteTextPressESC()
 {
-	const float4 Offset = float4{ -330.f, -100.f };
+	const float4 Offset = float4{ 0.f, -330.f };
 
 	PressEscTextRender = CreateComponent<GameEngineFontRenderer>();
-	PressEscTextRender->SetFont(FontMgr::GetFontName(FontType::Binggrae));
-	PressEscTextRender->SetScale(30);
+	PressEscTextRender->SetFont(FontMgr::GetFontName(FontType::NanumSquare));
+	PressEscTextRender->SetScale(20);
 	PressEscTextRender->SetText("Press ESC");
 	PressEscTextRender->SetColor(float4::Null);
 	PressEscTextRender->SetFontFlag(FW1_TEXT_FLAG::FW1_CENTER);
@@ -291,17 +292,23 @@ void OpeningActor::Update_Char(float _DeltaTime)
 		return;
 
 	CurState = State::Ready;
-	PressEscTextRender->On();
+	GetLevel()->TimeEvent.AddEvent(5.f, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		PressEscTextRender->On();
+	});
 }
 
 
 
 void OpeningActor::Update_Ready()
 {
-	float Alpha = abs(sinf(GetLiveTime()));
-	float4 Color = float4::White;
-	Color.a = Alpha;
-	PressEscTextRender->SetColor(Color);
+	if (true == PressEscTextRender->IsUpdate())
+	{
+		float Alpha = abs(sinf(GetLiveTime()));
+		float4 Color = float4::White;
+		Color.a = Alpha;
+		PressEscTextRender->SetColor(Color);
+	}
 
 	if (false == KeyMgr::IsDown(KeyNames::Esc))
 		return;
