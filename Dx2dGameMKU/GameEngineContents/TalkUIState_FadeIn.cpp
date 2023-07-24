@@ -7,6 +7,8 @@
 #include "TalkUI.h"
 #include "ShaderUIRenderer.h"
 #include "UIFontRenderer.h"
+#include "FieldLevelBase.h"
+#include "DyingMessage.h"
 
 TalkUIState_FadeIn::TalkUIState_FadeIn()
 {
@@ -26,6 +28,7 @@ void TalkUIState_FadeIn::EnterState()
 	RCG_GameCore::SetCurGameState(GameState::OnlyFieldUI);
 
 	GetUI()->GetBackRender()->On();
+	FieldLevelBase::GetPtr()->GetDyingMsgCtrl()->RenderOff();
 }
 
 void TalkUIState_FadeIn::Update(float _DeltaTime)

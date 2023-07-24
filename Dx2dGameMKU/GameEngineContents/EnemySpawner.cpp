@@ -4,13 +4,14 @@
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
-#include "RCGEnums.h"
 #include "RCGDefine.h"
 #include "KeyMgr.h"
 
 #include "FieldLevelBase.h"
 #include "BackGround.h"
 #include "DebugActor.h"
+#include "DyingMessage.h"
+
 
 #include "FieldEnemy_SchoolBoy.h"
 #include "FieldEnemy_SchoolGirl.h"
@@ -24,6 +25,7 @@
 #include "FieldEnemy_Yamada.h"
 #include "FieldEnemy_Noise.h"
 #include "NoiseFan.h"
+
 
 EnemySpawner::EnemySpawner(FieldLevelBase* _Level)
 {
@@ -111,6 +113,7 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 	EnemyDataBlock& Date = Enemies.emplace_back();
 	Date.EnemyPtr = EnemyPtr;
 	Date.GridPos = BGPtr->GetGridFromPos(Pos);
+	Date.Type = _Type;
 
 
 	return EnemyPtr;
@@ -164,6 +167,10 @@ void EnemySpawner::KillEnemy(std::shared_ptr<FieldEnemyBase> _Enemy)
 	Data.EnemyPtr = nullptr;
 	Data.IsDeath = true;
 	++KillCount;
+
+	std::shared_ptr<DyingMessage> DyingMsgCtrl = nullptr;
+	DyingMsgCtrl = FieldLevelBase::GetPtr()->GetDyingMsgCtrl();
+	DyingMsgCtrl->SetMsg(Data.Type);
 
 	if (nullptr != KillCallback)
 	{

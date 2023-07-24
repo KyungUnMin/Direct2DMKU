@@ -26,6 +26,7 @@
 #include "HandPhoneUI.h"
 #include "FieldTalkNPC.h"
 #include "TutorialUI.h"
+#include "DyingMessage.h"
 
 
 
@@ -69,6 +70,7 @@ void FieldLevelBase::Init(const float4& _Scale, const TileInfoData& _TileData)
 
 	CreateActor<LevelUpUICtrl>(UpdateOrder::UI);
 	HandPhone = CreateActor<HandPhoneUI>(UpdateOrder::UI);
+	DyingMsgUI = CreateActor<DyingMessage>(UpdateOrder::UI);
 }
 
 
@@ -323,3 +325,4 @@ void FieldLevelBase::OnPhone(float _Delay /*= 3.f*/)
 		IsPhoneOpenable = true;
 	});
 }
+

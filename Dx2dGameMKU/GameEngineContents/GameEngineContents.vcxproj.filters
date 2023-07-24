@@ -1276,6 +1276,9 @@
     <Filter Include="03.Actor\02.CinematicActors\03.Ending_Lose">
       <UniqueIdentifier>{f49fd183-0875-4783-ab9f-76366cf59928}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Actor\04.UI\15.DyingMessage">
+      <UniqueIdentifier>{004afbef-13e2-4327-87dc-00fc6d2bc253}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PrecompileHeader.cpp">
@@ -2301,6 +2304,12 @@
     <ClCompile Include="EndingLoseActor.cpp">
       <Filter>03.Actor\02.CinematicActors\03.Ending_Lose</Filter>
     </ClCompile>
+    <ClCompile Include="DyingMessage.cpp">
+      <Filter>03.Actor\04.UI\15.DyingMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="DyingMessage_Scrpt.cpp">
+      <Filter>03.Actor\04.UI\15.DyingMessage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrecompileHeader.h">
@@ -3301,6 +3310,9 @@
     </ClInclude>
     <ClInclude Include="EndingLoseActor.h">
       <Filter>03.Actor\02.CinematicActors\03.Ending_Lose</Filter>
+    </ClInclude>
+    <ClInclude Include="DyingMessage.h">
+      <Filter>03.Actor\04.UI\15.DyingMessage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@
 
 #include "TalkUI.h"
 #include "UIFontRenderer.h"
+#include "FieldLevelBase.h"
+#include "DyingMessage.h"
 
 TalkUIState_FadeOut::TalkUIState_FadeOut()
 {
@@ -23,6 +25,7 @@ void TalkUIState_FadeOut::EnterState()
 	TalkUI* UIPtr = GetUI();
 	UIPtr->GetTextRender()->On();
 	UIPtr->GetTalkerNameRender()->Off();
+	FieldLevelBase::GetPtr()->GetDyingMsgCtrl()->RenderOn();
 }
 
 

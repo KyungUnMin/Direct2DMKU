@@ -1,4 +1,6 @@
 #pragma once
+#include "RCGEnums.h"
+
 
 /*
 Enemy의 생성/소멸을 관리해준다
@@ -7,21 +9,6 @@ Enemy의 생성/소멸을 관리해준다
 class FieldLevelBase;
 class FieldEnemyBase;
 class GameEngineRenderer;
-
-enum class EnemyType
-{
-	SchoolBoy,
-	SchoolGirl,
-	Cheerleader,
-	Cop,
-	Hooligan,
-	TigerMan,
-	Waver,
-	Misuzu,
-	Yamada,
-	Noise,
-	NoiseFan,
-};
 
 struct EnemyCreateParameter
 {
@@ -113,6 +100,7 @@ private:
 		std::shared_ptr<FieldEnemyBase> EnemyPtr = nullptr;
 		bool IsDeath = false;
 		std::pair<int, int> GridPos;
+		EnemyType Type;
 	};
 
 	std::vector<EnemyDataBlock> Enemies;

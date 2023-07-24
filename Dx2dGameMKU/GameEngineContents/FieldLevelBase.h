@@ -8,6 +8,8 @@
 class FieldPlayer;
 class BackGround;
 enum class LevelNames;
+class DyingMessage;
+enum class DyingMsgType;
 
 class FieldLevelBase : public GameEngineLevel
 {
@@ -63,6 +65,11 @@ public:
 
 	void OnPhone(float _Delay = 3.f);
 
+	inline std::shared_ptr<DyingMessage> GetDyingMsgCtrl() const
+	{
+		return DyingMsgUI;
+	}
+
 protected:
 	const float BgmFadeDuration = 3.f;
 
@@ -104,6 +111,8 @@ protected:
 		return PlayerPtr;
 	}
 
+	
+
 private:
 	static FieldLevelBase* GPtr;
 
@@ -117,6 +126,7 @@ private:
 	std::function<void()> DoorOpenFunc = nullptr;
 	std::shared_ptr<class HandPhoneUI> HandPhone = nullptr;
 	bool IsPhoneOpenable = true;
+	std::shared_ptr<DyingMessage> DyingMsgUI = nullptr;
 
 
 	void Update_OpenPhone();

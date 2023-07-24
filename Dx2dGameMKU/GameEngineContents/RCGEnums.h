@@ -54,6 +54,7 @@ enum class FieldUIRenderOrder
 	ScreenChainLock,
 	Conversation,
 	HUD,
+	DyingMsg,
 	ConversationText,
 	EventInfo,
 	BossHUD,
@@ -101,4 +102,18 @@ enum class BossType
 	Noise
 };
 
-
+//EnemySpawner¶û DyingMessage¿¡¼­ »ç¿ë
+enum class EnemyType
+{
+	SchoolBoy,
+	SchoolGirl,
+	Cheerleader,
+	Cop,
+	Hooligan,
+	TigerMan,
+	Waver,
+	Misuzu,
+	Yamada,
+	Noise,
+	NoiseFan,
+};
