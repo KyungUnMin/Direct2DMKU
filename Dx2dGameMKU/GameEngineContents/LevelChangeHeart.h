@@ -29,7 +29,8 @@ private:
 	//const float WaitTime = 6.f;
 	const float Duration = 3.f;
 	const float MaxScaleRatio = 5.f;
-	
+
+	std::shared_ptr<class GameEngineCollision> PlayerMainCollider = nullptr;
 
 	void LoadImageRes();
 	void CreateRender();

@@ -55,11 +55,14 @@ private:
 	float4 KyokoEndPos = float4::Zero;
 	float4 MisakoEndPos = float4::Zero;
 
+	std::shared_ptr<class GameEngineFontRenderer> PressEscTextRender = nullptr;
+
 	void CreateBackImage();
 	void CreateCharecters();
 	void CreateFrame();
 	void CreateTitles();
 	void CraeteBrightImages();
+	void CraeteTextPressESC();
 
 	void Update_Bright(float _DeltaTime);
 	void Update_Char(float _DeltaTime);

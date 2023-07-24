@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineTexture.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "RCGDefine.h"
 #include "RCGEnums.h"
@@ -15,6 +16,7 @@
 
 #include "ShaderUIRenderer.h"
 #include "FieldLevelBase.h"
+#include "FieldPlayer.h"
 
 
 const std::string_view LevelChangeHeart::TexName = "LevelChangeHeart.png";
@@ -37,6 +39,7 @@ void LevelChangeHeart::Start()
 	LoadImageRes();
 	CreateRender();
 
+	PlayerMainCollider = FieldPlayer::GetPtr()->GetMainCollider();
 	Off();
 }
 
@@ -77,6 +80,7 @@ void LevelChangeHeart::Init(LevelNames _NextLevel, float _WaitTime /*= 6.f*/)
 		ResetLiveTime();
 		SoundMgr::BgmFadeOut(Duration);
 		Level->OffPhone();
+		PlayerMainCollider->Off();
 	});
 
 	Level->TimeEvent.AddEvent(_WaitTime + Duration - 1.f, [this](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
@@ -113,6 +117,8 @@ void LevelChangeHeart::Update(float _DeltaTime)
 		return;
 
 	FieldLevelBase::GetPtr()->OnPhone(0.f);
+	PlayerMainCollider->On();
+
 	SoundMgr::BgmStop();
 	LevelMgr::ChangeLevel(static_cast<LevelNames>(NextLevel));
 }

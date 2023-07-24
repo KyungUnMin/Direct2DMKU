@@ -4,12 +4,15 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineFontRenderer.h>
+
 
 #include "RCGDefine.h"
 #include "KeyMgr.h"
 #include "LevelMgr.h"
 #include "RCGEnums.h"
 #include "SoundMgr.h"
+#include "FontMgr.h"
 
 #include "Fader.h"
 #include "OpeningDiaEffect.h"
@@ -45,6 +48,8 @@ void OpeningActor::Start()
 
 	//비디오가 끝나고 나오는 배경화면
 	CraeteBrightImages();
+
+	CraeteTextPressESC();
 }
 
 
@@ -131,6 +136,21 @@ void OpeningActor::CraeteBrightImages()
 }
 
 
+void OpeningActor::CraeteTextPressESC()
+{
+	const float4 Offset = float4{ -330.f, -100.f };
+
+	PressEscTextRender = CreateComponent<GameEngineFontRenderer>();
+	PressEscTextRender->SetFont(FontMgr::GetFontName(FontType::Binggrae));
+	PressEscTextRender->SetScale(30);
+	PressEscTextRender->SetText("Press ESC");
+	PressEscTextRender->SetColor(float4::Null);
+	PressEscTextRender->SetFontFlag(FW1_TEXT_FLAG::FW1_CENTER);
+
+	GameEngineTransform* TextTrans = PressEscTextRender->GetTransform();
+	TextTrans->SetLocalPosition(Offset);
+	PressEscTextRender->Off();
+}
 
 
 void OpeningActor::Update(float _DeltaTime)
@@ -271,16 +291,20 @@ void OpeningActor::Update_Char(float _DeltaTime)
 		return;
 
 	CurState = State::Ready;
+	PressEscTextRender->On();
 }
 
 
 
 void OpeningActor::Update_Ready()
 {
+	float Alpha = abs(sinf(GetLiveTime()));
+	float4 Color = float4::White;
+	Color.a = Alpha;
+	PressEscTextRender->SetColor(Color);
+
 	if (false == KeyMgr::IsDown(KeyNames::Esc))
 		return;
-
-	//Sound off, TODO
 
 	LevelMgr::ChangeLevel(LevelNames::SchoolEntryLevel);
 }
