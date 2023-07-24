@@ -201,6 +201,12 @@ void PlayerState_AttackBase::Update_DashIneria(const float _DeltaTime, const flo
 }
 
 
+void PlayerState_AttackBase::Update_QuickAttackMove(float _DeltaTime)
+{
+	Update_DashIneria(_DeltaTime, 0.1f, 300.f);
+}
+
+
 //지금은 안 쓰는데 나중을 위해 남겨둠
 void PlayerState_AttackBase::Update_Vertical(float _Duration, float _StartHeight /*= 80.f*/)
 {

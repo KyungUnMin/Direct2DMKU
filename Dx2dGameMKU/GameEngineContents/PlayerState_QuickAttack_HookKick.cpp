@@ -85,6 +85,7 @@ void PlayerState_QuickAttack_HookKick::EnterState()
 void PlayerState_QuickAttack_HookKick::Update(float _DeltaTime)
 {
 	PlayerState_AttackBase::Update(_DeltaTime);
+	PlayerState_AttackBase::Update_QuickAttackMove(_DeltaTime);
 
 	if (true == KeyMgr::IsDown(KeyNames::Z))
 	{

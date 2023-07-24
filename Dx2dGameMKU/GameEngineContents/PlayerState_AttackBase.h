@@ -39,6 +39,8 @@ protected:
 
 	void Update_DashIneria(const float _DeltaTime, const float _Duration, const float _StartAcc = 1000.f);
 
+	void Update_QuickAttackMove(float _DeltaTime);
+
 	void Update_Vertical(float _Duration, float _StartHeight = 80.f);
 
 	void Update_SinVertical(float _Duration, float _MaxHeight = 80.f);
