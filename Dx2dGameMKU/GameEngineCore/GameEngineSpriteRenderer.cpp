@@ -345,6 +345,7 @@ void GameEngineSpriteRenderer::ChangeAnimation(const std::string_view& _Name, si
 	if (CurAnimation.get() == Find.get() && false == _Force)
 		return;
 
+	SetTexture("EngineBaseClearTex.png");
 
 	//애니메이션 변경 
 	CurAnimation = Find;
