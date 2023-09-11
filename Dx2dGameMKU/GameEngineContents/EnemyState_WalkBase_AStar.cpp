@@ -11,7 +11,7 @@ struct BestRouth
 {
 	int TotalPoint = INT32_MAX;
 	int Cost = INT32_MAX;
-	std::pair<int, int> Pos;
+	std::pair<int, int> Pos;	//X, Y
 
 	//최소힙
 	bool operator <(const BestRouth& _Other) const
@@ -32,29 +32,34 @@ void EnemyState_WalkBase::FindPath()
 	const std::pair<int, int> StartPos = EnemyPtr->GetGridPos();
 	const std::pair<int, int>& DestPos = FieldPlayer::GetPtr()->GetGridPos();
 
-	//<다음위치, 현재위치>
-	static std::map<std::pair<int, int>, std::pair<int, int>> MovePath;
-	MovePath.clear();
+	//<다음위치, 현재위치>, 경로를 탐색하면서 이 위치가 어떤 부모 위치로부터 왔는지 기록
+	static std::map<std::pair<int, int>, std::pair<int, int>> Parent;
+	Parent.clear();
 
 
-	//방문 여부
-	static std::set<std::pair<int, int>> IsVisted;
-	IsVisted.clear();
+	//방문 여부(확정 위치)
+	static std::set<std::pair<int, int>> CloseList;
+	CloseList.clear();
 
 
-	//해당 위치에 해당되는 점수
-	static std::map<std::pair<int, int>, int> BestPath;
-	BestPath.clear();
+	//해당 위치에 해당되는 점수(예약위치)
+	static std::map<std::pair<int, int>, int> OpenList;
+	OpenList.clear();
 
-	//다음에 이동할 곳을 예약한다
+	//예약한 위치중에 F의 값이 최소인 경로
 	std::priority_queue<BestRouth> PQ;
 
+	//시작 위치의 G, (H는 당연히 0)
+	int StartCost = 10 * (abs(StartPos.first - DestPos.first) + abs(StartPos.second - DestPos.second));	
 
-	int StartCost = 10 * (abs(StartPos.first - DestPos.first) + abs(StartPos.second - DestPos.second));
-	BestPath[StartPos] = StartCost;
-	MovePath[StartPos] = StartPos;
+	//시작 위치 등록
+	OpenList[StartPos] = StartCost;
+
+	//경로를 다 탐색하고 역으로 부모경로를 추적할 때, 시작위치임을 알림
+	Parent[StartPos] = StartPos;
+
+	//경로 예약
 	PQ.push({ StartCost, 0, StartPos });
-	
 	while (false == PQ.empty())
 	{
 		BestRouth Now = PQ.top();
@@ -63,11 +68,11 @@ void EnemyState_WalkBase::FindPath()
 		PQ.pop();
 
 		//이미 방문한 곳이라면 그곳은 탐색하지 않음
-		if (IsVisted.end() != IsVisted.find(Now.Pos))
+		if (CloseList.end() != CloseList.find(Now.Pos))
 			continue;
 
 		//해당 위치 방문
-		IsVisted.insert(Now.Pos);
+		CloseList.insert(Now.Pos);
 
 		//목적지 도착
 		if (DestPos == Now.Pos)
@@ -93,22 +98,22 @@ void EnemyState_WalkBase::FindPath()
 
 			//이미 방문한 곳일때
 			std::pair<int, int> NextPos = std::pair<int, int>(NextX, NextY);
-			if (IsVisted.end() != IsVisted.find(NextPos))
+			if (CloseList.end() != CloseList.find(NextPos))
 				continue;
 
 
-			//이동하는 데 필요한 비용
+			//이동하는 데 필요한 비용(G)
 			int NextCost = Now.Cost + NeedCost[i];
-			//목적지까지의 직선거리
+			//목적지까지의 직선거리(H)
 			int Distance = 10 * (abs(DestPos.first - NextX) + abs(DestPos.second - NextY));
-			//최종점수
+			//최종점수(F)
 			int NextTotalPoint = NextCost + Distance;
 
-			if (BestPath.end() == BestPath.find(NextPos))
+			if (OpenList.end() == OpenList.find(NextPos))
 			{
-				BestPath[NextPos] = INT32_MAX;
+				OpenList[NextPos] = INT32_MAX;
 			}
-			std::map<std::pair<int, int>, int>::iterator NextPosIter = BestPath.find(NextPos);
+			std::map<std::pair<int, int>, int>::iterator NextPosIter = OpenList.find(NextPos);
 
 			//기존의 해당 지점까지의 이동비용
 			int PrevCost = NextPosIter->second;
@@ -120,20 +125,20 @@ void EnemyState_WalkBase::FindPath()
 			//이동 경로 점수 재갱신
 			NextPosIter->second = NextTotalPoint;
 			PQ.push({ NextTotalPoint, NextCost,NextPos });
-			MovePath[NextPos] = Now.Pos;
+			Parent[NextPos] = Now.Pos;
 		}
 	}
 
 
 	PathStack.clear();
-	if (PathStack.capacity() < IsVisted.size())
+	if (PathStack.capacity() < CloseList.size())
 	{
-		PathStack.reserve(IsVisted.size());
+		PathStack.reserve(CloseList.size());
 	}
 	
 
-	std::map<std::pair<int, int>, std::pair<int, int>>::iterator FindIter = MovePath.find(DestPos);
-	if (MovePath.end() == FindIter)
+	std::map<std::pair<int, int>, std::pair<int, int>>::iterator FindIter = Parent.find(DestPos);
+	if (Parent.end() == FindIter)
 	{
 		std::string StartFieldPosStr = EnemyPtr->GetTransform()->GetWorldPosition().ToString();
 		std::string StartGridPosStr = "(" + std::to_string(StartPos.first) + ", " + std::to_string(StartPos.second) + ")";
@@ -150,7 +155,7 @@ void EnemyState_WalkBase::FindPath()
 
 	while (NextPos != PrevPos)
 	{
-		FindIter = MovePath.find(PrevPos);
+		FindIter = Parent.find(PrevPos);
 		NextPos = FindIter->first;
 		PrevPos = FindIter->second;
 

@@ -36,7 +36,6 @@ void RCG_GameCore::GameStart()
 
 	LevelMgr::CreateLevel(LevelNames::OpeningLevel);
 
-	//시연회 용
 	GameEngineSoundPlayer::CanVolumeChange = false;
 }
 
