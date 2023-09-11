@@ -109,21 +109,21 @@ void EnemyState_WalkBase::FindPath()
 			//최종점수(F)
 			int NextTotalPoint = NextCost + Distance;
 
-			if (OpenList.end() == OpenList.find(NextPos))
+			//이전에는 예약하지 않았던 위치인 경우
+			if (false == OpenList.contains(NextPos))
 			{
 				OpenList[NextPos] = INT32_MAX;
 			}
-			std::map<std::pair<int, int>, int>::iterator NextPosIter = OpenList.find(NextPos);
 
 			//기존의 해당 지점까지의 이동비용
-			int PrevCost = NextPosIter->second;
+			int& PrevCost = OpenList[NextPos];
 
 			//기존이 이동 경로보다 지금의 이동경로가 더 안좋은 상황일때
 			if (PrevCost < NextTotalPoint)
 				continue;
 
 			//이동 경로 점수 재갱신
-			NextPosIter->second = NextTotalPoint;
+			PrevCost = NextTotalPoint;
 			PQ.push({ NextTotalPoint, NextCost,NextPos });
 			Parent[NextPos] = Now.Pos;
 		}
@@ -137,8 +137,8 @@ void EnemyState_WalkBase::FindPath()
 	}
 	
 
-	std::map<std::pair<int, int>, std::pair<int, int>>::iterator FindIter = Parent.find(DestPos);
-	if (Parent.end() == FindIter)
+	//예외처리, 몬스터가 플레이어에게 이동할 수 없는 위치인 경우
+	if (false == Parent.contains(DestPos))
 	{
 		std::string StartFieldPosStr = EnemyPtr->GetTransform()->GetWorldPosition().ToString();
 		std::string StartGridPosStr = "(" + std::to_string(StartPos.first) + ", " + std::to_string(StartPos.second) + ")";
@@ -149,10 +149,12 @@ void EnemyState_WalkBase::FindPath()
 		return;
 	}
 
+	std::map<std::pair<int, int>, std::pair<int, int>>::iterator FindIter = Parent.find(DestPos);
 	std::pair<int, int> NextPos = FindIter->first;
 	std::pair<int, int> PrevPos = FindIter->second;
 	PathStack.push_back(NextPos);
 
+	//처음 시작위치에 도달할때 까지 탐색 경로를 역으로 추적
 	while (NextPos != PrevPos)
 	{
 		FindIter = Parent.find(PrevPos);
