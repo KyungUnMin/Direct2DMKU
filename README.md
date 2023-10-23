@@ -24,3 +24,6 @@ C++과 DirectX 라이브러리를 활용하여 모작한 프로젝트입니다.<
 ## 노이즈를 활용한 픽셀 쉐이더 연출
 ![PaperBurn](https://github.com/KyungUnMin/Direct2DMKU/assets/86768610/ec4257a4-8ade-41e6-92bb-d0d65e53a4a7)<br/>
 노이즈가 만들어내는 값을 바탕으로 특정 상수버퍼 미만일때는 픽셀 쉐이더에서 clip시킵니다.
+
+# 블로그 가기
+https://blog.naver.com/insetour/223178195243
