@@ -9,7 +9,7 @@ C++과 DirectX 라이브러리를 활용하여 모작한 프로젝트입니다.<
 
 ## 파일입출력을 이용한 몬스터 생성 툴
 ![Tool](https://github.com/KyungUnMin/Direct2DMKU/assets/86768610/ebac2e2b-0704-4d78-a32e-72cc1c58d7c0)<br/>
-해당 툴은 <regex>와 <filesystem> 라이브러리를 사용하여 만들었습니다.
+해당 툴은 regex와 filesystem 라이브러리를 사용하여 만들었습니다.
 
 ## DirectShow 라이브러리를 이용한 오프닝 영상 출력
 ![Dshow](https://github.com/KyungUnMin/Direct2DMKU/assets/86768610/a5dd781d-e5ae-4eb0-9cfe-805782d5075c)
