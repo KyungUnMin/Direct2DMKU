@@ -56,6 +56,8 @@ void EnemySpawner::CreateEnemies(const std::vector<EnemyCreateParameter>& _Creat
 	}
 }
 
+#pragma optimize ("", off)
+
 std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const float4& _CreatePos)
 {
 	std::shared_ptr<BackGround> BGPtr = Level->GetBackGround();
@@ -105,9 +107,11 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 	{
 		Pos.z = Pos.y;
 	}
-	EnemyPtr->GetTransform()->SetLocalPosition(Pos);
-	EnemyPtr->SetSpawnIdx(Enemies.size());
 
+	GameEngineTransform* EnemyTrans = EnemyPtr->GetTransform();
+	
+	EnemyTrans->SetLocalPosition(Pos);
+	EnemyPtr->SetSpawnIdx(Enemies.size());
 
 	//자료구조에 저장
 	EnemyDataBlock& Date = Enemies.emplace_back();
@@ -119,6 +123,7 @@ std::shared_ptr<FieldEnemyBase> EnemySpawner::CreateEnemy(EnemyType _Type, const
 	return EnemyPtr;
 }
 
+#pragma optimize ("", on)
 
 
 
