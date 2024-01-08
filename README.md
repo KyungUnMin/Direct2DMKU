@@ -27,4 +27,4 @@ C++과 DirectX 라이브러리를 활용하여 모작한 프로젝트입니다.<
 
 # 블로그/유튜브 가기
 https://blog.naver.com/insetour/223178195243<br/>
-https://www.youtube.com/watch?v=qfHc50egW_Q
+https://www.youtube.com/watch?v=NTxRLKu4eXM
